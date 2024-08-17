@@ -25,4 +25,10 @@ func load_level(filepath : String):
 		default_level_size = data["size"]
 		next_level_path = data["next_level"]
 		level_targets = data["targets"]
-	else: print(error_string(error))
+	else: print_debug(error_string(error))
+
+
+func load_next_level():
+	if not next_level_path.contains(":/"):
+		next_level_path = default_level_path_root + next_level_path
+	load_level(next_level_path)

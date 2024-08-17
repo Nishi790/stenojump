@@ -33,6 +33,11 @@ func level_complete():
 	ingame_message.show()
 
 
+func start_next_level():
+	ingame_message.set_text("Next level starting in:")
+	await get_tree().create_timer(2).timeout
+
+
 func game_over():
 	ingame_message.set_text("Game Over")
 	ingame_message.show()

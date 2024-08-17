@@ -18,7 +18,7 @@ func set_target_word(target: String):
 
 func _physics_process(delta: float) -> void:
 	if not stopped:
-		velocity = direction * speed + get_gravity() * delta
+		velocity = direction * speed + (Vector2(0, 5000) * delta)
 		move_and_slide()
 	if position.x <= -10:
 		queue_free()
