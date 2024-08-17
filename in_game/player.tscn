@@ -24,7 +24,6 @@ sprite = NodePath("PlayerSprite")
 physics_body = NodePath("PlayerPhysics")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.499998, 0)
 scale = Vector2(0.226563, 1)
 sprite_frames = SubResource("SpriteFrames_no63y")
 animation = &"run"

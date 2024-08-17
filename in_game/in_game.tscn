@@ -1,29 +1,106 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=16 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
 [ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="2_ggvbu"]
+[ext_resource type="Texture2D" uid="uid://okv87w411ka7" path="res://textures/parallax_mountain/1.Sky_free.png" id="2_hltiy"]
+[ext_resource type="Script" path="res://in_game/background.gd" id="2_lekyf"]
 [ext_resource type="Script" path="res://in_game/words_remaining.gd" id="3_1qrrx"]
+[ext_resource type="Texture2D" uid="uid://b6pa1ue8cggn8" path="res://textures/2.Clouds.png" id="3_43k8i"]
 [ext_resource type="Script" path="res://in_game/hud.gd" id="3_q1gsu"]
 [ext_resource type="Script" path="res://in_game/score_label.gd" id="3_sab0o"]
 [ext_resource type="Script" path="res://in_game/lives_counter.gd" id="3_wghyv"]
+[ext_resource type="Texture2D" uid="uid://bjuptomxyio6c" path="res://textures/parallax_mountain/2.Mountains.png" id="3_x2d76"]
+[ext_resource type="Texture2D" uid="uid://b21dyccv8hpfl" path="res://textures/parallax_mountain/3.Trees_back.png" id="4_111ee"]
+[ext_resource type="Texture2D" uid="uid://c0pwob67hjyij" path="res://textures/parallax_mountain/4.Groundt.png" id="5_kw42g"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
 
-[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "input_box", "hud")]
+[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "input_box", "hud", "background")]
 script = ExtResource("1_igruv")
 obstacle_manager = NodePath("ObstacleManager")
 player = NodePath("Player")
 input_box = NodePath("HUD/GUIOrganizer/InputBox")
 hud = NodePath("HUD")
+background = NodePath("Background")
+
+[node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("ground_sprite")]
+script = ExtResource("2_lekyf")
+ground_sprite = NodePath("GroundLayer")
+
+[node name="SkyBackground" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-10, 0)
+ignore_camera_scroll = true
+
+[node name="SkySprite" type="Sprite2D" parent="Background/SkyBackground"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("2_hltiy")
+
+[node name="CloudsBG" type="Parallax2D" parent="Background"]
+autoscroll = Vector2(-20, 0)
+ignore_camera_scroll = true
+
+[node name="CloudSprite" type="Sprite2D" parent="Background/CloudsBG"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("3_43k8i")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-30, 0)
+ignore_camera_scroll = true
+
+[node name="Layer2Sprite" type="Sprite2D" parent="Background/ParallaxLayer2"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("3_x2d76")
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
+ignore_camera_scroll = true
+
+[node name="Layer3Sprite" type="Sprite2D" parent="Background/ParallaxLayer3"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("4_111ee")
+
+[node name="GroundLayer" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-100, 0)
+ignore_camera_scroll = true
+
+[node name="GroundSprite" type="Sprite2D" parent="Background/GroundLayer"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("5_kw42g")
+
+[node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("new_word_timer")]
+script = ExtResource("7_n7ocu")
+basic_obstacle = ExtResource("2_g7afp")
+new_word_timer = NodePath("NewWordTimer")
+
+[node name="NewWordTimer" type="Timer" parent="ObstacleManager"]
+
+[node name="Player" parent="." instance=ExtResource("2_ggvbu")]
+position = Vector2(104, 800)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(100, 960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_uo43n")
 
 [node name="HUD" type="Control" parent="." node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter")]
-custom_minimum_size = Vector2(1152, 648)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("3_q1gsu")
 ingame_message = NodePath("GameMessageContainer/GameMessage")
 lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
@@ -88,20 +165,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
-
-[node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("new_word_timer")]
-script = ExtResource("7_n7ocu")
-basic_obstacle = ExtResource("2_g7afp")
-new_word_timer = NodePath("NewWordTimer")
-
-[node name="NewWordTimer" type="Timer" parent="ObstacleManager"]
-
-[node name="Player" parent="." instance=ExtResource("2_ggvbu")]
-position = Vector2(104, 523)
-
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(561, 630)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(1, 18)
-shape = SubResource("WorldBoundaryShape2D_uo43n")

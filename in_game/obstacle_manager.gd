@@ -17,7 +17,7 @@ var obstacle_start_location: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_limit: Vector2 = get_viewport_rect().size
-	obstacle_start_location = screen_limit + Vector2(30, 0)
+	obstacle_start_location = screen_limit + Vector2(30, -120)
 
 	new_word_timer.timeout.connect(request_word)
 	new_word_timer.wait_time = new_word_interval

@@ -7,6 +7,7 @@ signal words_left_changed (int)
 @export var player: Player
 @export var input_box: LineEdit
 @export var hud: HUD
+@export var background: BackgroundManager
 
 var selected_level: String = "res://in_game/level_data/lapwing_1.json"
 var word_queue: Array
@@ -69,6 +70,7 @@ func send_new_word():
 func reset_word(collider: Object):
 #Pause Word Generation
 	input_box.editable = false
+	background.pause_parallax()
 
 #Display reset message
 	hud.life_lost_reset()
@@ -77,10 +79,8 @@ func reset_word(collider: Object):
 	#identify number of words to reset
 	var failed_word = collider.target_word
 	print_debug("Failed word was ", failed_word)
-	#TODO FIX RESET - UNABLE TO RFIND FOR SPECIFIC WORD BECAUSE ARRAY ELEMENTS ARE NOW DICTS
-	var reset_index = word_queue.rfind(failed_word, next_word_index)
-	print("Resetting to ", reset_index)
-	next_word_index = reset_index
+	var reset_number = get_tree().get_node_count_in_group("obstacles")
+	next_word_index = next_word_index - reset_number
 	words_left = word_queue.size() - next_word_index
 
 #Remove all onscreen words
@@ -92,6 +92,7 @@ func reset_word(collider: Object):
 	#Resume game
 	input_box.clear()
 	input_box.editable = true
+	background.resume_parallax()
 	obstacle_manager.resume_obstacle_generation()
 
 
@@ -114,6 +115,7 @@ func set_target_word(target: String):
 
 func game_over():
 	hud.game_over()
+	background.pause_parallax()
 	obstacle_manager.game_over()
 
 
