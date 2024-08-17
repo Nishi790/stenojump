@@ -3,6 +3,8 @@ extends Node2D
 enum GameStates {MENU, GAME}
 @export var menu_screen: Node
 @export var game_screen: Node
+@export var game_scene: PackedScene
+@export var menu_scene: PackedScene
 
 var game_state: GameStates
 
@@ -16,7 +18,7 @@ func change_state(new_state: String):
 	new_state=new_state.to_upper()
 	match new_state:
 		"MENU":
-			pass
+			game_state = GameStates.MENU
 		"Game":
-			pass
+			game_state = GameStates.GAME
 	return
