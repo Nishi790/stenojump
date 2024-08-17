@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d37vmbd1g5pta"]
+
+[ext_resource type="Script" path="res://in_game/player.gd" id="1_h8u8b"]
+[ext_resource type="Texture2D" uid="uid://mk0lmo28dtld" path="res://icon.svg" id="2_lroln"]
+[ext_resource type="Script" path="res://in_game/player_physics.gd" id="3_a4i1d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_no63y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lroln")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wietx"]
+size = Vector2(27, 117)
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "physics_body")]
+script = ExtResource("1_h8u8b")
+sprite = NodePath("PlayerSprite")
+physics_body = NodePath("PlayerPhysics")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.499998, 0)
+scale = Vector2(0.226563, 1)
+sprite_frames = SubResource("SpriteFrames_no63y")
+animation = &"run"
+
+[node name="PlayerPhysics" type="CharacterBody2D" parent="."]
+slide_on_ceiling = false
+script = ExtResource("3_a4i1d")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="PlayerPhysics"]
+shape = SubResource("RectangleShape2D_wietx")

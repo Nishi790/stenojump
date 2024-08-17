@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2kw0v3c282km"]
+
+[ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
+[ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
+[ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="2_ggvbu"]
+[ext_resource type="Script" path="res://in_game/words_remaining.gd" id="3_1qrrx"]
+[ext_resource type="Script" path="res://in_game/hud.gd" id="3_q1gsu"]
+[ext_resource type="Script" path="res://in_game/score_label.gd" id="3_sab0o"]
+[ext_resource type="Script" path="res://in_game/lives_counter.gd" id="3_wghyv"]
+[ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
+
+[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "input_box", "hud")]
+script = ExtResource("1_igruv")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+input_box = NodePath("HUD/GUIOrganizer/InputBox")
+hud = NodePath("HUD")
+
+[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter")]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("3_q1gsu")
+ingame_message = NodePath("GameMessageContainer/GameMessage")
+lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
+score_counter = NodePath("GUIOrganizer/TopRowOrganizer/ScoreLabel")
+word_counter = NodePath("GUIOrganizer/TopRowOrganizer/WordsRemaining")
+
+[node name="GameMessageContainer" type="CenterContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="GameMessage" type="Label" parent="HUD/GameMessageContainer"]
+layout_mode = 2
+text = "Game Over"
+
+[node name="GUIOrganizer" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopRowOrganizer" type="HBoxContainer" parent="HUD/GUIOrganizer"]
+layout_mode = 2
+alignment = 1
+
+[node name="WordsRemaining" type="Label" parent="HUD/GUIOrganizer/TopRowOrganizer"]
+layout_mode = 2
+text = "Words Left"
+script = ExtResource("3_1qrrx")
+
+[node name="TopSpacer" type="CenterContainer" parent="HUD/GUIOrganizer/TopRowOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreLabel" type="Label" parent="HUD/GUIOrganizer/TopRowOrganizer"]
+layout_mode = 2
+text = "Score: 0"
+script = ExtResource("3_sab0o")
+
+[node name="SecondRowOrganizer" type="HBoxContainer" parent="HUD/GUIOrganizer"]
+layout_mode = 2
+
+[node name="WordsPerMinute" type="Label" parent="HUD/GUIOrganizer/SecondRowOrganizer"]
+layout_mode = 2
+text = "Words Per Minute"
+
+[node name="LivesCounter" type="Label" parent="HUD/GUIOrganizer/SecondRowOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lives"
+horizontal_alignment = 2
+script = ExtResource("3_wghyv")
+
+[node name="InputBox" type="LineEdit" parent="HUD/GUIOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("new_word_timer")]
+script = ExtResource("7_n7ocu")
+basic_obstacle = ExtResource("2_g7afp")
+new_word_timer = NodePath("NewWordTimer")
+
+[node name="NewWordTimer" type="Timer" parent="ObstacleManager"]
+
+[node name="Player" parent="." instance=ExtResource("2_ggvbu")]
+position = Vector2(104, 523)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(561, 630)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(1, 18)
+shape = SubResource("WorldBoundaryShape2D_uo43n")

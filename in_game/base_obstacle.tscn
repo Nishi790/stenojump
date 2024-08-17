@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d01kvemmmpbje"]
+
+[ext_resource type="Script" path="res://in_game/base_obstacle.gd" id="1_i8uxn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgo0o"]
+size = Vector2(21, 60)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lc02r"]
+
+[node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label")]
+script = ExtResource("1_i8uxn")
+word_label = NodePath("TargetWord")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_bgo0o")
+
+[node name="ObstacleSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+scale = Vector2(22, 60)
+texture = SubResource("PlaceholderTexture2D_lc02r")
+
+[node name="TargetWord" type="Label" parent="."]
+offset_left = -60.0
+offset_top = -120.0
+offset_right = 61.0
+offset_bottom = -97.0
+text = "Target Word"
+horizontal_alignment = 1
+autowrap_mode = 3
