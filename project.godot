@@ -19,6 +19,18 @@ config/icon="res://icon.svg"
 
 LevelLoader="*res://level_loader.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/parallax2d_preview/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
