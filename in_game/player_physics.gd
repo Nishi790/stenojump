@@ -21,7 +21,5 @@ func _physics_process(delta: float) -> void:
 
 
 func jump():
-	if is_on_floor():
-		on_floor = false
-		velocity.y = JUMP_VELOCITY
-	return
+	on_floor = false
+	velocity.y = JUMP_VELOCITY

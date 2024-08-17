@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=17 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
@@ -16,6 +16,11 @@
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
+
+[sub_resource type="Theme" id="Theme_tlype"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 24
 
 [node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "input_box", "hud", "background")]
 script = ExtResource("1_igruv")
@@ -90,7 +95,7 @@ new_word_timer = NodePath("NewWordTimer")
 position = Vector2(104, 800)
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(100, 960)
+position = Vector2(100, 900)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_uo43n")
@@ -101,6 +106,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme = SubResource("Theme_tlype")
 script = ExtResource("3_q1gsu")
 ingame_message = NodePath("GameMessageContainer/GameMessage")
 lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
