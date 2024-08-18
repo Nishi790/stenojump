@@ -44,7 +44,7 @@ scale = Vector2(6, 6)
 texture = ExtResource("2_hltiy")
 
 [node name="CloudsBG" type="Parallax2D" parent="Background"]
-autoscroll = Vector2(-20, 0)
+autoscroll = Vector2(-30, 0)
 ignore_camera_scroll = true
 
 [node name="CloudSprite" type="Sprite2D" parent="Background/CloudsBG"]
@@ -54,7 +54,7 @@ texture = ExtResource("3_43k8i")
 
 [node name="ParallaxLayer2" type="Parallax2D" parent="Background"]
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-30, 0)
+autoscroll = Vector2(-50, 0)
 ignore_camera_scroll = true
 
 [node name="Layer2Sprite" type="Sprite2D" parent="Background/ParallaxLayer2"]
@@ -65,7 +65,7 @@ texture = ExtResource("3_x2d76")
 [node name="ParallaxLayer3" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.5, 1)
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-50, 0)
+autoscroll = Vector2(-100, 0)
 ignore_camera_scroll = true
 
 [node name="Layer3Sprite" type="Sprite2D" parent="Background/ParallaxLayer3"]
@@ -75,7 +75,7 @@ texture = ExtResource("4_111ee")
 
 [node name="GroundLayer" type="Parallax2D" parent="Background"]
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
+autoscroll = Vector2(-200, 0)
 ignore_camera_scroll = true
 
 [node name="GroundSprite" type="Sprite2D" parent="Background/GroundLayer"]

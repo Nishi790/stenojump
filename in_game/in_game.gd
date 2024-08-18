@@ -58,12 +58,16 @@ func _ready() -> void:
 	input_box.grab_focus()
 
 
-func send_new_word():
+func send_new_word(number: int):
 	if word_queue.size() == next_word_index:
 		return
 	else:
-		obstacle_manager.add_word(word_queue[next_word_index])
-		next_word_index += 1
+		var words_to_send: Array[Dictionary] = []
+		for index in number:
+			if word_queue.size() != next_word_index:
+				words_to_send.append(word_queue[next_word_index])
+				next_word_index += 1
+		obstacle_manager.add_word(words_to_send)
 
 
 func reset_word(collider: Object):

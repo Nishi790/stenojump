@@ -11,7 +11,7 @@ signal new_target_word (String)
 @export var new_word_timer: Timer
 
 var new_word_interval: float = 2
-var next_word: Dictionary #Will need to modify interval for multi stroke words
+var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
 var obstacle_start_location: Vector2
 
@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 
 
 func request_word():
-	new_word_needed.emit()
+	new_word_needed.emit(words_per_obstacle)
 
 
 func provide_target_word():
@@ -41,15 +41,32 @@ func provide_target_word():
 	else: return ""
 
 
-func add_word(new_word: Dictionary):
+func add_word(new_words: Array[Dictionary]):
+	#Create Obstacle
 	var new_obstacle: Obstacle = basic_obstacle.instantiate()
 	new_obstacle.position = obstacle_start_location
 	add_child(new_obstacle)
 	new_obstacle.add_to_group("obstacles")
 	current_obstacle_queue.push_back(new_obstacle)
-	new_obstacle.set_target_word(new_word["word"])
-	new_obstacle.score = new_word["score"]
-	new_obstacle.hint = new_word["hint"]
+
+	#Get obstacle data
+	var target_words: PackedStringArray = []
+	var point_value: int
+	var hints: PackedStringArray = []
+	for word in new_words:
+		target_words.append(word["word"])
+		point_value += word["score"]
+		hints.append(word["hint"])
+	var separator: String = " "
+	var final_target: String = separator.join(target_words)
+	var final_hint: String = separator.join(hints)
+
+	#Set obstacle data
+	new_obstacle.set_target_word(final_target)
+	new_obstacle.score = point_value
+	new_obstacle.hint = final_hint
+
+	#notify game of the current target if this is the only target on screen
 	if current_obstacle_queue.size() == 1:
 		new_target_word.emit(new_obstacle.target_word)
 
@@ -92,6 +109,7 @@ func level_complete():
 
 
 func set_speed(wpm: int):
-	var strokes_per_min = 60/wpm
-	new_word_interval = strokes_per_min
-	new_word_timer.wait_time = new_word_interval
+	var wpm_ratio: float = float(wpm)/30
+	words_per_obstacle = ceili(wpm_ratio)
+	var obstacles_per_min: float = wpm/words_per_obstacle
+	new_word_interval = 60/obstacles_per_min

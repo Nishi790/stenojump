@@ -8,7 +8,7 @@ const direction = Vector2(-1, 0)
 var target_word: String
 var score: int
 var hint: String
-var speed: float = 100.0
+var speed: float = 200.0
 var stopped: bool = false
 
 func set_target_word(target: String):
