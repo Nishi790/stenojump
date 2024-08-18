@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game_controller.gd" id="1_q85tv"]
 [ext_resource type="PackedScene" uid="uid://b2kw0v3c282km" path="res://in_game/in_game.tscn" id="2_tmpe8"]
-[ext_resource type="PackedScene" uid="uid://clib450qsryve" path="res://Menu/start_options.tscn" id="3_s6m65"]
+[ext_resource type="PackedScene" uid="uid://dygsnrdif2a23" path="res://Menu/main_menu.tscn" id="3_yoa3c"]
 
 [node name="GameController" type="Control"]
 layout_mode = 3
@@ -13,4 +13,4 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q85tv")
 game_scene = ExtResource("2_tmpe8")
-menu_scene = ExtResource("3_s6m65")
+menu_scene = ExtResource("3_yoa3c")

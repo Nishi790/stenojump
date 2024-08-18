@@ -36,6 +36,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/parallax2d_preview/plugin.cfg")
 
+[gui]
+
+theme/custom="res://textures/InGame.tres"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

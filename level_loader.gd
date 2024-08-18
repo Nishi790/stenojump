@@ -4,6 +4,7 @@ enum LevelOrder {RANDOM, ORDERED}
 
 var default_level_path_root: String = "res://in_game/level_data/"
 
+var level_path: String
 var level_number: int
 var level_targets: Array
 var level_order: LevelOrder
@@ -11,6 +12,7 @@ var default_level_size: int
 var next_level_path: String
 
 func load_level(filepath : String):
+	level_path = filepath
 	var file := FileAccess.open(filepath, FileAccess.READ)
 	var json_content: String = file.get_as_text()
 	var json_handler: JSON = JSON.new()
@@ -25,6 +27,7 @@ func load_level(filepath : String):
 		default_level_size = data["size"]
 		next_level_path = data["next_level"]
 		level_targets = data["targets"]
+		PlayerConfig.current_level_path = ProjectSettings.globalize_path(level_path)
 	else: print_debug(error_string(error))
 
 

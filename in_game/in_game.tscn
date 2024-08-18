@@ -14,13 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b21dyccv8hpfl" path="res://textures/parallax_mountain/3.Trees_back.png" id="4_111ee"]
 [ext_resource type="Texture2D" uid="uid://c0pwob67hjyij" path="res://textures/parallax_mountain/4.Groundt.png" id="5_kw42g"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
+[ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="11_sykeo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
-
-[sub_resource type="Theme" id="Theme_tlype"]
-Label/colors/font_color = Color(0, 0, 0, 1)
-Label/colors/font_outline_color = Color(1, 1, 1, 1)
-Label/font_sizes/font_size = 24
 
 [node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "input_box", "hud", "background")]
 script = ExtResource("1_igruv")
@@ -106,9 +102,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-theme = SubResource("Theme_tlype")
+theme = ExtResource("11_sykeo")
 script = ExtResource("3_q1gsu")
-ingame_message = NodePath("GameMessageContainer/GameMessage")
+ingame_message = NodePath("GameMessageContainer/GameMessagePanel/GameMessage")
 lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
 score_counter = NodePath("GUIOrganizer/TopRowOrganizer/ScoreLabel")
 word_counter = NodePath("GUIOrganizer/TopRowOrganizer/WordsRemaining")
@@ -122,7 +118,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="GameMessage" type="Label" parent="HUD/GameMessageContainer"]
+[node name="GameMessagePanel" type="PanelContainer" parent="HUD/GameMessageContainer"]
+layout_mode = 2
+
+[node name="GameMessage" type="Label" parent="HUD/GameMessageContainer/GameMessagePanel"]
 layout_mode = 2
 text = "Game Over"
 

@@ -10,36 +10,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fo6yd")
-level_sequence_selector = NodePath("GameOptionContainer/LevelSequenceChoice")
-start_speed_selector = NodePath("GameOptionContainer/SpeedContainer/InitialSpeed")
-speed_builder_button = NodePath("GameOptionContainer/BuildSpeedOption")
-target_speed_container = NodePath("GameOptionContainer/SpeedPreference")
-speed_step_container = NodePath("GameOptionContainer/SpeedStepsContainer")
-target_speed_selector = NodePath("GameOptionContainer/SpeedPreference/TargetSpeed")
-speed_step_selector = NodePath("GameOptionContainer/SpeedStepsContainer/SpeedStepSelector")
-voice_output_toggle = NodePath("GameOptionContainer/VoiceOutput")
-start_button = NodePath("GameOptionContainer/StartButton")
+level_sequence_selector = NodePath("OptionsPanel/GameOptionContainer/LevelSequenceChoice")
+start_speed_selector = NodePath("OptionsPanel/GameOptionContainer/SpeedContainer/InitialSpeed")
+speed_builder_button = NodePath("OptionsPanel/GameOptionContainer/BuildSpeedOption")
+target_speed_container = NodePath("OptionsPanel/GameOptionContainer/SpeedPreference")
+speed_step_container = NodePath("OptionsPanel/GameOptionContainer/SpeedStepsContainer")
+target_speed_selector = NodePath("OptionsPanel/GameOptionContainer/SpeedPreference/TargetSpeed")
+speed_step_selector = NodePath("OptionsPanel/GameOptionContainer/SpeedStepsContainer/SpeedStepSelector")
+voice_output_toggle = NodePath("OptionsPanel/GameOptionContainer/VoiceOutput")
+start_button = NodePath("OptionsPanel/GameOptionContainer/StartButton")
 file_selector_dialogue = NodePath("CustomLevelDialogue")
 
-[node name="GameOptionContainer" type="VBoxContainer" parent="."]
+[node name="OptionsPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = -134.0
-offset_right = 143.5
-offset_bottom = 134.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelChoiceLabel" type="Label" parent="GameOptionContainer"]
+[node name="GameOptionContainer" type="VBoxContainer" parent="OptionsPanel"]
+layout_mode = 2
+
+[node name="LevelChoiceLabel" type="Label" parent="OptionsPanel/GameOptionContainer"]
 layout_mode = 2
 text = "Select your preferred level sequence:"
 
-[node name="LevelSequenceChoice" type="OptionButton" parent="GameOptionContainer"]
+[node name="LevelSequenceChoice" type="OptionButton" parent="OptionsPanel/GameOptionContainer"]
 layout_mode = 2
 allow_reselect = true
 item_count = 3
@@ -49,14 +52,14 @@ popup/item_1/id = 1
 popup/item_2/text = "Custom"
 popup/item_2/id = 2
 
-[node name="SpeedContainer" type="HBoxContainer" parent="GameOptionContainer"]
+[node name="SpeedContainer" type="HBoxContainer" parent="OptionsPanel/GameOptionContainer"]
 layout_mode = 2
 
-[node name="SpeedLabel" type="Label" parent="GameOptionContainer/SpeedContainer"]
+[node name="SpeedLabel" type="Label" parent="OptionsPanel/GameOptionContainer/SpeedContainer"]
 layout_mode = 2
 text = "Initial Speed:"
 
-[node name="InitialSpeed" type="SpinBox" parent="GameOptionContainer/SpeedContainer"]
+[node name="InitialSpeed" type="SpinBox" parent="OptionsPanel/GameOptionContainer/SpeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 5.0
@@ -68,20 +71,20 @@ suffix = "wpm"
 custom_arrow_step = 5.0
 select_all_on_focus = true
 
-[node name="BuildSpeedOption" type="CheckBox" parent="GameOptionContainer"]
+[node name="BuildSpeedOption" type="CheckBox" parent="OptionsPanel/GameOptionContainer"]
 layout_mode = 2
 tooltip_text = "Repeat each level with gradual increases until reaching target speed"
 text = "Build Speed"
 
-[node name="SpeedPreference" type="HBoxContainer" parent="GameOptionContainer"]
+[node name="SpeedPreference" type="HBoxContainer" parent="OptionsPanel/GameOptionContainer"]
 visible = false
 layout_mode = 2
 
-[node name="TargetSpeedLabel" type="Label" parent="GameOptionContainer/SpeedPreference"]
+[node name="TargetSpeedLabel" type="Label" parent="OptionsPanel/GameOptionContainer/SpeedPreference"]
 layout_mode = 2
 text = "Target Speed"
 
-[node name="TargetSpeed" type="SpinBox" parent="GameOptionContainer/SpeedPreference"]
+[node name="TargetSpeed" type="SpinBox" parent="OptionsPanel/GameOptionContainer/SpeedPreference"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 5.0
@@ -93,15 +96,15 @@ suffix = "wpm"
 custom_arrow_step = 5.0
 select_all_on_focus = true
 
-[node name="SpeedStepsContainer" type="HBoxContainer" parent="GameOptionContainer"]
+[node name="SpeedStepsContainer" type="HBoxContainer" parent="OptionsPanel/GameOptionContainer"]
 visible = false
 layout_mode = 2
 
-[node name="SpeedStepLabel" type="Label" parent="GameOptionContainer/SpeedStepsContainer"]
+[node name="SpeedStepLabel" type="Label" parent="OptionsPanel/GameOptionContainer/SpeedStepsContainer"]
 layout_mode = 2
 text = "Speed Increase Rate: "
 
-[node name="SpeedStepSelector" type="SpinBox" parent="GameOptionContainer/SpeedStepsContainer"]
+[node name="SpeedStepSelector" type="SpinBox" parent="OptionsPanel/GameOptionContainer/SpeedStepsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Maximum wpm to increase between level attempts"
@@ -112,18 +115,18 @@ allow_greater = true
 update_on_text_changed = true
 suffix = "wpm"
 
-[node name="VoiceOutput" type="CheckBox" parent="GameOptionContainer"]
+[node name="VoiceOutput" type="CheckBox" parent="OptionsPanel/GameOptionContainer"]
 layout_mode = 2
 tooltip_text = "Uses default TTS engine to say target words as they approach. TTS must be available on your system."
 text = "Enable Text to Speech (TTS)"
 
-[node name="StartButton" type="Button" parent="GameOptionContainer"]
+[node name="StartButton" type="Button" parent="OptionsPanel/GameOptionContainer"]
 layout_mode = 2
 disabled = true
 text = "Start Game"
 
 [node name="CustomLevelDialogue" type="FileDialog" parent="."]
-title = "Select your starting level"
+title = "Open a File"
 initial_position = 1
 size = Vector2i(600, 500)
 ok_button_text = "Open"
