@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=19 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c0pwob67hjyij" path="res://textures/parallax_mountain/4.Groundt.png" id="5_kw42g"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="11_sykeo"]
+[ext_resource type="Script" path="res://in_game/words_per_minute.gd" id="15_rocf7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
 
@@ -166,6 +167,7 @@ layout_mode = 2
 [node name="WordsPerMinute" type="Label" parent="HUD/GUIOrganizer/SecondRowOrganizer"]
 layout_mode = 2
 text = "Words Per Minute"
+script = ExtResource("15_rocf7")
 
 [node name="LivesCounter" type="Label" parent="HUD/GUIOrganizer/SecondRowOrganizer"]
 layout_mode = 2

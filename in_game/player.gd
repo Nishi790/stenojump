@@ -31,7 +31,6 @@ func on_collision(collision: KinematicCollision2D):
 	if collision.get_collider().name=="Ground" or collision.get_collider().name == "Ceiling":
 		return
 	else:
-		print_debug("Collided with obstacle")
 		if lives>0:
 			lives=lives-1
 			reset_word.emit(collision.get_collider())

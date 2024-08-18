@@ -1,8 +1,9 @@
 extends Node2D
 
-signal score_changed (int)
-signal words_left_changed (int)
-signal target_speed_changed (int)
+signal score_changed (new_score: int)
+signal words_left_changed (remainig_words: int)
+signal target_speed_changed (target_speed: int)
+signal wpm_updated (wpm: float)
 
 @export var obstacle_manager: ObstacleManager
 @export var player: Player
@@ -15,6 +16,13 @@ var next_word_index: int = 0
 var new_word_interval: float = 3 #seconds until next word
 var current_text: String
 var target_word: String
+var level_time: float = 0
+var characters_entered_correctly: int = 0
+var wpm: float = 0:
+	set(new_wpm):
+		wpm = new_wpm
+		wpm_updated.emit(wpm)
+var level_timer_active: bool = false
 
 var score: int = 0:
 	set(new_score):
@@ -50,15 +58,23 @@ func _ready() -> void:
 	words_left_changed.connect(hud.word_counter.update_word_count)
 	input_box.text_changed.connect(update_text)
 	input_box.text_submitted.connect(go_to_next_level)
-	target_speed_changed.connect(hud.wpm_changed)
+	wpm_updated.connect(hud.wpm_changed)
 
-	#load level 1
+	#load selected level
 	load_level_data(PlayerConfig.current_level_path)
 	if PlayerConfig.current_wpm == 0:
 		PlayerConfig.current_wpm = PlayerConfig.starting_wpm
 	target_speed_changed.emit(PlayerConfig.current_wpm)
 
 	input_box.grab_focus()
+
+
+func _process(delta):
+	if level_timer_active == true:
+		level_time += delta
+		var normal_words: float = characters_entered_correctly/5
+		var minutes: float = level_time/60
+		wpm = normal_words/minutes
 
 
 func send_new_word(number: int):
@@ -77,6 +93,7 @@ func reset_word(collider: Object):
 #Pause Word Generation
 	input_box.editable = false
 	background.pause_parallax()
+	level_timer_active = false
 
 #Display reset message
 	hud.life_lost_reset()
@@ -100,7 +117,6 @@ func return_words_to_queue(number_of_words: int, number_of_obstacles: int):
 	obstacles_remaining += number_of_obstacles
 
 
-
 func adjust_score(amount: int):
 	score += amount
 
@@ -115,12 +131,14 @@ func set_target_word(target: String):
 
 
 func game_over():
+	level_timer_active = false
 	hud.game_over()
 	background.pause_parallax()
 	obstacle_manager.game_over()
 
 
 func end_level():
+	level_timer_active = false
 	level_complete = true
 	obstacle_manager.level_complete()
 	await get_tree().create_timer(2).timeout
@@ -133,7 +151,10 @@ func update_text(new_text: String):
 	current_text = new_text.strip_edges()
 	current_text.to_lower()
 	if current_text == target_word:
+		if level_timer_active == false:
+			level_timer_active = true
 		player.jump()
+		characters_entered_correctly += target_word.length()
 		input_box.clear()
 		obstacle_manager.word_cleared()
 		target_word = obstacle_manager.provide_target_word()

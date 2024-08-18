@@ -43,5 +43,5 @@ func game_over():
 	ingame_message.show()
 
 
-func wpm_changed(wpm: int):
-	wpm_counter.set_text(str(wpm))
+func wpm_changed(wpm: float):
+	wpm_counter.update_wpm(wpm)
