@@ -2,6 +2,7 @@ extends Node2D
 
 signal score_changed (int)
 signal words_left_changed (int)
+signal target_speed_changed (int)
 
 @export var obstacle_manager: ObstacleManager
 @export var player: Player
@@ -33,6 +34,7 @@ func _ready() -> void:
 	obstacle_manager.score_changed.connect(adjust_score)
 	obstacle_manager.obstacle_queue_emptied.connect(on_obstacle_queue_empty)
 	obstacle_manager.new_target_word.connect(set_target_word)
+	target_speed_changed.connect(obstacle_manager.set_speed)
 
 	#Connect player signals
 	player.reset_word.connect(reset_word)
@@ -45,9 +47,13 @@ func _ready() -> void:
 	words_left_changed.connect(hud.word_counter.update_word_count)
 	input_box.text_changed.connect(update_text)
 	input_box.text_submitted.connect(go_to_next_level)
+	target_speed_changed.connect(hud.wpm_changed)
 
 	#load level 1
 	load_level_data(PlayerConfig.current_level_path)
+	if PlayerConfig.current_wpm == 0:
+		PlayerConfig.current_wpm = PlayerConfig.starting_wpm
+	target_speed_changed.emit(PlayerConfig.current_wpm)
 
 	input_box.grab_focus()
 

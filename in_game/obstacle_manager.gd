@@ -10,7 +10,8 @@ signal new_target_word (String)
 @export var basic_obstacle: PackedScene
 @export var new_word_timer: Timer
 
-var new_word_interval: int = 2
+var new_word_interval: float = 2
+var next_word: Dictionary #Will need to modify interval for multi stroke words
 var current_obstacle_queue: Array[Obstacle] = []
 var obstacle_start_location: Vector2
 
@@ -88,3 +89,9 @@ func game_over():
 
 func level_complete():
 	new_word_timer.stop()
+
+
+func set_speed(wpm: int):
+	var strokes_per_min = 60/wpm
+	new_word_interval = strokes_per_min
+	new_word_timer.wait_time = new_word_interval

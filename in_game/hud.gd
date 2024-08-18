@@ -5,7 +5,7 @@ extends Control
 @export var lives_counter: Label
 @export var score_counter: Label
 @export var word_counter: Label
-
+@export var wpm_counter: Label
 
 func _ready():
 	ingame_message.hide()
@@ -41,3 +41,7 @@ func start_next_level():
 func game_over():
 	ingame_message.set_text("Game Over")
 	ingame_message.show()
+
+
+func wpm_changed(wpm: int):
+	wpm_counter.set_text(str(wpm))

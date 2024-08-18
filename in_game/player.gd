@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 
 
 func on_collision(collision: KinematicCollision2D):
-	if collision.get_collider().name=="Ground":
+	if collision.get_collider().name=="Ground" or collision.get_collider().name == "Ceiling":
 		return
 	else:
 		print_debug("Collided with obstacle")

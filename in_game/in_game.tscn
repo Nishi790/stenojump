@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=18 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
@@ -17,6 +17,9 @@
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="11_sykeo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y0yrj"]
+normal = Vector2(0, 1)
 
 [node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "input_box", "hud", "background")]
 script = ExtResource("1_igruv")
@@ -96,7 +99,12 @@ position = Vector2(100, 900)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_uo43n")
 
-[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter")]
+[node name="Ceiling" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("WorldBoundaryShape2D_y0yrj")
+
+[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter", "wpm_counter")]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
@@ -108,6 +116,7 @@ ingame_message = NodePath("GameMessageContainer/GameMessagePanel/GameMessage")
 lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
 score_counter = NodePath("GUIOrganizer/TopRowOrganizer/ScoreLabel")
 word_counter = NodePath("GUIOrganizer/TopRowOrganizer/WordsRemaining")
+wpm_counter = NodePath("GUIOrganizer/SecondRowOrganizer/WordsPerMinute")
 
 [node name="GameMessageContainer" type="CenterContainer" parent="HUD"]
 layout_mode = 1
