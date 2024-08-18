@@ -9,7 +9,6 @@ signal words_left_changed (int)
 @export var hud: HUD
 @export var background: BackgroundManager
 
-var selected_level: String = "res://in_game/level_data/lapwing_1.json"
 var word_queue: Array
 var next_word_index: int = 0
 var new_word_interval: float = 3 #seconds until next word
@@ -48,8 +47,7 @@ func _ready() -> void:
 	input_box.text_submitted.connect(go_to_next_level)
 
 	#load level 1
-	LevelLoader.load_level(selected_level)
-	load_level_data()
+	load_level_data(PlayerConfig.current_level_path)
 
 	input_box.grab_focus()
 
@@ -145,7 +143,9 @@ func go_to_next_level(_text: String):
 		resume_game()
 
 
-func load_level_data():
+func load_level_data(level_path: String = ""):
+	if level_path != "":
+			LevelLoader.load_level(level_path)
 	word_queue = LevelLoader.level_targets.duplicate()
 	if LevelLoader.level_order == LevelLoader.LevelOrder.RANDOM:
 		word_queue.shuffle()

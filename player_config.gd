@@ -20,7 +20,7 @@ var level_sequence: LevelSequence:
 				current_level_path = lapwing_level_1
 			LevelSequence.OTHER:
 				current_level_path = ""
-var current_level_path: String
+var current_level_path: String = lapwing_level_1
 var starting_wpm: int
 var speed_building_mode: bool
 var target_wpm: int

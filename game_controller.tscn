@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cphc03qcrrfl2"]
+[gd_scene load_steps=4 format=3 uid="uid://cphc03qcrrfl2"]
 
 [ext_resource type="Script" path="res://game_controller.gd" id="1_q85tv"]
+[ext_resource type="PackedScene" uid="uid://b2kw0v3c282km" path="res://in_game/in_game.tscn" id="2_tmpe8"]
+[ext_resource type="PackedScene" uid="uid://clib450qsryve" path="res://Menu/start_options.tscn" id="3_s6m65"]
 
-[node name="GameController" type="Node2D"]
+[node name="GameController" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_q85tv")
+game_scene = ExtResource("2_tmpe8")
+menu_scene = ExtResource("3_s6m65")
