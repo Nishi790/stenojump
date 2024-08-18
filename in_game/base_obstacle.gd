@@ -8,6 +8,7 @@ const direction = Vector2(-1, 0)
 var target_word: String
 var score: int
 var hint: String
+var number_of_targets: int
 var speed: float = 200.0
 var stopped: bool = false
 

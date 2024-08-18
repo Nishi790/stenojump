@@ -24,6 +24,8 @@ var words_left: int:
 	set(number_of_words):
 		words_left = number_of_words
 		words_left_changed.emit(words_left)
+var max_words_per_obstacle: int = 1
+var obstacles_remaining: int
 var level_complete: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -35,6 +37,7 @@ func _ready() -> void:
 	obstacle_manager.obstacle_queue_emptied.connect(on_obstacle_queue_empty)
 	obstacle_manager.new_target_word.connect(set_target_word)
 	target_speed_changed.connect(obstacle_manager.set_speed)
+	obstacle_manager.words_per_obstacle_changed.connect(set_words_per_obstacle)
 
 	#Connect player signals
 	player.reset_word.connect(reset_word)
@@ -78,13 +81,7 @@ func reset_word(collider: Object):
 #Display reset message
 	hud.life_lost_reset()
 	score = score - 1 #TODO scale death score penalty
-
-	#identify number of words to reset
-	var failed_word = collider.target_word
-	print_debug("Failed word was ", failed_word)
-	var reset_number = get_tree().get_node_count_in_group("obstacles")
-	next_word_index = next_word_index - reset_number
-	words_left = word_queue.size() - next_word_index
+	print_debug("Failed word was ", collider.target_word)
 
 #Remove all onscreen words
 	obstacle_manager.reset_words()
@@ -97,8 +94,11 @@ func reset_word(collider: Object):
 	resume_game()
 
 
-func return_words_to_queue(number_of_words: int):
+func return_words_to_queue(number_of_words: int, number_of_obstacles: int):
 	next_word_index -= number_of_words
+	words_left = word_queue.size() - next_word_index
+	obstacles_remaining += number_of_obstacles
+
 
 
 func adjust_score(amount: int):
@@ -137,7 +137,10 @@ func update_text(new_text: String):
 		input_box.clear()
 		obstacle_manager.word_cleared()
 		target_word = obstacle_manager.provide_target_word()
-		words_left = words_left - 1
+		obstacles_remaining = obstacles_remaining - 1
+		if obstacles_remaining > 0:
+			words_left -= max_words_per_obstacle
+		else: words_left = 0
 
 
 func go_to_next_level(_text: String):
@@ -160,7 +163,6 @@ func load_level_data(level_path: String = ""):
 	if LevelLoader.level_order == LevelLoader.LevelOrder.RANDOM:
 		word_queue.shuffle()
 	word_queue = word_queue.slice(0, LevelLoader.default_level_size)
-	words_left = word_queue.size()
 	next_word_index = 0
 
 
@@ -169,3 +171,8 @@ func resume_game():
 	if background.background_stopped:
 		background.resume_parallax()
 	obstacle_manager.resume_obstacle_generation()
+
+
+func set_words_per_obstacle(number: int):
+	max_words_per_obstacle = number
+	obstacles_remaining = ceili(float(word_queue.size())/max_words_per_obstacle)

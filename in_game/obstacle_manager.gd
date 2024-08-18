@@ -2,10 +2,11 @@ class_name ObstacleManager
 extends Node2D
 
 signal new_word_needed
-signal words_returned (int)
-signal score_changed (int)
+signal words_returned (words_returned: int, obstacles_reset: int)
+signal score_changed (score_change_amount: int)
 signal obstacle_queue_emptied
-signal new_target_word (String)
+signal new_target_word (target: String)
+signal words_per_obstacle_changed (number_of_words: int)
 
 @export var basic_obstacle: PackedScene
 @export var new_word_timer: Timer
@@ -65,6 +66,7 @@ func add_word(new_words: Array[Dictionary]):
 	new_obstacle.set_target_word(final_target)
 	new_obstacle.score = point_value
 	new_obstacle.hint = final_hint
+	new_obstacle.number_of_targets = new_words.size()
 
 	#notify game of the current target if this is the only target on screen
 	if current_obstacle_queue.size() == 1:
@@ -84,12 +86,16 @@ func word_cleared():
 func reset_words():
 	new_word_timer.stop()
 	var score_reduction: int = 0
+	var words_to_reset: int = 0
+	var obst_returned: int = get_tree().get_node_count_in_group("obstacles")
 	for obst in get_tree().get_nodes_in_group("obstacles"):
 		if current_obstacle_queue.find(obst) == -1:
 			score_reduction -= obst.score
+		words_to_reset += obst.number_of_targets
 		obst.queue_free()
 	current_obstacle_queue.clear()
 	score_changed.emit(score_reduction)
+	words_returned.emit(words_to_reset, obst_returned)
 	return
 
 
@@ -113,3 +119,4 @@ func set_speed(wpm: int):
 	words_per_obstacle = ceili(wpm_ratio)
 	var obstacles_per_min: float = wpm/words_per_obstacle
 	new_word_interval = 60/obstacles_per_min
+	words_per_obstacle_changed.emit(words_per_obstacle)
