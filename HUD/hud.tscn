@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs4j8lqe5svww"]
+
+[ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="1_c1y4c"]
+[ext_resource type="Script" path="res://HUD/hud.gd" id="2_t68vm"]
+[ext_resource type="PackedScene" uid="uid://b1lh76lxejr22" path="res://Menu/in_game_pause.tscn" id="3_8s8xp"]
+[ext_resource type="Script" path="res://in_game/words_remaining.gd" id="4_18ww5"]
+[ext_resource type="Script" path="res://in_game/score_label.gd" id="5_20ws2"]
+[ext_resource type="Script" path="res://in_game/words_per_minute.gd" id="6_njpiu"]
+[ext_resource type="Script" path="res://in_game/lives_counter.gd" id="7_2iiwr"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter", "wpm_counter", "message_container", "input_box")]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("1_c1y4c")
+script = ExtResource("2_t68vm")
+ingame_message = NodePath("GameMessageContainer/GameMessagePanel/GameMessage")
+lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
+score_counter = NodePath("GUIOrganizer/TopRowOrganizer/ScoreLabel")
+word_counter = NodePath("GUIOrganizer/TopRowOrganizer/WordsRemaining")
+wpm_counter = NodePath("GUIOrganizer/SecondRowOrganizer/WordsPerMinute")
+message_container = NodePath("GameMessageContainer")
+input_box = NodePath("GUIOrganizer/InputBox")
+pause_menu_scene = ExtResource("3_8s8xp")
+
+[node name="GameMessageContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="GameMessagePanel" type="PanelContainer" parent="GameMessageContainer"]
+layout_mode = 2
+
+[node name="GameMessage" type="Label" parent="GameMessageContainer/GameMessagePanel"]
+layout_mode = 2
+text = "Game Over"
+
+[node name="GUIOrganizer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
+layout_mode = 2
+alignment = 1
+
+[node name="WordsRemaining" type="Label" parent="GUIOrganizer/TopRowOrganizer"]
+layout_mode = 2
+text = "Words Left"
+script = ExtResource("4_18ww5")
+
+[node name="TopSpacer" type="CenterContainer" parent="GUIOrganizer/TopRowOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreLabel" type="Label" parent="GUIOrganizer/TopRowOrganizer"]
+layout_mode = 2
+text = "Score: 0"
+script = ExtResource("5_20ws2")
+
+[node name="SecondRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
+layout_mode = 2
+
+[node name="WordsPerMinute" type="Label" parent="GUIOrganizer/SecondRowOrganizer"]
+layout_mode = 2
+text = "Words Per Minute"
+script = ExtResource("6_njpiu")
+
+[node name="LivesCounter" type="Label" parent="GUIOrganizer/SecondRowOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lives"
+horizontal_alignment = 2
+script = ExtResource("7_2iiwr")
+
+[node name="InputBox" type="LineEdit" parent="GUIOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false

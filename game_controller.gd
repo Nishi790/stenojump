@@ -6,12 +6,24 @@ enum GameStates {MENU, GAME}
 
 var menu: Node
 var game: Node
+var viewport: Viewport
 
 var game_state: GameStates
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_state("MENU")
+	viewport = get_viewport()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if game_state == GameStates.GAME:
+			game.pause_game(true)
+			viewport.set_input_as_handled()
+		elif game_state == GameStates.MENU:
+			#TODO quit confirmation scene to use here
+			get_tree().quit()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +43,7 @@ func change_state(new_state: String):
 			game_state = GameStates.GAME
 			game = game_scene.instantiate()
 			add_child(game)
+			game.main_menu_requested.connect(change_state.bind("MENU"))
 
 	return
 

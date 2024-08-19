@@ -1,21 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=14 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
 [ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="2_ggvbu"]
 [ext_resource type="Texture2D" uid="uid://okv87w411ka7" path="res://textures/parallax_mountain/1.Sky_free.png" id="2_hltiy"]
 [ext_resource type="Script" path="res://in_game/background.gd" id="2_lekyf"]
-[ext_resource type="Script" path="res://in_game/words_remaining.gd" id="3_1qrrx"]
 [ext_resource type="Texture2D" uid="uid://b6pa1ue8cggn8" path="res://textures/2.Clouds.png" id="3_43k8i"]
-[ext_resource type="Script" path="res://in_game/hud.gd" id="3_q1gsu"]
-[ext_resource type="Script" path="res://in_game/score_label.gd" id="3_sab0o"]
-[ext_resource type="Script" path="res://in_game/lives_counter.gd" id="3_wghyv"]
 [ext_resource type="Texture2D" uid="uid://bjuptomxyio6c" path="res://textures/parallax_mountain/2.Mountains.png" id="3_x2d76"]
 [ext_resource type="Texture2D" uid="uid://b21dyccv8hpfl" path="res://textures/parallax_mountain/3.Trees_back.png" id="4_111ee"]
 [ext_resource type="Texture2D" uid="uid://c0pwob67hjyij" path="res://textures/parallax_mountain/4.Groundt.png" id="5_kw42g"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
-[ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="11_sykeo"]
-[ext_resource type="Script" path="res://in_game/words_per_minute.gd" id="15_rocf7"]
+[ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="11_c2pqa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
 
@@ -26,8 +21,8 @@ normal = Vector2(0, 1)
 script = ExtResource("1_igruv")
 obstacle_manager = NodePath("ObstacleManager")
 player = NodePath("Player")
-input_box = NodePath("HUD/GUIOrganizer/InputBox")
-hud = NodePath("HUD")
+input_box = NodePath("")
+hud = NodePath("")
 background = NodePath("Background")
 
 [node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("ground_sprite")]
@@ -105,80 +100,4 @@ shape = SubResource("WorldBoundaryShape2D_uo43n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
 shape = SubResource("WorldBoundaryShape2D_y0yrj")
 
-[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter", "wpm_counter", "message_container")]
-custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme = ExtResource("11_sykeo")
-script = ExtResource("3_q1gsu")
-ingame_message = NodePath("GameMessageContainer/GameMessagePanel/GameMessage")
-lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
-score_counter = NodePath("GUIOrganizer/TopRowOrganizer/ScoreLabel")
-word_counter = NodePath("GUIOrganizer/TopRowOrganizer/WordsRemaining")
-wpm_counter = NodePath("GUIOrganizer/SecondRowOrganizer/WordsPerMinute")
-message_container = NodePath("GameMessageContainer")
-
-[node name="GameMessageContainer" type="CenterContainer" parent="HUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="GameMessagePanel" type="PanelContainer" parent="HUD/GameMessageContainer"]
-layout_mode = 2
-
-[node name="GameMessage" type="Label" parent="HUD/GameMessageContainer/GameMessagePanel"]
-layout_mode = 2
-text = "Game Over"
-
-[node name="GUIOrganizer" type="VBoxContainer" parent="HUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TopRowOrganizer" type="HBoxContainer" parent="HUD/GUIOrganizer"]
-layout_mode = 2
-alignment = 1
-
-[node name="WordsRemaining" type="Label" parent="HUD/GUIOrganizer/TopRowOrganizer"]
-layout_mode = 2
-text = "Words Left"
-script = ExtResource("3_1qrrx")
-
-[node name="TopSpacer" type="CenterContainer" parent="HUD/GUIOrganizer/TopRowOrganizer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ScoreLabel" type="Label" parent="HUD/GUIOrganizer/TopRowOrganizer"]
-layout_mode = 2
-text = "Score: 0"
-script = ExtResource("3_sab0o")
-
-[node name="SecondRowOrganizer" type="HBoxContainer" parent="HUD/GUIOrganizer"]
-layout_mode = 2
-
-[node name="WordsPerMinute" type="Label" parent="HUD/GUIOrganizer/SecondRowOrganizer"]
-layout_mode = 2
-text = "Words Per Minute"
-script = ExtResource("15_rocf7")
-
-[node name="LivesCounter" type="Label" parent="HUD/GUIOrganizer/SecondRowOrganizer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Lives"
-horizontal_alignment = 2
-script = ExtResource("3_wghyv")
-
-[node name="InputBox" type="LineEdit" parent="HUD/GUIOrganizer"]
-layout_mode = 2
-size_flags_horizontal = 3
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
+[node name="HUD" parent="." instance=ExtResource("11_c2pqa")]

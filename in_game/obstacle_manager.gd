@@ -52,7 +52,7 @@ func add_word(new_words: Array[Dictionary]):
 
 	#Get obstacle data
 	var target_words: PackedStringArray = []
-	var point_value: int
+	var point_value: int = 0
 	var hints: PackedStringArray = []
 	for word in new_words:
 		target_words.append(word["word"])
@@ -84,7 +84,6 @@ func word_cleared():
 
 
 func reset_words():
-	new_word_timer.stop()
 	var score_reduction: int = 0
 	var words_to_reset: int = 0
 	var obst_returned: int = get_tree().get_node_count_in_group("obstacles")
@@ -99,14 +98,25 @@ func reset_words():
 	return
 
 
-func resume_obstacle_generation():
-	request_word()
-	new_word_timer.start(new_word_interval)
+func pause_obstacles():
+	for obstacle in current_obstacle_queue:
+		obstacle.stopped = true
+	new_word_timer.set_paused(true)
+
+
+func resume_obstacles():
+	for obstacle in current_obstacle_queue:
+		obstacle.stopped = false
+	if current_obstacle_queue.size() == 0:
+		request_word()
+	else:
+		new_target_word.emit(current_obstacle_queue[0].target_word)
+	new_word_timer.set_paused(false)
 
 
 func game_over():
-	for obstacle in current_obstacle_queue:
-		obstacle.stopped = true
+	get_tree().call_group("obstacles", "queue_free")
+	current_obstacle_queue.clear()
 	new_word_timer.stop()
 
 
@@ -117,6 +127,6 @@ func level_complete():
 func set_speed(wpm: int):
 	var wpm_ratio: float = float(wpm)/30
 	words_per_obstacle = ceili(wpm_ratio)
-	var obstacles_per_min: float = wpm/words_per_obstacle
+	var obstacles_per_min: int = wpm/words_per_obstacle
 	new_word_interval = 60/obstacles_per_min
 	words_per_obstacle_changed.emit(words_per_obstacle)

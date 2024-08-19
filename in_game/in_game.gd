@@ -4,6 +4,7 @@ signal score_changed (new_score: int)
 signal words_left_changed (remainig_words: int)
 signal target_speed_changed (target_speed: int)
 signal wpm_updated (wpm: float)
+signal main_menu_requested
 
 @export var obstacle_manager: ObstacleManager
 @export var player: Player
@@ -61,6 +62,8 @@ func _ready() -> void:
 	input_box.text_changed.connect(update_text)
 	input_box.text_submitted.connect(go_to_next_level)
 	wpm_updated.connect(hud.wpm_changed)
+	hud.resume_game_requested.connect(resume_game)
+	hud.main_menu_requested.connect(quit_game)
 
 	#load selected level
 	load_level_data(PlayerConfig.current_level_path)
@@ -93,9 +96,7 @@ func send_new_word(number: int):
 
 func reset_word(collider: Object):
 #Pause Word Generation
-	input_box.editable = false
-	background.pause_parallax()
-	level_timer_active = false
+	pause_game()
 
 #Display reset message
 	hud.life_lost_reset()
@@ -109,7 +110,6 @@ func reset_word(collider: Object):
 	await hud.display_countdown()
 
 	#Resume game
-	input_box.clear()
 	resume_game()
 
 
@@ -141,6 +141,7 @@ func game_over():
 
 func end_level():
 	level_timer_active = false
+	level_time = 0
 	level_complete = true
 	obstacle_manager.level_complete()
 	await get_tree().create_timer(2).timeout
@@ -168,13 +169,11 @@ func update_text(new_text: String):
 
 func go_to_next_level(_text: String):
 	if level_complete:
-		input_box.editable = false
-		print("Go to next level detected")
+		print_debug("Go to next level detected")
 		LevelLoader.load_next_level()
 		load_level_data()
 		await hud.start_next_level()
 		await hud.display_countdown()
-		input_box.clear()
 		level_complete = false
 		resume_game()
 
@@ -190,12 +189,25 @@ func load_level_data(level_path: String = ""):
 
 
 func resume_game():
-	input_box.editable = true
 	if background.background_stopped:
 		background.resume_parallax()
-	obstacle_manager.resume_obstacle_generation()
+	obstacle_manager.resume_obstacles()
 
 
 func set_words_per_obstacle(number: int):
 	max_words_per_obstacle = number
 	obstacles_remaining = ceili(float(word_queue.size())/max_words_per_obstacle)
+
+
+func pause_game(menu_open: bool = false):
+	level_timer_active = false
+	obstacle_manager.pause_obstacles()
+	background.pause_parallax()
+	player.change_states(Player.State.IDLING)
+	if menu_open:
+		hud.open_pause_menu()
+
+
+func quit_game():
+	#save functoinality would go here
+	main_menu_requested.emit()

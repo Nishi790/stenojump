@@ -52,6 +52,9 @@ func _process(delta: float) -> void:
 			sprite.play("jump_up")
 		State.ENDING_JUMP:
 			sprite.play("jump_down")
+		State.IDLING:
+			if sprite.animation != "idle":
+				sprite.play("sit_down")
 	#control animations here
 
 
@@ -65,6 +68,7 @@ func on_collision(collision: KinematicCollision2D):
 			lives_changed.emit(lives)
 		else:
 			game_over.emit()
+			change_states(State.IDLING)
 
 
 func jump():
@@ -88,6 +92,8 @@ func link_animation():
 		"jump_down":
 			movement_state = State.RUNNING
 			physics_body.change_colliders(0)
+		"sit_down":
+			sprite.play("idle")
 
 
 func change_states(new_state: State, time_of_flight: float = -1):
@@ -110,5 +116,5 @@ func start_run(_word: String):
 
 
 func end_level():
-	await get_tree().create_timer(1)
+	await get_tree().create_timer(1).timeout
 	change_states(State.WALKING)
