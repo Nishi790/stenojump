@@ -92,7 +92,7 @@ new_word_timer = NodePath("NewWordTimer")
 [node name="NewWordTimer" type="Timer" parent="ObstacleManager"]
 
 [node name="Player" parent="." instance=ExtResource("2_ggvbu")]
-position = Vector2(104, 800)
+position = Vector2(97, 811)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(100, 900)
@@ -105,7 +105,7 @@ shape = SubResource("WorldBoundaryShape2D_uo43n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
 shape = SubResource("WorldBoundaryShape2D_y0yrj")
 
-[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter", "wpm_counter")]
+[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter", "wpm_counter", "message_container")]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
@@ -118,6 +118,7 @@ lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
 score_counter = NodePath("GUIOrganizer/TopRowOrganizer/ScoreLabel")
 word_counter = NodePath("GUIOrganizer/TopRowOrganizer/WordsRemaining")
 wpm_counter = NodePath("GUIOrganizer/SecondRowOrganizer/WordsPerMinute")
+message_container = NodePath("GameMessageContainer")
 
 [node name="GameMessageContainer" type="CenterContainer" parent="HUD"]
 layout_mode = 1

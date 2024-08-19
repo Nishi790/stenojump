@@ -52,6 +52,8 @@ func _ready() -> void:
 	player.game_over.connect(game_over)
 	player.lives_changed.connect(hud.lives_counter.update_lives_counter)
 	hud.lives_counter.update_lives_counter(player.lives)
+	obstacle_manager.new_target_word.connect(player.start_run)
+	obstacle_manager.obstacle_queue_emptied.connect(player.end_level)
 
 	#Connect HUD Signals
 	score_changed.connect(hud.score_counter.update_score_text)
