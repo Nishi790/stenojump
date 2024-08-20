@@ -2,7 +2,7 @@ extends Node
 
 enum LevelOrder {RANDOM, ORDERED}
 
-var default_level_path_root: String = "res://in_game/level_data/"
+var default_level_path_root: String = "res://level_data/"
 
 var level_path: String
 var level_number: int

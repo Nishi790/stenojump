@@ -3,7 +3,7 @@ extends Node
 enum LevelSequence {LEARN_PLOVER, LAPWING, OTHER}
 enum WordOrder {DEFAULT, RANDOM, ORDERED}
 
-@export var lapwing_level_1: String = "res://in_game/level_data/lapwing_1.json"
+@export var lapwing_level_1: String = "res://level_data/lapwing_1.json"
 @export var learn_plover_level_1: String
 
 var min_level_length: int = 0
