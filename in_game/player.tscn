@@ -307,10 +307,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wietx"]
-size = Vector2(121, 84)
+size = Vector2(101, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cteil"]
-size = Vector2(120, 80)
+size = Vector2(101, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7max"]
 size = Vector2(144, 60)
@@ -325,9 +325,8 @@ texture_filter = 1
 texture_repeat = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_no63y")
-animation = &"sit_down"
+animation = &"run"
 frame = 3
-frame_progress = 1.0
 
 [node name="PlayerPhysics" type="CharacterBody2D" parent="." node_paths=PackedStringArray("run_coll_shape", "jump_coll_shape", "crawl_coll_shape")]
 slide_on_ceiling = false
@@ -337,11 +336,11 @@ jump_coll_shape = NodePath("GlideShape")
 crawl_coll_shape = NodePath("CrawlShape")
 
 [node name="RunShape" type="CollisionShape2D" parent="PlayerPhysics"]
-position = Vector2(-6.5, 54)
+position = Vector2(3.5, 56)
 shape = SubResource("RectangleShape2D_wietx")
 
 [node name="GlideShape" type="CollisionShape2D" parent="PlayerPhysics"]
-position = Vector2(-6, -39)
+position = Vector2(3.5, -39)
 shape = SubResource("RectangleShape2D_cteil")
 
 [node name="CrawlShape" type="CollisionShape2D" parent="PlayerPhysics"]

@@ -24,6 +24,7 @@ func _ready() -> void:
 	start_button.pressed.connect(start_game)
 	file_selector_dialogue.file_selected.connect(set_starting_level)
 	if PlayerConfig.starting_wpm == 0:
+		PlayerConfig.current_wpm = start_speed_selector.value
 		PlayerConfig.starting_wpm = start_speed_selector.value
 
 

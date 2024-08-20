@@ -13,7 +13,7 @@ enum Colliders {RUN, JUMP, CRAWL}
 var time_of_flight: float
 var ground_height: float
 var take_off_height: float
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -500.0
 
 var on_floor: bool = false
 var remaining_flight_time: float = 0

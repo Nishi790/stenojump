@@ -11,7 +11,10 @@ signal words_per_obstacle_changed (number_of_words: int)
 @export var basic_obstacle: PackedScene
 @export var new_word_timer: Timer
 
-var new_word_interval: float = 2
+var new_word_interval: float = 2 :
+	set(interval):
+		new_word_interval = interval
+		new_word_timer.wait_time = new_word_interval
 var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
 var obstacle_start_location: Vector2
@@ -22,7 +25,6 @@ func _ready() -> void:
 	obstacle_start_location = screen_limit + Vector2(30, -200)
 
 	new_word_timer.timeout.connect(request_word)
-	new_word_timer.wait_time = new_word_interval
 	new_word_timer.start()
 
 
@@ -77,7 +79,8 @@ func word_cleared():
 	var obstacle: Obstacle = current_obstacle_queue.pop_front()
 
 	#TODO design and implement scoring system
-	score_changed.emit(obstacle.score)
+	if obstacle:
+		score_changed.emit(obstacle.score)
 
 	if current_obstacle_queue.size() == 0:
 		obstacle_queue_emptied.emit()
@@ -114,6 +117,7 @@ func resume_obstacles():
 	else:
 		new_target_word.emit(current_obstacle_queue[0].target_word)
 	new_word_timer.set_paused(false)
+	if new_word_timer.is_stopped(): new_word_timer.start()
 
 
 func game_over():
@@ -127,7 +131,7 @@ func level_complete():
 
 
 func set_speed(wpm: int):
-	var wpm_ratio: float = float(wpm)/30
+	var wpm_ratio: float = float(wpm)/50
 	words_per_obstacle = ceili(wpm_ratio)
 	var obstacles_per_min: int = wpm/words_per_obstacle
 	new_word_interval = 60.0/float(obstacles_per_min)
