@@ -8,9 +8,10 @@ signal main_menu_requested
 
 @export var obstacle_manager: ObstacleManager
 @export var player: Player
-@export var input_box: LineEdit
 @export var hud: HUD
 @export var background: BackgroundManager
+
+var input_box: LineEdit
 
 var word_queue: Array
 var next_word_index: int = 0
@@ -57,6 +58,7 @@ func _ready() -> void:
 	obstacle_manager.obstacle_queue_emptied.connect(player.end_level)
 
 	#Connect HUD Signals
+	input_box = hud.input_box
 	score_changed.connect(hud.score_counter.update_score_text)
 	words_left_changed.connect(hud.word_counter.update_word_count)
 	input_box.text_changed.connect(update_text)

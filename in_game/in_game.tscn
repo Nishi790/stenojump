@@ -17,12 +17,11 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y0yrj"]
 normal = Vector2(0, 1)
 
-[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "input_box", "hud", "background")]
+[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background")]
 script = ExtResource("1_igruv")
 obstacle_manager = NodePath("ObstacleManager")
 player = NodePath("Player")
-input_box = NodePath("")
-hud = NodePath("")
+hud = NodePath("HUD")
 background = NodePath("Background")
 
 [node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("ground_sprite")]

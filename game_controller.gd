@@ -26,7 +26,6 @@ func _input(event: InputEvent) -> void:
 			get_tree().quit()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func change_state(new_state: String):
 	new_state=new_state.to_upper()
 	match new_state:
