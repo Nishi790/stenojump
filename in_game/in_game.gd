@@ -69,8 +69,6 @@ func _ready() -> void:
 
 	#load selected level
 	load_level_data(PlayerConfig.current_level_path)
-	if PlayerConfig.current_wpm == 0:
-		PlayerConfig.current_wpm = PlayerConfig.starting_wpm
 	target_speed_changed.emit(PlayerConfig.current_wpm)
 
 	input_box.grab_focus()
@@ -79,8 +77,8 @@ func _ready() -> void:
 func _process(delta):
 	if level_timer_active == true:
 		level_time += delta
-		var normal_words: float = characters_entered_correctly/5
-		var minutes: float = level_time/60
+		var normal_words: float = characters_entered_correctly/5.0
+		var minutes: float = level_time/60.0
 		wpm = normal_words/minutes
 
 

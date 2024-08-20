@@ -42,6 +42,7 @@ func change_level_sequence(sequence: int):
 
 func select_speed(speed: float):
 	PlayerConfig.starting_wpm = int(speed)
+	PlayerConfig.current_wpm = int(speed)
 
 
 func set_build_speed(build_speed: bool):

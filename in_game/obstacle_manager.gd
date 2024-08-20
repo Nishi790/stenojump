@@ -84,6 +84,7 @@ func word_cleared():
 
 
 func reset_words():
+	new_word_timer.stop()
 	var score_reduction: int = 0
 	var words_to_reset: int = 0
 	var obst_returned: int = get_tree().get_node_count_in_group("obstacles")
@@ -95,6 +96,7 @@ func reset_words():
 	current_obstacle_queue.clear()
 	score_changed.emit(score_reduction)
 	words_returned.emit(words_to_reset, obst_returned)
+	new_word_timer.start()
 	return
 
 
@@ -128,5 +130,5 @@ func set_speed(wpm: int):
 	var wpm_ratio: float = float(wpm)/30
 	words_per_obstacle = ceili(wpm_ratio)
 	var obstacles_per_min: int = wpm/words_per_obstacle
-	new_word_interval = 60/obstacles_per_min
+	new_word_interval = 60.0/float(obstacles_per_min)
 	words_per_obstacle_changed.emit(words_per_obstacle)
