@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_lrdci"]
 [ext_resource type="PackedScene" uid="uid://clib450qsryve" path="res://Menu/start_options.tscn" id="2_lg5sn"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("resume_game_button", "new_game_button", "options_button")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("resume_game_button", "new_game_button", "options_button", "quit_game_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ start_menu = ExtResource("2_lg5sn")
 resume_game_button = NodePath("MenuContainer/ResumeGame")
 new_game_button = NodePath("MenuContainer/NewGame")
 options_button = NodePath("MenuContainer/Options")
+quit_game_button = NodePath("MenuContainer/QuitGame")
 
 [node name="MenuContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,3 +42,7 @@ text = "New Game"
 [node name="Options" type="Button" parent="MenuContainer"]
 layout_mode = 2
 text = "Options"
+
+[node name="QuitGame" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Quit Game"

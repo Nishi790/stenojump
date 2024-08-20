@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b2kw0v3c282km" path="res://in_game/in_game.tscn" id="2_tmpe8"]
 [ext_resource type="PackedScene" uid="uid://dygsnrdif2a23" path="res://Menu/main_menu.tscn" id="3_yoa3c"]
 
-[node name="GameController" type="Control"]
+[node name="GameController" type="Control" node_paths=PackedStringArray("quit_confirmation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,3 +14,9 @@ grow_vertical = 2
 script = ExtResource("1_q85tv")
 game_scene = ExtResource("2_tmpe8")
 menu_scene = ExtResource("3_yoa3c")
+quit_confirmation = NodePath("ConfirmQuit")
+
+[node name="ConfirmQuit" type="ConfirmationDialog" parent="."]
+initial_position = 1
+size = Vector2i(370, 100)
+dialog_text = "Are you sure you want to quit?"
