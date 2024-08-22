@@ -14,6 +14,8 @@ signal game_options_requested
 @export var input_box: LineEdit
 @export var pause_menu_scene: PackedScene
 
+var paused: bool = false
+
 func _ready():
 	message_container.hide()
 
@@ -23,19 +25,26 @@ func life_lost_reset():
 	input_box.clear()
 	ingame_message.set_text("Oops, let's try again")
 	message_container.show()
-
-
-func display_countdown():
 	await get_tree().create_timer(1).timeout
+
+
+func display_countdown() -> bool:
 	ingame_message.set_text("3")
 	await get_tree().create_timer(1).timeout
+	if paused == true:
+		return false
 	ingame_message.set_text("2")
 	await get_tree().create_timer(1).timeout
+	if paused == true:
+		return false
 	ingame_message.set_text("1")
 	await get_tree().create_timer(1).timeout
+	if paused == true:
+		return false
 	message_container.hide()
+	get_tree().paused = false
 	input_box.editable = true
-	return
+	return true
 
 
 func level_complete():
@@ -60,11 +69,13 @@ func wpm_changed(wpm: float):
 
 
 func open_pause_menu():
+	paused = true
 	var pause = pause_menu_scene.instantiate()
 	pause.menu_selected.connect(return_to_menu)
 	pause.resume_game_selected.connect(resume_game)
 	pause.options_selected.connect(open_game_options)
 	add_child(pause)
+	get_tree().paused = true
 
 #emitted when something requests return to main menu - no connected
 #functionality yet
@@ -73,6 +84,9 @@ func return_to_menu():
 
 #emitted to request ongoing play to resume
 func resume_game():
+	paused = false
+	message_container.visible = true
+	display_countdown()
 	input_box.editable = true
 	input_box.grab_focus()
 	resume_game_requested.emit()

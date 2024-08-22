@@ -37,6 +37,7 @@ var words_left: int:
 var max_words_per_obstacle: int = 1
 var obstacles_remaining: int
 var level_complete: bool = false
+var game_paused: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -107,10 +108,11 @@ func reset_word(collider: Object):
 	obstacle_manager.reset_words()
 
 	#Display countdown
-	await hud.display_countdown()
-
-	#Resume game
-	resume_game()
+	var countdown_complete = await hud.display_countdown()
+	#Do not resume if the countdown was aborted b/c game is paused
+	if countdown_complete:
+		#Resume game
+		resume_game()
 
 
 func return_words_to_queue(number_of_words: int, number_of_obstacles: int):
