@@ -62,7 +62,7 @@ func _ready() -> void:
 	score_changed.connect(hud.score_counter.update_score_text)
 	words_left_changed.connect(hud.word_counter.update_word_count)
 	input_box.text_changed.connect(update_text)
-	input_box.text_submitted.connect(go_to_next_level)
+	input_box.text_submitted.connect(enter_pressed)
 	wpm_updated.connect(hud.wpm_changed)
 	hud.resume_game_requested.connect(resume_game)
 	hud.main_menu_requested.connect(quit_game)
@@ -167,15 +167,22 @@ func update_text(new_text: String):
 		else: words_left = 0
 
 
-func go_to_next_level(_text: String):
+func enter_pressed(text: String):
 	if level_complete:
-		print_debug("Go to next level detected")
-		LevelLoader.load_next_level()
-		load_level_data()
-		await hud.start_next_level()
-		await hud.display_countdown()
-		level_complete = false
-		resume_game()
+		var command_entered = text.strip_edges()
+		command_entered = command_entered.to_lower()
+		match command_entered:
+			"quit":
+				LevelLoader.save_next_level()
+				PlayerConfig.save_settings()
+				main_menu_requested.emit()
+			_:
+				LevelLoader.load_next_level()
+				load_level_data()
+				await hud.start_next_level()
+				await hud.display_countdown()
+				level_complete = false
+				resume_game()
 
 
 func load_level_data(level_path: String = ""):

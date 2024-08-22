@@ -38,6 +38,7 @@ func change_level_sequence(sequence: int):
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.OTHER
 			file_selector_dialogue.set_visible(true)
 			file_selector_dialogue.grab_focus()
+	PlayerConfig.start_level_sequence(PlayerConfig.level_sequence)
 	start_button.disabled = false
 
 

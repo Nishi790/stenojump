@@ -35,3 +35,9 @@ func load_next_level():
 	if not next_level_path.contains(":/"):
 		next_level_path = default_level_path_root + next_level_path
 	load_level(next_level_path)
+
+
+func save_next_level():
+	if not next_level_path.contains(":/"):
+		next_level_path = default_level_path_root + next_level_path
+	PlayerConfig.current_level_path = next_level_path
