@@ -5,7 +5,6 @@ signal quit_game_pressed
 
 @export var start_menu: PackedScene
 @export var options_menu: PackedScene
-@export var resume_game_menu: PackedScene
 @export var resume_game_button: Button
 @export var new_game_button: Button
 @export var options_button: Button
@@ -17,10 +16,14 @@ func _ready():
 	new_game_button.pressed.connect(new_game)
 	options_button.pressed.connect(open_options)
 	quit_game_button.pressed.connect(quit_game)
+	if PlayerConfig.has_saved_level():
+		resume_game_button.show()
+	else: resume_game_button.hide()
 
 
 func resume_game():
-	pass
+	if PlayerConfig.load_settings() == OK:
+		start_game_pressed.emit()
 
 
 func new_game():

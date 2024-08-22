@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=16 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
@@ -11,11 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://c0pwob67hjyij" path="res://textures/parallax_mountain/4.Groundt.png" id="5_kw42g"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
 [ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="11_c2pqa"]
+[ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="12_01mxu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y0yrj"]
 normal = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooyp2"]
+size = Vector2(123, 187)
 
 [node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background")]
 script = ExtResource("1_igruv")
@@ -100,3 +104,11 @@ shape = SubResource("WorldBoundaryShape2D_uo43n")
 shape = SubResource("WorldBoundaryShape2D_y0yrj")
 
 [node name="HUD" parent="." instance=ExtResource("11_c2pqa")]
+
+[node name="ObstacleDetector" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("12_01mxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
+position = Vector2(870.5, 853.5)
+shape = SubResource("RectangleShape2D_ooyp2")

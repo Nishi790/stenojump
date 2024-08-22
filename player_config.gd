@@ -65,12 +65,24 @@ func save_settings():
 		printerr("Save Failed")
 
 
+func has_saved_level() -> bool:
+	var config = ConfigFile.new()
+	var err = config.load(config_path)
+	if err != OK:
+		printerr("Settings load failed, loading default settings")
+		return false
+	var saved_level = config.get_value(config_level_settings, "CurrentLevel", null)
+	if saved_level == null:
+		return false
+	else: return true
+
+
 func load_settings():
 	var config = ConfigFile.new()
 	var err = config.load(config_path)
 	if err != OK:
 		printerr("Settings load failed, loading default settings")
-		return
+		return err
 
 	level_sequence = config.get_value(config_level_settings, "LevelSequence", null)
 	current_level_path = config.get_value(config_level_settings, "CurrentLevel", "")
@@ -90,3 +102,5 @@ func load_settings():
 	preferred_voice_rate = config.get_value(config_voice_settings, "Rate")
 	preferred_voice_pitch = config.get_value(config_voice_settings, "Pitch")
 	preferred_voice_volume = config.get_value(config_voice_settings, "Volume")
+
+	return err
