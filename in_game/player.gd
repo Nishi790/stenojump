@@ -81,7 +81,6 @@ func land():
 
 
 func link_animation():
-	print(sprite.animation)
 	match sprite.animation:
 		"jump_up":
 			if straight_to_landing:

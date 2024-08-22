@@ -49,8 +49,6 @@ func jump():
 	var quadratic_root = sqrt(velocity.y ** 2 - 4 * half_grav * flight_height_change)
 	var flight_time_1 = (-velocity.y + quadratic_root)/get_gravity().y
 	var flight_time_2 = (-velocity.y - quadratic_root)/get_gravity().y
-	print("Flight Time 1 is ", flight_time_1)
-	print("Flight Time 2 is ", flight_time_2)
 	time_of_flight = maxf(flight_time_1, flight_time_2)
 	state_changed.emit(1, time_of_flight)
 	change_colliders(Colliders.JUMP)
