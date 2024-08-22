@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Menu/in_game_pause.gd" id="1_iokla"]
 
-[node name="InGamePause" type="Control" node_paths=PackedStringArray("resume_button", "options_button", "menu_button")]
+[node name="InGamePause" type="Control" node_paths=PackedStringArray("resume_button", "options_button", "menu_button", "text_entry")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ script = ExtResource("1_iokla")
 resume_button = NodePath("InGamePausePanel/PauseOrganizer/ResumeGame")
 options_button = NodePath("InGamePausePanel/PauseOrganizer/Options")
 menu_button = NodePath("InGamePausePanel/PauseOrganizer/MainMenu")
+text_entry = NodePath("InGamePausePanel/PauseOrganizer/Selector")
 
 [node name="InGamePausePanel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -42,3 +43,11 @@ text = "Options"
 [node name="MainMenu" type="Button" parent="InGamePausePanel/PauseOrganizer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="Selector" type="LineEdit" parent="InGamePausePanel/PauseOrganizer"]
+layout_mode = 2
+placeholder_text = "type choice"
+alignment = 1
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+select_all_on_focus = true

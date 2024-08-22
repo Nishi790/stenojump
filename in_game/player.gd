@@ -52,9 +52,7 @@ func _process(delta: float) -> void:
 		State.STARTING_JUMP:
 			sprite.play("jump_up")
 		State.ENDING_JUMP:
-			if sprite.animation != "jump_down":
-				sprite.play("jump_down")
-			print("current jump frame ", sprite.frame)
+			sprite.play("jump_down")
 		State.IDLING:
 			if sprite.animation != "idle":
 				sprite.play("sit_down")

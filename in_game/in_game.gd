@@ -196,6 +196,7 @@ func load_level_data(level_path: String = ""):
 
 
 func resume_game():
+	input_box.grab_focus()
 	if background.background_stopped:
 		background.resume_parallax()
 	obstacle_manager.resume_obstacles()
