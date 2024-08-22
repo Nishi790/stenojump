@@ -325,8 +325,7 @@ texture_filter = 1
 texture_repeat = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_no63y")
-animation = &"run"
-frame = 3
+animation = &"jump_down"
 
 [node name="PlayerPhysics" type="CharacterBody2D" parent="." node_paths=PackedStringArray("run_coll_shape", "jump_coll_shape", "crawl_coll_shape")]
 slide_on_ceiling = false

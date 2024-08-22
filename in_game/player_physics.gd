@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-signal grounded
 signal collision (collision: KinematicCollision2D)
 signal state_changed (new_state: int, time_of_flight: int)
 
@@ -33,11 +32,6 @@ func _physics_process(delta: float) -> void:
 		#will break if the ground level ever changes during a level
 		if ground_height == null:
 			ground_height = position.y
-	if not on_floor:
-		if is_on_floor():
-			grounded.emit()
-			on_floor = true
-			change_colliders(Colliders.RUN)
 
 
 func jump():

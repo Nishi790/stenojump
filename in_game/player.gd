@@ -15,18 +15,19 @@ var lives: int = 3
 
 var physics_position: Vector2
 var in_air: bool = false
-var movement_state: State = State.WALKING
+var movement_state: State = State.WALKING :
+	set(state):
+		movement_state = state
 var landing_timer: float = 0
 var straight_to_landing: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	physics_body.grounded.connect(land)
 	physics_body.collision.connect(on_collision)
 	physics_body.state_changed.connect(change_states)
 	sprite.animation_finished.connect(link_animation)
-	sprite.play("walk")
+	start_walk()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,8 +38,8 @@ func _process(delta: float) -> void:
 		landing_timer -= delta
 		if landing_timer < 0:
 			landing_timer = 0
-		if is_equal_approx(landing_timer, 0):
-			movement_state = State.ENDING_JUMP
+		if is_equal_approx(landing_timer, 0) or landing_timer < 0:
+			change_states(State.ENDING_JUMP)
 	match movement_state:
 		State.WALKING:
 			sprite.play("walk")
@@ -51,7 +52,9 @@ func _process(delta: float) -> void:
 		State.STARTING_JUMP:
 			sprite.play("jump_up")
 		State.ENDING_JUMP:
-			sprite.play("jump_down")
+			if sprite.animation != "jump_down":
+				sprite.play("jump_down")
+			print("current jump frame ", sprite.frame)
 		State.IDLING:
 			if sprite.animation != "idle":
 				sprite.play("sit_down")
@@ -73,23 +76,18 @@ func on_collision(collision: KinematicCollision2D):
 
 func jump():
 	physics_body.jump()
-	in_air=true
-
-
-func land():
-	in_air = false
 
 
 func link_animation():
 	match sprite.animation:
 		"jump_up":
 			if straight_to_landing:
-				movement_state = State.ENDING_JUMP
+				change_states(State.ENDING_JUMP)
 				straight_to_landing = false
 			else:
-				movement_state = State.SOARING
+				change_states(State.SOARING)
 		"jump_down":
-			movement_state = State.RUNNING
+			change_states(State.RUNNING)
 			physics_body.change_colliders(0)
 		"sit_down":
 			sprite.play("idle")
@@ -110,8 +108,13 @@ func change_states(new_state: State, time_of_flight: float = -1):
 		else: straight_to_landing = false
 
 
-func start_run(_word: String):
-	change_states(State.RUNNING)
+func start_run():
+	if movement_state == State.WALKING or movement_state == State.IDLING:
+		change_states(State.RUNNING)
+
+
+func start_walk():
+	change_states(State.WALKING)
 
 
 func end_level():

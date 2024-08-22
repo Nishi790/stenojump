@@ -199,6 +199,7 @@ func resume_game():
 	if background.background_stopped:
 		background.resume_parallax()
 	obstacle_manager.resume_obstacles()
+	player.start_walk()
 
 
 func set_words_per_obstacle(number: int):
