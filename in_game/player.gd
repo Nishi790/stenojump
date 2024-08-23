@@ -126,4 +126,6 @@ func start_walk():
 
 func end_level():
 	await get_tree().create_timer(1).timeout
+	lives = 3
+	lives_changed.emit(lives)
 	change_states(State.WALKING)
