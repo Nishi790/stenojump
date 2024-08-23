@@ -104,3 +104,9 @@ func load_settings():
 	preferred_voice_volume = config.get_value(config_voice_settings, "Volume")
 
 	return err
+
+
+func at_target_speed() -> bool:
+	if current_wpm == target_wpm:
+		return true
+	else: return false

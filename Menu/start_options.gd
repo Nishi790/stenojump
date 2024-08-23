@@ -23,9 +23,8 @@ func _ready() -> void:
 	voice_output_toggle.toggled.connect(set_tts)
 	start_button.pressed.connect(start_game)
 	file_selector_dialogue.file_selected.connect(set_starting_level)
-	if PlayerConfig.starting_wpm == 0:
-		PlayerConfig.current_wpm = start_speed_selector.value
-		PlayerConfig.starting_wpm = start_speed_selector.value
+	PlayerConfig.current_wpm = start_speed_selector.value
+	PlayerConfig.starting_wpm = start_speed_selector.value
 
 
 func change_level_sequence(sequence: int):
@@ -49,6 +48,8 @@ func select_speed(speed: float):
 
 func set_build_speed(build_speed: bool):
 	PlayerConfig.speed_building_mode = build_speed
+	PlayerConfig.target_wpm = target_speed_selector.value
+	PlayerConfig.step_size = speed_step_selector.value
 	if build_speed:
 		target_speed_container.set_visible(true)
 		speed_step_container.set_visible(true)

@@ -145,6 +145,7 @@ func game_over():
 func end_level():
 	level_timer_active = false
 	level_time = 0
+	characters_entered_correctly = 0
 	level_complete = true
 	obstacle_manager.level_complete()
 	await get_tree().create_timer(2).timeout
@@ -180,7 +181,14 @@ func enter_pressed(text: String):
 				PlayerConfig.save_settings()
 				main_menu_requested.emit()
 			_:
-				LevelLoader.load_next_level()
+				if PlayerConfig.speed_building_mode == true:
+					if not PlayerConfig.at_target_speed():
+						increase_speed()
+					else:
+						PlayerConfig.current_wpm = PlayerConfig.starting_wpm
+						LevelLoader.load_next_level()
+					target_speed_changed.emit(PlayerConfig.current_wpm)
+				else: LevelLoader.load_next_level()
 				load_level_data()
 				await hud.start_next_level()
 				await hud.display_countdown()
@@ -196,6 +204,14 @@ func load_level_data(level_path: String = ""):
 		word_queue.shuffle()
 	word_queue = word_queue.slice(0, LevelLoader.default_level_size)
 	next_word_index = 0
+
+
+func increase_speed():
+	var current_speed = PlayerConfig.current_wpm
+	current_speed = current_speed + PlayerConfig.step_size
+	if current_speed > PlayerConfig.target_wpm:
+		current_speed = PlayerConfig.target_wpm
+	PlayerConfig.current_wpm = current_speed
 
 
 func resume_game():
