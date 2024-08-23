@@ -86,13 +86,22 @@ func link_animation():
 				change_states(State.SOARING)
 		"jump_down":
 			change_states(State.RUNNING)
-			physics_body.change_colliders(0)
 		"sit_down":
 			sprite.play("idle")
 
 
 func change_states(new_state: State, time_of_flight: float = -1):
 	movement_state = new_state
+	match new_state:
+		State.WALKING, State.RUNNING, State.IDLING:
+			if physics_body.active_collider != 0:
+				physics_body.change_colliders(0)
+		State.STARTING_JUMP, State.ENDING_JUMP:
+			if physics_body.active_collider != 1:
+				physics_body.change_colliders(1)
+		State.CRAWLING:
+			if physics_body.active_collider != 2:
+				physics_body.change_colliders(2)
 	if time_of_flight > 0:
 		var sprite_frames: SpriteFrames = sprite.sprite_frames
 		var landing_anim_length: int = sprite_frames.get_frame_count("jump_down")

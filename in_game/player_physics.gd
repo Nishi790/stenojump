@@ -16,6 +16,7 @@ const JUMP_VELOCITY = -500.0
 
 var on_floor: bool = false
 var remaining_flight_time: float = 0
+var active_collider: Colliders
 
 
 func _ready() -> void:
@@ -51,14 +52,17 @@ func jump():
 func change_colliders(activating_collider: Colliders):
 	match activating_collider:
 		Colliders.RUN:
+			active_collider = Colliders.RUN
 			jump_coll_shape.set_deferred("disabled", true)
 			run_coll_shape.set_deferred("disabled", false)
 			crawl_coll_shape.set_deferred("disabled", true)
 		Colliders.CRAWL:
+			active_collider = Colliders.CRAWL
 			jump_coll_shape.set_deferred("disabled", true)
 			run_coll_shape.set_deferred("disabled", true)
 			crawl_coll_shape.set_deferred("disabled", false)
 		Colliders.JUMP:
+			active_collider = Colliders.JUMP
 			jump_coll_shape.set_deferred("disabled", false)
 			run_coll_shape.set_deferred("disabled", true)
 			crawl_coll_shape.set_deferred("disabled", true)

@@ -109,6 +109,7 @@ func reset_word(collider: Object):
 
 	#Display countdown
 	var countdown_complete = await hud.display_countdown()
+
 	#Do not resume if the countdown was aborted b/c game is paused
 	if countdown_complete:
 		#Resume game
@@ -220,5 +221,5 @@ func pause_game(menu_open: bool = false):
 
 
 func quit_game():
-	#save functoinality would go here
+	PlayerConfig.save_settings()
 	main_menu_requested.emit()
