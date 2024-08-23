@@ -9,24 +9,24 @@ var speed_scale: int = 1
 var ground_autoscroll_rate: Vector2
 
 
-func _ready():
+func _ready() -> void:
 	pass
 
 
-func pause_parallax():
+func pause_parallax() -> void:
 	background_stopped = true
 	for layer in get_children():
-		var layer_position = layer.position
+		var layer_position: Vector2 = layer.position
 		layer.set_autoscroll(Vector2.ZERO)
 		layer.position = layer_position
 
 
-func resume_parallax():
+func resume_parallax() -> void:
 	background_stopped = false
 	var index: int = 0
 	for layer in get_children():
 		#Save current position (equivalent to offset), setting autoscroll resets position
-		var layer_position = layer.position
+		var layer_position: Vector2 = layer.position
 		layer.set_autoscroll(base_autoscroll_speeds[index] * speed_scale)
 		layer.scroll_offset = layer_position
 		index += 1

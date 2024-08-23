@@ -35,21 +35,21 @@ func _physics_process(delta: float) -> void:
 			ground_height = position.y
 
 
-func jump():
+func jump() -> void:
 	on_floor = false
 	velocity.y = JUMP_VELOCITY
 	take_off_height = position.y
 	var flight_height_change: float = ground_height - take_off_height
-	var half_grav = get_gravity().y * 0.5
-	var quadratic_root = sqrt(velocity.y ** 2 - 4 * half_grav * flight_height_change)
-	var flight_time_1 = (-velocity.y + quadratic_root)/get_gravity().y
-	var flight_time_2 = (-velocity.y - quadratic_root)/get_gravity().y
+	var half_grav: float = get_gravity().y * 0.5
+	var quadratic_root: float = sqrt(velocity.y ** 2 - 4 * half_grav * flight_height_change)
+	var flight_time_1: float = (-velocity.y + quadratic_root)/get_gravity().y
+	var flight_time_2: float = (-velocity.y - quadratic_root)/get_gravity().y
 	time_of_flight = maxf(flight_time_1, flight_time_2)
 	state_changed.emit(1, time_of_flight)
 	change_colliders(Colliders.JUMP)
 
 
-func change_colliders(activating_collider: Colliders):
+func change_colliders(activating_collider: Colliders) -> void:
 	match activating_collider:
 		Colliders.RUN:
 			active_collider = Colliders.RUN

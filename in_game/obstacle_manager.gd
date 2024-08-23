@@ -28,23 +28,18 @@ func _ready() -> void:
 	new_word_timer.start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func request_word():
+func request_word() -> void:
 	new_word_needed.emit(words_per_obstacle)
 
 
-func provide_target_word():
+func provide_target_word() -> String:
 	if not current_obstacle_queue.is_empty():
-		var target_obstacle = current_obstacle_queue.front()
+		var target_obstacle: Obstacle = current_obstacle_queue.front()
 		return target_obstacle.target_word
 	else: return ""
 
 
-func add_word(new_words: Array[Dictionary]):
+func add_word(new_words: Array[Dictionary]) -> void:
 	#Create Obstacle
 	var new_obstacle: Obstacle = basic_obstacle.instantiate()
 	new_obstacle.position = obstacle_start_location
@@ -75,7 +70,7 @@ func add_word(new_words: Array[Dictionary]):
 		new_target_word.emit(new_obstacle.target_word)
 
 
-func word_cleared():
+func word_cleared() -> void:
 	var obstacle: Obstacle = current_obstacle_queue.pop_front()
 
 	#TODO design and implement scoring system
@@ -86,7 +81,7 @@ func word_cleared():
 		obstacle_queue_emptied.emit()
 
 
-func reset_words():
+func reset_words() -> void:
 	new_word_timer.stop()
 	var score_reduction: int = 0
 	var words_to_reset: int = 0
@@ -103,13 +98,13 @@ func reset_words():
 	return
 
 
-func pause_obstacles():
+func pause_obstacles() -> void:
 	for obstacle in current_obstacle_queue:
 		obstacle.stopped = true
 	new_word_timer.set_paused(true)
 
 
-func resume_obstacles():
+func resume_obstacles() -> void:
 	for obstacle in current_obstacle_queue:
 		obstacle.stopped = false
 	if current_obstacle_queue.size() == 0:
@@ -120,17 +115,17 @@ func resume_obstacles():
 	if new_word_timer.is_stopped(): new_word_timer.start()
 
 
-func game_over():
+func game_over() -> void:
 	get_tree().call_group("obstacles", "queue_free")
 	current_obstacle_queue.clear()
 	new_word_timer.stop()
 
 
-func level_complete():
+func level_complete() -> void:
 	new_word_timer.stop()
 
 
-func set_speed(wpm: int):
+func set_speed(wpm: int) -> void:
 	var wpm_ratio: float = float(wpm)/50
 	words_per_obstacle = ceili(wpm_ratio)
 	var obstacles_per_min: int = wpm/words_per_obstacle

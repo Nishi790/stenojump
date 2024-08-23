@@ -2,8 +2,8 @@ class_name Player
 extends Node2D
 
 signal game_over
-signal reset_word (Object)
-signal lives_changed (int)
+signal reset_word (collider: Object)
+signal lives_changed (current_lives: int)
 
 enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDLING}
 
@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 	#control animations here
 
 
-func on_collision(collision: KinematicCollision2D):
+func on_collision(collision: KinematicCollision2D) -> void:
 	if collision.get_collider().name=="Ground" or collision.get_collider().name == "Ceiling":
 		return
 	else:
@@ -72,11 +72,11 @@ func on_collision(collision: KinematicCollision2D):
 			change_states(State.IDLING)
 
 
-func jump():
+func jump() -> void:
 	physics_body.jump()
 
 
-func link_animation():
+func link_animation() -> void:
 	match sprite.animation:
 		"jump_up":
 			if straight_to_landing:
@@ -90,7 +90,7 @@ func link_animation():
 			sprite.play("idle")
 
 
-func change_states(new_state: State, time_of_flight: float = -1):
+func change_states(new_state: State, time_of_flight: float = -1) -> void:
 	movement_state = new_state
 	match new_state:
 		State.WALKING, State.RUNNING, State.IDLING:
@@ -115,16 +115,16 @@ func change_states(new_state: State, time_of_flight: float = -1):
 		else: straight_to_landing = false
 
 
-func start_run():
+func start_run() -> void:
 	if movement_state == State.WALKING or movement_state == State.IDLING:
 		change_states(State.RUNNING)
 
 
-func start_walk():
+func start_walk() -> void:
 	change_states(State.WALKING)
 
 
-func end_level():
+func end_level() -> void:
 	await get_tree().create_timer(1).timeout
 	lives = 3
 	lives_changed.emit(lives)

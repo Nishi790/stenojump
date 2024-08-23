@@ -23,7 +23,8 @@ var characters_entered_correctly: int = 0
 var wpm: float = 0:
 	set(new_wpm):
 		wpm = new_wpm
-		wpm_updated.emit(wpm)
+		if level_time > 0.5:
+			wpm_updated.emit(wpm)
 var level_timer_active: bool = false
 
 var score: int = 0:
@@ -75,7 +76,7 @@ func _ready() -> void:
 	input_box.grab_focus()
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if level_timer_active == true:
 		level_time += delta
 		var normal_words: float = characters_entered_correctly/5.0
@@ -83,7 +84,7 @@ func _process(delta):
 		wpm = normal_words/minutes
 
 
-func send_new_word(number: int):
+func send_new_word(number: int) -> void:
 	if word_queue.size() == next_word_index:
 		return
 	else:
@@ -95,7 +96,7 @@ func send_new_word(number: int):
 		obstacle_manager.add_word(words_to_send)
 
 
-func reset_word(collider: Object):
+func reset_word(collider: Object) -> void:
 #Pause Word Generation
 	pause_game()
 
@@ -108,7 +109,7 @@ func reset_word(collider: Object):
 	obstacle_manager.reset_words()
 
 	#Display countdown
-	var countdown_complete = await hud.display_countdown()
+	var countdown_complete: bool = await hud.display_countdown()
 
 	#Do not resume if the countdown was aborted b/c game is paused
 	if countdown_complete:
@@ -116,33 +117,33 @@ func reset_word(collider: Object):
 		resume_game()
 
 
-func return_words_to_queue(number_of_words: int, number_of_obstacles: int):
+func return_words_to_queue(number_of_words: int, number_of_obstacles: int) -> void:
 	next_word_index -= number_of_words
 	words_left = word_queue.size() - next_word_index
 	obstacles_remaining += number_of_obstacles
 
 
-func adjust_score(amount: int):
+func adjust_score(amount: int) -> void:
 	score += amount
 
 
-func on_obstacle_queue_empty():
+func on_obstacle_queue_empty() -> void:
 	if word_queue.size() == next_word_index:
 		end_level()
 
 
-func set_target_word(target: String):
+func set_target_word(target: String) -> void:
 	target_word = target
 
 
-func game_over():
+func game_over() -> void:
 	level_timer_active = false
 	hud.game_over()
 	background.pause_parallax()
 	obstacle_manager.game_over()
 
 
-func end_level():
+func end_level() -> void:
 	level_timer_active = false
 	level_time = 0
 	characters_entered_correctly = 0
@@ -152,7 +153,7 @@ func end_level():
 	hud.level_complete()
 
 
-func update_text(new_text: String):
+func update_text(new_text: String) -> void:
 	if level_complete:
 		return
 	current_text = new_text.strip_edges()
@@ -171,9 +172,9 @@ func update_text(new_text: String):
 		else: words_left = 0
 
 
-func enter_pressed(text: String):
+func enter_pressed(text: String) -> void:
 	if level_complete:
-		var command_entered = text.strip_edges()
+		var command_entered: String = text.strip_edges()
 		command_entered = command_entered.to_lower()
 		match command_entered:
 			"quit":
@@ -196,7 +197,7 @@ func enter_pressed(text: String):
 				resume_game()
 
 
-func load_level_data(level_path: String = ""):
+func load_level_data(level_path: String = "") -> void:
 	if level_path != "":
 			LevelLoader.load_level(level_path)
 	word_queue = LevelLoader.level_targets.duplicate()
@@ -206,15 +207,15 @@ func load_level_data(level_path: String = ""):
 	next_word_index = 0
 
 
-func increase_speed():
-	var current_speed = PlayerConfig.current_wpm
+func increase_speed() -> void:
+	var current_speed: int = PlayerConfig.current_wpm
 	current_speed = current_speed + PlayerConfig.step_size
 	if current_speed > PlayerConfig.target_wpm:
 		current_speed = PlayerConfig.target_wpm
 	PlayerConfig.current_wpm = current_speed
 
 
-func resume_game():
+func resume_game() -> void:
 	input_box.grab_focus()
 	if background.background_stopped:
 		background.resume_parallax()
@@ -222,12 +223,12 @@ func resume_game():
 	player.start_walk()
 
 
-func set_words_per_obstacle(number: int):
+func set_words_per_obstacle(number: int) -> void:
 	max_words_per_obstacle = number
 	obstacles_remaining = ceili(float(word_queue.size())/max_words_per_obstacle)
 
 
-func pause_game(menu_open: bool = false):
+func pause_game(menu_open: bool = false) -> void:
 	level_timer_active = false
 	obstacle_manager.pause_obstacles()
 	background.pause_parallax()
@@ -236,6 +237,6 @@ func pause_game(menu_open: bool = false):
 		hud.open_pause_menu()
 
 
-func quit_game():
+func quit_game() -> void:
 	PlayerConfig.save_settings()
 	main_menu_requested.emit()

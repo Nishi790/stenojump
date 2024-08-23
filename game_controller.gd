@@ -28,7 +28,7 @@ func _input(event: InputEvent) -> void:
 
 
 
-func change_state(new_state: String):
+func change_state(new_state: String) -> void:
 	new_state=new_state.to_upper()
 	match new_state:
 		"MENU":
@@ -50,9 +50,9 @@ func change_state(new_state: String):
 	return
 
 
-func start_game():
+func start_game() -> void:
 	change_state("GAME")
 
 
-func quit_game():
+func quit_game() -> void:
 	get_tree().quit()

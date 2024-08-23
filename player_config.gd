@@ -32,7 +32,7 @@ var config_level_settings: String = "LevelSettings"
 var config_speed_build_settings: String = "SpeedBuildSettings"
 
 
-func start_level_sequence(sequence: LevelSequence):
+func start_level_sequence(sequence: LevelSequence) -> void:
 	match sequence:
 		LevelSequence.LAPWING:
 			current_level_path = lapwing_level_1
@@ -42,8 +42,8 @@ func start_level_sequence(sequence: LevelSequence):
 			current_level_path = ""
 
 
-func save_settings():
-	var config = ConfigFile.new()
+func save_settings() -> void:
+	var config: ConfigFile = ConfigFile.new()
 	config.set_value(config_level_settings, "LevelSequence", level_sequence)
 	config.set_value(config_level_settings, "CurrentLevel", current_level_path)
 	config.set_value(config_level_settings, "CurrentWPM", current_wpm)
@@ -60,26 +60,26 @@ func save_settings():
 	config.set_value(config_voice_settings, "Pitch", preferred_voice_pitch)
 	config.set_value(config_voice_settings, "Volume", preferred_voice_volume)
 
-	var err = config.save(config_path)
+	var err: Error = config.save(config_path)
 	if err != OK:
 		printerr("Save Failed")
 
 
 func has_saved_level() -> bool:
-	var config = ConfigFile.new()
-	var err = config.load(config_path)
+	var config: ConfigFile = ConfigFile.new()
+	var err: Error = config.load(config_path)
 	if err != OK:
 		printerr("Settings load failed, loading default settings")
 		return false
-	var saved_level = config.get_value(config_level_settings, "CurrentLevel", null)
+	var saved_level: String = config.get_value(config_level_settings, "CurrentLevel", null)
 	if saved_level == null:
 		return false
 	else: return true
 
 
-func load_settings():
-	var config = ConfigFile.new()
-	var err = config.load(config_path)
+func load_settings() -> Error:
+	var config: ConfigFile = ConfigFile.new()
+	var err: Error = config.load(config_path)
 	if err != OK:
 		printerr("Settings load failed, loading default settings")
 		return err
@@ -89,7 +89,7 @@ func load_settings():
 	current_wpm = config.get_value(config_level_settings, "CurrentWPM", 0)
 
 	if current_level_path == "" and level_sequence != null:
-		current_level_path = start_level_sequence(level_sequence)
+		start_level_sequence(level_sequence)
 
 	speed_building_mode = config.get_value(config_speed_build_settings, "SpeedBuildMode", false)
 	starting_wpm = config.get_value(config_speed_build_settings, "StartingWPM", 0)

@@ -18,23 +18,23 @@ func _ready() -> void:
 	text_entry.text_submitted.connect(parse_text)
 
 
-func resume_game():
+func resume_game() -> void:
 	queue_free()
 	resume_game_selected.emit()
 
 
-func open_options():
+func open_options() -> void:
 	options_selected.emit()
 
 
-func go_to_menu():
+func go_to_menu() -> void:
 	menu_selected.emit()
 	queue_free()
 	get_tree().paused = false
 
 
-func parse_text(text: String):
-	var text_submitted = text.strip_edges()
+func parse_text(text: String) -> void:
+	var text_submitted: String = text.strip_edges()
 	text_submitted = text_submitted.to_lower()
 	match text_submitted:
 		"main menu":

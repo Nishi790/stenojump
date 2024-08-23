@@ -16,11 +16,11 @@ signal game_options_requested
 
 var paused: bool = false
 
-func _ready():
+func _ready() -> void:
 	message_container.hide()
 
 
-func life_lost_reset():
+func life_lost_reset() -> void:
 	input_box.editable = false
 	input_box.clear()
 	ingame_message.set_text("Oops, let's try again")
@@ -47,30 +47,30 @@ func display_countdown() -> bool:
 	return true
 
 
-func level_complete():
+func level_complete() -> void:
 	ingame_message.set_text("Level Complete! \n Press Enter (R-R) to proceed")
 	message_container.show()
 
 
-func start_next_level():
+func start_next_level() -> void:
 	input_box.clear()
 	input_box.editable = false
 	ingame_message.set_text("Next level starting in:")
 	await get_tree().create_timer(1).timeout
 
 
-func game_over():
+func game_over() -> void:
 	ingame_message.set_text("Game Over")
 	message_container.show()
 
 
-func wpm_changed(wpm: float):
+func wpm_changed(wpm: float) -> void:
 	wpm_counter.update_wpm(wpm)
 
 
-func open_pause_menu():
+func open_pause_menu() -> void:
 	paused = true
-	var pause = pause_menu_scene.instantiate()
+	var pause: Control = pause_menu_scene.instantiate()
 	pause.menu_selected.connect(return_to_menu)
 	pause.resume_game_selected.connect(resume_game)
 	pause.options_selected.connect(open_game_options)
@@ -79,11 +79,11 @@ func open_pause_menu():
 
 #emitted when something requests return to main menu - no connected
 #functionality yet
-func return_to_menu():
+func return_to_menu() -> void:
 	main_menu_requested.emit()
 
 #emitted to request ongoing play to resume
-func resume_game():
+func resume_game() -> void:
 	paused = false
 	message_container.visible = true
 	display_countdown()
@@ -92,7 +92,7 @@ func resume_game():
 	resume_game_requested.emit()
 
 
-func open_game_options():
+func open_game_options() -> void:
 	#TODO decide how to handle opening game options while in game
 	#Probably child of hud - give hud the packed scene? Or child of game controller...
 	game_options_requested.emit()

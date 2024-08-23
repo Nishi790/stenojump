@@ -27,7 +27,7 @@ func _ready() -> void:
 	PlayerConfig.starting_wpm = start_speed_selector.value
 
 
-func change_level_sequence(sequence: int):
+func change_level_sequence(sequence: int) -> void:
 	match sequence:
 		0:
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.LAPWING
@@ -41,12 +41,12 @@ func change_level_sequence(sequence: int):
 	start_button.disabled = false
 
 
-func select_speed(speed: float):
+func select_speed(speed: float) -> void:
 	PlayerConfig.starting_wpm = int(speed)
 	PlayerConfig.current_wpm = int(speed)
 
 
-func set_build_speed(build_speed: bool):
+func set_build_speed(build_speed: bool) -> void:
 	PlayerConfig.speed_building_mode = build_speed
 	PlayerConfig.target_wpm = target_speed_selector.value
 	PlayerConfig.step_size = speed_step_selector.value
@@ -58,23 +58,23 @@ func set_build_speed(build_speed: bool):
 		speed_step_container.set_visible(false)
 
 
-func set_target_speed(speed: float):
+func set_target_speed(speed: float) -> void:
 	PlayerConfig.target_wpm = int(speed)
 
 
-func set_speed_step(step: float):
+func set_speed_step(step: float) -> void:
 	PlayerConfig.step_size = int(step)
 
 
-func set_tts(enabled: bool):
+func set_tts(enabled: bool) -> void:
 	PlayerConfig.voice_output_enabled = enabled
 
 
-func set_starting_level(path: String):
+func set_starting_level(path: String) -> void:
 	PlayerConfig.current_level_path = path
 
 
-func start_game():
+func start_game() -> void:
 	print_debug("First level path: ", PlayerConfig.current_level_path)
 	print_debug("Speed building mode is ", PlayerConfig.speed_building_mode)
 	start_game_pressed.emit()

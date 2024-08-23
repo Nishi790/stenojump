@@ -11,7 +11,7 @@ signal quit_game_pressed
 @export var quit_game_button: Button
 
 
-func _ready():
+func _ready() -> void:
 	resume_game_button.pressed.connect(resume_game)
 	new_game_button.pressed.connect(new_game)
 	options_button.pressed.connect(open_options)
@@ -21,24 +21,24 @@ func _ready():
 	else: resume_game_button.hide()
 
 
-func resume_game():
+func resume_game() -> void:
 	if PlayerConfig.load_settings() == OK:
 		start_game_pressed.emit()
 
 
-func new_game():
-	var menu = start_menu.instantiate()
+func new_game() -> void:
+	var menu: Control = start_menu.instantiate()
 	menu.start_game_pressed.connect(start_game)
 	add_child(menu)
 
 
-func open_options():
+func open_options() -> void:
 	pass
 
 
-func start_game():
+func start_game() -> void:
 	start_game_pressed.emit()
 
 
-func quit_game():
+func quit_game() -> void:
 	quit_game_pressed.emit()

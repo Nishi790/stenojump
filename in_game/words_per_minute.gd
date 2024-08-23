@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 		can_update = true
 
 
-func update_wpm(wpm_value: float):
+func update_wpm(wpm_value: float) -> void:
 	if can_update:
 		set_text(word_count_message % wpm_value)
 		can_update = false
