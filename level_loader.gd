@@ -13,6 +13,7 @@ var next_level_path: String
 
 func load_level(filepath : String):
 	level_path = filepath
+	#should error check for valid file path
 	var file := FileAccess.open(filepath, FileAccess.READ)
 	var json_content: String = file.get_as_text()
 	var json_handler: JSON = JSON.new()
