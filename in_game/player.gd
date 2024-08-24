@@ -28,6 +28,7 @@ func _ready() -> void:
 	physics_body.state_changed.connect(change_states)
 	sprite.animation_finished.connect(link_animation)
 	start_walk()
+	PlayerConfig.lives_updated.connect(set_lives)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -129,3 +130,11 @@ func end_level() -> void:
 	lives = 3
 	lives_changed.emit(lives)
 	change_states(State.WALKING)
+
+
+func set_lives():
+	lives = PlayerConfig.current_lives
+
+
+func save_data() -> void:
+	PlayerConfig.current_lives = lives

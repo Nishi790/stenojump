@@ -1,7 +1,7 @@
 extends Node2D
 
 signal score_changed (new_score: int)
-signal words_left_changed (remainig_words: int)
+signal words_left_changed (remaining_words: int)
 signal target_speed_changed (target_speed: int)
 signal wpm_updated (wpm: float)
 signal main_menu_requested
@@ -27,13 +27,20 @@ var wpm: float = 0:
 			wpm_updated.emit(wpm)
 var level_timer_active: bool = false
 
+#Total Score across levels
 var score: int = 0:
 	set(new_score):
 		score = new_score
 		score_changed.emit(score)
+
+#Score in this level - lost if quit mid-level
+var level_score: int = 0
+
 var words_left: int:
 	set(number_of_words):
 		words_left = number_of_words
+		if words_left < 0:
+			words_left = 0
 		words_left_changed.emit(words_left)
 var max_words_per_obstacle: int = 1
 var obstacles_remaining: int
@@ -72,6 +79,7 @@ func _ready() -> void:
 	#load selected level
 	load_level_data(PlayerConfig.current_level_path)
 	target_speed_changed.emit(PlayerConfig.current_wpm)
+	score = PlayerConfig.current_score
 
 	input_box.grab_focus()
 
@@ -102,7 +110,8 @@ func reset_word(collider: Object) -> void:
 
 #Display reset message
 	hud.life_lost_reset()
-	score = score - 1 #TODO scale death score penalty
+	score = score - 1
+	level_score = level_score - 1 #TODO scale death score penalty
 	print_debug("Failed word was ", collider.target_word)
 
 #Remove all onscreen words
@@ -124,6 +133,7 @@ func return_words_to_queue(number_of_words: int, number_of_obstacles: int) -> vo
 
 
 func adjust_score(amount: int) -> void:
+	level_score += amount
 	score += amount
 
 
@@ -149,6 +159,8 @@ func end_level() -> void:
 	characters_entered_correctly = 0
 	level_complete = true
 	obstacle_manager.level_complete()
+	PlayerConfig.current_score = score
+	level_score = 0
 	await get_tree().create_timer(2).timeout
 	hud.level_complete()
 
@@ -205,6 +217,7 @@ func load_level_data(level_path: String = "") -> void:
 		word_queue.shuffle()
 	word_queue = word_queue.slice(0, LevelLoader.default_level_size)
 	next_word_index = 0
+	words_left = word_queue.size()
 
 
 func increase_speed() -> void:
@@ -238,5 +251,6 @@ func pause_game(menu_open: bool = false) -> void:
 
 
 func quit_game() -> void:
+	player.save_data()
 	PlayerConfig.save_settings()
 	main_menu_requested.emit()

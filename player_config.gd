@@ -1,5 +1,7 @@
 extends Node
 
+signal lives_updated
+
 enum LevelSequence {LEARN_PLOVER, LAPWING, OTHER}
 enum WordOrder {DEFAULT, RANDOM, ORDERED}
 
@@ -25,6 +27,8 @@ var preferred_voice_pitch: float = 1
 var preferred_voice_volume: int = 50
 
 var current_wpm: int
+var current_score: int = 0
+var current_lives: int = 3
 
 var config_path: String = "user://settings.cfg"
 var config_voice_settings: String = "TextToSpeech"
@@ -47,6 +51,8 @@ func save_settings() -> void:
 	config.set_value(config_level_settings, "LevelSequence", level_sequence)
 	config.set_value(config_level_settings, "CurrentLevel", current_level_path)
 	config.set_value(config_level_settings, "CurrentWPM", current_wpm)
+	config.set_value(config_level_settings, "CurrentScore", current_score)
+	config.set_value(config_level_settings, "CurrentLives", current_lives)
 
 	config.set_value(config_speed_build_settings, "SpeedBuildMode", speed_building_mode)
 	config.set_value(config_speed_build_settings, "StartingWPM", starting_wpm)
@@ -95,6 +101,10 @@ func load_settings() -> Error:
 	starting_wpm = config.get_value(config_speed_build_settings, "StartingWPM", 0)
 	target_wpm = config.get_value(config_speed_build_settings, "TargetWPM", 0)
 	step_size = config.get_value(config_speed_build_settings, "StepSize", 0)
+	current_score = config.get_value(config_level_settings, "CurrentScore")
+	current_lives = config.get_value(config_level_settings, "CurrentLives")
+	lives_updated.emit()
+
 
 	voice_output_enabled = config.get_value(config_voice_settings, "Enabled")
 	voice_all_ui = config.get_value(config_voice_settings, "AllUIVoiced")

@@ -103,8 +103,6 @@ shape = SubResource("WorldBoundaryShape2D_uo43n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
 shape = SubResource("WorldBoundaryShape2D_y0yrj")
 
-[node name="HUD" parent="." instance=ExtResource("11_c2pqa")]
-
 [node name="ObstacleDetector" type="Area2D" parent="."]
 monitorable = false
 script = ExtResource("12_01mxu")
@@ -112,3 +110,5 @@ script = ExtResource("12_01mxu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
 position = Vector2(870.5, 853.5)
 shape = SubResource("RectangleShape2D_ooyp2")
+
+[node name="HUD" parent="." instance=ExtResource("11_c2pqa")]
