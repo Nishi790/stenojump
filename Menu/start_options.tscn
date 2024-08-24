@@ -18,7 +18,7 @@ speed_step_container = NodePath("OptionsPanel/GameOptionContainer/SpeedStepsCont
 target_speed_selector = NodePath("OptionsPanel/GameOptionContainer/SpeedPreference/TargetSpeed")
 speed_step_selector = NodePath("OptionsPanel/GameOptionContainer/SpeedStepsContainer/SpeedStepSelector")
 voice_output_toggle = NodePath("OptionsPanel/GameOptionContainer/VoiceOutput")
-start_button = NodePath("OptionsPanel/GameOptionContainer/StartButton")
+start_button = NodePath("OptionsPanel/GameOptionContainer/StartCancel/StartButton")
 file_selector_dialogue = NodePath("CustomLevelDialogue")
 
 [node name="OptionsPanel" type="PanelContainer" parent="."]
@@ -50,7 +50,7 @@ popup/item_0/text = "Lapwing"
 popup/item_1/text = "Learn Plover"
 popup/item_1/id = 1
 popup/item_2/text = "Custom"
-popup/item_2/id = 2
+popup/item_2/id = 999
 
 [node name="SpeedContainer" type="HBoxContainer" parent="OptionsPanel/GameOptionContainer"]
 layout_mode = 2
@@ -120,10 +120,17 @@ layout_mode = 2
 tooltip_text = "Uses default TTS engine to say target words as they approach. TTS must be available on your system."
 text = "Enable Text to Speech (TTS)"
 
-[node name="StartButton" type="Button" parent="OptionsPanel/GameOptionContainer"]
+[node name="StartCancel" type="HBoxContainer" parent="OptionsPanel/GameOptionContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="OptionsPanel/GameOptionContainer/StartCancel"]
 layout_mode = 2
 disabled = true
 text = "Start Game"
+
+[node name="CancelButton" type="Button" parent="OptionsPanel/GameOptionContainer/StartCancel"]
+layout_mode = 2
+text = " Cancel"
 
 [node name="CustomLevelDialogue" type="FileDialog" parent="."]
 title = "Open a File"

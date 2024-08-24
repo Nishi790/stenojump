@@ -1,6 +1,7 @@
 extends Control
 
 signal start_game_pressed
+signal game_canceled
 
 @export var level_sequence_selector: OptionButton
 @export var start_speed_selector: SpinBox
@@ -27,16 +28,65 @@ func _ready() -> void:
 	PlayerConfig.starting_wpm = start_speed_selector.value
 
 
+func process_text(text: String) -> bool:
+	var split_text:  PackedStringArray = text.split(" ")
+	while split_text.size() > 0:
+		var target: String = split_text[0]
+		split_text.remove_at(0)
+		match target:
+			"sequence":
+				var specifier: String = split_text[0]
+				split_text.remove_at(0)
+				if not match_sequence(specifier):
+					return false
+			"start":
+				if start_button.disabled == false:
+					start_game()
+					return true
+			"cancel":
+				cancel_new_game()
+			_:
+				return false
+
+	return true
+
+
+func match_sequence(sequence_name: String) -> bool:
+	match sequence_name:
+		"lapwing", "lap":
+			change_level_sequence(0)
+			return true
+		"plover":
+			change_level_sequence(1)
+			return true
+		"custom":
+			change_level_sequence(999)
+			return true
+		_:
+			var  num_options: int = level_sequence_selector.item_count
+			var start_index: int = 2
+			while start_index < num_options:
+				if level_sequence_selector.get_item_text(start_index) == sequence_name:
+					change_level_sequence(start_index)
+					return true
+				start_index += 1
+	return false
+
+
 func change_level_sequence(sequence: int) -> void:
+	level_sequence_selector.select(level_sequence_selector.get_item_index(sequence))
 	match sequence:
 		0:
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.LAPWING
 		1:
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.LEARN_PLOVER
-		_:
+		999:
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.OTHER
 			file_selector_dialogue.set_visible(true)
 			file_selector_dialogue.grab_focus()
+		_:
+			printerr("invalid level selection")
+			return
 	PlayerConfig.start_level_sequence(PlayerConfig.level_sequence)
 	start_button.disabled = false
 
@@ -75,6 +125,10 @@ func set_starting_level(path: String) -> void:
 
 
 func start_game() -> void:
-	print_debug("First level path: ", PlayerConfig.current_level_path)
 	print_debug("Speed building mode is ", PlayerConfig.speed_building_mode)
 	start_game_pressed.emit()
+
+
+func cancel_new_game() -> void:
+	game_canceled.emit()
+	queue_free()
