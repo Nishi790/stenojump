@@ -3,6 +3,8 @@ extends Control
 signal start_game_pressed
 signal game_canceled
 
+enum {STARTSPEED, TARGETSPEED, STEPSIZE}
+
 @export var level_sequence_selector: OptionButton
 @export var start_speed_selector: SpinBox
 @export var speed_builder_button: CheckBox
@@ -24,7 +26,9 @@ func _ready() -> void:
 	voice_output_toggle.toggled.connect(set_tts)
 	start_button.pressed.connect(start_game)
 	file_selector_dialogue.file_selected.connect(set_starting_level)
+	@warning_ignore("narrowing_conversion")
 	PlayerConfig.current_wpm = start_speed_selector.value
+	@warning_ignore("narrowing_conversion")
 	PlayerConfig.starting_wpm = start_speed_selector.value
 
 
@@ -45,6 +49,40 @@ func process_text(text: String) -> bool:
 					return true
 			"cancel":
 				cancel_new_game()
+			"speed":
+				var specifier: String = split_text[0]
+				split_text.remove_at(0)
+				if not match_speed(specifier, STARTSPEED):
+					return false
+			"build":
+				if split_text.size() == 0:
+					speed_builder_button.button_pressed = !speed_builder_button.button_pressed
+					return true
+				var specifier: String = split_text[0]
+				split_text.remove_at(0)
+				match specifier:
+					"on":
+						speed_builder_button.button_pressed = true
+					"off":
+						speed_builder_button.button_pressed = false
+					"speed":
+						speed_builder_button.button_pressed = !speed_builder_button.button_pressed
+			"target":
+				if split_text.size() == 0:
+					return false
+				var specifier: String = split_text[0]
+				split_text.remove_at(0)
+				if not match_speed(specifier, TARGETSPEED):
+					return false
+			"step":
+				if split_text.size() == 0:
+					return false
+				var specifier: String = split_text[0]
+				split_text.remove_at(0)
+				if not match_speed(specifier, STEPSIZE):
+					return false
+			"tts", "speech":
+				voice_output_toggle.button_pressed = !voice_output_toggle.button_pressed
 			_:
 				return false
 
@@ -73,6 +111,25 @@ func match_sequence(sequence_name: String) -> bool:
 	return false
 
 
+func match_speed(speed: String, selector: int) -> bool:
+	var speed_value: float = speed.to_float()
+	if speed_value > 0:
+		if selector == STARTSPEED:
+			select_speed(speed_value)
+			start_speed_selector.value = speed_value
+			return true
+		elif selector == TARGETSPEED:
+			set_target_speed(speed_value)
+			target_speed_selector.value = speed_value
+			return true
+		elif selector == STEPSIZE:
+			set_speed_step(speed_value)
+			speed_step_selector.value = speed_value
+			return true
+		else: return false
+	else: return false
+
+
 func change_level_sequence(sequence: int) -> void:
 	level_sequence_selector.select(level_sequence_selector.get_item_index(sequence))
 	match sequence:
@@ -98,7 +155,9 @@ func select_speed(speed: float) -> void:
 
 func set_build_speed(build_speed: bool) -> void:
 	PlayerConfig.speed_building_mode = build_speed
+	@warning_ignore("narrowing_conversion")
 	PlayerConfig.target_wpm = target_speed_selector.value
+	@warning_ignore("narrowing_conversion")
 	PlayerConfig.step_size = speed_step_selector.value
 	if build_speed:
 		target_speed_container.set_visible(true)
