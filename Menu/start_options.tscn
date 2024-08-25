@@ -99,6 +99,7 @@ text = "[b]Build[/b] Speed"
 fit_content = true
 
 [node name="SpeedPreference" type="HBoxContainer" parent="OptionsPanel/GameOptionContainer"]
+visible = false
 layout_mode = 2
 
 [node name="TargetSpeedLabel" type="RichTextLabel" parent="OptionsPanel/GameOptionContainer/SpeedPreference"]
@@ -120,6 +121,7 @@ custom_arrow_step = 5.0
 select_all_on_focus = true
 
 [node name="SpeedStepsContainer" type="HBoxContainer" parent="OptionsPanel/GameOptionContainer"]
+visible = false
 layout_mode = 2
 
 [node name="SpeedStepLabel" type="RichTextLabel" parent="OptionsPanel/GameOptionContainer/SpeedStepsContainer"]

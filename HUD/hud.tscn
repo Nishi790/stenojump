@@ -17,12 +17,12 @@ offset_bottom = 1080.0
 theme = ExtResource("1_c1y4c")
 script = ExtResource("2_t68vm")
 ingame_message = NodePath("GameMessageContainer/GameMessagePanel/GameMessage")
-lives_counter = NodePath("GUIOrganizer/SecondRowOrganizer/LivesCounter")
-score_counter = NodePath("GUIOrganizer/TopRowOrganizer/ScoreLabel")
-word_counter = NodePath("GUIOrganizer/TopRowOrganizer/WordsRemaining")
-wpm_counter = NodePath("GUIOrganizer/SecondRowOrganizer/WordsPerMinute")
+lives_counter = NodePath("GUIOrganizer/MidRowOrganizer/LivesCounter")
+score_counter = NodePath("GUIOrganizer/FirstRowOrganizer/ScoreLabel")
+word_counter = NodePath("GUIOrganizer/MidRowOrganizer/WordsRemaining")
+wpm_counter = NodePath("GUIOrganizer/FirstRowOrganizer/WordsPerMinute")
 message_container = NodePath("GameMessageContainer")
-input_box = NodePath("GUIOrganizer/InputBox")
+input_box = NodePath("GUIOrganizer/MarginContainer/InputBox")
 pause_menu_scene = ExtResource("3_8s8xp")
 
 [node name="GameMessageContainer" type="CenterContainer" parent="."]
@@ -49,41 +49,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
-layout_mode = 2
-alignment = 1
-
-[node name="WordsRemaining" type="Label" parent="GUIOrganizer/TopRowOrganizer"]
-layout_mode = 2
-text = "Words Left"
-script = ExtResource("4_18ww5")
-
-[node name="TopSpacer" type="CenterContainer" parent="GUIOrganizer/TopRowOrganizer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ScoreLabel" type="Label" parent="GUIOrganizer/TopRowOrganizer"]
-layout_mode = 2
-text = "Score: 0"
-script = ExtResource("5_20ws2")
-
-[node name="SecondRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
+[node name="FirstRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
 layout_mode = 2
 
-[node name="WordsPerMinute" type="Label" parent="GUIOrganizer/SecondRowOrganizer"]
+[node name="WordsPerMinute" type="Label" parent="GUIOrganizer/FirstRowOrganizer"]
 layout_mode = 2
 text = "Words Per Minute"
 script = ExtResource("6_njpiu")
 
-[node name="LivesCounter" type="Label" parent="GUIOrganizer/SecondRowOrganizer"]
+[node name="ScoreLabel" type="Label" parent="GUIOrganizer/FirstRowOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Score: 0"
+horizontal_alignment = 2
+script = ExtResource("5_20ws2")
+
+[node name="MidRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
+layout_mode = 2
+alignment = 1
+
+[node name="WordsRemaining" type="Label" parent="GUIOrganizer/MidRowOrganizer"]
+layout_mode = 2
+text = "Words Left"
+script = ExtResource("4_18ww5")
+
+[node name="TopSpacer" type="CenterContainer" parent="GUIOrganizer/MidRowOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LivesCounter" type="Label" parent="GUIOrganizer/MidRowOrganizer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Lives"
 horizontal_alignment = 2
 script = ExtResource("7_2iiwr")
 
-[node name="InputBox" type="LineEdit" parent="GUIOrganizer"]
+[node name="Control2" type="Control" parent="GUIOrganizer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GUIOrganizer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_bottom = 48
+
+[node name="InputBox" type="LineEdit" parent="GUIOrganizer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false

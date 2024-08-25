@@ -38,7 +38,7 @@ func unknown_command(command: String) -> void:
 	text_control.editable = true
 
 
-func check_anim(text: String):
+func check_anim(text: String) -> bool:
 	match text:
 		"sit", "snack time", "eat", "stand", "jump", "hello", "go":
 			animation.command(text)

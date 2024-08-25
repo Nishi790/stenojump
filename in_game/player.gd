@@ -132,7 +132,7 @@ func end_level() -> void:
 	change_states(State.WALKING)
 
 
-func set_lives():
+func set_lives() -> void:
 	lives = PlayerConfig.current_lives
 
 
