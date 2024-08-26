@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Menu/start_options.gd" id="1_fo6yd"]
 
-[node name="StartOptions" type="Control" node_paths=PackedStringArray("level_sequence_selector", "start_speed_selector", "speed_builder_button", "target_speed_container", "speed_step_container", "target_speed_selector", "speed_step_selector", "voice_output_toggle", "start_button", "file_selector_dialogue")]
+[node name="StartOptions" type="Control" node_paths=PackedStringArray("level_sequence_selector", "start_speed_selector", "speed_builder_button", "target_speed_container", "speed_step_container", "target_speed_selector", "speed_step_selector", "voice_output_toggle", "start_button", "file_selector_dialogue", "cancel_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ speed_step_selector = NodePath("OptionsPanel/GameOptionContainer/SpeedStepsConta
 voice_output_toggle = NodePath("OptionsPanel/GameOptionContainer/VoiceOutputContainer/VoiceOutput")
 start_button = NodePath("OptionsPanel/GameOptionContainer/StartCancel/StartButton")
 file_selector_dialogue = NodePath("CustomLevelDialogue")
+cancel_button = NodePath("OptionsPanel/GameOptionContainer/StartCancel/CancelButton")
 
 [node name="OptionsPanel" type="PanelContainer" parent="."]
 layout_mode = 1

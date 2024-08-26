@@ -17,8 +17,12 @@ func _ready() -> void:
 	#Grab current custom style for targets
 	if PlayerConfig.custom_target_style == null:
 		PlayerConfig.custom_target_style = PlayerConfig.target_style.duplicate(true)
+		var style_box = PlayerConfig.custom_target_style.get_stylebox("panel", "PanelContainer")
+		style_box.bg_color = Color.BLACK
+		PlayerConfig.custom_target_style.set_stylebox("panel", "PanelContainer", style_box)
 	custom_style = PlayerConfig.custom_target_style
 	target_preview.theme = custom_style
+	toggle_target_background(PlayerConfig.use_custom_target_theme)
 	target_vis_picker.item_selected.connect(update_target_visibility)
 	target_background_toggle.toggled.connect(toggle_target_background)
 	target_bg_picker.color_changed.connect(target_background_changed)

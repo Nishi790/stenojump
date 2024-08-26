@@ -4,6 +4,7 @@ extends CharacterBody2D
 const direction = Vector2(-1, 0)
 
 @export var word_label: Label
+@export var target_container: Container
 
 var target_word: String
 var score: int
@@ -11,6 +12,9 @@ var hint: String
 var number_of_targets: int
 var speed: float = 200.0
 var stopped: bool = false
+
+func _ready() -> void:
+	target_container.set_theme(PlayerConfig.get_theme())
 
 func set_target_word(target: String) -> void:
 	target_word = target

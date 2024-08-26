@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d01kvemmmpbje"]
+[gd_scene load_steps=5 format=3 uid="uid://d01kvemmmpbje"]
 
 [ext_resource type="Script" path="res://in_game/base_obstacle.gd" id="1_i8uxn"]
+[ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_kgoey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgo0o"]
 size = Vector2(21, 60)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lc02r"]
 
-[node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label")]
+[node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container")]
 script = ExtResource("1_i8uxn")
-word_label = NodePath("TargetWord")
+word_label = NodePath("TargetPanel/TargetWord")
+target_container = NodePath("TargetPanel")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -30)
@@ -20,11 +22,23 @@ position = Vector2(0, -30)
 scale = Vector2(22, 60)
 texture = SubResource("PlaceholderTexture2D_lc02r")
 
-[node name="TargetWord" type="Label" parent="."]
-offset_left = -60.0
-offset_top = -120.0
-offset_right = 61.0
-offset_bottom = -97.0
+[node name="TargetPanel" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -173.0
+offset_right = 82.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_kgoey")
+
+[node name="TargetWord" type="Label" parent="TargetPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
 text = "Target Word"
 horizontal_alignment = 1
 autowrap_mode = 3

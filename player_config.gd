@@ -185,3 +185,10 @@ func at_target_speed() -> bool:
 	if current_wpm == target_wpm:
 		return true
 	else: return false
+
+
+func get_theme() -> Theme:
+	if use_custom_target_theme and custom_target_style != null:
+		return custom_target_style
+	else:
+		return target_style

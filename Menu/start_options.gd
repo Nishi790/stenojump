@@ -15,6 +15,7 @@ enum {STARTSPEED, TARGETSPEED, STEPSIZE}
 @export var voice_output_toggle: CheckBox
 @export var start_button: Button
 @export var file_selector_dialogue: FileDialog
+@export var cancel_button: Button
 
 
 func _ready() -> void:
@@ -30,6 +31,7 @@ func _ready() -> void:
 	PlayerConfig.current_wpm = start_speed_selector.value
 	@warning_ignore("narrowing_conversion")
 	PlayerConfig.starting_wpm = start_speed_selector.value
+	cancel_button.pressed.connect(cancel_new_game)
 
 
 func process_text(text: String) -> bool:
@@ -184,7 +186,6 @@ func set_starting_level(path: String) -> void:
 
 
 func start_game() -> void:
-	print_debug("Speed building mode is ", PlayerConfig.speed_building_mode)
 	start_game_pressed.emit()
 
 
