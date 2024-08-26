@@ -4,6 +4,7 @@ signal lives_updated
 
 enum LevelSequence {LEARN_PLOVER, LAPWING, OTHER}
 enum WordOrder {DEFAULT, RANDOM, ORDERED}
+enum TargetVisibility {ALL, NEXT, IN_RANGE, NONE}
 
 @export var lapwing_level_1: String = "res://level_data/lapwing_1.json"
 @export var learn_plover_level_1: String
@@ -12,12 +13,18 @@ var min_level_length: int = 0
 var max_level_length: int = 0
 var preferred_word_order: WordOrder = WordOrder.DEFAULT
 
+var resolution: Vector2
+var target_visibility: TargetVisibility = TargetVisibility.ALL
+var use_custom_target_theme: bool = false
+var target_style: Theme = load("res://textures/target_theme.tres")
+var custom_target_style: Theme
+
 var level_sequence: LevelSequence
 var current_level_path: String
 var starting_wpm: int
 var speed_building_mode: bool
 var target_wpm: int
-var step_size: int
+var step_size: int = 5
 
 var voice_output_enabled: bool
 var voice_all_ui: bool
@@ -34,6 +41,13 @@ var config_path: String = "user://settings.cfg"
 var config_voice_settings: String = "TextToSpeech"
 var config_level_settings: String = "LevelSettings"
 var config_speed_build_settings: String = "SpeedBuildSettings"
+var config_graphics_settings: String = "GraphicsSettings"
+var config_gameplay_settings: String = "GameplaySettings"
+var config_sound_settings: String = "SoundSettings"
+
+
+func _ready():
+	resolution = get_viewport().get_visible_rect().size
 
 
 func start_level_sequence(sequence: LevelSequence) -> void:
@@ -66,6 +80,15 @@ func save_settings() -> void:
 	config.set_value(config_voice_settings, "Pitch", preferred_voice_pitch)
 	config.set_value(config_voice_settings, "Volume", preferred_voice_volume)
 
+	config.set_value(config_graphics_settings, "Resolution", resolution)
+	config.set_value(config_graphics_settings, "TargetVisibility", target_visibility)
+	config.set_value(config_graphics_settings, "CustomTargets", use_custom_target_theme)
+	config.set_value(config_graphics_settings, "CustomTargetTheme", custom_target_style)
+
+	config.set_value(config_gameplay_settings, "MinLevelSize", min_level_length)
+	config.set_value(config_gameplay_settings, "MaxLevelSize", max_level_length)
+	config.set_value(config_gameplay_settings, "LevelOrder", preferred_word_order)
+
 	var err: Error = config.save(config_path)
 	if err != OK:
 		printerr("Save Failed")
@@ -93,6 +116,9 @@ func load_settings() -> Error:
 	level_sequence = config.get_value(config_level_settings, "LevelSequence", null)
 	current_level_path = config.get_value(config_level_settings, "CurrentLevel", "")
 	current_wpm = config.get_value(config_level_settings, "CurrentWPM", 0)
+	current_score = config.get_value(config_level_settings, "CurrentScore")
+	current_lives = config.get_value(config_level_settings, "CurrentLives")
+	lives_updated.emit()
 
 	if current_level_path == "" and level_sequence != null:
 		start_level_sequence(level_sequence)
@@ -101,10 +127,6 @@ func load_settings() -> Error:
 	starting_wpm = config.get_value(config_speed_build_settings, "StartingWPM", 0)
 	target_wpm = config.get_value(config_speed_build_settings, "TargetWPM", 0)
 	step_size = config.get_value(config_speed_build_settings, "StepSize", 0)
-	current_score = config.get_value(config_level_settings, "CurrentScore")
-	current_lives = config.get_value(config_level_settings, "CurrentLives")
-	lives_updated.emit()
-
 
 	voice_output_enabled = config.get_value(config_voice_settings, "Enabled")
 	voice_all_ui = config.get_value(config_voice_settings, "AllUIVoiced")
@@ -112,6 +134,15 @@ func load_settings() -> Error:
 	preferred_voice_rate = config.get_value(config_voice_settings, "Rate")
 	preferred_voice_pitch = config.get_value(config_voice_settings, "Pitch")
 	preferred_voice_volume = config.get_value(config_voice_settings, "Volume")
+
+	resolution = config.get_value(config_graphics_settings, "Resolution")
+	target_visibility = config.get_value(config_graphics_settings, "TargetVisibility")
+	use_custom_target_theme = config.get_value(config_graphics_settings, "CustomTargets")
+	custom_target_style = config.get_value(config_graphics_settings, "CustomTargetTheme")
+
+	min_level_length = config.get_value(config_gameplay_settings, "MinLevelSize")
+	max_level_length = config.get_value(config_gameplay_settings, "MaxLevelSize")
+	preferred_word_order = config.get_value(config_gameplay_settings, "LevelOrder")
 
 	return err
 

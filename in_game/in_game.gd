@@ -213,9 +213,27 @@ func load_level_data(level_path: String = "") -> void:
 	if level_path != "":
 			LevelLoader.load_level(level_path)
 	word_queue = LevelLoader.level_targets.duplicate()
-	if LevelLoader.level_order == LevelLoader.LevelOrder.RANDOM:
-		word_queue.shuffle()
-	word_queue = word_queue.slice(0, LevelLoader.default_level_size)
+
+	#Set correct level size
+	var level_size: int = LevelLoader.default_level_size
+	if PlayerConfig.min_level_length != 0 and level_size < PlayerConfig.min_level_length:
+		level_size = PlayerConfig.min_level_length
+	elif PlayerConfig.max_level_length != 0 and level_size > PlayerConfig.max_level_length:
+		level_size = PlayerConfig.max_level_length
+	if word_queue.size() < level_size:
+		word_queue.append_array(word_queue)
+
+	#shuffle words if needed
+	match PlayerConfig.preferred_word_order:
+		PlayerConfig.WordOrder.RANDOM:
+			word_queue.shuffle()
+		PlayerConfig.WordOrder.ORDERED:
+			pass
+		PlayerConfig.WordOrder.DEFAULT:
+			if LevelLoader.level_order == LevelLoader.LevelOrder.RANDOM:
+				word_queue.shuffle()
+
+	word_queue = word_queue.slice(0, level_size)
 	next_word_index = 0
 	words_left = word_queue.size()
 
