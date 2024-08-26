@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dygsnrdif2a23"]
+[gd_scene load_steps=7 format=3 uid="uid://dygsnrdif2a23"]
 
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_lrdci"]
 [ext_resource type="PackedScene" uid="uid://clib450qsryve" path="res://Menu/start_options.tscn" id="2_lg5sn"]
+[ext_resource type="PackedScene" uid="uid://clwt0ahelro30" path="res://Menu/game_options.tscn" id="3_e05b5"]
 [ext_resource type="Script" path="res://Menu/player_input.gd" id="3_ntyr4"]
 [ext_resource type="SpriteFrames" uid="uid://bxd74c38t8x8g" path="res://textures/character_animations/player_sprite_frames.tres" id="4_xts3i"]
 [ext_resource type="Script" path="res://Menu/player_menu.gd" id="5_7ha46"]
@@ -17,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lrdci")
 start_menu = ExtResource("2_lg5sn")
+options_menu = ExtResource("3_e05b5")
 resume_game_button = NodePath("PanelContainer/MenuContainer/ResumeGame")
 new_game_button = NodePath("PanelContainer/MenuContainer/NewGame")
 options_button = NodePath("PanelContainer/MenuContainer/Options")

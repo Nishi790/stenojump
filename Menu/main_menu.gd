@@ -14,6 +14,7 @@ var input_processor: Node = self
 
 
 func _ready() -> void:
+	PlayerConfig.load_universal_settings()
 	resume_game_button.pressed.connect(resume_game)
 	new_game_button.pressed.connect(new_game)
 	options_button.pressed.connect(open_options)
@@ -25,7 +26,7 @@ func _ready() -> void:
 
 
 func resume_game() -> void:
-	if PlayerConfig.load_settings() == OK:
+	if PlayerConfig.load_game() == OK:
 		start_game_pressed.emit()
 
 
@@ -38,8 +39,10 @@ func new_game() -> void:
 
 
 func open_options() -> void:
-	printerr("options opened")
-	pass
+	var options: Control = options_menu.instantiate()
+	options.returned_to_menu.connect(grab_text_processing)
+	add_child(options)
+	input_processor = options
 
 
 func start_game() -> void:
@@ -47,6 +50,7 @@ func start_game() -> void:
 
 
 func quit_game() -> void:
+	PlayerConfig.save_universal_settings()
 	quit_game_pressed.emit()
 
 

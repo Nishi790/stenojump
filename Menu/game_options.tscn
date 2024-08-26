@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://clwt0ahelro30"]
+[gd_scene load_steps=5 format=3 uid="uid://clwt0ahelro30"]
 
+[ext_resource type="Script" path="res://Menu/game_options.gd" id="1_2xiie"]
 [ext_resource type="Script" path="res://Menu/graphics_options.gd" id="1_a0l5e"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_6lp2k"]
+[ext_resource type="Script" path="res://Menu/gameplay_options.gd" id="2_kx0eo"]
 
-[node name="GameOptions" type="Control"]
+[node name="GameOptions" type="Control" node_paths=PackedStringArray("gameplay_tab", "graphics_tab", "sound_tab")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2xiie")
+gameplay_tab = NodePath("OptionTabs/Gameplay")
+graphics_tab = NodePath("OptionTabs/Graphics")
+sound_tab = NodePath("OptionTabs/Sound")
 
 [node name="OptionTabs" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(320, 160)
@@ -25,53 +31,51 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
-[node name="Gameplay" type="PanelContainer" parent="OptionTabs"]
-visible = false
+[node name="Gameplay" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("level_size_toggle", "level_size_container", "min_level_size", "max_level_size", "level_order_selector", "menu_button")]
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
+script = ExtResource("2_kx0eo")
+level_size_toggle = NodePath("VBoxContainer/LevelSizeToggleCntr/LevelSize")
+level_size_container = NodePath("VBoxContainer/LvlSizeSettings")
+min_level_size = NodePath("VBoxContainer/LvlSizeSettings/MinLvlSizeCntr/MinSizeSpinbox")
+max_level_size = NodePath("VBoxContainer/LvlSizeSettings/MaxLvlSizeCntr/MaxSizeSpinbox")
+level_order_selector = NodePath("VBoxContainer/LevelOrderCntr/OrderChoices")
+menu_button = NodePath("VBoxContainer/Save")
 metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionTabs/Gameplay"]
 layout_mode = 2
 
-[node name="AdvancedToggle" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+[node name="LevelSizeToggleCntr" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
 layout_mode = 2
 
-[node name="Advanced" type="CheckButton" parent="OptionTabs/Gameplay/VBoxContainer/AdvancedToggle"]
+[node name="LevelSize" type="CheckBox" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeToggleCntr"]
 layout_mode = 2
 
-[node name="AdvancedLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/AdvancedToggle"]
-layout_mode = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "[b]Advanced[/b] settings"
-
-[node name="LevelSizeContainer" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
-layout_mode = 2
-
-[node name="LevelSize" type="CheckBox" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeContainer"]
-layout_mode = 2
-
-[node name="LevelSizeLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeContainer"]
+[node name="LevelSizeLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeToggleCntr"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Use Custom [b]Level Size[/b]"
 fit_content = true
 
-[node name="MinLvlSizeCntr" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+[node name="LvlSizeSettings" type="VBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/MinLvlSizeCntr"]
+[node name="MinLvlSizeCntr" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings/MinLvlSizeCntr"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "[b]Minimum[/b] level size"
 fit_content = true
 
-[node name="SpinBox" type="SpinBox" parent="OptionTabs/Gameplay/VBoxContainer/MinLvlSizeCntr"]
+[node name="MinSizeSpinbox" type="SpinBox" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings/MinLvlSizeCntr"]
 custom_minimum_size = Vector2(124, 0)
 layout_mode = 2
 rounded = true
@@ -80,16 +84,16 @@ update_on_text_changed = true
 suffix = "words"
 custom_arrow_step = 5.0
 
-[node name="MaxLvlSizeCntr" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+[node name="MaxLvlSizeCntr" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/MaxLvlSizeCntr"]
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings/MaxLvlSizeCntr"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "[b]Maximum[/b] level size"
 
-[node name="SpinBox" type="SpinBox" parent="OptionTabs/Gameplay/VBoxContainer/MaxLvlSizeCntr"]
+[node name="MaxSizeSpinbox" type="SpinBox" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings/MaxLvlSizeCntr"]
 custom_minimum_size = Vector2(124, 0)
 layout_mode = 2
 rounded = true
@@ -108,7 +112,7 @@ bbcode_enabled = true
 text = "Target [b]order[/b]"
 fit_content = true
 
-[node name="OptionButton" type="OptionButton" parent="OptionTabs/Gameplay/VBoxContainer/LevelOrderCntr"]
+[node name="OrderChoices" type="OptionButton" parent="OptionTabs/Gameplay/VBoxContainer/LevelOrderCntr"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Default: Target order specified by the level
@@ -122,41 +126,38 @@ popup/item_1/id = 1
 popup/item_2/text = "In Order"
 popup/item_2/id = 2
 
-[node name="Graphics" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("resolution_picker", "target_vis_picker", "target_background_toggle", "target_bg_picker", "target_color_picker", "target_preview", "background_options_container")]
+[node name="AdvancedToggle" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Advanced" type="CheckButton" parent="OptionTabs/Gameplay/VBoxContainer/AdvancedToggle"]
+layout_mode = 2
+
+[node name="AdvancedLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/AdvancedToggle"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[b]Advanced[/b] settings"
+
+[node name="Save" type="Button" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Graphics" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("target_vis_picker", "target_background_toggle", "target_bg_picker", "target_color_picker", "target_preview", "background_options_container", "menu_button")]
+visible = false
 layout_mode = 2
 script = ExtResource("1_a0l5e")
-resolution_picker = NodePath("GraphicsOrganizer/ResolutionCntr/OptionButton")
 target_vis_picker = NodePath("GraphicsOrganizer/VisibilitySelector")
 target_background_toggle = NodePath("GraphicsOrganizer/TargetWords/UseBG")
 target_bg_picker = NodePath("GraphicsOrganizer/BGOptCntr/BGColorCntr/BGColorPicker")
 target_color_picker = NodePath("GraphicsOrganizer/BGOptCntr/TargetColorCntr/TargetColorPicker")
 target_preview = NodePath("GraphicsOrganizer/BGOptCntr/TargetPreview")
 background_options_container = NodePath("GraphicsOrganizer/BGOptCntr")
+menu_button = NodePath("GraphicsOrganizer/Save")
 metadata/_tab_index = 1
 
 [node name="GraphicsOrganizer" type="VBoxContainer" parent="OptionTabs/Graphics"]
 layout_mode = 2
-
-[node name="ResolutionCntr" type="HBoxContainer" parent="OptionTabs/Graphics/GraphicsOrganizer"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="OptionTabs/Graphics/GraphicsOrganizer/ResolutionCntr"]
-layout_mode = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "[b]Resolution[/b]"
-fit_content = true
-
-[node name="OptionButton" type="OptionButton" parent="OptionTabs/Graphics/GraphicsOrganizer/ResolutionCntr"]
-layout_mode = 2
-size_flags_horizontal = 3
-selected = 0
-item_count = 3
-popup/item_0/text = "1080p"
-popup/item_1/text = "1366x768"
-popup/item_1/id = 1
-popup/item_2/text = "1440x900"
-popup/item_2/id = 2
 
 [node name="TargetDisplayCntr" type="HBoxContainer" parent="OptionTabs/Graphics/GraphicsOrganizer"]
 layout_mode = 2
@@ -251,6 +252,10 @@ theme = ExtResource("2_6lp2k")
 layout_mode = 2
 text = "Target Word"
 horizontal_alignment = 1
+
+[node name="Save" type="Button" parent="OptionTabs/Graphics/GraphicsOrganizer"]
+layout_mode = 2
+text = "Main Menu"
 
 [node name="Sound" type="PanelContainer" parent="OptionTabs"]
 visible = false

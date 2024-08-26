@@ -191,7 +191,7 @@ func enter_pressed(text: String) -> void:
 		match command_entered:
 			"quit":
 				LevelLoader.save_next_level()
-				PlayerConfig.save_settings()
+				PlayerConfig.save_game()
 				main_menu_requested.emit()
 			_:
 				if PlayerConfig.speed_building_mode == true:
@@ -216,10 +216,11 @@ func load_level_data(level_path: String = "") -> void:
 
 	#Set correct level size
 	var level_size: int = LevelLoader.default_level_size
-	if PlayerConfig.min_level_length != 0 and level_size < PlayerConfig.min_level_length:
-		level_size = PlayerConfig.min_level_length
-	elif PlayerConfig.max_level_length != 0 and level_size > PlayerConfig.max_level_length:
-		level_size = PlayerConfig.max_level_length
+	if PlayerConfig.use_custom_size == true:
+		if level_size < PlayerConfig.min_level_length:
+			level_size = PlayerConfig.min_level_length
+		elif level_size > PlayerConfig.max_level_length:
+			level_size = PlayerConfig.max_level_length
 	if word_queue.size() < level_size:
 		word_queue.append_array(word_queue)
 
@@ -270,5 +271,5 @@ func pause_game(menu_open: bool = false) -> void:
 
 func quit_game() -> void:
 	player.save_data()
-	PlayerConfig.save_settings()
+	PlayerConfig.save_game()
 	main_menu_requested.emit()
