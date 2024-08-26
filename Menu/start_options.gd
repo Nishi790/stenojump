@@ -98,7 +98,7 @@ func match_sequence(sequence_name: String) -> bool:
 			change_level_sequence(1)
 			return true
 		"custom":
-			change_level_sequence(999)
+			change_level_sequence(2)
 			return true
 		_:
 			var  num_options: int = level_sequence_selector.item_count
@@ -137,7 +137,7 @@ func change_level_sequence(sequence: int) -> void:
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.LAPWING
 		1:
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.LEARN_PLOVER
-		999:
+		2:
 			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.OTHER
 			file_selector_dialogue.set_visible(true)
 			file_selector_dialogue.grab_focus()
