@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
 [ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="2_ggvbu"]
-[ext_resource type="Texture2D" uid="uid://okv87w411ka7" path="res://textures/parallax_mountain/1.Sky_free.png" id="2_hltiy"]
 [ext_resource type="Script" path="res://in_game/background.gd" id="2_lekyf"]
 [ext_resource type="Texture2D" uid="uid://b6pa1ue8cggn8" path="res://textures/2.Clouds.png" id="3_43k8i"]
-[ext_resource type="Texture2D" uid="uid://bjuptomxyio6c" path="res://textures/parallax_mountain/2.Mountains.png" id="3_x2d76"]
-[ext_resource type="Texture2D" uid="uid://b21dyccv8hpfl" path="res://textures/parallax_mountain/3.Trees_back.png" id="4_111ee"]
-[ext_resource type="Texture2D" uid="uid://c0pwob67hjyij" path="res://textures/parallax_mountain/4.Groundt.png" id="5_kw42g"]
+[ext_resource type="Texture2D" uid="uid://nc4l23qs4ik5" path="res://textures/parallax_rundown_city/1.Sky.png" id="3_hogu4"]
+[ext_resource type="Texture2D" uid="uid://b607hcvlw4s1i" path="res://textures/parallax_rundown_city/2.Buildings.png" id="5_olme4"]
+[ext_resource type="Texture2D" uid="uid://80jglwphafep" path="res://textures/parallax_rundown_city/3.Wall.png" id="6_tek7b"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
+[ext_resource type="Texture2D" uid="uid://c2p23dhrq5uty" path="res://textures/parallax_rundown_city/4.Sidewalk.png" id="7_xa3wr"]
 [ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="11_c2pqa"]
 [ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="12_01mxu"]
 
@@ -22,6 +22,7 @@ normal = Vector2(0, 1)
 size = Vector2(123, 187)
 
 [node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background")]
+texture_filter = 1
 script = ExtResource("1_igruv")
 obstacle_manager = NodePath("ObstacleManager")
 player = NodePath("Player")
@@ -38,9 +39,10 @@ autoscroll = Vector2(-10, 0)
 ignore_camera_scroll = true
 
 [node name="SkySprite" type="Sprite2D" parent="Background/SkyBackground"]
+texture_filter = 1
 position = Vector2(960, 540)
 scale = Vector2(6, 6)
-texture = ExtResource("2_hltiy")
+texture = ExtResource("3_hogu4")
 
 [node name="CloudsBG" type="Parallax2D" parent="Background"]
 autoscroll = Vector2(-30, 0)
@@ -57,9 +59,10 @@ autoscroll = Vector2(-50, 0)
 ignore_camera_scroll = true
 
 [node name="Layer2Sprite" type="Sprite2D" parent="Background/ParallaxLayer2"]
+texture_filter = 1
 position = Vector2(960, 540)
 scale = Vector2(6, 6)
-texture = ExtResource("3_x2d76")
+texture = ExtResource("5_olme4")
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.5, 1)
@@ -70,7 +73,7 @@ ignore_camera_scroll = true
 [node name="Layer3Sprite" type="Sprite2D" parent="Background/ParallaxLayer3"]
 position = Vector2(960, 540)
 scale = Vector2(6, 6)
-texture = ExtResource("4_111ee")
+texture = ExtResource("6_tek7b")
 
 [node name="GroundLayer" type="Parallax2D" parent="Background"]
 repeat_size = Vector2(1920, 0)
@@ -80,7 +83,7 @@ ignore_camera_scroll = true
 [node name="GroundSprite" type="Sprite2D" parent="Background/GroundLayer"]
 position = Vector2(960, 540)
 scale = Vector2(6, 6)
-texture = ExtResource("5_kw42g")
+texture = ExtResource("7_xa3wr")
 
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("new_word_timer")]
 script = ExtResource("7_n7ocu")
@@ -90,10 +93,10 @@ new_word_timer = NodePath("NewWordTimer")
 [node name="NewWordTimer" type="Timer" parent="ObstacleManager"]
 
 [node name="Player" parent="." instance=ExtResource("2_ggvbu")]
-position = Vector2(97, 811)
+position = Vector2(97, 877)
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(100, 900)
+position = Vector2(100, 979)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_uo43n")

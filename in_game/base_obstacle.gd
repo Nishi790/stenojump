@@ -31,3 +31,7 @@ func _physics_process(delta: float) -> void:
 
 func reset_word() -> void:
 	position.x = get_viewport_rect().size.x
+
+
+func hide_target(target_hidden: bool) -> void:
+	target_container.visible = !target_hidden

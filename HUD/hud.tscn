@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs4j8lqe5svww"]
+[gd_scene load_steps=9 format=3 uid="uid://cs4j8lqe5svww"]
 
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="1_c1y4c"]
 [ext_resource type="Script" path="res://HUD/hud.gd" id="2_t68vm"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://in_game/words_per_minute.gd" id="6_njpiu"]
 [ext_resource type="Script" path="res://in_game/lives_counter.gd" id="7_2iiwr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwth0"]
+bg_color = Color(0, 0, 0, 0.156863)
+
 [node name="HUD" type="Control" node_paths=PackedStringArray("ingame_message", "lives_counter", "score_counter", "word_counter", "wpm_counter", "message_container", "input_box")]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
@@ -16,84 +19,93 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme = ExtResource("1_c1y4c")
 script = ExtResource("2_t68vm")
-ingame_message = NodePath("GameMessageContainer/GameMessagePanel/GameMessage")
-lives_counter = NodePath("GUIOrganizer/MidRowOrganizer/LivesCounter")
-score_counter = NodePath("GUIOrganizer/FirstRowOrganizer/ScoreLabel")
-word_counter = NodePath("GUIOrganizer/MidRowOrganizer/WordsRemaining")
-wpm_counter = NodePath("GUIOrganizer/FirstRowOrganizer/WordsPerMinute")
-message_container = NodePath("GameMessageContainer")
-input_box = NodePath("GUIOrganizer/MarginContainer/InputBox")
+ingame_message = NodePath("MarginContainer/GameMessageContainer/GameMessagePanel/GameMessage")
+lives_counter = NodePath("MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/MidRowOrganizer/LivesCounter")
+score_counter = NodePath("MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/FirstRowOrganizer/ScoreLabel")
+word_counter = NodePath("MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/MidRowOrganizer/WordsRemaining")
+wpm_counter = NodePath("MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/FirstRowOrganizer/WordsPerMinute")
+message_container = NodePath("MarginContainer/GameMessageContainer")
+input_box = NodePath("MarginContainer/GUIOrganizer/MarginContainer/InputBox")
 pause_menu_scene = ExtResource("3_8s8xp")
 
-[node name="GameMessageContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameMessageContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GameMessagePanel" type="PanelContainer" parent="GameMessageContainer"]
+[node name="GameMessagePanel" type="PanelContainer" parent="MarginContainer/GameMessageContainer"]
 layout_mode = 2
 
-[node name="GameMessage" type="Label" parent="GameMessageContainer/GameMessagePanel"]
+[node name="GameMessage" type="Label" parent="MarginContainer/GameMessageContainer/GameMessagePanel"]
 layout_mode = 2
 text = "Game Over"
 
-[node name="GUIOrganizer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FirstRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
+[node name="GUIOrganizer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="WordsPerMinute" type="Label" parent="GUIOrganizer/FirstRowOrganizer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/GUIOrganizer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwth0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GUIOrganizer/PanelContainer"]
+layout_mode = 2
+
+[node name="FirstRowOrganizer" type="HBoxContainer" parent="MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WordsPerMinute" type="Label" parent="MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/FirstRowOrganizer"]
+layout_mode = 2
+theme_type_variation = &"LightLabel"
 text = "Words Per Minute"
 script = ExtResource("6_njpiu")
 
-[node name="ScoreLabel" type="Label" parent="GUIOrganizer/FirstRowOrganizer"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/FirstRowOrganizer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"LightLabel"
 text = "Score: 0"
 horizontal_alignment = 2
 script = ExtResource("5_20ws2")
 
-[node name="MidRowOrganizer" type="HBoxContainer" parent="GUIOrganizer"]
+[node name="MidRowOrganizer" type="HBoxContainer" parent="MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="WordsRemaining" type="Label" parent="GUIOrganizer/MidRowOrganizer"]
+[node name="WordsRemaining" type="Label" parent="MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/MidRowOrganizer"]
 layout_mode = 2
+theme_type_variation = &"LightLabel"
 text = "Words Left"
 script = ExtResource("4_18ww5")
 
-[node name="TopSpacer" type="CenterContainer" parent="GUIOrganizer/MidRowOrganizer"]
+[node name="TopSpacer" type="CenterContainer" parent="MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/MidRowOrganizer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LivesCounter" type="Label" parent="GUIOrganizer/MidRowOrganizer"]
+[node name="LivesCounter" type="Label" parent="MarginContainer/GUIOrganizer/PanelContainer/VBoxContainer/MidRowOrganizer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"LightLabel"
 text = "Lives"
 horizontal_alignment = 2
 script = ExtResource("7_2iiwr")
 
-[node name="Control2" type="Control" parent="GUIOrganizer"]
+[node name="Control2" type="Control" parent="MarginContainer/GUIOrganizer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="GUIOrganizer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GUIOrganizer"]
 layout_mode = 2
 theme_override_constants/margin_left = 36
 theme_override_constants/margin_bottom = 48
 
-[node name="InputBox" type="LineEdit" parent="GUIOrganizer/MarginContainer"]
+[node name="InputBox" type="LineEdit" parent="MarginContainer/GUIOrganizer/MarginContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0

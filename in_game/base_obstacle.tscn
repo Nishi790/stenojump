@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" path="res://in_game/base_obstacle.gd" id="1_i8uxn"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_kgoey"]
+[ext_resource type="Texture2D" uid="uid://cfwpi42oihe1t" path="res://textures/pylon.png" id="2_oce6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgo0o"]
-size = Vector2(21, 60)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lc02r"]
+size = Vector2(24, 60)
 
 [node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container")]
 script = ExtResource("1_i8uxn")
@@ -14,13 +13,14 @@ word_label = NodePath("TargetPanel/TargetWord")
 target_container = NodePath("TargetPanel")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -30)
+position = Vector2(0.75, -30)
 shape = SubResource("RectangleShape2D_bgo0o")
 
 [node name="ObstacleSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -30)
-scale = Vector2(22, 60)
-texture = SubResource("PlaceholderTexture2D_lc02r")
+texture_filter = 1
+position = Vector2(0, -96)
+scale = Vector2(6, 6)
+texture = ExtResource("2_oce6c")
 
 [node name="TargetPanel" type="PanelContainer" parent="."]
 anchors_preset = 7
