@@ -1,15 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=12 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
+[ext_resource type="PackedScene" uid="uid://5w8ptyi4ic4y" path="res://in_game/background.tscn" id="2_f4riy"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
 [ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="2_ggvbu"]
-[ext_resource type="Script" path="res://in_game/background.gd" id="2_lekyf"]
-[ext_resource type="Texture2D" uid="uid://b6pa1ue8cggn8" path="res://textures/2.Clouds.png" id="3_43k8i"]
-[ext_resource type="Texture2D" uid="uid://nc4l23qs4ik5" path="res://textures/parallax_rundown_city/1.Sky.png" id="3_hogu4"]
-[ext_resource type="Texture2D" uid="uid://b607hcvlw4s1i" path="res://textures/parallax_rundown_city/2.Buildings.png" id="5_olme4"]
-[ext_resource type="Texture2D" uid="uid://80jglwphafep" path="res://textures/parallax_rundown_city/3.Wall.png" id="6_tek7b"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
-[ext_resource type="Texture2D" uid="uid://c2p23dhrq5uty" path="res://textures/parallax_rundown_city/4.Sidewalk.png" id="7_xa3wr"]
 [ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="11_c2pqa"]
 [ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="12_01mxu"]
 
@@ -21,69 +16,21 @@ normal = Vector2(0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ooyp2"]
 size = Vector2(123, 187)
 
-[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background")]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_y13st"]
+a = Vector2(0, -100)
+b = Vector2(0, 0)
+
+[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background", "obstacle_detector", "range_trigger")]
 texture_filter = 1
 script = ExtResource("1_igruv")
 obstacle_manager = NodePath("ObstacleManager")
 player = NodePath("Player")
 hud = NodePath("HUD")
 background = NodePath("Background")
+obstacle_detector = NodePath("ObstacleDetector")
+range_trigger = NodePath("JumpRangeTrigger")
 
-[node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("ground_sprite")]
-script = ExtResource("2_lekyf")
-ground_sprite = NodePath("GroundLayer")
-
-[node name="SkyBackground" type="Parallax2D" parent="Background"]
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-10, 0)
-ignore_camera_scroll = true
-
-[node name="SkySprite" type="Sprite2D" parent="Background/SkyBackground"]
-texture_filter = 1
-position = Vector2(960, 540)
-scale = Vector2(6, 6)
-texture = ExtResource("3_hogu4")
-
-[node name="CloudsBG" type="Parallax2D" parent="Background"]
-autoscroll = Vector2(-30, 0)
-ignore_camera_scroll = true
-
-[node name="CloudSprite" type="Sprite2D" parent="Background/CloudsBG"]
-position = Vector2(960, 540)
-scale = Vector2(6, 6)
-texture = ExtResource("3_43k8i")
-
-[node name="ParallaxLayer2" type="Parallax2D" parent="Background"]
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-50, 0)
-ignore_camera_scroll = true
-
-[node name="Layer2Sprite" type="Sprite2D" parent="Background/ParallaxLayer2"]
-texture_filter = 1
-position = Vector2(960, 540)
-scale = Vector2(6, 6)
-texture = ExtResource("5_olme4")
-
-[node name="ParallaxLayer3" type="Parallax2D" parent="Background"]
-scroll_scale = Vector2(0.5, 1)
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
-ignore_camera_scroll = true
-
-[node name="Layer3Sprite" type="Sprite2D" parent="Background/ParallaxLayer3"]
-position = Vector2(960, 540)
-scale = Vector2(6, 6)
-texture = ExtResource("6_tek7b")
-
-[node name="GroundLayer" type="Parallax2D" parent="Background"]
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-200, 0)
-ignore_camera_scroll = true
-
-[node name="GroundSprite" type="Sprite2D" parent="Background/GroundLayer"]
-position = Vector2(960, 540)
-scale = Vector2(6, 6)
-texture = ExtResource("7_xa3wr")
+[node name="Background" parent="." instance=ExtResource("2_f4riy")]
 
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("new_word_timer")]
 script = ExtResource("7_n7ocu")
@@ -113,5 +60,11 @@ script = ExtResource("12_01mxu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
 position = Vector2(870.5, 853.5)
 shape = SubResource("RectangleShape2D_ooyp2")
+
+[node name="JumpRangeTrigger" type="Area2D" parent="."]
+position = Vector2(275, 979)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpRangeTrigger"]
+shape = SubResource("SegmentShape2D_y13st")
 
 [node name="HUD" parent="." instance=ExtResource("11_c2pqa")]

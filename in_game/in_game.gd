@@ -10,6 +10,8 @@ signal main_menu_requested
 @export var player: Player
 @export var hud: HUD
 @export var background: BackgroundManager
+@export var obstacle_detector: Area2D
+@export var range_trigger: Area2D
 
 var input_box: LineEdit
 
@@ -57,6 +59,8 @@ func _ready() -> void:
 	obstacle_manager.new_target_word.connect(set_target_word)
 	target_speed_changed.connect(obstacle_manager.set_speed)
 	obstacle_manager.words_per_obstacle_changed.connect(set_words_per_obstacle)
+	obstacle_detector.body_entered.connect(obstacle_manager.show_target)
+
 
 	#Connect player signals
 	player.reset_word.connect(reset_word)
@@ -64,7 +68,7 @@ func _ready() -> void:
 	player.lives_changed.connect(hud.lives_counter.update_lives_counter)
 	hud.lives_counter.update_lives_counter(player.lives)
 	obstacle_manager.obstacle_queue_emptied.connect(player.end_level)
-	$ObstacleDetector.start_running.connect(player.start_run)
+	obstacle_detector.start_running.connect(player.start_run)
 
 	#Connect HUD Signals
 	input_box = hud.input_box

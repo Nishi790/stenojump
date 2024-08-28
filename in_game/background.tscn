@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://5w8ptyi4ic4y"]
+
+[ext_resource type="Script" path="res://in_game/background.gd" id="1_huj2q"]
+[ext_resource type="Texture2D" uid="uid://nc4l23qs4ik5" path="res://textures/parallax_rundown_city/1.Sky.png" id="2_cwdu8"]
+[ext_resource type="Texture2D" uid="uid://b6pa1ue8cggn8" path="res://textures/2.Clouds.png" id="3_qaf5d"]
+[ext_resource type="Texture2D" uid="uid://b607hcvlw4s1i" path="res://textures/parallax_rundown_city/2.Buildings.png" id="4_2y0jl"]
+[ext_resource type="Texture2D" uid="uid://80jglwphafep" path="res://textures/parallax_rundown_city/3.Wall.png" id="5_gbfnn"]
+[ext_resource type="Texture2D" uid="uid://c2p23dhrq5uty" path="res://textures/parallax_rundown_city/4.Sidewalk.png" id="6_0iy4q"]
+
+[node name="Background" type="Node2D" node_paths=PackedStringArray("ground_sprite")]
+script = ExtResource("1_huj2q")
+ground_sprite = NodePath("GroundLayer")
+
+[node name="SkyBackground" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-10, 0)
+ignore_camera_scroll = true
+
+[node name="SkySprite" type="Sprite2D" parent="SkyBackground"]
+texture_filter = 1
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("2_cwdu8")
+
+[node name="CloudsBG" type="Parallax2D" parent="."]
+autoscroll = Vector2(-30, 0)
+ignore_camera_scroll = true
+
+[node name="CloudSprite" type="Sprite2D" parent="CloudsBG"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("3_qaf5d")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
+ignore_camera_scroll = true
+
+[node name="Layer2Sprite" type="Sprite2D" parent="ParallaxLayer2"]
+texture_filter = 1
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("4_2y0jl")
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-100, 0)
+ignore_camera_scroll = true
+
+[node name="Layer3Sprite" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("5_gbfnn")
+
+[node name="GroundLayer" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-200, 0)
+ignore_camera_scroll = true
+
+[node name="GroundSprite" type="Sprite2D" parent="GroundLayer"]
+position = Vector2(960, 540)
+scale = Vector2(6, 6)
+texture = ExtResource("6_0iy4q")

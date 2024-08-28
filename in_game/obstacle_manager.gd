@@ -64,10 +64,14 @@ func add_word(new_words: Array[Dictionary]) -> void:
 	new_obstacle.score = point_value
 	new_obstacle.hint = final_hint
 	new_obstacle.number_of_targets = new_words.size()
+	if PlayerConfig.target_visibility != PlayerConfig.TargetVisibility.ALL:
+		new_obstacle.hide_target(true)
 
 	#notify game of the current target if this is the only target on screen
 	if current_obstacle_queue.size() == 1:
 		new_target_word.emit(new_obstacle.target_word)
+		if PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.NEXT:
+			new_obstacle.hide_target(false)
 
 
 func word_cleared() -> void:
@@ -79,6 +83,9 @@ func word_cleared() -> void:
 
 	if current_obstacle_queue.size() == 0:
 		obstacle_queue_emptied.emit()
+
+	if PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.NEXT:
+		current_obstacle_queue[0].hide_target(false)
 
 
 func reset_words() -> void:
@@ -131,3 +138,8 @@ func set_speed(wpm: int) -> void:
 	var obstacles_per_min: int = wpm/words_per_obstacle
 	new_word_interval = 60.0/float(obstacles_per_min)
 	words_per_obstacle_changed.emit(words_per_obstacle)
+
+
+func show_target(target: PhysicsBody2D) -> void:
+	if target is Obstacle:
+		target.hide_target(false)
