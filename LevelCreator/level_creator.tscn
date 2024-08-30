@@ -1,0 +1,175 @@
+[gd_scene load_steps=2 format=3 uid="uid://bipkt1ocmkvej"]
+
+[ext_resource type="Script" path="res://LevelCreator/level_creator.gd" id="1_5ijgv"]
+
+[node name="LevelCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Split" type="HSplitContainer" parent="Background" node_paths=PackedStringArray("edit_existing_button", "new_level_button", "save_path_button", "file_selector", "save_file_name", "level_number_selector", "level_order_selector", "next_level_path_edit", "next_level_file_button", "select_targets_from_file_button", "tsv_text_box", "parse_tsv_button", "plain_text_box", "parse_text_button", "save_button", "target_list")]
+layout_mode = 2
+split_offset = 540
+script = ExtResource("1_5ijgv")
+edit_existing_button = NodePath("LevelElements/HBoxContainer/EditLevel")
+new_level_button = NodePath("LevelElements/HBoxContainer/NewLevel")
+save_path_button = NodePath("LevelElements/SavePathButton")
+file_selector = NodePath("../FileDialog")
+save_file_name = NodePath("LevelElements/SaveFileName")
+level_number_selector = NodePath("LevelElements/LvlNum/LevelNumber")
+level_order_selector = NodePath("LevelElements/OrderCntr/Orders")
+next_level_path_edit = NodePath("LevelElements/NextLevelCntr/NextLevelText")
+next_level_file_button = NodePath("LevelElements/SelectNextLevel")
+select_targets_from_file_button = NodePath("LevelElements/TargetsFromFile")
+tsv_text_box = NodePath("LevelElements/TSVCSVCopyPaste")
+parse_tsv_button = NodePath("LevelElements/ParseTSV")
+plain_text_box = NodePath("LevelElements/PlainTextCopyPaste")
+parse_text_button = NodePath("LevelElements/ParsePlainText")
+save_button = NodePath("LevelElements/Save")
+target_list = NodePath("ScrollContainer/TargetList")
+
+[node name="LevelElements" type="VBoxContainer" parent="Background/Split"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Split/LevelElements"]
+layout_mode = 2
+
+[node name="EditLevel" type="Button" parent="Background/Split/LevelElements/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit Existing Level"
+
+[node name="NewLevel" type="Button" parent="Background/Split/LevelElements/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create New Level"
+
+[node name="SavePathButton" type="Button" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "Select Level Path"
+
+[node name="SaveFileName" type="LineEdit" parent="Background/Split/LevelElements"]
+layout_mode = 2
+placeholder_text = "Enter level file name"
+
+[node name="LvlNum" type="HBoxContainer" parent="Background/Split/LevelElements"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/Split/LevelElements/LvlNum"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Number:"
+fit_content = true
+
+[node name="LevelNumber" type="SpinBox" parent="Background/Split/LevelElements/LvlNum"]
+layout_mode = 2
+
+[node name="OrderCntr" type="HBoxContainer" parent="Background/Split/LevelElements"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/Split/LevelElements/OrderCntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Default Level Order:"
+fit_content = true
+
+[node name="Orders" type="OptionButton" parent="Background/Split/LevelElements/OrderCntr"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Random"
+popup/item_1/text = "Ordered"
+popup/item_1/id = 1
+
+[node name="NextLevelCntr" type="HBoxContainer" parent="Background/Split/LevelElements"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/Split/LevelElements/NextLevelCntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Path to next level:"
+fit_content = true
+
+[node name="NextLevelText" type="LineEdit" parent="Background/Split/LevelElements/NextLevelCntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "Enter an absolute path unless the next level is found in the level_data folder. If linking to a level_data file, you can simply provide the file name. "
+fit_content = true
+
+[node name="SelectNextLevel" type="Button" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "Select next level from file system"
+
+[node name="TargetInstructions" type="RichTextLabel" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "A list of target words in a plain text file can be converted into a level automatically by selecting it below. 
+
+For varied points per obstacle and hints, provide a comma or tab separated list with one line per word. The target word must be first in each row. The hint and score can be entered in either order, provided it is consistent throughout the file. If only words and hints are included, the system will generate a score for each word based on the number of strokes required. 
+
+Reviewing and, if needed, editing the generated items is recommended before saving. All entries can be manually edited. "
+fit_content = true
+
+[node name="TargetsFromFile" type="Button" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "Add targets from a file"
+
+[node name="CopyPasteInstructions" type="RichTextLabel" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "If you have your elements in a plain text format as a tab or comma separated list, you can copy and paste it below to generate as if from a file. "
+fit_content = true
+
+[node name="TSVCSVCopyPaste" type="TextEdit" parent="Background/Split/LevelElements"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Paste your list here with one target word per line, followed by the hint and point value"
+wrap_mode = 1
+
+[node name="ParseTSV" type="Button" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "Generate Targets"
+
+[node name="JustText" type="RichTextLabel" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "If you have text without hints or point values, paste it below to generate the target entries with no hint and a default score of 1 per target."
+fit_content = true
+
+[node name="PlainTextCopyPaste" type="TextEdit" parent="Background/Split/LevelElements"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Paste your text here"
+
+[node name="ParsePlainText" type="Button" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "Generate Targets"
+
+[node name="Save" type="Button" parent="Background/Split/LevelElements"]
+layout_mode = 2
+text = "Save Level File
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/Split"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="TargetList" type="VBoxContainer" parent="Background/Split/ScrollContainer"]
+layout_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="Background"]
+initial_position = 1
+size = Vector2i(500, 600)
+access = 2

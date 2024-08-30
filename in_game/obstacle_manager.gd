@@ -52,9 +52,9 @@ func add_word(new_words: Array[Dictionary]) -> void:
 	var point_value: int = 0
 	var hints: PackedStringArray = []
 	for word in new_words:
-		target_words.append(word["word"])
+		target_words.append(String(word["word"]))
 		point_value += word["score"]
-		hints.append(word["hint"])
+		hints.append(String(word["hint"]))
 	var separator: String = " "
 	var final_target: String = separator.join(target_words)
 	var final_hint: String = separator.join(hints)

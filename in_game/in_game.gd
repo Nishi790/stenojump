@@ -65,15 +65,15 @@ func _ready() -> void:
 	#Connect player signals
 	player.reset_word.connect(reset_word)
 	player.game_over.connect(game_over)
-	player.lives_changed.connect(hud.lives_counter.update_lives_counter)
+	player.lives_changed.connect(Callable(hud.lives_counter.update_lives_counter))
 	hud.lives_counter.update_lives_counter(player.lives)
 	obstacle_manager.obstacle_queue_emptied.connect(player.end_level)
 	obstacle_detector.start_running.connect(player.start_run)
 
 	#Connect HUD Signals
 	input_box = hud.input_box
-	score_changed.connect(hud.score_counter.update_score_text)
-	words_left_changed.connect(hud.word_counter.update_word_count)
+	score_changed.connect(Callable(hud.score_counter.update_score_text))
+	words_left_changed.connect(Callable(hud.word_counter.update_word_count))
 	input_box.text_changed.connect(update_text)
 	input_box.text_submitted.connect(enter_pressed)
 	wpm_updated.connect(hud.wpm_changed)
