@@ -41,6 +41,7 @@ func _ready() -> void:
 	new_level_button.pressed.connect(create_new_level)
 	save_path_button.pressed.connect(select_save_path)
 	save_file_name.text_changed.connect(set_save_file)
+	edit_existing_button.pressed.connect(open_level_selector)
 
 	level_number_selector.value_changed.connect(set_level_number)
 	level_size_selector.value_changed.connect(set_level_size)
@@ -61,23 +62,55 @@ func _ready() -> void:
 
 func create_new_level() -> void:
 	active_level_data = LevelData.new()
-	restore_defaults()
+	active_level_data.target_changed.connect(target_changed)
+	display_level_data()
 	save_path_button.grab_focus()
 
 
-#Restores all level data being displayed to the defaults for a new level
-func restore_defaults() -> void:
-	save_path_button.text = "Select Level Path"
-	level_number_selector.value = 0
-	level_order_selector.select(0)
-	next_level_path_edit.text = ""
-	#Clear target list here
+func open_level_selector() -> void:
+	file_selector.title = "Select level to edit"
+	file_selector.set_visible(true)
+	file_selector.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_selector.grab_focus()
+	file_selector.file_selected.connect(load_existing_level, 4)
+
+
+func load_existing_level(path: String) -> void:
+	LevelLoader.load_level(path)
+	active_level_data.read_level_data()
+	var final_slice: int = path.get_slice_count("/") - 1
+	active_level_data.save_file_name = path.get_slice("/", final_slice)
+	active_level_data.save_dir = path.trim_suffix(active_level_data.save_file_name)
+	display_level_data()
+
+
+#Restores all level data being displayed to match the data
+func display_level_data() -> void:
+	if active_level_data.save_path == "":
+		save_path_button.text = "Select Level Path"
+		save_file_name.text = ""
+	else:
+		save_path_button.text = active_level_data.save_dir
+		save_file_name.text = active_level_data.save_file_name
+	level_number_selector.value = active_level_data.level
+	level_size_selector.value = active_level_data.size
+	if active_level_data.order == LevelLoader.LevelOrder.RANDOM:
+		level_order_selector.select(0)
+	else:
+		level_order_selector.select(1)
+	next_level_path_edit.text = active_level_data.next_level
+	if target_list.get_child_count() > active_level_data.targets.size():
+		var number_to_free: int = target_list.get_child_count() - active_level_data.targets.size()
+		while number_to_free > 0:
+			number_to_free -= 1
+			target_list.get_child(number_to_free).queue_free()
+	for index in active_level_data.targets.size():
+		target_changed(index)
 
 
 func select_save_path() -> void:
 	file_selector.set_visible(true)
 	file_selector.file_mode = FileDialog.FILE_MODE_OPEN_DIR
-	file_selector.mode_overrides_title = false
 	file_selector.title = "Choose a save directory"
 	file_selector.grab_focus()
 	file_selector.dir_selected.connect(set_save_dir, 4)

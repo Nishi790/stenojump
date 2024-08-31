@@ -5,7 +5,7 @@ signal target_changed (target_index: int)
 
 @export var save_path: String :
 	get():
-		return save_dir + "/" + save_file_name
+		return save_dir.path_join(save_file_name)
 @export var save_dir: String
 @export var save_file_name: String
 @export var level: int
@@ -13,11 +13,19 @@ signal target_changed (target_index: int)
 @export var size: int
 @export var next_level: String
 
-@export var targets: Array[Dictionary]
+@export var targets: Array
 
 var word_key: String = "word"
 var score_key: String = "score"
 var hint_key: String = "hint"
+
+
+func read_level_data() -> void:
+	level = LevelLoader.level_number
+	order = LevelLoader.level_order
+	size = LevelLoader.default_level_size
+	next_level = LevelLoader.next_level_path
+	targets = LevelLoader.level_targets
 
 
 func add_target(target_data: Dictionary) -> void:
