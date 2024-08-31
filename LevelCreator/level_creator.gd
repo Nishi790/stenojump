@@ -1,5 +1,8 @@
 extends HSplitContainer
 
+signal quit_pressed
+signal menu_pressed
+
 @export var edit_existing_button: Button
 @export var new_level_button: Button
 @export var save_path_button: Button
@@ -45,12 +48,15 @@ func _ready() -> void:
 	next_level_file_button.pressed.connect(choose_next_level)
 	next_level_path_edit.text_changed.connect(set_next_level)
 
+	select_targets_from_file_button.pressed.connect(select_file_to_parse)
 	parse_tsv_button.pressed.connect(parse_tsv)
 	parse_text_button.pressed.connect(parse_text)
 
 	manual_entry_button.pressed.connect(add_entry)
 
 	save_button.pressed.connect(save_level)
+	quit_button.pressed.connect(quit_game)
+	menu_button.pressed.connect(return_to_menu)
 
 
 func create_new_level() -> void:
@@ -108,7 +114,6 @@ func set_order(index: int) -> void:
 func choose_next_level() -> void:
 	file_selector.set_visible(true)
 	file_selector.file_mode = FileDialog.FILE_MODE_OPEN_FILE
-	file_selector.mode_overrides_title = false
 	file_selector.title = "Select the next level"
 	file_selector.file_selected.connect(set_next_level, 4)
 	file_selector.ok_button_text = "Use This File"
@@ -118,6 +123,54 @@ func choose_next_level() -> void:
 func set_next_level(file: String) -> void:
 	next_level_path_edit.text = file
 	active_level_data.next_level = file
+
+
+func select_file_to_parse() -> void:
+	file_selector.set_visible(true)
+	file_selector.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_selector.title = "Select Source File"
+	file_selector.file_selected.connect(parse_file, 4)
+	file_selector.ok_button_text = "Select File"
+	file_selector.filters = ["*.txt", "*.csv", "*.tsv"]
+	file_selector.grab_focus()
+
+
+func parse_file(path: String) -> void:
+	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
+	if path.ends_with(".csv") or path.ends_with(".tsv"):
+		var delimiter: String = ","
+		if path.ends_with(".tsv"):
+			delimiter = "\t"
+		while file.get_position() < file.get_length():
+			var target_dict: Dictionary = {}
+			var line: PackedStringArray = file.get_csv_line(delimiter)
+			match line.size():
+				1:
+					target_dict["word"] = line[0]
+				2:
+					target_dict["word"] = line[0]
+					if line[1].is_valid_int():
+						target_dict["score"] = line[1]
+					else:
+						target_dict["hint"] = line[1]
+				_:
+					target_dict["word"] = line[0]
+					if line[1].is_valid_int():
+						target_dict["score"] = line[1]
+						target_dict["hint"] = line[2]
+					else:
+						target_dict["hint"] = line[1]
+						target_dict["score"] = line[2]
+			target_dict = auto_score(target_dict)
+			active_level_data.add_target(target_dict)
+	else:
+		while file.get_position() < file.get_length():
+			var words: PackedStringArray = file.get_line().split(" ")
+			for word in words:
+				var target_dict: Dictionary = {}
+				target_dict["word"] = word.to_lower()
+				target_dict = auto_score(target_dict)
+				active_level_data.add_target(target_dict)
 
 
 func parse_tsv() -> void:
@@ -219,6 +272,7 @@ func add_entry() -> void:
 	active_level_data.add_blank_target()
 
 
+#Deletes selected entry and re indexes all others as required
 func delete_entry(index: int) -> void:
 	active_level_data.targets.remove_at(index)
 	var current_index: int = index
@@ -226,3 +280,12 @@ func delete_entry(index: int) -> void:
 		var target_displayer: TargetDisplay = target_list.get_child(current_index) as TargetDisplay
 		target_displayer.entry_index -= 1
 		current_index += 1
+
+
+func quit_game() -> void:
+	quit_pressed.emit()
+	get_tree().quit()
+
+
+func return_to_menu() -> void:
+	menu_pressed.emit()

@@ -5,7 +5,7 @@ signal target_changed (target_index: int)
 
 @export var save_path: String :
 	get():
-		return save_dir + "\\" + save_file_name
+		return save_dir + "/" + save_file_name
 @export var save_dir: String
 @export var save_file_name: String
 @export var level: int

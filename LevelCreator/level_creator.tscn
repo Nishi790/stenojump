@@ -214,4 +214,5 @@ text = "Quit Game"
 [node name="FileDialog" type="FileDialog" parent="Background"]
 initial_position = 1
 size = Vector2i(500, 600)
+mode_overrides_title = false
 access = 2
