@@ -6,6 +6,7 @@ extends HSplitContainer
 @export var file_selector: FileDialog
 @export var save_file_name: LineEdit
 @export var level_number_selector: SpinBox
+@export var level_size_selector: SpinBox
 @export var level_order_selector: OptionButton
 @export var next_level_path_edit: LineEdit
 @export var next_level_file_button: Button
@@ -19,6 +20,11 @@ extends HSplitContainer
 @export var save_button: Button
 
 @export var target_list: VBoxContainer
+@export var target_scene: PackedScene
+@export var manual_entry_button: Button
+
+@export var menu_button: Button
+@export var quit_button: Button
 
 var active_level_data: LevelData
 
@@ -27,15 +33,24 @@ var active_level_data: LevelData
 func _ready() -> void:
 	#Initialize empty level data object for editting
 	active_level_data = LevelData.new()
+	active_level_data.target_changed.connect(target_changed)
 
 	new_level_button.pressed.connect(create_new_level)
 	save_path_button.pressed.connect(select_save_path)
 	save_file_name.text_changed.connect(set_save_file)
+
 	level_number_selector.value_changed.connect(set_level_number)
+	level_size_selector.value_changed.connect(set_level_size)
 	level_order_selector.item_selected.connect(set_order)
 	next_level_file_button.pressed.connect(choose_next_level)
-	next_level_path_edit.text_submitted.connect(set_next_level)
+	next_level_path_edit.text_changed.connect(set_next_level)
+
 	parse_tsv_button.pressed.connect(parse_tsv)
+	parse_text_button.pressed.connect(parse_text)
+
+	manual_entry_button.pressed.connect(add_entry)
+
+	save_button.pressed.connect(save_level)
 
 
 func create_new_level() -> void:
@@ -65,29 +80,29 @@ func select_save_path() -> void:
 
 func set_save_dir(dir: String) -> void:
 	save_path_button.text = dir
-	if save_file_name.text != "":
-		if not save_file_name.text.ends_with(".json"):
-			active_level_data.save_path = dir + save_file_name.text + ".json"
-		else:
-			active_level_data.save_path = dir + save_file_name.text
+	active_level_data.save_dir = dir
 
 
 func set_save_file(text: String) -> void:
 	var file_name: String = text.strip_edges()
 	if not text.ends_with(".json"):
 		file_name = file_name + ".json"
-	active_level_data.save_path = save_button.text + file_name
+	active_level_data.save_file_name = file_name
 
 
 func set_level_number(value: float) -> void:
-	active_level_data.level_number = int(value)
+	active_level_data.level = int(value)
+
+
+func set_level_size(value: float) -> void:
+	active_level_data.size = int(value)
 
 
 func set_order(index: int) -> void:
 	if index == 0:
-		active_level_data.level_order = LevelLoader.LevelOrder.RANDOM
+		active_level_data.order = LevelLoader.LevelOrder.RANDOM
 	elif index == 1:
-		active_level_data.level_order = LevelLoader.LevelOrder.ORDERED
+		active_level_data.order = LevelLoader.LevelOrder.ORDERED
 
 
 func choose_next_level() -> void:
@@ -102,10 +117,11 @@ func choose_next_level() -> void:
 
 func set_next_level(file: String) -> void:
 	next_level_path_edit.text = file
-	active_level_data.next_level_path = file
+	active_level_data.next_level = file
 
 
 func parse_tsv() -> void:
+	active_level_data.targets.clear()
 	var text: String = tsv_text_box.text
 	var lines: PackedStringArray = text.split("\n")
 	var separator: String = test_separator(lines[0])
@@ -125,7 +141,18 @@ func parse_tsv() -> void:
 		if items.size() > 2:
 			target_dict[index_2_type] = items[2]
 		target_dict = auto_score(target_dict)
-		active_level_data.targets.append(target_dict)
+		active_level_data.add_target(target_dict)
+
+
+func parse_text() -> void:
+	active_level_data.targets.clear()
+	var text: String = plain_text_box.text
+	var tokens: PackedStringArray = text.split(" ")
+	for token in tokens:
+		var target_dict: Dictionary = {}
+		target_dict["word"] = token
+		target_dict = auto_score(target_dict)
+		active_level_data.add_target(target_dict)
 
 
 func test_separator(line: String) -> String:
@@ -159,3 +186,29 @@ func check_entry_order(splits: PackedStringArray) -> String:
 			else: return "hint"
 		_:
 			return ""
+
+
+func save_level() -> Error:
+	if active_level_data.save_path == "":
+		return ERR_FILE_BAD_PATH
+	else:
+		return active_level_data.save()
+
+
+#Called when target data is changed
+func target_changed(index: int) -> void:
+	var current_size: int = target_list.get_child_count()
+	if current_size - 1 < index:
+		var new_entry: TargetDisplay = target_scene.instantiate()
+		new_entry.display_data(active_level_data.targets[index])
+		new_entry.entry_index = index
+		target_list.add_child(new_entry)
+		new_entry.data_updated.connect(active_level_data.update_entry)
+	else:
+		var changed_entry: TargetDisplay  = target_list.get_child(index) as TargetDisplay
+		changed_entry.display_data(active_level_data.targets[index])
+
+
+#Creates blank target in the level data
+func add_entry() -> void:
+	active_level_data.add_blank_target()

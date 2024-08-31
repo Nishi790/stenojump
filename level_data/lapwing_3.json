@@ -2,7 +2,7 @@
 	"level": 3,
 	"order": "random",
 	"size": 30,
-	"next_level": "lapwing_4.json",
+	"next_level": "lapwing_review_1.json",
 	"targets": [
 		{"word": "dap", "score": 1, "hint": "TKAP"},
 		{"word": "dab", "score": 1, "hint": "TKAB"},

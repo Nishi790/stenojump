@@ -11,10 +11,12 @@ var level_order: LevelOrder
 var default_level_size: int
 var next_level_path: String
 
-func load_level(filepath : String) -> void:
+func load_level(filepath : String) -> Error:
 	level_path = filepath
 	#should error check for valid file path
 	var file := FileAccess.open(filepath, FileAccess.READ)
+	if file == null:
+		return FileAccess.get_open_error()
 	var json_content: String = file.get_as_text()
 	var json_handler: JSON = JSON.new()
 	var error: Error = json_handler.parse(json_content)
@@ -30,6 +32,7 @@ func load_level(filepath : String) -> void:
 		level_targets = data["targets"]
 		PlayerConfig.current_level_path = ProjectSettings.globalize_path(level_path)
 	else: print_debug(error_string(error))
+	return error
 
 
 func load_next_level() -> void:

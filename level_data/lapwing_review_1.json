@@ -1,0 +1,2013 @@
+{
+	"level": 4,
+	"next_level": "lapwing_2_1.json",
+	"order": "random",
+	"size": 40,
+	"targets": [
+		{
+			"hint": "STEUF",
+			"score": 1,
+			"word": "stiff"
+		},
+		{
+			"hint": "STEUR",
+			"score": 1,
+			"word": "stir"
+		},
+		{
+			"hint": "STEUP",
+			"score": 1,
+			"word": "stip"
+		},
+		{
+			"hint": "STEUL",
+			"score": 1,
+			"word": "still"
+		},
+		{
+			"hint": "SKEUF",
+			"score": 1,
+			"word": "skiff"
+		},
+		{
+			"hint": "SKEUP",
+			"score": 1,
+			"word": "skip"
+		},
+		{
+			"hint": "SKEUL",
+			"score": 1,
+			"word": "skill"
+		},
+		{
+			"hint": "SKEUT",
+			"score": 1,
+			"word": "skit"
+		},
+		{
+			"hint": "SKEUD",
+			"score": 1,
+			"word": "skid"
+		},
+		{
+			"hint": "SPEUF",
+			"score": 1,
+			"word": "spiff"
+		},
+		{
+			"hint": "SPEUL",
+			"score": 1,
+			"word": "spill"
+		},
+		{
+			"hint": "SPEUT",
+			"score": 1,
+			"word": "spit"
+		},
+		{
+			"hint": "SHEUP",
+			"score": 1,
+			"word": "ship"
+		},
+		{
+			"hint": "SHEUL",
+			"score": 1,
+			"word": "shill"
+		},
+		{
+			"hint": "TREUP",
+			"score": 1,
+			"word": "trip"
+		},
+		{
+			"hint": "TREUL",
+			"score": 1,
+			"word": "trill"
+		},
+		{
+			"hint": "TREUG",
+			"score": 1,
+			"word": "trig"
+		},
+		{
+			"hint": "KHEUP",
+			"score": 1,
+			"word": "chip"
+		},
+		{
+			"hint": "KHEUL",
+			"score": 1,
+			"word": "chill"
+		},
+		{
+			"hint": "KHEUT",
+			"score": 1,
+			"word": "chit"
+		},
+		{
+			"hint": "KREUL",
+			"score": 1,
+			"word": "krill"
+		},
+		{
+			"hint": "SEUF",
+			"score": 1,
+			"word": "sieve"
+		},
+		{
+			"hint": "SEUR",
+			"score": 1,
+			"word": "sir"
+		},
+		{
+			"hint": "SEUP",
+			"score": 1,
+			"word": "sip"
+		},
+		{
+			"hint": "SEUL",
+			"score": 1,
+			"word": "sill"
+		},
+		{
+			"hint": "SEUT",
+			"score": 1,
+			"word": "sit"
+		},
+		{
+			"hint": "SEUS",
+			"score": 1,
+			"word": "sis"
+		},
+		{
+			"hint": "TEUP",
+			"score": 1,
+			"word": "tip"
+		},
+		{
+			"hint": "TEUL",
+			"score": 1,
+			"word": "till"
+		},
+		{
+			"hint": "TEUD",
+			"score": 1,
+			"word": "tid"
+		},
+		{
+			"hint": "KEUP",
+			"score": 1,
+			"word": "kip"
+		},
+		{
+			"hint": "KEUL",
+			"score": 1,
+			"word": "kill"
+		},
+		{
+			"hint": "KEUT",
+			"score": 1,
+			"word": "kit"
+		},
+		{
+			"hint": "KEUS",
+			"score": 1,
+			"word": "kiss"
+		},
+		{
+			"hint": "KEUD",
+			"score": 1,
+			"word": "kid"
+		},
+		{
+			"hint": "PEUP",
+			"score": 1,
+			"word": "pip"
+		},
+		{
+			"hint": "PEUL",
+			"score": 1,
+			"word": "pill"
+		},
+		{
+			"hint": "PEUG",
+			"score": 1,
+			"word": "pig"
+		},
+		{
+			"hint": "PEUT",
+			"score": 1,
+			"word": "pit"
+		},
+		{
+			"hint": "WEUL",
+			"score": 1,
+			"word": "will"
+		},
+		{
+			"hint": "WEUG",
+			"score": 1,
+			"word": "wig"
+		},
+		{
+			"hint": "WEUT",
+			"score": 1,
+			"word": "wit"
+		},
+		{
+			"hint": "HEUP",
+			"score": 1,
+			"word": "hip"
+		},
+		{
+			"hint": "HEUL",
+			"score": 1,
+			"word": "hill"
+		},
+		{
+			"hint": "HEUG",
+			"score": 1,
+			"word": "hig"
+		},
+		{
+			"hint": "HEUT",
+			"score": 1,
+			"word": "hit"
+		},
+		{
+			"hint": "HEUS",
+			"score": 1,
+			"word": "his"
+		},
+		{
+			"hint": "HEUD",
+			"score": 1,
+			"word": "hid"
+		},
+		{
+			"hint": "REUF",
+			"score": 1,
+			"word": "riff"
+		},
+		{
+			"hint": "REUP",
+			"score": 1,
+			"word": "rip"
+		},
+		{
+			"hint": "REUB",
+			"score": 1,
+			"word": "rib"
+		},
+		{
+			"hint": "REUL",
+			"score": 1,
+			"word": "rill"
+		},
+		{
+			"hint": "REUG",
+			"score": 1,
+			"word": "rig"
+		},
+		{
+			"hint": "REUD",
+			"score": 1,
+			"word": "rid"
+		},
+		{
+			"hint": "REUZ",
+			"score": 1,
+			"word": "rizz"
+		},
+		{
+			"hint": "TKAP",
+			"score": 1,
+			"word": "dap"
+		},
+		{
+			"hint": "TKAB",
+			"score": 1,
+			"word": "dab"
+		},
+		{
+			"hint": "TKAT",
+			"score": 1,
+			"word": "dat"
+		},
+		{
+			"hint": "TKAD",
+			"score": 1,
+			"word": "dad"
+		},
+		{
+			"hint": "TKOF",
+			"score": 1,
+			"word": "dove"
+		},
+		{
+			"hint": "TKOL",
+			"score": 1,
+			"word": "doll"
+		},
+		{
+			"hint": "TKOG",
+			"score": 1,
+			"word": "dog"
+		},
+		{
+			"hint": "TKOT",
+			"score": 1,
+			"word": "dot"
+		},
+		{
+			"hint": "TKOS",
+			"score": 1,
+			"word": "does"
+		},
+		{
+			"hint": "TKEUF",
+			"score": 1,
+			"word": "diff"
+		},
+		{
+			"hint": "TKEUR",
+			"score": 1,
+			"word": "dir"
+		},
+		{
+			"hint": "TKEUP",
+			"score": 1,
+			"word": "dip"
+		},
+		{
+			"hint": "TKEUB",
+			"score": 1,
+			"word": "dib"
+		},
+		{
+			"hint": "TKEUL",
+			"score": 1,
+			"word": "dill"
+		},
+		{
+			"hint": "TKEUG",
+			"score": 1,
+			"word": "dig"
+		},
+		{
+			"hint": "TKEUD",
+			"score": 1,
+			"word": "did"
+		},
+		{
+			"hint": "TKEUZ",
+			"score": 1,
+			"word": "dizz"
+		},
+		{
+			"hint": "TKEF",
+			"score": 1,
+			"word": "deaf"
+		},
+		{
+			"hint": "TKER",
+			"score": 1,
+			"word": "der"
+		},
+		{
+			"hint": "TKEL",
+			"score": 1,
+			"word": "dell"
+		},
+		{
+			"hint": "TKET",
+			"score": 1,
+			"word": "debt"
+		},
+		{
+			"hint": "TKED",
+			"score": 1,
+			"word": "dead"
+		},
+		{
+			"hint": "TKUB",
+			"score": 1,
+			"word": "dub"
+		},
+		{
+			"hint": "TKUL",
+			"score": 1,
+			"word": "dull"
+		},
+		{
+			"hint": "TKUG",
+			"score": 1,
+			"word": "dug"
+		},
+		{
+			"hint": "TKUD",
+			"score": 1,
+			"word": "dud"
+		},
+		{
+			"hint": "PWHRAB",
+			"score": 1,
+			"word": "blab"
+		},
+		{
+			"hint": "PWHROB",
+			"score": 1,
+			"word": "blob"
+		},
+		{
+			"hint": "PWHROG",
+			"score": 1,
+			"word": "blog"
+		},
+		{
+			"hint": "PWHROT",
+			"score": 1,
+			"word": "blot"
+		},
+		{
+			"hint": "PWHREUP",
+			"score": 1,
+			"word": "blip"
+		},
+		{
+			"hint": "PWHREUS",
+			"score": 1,
+			"word": "bliss"
+		},
+		{
+			"hint": "PWHREB",
+			"score": 1,
+			"word": "bleb"
+		},
+		{
+			"hint": "PWHRES",
+			"score": 1,
+			"word": "bless"
+		},
+		{
+			"hint": "PWHRED",
+			"score": 1,
+			"word": "bled"
+		},
+		{
+			"hint": "PWHRUF",
+			"score": 1,
+			"word": "bluff"
+		},
+		{
+			"hint": "PWHRUR",
+			"score": 1,
+			"word": "blur"
+		},
+		{
+			"hint": "PWHRUP",
+			"score": 1,
+			"word": "blup"
+		},
+		{
+			"hint": "PWHRUB",
+			"score": 1,
+			"word": "blub"
+		},
+		{
+			"hint": "PWAR",
+			"score": 1,
+			"word": "bar"
+		},
+		{
+			"hint": "PWAB",
+			"score": 1,
+			"word": "bab"
+		},
+		{
+			"hint": "PWAG",
+			"score": 1,
+			"word": "bag"
+		},
+		{
+			"hint": "PWAT",
+			"score": 1,
+			"word": "bat"
+		},
+		{
+			"hint": "PWAD",
+			"score": 1,
+			"word": "bad"
+		},
+		{
+			"hint": "PWOR",
+			"score": 1,
+			"word": "bore"
+		},
+		{
+			"hint": "PWOP",
+			"score": 1,
+			"word": "bop"
+		},
+		{
+			"hint": "PWOB",
+			"score": 1,
+			"word": "bob"
+		},
+		{
+			"hint": "PWOG",
+			"score": 1,
+			"word": "bog"
+		},
+		{
+			"hint": "PWOT",
+			"score": 1,
+			"word": "bot"
+		},
+		{
+			"hint": "PWOS",
+			"score": 1,
+			"word": "boss"
+		},
+		{
+			"hint": "PWEUF",
+			"score": 1,
+			"word": "biff"
+		},
+		{
+			"hint": "PWEUB",
+			"score": 1,
+			"word": "bib"
+		},
+		{
+			"hint": "PWEUL",
+			"score": 1,
+			"word": "bill"
+		},
+		{
+			"hint": "PWEUG",
+			"score": 1,
+			"word": "big"
+		},
+		{
+			"hint": "PWEUT",
+			"score": 1,
+			"word": "bit"
+		},
+		{
+			"hint": "PWEUD",
+			"score": 1,
+			"word": "bid"
+		},
+		{
+			"hint": "PWEUZ",
+			"score": 1,
+			"word": "biz"
+		},
+		{
+			"hint": "PWEL",
+			"score": 1,
+			"word": "bell"
+		},
+		{
+			"hint": "PWEG",
+			"score": 1,
+			"word": "beg"
+		},
+		{
+			"hint": "PWET",
+			"score": 1,
+			"word": "bet"
+		},
+		{
+			"hint": "PWED",
+			"score": 1,
+			"word": "bed"
+		},
+		{
+			"hint": "PWUF",
+			"score": 1,
+			"word": "buff"
+		},
+		{
+			"hint": "PWUR",
+			"score": 1,
+			"word": "burr"
+		},
+		{
+			"hint": "PWUB",
+			"score": 1,
+			"word": "bub"
+		},
+		{
+			"hint": "PWUL",
+			"score": 1,
+			"word": "bull"
+		},
+		{
+			"hint": "PWUG",
+			"score": 1,
+			"word": "bug"
+		},
+		{
+			"hint": "PWUT",
+			"score": 1,
+			"word": "but"
+		},
+		{
+			"hint": "PWUS",
+			"score": 1,
+			"word": "bus"
+		},
+		{
+			"hint": "PWUD",
+			"score": 1,
+			"word": "bud"
+		},
+		{
+			"hint": "PWUZ",
+			"score": 1,
+			"word": "buzz"
+		},
+		{
+			"hint": "HRAF",
+			"score": 1,
+			"word": "laugh"
+		},
+		{
+			"hint": "HRAP",
+			"score": 1,
+			"word": "lap"
+		},
+		{
+			"hint": "HRAB",
+			"score": 1,
+			"word": "lab"
+		},
+		{
+			"hint": "HRAG",
+			"score": 1,
+			"word": "lag"
+		},
+		{
+			"hint": "HRAS",
+			"score": 1,
+			"word": "lass"
+		},
+		{
+			"hint": "HRAD",
+			"score": 1,
+			"word": "lad"
+		},
+		{
+			"hint": "HROF",
+			"score": 1,
+			"word": "love"
+		},
+		{
+			"hint": "HROR",
+			"score": 1,
+			"word": "lore"
+		},
+		{
+			"hint": "HROP",
+			"score": 1,
+			"word": "lop"
+		},
+		{
+			"hint": "HROB",
+			"score": 1,
+			"word": "lob"
+		},
+		{
+			"hint": "HROL",
+			"score": 1,
+			"word": "lol"
+		},
+		{
+			"hint": "HROG",
+			"score": 1,
+			"word": "log"
+		},
+		{
+			"hint": "HROT",
+			"score": 1,
+			"word": "lot"
+		},
+		{
+			"hint": "HROS",
+			"score": 1,
+			"word": "loss"
+		},
+		{
+			"hint": "HREUF",
+			"score": 1,
+			"word": "live"
+		},
+		{
+			"hint": "HREUP",
+			"score": 1,
+			"word": "lip"
+		},
+		{
+			"hint": "HREUB",
+			"score": 1,
+			"word": "lib"
+		},
+		{
+			"hint": "HREUT",
+			"score": 1,
+			"word": "lit"
+		},
+		{
+			"hint": "HREUD",
+			"score": 1,
+			"word": "lid"
+		},
+		{
+			"hint": "HREG",
+			"score": 1,
+			"word": "leg"
+		},
+		{
+			"hint": "HRET",
+			"score": 1,
+			"word": "let"
+		},
+		{
+			"hint": "HRES",
+			"score": 1,
+			"word": "less"
+		},
+		{
+			"hint": "HRED",
+			"score": 1,
+			"word": "led"
+		},
+		{
+			"hint": "HRUF",
+			"score": 1,
+			"word": "luff"
+		},
+		{
+			"hint": "HRUR",
+			"score": 1,
+			"word": "lure"
+		},
+		{
+			"hint": "HRUB",
+			"score": 1,
+			"word": "lub"
+		},
+		{
+			"hint": "HRUL",
+			"score": 1,
+			"word": "lull"
+		},
+		{
+			"hint": "HRUG",
+			"score": 1,
+			"word": "lug"
+		},
+		{
+			"hint": "STAF",
+			"score": 1,
+			"word": "staff"
+		},
+		{
+			"hint": "STAR",
+			"score": 1,
+			"word": "star"
+		},
+		{
+			"hint": "STAB",
+			"score": 1,
+			"word": "stab"
+		},
+		{
+			"hint": "STAG",
+			"score": 1,
+			"word": "stag"
+		},
+		{
+			"hint": "STAT",
+			"score": 1,
+			"word": "stat"
+		},
+		{
+			"hint": "STOR",
+			"score": 1,
+			"word": "store"
+		},
+		{
+			"hint": "STOP",
+			"score": 1,
+			"word": "stop"
+		},
+		{
+			"hint": "STEP",
+			"score": 1,
+			"word": "step"
+		},
+		{
+			"hint": "STET",
+			"score": 1,
+			"word": "stet"
+		},
+		{
+			"hint": "STED",
+			"score": 1,
+			"word": "stead"
+		},
+		{
+			"hint": "STUF",
+			"score": 1,
+			"word": "stuff"
+		},
+		{
+			"hint": "STUB",
+			"score": 1,
+			"word": "stub"
+		},
+		{
+			"hint": "STUD",
+			"score": 1,
+			"word": "stud"
+		},
+		{
+			"hint": "SKAR",
+			"score": 1,
+			"word": "scar"
+		},
+		{
+			"hint": "SKAB",
+			"score": 1,
+			"word": "scab"
+		},
+		{
+			"hint": "SKAT",
+			"score": 1,
+			"word": "scat"
+		},
+		{
+			"hint": "SKAD",
+			"score": 1,
+			"word": "scad"
+		},
+		{
+			"hint": "SKOF",
+			"score": 1,
+			"word": "scoff"
+		},
+		{
+			"hint": "SKOR",
+			"score": 1,
+			"word": "score"
+		},
+		{
+			"hint": "SKOT",
+			"score": 1,
+			"word": "scot"
+		},
+		{
+			"hint": "SKUF",
+			"score": 1,
+			"word": "scuff"
+		},
+		{
+			"hint": "SKUL",
+			"score": 1,
+			"word": "skull"
+		},
+		{
+			"hint": "SKUD",
+			"score": 1,
+			"word": "scud"
+		},
+		{
+			"hint": "SPAR",
+			"score": 1,
+			"word": "spar"
+		},
+		{
+			"hint": "SPAG",
+			"score": 1,
+			"word": "spag"
+		},
+		{
+			"hint": "SPAT",
+			"score": 1,
+			"word": "spat"
+		},
+		{
+			"hint": "SPAZ",
+			"score": 1,
+			"word": "spazz"
+		},
+		{
+			"hint": "SPOR",
+			"score": 1,
+			"word": "spore"
+		},
+		{
+			"hint": "SPOT",
+			"score": 1,
+			"word": "spot"
+		},
+		{
+			"hint": "SPEL",
+			"score": 1,
+			"word": "spell"
+		},
+		{
+			"hint": "SPED",
+			"score": 1,
+			"word": "sped"
+		},
+		{
+			"hint": "SPUR",
+			"score": 1,
+			"word": "spur"
+		},
+		{
+			"hint": "SPUD",
+			"score": 1,
+			"word": "spud"
+		},
+		{
+			"hint": "SHAL",
+			"score": 1,
+			"word": "shall"
+		},
+		{
+			"hint": "SHAG",
+			"score": 1,
+			"word": "shag"
+		},
+		{
+			"hint": "SHAT",
+			"score": 1,
+			"word": "shat"
+		},
+		{
+			"hint": "SHAD",
+			"score": 1,
+			"word": "shad"
+		},
+		{
+			"hint": "SHOF",
+			"score": 1,
+			"word": "shove"
+		},
+		{
+			"hint": "SHOR",
+			"score": 1,
+			"word": "shore"
+		},
+		{
+			"hint": "SHOP",
+			"score": 1,
+			"word": "shop"
+		},
+		{
+			"hint": "SHOT",
+			"score": 1,
+			"word": "shot"
+		},
+		{
+			"hint": "SHOD",
+			"score": 1,
+			"word": "shod"
+		},
+		{
+			"hint": "SHEL",
+			"score": 1,
+			"word": "shell"
+		},
+		{
+			"hint": "SHED",
+			"score": 1,
+			"word": "shed"
+		},
+		{
+			"hint": "SHUR",
+			"score": 1,
+			"word": "sure"
+		},
+		{
+			"hint": "SHUT",
+			"score": 1,
+			"word": "shut"
+		},
+		{
+			"hint": "THUG",
+			"score": 1,
+			"word": "thug"
+		},
+		{
+			"hint": "THUS",
+			"score": 1,
+			"word": "thus"
+		},
+		{
+			"hint": "THUD",
+			"score": 1,
+			"word": "thud"
+		},
+		{
+			"hint": "TRAP",
+			"score": 1,
+			"word": "trap"
+		},
+		{
+			"hint": "TRAD",
+			"score": 1,
+			"word": "trad"
+		},
+		{
+			"hint": "TROT",
+			"score": 1,
+			"word": "trot"
+		},
+		{
+			"hint": "TROD",
+			"score": 1,
+			"word": "trod"
+		},
+		{
+			"hint": "TRES",
+			"score": 1,
+			"word": "tress"
+		},
+		{
+			"hint": "TRED",
+			"score": 1,
+			"word": "tread"
+		},
+		{
+			"hint": "TRUS",
+			"score": 1,
+			"word": "truss"
+		},
+		{
+			"hint": "KHAF",
+			"score": 1,
+			"word": "chaff"
+		},
+		{
+			"hint": "KHAR",
+			"score": 1,
+			"word": "char"
+		},
+		{
+			"hint": "KHAP",
+			"score": 1,
+			"word": "chap"
+		},
+		{
+			"hint": "KHAT",
+			"score": 1,
+			"word": "chat"
+		},
+		{
+			"hint": "KHAD",
+			"score": 1,
+			"word": "chad"
+		},
+		{
+			"hint": "KHOR",
+			"score": 1,
+			"word": "chore"
+		},
+		{
+			"hint": "KHOP",
+			"score": 1,
+			"word": "chop"
+		},
+		{
+			"hint": "KHES",
+			"score": 1,
+			"word": "chess"
+		},
+		{
+			"hint": "KHUB",
+			"score": 1,
+			"word": "chub"
+		},
+		{
+			"hint": "KHUG",
+			"score": 1,
+			"word": "chug"
+		},
+		{
+			"hint": "KRAP",
+			"score": 1,
+			"word": "crap"
+		},
+		{
+			"hint": "KRAB",
+			"score": 1,
+			"word": "crab"
+		},
+		{
+			"hint": "KRAG",
+			"score": 1,
+			"word": "crag"
+		},
+		{
+			"hint": "KRAS",
+			"score": 1,
+			"word": "crass"
+		},
+		{
+			"hint": "KROP",
+			"score": 1,
+			"word": "crop"
+		},
+		{
+			"hint": "KROS",
+			"score": 1,
+			"word": "cross"
+		},
+		{
+			"hint": "KRES",
+			"score": 1,
+			"word": "cress"
+		},
+		{
+			"hint": "KRED",
+			"score": 1,
+			"word": "cred"
+		},
+		{
+			"hint": "KRUD",
+			"score": 1,
+			"word": "crud"
+		},
+		{
+			"hint": "PRAG",
+			"score": 1,
+			"word": "prag"
+		},
+		{
+			"hint": "PRAT",
+			"score": 1,
+			"word": "prat"
+		},
+		{
+			"hint": "PROF",
+			"score": 1,
+			"word": "prof"
+		},
+		{
+			"hint": "PROP",
+			"score": 1,
+			"word": "prop"
+		},
+		{
+			"hint": "PROD",
+			"score": 1,
+			"word": "prod"
+		},
+		{
+			"hint": "PREF",
+			"score": 1,
+			"word": "pref"
+		},
+		{
+			"hint": "PREP",
+			"score": 1,
+			"word": "prep"
+		},
+		{
+			"hint": "PRES",
+			"score": 1,
+			"word": "press"
+		},
+		{
+			"hint": "RAD",
+			"score": 1,
+			"word": "rad"
+		},
+		{
+			"hint": "POS",
+			"score": 1,
+			"word": "pos"
+		},
+		{
+			"hint": "KAR",
+			"score": 1,
+			"word": "car"
+		},
+		{
+			"hint": "KUD",
+			"score": 1,
+			"word": "could"
+		},
+		{
+			"hint": "TAR",
+			"score": 1,
+			"word": "tar"
+		},
+		{
+			"hint": "ROL",
+			"score": 1,
+			"word": "roll"
+		},
+		{
+			"hint": "HED",
+			"score": 1,
+			"word": "head"
+		},
+		{
+			"hint": "PAT",
+			"score": 1,
+			"word": "pat"
+		},
+		{
+			"hint": "POL",
+			"score": 1,
+			"word": "poll"
+		},
+		{
+			"hint": "TUG",
+			"score": 1,
+			"word": "tug"
+		},
+		{
+			"hint": "PUT",
+			"score": 1,
+			"word": "put"
+		},
+		{
+			"hint": "SAD",
+			"score": 1,
+			"word": "sad"
+		},
+		{
+			"hint": "TUF",
+			"score": 1,
+			"word": "tough"
+		},
+		{
+			"hint": "SAT",
+			"score": 1,
+			"word": "sat"
+		},
+		{
+			"hint": "HEL",
+			"score": 1,
+			"word": "hell"
+		},
+		{
+			"hint": "HUT",
+			"score": 1,
+			"word": "hut"
+		},
+		{
+			"hint": "PET",
+			"score": 1,
+			"word": "pet"
+		},
+		{
+			"hint": "RUG",
+			"score": 1,
+			"word": "rug"
+		},
+		{
+			"hint": "KOR",
+			"score": 1,
+			"word": "core"
+		},
+		{
+			"hint": "WAR",
+			"score": 1,
+			"word": "war"
+		},
+		{
+			"hint": "TAP",
+			"score": 1,
+			"word": "tap"
+		},
+		{
+			"hint": "KEG",
+			"score": 1,
+			"word": "keg"
+		},
+		{
+			"hint": "PUG",
+			"score": 1,
+			"word": "pug"
+		},
+		{
+			"hint": "SEL",
+			"score": 1,
+			"word": "sell"
+		},
+		{
+			"hint": "KAB",
+			"score": 1,
+			"word": "cab"
+		},
+		{
+			"hint": "RUB",
+			"score": 1,
+			"word": "rub"
+		},
+		{
+			"hint": "TOR",
+			"score": 1,
+			"word": "tore"
+		},
+		{
+			"hint": "WOR",
+			"score": 1,
+			"word": "wore"
+		},
+		{
+			"hint": "HOG",
+			"score": 1,
+			"word": "hog"
+		},
+		{
+			"hint": "HAD",
+			"score": 1,
+			"word": "had"
+		},
+		{
+			"hint": "SUP",
+			"score": 1,
+			"word": "sup"
+		},
+		{
+			"hint": "SAG",
+			"score": 1,
+			"word": "sag"
+		},
+		{
+			"hint": "HET",
+			"score": 1,
+			"word": "het"
+		},
+		{
+			"hint": "SOG",
+			"score": 1,
+			"word": "sog"
+		},
+		{
+			"hint": "TOP",
+			"score": 1,
+			"word": "top"
+		},
+		{
+			"hint": "TAD",
+			"score": 1,
+			"word": "tad"
+		},
+		{
+			"hint": "RAZ",
+			"score": 1,
+			"word": "raz"
+		},
+		{
+			"hint": "TOL",
+			"score": 1,
+			"word": "toll"
+		},
+		{
+			"hint": "POR",
+			"score": 1,
+			"word": "pore"
+		},
+		{
+			"hint": "HUB",
+			"score": 1,
+			"word": "hub"
+		},
+		{
+			"hint": "TER",
+			"score": 1,
+			"word": "ter"
+		},
+		{
+			"hint": "KAP",
+			"score": 1,
+			"word": "cap"
+		},
+		{
+			"hint": "HER",
+			"score": 1,
+			"word": "her"
+		},
+		{
+			"hint": "TAG",
+			"score": 1,
+			"word": "tag"
+		},
+		{
+			"hint": "ROT",
+			"score": 1,
+			"word": "rot"
+		},
+		{
+			"hint": "KUP",
+			"score": 1,
+			"word": "cup"
+		},
+		{
+			"hint": "HAG",
+			"score": 1,
+			"word": "hag"
+		},
+		{
+			"hint": "SOP",
+			"score": 1,
+			"word": "sop"
+		},
+		{
+			"hint": "PAP",
+			"score": 1,
+			"word": "pap"
+		},
+		{
+			"hint": "KOG",
+			"score": 1,
+			"word": "cog"
+		},
+		{
+			"hint": "SET",
+			"score": 1,
+			"word": "set"
+		},
+		{
+			"hint": "SED",
+			"score": 1,
+			"word": "said"
+		},
+		{
+			"hint": "WED",
+			"score": 1,
+			"word": "wed"
+		},
+		{
+			"hint": "PAS",
+			"score": 1,
+			"word": "pass"
+		},
+		{
+			"hint": "KOD",
+			"score": 1,
+			"word": "cod"
+		},
+		{
+			"hint": "REP",
+			"score": 1,
+			"word": "rep"
+		},
+		{
+			"hint": "PUB",
+			"score": 1,
+			"word": "pub"
+		},
+		{
+			"hint": "SOL",
+			"score": 1,
+			"word": "sol"
+		},
+		{
+			"hint": "RAG",
+			"score": 1,
+			"word": "rag"
+		},
+		{
+			"hint": "RUD",
+			"score": 1,
+			"word": "rudd"
+		},
+		{
+			"hint": "PAL",
+			"score": 1,
+			"word": "pal"
+		},
+		{
+			"hint": "POD",
+			"score": 1,
+			"word": "pod"
+		},
+		{
+			"hint": "WOP",
+			"score": 1,
+			"word": "wop"
+		},
+		{
+			"hint": "WEL",
+			"score": 1,
+			"word": "well"
+		},
+		{
+			"hint": "WAG",
+			"score": 1,
+			"word": "wag"
+		},
+		{
+			"hint": "HUF",
+			"score": 1,
+			"word": "huff"
+		},
+		{
+			"hint": "HOP",
+			"score": 1,
+			"word": "hop"
+		},
+		{
+			"hint": "POT",
+			"score": 1,
+			"word": "pot"
+		},
+		{
+			"hint": "SAP",
+			"score": 1,
+			"word": "sap"
+		},
+		{
+			"hint": "PAR",
+			"score": 1,
+			"word": "par"
+		},
+		{
+			"hint": "WEG",
+			"score": 1,
+			"word": "weg"
+		},
+		{
+			"hint": "HAR",
+			"score": 1,
+			"word": "har"
+		},
+		{
+			"hint": "HAT",
+			"score": 1,
+			"word": "hat"
+		},
+		{
+			"hint": "HAS",
+			"score": 1,
+			"word": "has"
+		},
+		{
+			"hint": "PUF",
+			"score": 1,
+			"word": "puff"
+		},
+		{
+			"hint": "ROD",
+			"score": 1,
+			"word": "rod"
+		},
+		{
+			"hint": "RAB",
+			"score": 1,
+			"word": "raab"
+		},
+		{
+			"hint": "SOR",
+			"score": 1,
+			"word": "sore"
+		},
+		{
+			"hint": "KAD",
+			"score": 1,
+			"word": "cad"
+		},
+		{
+			"hint": "HUL",
+			"score": 1,
+			"word": "hull"
+		},
+		{
+			"hint": "WAS",
+			"score": 1,
+			"word": "was"
+		},
+		{
+			"hint": "SEB",
+			"score": 1,
+			"word": "seb"
+		},
+		{
+			"hint": "RET",
+			"score": 1,
+			"word": "ret"
+		},
+		{
+			"hint": "WEB",
+			"score": 1,
+			"word": "web"
+		},
+		{
+			"hint": "SOD",
+			"score": 1,
+			"word": "sod"
+		},
+		{
+			"hint": "HAF",
+			"score": 1,
+			"word": "half"
+		},
+		{
+			"hint": "KUF",
+			"score": 1,
+			"word": "cuff"
+		},
+		{
+			"hint": "KUB",
+			"score": 1,
+			"word": "cub"
+		},
+		{
+			"hint": "KAT",
+			"score": 1,
+			"word": "cat"
+		},
+		{
+			"hint": "TEL",
+			"score": 1,
+			"word": "tell"
+		},
+		{
+			"hint": "POP",
+			"score": 1,
+			"word": "pop"
+		},
+		{
+			"hint": "RAP",
+			"score": 1,
+			"word": "rap"
+		},
+		{
+			"hint": "KUR",
+			"score": 1,
+			"word": "cur"
+		},
+		{
+			"hint": "RED",
+			"score": 1,
+			"word": "red"
+		},
+		{
+			"hint": "KUT",
+			"score": 1,
+			"word": "cut"
+		},
+		{
+			"hint": "RAR",
+			"score": 1,
+			"word": "rar"
+		},
+		{
+			"hint": "ROR",
+			"score": 1,
+			"word": "roar"
+		},
+		{
+			"hint": "ROB",
+			"score": 1,
+			"word": "rob"
+		},
+		{
+			"hint": "KER",
+			"score": 1,
+			"word": "ker"
+		},
+		{
+			"hint": "HOT",
+			"score": 1,
+			"word": "hot"
+		},
+		{
+			"hint": "TUB",
+			"score": 1,
+			"word": "tub"
+		},
+		{
+			"hint": "KUL",
+			"score": 1,
+			"word": "cull"
+		},
+		{
+			"hint": "HUG",
+			"score": 1,
+			"word": "hug"
+		},
+		{
+			"hint": "PEG",
+			"score": 1,
+			"word": "peg"
+		},
+		{
+			"hint": "SAS",
+			"score": 1,
+			"word": "sass"
+		},
+		{
+			"hint": "WAB",
+			"score": 1,
+			"word": "wab"
+		},
+		{
+			"hint": "PUS",
+			"score": 1,
+			"word": "pus"
+		},
+		{
+			"hint": "KOT",
+			"score": 1,
+			"word": "cot"
+		},
+		{
+			"hint": "KOP",
+			"score": 1,
+			"word": "cop"
+		},
+		{
+			"hint": "TAT",
+			"score": 1,
+			"word": "tat"
+		},
+		{
+			"hint": "PUL",
+			"score": 1,
+			"word": "pull"
+		},
+		{
+			"hint": "PER",
+			"score": 1,
+			"word": "per"
+		},
+		{
+			"hint": "REF",
+			"score": 1,
+			"word": "ref"
+		},
+		{
+			"hint": "PEZ",
+			"score": 1,
+			"word": "pez"
+		},
+		{
+			"hint": "PUP",
+			"score": 1,
+			"word": "pup"
+		},
+		{
+			"hint": "TAB",
+			"score": 1,
+			"word": "tab"
+		},
+		{
+			"hint": "WET",
+			"score": 1,
+			"word": "wet"
+		},
+		{
+			"hint": "RAT",
+			"score": 1,
+			"word": "rat"
+		},
+		{
+			"hint": "RUT",
+			"score": 1,
+			"word": "rut"
+		},
+		{
+			"hint": "SOB",
+			"score": 1,
+			"word": "sob"
+		},
+		{
+			"hint": "RUF",
+			"score": 1,
+			"word": "rough"
+		},
+		{
+			"hint": "PAD",
+			"score": 1,
+			"word": "pad"
+		},
+		{
+			"hint": "KUS",
+			"score": 1,
+			"word": "cuss"
+		},
+		{
+			"hint": "PEP",
+			"score": 1,
+			"word": "pep"
+		},
+		{
+			"hint": "SHRAP",
+			"score": 1,
+			"word": "slap"
+		},
+		{
+			"hint": "SHRAB",
+			"score": 1,
+			"word": "slab"
+		},
+		{
+			"hint": "SHRAG",
+			"score": 1,
+			"word": "slag"
+		},
+		{
+			"hint": "SHRAT",
+			"score": 1,
+			"word": "slat"
+		},
+		{
+			"hint": "SHROP",
+			"score": 1,
+			"word": "slop"
+		},
+		{
+			"hint": "SHROB",
+			"score": 1,
+			"word": "slob"
+		},
+		{
+			"hint": "SHROG",
+			"score": 1,
+			"word": "slog"
+		},
+		{
+			"hint": "SHROT",
+			"score": 1,
+			"word": "slot"
+		},
+		{
+			"hint": "SHREUP",
+			"score": 1,
+			"word": "slip"
+		},
+		{
+			"hint": "SHREUL",
+			"score": 1,
+			"word": "shrill"
+		},
+		{
+			"hint": "SHREUT",
+			"score": 1,
+			"word": "slit"
+		},
+		{
+			"hint": "SHREUD",
+			"score": 1,
+			"word": "slid"
+		},
+		{
+			"hint": "SHRED",
+			"score": 1,
+			"word": "sled"
+		},
+		{
+			"hint": "SHRUR",
+			"score": 1,
+			"word": "slur"
+		},
+		{
+			"hint": "SHRUB",
+			"score": 1,
+			"word": "shrub"
+		},
+		{
+			"hint": "SHRUG",
+			"score": 1,
+			"word": "slug"
+		},
+		{
+			"hint": "SHRUT",
+			"score": 1,
+			"word": "slut"
+		},
+		{
+			"hint": "THROB",
+			"score": 1,
+			"word": "throb"
+		},
+		{
+			"hint": "THREUL",
+			"score": 1,
+			"word": "thrill"
+		},
+		{
+			"hint": "THRET",
+			"score": 1,
+			"word": "threat"
+		},
+		{
+			"hint": "THRED",
+			"score": 1,
+			"word": "thread"
+		},
+		{
+			"hint": "KHRAP",
+			"score": 1,
+			"word": "clap"
+		},
+		{
+			"hint": "KHRAS",
+			"score": 1,
+			"word": "class"
+		},
+		{
+			"hint": "KHRAD",
+			"score": 1,
+			"word": "clad"
+		},
+		{
+			"hint": "KHROG",
+			"score": 1,
+			"word": "clog"
+		},
+		{
+			"hint": "KHROT",
+			"score": 1,
+			"word": "clot"
+		},
+		{
+			"hint": "KHROD",
+			"score": 1,
+			"word": "clod"
+		},
+		{
+			"hint": "KHREUF",
+			"score": 1,
+			"word": "cliff"
+		},
+		{
+			"hint": "KHREUP",
+			"score": 1,
+			"word": "clip"
+		},
+		{
+			"hint": "KHREUT",
+			"score": 1,
+			"word": "clit"
+		},
+		{
+			"hint": "KHREF",
+			"score": 1,
+			"word": "clef"
+		},
+		{
+			"hint": "KHRUB",
+			"score": 1,
+			"word": "club"
+		},
+		{
+			"hint": "PHRAT",
+			"score": 1,
+			"word": "plat"
+		},
+		{
+			"hint": "PHRAD",
+			"score": 1,
+			"word": "plaid"
+		},
+		{
+			"hint": "PHROP",
+			"score": 1,
+			"word": "plop"
+		},
+		{
+			"hint": "PHROT",
+			"score": 1,
+			"word": "plot"
+		},
+		{
+			"hint": "PHROD",
+			"score": 1,
+			"word": "plod"
+		},
+		{
+			"hint": "PHREB",
+			"score": 1,
+			"word": "pleb"
+		},
+		{
+			"hint": "PHRED",
+			"score": 1,
+			"word": "pled"
+		},
+		{
+			"hint": "PHRUG",
+			"score": 1,
+			"word": "plug"
+		},
+		{
+			"hint": "PHRUS",
+			"score": 1,
+			"word": "plus"
+		}
+	]
+}

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://LevelCreator/target_entry.gd" id="1_rk6w2"]
 
-[node name="TargetEntry" type="HBoxContainer"]
+[node name="TargetEntry" type="HBoxContainer" node_paths=PackedStringArray("target_entry", "score_entry", "hint_entry", "edit_button")]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -11,7 +11,12 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 script = ExtResource("1_rk6w2")
+target_entry = NodePath("TargetWord")
+score_entry = NodePath("Score")
+hint_entry = NodePath("HintText")
+edit_button = NodePath("Edit")
 
 [node name="TargetLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
@@ -46,4 +51,5 @@ placeholder_text = "Raw Steno"
 
 [node name="Edit" type="Button" parent="."]
 layout_mode = 2
+toggle_mode = true
 text = "Edit Entry"
