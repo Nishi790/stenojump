@@ -147,10 +147,14 @@ func parse_tsv() -> void:
 func parse_text() -> void:
 	active_level_data.targets.clear()
 	var text: String = plain_text_box.text
-	var tokens: PackedStringArray = text.split(" ")
+	var lines: PackedStringArray = text.split("\n")
+	var tokens: PackedStringArray = PackedStringArray()
+	for line in lines:
+		var words: PackedStringArray = line.split(" ")
+		tokens.append_array(words)
 	for token in tokens:
 		var target_dict: Dictionary = {}
-		target_dict["word"] = token
+		target_dict["word"] = token.to_lower()
 		target_dict = auto_score(target_dict)
 		active_level_data.add_target(target_dict)
 
@@ -204,6 +208,7 @@ func target_changed(index: int) -> void:
 		new_entry.entry_index = index
 		target_list.add_child(new_entry)
 		new_entry.data_updated.connect(active_level_data.update_entry)
+		new_entry.entry_deleted.connect(delete_entry)
 	else:
 		var changed_entry: TargetDisplay  = target_list.get_child(index) as TargetDisplay
 		changed_entry.display_data(active_level_data.targets[index])
@@ -212,3 +217,12 @@ func target_changed(index: int) -> void:
 #Creates blank target in the level data
 func add_entry() -> void:
 	active_level_data.add_blank_target()
+
+
+func delete_entry(index: int) -> void:
+	active_level_data.targets.remove_at(index)
+	var current_index: int = index
+	while current_index < target_list.get_child_count():
+		var target_displayer: TargetDisplay = target_list.get_child(current_index) as TargetDisplay
+		target_displayer.entry_index -= 1
+		current_index += 1

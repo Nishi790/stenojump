@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c18o4yv3e32up"]
+[gd_scene load_steps=3 format=3 uid="uid://c18o4yv3e32up"]
 
 [ext_resource type="Script" path="res://LevelCreator/target_entry.gd" id="1_rk6w2"]
 
-[node name="TargetEntry" type="HBoxContainer" node_paths=PackedStringArray("target_entry", "score_entry", "hint_entry", "edit_button")]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ljum8"]
+size = Vector2(30, 30)
+
+[node name="TargetEntry" type="HBoxContainer" node_paths=PackedStringArray("target_entry", "score_entry", "hint_entry", "edit_button", "delete_button")]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -17,6 +20,7 @@ target_entry = NodePath("TargetWord")
 score_entry = NodePath("Score")
 hint_entry = NodePath("HintText")
 edit_button = NodePath("Edit")
+delete_button = NodePath("DeleteEntry")
 
 [node name="TargetLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
@@ -53,3 +57,7 @@ placeholder_text = "Raw Steno"
 layout_mode = 2
 toggle_mode = true
 text = "Edit Entry"
+
+[node name="DeleteEntry" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_ljum8")

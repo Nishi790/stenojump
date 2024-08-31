@@ -27,7 +27,7 @@ func add_target(target_data: Dictionary) -> void:
 
 
 func add_blank_target() -> void:
-	var dict = {word_key: "", score_key: 1, hint_key: ""}
+	var dict: Dictionary = {word_key: "", score_key: 1, hint_key: ""}
 	add_target(dict)
 
 

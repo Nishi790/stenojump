@@ -2,11 +2,13 @@ class_name TargetDisplay
 extends HBoxContainer
 
 signal data_updated (index: int, word: String, score: int, hint: String)
+signal entry_deleted(index: int)
 
 @export var target_entry: LineEdit
 @export var score_entry: SpinBox
 @export var hint_entry: LineEdit
 @export var edit_button: Button
+@export var delete_button: TextureButton
 
 var entry_index: int
 var target_word: String
@@ -24,6 +26,7 @@ func _ready() -> void:
 	score_entry.value_changed.connect(update_score)
 	hint_entry.text_changed.connect(update_hint)
 	edit_button.toggled.connect(enable_editing)
+	delete_button.pressed.connect(delete_entry)
 
 
 func enable_editing(enabled: bool) -> void:
@@ -58,3 +61,8 @@ func update_score(points: int) -> void:
 
 func update_hint(hint_text: String) -> void:
 	hint = hint_text
+
+
+func delete_entry() -> void:
+	entry_deleted.emit(entry_index)
+	queue_free()
