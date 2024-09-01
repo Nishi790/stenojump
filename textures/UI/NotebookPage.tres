@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dne2yalhyvlmj"]
+
+[ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="1_2jp8u"]
+
+[resource]
+atlas = ExtResource("1_2jp8u")
+region = Rect2(512, 18, 48, 60)
+filter_clip = true

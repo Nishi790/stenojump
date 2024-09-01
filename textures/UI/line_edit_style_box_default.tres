@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://ccg2uluvp0kx7"]
+
+[ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="1_3ihmv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u64mi"]
+atlas = ExtResource("1_3ihmv")
+region = Rect2(577, 96, 16, 11)
+
+[resource]
+texture = SubResource("AtlasTexture_u64mi")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

@@ -1,0 +1,19 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://blyaks1y4igf7"]
+
+[ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="1_ym4nn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc3o0"]
+atlas = ExtResource("1_ym4nn")
+region = Rect2(192, 272, 32, 16)
+filter_clip = true
+
+[resource]
+texture = SubResource("AtlasTexture_dc3o0")
+texture_margin_left = 10.0
+texture_margin_top = 4.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+expand_margin_left = 7.0
+expand_margin_right = 7.0
+axis_stretch_horizontal = 1
+draw_center = false

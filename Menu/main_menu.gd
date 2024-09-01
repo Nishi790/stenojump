@@ -2,6 +2,7 @@ extends Control
 
 signal start_game_pressed
 signal quit_game_pressed
+signal level_creator_selected
 
 @export var start_menu: PackedScene
 @export var options_menu: PackedScene
@@ -9,6 +10,7 @@ signal quit_game_pressed
 @export var new_game_button: Button
 @export var options_button: Button
 @export var quit_game_button: Button
+@export var level_creator_button: Button
 @export var player_input: MarginContainer
 var input_processor: Node = self
 
@@ -19,6 +21,7 @@ func _ready() -> void:
 	new_game_button.pressed.connect(new_game)
 	options_button.pressed.connect(open_options)
 	quit_game_button.pressed.connect(quit_game)
+	level_creator_button.pressed.connect(launch_level_creator)
 	if PlayerConfig.has_saved_level():
 		resume_game_button.show()
 	else: resume_game_button.hide()
@@ -52,6 +55,10 @@ func start_game() -> void:
 func quit_game() -> void:
 	PlayerConfig.save_universal_settings()
 	quit_game_pressed.emit()
+
+
+func launch_level_creator() -> void:
+	level_creator_selected.emit()
 
 
 func parse_player_input(text: String) -> void:

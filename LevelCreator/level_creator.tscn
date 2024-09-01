@@ -1,15 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://bipkt1ocmkvej"]
+[gd_scene load_steps=4 format=3 uid="uid://bipkt1ocmkvej"]
 
 [ext_resource type="Script" path="res://LevelCreator/level_creator.gd" id="1_5ijgv"]
 [ext_resource type="PackedScene" uid="uid://c18o4yv3e32up" path="res://LevelCreator/target_entry.tscn" id="2_84sq6"]
+[ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="3_mso1w"]
 
-[node name="LevelCreator" type="Control"]
+[node name="LevelCreator" type="Control" node_paths=PackedStringArray("edit_existing_button", "new_level_button", "save_path_button", "file_selector", "save_file_name", "level_number_selector", "level_size_selector", "level_order_selector", "next_level_path_edit", "next_level_file_button", "select_targets_from_file_button", "tsv_text_box", "parse_tsv_button", "plain_text_box", "parse_text_button", "save_button", "target_list", "manual_entry_button", "menu_button", "quit_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5ijgv")
+edit_existing_button = NodePath("Background/VBoxContainer/Split/LevelElements/HBoxContainer/EditLevel")
+new_level_button = NodePath("Background/VBoxContainer/Split/LevelElements/HBoxContainer/NewLevel")
+save_path_button = NodePath("Background/VBoxContainer/Split/LevelElements/SavePathButton")
+file_selector = NodePath("Background/FileDialog")
+save_file_name = NodePath("Background/VBoxContainer/Split/LevelElements/SaveFileName")
+level_number_selector = NodePath("Background/VBoxContainer/Split/LevelElements/LvlNum/LevelNumber")
+level_size_selector = NodePath("Background/VBoxContainer/Split/LevelElements/LvlSze/LevelSize")
+level_order_selector = NodePath("Background/VBoxContainer/Split/LevelElements/OrderCntr/Orders")
+next_level_path_edit = NodePath("Background/VBoxContainer/Split/LevelElements/NextLevelCntr/NextLevelText")
+next_level_file_button = NodePath("Background/VBoxContainer/Split/LevelElements/SelectNextLevel")
+select_targets_from_file_button = NodePath("Background/VBoxContainer/Split/LevelElements/TargetsFromFile")
+tsv_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/TSVCSVCopyPaste")
+parse_tsv_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParseTSV")
+plain_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/PlainTextCopyPaste")
+parse_text_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParsePlainText")
+save_button = NodePath("Background/VBoxContainer/Split/LevelElements/Save")
+target_list = NodePath("Background/VBoxContainer/Split/ScrollContainer/TargetSide/TargetList")
+target_scene = ExtResource("2_84sq6")
+manual_entry_button = NodePath("Background/VBoxContainer/Split/ScrollContainer/TargetSide/ManualEntry")
+menu_button = NodePath("Background/VBoxContainer/ReturnOrganizer/MenuButton")
+quit_button = NodePath("Background/VBoxContainer/ReturnOrganizer/QuitButton")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -18,35 +41,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_mso1w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 2
 
-[node name="Split" type="HSplitContainer" parent="Background/VBoxContainer" node_paths=PackedStringArray("edit_existing_button", "new_level_button", "save_path_button", "file_selector", "save_file_name", "level_number_selector", "level_size_selector", "level_order_selector", "next_level_path_edit", "next_level_file_button", "select_targets_from_file_button", "tsv_text_box", "parse_tsv_button", "plain_text_box", "parse_text_button", "save_button", "target_list", "manual_entry_button", "menu_button", "quit_button")]
+[node name="Split" type="HSplitContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 split_offset = 680
-script = ExtResource("1_5ijgv")
-edit_existing_button = NodePath("LevelElements/HBoxContainer/EditLevel")
-new_level_button = NodePath("LevelElements/HBoxContainer/NewLevel")
-save_path_button = NodePath("LevelElements/SavePathButton")
-file_selector = NodePath("../../FileDialog")
-save_file_name = NodePath("LevelElements/SaveFileName")
-level_number_selector = NodePath("LevelElements/LvlNum/LevelNumber")
-level_size_selector = NodePath("LevelElements/LvlSze/LevelSize")
-level_order_selector = NodePath("LevelElements/OrderCntr/Orders")
-next_level_path_edit = NodePath("LevelElements/NextLevelCntr/NextLevelText")
-next_level_file_button = NodePath("LevelElements/SelectNextLevel")
-select_targets_from_file_button = NodePath("LevelElements/TargetsFromFile")
-tsv_text_box = NodePath("LevelElements/TSVCSVCopyPaste")
-parse_tsv_button = NodePath("LevelElements/ParseTSV")
-plain_text_box = NodePath("LevelElements/PlainTextCopyPaste")
-parse_text_button = NodePath("LevelElements/ParsePlainText")
-save_button = NodePath("LevelElements/Save")
-target_list = NodePath("ScrollContainer/TargetSide/TargetList")
-target_scene = ExtResource("2_84sq6")
-manual_entry_button = NodePath("ScrollContainer/TargetSide/ManualEntry")
-menu_button = NodePath("../ReturnOrganizer/MenuButton")
-quit_button = NodePath("../ReturnOrganizer/QuitButton")
 
 [node name="LevelElements" type="VBoxContainer" parent="Background/VBoxContainer/Split"]
 layout_mode = 2

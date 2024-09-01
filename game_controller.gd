@@ -1,19 +1,21 @@
 extends Control
 
-enum GameStates {MENU, GAME}
+enum GameStates {MENU, GAME, LEVEL_CREATOR}
 @export var game_scene: PackedScene
 @export var menu_scene: PackedScene
+@export var level_creation_scene: PackedScene
 @export var quit_confirmation: ConfirmationDialog
 
 var menu: Node
 var game: Node
+var level_creator: Node
 var viewport: Viewport
 
 var game_state: GameStates
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	change_state("MENU")
+	change_state(GameStates.MENU)
 	viewport = get_viewport()
 	quit_confirmation.confirmed.connect(quit_game)
 
@@ -28,30 +30,40 @@ func _input(event: InputEvent) -> void:
 
 
 
-func change_state(new_state: String) -> void:
-	new_state=new_state.to_upper()
+func change_state(new_state: GameStates) -> void:
 	match new_state:
-		"MENU":
+		GameStates.MENU:
 			if game != null:
 				game.queue_free()
+			if level_creator != null:
+				level_creator.queue_free()
 			game_state = GameStates.MENU
 			menu = menu_scene.instantiate()
 			add_child(menu)
 			menu.start_game_pressed.connect(start_game)
 			menu.quit_game_pressed.connect(quit_game)
-		"GAME":
+			menu.level_creator_selected.connect(change_state.bind(GameStates.LEVEL_CREATOR))
+		GameStates.GAME:
 			if menu != null:
 				menu.queue_free()
 			game_state = GameStates.GAME
 			game = game_scene.instantiate()
 			add_child(game)
-			game.main_menu_requested.connect(change_state.bind("MENU"))
+			game.main_menu_requested.connect(change_state.bind(GameStates.MENU))
+		GameStates.LEVEL_CREATOR:
+			if menu != null:
+				menu.queue_free()
+			game_state = GameStates.LEVEL_CREATOR
+			level_creator = level_creation_scene.instantiate()
+			add_child(level_creator)
+			level_creator.menu_pressed.connect(change_state.bind(GameStates.MENU))
+			level_creator.quit_pressed.connect(quit_game)
 
 	return
 
 
 func start_game() -> void:
-	change_state("GAME")
+	change_state(GameStates.GAME)
 
 
 func quit_game() -> void:

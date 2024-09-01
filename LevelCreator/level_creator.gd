@@ -1,4 +1,4 @@
-extends HSplitContainer
+extends Control
 
 signal quit_pressed
 signal menu_pressed
