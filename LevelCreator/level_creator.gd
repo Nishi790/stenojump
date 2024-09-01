@@ -38,18 +38,23 @@ func _ready() -> void:
 	active_level_data = LevelData.new()
 	active_level_data.target_changed.connect(target_changed)
 
+	# set up file selection signals
 	new_level_button.pressed.connect(create_new_level)
 	save_path_button.pressed.connect(select_save_path)
 	save_file_name.text_changed.connect(set_save_file)
 	edit_existing_button.pressed.connect(open_level_selector)
 
+	# set up general level info signals
 	level_number_selector.value_changed.connect(set_level_number)
 	level_size_selector.value_changed.connect(set_level_size)
 	level_order_selector.item_selected.connect(set_order)
 	next_level_file_button.pressed.connect(choose_next_level)
 	next_level_path_edit.text_changed.connect(set_next_level)
 
+	#set up target generation signals
 	select_targets_from_file_button.pressed.connect(select_file_to_parse)
+	tsv_text_box.text_changed.connect(enable_parse_tsv)
+	plain_text_box.text_changed.connect(enable_parse_text)
 	parse_tsv_button.pressed.connect(parse_tsv)
 	parse_text_button.pressed.connect(parse_text)
 
@@ -58,6 +63,10 @@ func _ready() -> void:
 	save_button.pressed.connect(save_level)
 	quit_button.pressed.connect(quit_game)
 	menu_button.pressed.connect(return_to_menu)
+
+	#initiate focus
+	new_level_button.grab_focus()
+
 
 
 func create_new_level() -> void:
@@ -82,6 +91,7 @@ func load_existing_level(path: String) -> void:
 	active_level_data.save_file_name = path.get_slice("/", final_slice)
 	active_level_data.save_dir = path.trim_suffix(active_level_data.save_file_name)
 	display_level_data()
+	select_targets_from_file_button.grab_focus()
 
 
 #Restores all level data being displayed to match the data
@@ -127,6 +137,7 @@ func set_save_file(text: String) -> void:
 	if not text.ends_with(".json"):
 		file_name = file_name + ".json"
 	active_level_data.save_file_name = file_name
+	save_button.disabled = false
 
 
 func set_level_number(value: float) -> void:
@@ -206,7 +217,12 @@ func parse_file(path: String) -> void:
 				active_level_data.add_target(target_dict)
 
 
+func enable_parse_tsv() -> void:
+	parse_tsv_button.disabled = false
+
+
 func parse_tsv() -> void:
+	parse_tsv_button.disabled = true
 	active_level_data.targets.clear()
 	var text: String = tsv_text_box.text
 	var lines: PackedStringArray = text.split("\n")
@@ -230,7 +246,12 @@ func parse_tsv() -> void:
 		active_level_data.add_target(target_dict)
 
 
+func enable_parse_text() -> void:
+	parse_text_button.disabled = false
+
+
 func parse_text() -> void:
+	parse_text_button.disabled = true
 	active_level_data.targets.clear()
 	var text: String = plain_text_box.text
 	var lines: PackedStringArray = text.split("\n")
@@ -317,7 +338,6 @@ func delete_entry(index: int) -> void:
 
 func quit_game() -> void:
 	quit_pressed.emit()
-	get_tree().quit()
 
 
 func return_to_menu() -> void:

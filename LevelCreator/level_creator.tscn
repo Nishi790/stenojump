@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_mso1w")
 script = ExtResource("1_5ijgv")
 edit_existing_button = NodePath("Background/VBoxContainer/Split/LevelElements/HBoxContainer/EditLevel")
 new_level_button = NodePath("Background/VBoxContainer/Split/LevelElements/HBoxContainer/NewLevel")
@@ -27,7 +28,7 @@ tsv_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/TSVCSVCopy
 parse_tsv_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParseTSV")
 plain_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/PlainTextCopyPaste")
 parse_text_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParsePlainText")
-save_button = NodePath("Background/VBoxContainer/Split/LevelElements/Save")
+save_button = NodePath("Background/VBoxContainer/ReturnOrganizer/Save")
 target_list = NodePath("Background/VBoxContainer/Split/ScrollContainer/TargetSide/TargetList")
 target_scene = ExtResource("2_84sq6")
 manual_entry_button = NodePath("Background/VBoxContainer/Split/ScrollContainer/TargetSide/ManualEntry")
@@ -42,16 +43,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mso1w")
+theme_type_variation = &"fullscreen_panel"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 2
 
 [node name="Split" type="HSplitContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 split_offset = 680
 
 [node name="LevelElements" type="VBoxContainer" parent="Background/VBoxContainer/Split"]
 layout_mode = 2
+size_flags_stretch_ratio = 2.0
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Split/LevelElements"]
 layout_mode = 2
@@ -78,8 +83,8 @@ placeholder_text = "Enter level file name"
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/LvlNum"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Level Number:"
 fit_content = true
 
@@ -90,8 +95,8 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/LvlSze"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Level Size:"
 fit_content = true
 
@@ -102,8 +107,8 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/OrderCntr"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Default Level Order:"
 fit_content = true
 
@@ -119,8 +124,8 @@ popup/item_1/id = 1
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/NextLevelCntr"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Path to next level:"
 fit_content = true
 
@@ -158,11 +163,13 @@ fit_content = true
 [node name="TSVCSVCopyPaste" type="TextEdit" parent="Background/VBoxContainer/Split/LevelElements"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_vertical = 3
 placeholder_text = "Paste your list here with one target word per line, followed by the hint and point value"
 wrap_mode = 1
 
 [node name="ParseTSV" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
 layout_mode = 2
+disabled = true
 text = "Generate Targets"
 
 [node name="JustText" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements"]
@@ -173,19 +180,18 @@ fit_content = true
 [node name="PlainTextCopyPaste" type="TextEdit" parent="Background/VBoxContainer/Split/LevelElements"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_vertical = 3
 placeholder_text = "Paste your text here"
+wrap_mode = 1
 
 [node name="ParsePlainText" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
 layout_mode = 2
+disabled = true
 text = "Generate Targets"
-
-[node name="Save" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
-layout_mode = 2
-text = "Save Level File
-"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/VBoxContainer/Split"]
 layout_mode = 2
+size_flags_horizontal = 3
 follow_focus = true
 horizontal_scroll_mode = 0
 
@@ -200,8 +206,18 @@ layout_mode = 2
 layout_mode = 2
 text = "Add Entry Manually"
 
+[node name="HSeparator" type="HSeparator" parent="Background/VBoxContainer"]
+layout_mode = 2
+
 [node name="ReturnOrganizer" type="HBoxContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
+
+[node name="Save" type="Button" parent="Background/VBoxContainer/ReturnOrganizer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Save Level File
+"
 
 [node name="MenuButton" type="Button" parent="Background/VBoxContainer/ReturnOrganizer"]
 layout_mode = 2
