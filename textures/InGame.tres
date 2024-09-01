@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=22 format=3 uid="uid://bauut0j20qrrw"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://bauut0j20qrrw"]
 
 [ext_resource type="StyleBox" uid="uid://blyaks1y4igf7" path="res://textures/UI/hover_button_stylebox.tres" id="1_s5kba"]
 [ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_0gxcr"]
@@ -114,6 +114,32 @@ color = Color(0.992157, 0.819608, 0.47451, 1)
 grow_begin = -2.0
 grow_end = -2.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n7lg"]
+atlas = ExtResource("2_0gxcr")
+region = Rect2(16, 384, 16, 16)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g27qn"]
+texture = SubResource("AtlasTexture_5n7lg")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv5ct"]
+atlas = ExtResource("2_0gxcr")
+region = Rect2(80, 384, 16, 16)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvnqa"]
+texture = SubResource("AtlasTexture_dv5ct")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rstq7"]
 atlas = ExtResource("2_0gxcr")
 region = Rect2(608, 16, 48, 64)
@@ -166,5 +192,8 @@ PopupMenu/styles/panel = ExtResource("3_icoew")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_3sn82")
 RichTextLabel/colors/default_color = Color(0.180842, 2.90289e-07, 3.00817e-08, 1)
 SpinBox/icons/updown = ExtResource("5_h5syq")
+TabContainer/colors/font_selected_color = Color(0.376471, 0.12549, 0, 1)
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_g27qn")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_dvnqa")
 fullscreen_panel/base_type = &"PanelContainer"
 fullscreen_panel/styles/panel = SubResource("StyleBoxTexture_hhnfp")

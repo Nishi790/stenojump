@@ -47,6 +47,11 @@ var config_gameplay_settings: String = "GameplaySettings"
 var config_sound_settings: String = "SoundSettings"
 
 
+func _ready() -> void:
+	var voices: PackedStringArray = DisplayServer.tts_get_voices_for_language("en")
+	preferred_voice = voices[0]
+
+
 func start_level_sequence(sequence: LevelSequence) -> void:
 	match sequence:
 		LevelSequence.LAPWING:

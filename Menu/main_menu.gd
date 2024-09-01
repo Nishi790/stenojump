@@ -26,6 +26,7 @@ func _ready() -> void:
 		resume_game_button.show()
 	else: resume_game_button.hide()
 	player_input.new_processed_text.connect(parse_player_input)
+	new_game_button.grab_focus()
 
 
 func resume_game() -> void:

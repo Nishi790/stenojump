@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Menu/gameplay_options.gd" id="2_kx0eo"]
 
 [node name="GameOptions" type="Control" node_paths=PackedStringArray("gameplay_tab", "graphics_tab", "sound_tab")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,9 +32,10 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Gameplay" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("level_size_toggle", "level_size_container", "min_level_size", "max_level_size", "level_order_selector", "menu_button")]
+visible = false
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 script = ExtResource("2_kx0eo")
@@ -47,6 +49,7 @@ metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionTabs/Gameplay"]
 layout_mode = 2
+alignment = 1
 
 [node name="LevelSizeToggleCntr" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
 layout_mode = 2
@@ -144,7 +147,6 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="Graphics" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("target_vis_picker", "target_background_toggle", "target_bg_picker", "target_color_picker", "target_preview", "background_options_container", "menu_button")]
-visible = false
 layout_mode = 2
 script = ExtResource("1_a0l5e")
 target_vis_picker = NodePath("GraphicsOrganizer/VisibilitySelector")
