@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=3 format=3 uid="uid://b0ffaplsdp7g"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_o8m0c"]
+[ext_resource type="Texture2D" uid="uid://dvutdp7wuon3o" path="res://textures/obstacle_sprites/Trashcan.png" id="2_ntxme"]
+
+[resource]
+script = ExtResource("1_o8m0c")
+texture = ExtResource("2_ntxme")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(0, -60)

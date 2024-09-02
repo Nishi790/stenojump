@@ -9,20 +9,28 @@ signal new_target_word (target: String)
 signal words_per_obstacle_changed (number_of_words: int)
 
 @export var basic_obstacle: PackedScene
+@export var crawl_obstacle: PackedScene
 @export var new_word_timer: Timer
 
+var obstacle_types: Array[PackedScene]
 var new_word_interval: float = 2 :
 	set(interval):
 		new_word_interval = interval
 		new_word_timer.wait_time = new_word_interval
 var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
+var next_obstacle: Obstacle:
+	get():
+		if current_obstacle_queue.size() > 0:
+			return current_obstacle_queue[0]
+		else: return null
 var obstacle_start_location: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_limit: Vector2 = get_viewport_rect().size
-	obstacle_start_location = screen_limit + Vector2(30, -100)
+	obstacle_start_location = Vector2(screen_limit.x + 30,  979)
+	obstacle_types = [basic_obstacle, crawl_obstacle]
 
 	new_word_timer.timeout.connect(request_word)
 	new_word_timer.start()
@@ -41,7 +49,8 @@ func provide_target_word() -> String:
 
 func add_word(new_words: Array[Dictionary]) -> void:
 	#Create Obstacle
-	var new_obstacle: Obstacle = basic_obstacle.instantiate()
+	var obs_scene: PackedScene = obstacle_types.pick_random()
+	var new_obstacle: Obstacle = obs_scene.instantiate()
 	new_obstacle.position = obstacle_start_location
 	add_child(new_obstacle)
 	new_obstacle.add_to_group("obstacles")

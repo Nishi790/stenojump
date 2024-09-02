@@ -26,6 +26,7 @@ var straight_to_landing: bool = false
 func _ready() -> void:
 	physics_body.collision.connect(on_collision)
 	physics_body.state_changed.connect(change_states)
+	physics_body.stand_up_triggered.connect(stand_up)
 	sprite.animation_finished.connect(link_animation)
 	start_walk()
 	PlayerConfig.lives_updated.connect(set_lives)
@@ -71,6 +72,14 @@ func on_collision(collision: KinematicCollision2D) -> void:
 		else:
 			game_over.emit()
 			change_states(State.IDLING)
+
+
+func avoid_obstacle(type: Obstacle.ObstacleType):
+	match type:
+		Obstacle.ObstacleType.JUMP:
+			jump()
+		Obstacle.ObstacleType.CRAWL:
+			crawl()
 
 
 func jump() -> void:
@@ -123,6 +132,14 @@ func start_run() -> void:
 
 func start_walk() -> void:
 	change_states(State.WALKING)
+
+
+func crawl() -> void:
+	change_states(State.CRAWLING)
+
+
+func stand_up() -> void:
+	change_states(State.RUNNING)
 
 
 func end_level() -> void:

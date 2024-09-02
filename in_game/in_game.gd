@@ -177,7 +177,10 @@ func update_text(new_text: String) -> void:
 	if current_text == target_word:
 		if level_timer_active == false:
 			level_timer_active = true
-		player.jump()
+		var obstacle_type: Obstacle.ObstacleType
+		if obstacle_manager.next_obstacle != null:
+			obstacle_type = obstacle_manager.next_obstacle.type
+			player.avoid_obstacle(obstacle_type)
 		characters_entered_correctly += target_word.length()
 		input_box.clear()
 		obstacle_manager.word_cleared()

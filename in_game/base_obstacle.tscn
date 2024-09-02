@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://d01kvemmmpbje"]
+[gd_scene load_steps=8 format=3 uid="uid://d01kvemmmpbje"]
 
 [ext_resource type="Script" path="res://in_game/base_obstacle.gd" id="1_i8uxn"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_kgoey"]
-[ext_resource type="Texture2D" uid="uid://cfwpi42oihe1t" path="res://textures/pylon.png" id="2_oce6c"]
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_qehfw"]
+[ext_resource type="Resource" uid="uid://dbquh1xpygoyk" path="res://in_game/obstacle_sprite_data/pylon_jump_sprite_data.tres" id="3_tyb5n"]
+[ext_resource type="Resource" uid="uid://b0ffaplsdp7g" path="res://in_game/obstacle_sprite_data/trashcan_jump_sprite_data.tres" id="4_f71f6"]
+[ext_resource type="Texture2D" uid="uid://dvutdp7wuon3o" path="res://textures/obstacle_sprites/Trashcan.png" id="5_7ti3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgo0o"]
 size = Vector2(24, 60)
 
-[node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container")]
+[node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container", "sprite")]
 script = ExtResource("1_i8uxn")
 word_label = NodePath("TargetPanel/TargetWord")
 target_container = NodePath("TargetPanel")
+sprite = NodePath("ObstacleSprite")
+textures = Array[ExtResource("2_qehfw")]([ExtResource("3_tyb5n"), ExtResource("4_f71f6")])
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0.75, -30)
@@ -18,9 +23,9 @@ shape = SubResource("RectangleShape2D_bgo0o")
 
 [node name="ObstacleSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -96)
+position = Vector2(0, -60)
 scale = Vector2(6, 6)
-texture = ExtResource("2_oce6c")
+texture = ExtResource("5_7ti3c")
 
 [node name="TargetPanel" type="PanelContainer" parent="."]
 anchors_preset = 7

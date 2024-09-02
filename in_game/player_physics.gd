@@ -1,7 +1,9 @@
+class_name PlayerPhysics
 extends CharacterBody2D
 
 signal collision (collision: KinematicCollision2D)
 signal state_changed (new_state: int, time_of_flight: int)
+signal stand_up_triggered
 
 enum Colliders {RUN, JUMP, CRAWL}
 
@@ -47,6 +49,10 @@ func jump() -> void:
 	time_of_flight = maxf(flight_time_1, flight_time_2)
 	state_changed.emit(1, time_of_flight)
 	change_colliders(Colliders.JUMP)
+
+
+func stand_up() -> void:
+	stand_up_triggered.emit()
 
 
 func change_colliders(activating_collider: Colliders) -> void:

@@ -7,6 +7,12 @@ enum ObstacleType {JUMP, CRAWL}
 
 @export var word_label: Label
 @export var target_container: Container
+@export var type: ObstacleType = ObstacleType.JUMP
+@export var sprite: Sprite2D
+
+@export var textures: Array[ObstacleSpriteData]
+
+var chosen_texture: ObstacleSpriteData
 
 var target_word: String
 var score: int
@@ -17,6 +23,15 @@ var stopped: bool = false
 
 func _ready() -> void:
 	target_container.set_theme(PlayerConfig.get_theme())
+	set_textures()
+
+
+
+func set_textures():
+	chosen_texture = textures.pick_random()
+	sprite.texture = chosen_texture.texture
+	sprite.scale = chosen_texture.req_scale
+	sprite.position = chosen_texture.req_offset
 
 
 func set_target_word(target: String) -> void:
@@ -26,7 +41,7 @@ func set_target_word(target: String) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not stopped:
-		velocity = direction * speed + (Vector2(0, 5000) * delta)
+		velocity = direction * speed
 		move_and_slide()
 	if position.x <= -10:
 		queue_free()
@@ -41,4 +56,4 @@ func hide_target(target_hidden: bool) -> void:
 
 
 func speak_words() -> void:
-	PlayerConfig.speak_tts("Type %s" % target_word)
+	PlayerConfig.speak_tts(target_word)

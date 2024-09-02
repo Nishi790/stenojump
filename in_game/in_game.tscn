@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=13 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://5w8ptyi4ic4y" path="res://in_game/background.tscn" id="2_f4riy"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
 [ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="2_ggvbu"]
+[ext_resource type="PackedScene" uid="uid://cgc8oqwrimdq2" path="res://in_game/crawl_obstacle.tscn" id="5_blfh0"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
 [ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="11_c2pqa"]
 [ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="12_01mxu"]
@@ -35,6 +36,7 @@ range_trigger = NodePath("JumpRangeTrigger")
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("new_word_timer")]
 script = ExtResource("7_n7ocu")
 basic_obstacle = ExtResource("2_g7afp")
+crawl_obstacle = ExtResource("5_blfh0")
 new_word_timer = NodePath("NewWordTimer")
 
 [node name="NewWordTimer" type="Timer" parent="ObstacleManager"]
@@ -44,6 +46,8 @@ position = Vector2(97, 877)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(100, 979)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_uo43n")

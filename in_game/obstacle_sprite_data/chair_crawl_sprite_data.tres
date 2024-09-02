@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=5 format=3 uid="uid://c1keb5cxkd32p"]
+
+[ext_resource type="Texture2D" uid="uid://swk3ewq3ry1f" path="res://textures/obstacle_sprites/chair.png" id="1_cwh3c"]
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_lu2bx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5wg6"]
+atlas = ExtResource("1_cwh3c")
+region = Rect2(12, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llufu"]
+atlas = ExtResource("1_cwh3c")
+region = Rect2(0, 0, 12, 24)
+
+[resource]
+script = ExtResource("2_lu2bx")
+texture = SubResource("AtlasTexture_llufu")
+req_scale = Vector2(5, 5)
+req_offset = Vector2(0, -61)
+front_texture = SubResource("AtlasTexture_l5wg6")
