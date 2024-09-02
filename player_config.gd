@@ -75,7 +75,8 @@ func save_game(file_name: String = "") -> void:
 		printerr("Creating New Save File")
 
 	config.set_value(config_level_settings, "LevelSequence", level_sequence)
-	config.set_value(config_level_settings, "CurrentLevel", current_level_path)
+	if current_level_path != "":
+		config.set_value(config_level_settings, "CurrentLevel", current_level_path)
 	config.set_value(config_level_settings, "CurrentWPM", current_wpm)
 	config.set_value(config_level_settings, "CurrentScore", current_score)
 	config.set_value(config_level_settings, "CurrentLives", current_lives)
@@ -86,11 +87,7 @@ func save_game(file_name: String = "") -> void:
 	config.set_value(config_speed_build_settings, "StepSize", step_size)
 
 	config.set_value(config_voice_settings, "Enabled", voice_output_enabled)
-	config.set_value(config_voice_settings, "AllUIVoiced", voice_all_ui)
-	config.set_value(config_voice_settings, "Voice", preferred_voice)
-	config.set_value(config_voice_settings, "Rate", preferred_voice_rate)
-	config.set_value(config_voice_settings, "Pitch", preferred_voice_pitch)
-	config.set_value(config_voice_settings, "Volume", preferred_voice_volume)
+
 
 
 	err = config.save(save_path)
@@ -125,6 +122,12 @@ func save_universal_settings() -> Error:
 	config.set_value(config_gameplay_settings, "MaxLevelSize", max_level_length)
 	config.set_value(config_gameplay_settings, "LevelOrder", preferred_word_order)
 
+	config.set_value(config_voice_settings, "AllUIVoiced", voice_all_ui)
+	config.set_value(config_voice_settings, "Voice", preferred_voice)
+	config.set_value(config_voice_settings, "Rate", preferred_voice_rate)
+	config.set_value(config_voice_settings, "Pitch", preferred_voice_pitch)
+	config.set_value(config_voice_settings, "Volume", preferred_voice_volume)
+
 	err = config.save(config_path)
 	if err != OK:
 		printerr("Settings save failed")
@@ -138,14 +141,22 @@ func load_universal_settings() -> Error:
 		printerr("Settings load failed, loading default settings")
 		return err
 
-	target_visibility = config.get_value(config_graphics_settings, "TargetVisibility")
-	use_custom_target_theme = config.get_value(config_graphics_settings, "CustomTargets")
-	custom_target_style = config.get_value(config_graphics_settings, "CustomTargetTheme")
+	target_visibility = config.get_value(config_graphics_settings, "TargetVisibility", TargetVisibility.ALL)
+	use_custom_target_theme = config.get_value(config_graphics_settings, "CustomTargets", false)
+	custom_target_style = config.get_value(config_graphics_settings, "CustomTargetTheme", null)
 
-	use_custom_size = config.get_value(config_gameplay_settings, "CustomLevelSize")
-	min_level_length = config.get_value(config_gameplay_settings, "MinLevelSize")
-	max_level_length = config.get_value(config_gameplay_settings, "MaxLevelSize")
-	preferred_word_order = config.get_value(config_gameplay_settings, "LevelOrder")
+	use_custom_size = config.get_value(config_gameplay_settings, "CustomLevelSize", false)
+	min_level_length = config.get_value(config_gameplay_settings, "MinLevelSize", 0)
+	max_level_length = config.get_value(config_gameplay_settings, "MaxLevelSize", 0)
+	preferred_word_order = config.get_value(config_gameplay_settings, "LevelOrder", WordOrder.DEFAULT)
+
+	voice_all_ui = config.get_value(config_voice_settings, "AllUIVoiced", false)
+	var saved_voice: String = config.get_value(config_voice_settings, "Voice", "")
+	if not saved_voice.is_empty():
+		preferred_voice = saved_voice
+	preferred_voice_rate = config.get_value(config_voice_settings, "Rate", 1)
+	preferred_voice_pitch = config.get_value(config_voice_settings, "Pitch", 1)
+	preferred_voice_volume = config.get_value(config_voice_settings, "Volume", 50)
 
 	return err
 
@@ -177,11 +188,7 @@ func load_game(file_name: String = "") -> Error:
 	step_size = config.get_value(config_speed_build_settings, "StepSize", 0)
 
 	voice_output_enabled = config.get_value(config_voice_settings, "Enabled")
-	voice_all_ui = config.get_value(config_voice_settings, "AllUIVoiced")
-	preferred_voice = config.get_value(config_voice_settings, "Voice")
-	preferred_voice_rate = config.get_value(config_voice_settings, "Rate")
-	preferred_voice_pitch = config.get_value(config_voice_settings, "Pitch")
-	preferred_voice_volume = config.get_value(config_voice_settings, "Volume")
+
 
 	return err
 
@@ -202,3 +209,16 @@ func get_theme() -> Theme:
 func speak_tts(text: String) -> void:
 	DisplayServer.tts_speak(text, preferred_voice, preferred_voice_volume, \
 	preferred_voice_pitch, preferred_voice_rate)
+
+
+func run_lost() -> void:
+	current_score = 0
+	match level_sequence:
+		LevelSequence.LAPWING:
+			current_level_path = lapwing_level_1
+		LevelSequence.LEARN_PLOVER:
+			current_level_path = learn_plover_level_1
+		_:
+			current_level_path = ""
+	current_wpm = starting_wpm
+	save_game()

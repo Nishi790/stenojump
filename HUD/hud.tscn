@@ -41,11 +41,15 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="GameMessagePanel" type="PanelContainer" parent="MarginContainer/GameMessageContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+theme_type_variation = &"fullscreen_panel"
 
 [node name="GameMessage" type="Label" parent="MarginContainer/GameMessageContainer/GameMessagePanel"]
 layout_mode = 2
 text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GUIOrganizer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

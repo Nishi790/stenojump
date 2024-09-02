@@ -60,7 +60,7 @@ func start_next_level() -> void:
 
 
 func game_over() -> void:
-	ingame_message.set_text("Game Over")
+	ingame_message.set_text("Game Over \n Press Enter (%s) to return to menu." % "R-R")
 	message_container.show()
 
 

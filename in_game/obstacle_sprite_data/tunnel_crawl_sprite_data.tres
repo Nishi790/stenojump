@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=5 format=3 uid="uid://bmsot11g8ikd0"]
+
+[ext_resource type="Texture2D" uid="uid://h2sbysb3kt6d" path="res://textures/obstacle_sprites/tunnel.png" id="1_aw1bj"]
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_vim6i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syybv"]
+atlas = ExtResource("1_aw1bj")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k05nc"]
+atlas = ExtResource("1_aw1bj")
+region = Rect2(0, 0, 18, 16)
+
+[resource]
+script = ExtResource("2_vim6i")
+texture = SubResource("AtlasTexture_k05nc")
+req_scale = Vector2(5, 5)
+req_offset = Vector2(-6, -35)
+front_texture = SubResource("AtlasTexture_syybv")

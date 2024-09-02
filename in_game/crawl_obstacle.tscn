@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgc8oqwrimdq2"]
+[gd_scene load_steps=11 format=3 uid="uid://cgc8oqwrimdq2"]
 
 [ext_resource type="Script" path="res://in_game/crawl_obstacle.gd" id="1_fdgri"]
 [ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_467ko"]
-[ext_resource type="Texture2D" uid="uid://swk3ewq3ry1f" path="res://textures/obstacle_sprites/chair.png" id="2_dc863"]
 [ext_resource type="Resource" uid="uid://c1keb5cxkd32p" path="res://in_game/obstacle_sprite_data/chair_crawl_sprite_data.tres" id="3_2g8xj"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="3_i4tyt"]
+[ext_resource type="Resource" uid="uid://bmsot11g8ikd0" path="res://in_game/obstacle_sprite_data/tunnel_crawl_sprite_data.tres" id="4_32wwb"]
+[ext_resource type="Texture2D" uid="uid://h2sbysb3kt6d" path="res://textures/obstacle_sprites/tunnel.png" id="5_jgak8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwkr6"]
 size = Vector2(35, 20)
@@ -12,14 +13,13 @@ size = Vector2(35, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y7nk"]
 size = Vector2(50, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lluhy"]
-atlas = ExtResource("2_dc863")
-region = Rect2(0, 0, 12, 24)
-filter_clip = true
+[sub_resource type="AtlasTexture" id="AtlasTexture_sao1m"]
+atlas = ExtResource("5_jgak8")
+region = Rect2(0, 0, 18, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_koqey"]
-atlas = ExtResource("2_dc863")
-region = Rect2(12, 0, 12, 24)
+atlas = ExtResource("5_jgak8")
+region = Rect2(18, 0, 18, 16)
 filter_clip = true
 
 [node name="CrawlObstacle" type="CharacterBody2D" node_paths=PackedStringArray("crawl_area", "front_sprite", "word_label", "target_container", "sprite")]
@@ -31,7 +31,7 @@ word_label = NodePath("TargetPanel/TargetWord")
 target_container = NodePath("TargetPanel")
 type = 1
 sprite = NodePath("ObstacleImage")
-textures = Array[ExtResource("2_467ko")]([ExtResource("3_2g8xj")])
+textures = Array[ExtResource("2_467ko")]([ExtResource("3_2g8xj"), ExtResource("4_32wwb")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, -75)
@@ -45,13 +45,13 @@ position = Vector2(0, -24.5)
 shape = SubResource("RectangleShape2D_0y7nk")
 
 [node name="ObstacleImage" type="Sprite2D" parent="."]
-position = Vector2(0, -61)
+position = Vector2(-6, -35)
 scale = Vector2(5, 5)
-texture = SubResource("AtlasTexture_lluhy")
+texture = SubResource("AtlasTexture_sao1m")
 
 [node name="ObstacleFrontLayer" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(0, -61)
+position = Vector2(-6, -35)
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_koqey")
 

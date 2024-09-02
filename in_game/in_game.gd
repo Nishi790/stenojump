@@ -48,6 +48,7 @@ var max_words_per_obstacle: int = 1
 var obstacles_remaining: int
 var level_complete: bool = false
 var game_paused: bool = false
+var run_ended: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -152,9 +153,11 @@ func set_target_word(target: String) -> void:
 
 func game_over() -> void:
 	level_timer_active = false
+	run_ended = true
 	hud.game_over()
 	background.pause_parallax()
 	obstacle_manager.game_over()
+	PlayerConfig.run_lost()
 
 
 func end_level() -> void:
@@ -214,6 +217,8 @@ func enter_pressed(text: String) -> void:
 				await hud.display_countdown()
 				level_complete = false
 				resume_game()
+	elif run_ended:
+		main_menu_requested.emit()
 
 
 func load_level_data(level_path: String = "") -> void:
