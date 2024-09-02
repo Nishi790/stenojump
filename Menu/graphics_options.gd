@@ -71,3 +71,11 @@ func leave_tab() -> void:
 func back_to_menu() -> void:
 	leave_tab()
 	menu_pressed.emit()
+
+
+func process_text(text: String) -> bool:
+	return false
+
+
+func initiate_focus() -> void:
+	target_vis_picker.grab_focus()

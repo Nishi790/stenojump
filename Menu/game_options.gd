@@ -24,6 +24,11 @@ func _ready() -> void:
 	send_focus_neighbors(0)
 
 
+func process_text(text: String) -> bool:
+	var processed: bool = tabs.get_current_tab_control().process_text(text)
+	return processed
+
+
 func exit_options() -> void:
 	returned_to_menu.emit()
 	PlayerConfig.save_universal_settings()
@@ -67,3 +72,4 @@ func assign_side_focus(tab: int) -> void:
 			if child is Control and child.focus_mode != FOCUS_NONE:
 				child.focus_neighbor_left = path
 				child.focus_neighbos_right = path
+	target_tab.initiate_focus()

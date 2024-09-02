@@ -28,15 +28,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -370.0
+offset_top = -160.0
+offset_right = 370.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 2
 
 [node name="Gameplay" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("level_size_toggle", "level_size_container", "min_level_size", "max_level_size", "level_order_selector", "menu_button")]
+visible = false
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 script = ExtResource("2_kx0eo")
@@ -268,15 +269,46 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Sound" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("menu_button")]
-visible = false
+[node name="Sound" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("speak_UI", "voice_selector", "menu_button")]
 layout_mode = 2
 script = ExtResource("5_frqa1")
+speak_UI = NodePath("VBoxContainer/HBoxContainer/TTSAllUI")
+voice_selector = NodePath("VBoxContainer/Voices/VoiceChoices")
 menu_button = NodePath("VBoxContainer/Save")
 metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionTabs/Sound"]
 layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionTabs/Sound/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TTSAllUI" type="CheckBox" parent="OptionTabs/Sound/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionTabs/Sound/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Speak all[/b] UI elements on focus"
+
+[node name="Voices" type="HBoxContainer" parent="OptionTabs/Sound/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionTabs/Sound/VBoxContainer/Voices"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Choose [b]voice[/b]"
+fit_content = true
+
+[node name="VoiceChoices" type="OptionButton" parent="OptionTabs/Sound/VBoxContainer/Voices"]
+layout_mode = 2
+alignment = 1
+fit_to_longest_item = false
 
 [node name="Save" type="Button" parent="OptionTabs/Sound/VBoxContainer"]
 layout_mode = 2

@@ -43,3 +43,11 @@ func set_level_order(selection_index: int) -> void:
 
 func quit_menu() -> void:
 	menu_pressed.emit()
+
+
+func process_text(text: String) -> bool:
+	return false
+
+
+func initiate_focus() -> void:
+	level_size_toggle.grab_focus()

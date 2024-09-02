@@ -31,11 +31,6 @@ func _ready() -> void:
 	grab_text_processing()
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		print(get_viewport().gui_get_focus_owner())
-
-
 func resume_game() -> void:
 	if PlayerConfig.load_game() == OK:
 		start_game_pressed.emit()
