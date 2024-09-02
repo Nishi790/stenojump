@@ -8,13 +8,20 @@ signal new_neighbors(neighbors: Array[Node])
 @export var sound_tab: PanelContainer
 @export var tabs: TabContainer
 
+var side_focus: LineEdit
 
 func _ready() -> void:
 	gameplay_tab.menu_pressed.connect(exit_options)
 	graphics_tab.menu_pressed.connect(exit_options)
-	#sound_tab.menu_pressed.connect(exit_options)
+	sound_tab.menu_pressed.connect(exit_options)
+
+	for index in tabs.get_tab_count():
+		var tab_control: Control = tabs.get_tab_control(index)
+		var tab_bar: TabBar = tabs.get_tab_bar()
+		tab_control.menu_button.focus_next = tab_bar.get_path()
 
 	tabs.tab_changed.connect(send_focus_neighbors)
+	send_focus_neighbors(0)
 
 
 func exit_options() -> void:
@@ -24,7 +31,7 @@ func exit_options() -> void:
 
 
 func send_focus_neighbors(tab: int) -> void:
-	var neighbor_array: Array[Node] = []
+	var neighbor_array: Array[Control] = []
 	match tab:
 		0:
 			#Create Array of focus neighbors in order left, top, right, bottom, next, previous
@@ -42,5 +49,21 @@ func send_focus_neighbors(tab: int) -> void:
 			neighbor_array.append(graphics_tab.target_vis_picker)
 			neighbor_array.append(graphics_tab.menu_button)
 		2:
-			pass
-	new_neighbors.emit()
+			neighbor_array.append(sound_tab.menu_button)
+			neighbor_array.append(sound_tab.menu_button)
+			neighbor_array.append(sound_tab.menu_button)
+			neighbor_array.append(sound_tab.menu_button)
+			neighbor_array.append(sound_tab.menu_button)
+			neighbor_array.append(sound_tab.menu_button)
+	assign_side_focus(tab)
+	new_neighbors.emit(neighbor_array)
+
+
+func assign_side_focus(tab: int) -> void:
+	var target_tab: Control = tabs.get_tab_control(tab)
+	if side_focus != null:
+		var path: NodePath = side_focus.get_path()
+		for child in target_tab.get_children(true):
+			if child is Control and child.focus_mode != FOCUS_NONE:
+				child.focus_neighbor_left = path
+				child.focus_neighbos_right = path

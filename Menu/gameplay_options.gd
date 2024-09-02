@@ -21,6 +21,8 @@ func _ready() -> void:
 	max_level_size.set_value(PlayerConfig.max_level_length)
 	level_order_selector.select(PlayerConfig.preferred_word_order)
 
+	level_size_toggle.grab_focus()
+
 
 func use_custom_level_size(enabled: bool) -> void:
 	PlayerConfig.use_custom_size = enabled

@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://clwt0ahelro30"]
+[gd_scene load_steps=6 format=3 uid="uid://clwt0ahelro30"]
 
 [ext_resource type="Script" path="res://Menu/game_options.gd" id="1_2xiie"]
 [ext_resource type="Script" path="res://Menu/graphics_options.gd" id="1_a0l5e"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_6lp2k"]
 [ext_resource type="Script" path="res://Menu/gameplay_options.gd" id="2_kx0eo"]
+[ext_resource type="Script" path="res://Menu/sound_options.gd" id="5_frqa1"]
 
-[node name="GameOptions" type="Control" node_paths=PackedStringArray("gameplay_tab", "graphics_tab", "sound_tab")]
+[node name="GameOptions" type="Control" node_paths=PackedStringArray("gameplay_tab", "graphics_tab", "sound_tab", "tabs")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -17,6 +18,7 @@ script = ExtResource("1_2xiie")
 gameplay_tab = NodePath("OptionTabs/Gameplay")
 graphics_tab = NodePath("OptionTabs/Graphics")
 sound_tab = NodePath("OptionTabs/Sound")
+tabs = NodePath("OptionTabs")
 
 [node name="OptionTabs" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(320, 160)
@@ -32,10 +34,9 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Gameplay" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("level_size_toggle", "level_size_container", "min_level_size", "max_level_size", "level_order_selector", "menu_button")]
-visible = false
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 script = ExtResource("2_kx0eo")
@@ -56,6 +57,10 @@ layout_mode = 2
 
 [node name="LevelSize" type="CheckBox" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeToggleCntr"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_bottom = NodePath("../../LvlSizeSettings/MinLvlSizeCntr/MinSizeSpinbox")
+focus_next = NodePath("../../LvlSizeSettings/MinLvlSizeCntr/MinSizeSpinbox")
+focus_previous = NodePath("../../../..")
 
 [node name="LevelSizeLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeToggleCntr"]
 layout_mode = 2
@@ -81,6 +86,10 @@ fit_content = true
 [node name="MinSizeSpinbox" type="SpinBox" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings/MinLvlSizeCntr"]
 custom_minimum_size = Vector2(124, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../LevelSizeToggleCntr/LevelSize")
+focus_neighbor_bottom = NodePath("../../MaxLvlSizeCntr/MaxSizeSpinbox")
+focus_next = NodePath("../../MaxLvlSizeCntr/MaxSizeSpinbox")
+focus_previous = NodePath("../../../LevelSizeToggleCntr/LevelSize")
 rounded = true
 allow_greater = true
 update_on_text_changed = true
@@ -99,6 +108,10 @@ text = "[b]Maximum[/b] level size"
 [node name="MaxSizeSpinbox" type="SpinBox" parent="OptionTabs/Gameplay/VBoxContainer/LvlSizeSettings/MaxLvlSizeCntr"]
 custom_minimum_size = Vector2(124, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MinLvlSizeCntr/MinSizeSpinbox")
+focus_neighbor_bottom = NodePath("../../../LevelOrderCntr/OrderChoices")
+focus_next = NodePath("../../../LevelOrderCntr/OrderChoices")
+focus_previous = NodePath("../../MinLvlSizeCntr/MinSizeSpinbox")
 rounded = true
 allow_greater = true
 update_on_text_changed = true
@@ -121,6 +134,10 @@ size_flags_horizontal = 3
 tooltip_text = "Default: Target order specified by the level
 Random: Force order always random
 In Order: Force items in order written in level.  You will never see any items past the level length the level length"
+focus_neighbor_top = NodePath("../../LvlSizeSettings/MaxLvlSizeCntr/MaxSizeSpinbox")
+focus_neighbor_bottom = NodePath("../../Save")
+focus_next = NodePath("../../Save")
+focus_previous = NodePath("../../LvlSizeSettings/MaxLvlSizeCntr/MaxSizeSpinbox")
 selected = 0
 item_count = 3
 popup/item_0/text = "Default"
@@ -129,24 +146,16 @@ popup/item_1/id = 1
 popup/item_2/text = "In Order"
 popup/item_2/id = 2
 
-[node name="AdvancedToggle" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="Advanced" type="CheckButton" parent="OptionTabs/Gameplay/VBoxContainer/AdvancedToggle"]
-layout_mode = 2
-
-[node name="AdvancedLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/AdvancedToggle"]
-layout_mode = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "[b]Advanced[/b] settings"
-
 [node name="Save" type="Button" parent="OptionTabs/Gameplay/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../LevelOrderCntr/OrderChoices")
+focus_neighbor_bottom = NodePath("../../..")
+focus_next = NodePath("../../..")
+focus_previous = NodePath("../LevelOrderCntr/OrderChoices")
 text = "Main Menu"
 
 [node name="Graphics" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("target_vis_picker", "target_background_toggle", "target_bg_picker", "target_color_picker", "target_preview", "background_options_container", "menu_button")]
+visible = false
 layout_mode = 2
 script = ExtResource("1_a0l5e")
 target_vis_picker = NodePath("GraphicsOrganizer/VisibilitySelector")
@@ -259,7 +268,16 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Sound" type="PanelContainer" parent="OptionTabs"]
+[node name="Sound" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("menu_button")]
 visible = false
 layout_mode = 2
+script = ExtResource("5_frqa1")
+menu_button = NodePath("VBoxContainer/Save")
 metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionTabs/Sound"]
+layout_mode = 2
+
+[node name="Save" type="Button" parent="OptionTabs/Sound/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"

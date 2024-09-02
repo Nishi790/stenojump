@@ -8,16 +8,21 @@ signal new_processed_text (text: String)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	text_control.text_submitted.connect(process_text)
-	text_control.focus_exited.connect(_on_focus_exit)
 	text_control.grab_focus()
 
 
-#only leave focus if this node no longer exists
-func _on_focus_exit() -> void:
-	if is_queued_for_deletion():
-		return
-	else:
-		text_control.grab_focus()
+func provide_options_focus_neighbor(neighbors: Array[Control]) -> void:
+	text_control.options_focus_neighbors = neighbors
+	text_control.reset_focus_neighbors(1)
+
+
+func set_menu_focus_neighbors() -> void:
+	text_control.reset_focus_neighbors(0)
+
+
+func set_start_focus_neighbors(neighbors: Array[Control]) -> void:
+	text_control.start_game_focus_neigbors = neighbors
+	text_control.reset_focus_neighbors(2)
 
 
 #  clean submitted text and send for processing

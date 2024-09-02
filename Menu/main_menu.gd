@@ -25,8 +25,15 @@ func _ready() -> void:
 	if PlayerConfig.has_saved_level():
 		resume_game_button.show()
 	else: resume_game_button.hide()
+
 	player_input.new_processed_text.connect(parse_player_input)
 	new_game_button.grab_focus()
+	grab_text_processing()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		print(get_viewport().gui_get_focus_owner())
 
 
 func resume_game() -> void:
@@ -45,6 +52,8 @@ func new_game() -> void:
 func open_options() -> void:
 	var options: Control = options_menu.instantiate()
 	options.returned_to_menu.connect(grab_text_processing)
+	options.new_neighbors.connect(player_input.provide_options_focus_neighbor)
+	options.side_focus = player_input.text_control
 	add_child(options)
 	input_processor = options
 
@@ -82,4 +91,5 @@ func parse_player_input(text: String) -> void:
 
 
 func grab_text_processing() -> void:
+	player_input.set_menu_focus_neighbors()
 	input_processor = self
