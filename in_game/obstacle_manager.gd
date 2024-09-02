@@ -72,6 +72,8 @@ func add_word(new_words: Array[Dictionary]) -> void:
 		new_target_word.emit(new_obstacle.target_word)
 		if PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.NEXT:
 			new_obstacle.hide_target(false)
+		if PlayerConfig.voice_output_enabled == true:
+			new_obstacle.speak_words()
 
 
 func word_cleared() -> void:
@@ -86,6 +88,10 @@ func word_cleared() -> void:
 
 	if PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.NEXT:
 		current_obstacle_queue[0].hide_target(false)
+
+	if PlayerConfig.voice_output_enabled:
+		if current_obstacle_queue.size() > 0:
+			current_obstacle_queue[0].speak_words()
 
 
 func reset_words() -> void:
@@ -141,5 +147,5 @@ func set_speed(wpm: int) -> void:
 
 
 func show_target(target: PhysicsBody2D) -> void:
-	if target is Obstacle:
+	if target is Obstacle and PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.IN_RANGE:
 		target.hide_target(false)

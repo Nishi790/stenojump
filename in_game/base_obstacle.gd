@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const direction = Vector2(-1, 0)
 
+enum ObstacleType {JUMP, CRAWL}
+
 @export var word_label: Label
 @export var target_container: Container
 
@@ -15,6 +17,7 @@ var stopped: bool = false
 
 func _ready() -> void:
 	target_container.set_theme(PlayerConfig.get_theme())
+
 
 func set_target_word(target: String) -> void:
 	target_word = target
@@ -35,3 +38,7 @@ func reset_word() -> void:
 
 func hide_target(target_hidden: bool) -> void:
 	target_container.visible = !target_hidden
+
+
+func speak_words() -> void:
+	PlayerConfig.speak_tts("Type %s" % target_word)

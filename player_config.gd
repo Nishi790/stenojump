@@ -197,3 +197,8 @@ func get_theme() -> Theme:
 		return custom_target_style
 	else:
 		return target_style
+
+
+func speak_tts(text: String) -> void:
+	DisplayServer.tts_speak(text, preferred_voice, preferred_voice_volume, \
+	preferred_voice_pitch, preferred_voice_rate)
