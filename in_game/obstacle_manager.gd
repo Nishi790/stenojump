@@ -25,6 +25,7 @@ var next_obstacle: Obstacle:
 			return current_obstacle_queue[0]
 		else: return null
 var obstacle_start_location: Vector2
+var speed_modifier: float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,6 +53,7 @@ func add_word(new_words: Array[Dictionary]) -> void:
 	var obs_scene: PackedScene = obstacle_types.pick_random()
 	var new_obstacle: Obstacle = obs_scene.instantiate()
 	new_obstacle.position = obstacle_start_location
+	new_obstacle.speed_modifier = speed_modifier
 	add_child(new_obstacle)
 	new_obstacle.add_to_group("obstacles")
 	current_obstacle_queue.push_back(new_obstacle)
@@ -124,6 +126,12 @@ func pause_obstacles() -> void:
 	for obstacle in current_obstacle_queue:
 		obstacle.stopped = true
 	new_word_timer.set_paused(true)
+
+
+func modify_speed(multiplier: float) -> void:
+	speed_modifier = multiplier
+	for obstacle in current_obstacle_queue:
+		obstacle.speed_modifier = multiplier
 
 
 func resume_obstacles() -> void:

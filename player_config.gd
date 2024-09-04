@@ -21,6 +21,7 @@ var custom_target_style: Theme
 
 var level_sequence: LevelSequence
 var current_level_path: String
+var last_checkpoint_path: String
 var starting_wpm: int
 var speed_building_mode: bool
 var target_wpm: int
@@ -56,8 +57,10 @@ func start_level_sequence(sequence: LevelSequence) -> void:
 	match sequence:
 		LevelSequence.LAPWING:
 			current_level_path = lapwing_level_1
+			last_checkpoint_path = current_level_path
 		LevelSequence.LEARN_PLOVER:
 			current_level_path = learn_plover_level_1
+			last_checkpoint_path = current_level_path
 		LevelSequence.OTHER:
 			current_level_path = ""
 
@@ -77,6 +80,8 @@ func save_game(file_name: String = "") -> void:
 	config.set_value(config_level_settings, "LevelSequence", level_sequence)
 	if current_level_path != "":
 		config.set_value(config_level_settings, "CurrentLevel", current_level_path)
+	if last_checkpoint_path != "":
+		config.set_value(config_level_settings, "Last Checkpoint", last_checkpoint_path)
 	config.set_value(config_level_settings, "CurrentWPM", current_wpm)
 	config.set_value(config_level_settings, "CurrentScore", current_score)
 	config.set_value(config_level_settings, "CurrentLives", current_lives)
@@ -174,6 +179,7 @@ func load_game(file_name: String = "") -> Error:
 
 	level_sequence = config.get_value(config_level_settings, "LevelSequence", null)
 	current_level_path = config.get_value(config_level_settings, "CurrentLevel", "")
+	last_checkpoint_path = config.get_value(config_level_settings, "Last Checkpoint", "")
 	current_wpm = config.get_value(config_level_settings, "CurrentWPM", 0)
 	current_score = config.get_value(config_level_settings, "CurrentScore")
 	current_lives = config.get_value(config_level_settings, "CurrentLives")
@@ -213,12 +219,6 @@ func speak_tts(text: String) -> void:
 
 func run_lost() -> void:
 	current_score = 0
-	match level_sequence:
-		LevelSequence.LAPWING:
-			current_level_path = lapwing_level_1
-		LevelSequence.LEARN_PLOVER:
-			current_level_path = learn_plover_level_1
-		_:
-			current_level_path = ""
+	current_level_path = last_checkpoint_path
 	current_wpm = starting_wpm
 	save_game()

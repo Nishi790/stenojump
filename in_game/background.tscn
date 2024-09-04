@@ -7,11 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://80jglwphafep" path="res://textures/parallax_rundown_city/3.Wall.png" id="5_gbfnn"]
 [ext_resource type="Texture2D" uid="uid://c2p23dhrq5uty" path="res://textures/parallax_rundown_city/4.Sidewalk.png" id="6_0iy4q"]
 
-[node name="Background" type="Node2D" node_paths=PackedStringArray("ground_sprite")]
+[node name="Background" type="Node2D"]
 script = ExtResource("1_huj2q")
-ground_sprite = NodePath("GroundLayer")
 
 [node name="SkyBackground" type="Parallax2D" parent="."]
+process_mode = 3
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-10, 0)
 ignore_camera_scroll = true
@@ -23,7 +23,9 @@ scale = Vector2(6, 6)
 texture = ExtResource("2_cwdu8")
 
 [node name="CloudsBG" type="Parallax2D" parent="."]
-autoscroll = Vector2(-30, 0)
+process_mode = 3
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
 ignore_camera_scroll = true
 
 [node name="CloudSprite" type="Sprite2D" parent="CloudsBG"]
@@ -43,7 +45,6 @@ scale = Vector2(6, 6)
 texture = ExtResource("4_2y0jl")
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.5, 1)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-100, 0)
 ignore_camera_scroll = true

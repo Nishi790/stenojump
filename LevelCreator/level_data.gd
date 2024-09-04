@@ -12,6 +12,7 @@ signal target_changed (target_index: int)
 @export var order: LevelLoader.LevelOrder
 @export var size: int
 @export var next_level: String
+@export var checkpoint: bool
 
 @export var targets: Array
 
@@ -26,6 +27,7 @@ func read_level_data() -> void:
 	size = LevelLoader.default_level_size
 	next_level = LevelLoader.next_level_path
 	targets = LevelLoader.level_targets
+	checkpoint = LevelLoader.checkpoint
 
 
 func add_target(target_data: Dictionary) -> void:
@@ -60,6 +62,7 @@ func save() -> Error:
 	else: data_dict["order"] = "ordered"
 	data_dict["size"] = size
 	data_dict["next_level"] = next_level
+	data_dict["checkpoint"] = checkpoint
 	data_dict["targets"] = targets
 	var json_string: String = JSON.stringify(data_dict, "\t")
 	file.store_string(json_string)

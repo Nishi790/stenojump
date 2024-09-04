@@ -9,13 +9,13 @@ func _ready() -> void:
 
 
 
-func set_textures():
+func set_textures() -> void:
 	super()
 	front_sprite.texture = chosen_texture.front_texture
 	front_sprite.scale = chosen_texture.req_scale
 	front_sprite.position = chosen_texture.req_offset
 
 
-func _on_crawl_exited(body: Node2D):
+func _on_crawl_exited(body: Node2D) -> void:
 	if body is PlayerPhysics:
 		body.stand_up()

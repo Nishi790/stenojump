@@ -3,6 +3,7 @@
 	"next_level": "lapwing_2_1.json",
 	"order": "random",
 	"size": 40,
+	"checkpoint": true,
 	"targets": [
 		{
 			"hint": "STEUF",

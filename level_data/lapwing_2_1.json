@@ -1,0 +1,254 @@
+{
+	"checkpoint": false,
+	"level": 5,
+	"next_level": "lapwing_2_2.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "TPAR",
+			"score": 1,
+			"word": "far"
+		},
+		{
+			"hint": "TPAB",
+			"score": 1,
+			"word": "fab"
+		},
+		{
+			"hint": "TPAT",
+			"score": 1,
+			"word": "fat"
+		},
+		{
+			"hint": "TPAD",
+			"score": 1,
+			"word": "fad"
+		},
+		{
+			"hint": "TPOP",
+			"score": 1,
+			"word": "fop"
+		},
+		{
+			"hint": "TPOB",
+			"score": 1,
+			"word": "fob"
+		},
+		{
+			"hint": "TPOG",
+			"score": 1,
+			"word": "fog"
+		},
+		{
+			"hint": "TPEUR",
+			"score": 1,
+			"word": "fir"
+		},
+		{
+			"hint": "TPEUB",
+			"score": 1,
+			"word": "fib"
+		},
+		{
+			"hint": "TPEUL",
+			"score": 1,
+			"word": "fill"
+		},
+		{
+			"hint": "TPEUT",
+			"score": 1,
+			"word": "fit"
+		},
+		{
+			"hint": "TPEUZ",
+			"score": 1,
+			"word": "fizz"
+		},
+		{
+			"hint": "TPEL",
+			"score": 1,
+			"word": "fell"
+		},
+		{
+			"hint": "TPES",
+			"score": 1,
+			"word": "fess"
+		},
+		{
+			"hint": "TPED",
+			"score": 1,
+			"word": "fed"
+		},
+		{
+			"hint": "TPEZ",
+			"score": 1,
+			"word": "fez"
+		},
+		{
+			"hint": "TPUR",
+			"score": 1,
+			"word": "fur"
+		},
+		{
+			"hint": "TPUL",
+			"score": 1,
+			"word": "full"
+		},
+		{
+			"hint": "TPUS",
+			"score": 1,
+			"word": "fuss"
+		},
+		{
+			"hint": "TPUZ",
+			"score": 1,
+			"word": "fuzz"
+		},
+		{
+			"hint": "KWAR",
+			"score": 1,
+			"word": "quar"
+		},
+		{
+			"hint": "KWEUP",
+			"score": 1,
+			"word": "quip"
+		},
+		{
+			"hint": "KWEUL",
+			"score": 1,
+			"word": "quill"
+		},
+		{
+			"hint": "KWEUT",
+			"score": 1,
+			"word": "quit"
+		},
+		{
+			"hint": "KWEUD",
+			"score": 1,
+			"word": "quid"
+		},
+		{
+			"hint": "KWEUZ",
+			"score": 1,
+			"word": "quiz"
+		},
+		{
+			"hint": "KWEL",
+			"score": 1,
+			"word": "quell"
+		},
+		{
+			"hint": "PHAR",
+			"score": 1,
+			"word": "mar"
+		},
+		{
+			"hint": "PHAP",
+			"score": 1,
+			"word": "map"
+		},
+		{
+			"hint": "PHAT",
+			"score": 1,
+			"word": "mat"
+		},
+		{
+			"hint": "PHAS",
+			"score": 1,
+			"word": "mass"
+		},
+		{
+			"hint": "PHAD",
+			"score": 1,
+			"word": "mad"
+		},
+		{
+			"hint": "PHOR",
+			"score": 1,
+			"word": "more"
+		},
+		{
+			"hint": "PHOP",
+			"score": 1,
+			"word": "mop"
+		},
+		{
+			"hint": "PHOB",
+			"score": 1,
+			"word": "mob"
+		},
+		{
+			"hint": "PHOL",
+			"score": 1,
+			"word": "moll"
+		},
+		{
+			"hint": "PHOS",
+			"score": 1,
+			"word": "moss"
+		},
+		{
+			"hint": "PHOD",
+			"score": 1,
+			"word": "mod"
+		},
+		{
+			"hint": "PHEUF",
+			"score": 1,
+			"word": "miff"
+		},
+		{
+			"hint": "PHEUL",
+			"score": 1,
+			"word": "mill"
+		},
+		{
+			"hint": "PHEUT",
+			"score": 1,
+			"word": "mit"
+		},
+		{
+			"hint": "PHET",
+			"score": 1,
+			"word": "met"
+		},
+		{
+			"hint": "PHES",
+			"score": 1,
+			"word": "mess"
+		},
+		{
+			"hint": "PHUF",
+			"score": 1,
+			"word": "muff"
+		},
+		{
+			"hint": "PHUL",
+			"score": 1,
+			"word": "mull"
+		},
+		{
+			"hint": "PHUG",
+			"score": 1,
+			"word": "mug"
+		},
+		{
+			"hint": "PHUT",
+			"score": 1,
+			"word": "mutt"
+		},
+		{
+			"hint": "PHUS",
+			"score": 1,
+			"word": "muss"
+		},
+		{
+			"hint": "PHUD",
+			"score": 1,
+			"word": "mud"
+		}
+	]
+}

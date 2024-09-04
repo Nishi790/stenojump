@@ -19,6 +19,7 @@ var score: int
 var hint: String
 var number_of_targets: int
 var speed: float = 200.0
+var speed_modifier: float = 1.0
 var stopped: bool = false
 
 func _ready() -> void:
@@ -27,7 +28,7 @@ func _ready() -> void:
 
 
 
-func set_textures():
+func set_textures() -> void:
 	chosen_texture = textures.pick_random()
 	sprite.texture = chosen_texture.texture
 	sprite.scale = chosen_texture.req_scale
@@ -41,7 +42,7 @@ func set_target_word(target: String) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not stopped:
-		velocity = direction * speed
+		velocity = direction * speed * speed_modifier
 		move_and_slide()
 	if position.x <= -10:
 		queue_free()

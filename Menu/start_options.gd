@@ -181,6 +181,7 @@ func set_tts(enabled: bool) -> void:
 	PlayerConfig.voice_output_enabled = enabled
 
 
+#Only called for custom level starts - otherwise uses the predefined start levels
 func set_starting_level(path: String) -> void:
 	PlayerConfig.current_level_path = path
 

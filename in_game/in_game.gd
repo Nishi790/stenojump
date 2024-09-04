@@ -66,6 +66,8 @@ func _ready() -> void:
 	#Connect player signals
 	player.reset_word.connect(reset_word)
 	player.game_over.connect(game_over)
+	player.player_movement_changed.connect(change_move_speed)
+	@warning_ignore("unsafe_call_argument")
 	player.lives_changed.connect(Callable(hud.lives_counter.update_lives_counter))
 	hud.lives_counter.update_lives_counter(player.lives)
 	obstacle_manager.obstacle_queue_emptied.connect(player.end_level)
@@ -73,7 +75,9 @@ func _ready() -> void:
 
 	#Connect HUD Signals
 	input_box = hud.input_box
+	@warning_ignore("unsafe_call_argument")
 	score_changed.connect(hud.score_counter.update_score_text)
+	@warning_ignore("unsafe_call_argument")
 	words_left_changed.connect(hud.word_counter.update_word_count)
 	input_box.text_changed.connect(update_text)
 	input_box.text_submitted.connect(enter_pressed)
@@ -86,6 +90,8 @@ func _ready() -> void:
 	target_speed_changed.emit(PlayerConfig.current_wpm)
 	score = PlayerConfig.current_score
 
+	change_move_speed(Player.State.WALKING)
+
 	input_box.grab_focus()
 
 
@@ -95,6 +101,19 @@ func _process(delta: float) -> void:
 		var normal_words: float = characters_entered_correctly/5.0
 		var minutes: float = level_time/60.0
 		wpm = normal_words/minutes
+
+
+func change_move_speed(move_type: Player.State) -> void:
+	var speed_modifier: float = 1.0
+	match move_type:
+		Player.State.WALKING:
+			speed_modifier = 0.8
+		Player.State.RUNNING:
+			speed_modifier = 1.0
+		Player.State.IDLING:
+			speed_modifier = 0
+	background.run_parallax(speed_modifier)
+	obstacle_manager.modify_speed(speed_modifier)
 
 
 func send_new_word(number: int) -> void:
@@ -117,7 +136,6 @@ func reset_word(collider: Object) -> void:
 	hud.life_lost_reset()
 	score = score - 1
 	level_score = level_score - 1 #TODO scale death score penalty
-	print_debug("Failed word was ", collider.target_word)
 
 #Remove all onscreen words
 	obstacle_manager.reset_words()
@@ -155,7 +173,6 @@ func game_over() -> void:
 	level_timer_active = false
 	run_ended = true
 	hud.game_over()
-	background.pause_parallax()
 	obstacle_manager.game_over()
 	PlayerConfig.run_lost()
 
@@ -223,7 +240,8 @@ func enter_pressed(text: String) -> void:
 
 func load_level_data(level_path: String = "") -> void:
 	if level_path != "":
-			LevelLoader.load_level(level_path)
+			var error: Error = LevelLoader.load_level(level_path)
+			if error: printerr(error_string(error))
 	word_queue = LevelLoader.level_targets.duplicate()
 
 	#Set correct level size
@@ -261,8 +279,6 @@ func increase_speed() -> void:
 
 func resume_game() -> void:
 	input_box.grab_focus()
-	if background.background_stopped:
-		background.resume_parallax()
 	obstacle_manager.resume_obstacles()
 	player.start_walk()
 
@@ -275,7 +291,6 @@ func set_words_per_obstacle(number: int) -> void:
 func pause_game(menu_open: bool = false) -> void:
 	level_timer_active = false
 	obstacle_manager.pause_obstacles()
-	background.pause_parallax()
 	player.change_states(Player.State.IDLING)
 	if menu_open:
 		hud.open_pause_menu()

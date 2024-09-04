@@ -1,32 +1,24 @@
 class_name BackgroundManager
 extends Node2D
 
-@export var ground_sprite: Parallax2D
-
-var background_stopped: bool = false
 var base_autoscroll_speeds: Array[Vector2] = [Vector2(-20, 0), Vector2(-50, 0), Vector2(-80, 0), Vector2(-150, 0), Vector2(-200, 0)]
-var speed_scale: int = 1
-var ground_autoscroll_rate: Vector2
+var speed_scale: float = 1.0
+var speed_multiplier: float
 
 
 func _ready() -> void:
 	pass
 
 
-func pause_parallax() -> void:
-	background_stopped = true
-	for layer in get_children():
-		var layer_position: Vector2 = layer.position
-		layer.set_autoscroll(Vector2.ZERO)
-		layer.position = layer_position
-
-
-func resume_parallax() -> void:
-	background_stopped = false
+func run_parallax(multiplier: float = 1.0) -> void:
+	speed_scale = multiplier
 	var index: int = 0
 	for layer in get_children():
 		#Save current position (equivalent to offset), setting autoscroll resets position
 		var layer_position: Vector2 = layer.position
-		layer.set_autoscroll(base_autoscroll_speeds[index] * speed_scale)
+		if index < 2 and multiplier == 0.0:
+			layer.set_autoscroll(base_autoscroll_speeds[index] * 0.4)
+		else:
+			layer.set_autoscroll(base_autoscroll_speeds[index] * speed_scale)
 		layer.scroll_offset = layer_position
 		index += 1

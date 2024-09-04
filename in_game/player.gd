@@ -4,6 +4,7 @@ extends Node2D
 signal game_over
 signal reset_word (collider: Object)
 signal lives_changed (current_lives: int)
+signal player_movement_changed (movement_type: State)
 
 enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDLING}
 
@@ -74,7 +75,7 @@ func on_collision(collision: KinematicCollision2D) -> void:
 			change_states(State.IDLING)
 
 
-func avoid_obstacle(type: Obstacle.ObstacleType):
+func avoid_obstacle(type: Obstacle.ObstacleType) -> void:
 	match type:
 		Obstacle.ObstacleType.JUMP:
 			jump()
@@ -101,11 +102,18 @@ func link_animation() -> void:
 
 
 func change_states(new_state: State, time_of_flight: float = -1) -> void:
+	var old_state: State = movement_state
 	movement_state = new_state
 	match new_state:
-		State.WALKING, State.RUNNING, State.IDLING:
+		State.WALKING, State.IDLING:
 			if physics_body.active_collider != 0:
 				physics_body.change_colliders(0)
+			player_movement_changed.emit(new_state)
+		State.RUNNING:
+			if physics_body.active_collider != 0:
+				physics_body.change_colliders(0)
+			if old_state == State.WALKING or old_state == State.IDLING:
+				player_movement_changed.emit(new_state)
 		State.STARTING_JUMP, State.ENDING_JUMP:
 			if physics_body.active_collider != 1:
 				physics_body.change_colliders(1)

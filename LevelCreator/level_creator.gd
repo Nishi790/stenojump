@@ -11,6 +11,7 @@ signal menu_pressed
 @export var level_number_selector: SpinBox
 @export var level_size_selector: SpinBox
 @export var level_order_selector: OptionButton
+@export var checkpoint_selector: CheckBox
 @export var next_level_path_edit: LineEdit
 @export var next_level_file_button: Button
 
@@ -50,6 +51,7 @@ func _ready() -> void:
 	level_order_selector.item_selected.connect(set_order)
 	next_level_file_button.pressed.connect(choose_next_level)
 	next_level_path_edit.text_changed.connect(set_next_level)
+	checkpoint_selector.toggled.connect(set_checkpoint)
 
 	#set up target generation signals
 	select_targets_from_file_button.pressed.connect(select_file_to_parse)
@@ -104,6 +106,7 @@ func display_level_data() -> void:
 		save_file_name.text = active_level_data.save_file_name
 	level_number_selector.value = active_level_data.level
 	level_size_selector.value = active_level_data.size
+	checkpoint_selector.set_pressed_no_signal(active_level_data.checkpoint)
 	if active_level_data.order == LevelLoader.LevelOrder.RANDOM:
 		level_order_selector.select(0)
 	else:
@@ -153,6 +156,10 @@ func set_order(index: int) -> void:
 		active_level_data.order = LevelLoader.LevelOrder.RANDOM
 	elif index == 1:
 		active_level_data.order = LevelLoader.LevelOrder.ORDERED
+
+
+func set_checkpoint(enabled: bool) -> void:
+	active_level_data.checkpoint = enabled
 
 
 func choose_next_level() -> void:
