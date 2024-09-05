@@ -1,10 +1,11 @@
+class_name CrawlObstacle
 extends Obstacle
 
 @export var crawl_area: Area2D
 @export var front_sprite: Sprite2D
 
 func _ready() -> void:
-
+	super()
 	crawl_area.body_exited.connect(_on_crawl_exited)
 
 
