@@ -24,11 +24,12 @@ var new_word_interval: float = 2 :
 		new_word_timer.wait_time = new_word_interval
 var speed_modifier: float = 1.0:
 	set(mod):
-		var old_mod: float = speed_modifier
-		speed_modifier = mod
-		new_word_interval = level_new_word_interval * (1/speed_modifier)
-		if old_mod == 0:
-			new_word_timer.start()
+		if mod == 0.0:
+			new_word_timer.set_paused(true)
+		else:
+			new_word_timer.set_paused(false)
+			speed_modifier = mod
+			new_word_interval = level_new_word_interval * (1/speed_modifier)
 
 var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
@@ -133,7 +134,6 @@ func reset_words() -> void:
 	current_obstacle_queue.clear()
 	score_changed.emit(score_reduction)
 	words_returned.emit(words_to_reset, obst_returned)
-	new_word_timer.start()
 	return
 
 
@@ -157,7 +157,8 @@ func resume_obstacles() -> void:
 	else:
 		new_target_word.emit(current_obstacle_queue[0].target_word)
 	new_word_timer.set_paused(false)
-	if new_word_timer.is_stopped(): new_word_timer.start()
+	if new_word_timer.is_stopped():
+		new_word_timer.start()
 
 
 func game_over() -> void:
