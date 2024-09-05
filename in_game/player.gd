@@ -151,7 +151,9 @@ func stand_up() -> void:
 
 
 func end_level() -> void:
-	await get_tree().create_timer(1).timeout
+	if movement_state == State.CRAWLING:
+		await player_movement_changed
+	await get_tree().create_timer(2).timeout
 	lives = 3
 	lives_changed.emit(lives)
 	change_states(State.WALKING)
