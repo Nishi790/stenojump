@@ -1,0 +1,134 @@
+{
+	"checkpoint": false,
+	"level": 7,
+	"next_level": "lapwing_2_review.json",
+	"order": "random",
+	"size": 25,
+	"targets": [
+		{
+			"hint": "SKWRAR",
+			"score": 1,
+			"word": "jar"
+		},
+		{
+			"hint": "SKWRAB",
+			"score": 1,
+			"word": "jab"
+		},
+		{
+			"hint": "SKWRAG",
+			"score": 1,
+			"word": "jag"
+		},
+		{
+			"hint": "SKWRAZ",
+			"score": 1,
+			"word": "jazz"
+		},
+		{
+			"hint": "SKWROB",
+			"score": 1,
+			"word": "job"
+		},
+		{
+			"hint": "SKWROG",
+			"score": 1,
+			"word": "jog"
+		},
+		{
+			"hint": "SKWROT",
+			"score": 1,
+			"word": "jot"
+		},
+		{
+			"hint": "SKWREUB",
+			"score": 1,
+			"word": "jib"
+		},
+		{
+			"hint": "SKWREUG",
+			"score": 1,
+			"word": "jig"
+		},
+		{
+			"hint": "SKWREL",
+			"score": 1,
+			"word": "gel"
+		},
+		{
+			"hint": "SKWRET",
+			"score": 1,
+			"word": "jet"
+		},
+		{
+			"hint": "SKWRUG",
+			"score": 1,
+			"word": "jug"
+		},
+		{
+			"hint": "SKWRUT",
+			"score": 1,
+			"word": "jut"
+		},
+		{
+			"hint": "SRAR",
+			"score": 1,
+			"word": "var"
+		},
+		{
+			"hint": "SRAL",
+			"score": 1,
+			"word": "val"
+		},
+		{
+			"hint": "SRAT",
+			"score": 1,
+			"word": "vat"
+		},
+		{
+			"hint": "SREUR",
+			"score": 1,
+			"word": "vir"
+		},
+		{
+			"hint": "SREUT",
+			"score": 1,
+			"word": "vit"
+		},
+		{
+			"hint": "SREUS",
+			"score": 1,
+			"word": "vis"
+		},
+		{
+			"hint": "SREUD",
+			"score": 1,
+			"word": "vid"
+		},
+		{
+			"hint": "SRER",
+			"score": 1,
+			"word": "ver"
+		},
+		{
+			"hint": "SRET",
+			"score": 1,
+			"word": "vet"
+		},
+		{
+			"hint": "STKPWEUP",
+			"score": 1,
+			"word": "zip"
+		},
+		{
+			"hint": "STKPWEUG",
+			"score": 1,
+			"word": "zig"
+		},
+		{
+			"hint": "STKPWEUT",
+			"score": 1,
+			"word": "zit"
+		}
+	]
+}

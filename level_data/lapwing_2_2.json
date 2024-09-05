@@ -1,0 +1,204 @@
+{
+	"checkpoint": false,
+	"level": 6,
+	"next_level": "lapwing_2_3.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "TKPWAF",
+			"score": 1,
+			"word": "gaffe"
+		},
+		{
+			"hint": "TKPWAP",
+			"score": 1,
+			"word": "gap"
+		},
+		{
+			"hint": "TKPWAL",
+			"score": 1,
+			"word": "gal"
+		},
+		{
+			"hint": "TKPWAG",
+			"score": 1,
+			"word": "gag"
+		},
+		{
+			"hint": "TKPWAT",
+			"score": 1,
+			"word": "gat"
+		},
+		{
+			"hint": "TKPWAS",
+			"score": 1,
+			"word": "gas"
+		},
+		{
+			"hint": "TKPWAD",
+			"score": 1,
+			"word": "gad"
+		},
+		{
+			"hint": "TKPWOR",
+			"score": 1,
+			"word": "gore"
+		},
+		{
+			"hint": "TKPWOB",
+			"score": 1,
+			"word": "gob"
+		},
+		{
+			"hint": "TKPWOT",
+			"score": 1,
+			"word": "got"
+		},
+		{
+			"hint": "TKPWOD",
+			"score": 1,
+			"word": "god"
+		},
+		{
+			"hint": "TKPWEUF",
+			"score": 1,
+			"word": "give"
+		},
+		{
+			"hint": "TKPWEUL",
+			"score": 1,
+			"word": "gill"
+		},
+		{
+			"hint": "TKPWEUG",
+			"score": 1,
+			"word": "gig"
+		},
+		{
+			"hint": "TKPWEUT",
+			"score": 1,
+			"word": "git"
+		},
+		{
+			"hint": "TKPWET",
+			"score": 1,
+			"word": "get"
+		},
+		{
+			"hint": "TKPWES",
+			"score": 1,
+			"word": "guess"
+		},
+		{
+			"hint": "TKPWUL",
+			"score": 1,
+			"word": "gull"
+		},
+		{
+			"hint": "TKPWUT",
+			"score": 1,
+			"word": "gut"
+		},
+		{
+			"hint": "TPHAP",
+			"score": 1,
+			"word": "nap"
+		},
+		{
+			"hint": "TPHAB",
+			"score": 1,
+			"word": "nab"
+		},
+		{
+			"hint": "TPHAG",
+			"score": 1,
+			"word": "nag"
+		},
+		{
+			"hint": "TPHOR",
+			"score": 1,
+			"word": "nor"
+		},
+		{
+			"hint": "TPHOB",
+			"score": 1,
+			"word": "knob"
+		},
+		{
+			"hint": "TPHOT",
+			"score": 1,
+			"word": "not"
+		},
+		{
+			"hint": "TPHOD",
+			"score": 1,
+			"word": "nod"
+		},
+		{
+			"hint": "TPHEUP",
+			"score": 1,
+			"word": "nip"
+		},
+		{
+			"hint": "TPHEUL",
+			"score": 1,
+			"word": "nil"
+		},
+		{
+			"hint": "TPHEUT",
+			"score": 1,
+			"word": "knit"
+		},
+		{
+			"hint": "TPHET",
+			"score": 1,
+			"word": "net"
+		},
+		{
+			"hint": "TPHUB",
+			"score": 1,
+			"word": "nub"
+		},
+		{
+			"hint": "TPHUL",
+			"score": 1,
+			"word": "null"
+		},
+		{
+			"hint": "TPHUT",
+			"score": 1,
+			"word": "nut"
+		},
+		{
+			"hint": "KWHEUP",
+			"score": 1,
+			"word": "yip"
+		},
+		{
+			"hint": "KWHEP",
+			"score": 1,
+			"word": "yep"
+		},
+		{
+			"hint": "KWHEL",
+			"score": 1,
+			"word": "yell"
+		},
+		{
+			"hint": "KWHET",
+			"score": 1,
+			"word": "yet"
+		},
+		{
+			"hint": "KWHES",
+			"score": 1,
+			"word": "yes"
+		},
+		{
+			"hint": "KWHUP",
+			"score": 1,
+			"word": "yup"
+		}
+	]
+}

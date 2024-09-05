@@ -1,0 +1,634 @@
+{
+	"checkpoint": true,
+	"level": 8,
+	"next_level": "lapwing_3_1.json",
+	"order": "random",
+	"size": 45,
+	"targets": [
+		{
+			"hint": "TKPWAF",
+			"score": 1,
+			"word": "gaffe"
+		},
+		{
+			"hint": "TKPWAP",
+			"score": 1,
+			"word": "gap"
+		},
+		{
+			"hint": "TKPWAL",
+			"score": 1,
+			"word": "gal"
+		},
+		{
+			"hint": "TKPWAG",
+			"score": 1,
+			"word": "gag"
+		},
+		{
+			"hint": "TKPWAT",
+			"score": 1,
+			"word": "gat"
+		},
+		{
+			"hint": "TKPWAS",
+			"score": 1,
+			"word": "gas"
+		},
+		{
+			"hint": "TKPWAD",
+			"score": 1,
+			"word": "gad"
+		},
+		{
+			"hint": "TKPWOR",
+			"score": 1,
+			"word": "gore"
+		},
+		{
+			"hint": "TKPWOB",
+			"score": 1,
+			"word": "gob"
+		},
+		{
+			"hint": "TKPWOT",
+			"score": 1,
+			"word": "got"
+		},
+		{
+			"hint": "TKPWOD",
+			"score": 1,
+			"word": "god"
+		},
+		{
+			"hint": "TKPWEUF",
+			"score": 1,
+			"word": "give"
+		},
+		{
+			"hint": "TKPWAF",
+			"score": 1,
+			"word": "gaffe"
+		},
+		{
+			"hint": "TKPWAP",
+			"score": 1,
+			"word": "gap"
+		},
+		{
+			"hint": "TKPWAL",
+			"score": 1,
+			"word": "gal"
+		},
+		{
+			"hint": "TKPWAG",
+			"score": 1,
+			"word": "gag"
+		},
+		{
+			"hint": "TKPWAT",
+			"score": 1,
+			"word": "gat"
+		},
+		{
+			"hint": "TKPWAS",
+			"score": 1,
+			"word": "gas"
+		},
+		{
+			"hint": "TKPWAD",
+			"score": 1,
+			"word": "gad"
+		},
+		{
+			"hint": "TKPWOR",
+			"score": 1,
+			"word": "gore"
+		},
+		{
+			"hint": "TKPWOB",
+			"score": 1,
+			"word": "gob"
+		},
+		{
+			"hint": "TKPWOT",
+			"score": 1,
+			"word": "got"
+		},
+		{
+			"hint": "TKPWOD",
+			"score": 1,
+			"word": "god"
+		},
+		{
+			"hint": "TKPWEUF",
+			"score": 1,
+			"word": "give"
+		},
+		{
+			"hint": "TKPWEUL",
+			"score": 1,
+			"word": "gill"
+		},
+		{
+			"hint": "TKPWEUG",
+			"score": 1,
+			"word": "gig"
+		},
+		{
+			"hint": "TKPWEUT",
+			"score": 1,
+			"word": "git"
+		},
+		{
+			"hint": "TKPWET",
+			"score": 1,
+			"word": "get"
+		},
+		{
+			"hint": "TKPWES",
+			"score": 1,
+			"word": "guess"
+		},
+		{
+			"hint": "TKPWUL",
+			"score": 1,
+			"word": "gull"
+		},
+		{
+			"hint": "TKPWUT",
+			"score": 1,
+			"word": "gut"
+		},
+		{
+			"hint": "TPHAP",
+			"score": 1,
+			"word": "nap"
+		},
+		{
+			"hint": "TPHAB",
+			"score": 1,
+			"word": "nab"
+		},
+		{
+			"hint": "TPHAG",
+			"score": 1,
+			"word": "nag"
+		},
+		{
+			"hint": "TPHOR",
+			"score": 1,
+			"word": "nor"
+		},
+		{
+			"hint": "TPHOB",
+			"score": 1,
+			"word": "knob"
+		},
+		{
+			"hint": "TPHOT",
+			"score": 1,
+			"word": "not"
+		},
+		{
+			"hint": "TPHOD",
+			"score": 1,
+			"word": "nod"
+		},
+		{
+			"hint": "TPHEUP",
+			"score": 1,
+			"word": "nip"
+		},
+		{
+			"hint": "TPHEUL",
+			"score": 1,
+			"word": "nil"
+		},
+		{
+			"hint": "TPHEUT",
+			"score": 1,
+			"word": "knit"
+		},
+		{
+			"hint": "TPHET",
+			"score": 1,
+			"word": "net"
+		},
+		{
+			"hint": "TPHUB",
+			"score": 1,
+			"word": "nub"
+		},
+		{
+			"hint": "TPHUL",
+			"score": 1,
+			"word": "null"
+		},
+		{
+			"hint": "TPHUT",
+			"score": 1,
+			"word": "nut"
+		},
+		{
+			"hint": "KWHEUP",
+			"score": 1,
+			"word": "yip"
+		},
+		{
+			"hint": "KWHEP",
+			"score": 1,
+			"word": "yep"
+		},
+		{
+			"hint": "KWHEL",
+			"score": 1,
+			"word": "yell"
+		},
+		{
+			"hint": "KWHET",
+			"score": 1,
+			"word": "yet"
+		},
+		{
+			"hint": "KWHES",
+			"score": 1,
+			"word": "yes"
+		},
+		{
+			"hint": "KWHUP",
+			"score": 1,
+			"word": "yup"
+		},
+		{
+			"hint": "TPAR",
+			"score": 1,
+			"word": "far"
+		},
+		{
+			"hint": "TPAB",
+			"score": 1,
+			"word": "fab"
+		},
+		{
+			"hint": "TPAT",
+			"score": 1,
+			"word": "fat"
+		},
+		{
+			"hint": "TPAD",
+			"score": 1,
+			"word": "fad"
+		},
+		{
+			"hint": "TPOP",
+			"score": 1,
+			"word": "fop"
+		},
+		{
+			"hint": "TPOB",
+			"score": 1,
+			"word": "fob"
+		},
+		{
+			"hint": "TPOG",
+			"score": 1,
+			"word": "fog"
+		},
+		{
+			"hint": "TPEUR",
+			"score": 1,
+			"word": "fir"
+		},
+		{
+			"hint": "TPEUB",
+			"score": 1,
+			"word": "fib"
+		},
+		{
+			"hint": "TPEUL",
+			"score": 1,
+			"word": "fill"
+		},
+		{
+			"hint": "TPEUT",
+			"score": 1,
+			"word": "fit"
+		},
+		{
+			"hint": "TPEUZ",
+			"score": 1,
+			"word": "fizz"
+		},
+		{
+			"hint": "TPEL",
+			"score": 1,
+			"word": "fell"
+		},
+		{
+			"hint": "TPES",
+			"score": 1,
+			"word": "fess"
+		},
+		{
+			"hint": "TPED",
+			"score": 1,
+			"word": "fed"
+		},
+		{
+			"hint": "TPEZ",
+			"score": 1,
+			"word": "fez"
+		},
+		{
+			"hint": "TPUR",
+			"score": 1,
+			"word": "fur"
+		},
+		{
+			"hint": "TPUL",
+			"score": 1,
+			"word": "full"
+		},
+		{
+			"hint": "TPUS",
+			"score": 1,
+			"word": "fuss"
+		},
+		{
+			"hint": "TPUZ",
+			"score": 1,
+			"word": "fuzz"
+		},
+		{
+			"hint": "KWAR",
+			"score": 1,
+			"word": "quar"
+		},
+		{
+			"hint": "KWEUP",
+			"score": 1,
+			"word": "quip"
+		},
+		{
+			"hint": "KWEUL",
+			"score": 1,
+			"word": "quill"
+		},
+		{
+			"hint": "KWEUT",
+			"score": 1,
+			"word": "quit"
+		},
+		{
+			"hint": "KWEUD",
+			"score": 1,
+			"word": "quid"
+		},
+		{
+			"hint": "KWEUZ",
+			"score": 1,
+			"word": "quiz"
+		},
+		{
+			"hint": "KWEL",
+			"score": 1,
+			"word": "quell"
+		},
+		{
+			"hint": "PHAR",
+			"score": 1,
+			"word": "mar"
+		},
+		{
+			"hint": "PHAP",
+			"score": 1,
+			"word": "map"
+		},
+		{
+			"hint": "PHAT",
+			"score": 1,
+			"word": "mat"
+		},
+		{
+			"hint": "PHAS",
+			"score": 1,
+			"word": "mass"
+		},
+		{
+			"hint": "PHAD",
+			"score": 1,
+			"word": "mad"
+		},
+		{
+			"hint": "PHOR",
+			"score": 1,
+			"word": "more"
+		},
+		{
+			"hint": "PHOP",
+			"score": 1,
+			"word": "mop"
+		},
+		{
+			"hint": "PHOB",
+			"score": 1,
+			"word": "mob"
+		},
+		{
+			"hint": "PHOL",
+			"score": 1,
+			"word": "moll"
+		},
+		{
+			"hint": "PHOS",
+			"score": 1,
+			"word": "moss"
+		},
+		{
+			"hint": "PHOD",
+			"score": 1,
+			"word": "mod"
+		},
+		{
+			"hint": "PHEUF",
+			"score": 1,
+			"word": "miff"
+		},
+		{
+			"hint": "PHEUL",
+			"score": 1,
+			"word": "mill"
+		},
+		{
+			"hint": "PHEUT",
+			"score": 1,
+			"word": "mit"
+		},
+		{
+			"hint": "PHET",
+			"score": 1,
+			"word": "met"
+		},
+		{
+			"hint": "PHES",
+			"score": 1,
+			"word": "mess"
+		},
+		{
+			"hint": "PHUF",
+			"score": 1,
+			"word": "muff"
+		},
+		{
+			"hint": "PHUL",
+			"score": 1,
+			"word": "mull"
+		},
+		{
+			"hint": "PHUG",
+			"score": 1,
+			"word": "mug"
+		},
+		{
+			"hint": "PHUT",
+			"score": 1,
+			"word": "mutt"
+		},
+		{
+			"hint": "PHUS",
+			"score": 1,
+			"word": "muss"
+		},
+		{
+			"hint": "PHUD",
+			"score": 1,
+			"word": "mud"
+		},
+		{
+			"hint": "SKWRAR",
+			"score": 1,
+			"word": "jar"
+		},
+		{
+			"hint": "SKWRAB",
+			"score": 1,
+			"word": "jab"
+		},
+		{
+			"hint": "SKWRAG",
+			"score": 1,
+			"word": "jag"
+		},
+		{
+			"hint": "SKWRAZ",
+			"score": 1,
+			"word": "jazz"
+		},
+		{
+			"hint": "SKWROB",
+			"score": 1,
+			"word": "job"
+		},
+		{
+			"hint": "SKWROG",
+			"score": 1,
+			"word": "jog"
+		},
+		{
+			"hint": "SKWROT",
+			"score": 1,
+			"word": "jot"
+		},
+		{
+			"hint": "SKWREUB",
+			"score": 1,
+			"word": "jib"
+		},
+		{
+			"hint": "SKWREUG",
+			"score": 1,
+			"word": "jig"
+		},
+		{
+			"hint": "SKWREL",
+			"score": 1,
+			"word": "gel"
+		},
+		{
+			"hint": "SKWRET",
+			"score": 1,
+			"word": "jet"
+		},
+		{
+			"hint": "SKWRUG",
+			"score": 1,
+			"word": "jug"
+		},
+		{
+			"hint": "SKWRUT",
+			"score": 1,
+			"word": "jut"
+		},
+		{
+			"hint": "SRAR",
+			"score": 1,
+			"word": "var"
+		},
+		{
+			"hint": "SRAL",
+			"score": 1,
+			"word": "val"
+		},
+		{
+			"hint": "SRAT",
+			"score": 1,
+			"word": "vat"
+		},
+		{
+			"hint": "SREUR",
+			"score": 1,
+			"word": "vir"
+		},
+		{
+			"hint": "SREUT",
+			"score": 1,
+			"word": "vit"
+		},
+		{
+			"hint": "SREUS",
+			"score": 1,
+			"word": "vis"
+		},
+		{
+			"hint": "SREUD",
+			"score": 1,
+			"word": "vid"
+		},
+		{
+			"hint": "SRER",
+			"score": 1,
+			"word": "ver"
+		},
+		{
+			"hint": "SRET",
+			"score": 1,
+			"word": "vet"
+		},
+		{
+			"hint": "STKPWEUP",
+			"score": 1,
+			"word": "zip"
+		},
+		{
+			"hint": "STKPWEUG",
+			"score": 1,
+			"word": "zig"
+		},
+		{
+			"hint": "STKPWEUT",
+			"score": 1,
+			"word": "zit"
+		}
+	]
+}

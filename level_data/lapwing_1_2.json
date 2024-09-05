@@ -2,7 +2,7 @@
 	"level": 2,
 	"order": "random",
 	"size": 30,
-	"next_level": "lapwing_3.json",
+	"next_level": "lapwing_1_3.json",
 	"targets": [
 		{"word": "staff", "score": 1, "hint": "STAF"},
 		{"word": "star", "score": 1, "hint": "STAR"},
