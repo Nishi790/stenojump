@@ -17,7 +17,7 @@ var obstacle_types: Array[PackedScene]
 var level_new_word_interval: float = 2:
 	set(interval):
 		level_new_word_interval = interval
-		new_word_interval = level_new_word_interval * (1/speed_modifier)
+		new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
 var new_word_interval: float = 2 :
 	set(interval):
 		new_word_interval = interval
@@ -29,7 +29,7 @@ var speed_modifier: float = 1.0:
 		else:
 			new_word_timer.set_paused(false)
 			speed_modifier = mod
-			new_word_interval = level_new_word_interval * (1/speed_modifier)
+			new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
 
 var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
@@ -38,6 +38,12 @@ var next_obstacle: Obstacle:
 		if current_obstacle_queue.size() > 0:
 			return current_obstacle_queue[0]
 		else: return null
+var upcoming_word: Array[Dictionary]
+var stroke_ratio: float = 1:
+	set(new_ratio):
+		stroke_ratio = new_ratio
+		new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
+		new_word_timer.start()
 var obstacle_start_location: Vector2
 
 
@@ -53,16 +59,24 @@ func _ready() -> void:
 
 func request_word() -> void:
 	new_word_needed.emit(words_per_obstacle)
+	var total_strokes: int = 0
+	for word in upcoming_word:
+		total_strokes += word["score"]
+	stroke_ratio = total_strokes/words_per_obstacle
+
 
 
 func provide_target_word() -> String:
-	if not current_obstacle_queue.is_empty():
-		var target_obstacle: Obstacle = current_obstacle_queue.front()
-		return target_obstacle.target_word
+	if next_obstacle:
+		return next_obstacle.target_word
 	else: return ""
 
 
 func add_word(new_words: Array[Dictionary]) -> void:
+	if upcoming_word == null or upcoming_word.is_empty():
+		upcoming_word = new_words
+		new_word_needed.emit(words_per_obstacle)
+		return
 	#Create Obstacle
 	var obs_scene: PackedScene = obstacle_types.pick_random()
 	var new_obstacle: Obstacle = obs_scene.instantiate()
@@ -76,7 +90,7 @@ func add_word(new_words: Array[Dictionary]) -> void:
 	var target_words: PackedStringArray = []
 	var point_value: int = 0
 	var hints: PackedStringArray = []
-	for word in new_words:
+	for word in upcoming_word:
 		@warning_ignore("unsafe_call_argument")
 		target_words.append(word["word"])
 		point_value += word["score"]
@@ -90,7 +104,8 @@ func add_word(new_words: Array[Dictionary]) -> void:
 	new_obstacle.set_target_word(final_target)
 	new_obstacle.score = point_value
 	new_obstacle.hint = final_hint
-	new_obstacle.number_of_targets = new_words.size()
+	new_obstacle.number_of_targets = upcoming_word.size()
+	upcoming_word = new_words
 	if PlayerConfig.target_visibility != PlayerConfig.TargetVisibility.ALL:
 		new_obstacle.hide_target(true)
 
