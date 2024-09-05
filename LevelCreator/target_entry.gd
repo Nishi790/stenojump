@@ -48,6 +48,7 @@ func display_data(data: Dictionary) -> void:
 	target_entry.set_text(data["word"])
 	update_target(target_entry.text)
 	score_entry.set_value(data["score"])
+	@warning_ignore("narrowing_conversion")
 	update_score(score_entry.value)
 	hint_entry.set_text(data["hint"])
 	update_hint(hint_entry.text)

@@ -22,7 +22,7 @@ level_number_selector = NodePath("Background/VBoxContainer/Split/LevelElements/L
 level_size_selector = NodePath("Background/VBoxContainer/Split/LevelElements/LvlSze/LevelSize")
 level_order_selector = NodePath("Background/VBoxContainer/Split/LevelElements/OrderCntr/Orders")
 checkpoint_selector = NodePath("Background/VBoxContainer/Split/LevelElements/CheckpointCntr/IsCheckpoint")
-next_level_path_edit = NodePath("Background/VBoxContainer/Split/LevelElements/NextLevelCntr/NextLevelText")
+next_level_path_edit = NodePath("Background/VBoxContainer/Split/LevelElements/NextLevelCntr/NextLevelPath")
 next_level_file_button = NodePath("Background/VBoxContainer/Split/LevelElements/SelectNextLevel")
 select_targets_from_file_button = NodePath("Background/VBoxContainer/Split/LevelElements/TargetsFromFile")
 tsv_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/TSVCSVCopyPaste")
@@ -147,7 +147,7 @@ layout_mode = 2
 text = "Path to next level:"
 fit_content = true
 
-[node name="NextLevelText" type="LineEdit" parent="Background/VBoxContainer/Split/LevelElements/NextLevelCntr"]
+[node name="NextLevelPath" type="LineEdit" parent="Background/VBoxContainer/Split/LevelElements/NextLevelCntr"]
 layout_mode = 2
 size_flags_horizontal = 3
 

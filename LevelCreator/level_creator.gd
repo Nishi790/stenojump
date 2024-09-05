@@ -50,7 +50,7 @@ func _ready() -> void:
 	level_size_selector.value_changed.connect(set_level_size)
 	level_order_selector.item_selected.connect(set_order)
 	next_level_file_button.pressed.connect(choose_next_level)
-	next_level_path_edit.text_changed.connect(set_next_level)
+	next_level_path_edit.text_changed.connect(parse_next_level)
 	checkpoint_selector.toggled.connect(set_checkpoint)
 
 	#set up target generation signals
@@ -173,7 +173,10 @@ func choose_next_level() -> void:
 
 func set_next_level(file: String) -> void:
 	next_level_path_edit.text = file
-	active_level_data.next_level = file
+
+
+func parse_next_level(level_name: String) -> void:
+	active_level_data.next_level = level_name
 
 
 func select_file_to_parse() -> void:
