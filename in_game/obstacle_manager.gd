@@ -13,10 +13,23 @@ signal words_per_obstacle_changed (number_of_words: int)
 @export var new_word_timer: Timer
 
 var obstacle_types: Array[PackedScene]
+
+var level_new_word_interval: float = 2:
+	set(interval):
+		level_new_word_interval = interval
+		new_word_interval = level_new_word_interval * (1/speed_modifier)
 var new_word_interval: float = 2 :
 	set(interval):
 		new_word_interval = interval
 		new_word_timer.wait_time = new_word_interval
+var speed_modifier: float = 1.0:
+	set(mod):
+		var old_mod: float = speed_modifier
+		speed_modifier = mod
+		new_word_interval = level_new_word_interval * (1/speed_modifier)
+		if old_mod == 0:
+			new_word_timer.start()
+
 var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
 var next_obstacle: Obstacle:
@@ -25,7 +38,7 @@ var next_obstacle: Obstacle:
 			return current_obstacle_queue[0]
 		else: return null
 var obstacle_start_location: Vector2
-var speed_modifier: float = 1.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -63,9 +76,11 @@ func add_word(new_words: Array[Dictionary]) -> void:
 	var point_value: int = 0
 	var hints: PackedStringArray = []
 	for word in new_words:
-		target_words.append(String(word["word"]))
+		@warning_ignore("unsafe_call_argument")
+		target_words.append(word["word"])
 		point_value += word["score"]
-		hints.append(String(word["hint"]))
+		@warning_ignore("unsafe_call_argument")
+		hints.append(word["hint"])
 	var separator: String = " "
 	var final_target: String = separator.join(target_words)
 	var final_hint: String = separator.join(hints)
@@ -158,8 +173,9 @@ func level_complete() -> void:
 func set_speed(wpm: int) -> void:
 	var wpm_ratio: float = float(wpm)/50
 	words_per_obstacle = ceili(wpm_ratio)
+	@warning_ignore("integer_division")
 	var obstacles_per_min: int = wpm/words_per_obstacle
-	new_word_interval = 60.0/float(obstacles_per_min)
+	level_new_word_interval = 60.0/float(obstacles_per_min)
 	words_per_obstacle_changed.emit(words_per_obstacle)
 
 
