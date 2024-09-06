@@ -1,0 +1,294 @@
+{
+	"checkpoint": false,
+	"level": 11,
+	"next_level": "lapwing_3_review.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "SKWRAOUL",
+			"score": 1,
+			"word": "jewel"
+		},
+		{
+			"hint": "SKWRAOUS",
+			"score": 1,
+			"word": "juice"
+		},
+		{
+			"hint": "SPRAOUS",
+			"score": 1,
+			"word": "spruce"
+		},
+		{
+			"hint": "SHRAOUS",
+			"score": 1,
+			"word": "sluice"
+		},
+		{
+			"hint": "SHRAOUD",
+			"score": 1,
+			"word": "shrewd"
+		},
+		{
+			"hint": "SHAOUR",
+			"score": 1,
+			"word": "sure"
+		},
+		{
+			"hint": "SHAOUT",
+			"score": 1,
+			"word": "chute"
+		},
+		{
+			"hint": "SAOUR",
+			"score": 1,
+			"word": "sewer"
+		},
+		{
+			"hint": "SAOUP",
+			"score": 1,
+			"word": "soup"
+		},
+		{
+			"hint": "SAOUT",
+			"score": 1,
+			"word": "suit"
+		},
+		{
+			"hint": "TKPWHRAOUT",
+			"score": 1,
+			"word": "glute"
+		},
+		{
+			"hint": "TKPWRAOUP",
+			"score": 1,
+			"word": "group"
+		},
+		{
+			"hint": "TKPWRAOUL",
+			"score": 1,
+			"word": "gruel"
+		},
+		{
+			"hint": "TKPWAOUL",
+			"score": 1,
+			"word": "ghoul"
+		},
+		{
+			"hint": "TKRAOUP",
+			"score": 1,
+			"word": "drupe"
+		},
+		{
+			"hint": "TKRAOUD",
+			"score": 1,
+			"word": "druid"
+		},
+		{
+			"hint": "TKAOUR",
+			"score": 1,
+			"word": "dure"
+		},
+		{
+			"hint": "TKAOUP",
+			"score": 1,
+			"word": "dupe"
+		},
+		{
+			"hint": "TKAOUL",
+			"score": 1,
+			"word": "dual"
+		},
+		{
+			"hint": "TKAOUD",
+			"score": 1,
+			"word": "dude"
+		},
+		{
+			"hint": "TPHRAOUT",
+			"score": 1,
+			"word": "flute"
+		},
+		{
+			"hint": "TPHAOUT",
+			"score": 1,
+			"word": "newt"
+		},
+		{
+			"hint": "TPRAOUT",
+			"score": 1,
+			"word": "fruit"
+		},
+		{
+			"hint": "TPAOUL",
+			"score": 1,
+			"word": "fuel"
+		},
+		{
+			"hint": "TPAOUG",
+			"score": 1,
+			"word": "fugue"
+		},
+		{
+			"hint": "TPAOUS",
+			"score": 1,
+			"word": "fuse"
+		},
+		{
+			"hint": "TPAOUD",
+			"score": 1,
+			"word": "feud"
+		},
+		{
+			"hint": "TPAOUZ",
+			"score": 1,
+			"word": "fuze"
+		},
+		{
+			"hint": "TRAOUP",
+			"score": 1,
+			"word": "troupe"
+		},
+		{
+			"hint": "TRAOUS",
+			"score": 1,
+			"word": "truce"
+		},
+		{
+			"hint": "TAOUR",
+			"score": 1,
+			"word": "tour"
+		},
+		{
+			"hint": "TAOUB",
+			"score": 1,
+			"word": "tube"
+		},
+		{
+			"hint": "KRAOUP",
+			"score": 1,
+			"word": "croup"
+		},
+		{
+			"hint": "KRAOUL",
+			"score": 1,
+			"word": "cruel"
+		},
+		{
+			"hint": "KRAOUD",
+			"score": 1,
+			"word": "crude"
+		},
+		{
+			"hint": "KAOUR",
+			"score": 1,
+			"word": "cure"
+		},
+		{
+			"hint": "KAOUP",
+			"score": 1,
+			"word": "coup"
+		},
+		{
+			"hint": "KAOUB",
+			"score": 1,
+			"word": "cube"
+		},
+		{
+			"hint": "KAOUT",
+			"score": 1,
+			"word": "cute"
+		},
+		{
+			"hint": "PWRAOUT",
+			"score": 1,
+			"word": "brute"
+		},
+		{
+			"hint": "PWRAOUS",
+			"score": 1,
+			"word": "bruise"
+		},
+		{
+			"hint": "PWAOUL",
+			"score": 1,
+			"word": "boule"
+		},
+		{
+			"hint": "PHAOUR",
+			"score": 1,
+			"word": "mure"
+		},
+		{
+			"hint": "PHAOUL",
+			"score": 1,
+			"word": "mule"
+		},
+		{
+			"hint": "PHAOUT",
+			"score": 1,
+			"word": "mute"
+		},
+		{
+			"hint": "PHAOUS",
+			"score": 1,
+			"word": "muse"
+		},
+		{
+			"hint": "PAOUR",
+			"score": 1,
+			"word": "pure"
+		},
+		{
+			"hint": "PAOUB",
+			"score": 1,
+			"word": "pube"
+		},
+		{
+			"hint": "HRAOUR",
+			"score": 1,
+			"word": "lure"
+		},
+		{
+			"hint": "HRAOUB",
+			"score": 1,
+			"word": "lube"
+		},
+		{
+			"hint": "HRAOUT",
+			"score": 1,
+			"word": "lute"
+		},
+		{
+			"hint": "HRAOUS",
+			"score": 1,
+			"word": "lose"
+		},
+		{
+			"hint": "RAOUL",
+			"score": 1,
+			"word": "rule"
+		},
+		{
+			"hint": "RAOUT",
+			"score": 1,
+			"word": "route"
+		},
+		{
+			"hint": "RAOUS",
+			"score": 1,
+			"word": "ruse"
+		},
+		{
+			"hint": "RAOUD",
+			"score": 1,
+			"word": "rude"
+		},
+		{
+			"hint": "AOUS",
+			"score": 1,
+			"word": "use"
+		}
+	]
+}

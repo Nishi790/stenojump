@@ -1,0 +1,664 @@
+{
+	"checkpoint": false,
+	"level": 10,
+	"next_level": "lapwing_3_3.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "HRAEUT",
+			"score": 1,
+			"word": "late"
+		},
+		{
+			"hint": "HRAEUS",
+			"score": 1,
+			"word": "lace"
+		},
+		{
+			"hint": "HRAEUD",
+			"score": 1,
+			"word": "laid"
+		},
+		{
+			"hint": "HRAEUZ",
+			"score": 1,
+			"word": "laze"
+		},
+		{
+			"hint": "HAEUR",
+			"score": 1,
+			"word": "hair"
+		},
+		{
+			"hint": "HAEUL",
+			"score": 1,
+			"word": "hail"
+		},
+		{
+			"hint": "HAEUT",
+			"score": 1,
+			"word": "hate"
+		},
+		{
+			"hint": "HAEUZ",
+			"score": 1,
+			"word": "haze"
+		},
+		{
+			"hint": "RAEUR",
+			"score": 1,
+			"word": "rare"
+		},
+		{
+			"hint": "RAEUL",
+			"score": 1,
+			"word": "rail"
+		},
+		{
+			"hint": "RAEUT",
+			"score": 1,
+			"word": "rate"
+		},
+		{
+			"hint": "RAEUS",
+			"score": 1,
+			"word": "race"
+		},
+		{
+			"hint": "RAEUD",
+			"score": 1,
+			"word": "raid"
+		},
+		{
+			"hint": "AEUR",
+			"score": 1,
+			"word": "air"
+		},
+		{
+			"hint": "AEUP",
+			"score": 1,
+			"word": "ape"
+		},
+		{
+			"hint": "AEUL",
+			"score": 1,
+			"word": "ail"
+		},
+		{
+			"hint": "AEUS",
+			"score": 1,
+			"word": "ace"
+		},
+		{
+			"hint": "AEUD",
+			"score": 1,
+			"word": "aid"
+		},
+		{
+			"hint": "TPAEUZ",
+			"score": 1,
+			"word": "faze"
+		},
+		{
+			"hint": "STPHAEUR",
+			"score": 1,
+			"word": "snare"
+		},
+		{
+			"hint": "STPHAEUL",
+			"score": 1,
+			"word": "snail"
+		},
+		{
+			"hint": "STRAEUF",
+			"score": 1,
+			"word": "strafe"
+		},
+		{
+			"hint": "STRAEUT",
+			"score": 1,
+			"word": "straight"
+		},
+		{
+			"hint": "STAEUR",
+			"score": 1,
+			"word": "stair"
+		},
+		{
+			"hint": "STAEUL",
+			"score": 1,
+			"word": "stale"
+		},
+		{
+			"hint": "STAEUT",
+			"score": 1,
+			"word": "state"
+		},
+		{
+			"hint": "SKWRAEUL",
+			"score": 1,
+			"word": "jail"
+		},
+		{
+			"hint": "SKWRAEUD",
+			"score": 1,
+			"word": "jade"
+		},
+		{
+			"hint": "SKWAEUR",
+			"score": 1,
+			"word": "square"
+		},
+		{
+			"hint": "SKRAEUP",
+			"score": 1,
+			"word": "scrape"
+		},
+		{
+			"hint": "SKAEUR",
+			"score": 1,
+			"word": "scare"
+		},
+		{
+			"hint": "SKAEUP",
+			"score": 1,
+			"word": "scape"
+		},
+		{
+			"hint": "SKAEUL",
+			"score": 1,
+			"word": "scale"
+		},
+		{
+			"hint": "SKAEUT",
+			"score": 1,
+			"word": "skate"
+		},
+		{
+			"hint": "SPAEUR",
+			"score": 1,
+			"word": "spare"
+		},
+		{
+			"hint": "SPAEUT",
+			"score": 1,
+			"word": "spate"
+		},
+		{
+			"hint": "SPAEUS",
+			"score": 1,
+			"word": "space"
+		},
+		{
+			"hint": "SPAEUD",
+			"score": 1,
+			"word": "spade"
+		},
+		{
+			"hint": "SWAEUR",
+			"score": 1,
+			"word": "swear"
+		},
+		{
+			"hint": "SHRAEUT",
+			"score": 1,
+			"word": "slate"
+		},
+		{
+			"hint": "SHAEUR",
+			"score": 1,
+			"word": "share"
+		},
+		{
+			"hint": "SHAEUP",
+			"score": 1,
+			"word": "shape"
+		},
+		{
+			"hint": "SHAEUL",
+			"score": 1,
+			"word": "shale"
+		},
+		{
+			"hint": "SHAEUD",
+			"score": 1,
+			"word": "shade"
+		},
+		{
+			"hint": "SRAEUP",
+			"score": 1,
+			"word": "vape"
+		},
+		{
+			"hint": "SRAEUL",
+			"score": 1,
+			"word": "veil"
+		},
+		{
+			"hint": "SRAEUG",
+			"score": 1,
+			"word": "vague"
+		},
+		{
+			"hint": "SRAEUS",
+			"score": 1,
+			"word": "vase"
+		},
+		{
+			"hint": "SAEUF",
+			"score": 1,
+			"word": "safe"
+		},
+		{
+			"hint": "SAEUL",
+			"score": 1,
+			"word": "sail"
+		},
+		{
+			"hint": "SAEUT",
+			"score": 1,
+			"word": "sate"
+		},
+		{
+			"hint": "TKPWHRAEUR",
+			"score": 1,
+			"word": "glare"
+		},
+		{
+			"hint": "TKPWHRAEUS",
+			"score": 1,
+			"word": "glace"
+		},
+		{
+			"hint": "TKPWHRAEUD",
+			"score": 1,
+			"word": "glade"
+		},
+		{
+			"hint": "TKPWHRAEUZ",
+			"score": 1,
+			"word": "glaze"
+		},
+		{
+			"hint": "TKPWRAEUP",
+			"score": 1,
+			"word": "grape"
+		},
+		{
+			"hint": "TKPWRAEUL",
+			"score": 1,
+			"word": "grail"
+		},
+		{
+			"hint": "TKPWRAEUT",
+			"score": 1,
+			"word": "grate"
+		},
+		{
+			"hint": "TKPWRAEUS",
+			"score": 1,
+			"word": "grace"
+		},
+		{
+			"hint": "TKPWRAEUD",
+			"score": 1,
+			"word": "grade"
+		},
+		{
+			"hint": "TKPWRAEUZ",
+			"score": 1,
+			"word": "graze"
+		},
+		{
+			"hint": "TKPWAEUP",
+			"score": 1,
+			"word": "gape"
+		},
+		{
+			"hint": "TKPWAEUT",
+			"score": 1,
+			"word": "gait"
+		},
+		{
+			"hint": "TKPWAEUZ",
+			"score": 1,
+			"word": "gaze"
+		},
+		{
+			"hint": "TKRAEUP",
+			"score": 1,
+			"word": "drape"
+		},
+		{
+			"hint": "TKAEUR",
+			"score": 1,
+			"word": "dare"
+		},
+		{
+			"hint": "TKAEUT",
+			"score": 1,
+			"word": "date"
+		},
+		{
+			"hint": "TKAEUZ",
+			"score": 1,
+			"word": "daze"
+		},
+		{
+			"hint": "TPHRAEUR",
+			"score": 1,
+			"word": "flair"
+		},
+		{
+			"hint": "TPHRAEUL",
+			"score": 1,
+			"word": "flail"
+		},
+		{
+			"hint": "TPHRAEUT",
+			"score": 1,
+			"word": "flate"
+		},
+		{
+			"hint": "TPHAEUP",
+			"score": 1,
+			"word": "nape"
+		},
+		{
+			"hint": "TPHAEUL",
+			"score": 1,
+			"word": "nail"
+		},
+		{
+			"hint": "TPRAEUL",
+			"score": 1,
+			"word": "frail"
+		},
+		{
+			"hint": "TPRAEUT",
+			"score": 1,
+			"word": "freight"
+		},
+		{
+			"hint": "TPAEUR",
+			"score": 1,
+			"word": "fair"
+		},
+		{
+			"hint": "TPAEUL",
+			"score": 1,
+			"word": "fail"
+		},
+		{
+			"hint": "TPAEUT",
+			"score": 1,
+			"word": "fate"
+		},
+		{
+			"hint": "TPAEUS",
+			"score": 1,
+			"word": "face"
+		},
+		{
+			"hint": "TPAEUD",
+			"score": 1,
+			"word": "fade"
+		},
+		{
+			"hint": "THAEUR",
+			"score": 1,
+			"word": "their"
+		},
+		{
+			"hint": "TRAEUL",
+			"score": 1,
+			"word": "trail"
+		},
+		{
+			"hint": "TRAEUT",
+			"score": 1,
+			"word": "trait"
+		},
+		{
+			"hint": "TRAEUS",
+			"score": 1,
+			"word": "trace"
+		},
+		{
+			"hint": "TRAEUD",
+			"score": 1,
+			"word": "trade"
+		},
+		{
+			"hint": "TAEUP",
+			"score": 1,
+			"word": "tape"
+		},
+		{
+			"hint": "TAEUL",
+			"score": 1,
+			"word": "tail"
+		},
+		{
+			"hint": "KWAEUR",
+			"score": 1,
+			"word": "quare"
+		},
+		{
+			"hint": "KWAEUL",
+			"score": 1,
+			"word": "quail"
+		},
+		{
+			"hint": "KHAEUR",
+			"score": 1,
+			"word": "chair"
+		},
+		{
+			"hint": "KHAEUS",
+			"score": 1,
+			"word": "chase"
+		},
+		{
+			"hint": "KHAEUZ",
+			"score": 1,
+			"word": "chaise"
+		},
+		{
+			"hint": "KRAEUP",
+			"score": 1,
+			"word": "crepe"
+		},
+		{
+			"hint": "KRAEUT",
+			"score": 1,
+			"word": "crate"
+		},
+		{
+			"hint": "KRAEUZ",
+			"score": 1,
+			"word": "craze"
+		},
+		{
+			"hint": "KAEUR",
+			"score": 1,
+			"word": "care"
+		},
+		{
+			"hint": "KAEUP",
+			"score": 1,
+			"word": "cape"
+		},
+		{
+			"hint": "KAEUL",
+			"score": 1,
+			"word": "kale"
+		},
+		{
+			"hint": "KAEUS",
+			"score": 1,
+			"word": "case"
+		},
+		{
+			"hint": "PWHRAEUR",
+			"score": 1,
+			"word": "blare"
+		},
+		{
+			"hint": "PWHRAEUD",
+			"score": 1,
+			"word": "blade"
+		},
+		{
+			"hint": "PWHRAEUZ",
+			"score": 1,
+			"word": "blaze"
+		},
+		{
+			"hint": "PWRAEUL",
+			"score": 1,
+			"word": "braille"
+		},
+		{
+			"hint": "PWRAEUS",
+			"score": 1,
+			"word": "brace"
+		},
+		{
+			"hint": "PWRAEUD",
+			"score": 1,
+			"word": "braid"
+		},
+		{
+			"hint": "PWRAEUZ",
+			"score": 1,
+			"word": "braze"
+		},
+		{
+			"hint": "PWAEUR",
+			"score": 1,
+			"word": "bare"
+		},
+		{
+			"hint": "PWAEUB",
+			"score": 1,
+			"word": "babe"
+		},
+		{
+			"hint": "PWAEUL",
+			"score": 1,
+			"word": "bail"
+		},
+		{
+			"hint": "PWAEUT",
+			"score": 1,
+			"word": "bait"
+		},
+		{
+			"hint": "PWAEUS",
+			"score": 1,
+			"word": "base"
+		},
+		{
+			"hint": "PWAEUD",
+			"score": 1,
+			"word": "bade"
+		},
+		{
+			"hint": "PHRAEUT",
+			"score": 1,
+			"word": "plate"
+		},
+		{
+			"hint": "PHRAEUS",
+			"score": 1,
+			"word": "place"
+		},
+		{
+			"hint": "PHAEUL",
+			"score": 1,
+			"word": "mail"
+		},
+		{
+			"hint": "PHAEUT",
+			"score": 1,
+			"word": "mate"
+		},
+		{
+			"hint": "PHAEUS",
+			"score": 1,
+			"word": "mace"
+		},
+		{
+			"hint": "PHAEUD",
+			"score": 1,
+			"word": "maid"
+		},
+		{
+			"hint": "PHAEUZ",
+			"score": 1,
+			"word": "maize"
+		},
+		{
+			"hint": "PRAEUS",
+			"score": 1,
+			"word": "praise"
+		},
+		{
+			"hint": "PAEUR",
+			"score": 1,
+			"word": "pair"
+		},
+		{
+			"hint": "PAEUL",
+			"score": 1,
+			"word": "pail"
+		},
+		{
+			"hint": "PAEUT",
+			"score": 1,
+			"word": "pate"
+		},
+		{
+			"hint": "PAEUS",
+			"score": 1,
+			"word": "pace"
+		},
+		{
+			"hint": "PAEUD",
+			"score": 1,
+			"word": "paid"
+		},
+		{
+			"hint": "WAEUF",
+			"score": 1,
+			"word": "waif"
+		},
+		{
+			"hint": "WAEUR",
+			"score": 1,
+			"word": "ware"
+		},
+		{
+			"hint": "WAEUB",
+			"score": 1,
+			"word": "wabe"
+		},
+		{
+			"hint": "WAEUL",
+			"score": 1,
+			"word": "wail"
+		},
+		{
+			"hint": "WAEUT",
+			"score": 1,
+			"word": "wait"
+		},
+		{
+			"hint": "WAEUD",
+			"score": 1,
+			"word": "wade"
+		}
+	]
+}
