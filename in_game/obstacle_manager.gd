@@ -17,7 +17,8 @@ var obstacle_types: Array[PackedScene]
 var level_new_word_interval: float = 2:
 	set(interval):
 		level_new_word_interval = interval
-		new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
+		if level_new_word_interval * (1/speed_modifier) * stroke_ratio != 0:
+			new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
 var new_word_interval: float = 2 :
 	set(interval):
 		new_word_interval = interval

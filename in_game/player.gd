@@ -138,6 +138,11 @@ func start_run() -> void:
 		change_states(State.RUNNING)
 
 
+func resume_movement() -> void:
+	if movement_state == State.IDLING:
+		start_walk()
+
+
 func start_walk() -> void:
 	change_states(State.WALKING)
 

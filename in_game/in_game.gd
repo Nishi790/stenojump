@@ -103,6 +103,7 @@ func _process(delta: float) -> void:
 		wpm = normal_words/minutes
 
 
+##Dynamically adjusts obstacle and scroll speed when player is walking instead of running (i.e. level start)
 func change_move_speed(move_type: Player.State) -> void:
 	var speed_modifier: float = 1.0
 	match move_type:
@@ -116,6 +117,7 @@ func change_move_speed(move_type: Player.State) -> void:
 	obstacle_manager.modify_speed(speed_modifier)
 
 
+##Sends target word(s)' information to the obstacle manager when requerted to generate new obstacles
 func send_new_word(number: int) -> void:
 	if word_queue.size() == next_word_index:
 		obstacle_manager.add_word([])
@@ -128,6 +130,8 @@ func send_new_word(number: int) -> void:
 		obstacle_manager.add_word(words_to_send)
 
 
+##Called on failure of an obstacle to reset section
+##adjust score, and trigger relevant UI
 func reset_word(collider: Object) -> void:
 #Pause Word Generation
 	pause_game()
@@ -149,6 +153,9 @@ func reset_word(collider: Object) -> void:
 		resume_game()
 
 
+##Used to reset an obstacle on failure
+##Returns a specified number of words and the corresponding number of obstacles to the queue
+##Completed by subtracting from indices
 func return_words_to_queue(number_of_words: int, number_of_obstacles: int) -> void:
 	next_word_index -= number_of_words
 	words_left = word_queue.size() - next_word_index
@@ -160,15 +167,18 @@ func adjust_score(amount: int) -> void:
 	score += amount
 
 
+##Responds to Obstacle Manager signalling empty queue and prompts 'end level'
 func on_obstacle_queue_empty() -> void:
 	if word_queue.size() == next_word_index:
 		end_level()
 
 
+##Sets the current target word for text comparison
 func set_target_word(target: String) -> void:
 	target_word = target
 
 
+##Called when all lives are lost, triggers reset of current level in save file to last checkpoint level
 func game_over() -> void:
 	level_timer_active = false
 	run_ended = true
@@ -177,6 +187,8 @@ func game_over() -> void:
 	PlayerConfig.run_lost()
 
 
+##Called when a player successfully completes a level.
+##Handles reset of required elements, triggering of HUD
 func end_level() -> void:
 	level_timer_active = false
 	level_time = 0
@@ -188,6 +200,8 @@ func end_level() -> void:
 	hud.level_complete()
 
 
+##Called to parse text changes in player input box whenever text changes
+##begins level timer on first word match and provides data for wpm counter
 func update_text(new_text: String) -> void:
 	if level_complete:
 		return
@@ -210,6 +224,8 @@ func update_text(new_text: String) -> void:
 		else: words_left = 0
 
 
+##Called when enter is pressed in player input box, used to move to next level/return to menu
+##and for between level commands. like quit
 func enter_pressed(text: String) -> void:
 	if level_complete:
 		var command_entered: String = text.strip_edges()
@@ -237,6 +253,8 @@ func enter_pressed(text: String) -> void:
 		main_menu_requested.emit()
 
 
+##Requests level data from the LevelLoader singleton and uses the data to set up the level
+##Needs error handling for invalid level paths/level files
 func load_level_data(level_path: String = "") -> void:
 	if level_path != "":
 			var error: Error = LevelLoader.load_level(level_path)
@@ -268,6 +286,7 @@ func load_level_data(level_path: String = "") -> void:
 	words_left = word_queue.size()
 
 
+##Increases level strokes per minute by step amount
 func increase_speed() -> void:
 	var current_speed: int = PlayerConfig.current_wpm
 	current_speed = current_speed + PlayerConfig.step_size
@@ -276,25 +295,31 @@ func increase_speed() -> void:
 	PlayerConfig.current_wpm = current_speed
 
 
+##Called whenever the player needs to start a level or resume from a pause
 func resume_game() -> void:
 	input_box.grab_focus()
 	obstacle_manager.resume_obstacles()
-	player.start_walk()
+	player.resume_movement()
 
 
+##Sets words per obstacle to determine number of targets to send obstacle manager when requested
 func set_words_per_obstacle(number: int) -> void:
 	max_words_per_obstacle = number
 	obstacles_remaining = ceili(float(word_queue.size())/max_words_per_obstacle)
 
 
+##Handles pausing main game for all cases (actual pause menu and resetting obstacles)
 func pause_game(menu_open: bool = false) -> void:
 	level_timer_active = false
 	obstacle_manager.pause_obstacles()
-	player.change_states(Player.State.IDLING)
 	if menu_open:
 		hud.open_pause_menu()
+	else:
+		player.change_states(Player.State.IDLING)
 
 
+##Saves data before quitting, first sending player class data to the PlayerConfig
+##Then saves run related data to file before requesting return to menu
 func quit_game() -> void:
 	player.save_data()
 	PlayerConfig.save_game()
