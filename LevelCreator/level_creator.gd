@@ -74,6 +74,8 @@ func _ready() -> void:
 func create_new_level() -> void:
 	active_level_data = LevelData.new()
 	active_level_data.target_changed.connect(target_changed)
+	tsv_text_box.clear()
+	plain_text_box.clear()
 	display_level_data()
 	save_path_button.grab_focus()
 
@@ -92,6 +94,8 @@ func load_existing_level(path: String) -> void:
 	var final_slice: int = path.get_slice_count("/") - 1
 	active_level_data.save_file_name = path.get_slice("/", final_slice)
 	active_level_data.save_dir = path.trim_suffix(active_level_data.save_file_name)
+	tsv_text_box.clear()
+	plain_text_box.clear()
 	display_level_data()
 	select_targets_from_file_button.grab_focus()
 
