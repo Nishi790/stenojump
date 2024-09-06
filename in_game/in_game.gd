@@ -118,7 +118,7 @@ func change_move_speed(move_type: Player.State) -> void:
 
 func send_new_word(number: int) -> void:
 	if word_queue.size() == next_word_index:
-		return
+		obstacle_manager.add_word([])
 	else:
 		var words_to_send: Array[Dictionary] = []
 		for index in number:
@@ -182,7 +182,6 @@ func end_level() -> void:
 	level_time = 0
 	characters_entered_correctly = 0
 	level_complete = true
-	obstacle_manager.level_complete()
 	PlayerConfig.current_score = score
 	level_score = 0
 	await get_tree().create_timer(2).timeout

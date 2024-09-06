@@ -42,8 +42,10 @@ var upcoming_word: Array[Dictionary]
 var stroke_ratio: float = 1:
 	set(new_ratio):
 		stroke_ratio = new_ratio
-		new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
-		new_word_timer.start()
+		var new_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
+		if new_interval != 0:
+			new_word_interval = new_interval
+			new_word_timer.start()
 var obstacle_start_location: Vector2
 
 
@@ -59,10 +61,11 @@ func _ready() -> void:
 
 func request_word() -> void:
 	new_word_needed.emit(words_per_obstacle)
+	#Calculate number of strokes of next word based on the score, and uses as multiplier on timer
 	var total_strokes: int = 0
 	for word in upcoming_word:
 		total_strokes += word["score"]
-	stroke_ratio = total_strokes/words_per_obstacle
+	stroke_ratio = float(total_strokes)/float(words_per_obstacle)
 
 
 
@@ -73,10 +76,15 @@ func provide_target_word() -> String:
 
 
 func add_word(new_words: Array[Dictionary]) -> void:
+	if new_words.is_empty():
+		level_complete()
 	if upcoming_word == null or upcoming_word.is_empty():
 		upcoming_word = new_words
-		new_word_needed.emit(words_per_obstacle)
-		return
+		if upcoming_word.is_empty():
+			return
+		else:
+			new_word_needed.emit(words_per_obstacle)
+			return
 	#Create Obstacle
 	var obs_scene: PackedScene = obstacle_types.pick_random()
 	var new_obstacle: Obstacle = obs_scene.instantiate()
@@ -139,7 +147,7 @@ func word_cleared() -> void:
 func reset_words() -> void:
 	new_word_timer.stop()
 	var score_reduction: int = 0
-	var words_to_reset: int = 0
+	var words_to_reset: int = upcoming_word.size()
 	var obst_returned: int = get_tree().get_node_count_in_group("obstacles")
 	for obst in get_tree().get_nodes_in_group("obstacles"):
 		if current_obstacle_queue.find(obst) == -1:
@@ -149,7 +157,15 @@ func reset_words() -> void:
 	current_obstacle_queue.clear()
 	score_changed.emit(score_reduction)
 	words_returned.emit(words_to_reset, obst_returned)
+	upcoming_word.clear()
 	return
+
+
+#Adjust the speed multiplier when character speed changes
+func modify_speed(multiplier: float) -> void:
+	speed_modifier = multiplier
+	for obstacle in current_obstacle_queue:
+		obstacle.speed_modifier = multiplier
 
 
 func pause_obstacles() -> void:
@@ -158,12 +174,7 @@ func pause_obstacles() -> void:
 	new_word_timer.set_paused(true)
 
 
-func modify_speed(multiplier: float) -> void:
-	speed_modifier = multiplier
-	for obstacle in current_obstacle_queue:
-		obstacle.speed_modifier = multiplier
-
-
+#Restart obstacle movement and request a new word if required
 func resume_obstacles() -> void:
 	for obstacle in current_obstacle_queue:
 		obstacle.stopped = false
@@ -176,6 +187,7 @@ func resume_obstacles() -> void:
 		new_word_timer.start()
 
 
+#Stops timer and kills all obstacles
 func game_over() -> void:
 	get_tree().call_group("obstacles", "queue_free")
 	current_obstacle_queue.clear()
@@ -186,6 +198,7 @@ func level_complete() -> void:
 	new_word_timer.stop()
 
 
+#Determine speed of obstacle generation and number of words per obstacle
 func set_speed(wpm: int) -> void:
 	var wpm_ratio: float = float(wpm)/50
 	words_per_obstacle = ceili(wpm_ratio)
@@ -195,6 +208,7 @@ func set_speed(wpm: int) -> void:
 	words_per_obstacle_changed.emit(words_per_obstacle)
 
 
+#Trigger visible target on an obstacle when it gets into range
 func show_target(target: PhysicsBody2D) -> void:
 	if target is Obstacle and PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.IN_RANGE:
 		target.hide_target(false)
