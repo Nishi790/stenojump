@@ -134,20 +134,23 @@ func send_new_word(number: int) -> void:
 ##Called on failure of an obstacle to reset section
 ##adjust score, and trigger relevant UI
 func reset_word(collider: Object) -> void:
-#Pause Word Generation
+	#Remove all onscreen words
+	obstacle_manager.reset_words()
+
+	#Pause Word Generation
 	word_failed = true
 	pause_game()
 
+	#display hint
 	if collider is Obstacle:
 		hud.display_hint(collider.target_word, collider.hint, input_box.text)
 
-#Display reset message
+	# adjust score
 	hud.life_lost_reset()
 	score = score - 1
 	level_score = level_score - 1 #TODO scale death score penalty
 
-#Remove all onscreen words
-	obstacle_manager.reset_words()
+
 
 
 func resume_from_missed_word() -> void:
@@ -325,7 +328,7 @@ func pause_game(menu_open: bool = false) -> void:
 	if menu_open:
 		hud.open_pause_menu()
 	else:
-		player.change_states(Player.State.IDLING)
+		player.change_states(Player.State.DIE)
 
 
 ##Saves data before quitting, first sending player class data to the PlayerConfig

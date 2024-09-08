@@ -43,7 +43,7 @@ var upcoming_word: Array[Dictionary]
 var stroke_ratio: float = 1:
 	set(new_ratio):
 		stroke_ratio = new_ratio
-		var new_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
+		var new_interval: float = level_new_word_interval * (1/speed_modifier) * stroke_ratio
 		if new_interval != 0:
 			new_word_interval = new_interval
 			new_word_timer.start()

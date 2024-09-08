@@ -30,5 +30,7 @@ func set_textures() -> void:
 
 
 func _on_crawl_exited(body: Node2D) -> void:
+	if is_queued_for_deletion():
+		return
 	if body is PlayerPhysics:
 		body.stand_up()

@@ -51,6 +51,12 @@ func jump() -> void:
 	change_colliders(Colliders.JUMP)
 
 
+func stop_jump()-> void:
+	velocity.y = 0
+	set_deferred("position", Vector2.ZERO)
+	change_colliders(Colliders.RUN)
+
+
 func stand_up() -> void:
 	stand_up_triggered.emit()
 

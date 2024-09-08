@@ -6,7 +6,7 @@ signal reset_word (collider: Object)
 signal lives_changed (current_lives: int)
 signal player_movement_changed (movement_type: State)
 
-enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDLING}
+enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDLING, DIE}
 
 @export var sprite: AnimatedSprite2D
 @export var physics_body: CharacterBody2D
@@ -59,6 +59,8 @@ func _process(delta: float) -> void:
 		State.IDLING:
 			if sprite.animation != "idle":
 				sprite.play("sit_down")
+		State.DIE:
+			sprite.play("die")
 	#control animations here
 
 
@@ -99,6 +101,8 @@ func link_animation() -> void:
 			change_states(State.RUNNING)
 		"sit_down":
 			sprite.play("idle")
+		"die":
+			change_states(State.IDLING)
 
 
 func change_states(new_state: State, time_of_flight: float = -1) -> void:
@@ -120,6 +124,12 @@ func change_states(new_state: State, time_of_flight: float = -1) -> void:
 		State.CRAWLING:
 			if physics_body.active_collider != 2:
 				physics_body.change_colliders(2)
+		State.DIE:
+			if old_state == State.STARTING_JUMP or old_state == State.SOARING:
+				physics_body.stop_jump()
+			if physics_body.active_collider != 0:
+				physics_body.change_colliders(0)
+			player_movement_changed.emit(State.IDLING)
 	if time_of_flight > 0:
 		var sprite_frames: SpriteFrames = sprite.sprite_frames
 		var landing_anim_length: int = sprite_frames.get_frame_count("jump_down")

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=67 format=3 uid="uid://bxd74c38t8x8g"]
+[gd_resource type="SpriteFrames" load_steps=68 format=3 uid="uid://bxd74c38t8x8g"]
 
 [ext_resource type="Texture2D" uid="uid://bfbq3lbfg2bxx" path="res://textures/character_animations/cat_animations.png" id="1_hu6sf"]
 
@@ -17,6 +17,10 @@ region = Rect2(64, 416, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmfjg"]
 atlas = ExtResource("1_hu6sf")
 region = Rect2(96, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x3jg"]
+atlas = ExtResource("1_hu6sf")
+region = Rect2(0, 1056, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eoh40"]
 atlas = ExtResource("1_hu6sf")
@@ -280,6 +284,29 @@ animations = [{
 "loop": true,
 "name": &"crawl",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x3jg")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x3jg")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
