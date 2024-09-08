@@ -45,11 +45,12 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_type_variation = &"fullscreen_panel"
 
-[node name="GameMessage" type="Label" parent="MarginContainer/GameMessageContainer/GameMessagePanel"]
+[node name="GameMessage" type="RichTextLabel" parent="MarginContainer/GameMessageContainer/GameMessagePanel"]
 layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
 text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
+fit_content = true
 
 [node name="GUIOrganizer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

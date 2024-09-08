@@ -5,7 +5,7 @@ signal resume_game_requested
 signal main_menu_requested
 signal game_options_requested
 
-@export var ingame_message: Label
+@export var ingame_message: RichTextLabel
 @export var lives_counter: Label
 @export var score_counter: Label
 @export var word_counter: Label
@@ -13,6 +13,10 @@ signal game_options_requested
 @export var message_container: Container
 @export var input_box: LineEdit
 @export var pause_menu_scene: PackedScene
+
+var hint_string: String = "[center]You wrote [b]%s[/b].\n
+The word %s is stroked [b]%s[/b]. \n
+Press Enter (R-R) to continue.[/center] "
 
 var paused: bool = false
 
@@ -23,21 +27,18 @@ func _ready() -> void:
 func life_lost_reset() -> void:
 	input_box.editable = false
 	input_box.clear()
-	ingame_message.set_text("Oops, let's try again")
-	message_container.show()
-	await get_tree().create_timer(1).timeout
 
 
 func display_countdown() -> bool:
-	ingame_message.set_text("3")
+	ingame_message.set_text("[center]3[/center]")
 	await get_tree().create_timer(1).timeout
 	if paused == true:
 		return false
-	ingame_message.set_text("2")
+	ingame_message.set_text("[center]2[/center]")
 	await get_tree().create_timer(1).timeout
 	if paused == true:
 		return false
-	ingame_message.set_text("1")
+	ingame_message.set_text("[center]1[/center]")
 	await get_tree().create_timer(1).timeout
 	if paused == true:
 		return false
@@ -47,8 +48,13 @@ func display_countdown() -> bool:
 	return true
 
 
+func display_hint(target_text: String, hint_text: String, error_text: String) -> void:
+	message_container.show()
+	ingame_message.set_text(hint_string % [error_text, target_text, hint_text])
+
+
 func level_complete() -> void:
-	ingame_message.set_text("Level Complete! \n Press Enter (R-R) to proceed")
+	ingame_message.set_text("[center]Level Complete! \n Press Enter (R-R) to proceed[/center]")
 	message_container.show()
 
 
@@ -60,7 +66,7 @@ func start_next_level() -> void:
 
 
 func game_over() -> void:
-	ingame_message.set_text("Game Over \n Press Enter (%s) to return to menu." % "R-R")
+	ingame_message.set_text("[center]Game Over \n Press Enter (%s) to return to menu.[/center]" % "R-R")
 	message_container.show()
 
 

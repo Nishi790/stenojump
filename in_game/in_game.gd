@@ -49,6 +49,7 @@ var obstacles_remaining: int
 var level_complete: bool = false
 var game_paused: bool = false
 var run_ended: bool = false
+var word_failed: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -134,7 +135,11 @@ func send_new_word(number: int) -> void:
 ##adjust score, and trigger relevant UI
 func reset_word(collider: Object) -> void:
 #Pause Word Generation
+	word_failed = true
 	pause_game()
+
+	if collider is Obstacle:
+		hud.display_hint(collider.target_word, collider.hint, input_box.text)
 
 #Display reset message
 	hud.life_lost_reset()
@@ -144,6 +149,8 @@ func reset_word(collider: Object) -> void:
 #Remove all onscreen words
 	obstacle_manager.reset_words()
 
+
+func resume_from_missed_word() -> void:
 	#Display countdown
 	var countdown_complete: bool = await hud.display_countdown()
 
@@ -227,7 +234,10 @@ func update_text(new_text: String) -> void:
 ##Called when enter is pressed in player input box, used to move to next level/return to menu
 ##and for between level commands. like quit
 func enter_pressed(text: String) -> void:
-	if level_complete:
+	if word_failed:
+		word_failed = false
+		resume_from_missed_word()
+	elif level_complete:
 		var command_entered: String = text.strip_edges()
 		command_entered = command_entered.to_lower()
 		match command_entered:
