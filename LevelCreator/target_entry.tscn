@@ -25,7 +25,8 @@ delete_button = NodePath("DeleteEntry")
 [node name="TargetLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Target Word:"
+bbcode_enabled = true
+text = "[right]Target Word: [/right]"
 fit_content = true
 
 [node name="TargetWord" type="LineEdit" parent="."]
@@ -35,7 +36,8 @@ size_flags_horizontal = 3
 [node name="ScoreLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Point Value"
+bbcode_enabled = true
+text = "[right]Point Value: [/right]"
 
 [node name="Score" type="SpinBox" parent="."]
 layout_mode = 2
@@ -46,7 +48,8 @@ update_on_text_changed = true
 [node name="HintLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Hint"
+bbcode_enabled = true
+text = "[right]Hint: [/right]"
 
 [node name="HintText" type="LineEdit" parent="."]
 layout_mode = 2
@@ -55,6 +58,7 @@ placeholder_text = "Raw Steno"
 
 [node name="Edit" type="Button" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 toggle_mode = true
 text = "Edit Entry"
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bipkt1ocmkvej"]
+[gd_scene load_steps=6 format=3 uid="uid://bipkt1ocmkvej"]
 
 [ext_resource type="Script" path="res://LevelCreator/level_creator.gd" id="1_5ijgv"]
 [ext_resource type="PackedScene" uid="uid://c18o4yv3e32up" path="res://LevelCreator/target_entry.tscn" id="2_84sq6"]
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="3_mso1w"]
+[ext_resource type="Script" path="res://LevelCreator/save_confirmed.gd" id="4_66ijc"]
+[ext_resource type="StyleBox" uid="uid://bxm45i8ngl6pk" path="res://textures/UI/notebook_stylebox.tres" id="4_u1kyy"]
 
-[node name="LevelCreator" type="Control" node_paths=PackedStringArray("edit_existing_button", "new_level_button", "save_path_button", "file_selector", "save_file_name", "level_number_selector", "level_size_selector", "level_order_selector", "checkpoint_selector", "next_level_path_edit", "next_level_file_button", "select_targets_from_file_button", "tsv_text_box", "parse_tsv_button", "plain_text_box", "parse_text_button", "save_button", "target_list", "manual_entry_button", "menu_button", "quit_button")]
+[node name="LevelCreator" type="Control" node_paths=PackedStringArray("edit_existing_button", "new_level_button", "save_path_button", "file_selector", "save_file_name", "level_number_selector", "level_size_selector", "level_order_selector", "checkpoint_selector", "next_level_path_edit", "next_level_file_button", "select_targets_from_file_button", "tsv_text_box", "parse_tsv_button", "plain_text_box", "parse_text_button", "save_button", "save_complete_pop_up", "target_list", "manual_entry_button", "menu_button", "quit_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +32,7 @@ parse_tsv_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParseT
 plain_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/PlainTextCopyPaste")
 parse_text_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParsePlainText")
 save_button = NodePath("Background/VBoxContainer/ReturnOrganizer/Save")
+save_complete_pop_up = NodePath("Background/SaveConfirmed")
 target_list = NodePath("Background/VBoxContainer/Split/ScrollContainer/TargetSide/TargetList")
 target_scene = ExtResource("2_84sq6")
 manual_entry_button = NodePath("Background/VBoxContainer/Split/ScrollContainer/TargetSide/ManualEntry")
@@ -252,3 +255,24 @@ initial_position = 1
 size = Vector2i(500, 600)
 mode_overrides_title = false
 access = 2
+
+[node name="SaveConfirmed" type="PopupPanel" parent="Background" node_paths=PackedStringArray("pop_up_text")]
+initial_position = 1
+theme_override_styles/panel = ExtResource("4_u1kyy")
+script = ExtResource("4_66ijc")
+pop_up_text = NodePath("LevelSavedLabel")
+
+[node name="LevelSavedLabel" type="Label" parent="Background/SaveConfirmed"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 93.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1

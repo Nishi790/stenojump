@@ -22,6 +22,7 @@ signal menu_pressed
 @export var parse_text_button: Button
 
 @export var save_button: Button
+@export var save_complete_pop_up: PopupPanel
 
 @export var target_list: VBoxContainer
 @export var target_scene: PackedScene
@@ -180,6 +181,8 @@ func set_next_level(file: String) -> void:
 
 
 func parse_next_level(level_name: String) -> void:
+	if not level_name.ends_with(".json"):
+		level_name += ".json"
 	active_level_data.next_level = level_name
 
 
@@ -314,10 +317,18 @@ func check_entry_order(splits: PackedStringArray) -> String:
 
 
 func save_level() -> Error:
+	var err: Error
 	if active_level_data.save_path == "":
-		return ERR_FILE_BAD_PATH
+		err = ERR_FILE_BAD_PATH
 	else:
-		return active_level_data.save()
+		err = active_level_data.save()
+	if err == OK:
+		save_complete_pop_up.popup_centered()
+		save_complete_pop_up.save_success()
+	else:
+		save_complete_pop_up.popup_centered()
+		save_complete_pop_up.save_failed(err)
+	return err
 
 
 #Called when target data is changed
