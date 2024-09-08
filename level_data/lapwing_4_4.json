@@ -1,0 +1,339 @@
+{
+	"checkpoint": false,
+	"level": 16,
+	"next_level": "lapwing_4_5.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STAER",
+			"score": 1,
+			"word": "stare"
+		},
+		{
+			"hint": "STAEL",
+			"score": 1,
+			"word": "steal"
+		},
+		{
+			"hint": "SHAER",
+			"score": 1,
+			"word": "shear"
+		},
+		{
+			"hint": "SRAEL",
+			"score": 1,
+			"word": "vale"
+		},
+		{
+			"hint": "SAER",
+			"score": 1,
+			"word": "sear"
+		},
+		{
+			"hint": "SAEL",
+			"score": 1,
+			"word": "sale"
+		},
+		{
+			"hint": "TKPWRAET",
+			"score": 1,
+			"word": "great"
+		},
+		{
+			"hint": "TKPWAET",
+			"score": 1,
+			"word": "gate"
+		},
+		{
+			"hint": "TKAER",
+			"score": 1,
+			"word": "dear"
+		},
+		{
+			"hint": "TPHRAER",
+			"score": 1,
+			"word": "flare"
+		},
+		{
+			"hint": "TPAER",
+			"score": 1,
+			"word": "fare"
+		},
+		{
+			"hint": "TPAET",
+			"score": 1,
+			"word": "feat"
+		},
+		{
+			"hint": "TAER",
+			"score": 1,
+			"word": "tear"
+		},
+		{
+			"hint": "TAEL",
+			"score": 1,
+			"word": "tale"
+		},
+		{
+			"hint": "KHAEP",
+			"score": 1,
+			"word": "cheap"
+		},
+		{
+			"hint": "PWRAED",
+			"score": 1,
+			"word": "bread"
+		},
+		{
+			"hint": "PWAER",
+			"score": 1,
+			"word": "bear"
+		},
+		{
+			"hint": "PWAEL",
+			"score": 1,
+			"word": "bale"
+		},
+		{
+			"hint": "PWAET",
+			"score": 1,
+			"word": "beat"
+		},
+		{
+			"hint": "PHAEL",
+			"score": 1,
+			"word": "male"
+		},
+		{
+			"hint": "PHAET",
+			"score": 1,
+			"word": "meat"
+		},
+		{
+			"hint": "PHAED",
+			"score": 1,
+			"word": "made"
+		},
+		{
+			"hint": "PHAEZ",
+			"score": 1,
+			"word": "maze"
+		},
+		{
+			"hint": "PAER",
+			"score": 1,
+			"word": "pear"
+		},
+		{
+			"hint": "PAEL",
+			"score": 1,
+			"word": "pale"
+		},
+		{
+			"hint": "PAES",
+			"score": 1,
+			"word": "peace"
+		},
+		{
+			"hint": "WAER",
+			"score": 1,
+			"word": "wear"
+		},
+		{
+			"hint": "HAER",
+			"score": 1,
+			"word": "hear"
+		},
+		{
+			"hint": "HAEL",
+			"score": 1,
+			"word": "heal"
+		},
+		{
+			"hint": "RAEL",
+			"score": 1,
+			"word": "real"
+		},
+		{
+			"hint": "RAED",
+			"score": 1,
+			"word": "read"
+		},
+		{
+			"hint": "AEL",
+			"score": 1,
+			"word": "ale"
+		},
+		{
+			"hint": "AET",
+			"score": 1,
+			"word": "ate"
+		},
+		{
+			"hint": "STAEUR",
+			"score": 1,
+			"word": "stair"
+		},
+		{
+			"hint": "STAOEL",
+			"score": 1,
+			"word": "steal"
+		},
+		{
+			"hint": "SHAOER",
+			"score": 1,
+			"word": "shear"
+		},
+		{
+			"hint": "SRAEUL",
+			"score": 1,
+			"word": "veil"
+		},
+		{
+			"hint": "SAOER",
+			"score": 1,
+			"word": "seer"
+		},
+		{
+			"hint": "SAEUL",
+			"score": 1,
+			"word": "sail"
+		},
+		{
+			"hint": "TKPWRAEUT",
+			"score": 1,
+			"word": "grate"
+		},
+		{
+			"hint": "GAEUT",
+			"score": 1,
+			"word": "gait"
+		},
+		{
+			"hint": "TKAOER",
+			"score": 1,
+			"word": "deer"
+		},
+		{
+			"hint": "TPHRAEUR",
+			"score": 1,
+			"word": "flair"
+		},
+		{
+			"hint": "TPAEUR",
+			"score": 1,
+			"word": "fair"
+		},
+		{
+			"hint": "TPAOET",
+			"score": 1,
+			"word": "feet"
+		},
+		{
+			"hint": "TAEUR",
+			"score": 1,
+			"word": "tare"
+		},
+		{
+			"hint": "TAEUL",
+			"score": 1,
+			"word": "tail"
+		},
+		{
+			"hint": "KHAOEP",
+			"score": 1,
+			"word": "cheep"
+		},
+		{
+			"hint": "PWRED",
+			"score": 1,
+			"word": "bred"
+		},
+		{
+			"hint": "PWAEUR",
+			"score": 1,
+			"word": "bare"
+		},
+		{
+			"hint": "PWAEUL",
+			"score": 1,
+			"word": "bail"
+		},
+		{
+			"hint": "PWAOET",
+			"score": 1,
+			"word": "beet"
+		},
+		{
+			"hint": "PHAEUL",
+			"score": 1,
+			"word": "mail"
+		},
+		{
+			"hint": "PHAOET",
+			"score": 1,
+			"word": "meet"
+		},
+		{
+			"hint": "PHAEUD",
+			"score": 1,
+			"word": "maid"
+		},
+		{
+			"hint": "PHAEUZ",
+			"score": 1,
+			"word": "maize"
+		},
+		{
+			"hint": "PAEUR",
+			"score": 1,
+			"word": "pair"
+		},
+		{
+			"hint": "PAEUL",
+			"score": 1,
+			"word": "pail"
+		},
+		{
+			"hint": "PAOES",
+			"score": 1,
+			"word": "piece"
+		},
+		{
+			"hint": "WAEUR",
+			"score": 1,
+			"word": "ware"
+		},
+		{
+			"hint": "HAOER",
+			"score": 1,
+			"word": "here"
+		},
+		{
+			"hint": "HAOEL",
+			"score": 1,
+			"word": "heel"
+		},
+		{
+			"hint": "RAOEL",
+			"score": 1,
+			"word": "reel"
+		},
+		{
+			"hint": "RAOED",
+			"score": 1,
+			"word": "reed"
+		},
+		{
+			"hint": "AEUL",
+			"score": 1,
+			"word": "ail"
+		},
+		{
+			"hint": "AEUT",
+			"score": 1,
+			"word": "eight"
+		}
+	]
+}

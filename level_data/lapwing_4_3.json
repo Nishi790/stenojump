@@ -1,0 +1,294 @@
+{
+	"checkpoint": false,
+	"level": 15,
+	"next_level": "lapwing_4_4.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STAUP",
+			"score": 1,
+			"word": "stahp"
+		},
+		{
+			"hint": "STAUL",
+			"score": 1,
+			"word": "stall"
+		},
+		{
+			"hint": "SKWAUB",
+			"score": 1,
+			"word": "squab"
+		},
+		{
+			"hint": "SKWAUL",
+			"score": 1,
+			"word": "squall"
+		},
+		{
+			"hint": "SKWAUT",
+			"score": 1,
+			"word": "squat"
+		},
+		{
+			"hint": "SKWAUD",
+			"score": 1,
+			"word": "squad"
+		},
+		{
+			"hint": "SKRAUL",
+			"score": 1,
+			"word": "scrawl"
+		},
+		{
+			"hint": "SPHAUL",
+			"score": 1,
+			"word": "small"
+		},
+		{
+			"hint": "SPRAUL",
+			"score": 1,
+			"word": "sprawl"
+		},
+		{
+			"hint": "SWAUF",
+			"score": 1,
+			"word": "suave"
+		},
+		{
+			"hint": "SWAUP",
+			"score": 1,
+			"word": "swap"
+		},
+		{
+			"hint": "SWAUB",
+			"score": 1,
+			"word": "swab"
+		},
+		{
+			"hint": "SWAUT",
+			"score": 1,
+			"word": "swat"
+		},
+		{
+			"hint": "SHAUL",
+			"score": 1,
+			"word": "shawl"
+		},
+		{
+			"hint": "SAUT",
+			"score": 1,
+			"word": "sought"
+		},
+		{
+			"hint": "SAUS",
+			"score": 1,
+			"word": "sauce"
+		},
+		{
+			"hint": "TKPWAUL",
+			"score": 1,
+			"word": "gall"
+		},
+		{
+			"hint": "TKPWAUD",
+			"score": 1,
+			"word": "gawd"
+		},
+		{
+			"hint": "TKPWAUZ",
+			"score": 1,
+			"word": "gauze"
+		},
+		{
+			"hint": "TKRAUL",
+			"score": 1,
+			"word": "drawl"
+		},
+		{
+			"hint": "TKAUB",
+			"score": 1,
+			"word": "daub"
+		},
+		{
+			"hint": "TKAUG",
+			"score": 1,
+			"word": "dawg"
+		},
+		{
+			"hint": "TPHAUT",
+			"score": 1,
+			"word": "naught"
+		},
+		{
+			"hint": "TPRAUT",
+			"score": 1,
+			"word": "fraught"
+		},
+		{
+			"hint": "TPRAUD",
+			"score": 1,
+			"word": "fraud"
+		},
+		{
+			"hint": "TPAUL",
+			"score": 1,
+			"word": "fall"
+		},
+		{
+			"hint": "TPAUT",
+			"score": 1,
+			"word": "fought"
+		},
+		{
+			"hint": "THRAUL",
+			"score": 1,
+			"word": "thrall"
+		},
+		{
+			"hint": "THAUT",
+			"score": 1,
+			"word": "thought"
+		},
+		{
+			"hint": "TRAUF",
+			"score": 1,
+			"word": "trough"
+		},
+		{
+			"hint": "TRAUL",
+			"score": 1,
+			"word": "trawl"
+		},
+		{
+			"hint": "TAUL",
+			"score": 1,
+			"word": "tall"
+		},
+		{
+			"hint": "TAUT",
+			"score": 1,
+			"word": "taught"
+		},
+		{
+			"hint": "KWRA*UT",
+			"score": 1,
+			"word": "yacht"
+		},
+		{
+			"hint": "KWAUD",
+			"score": 1,
+			"word": "quad"
+		},
+		{
+			"hint": "KHRAUS",
+			"score": 1,
+			"word": "clause"
+		},
+		{
+			"hint": "KRAUL",
+			"score": 1,
+			"word": "crawl"
+		},
+		{
+			"hint": "KAUF",
+			"score": 1,
+			"word": "cough"
+		},
+		{
+			"hint": "KAUL",
+			"score": 1,
+			"word": "call"
+		},
+		{
+			"hint": "KAUT",
+			"score": 1,
+			"word": "caught"
+		},
+		{
+			"hint": "KAUS",
+			"score": 1,
+			"word": "cause"
+		},
+		{
+			"hint": "PWRAUL",
+			"score": 1,
+			"word": "brawl"
+		},
+		{
+			"hint": "PWRAUT",
+			"score": 1,
+			"word": "brought"
+		},
+		{
+			"hint": "PWRAUD",
+			"score": 1,
+			"word": "broad"
+		},
+		{
+			"hint": "PWAUL",
+			"score": 1,
+			"word": "ball"
+		},
+		{
+			"hint": "PWAUT",
+			"score": 1,
+			"word": "bought"
+		},
+		{
+			"hint": "PWAUD",
+			"score": 1,
+			"word": "baud"
+		},
+		{
+			"hint": "PHAUL",
+			"score": 1,
+			"word": "mall"
+		},
+		{
+			"hint": "PAUS",
+			"score": 1,
+			"word": "pause"
+		},
+		{
+			"hint": "WAUL",
+			"score": 1,
+			"word": "wall"
+		},
+		{
+			"hint": "WAUT",
+			"score": 1,
+			"word": "watt"
+		},
+		{
+			"hint": "WAUD",
+			"score": 1,
+			"word": "wad"
+		},
+		{
+			"hint": "HRAUD",
+			"score": 1,
+			"word": "laud"
+		},
+		{
+			"hint": "HAUL",
+			"score": 1,
+			"word": "hall"
+		},
+		{
+			"hint": "RAUR",
+			"score": 1,
+			"word": "rawr"
+		},
+		{
+			"hint": "AUL",
+			"score": 1,
+			"word": "all"
+		},
+		{
+			"hint": "AUT",
+			"score": 1,
+			"word": "aught"
+		}
+	]
+}

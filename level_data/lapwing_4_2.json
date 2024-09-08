@@ -1,0 +1,534 @@
+{
+	"checkpoint": false,
+	"level": 14,
+	"next_level": "lapwing_4_3.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STPHAOEUD",
+			"score": 1,
+			"word": "snide"
+		},
+		{
+			"hint": "STPAOEUP",
+			"score": 1,
+			"word": "snipe"
+		},
+		{
+			"hint": "STRAOEUF",
+			"score": 1,
+			"word": "strife"
+		},
+		{
+			"hint": "STRAOEUP",
+			"score": 1,
+			"word": "stripe"
+		},
+		{
+			"hint": "STRAOEUD",
+			"score": 1,
+			"word": "stride"
+		},
+		{
+			"hint": "STAOEUL",
+			"score": 1,
+			"word": "style"
+		},
+		{
+			"hint": "SKWRAOEUB",
+			"score": 1,
+			"word": "jibe"
+		},
+		{
+			"hint": "SKWAOEUR",
+			"score": 1,
+			"word": "squire"
+		},
+		{
+			"hint": "SKRAOEUB",
+			"score": 1,
+			"word": "scribe"
+		},
+		{
+			"hint": "SPHRAOEUS",
+			"score": 1,
+			"word": "splice"
+		},
+		{
+			"hint": "SPHAOEUL",
+			"score": 1,
+			"word": "smile"
+		},
+		{
+			"hint": "SPHAOEUT",
+			"score": 1,
+			"word": "smite"
+		},
+		{
+			"hint": "SPRAOEUT",
+			"score": 1,
+			"word": "sprite"
+		},
+		{
+			"hint": "SPAOEUR",
+			"score": 1,
+			"word": "spire"
+		},
+		{
+			"hint": "SPAOEUT",
+			"score": 1,
+			"word": "spite"
+		},
+		{
+			"hint": "SPAOEUS",
+			"score": 1,
+			"word": "spice"
+		},
+		{
+			"hint": "SWAOEUP",
+			"score": 1,
+			"word": "swipe"
+		},
+		{
+			"hint": "SHRAOEUT",
+			"score": 1,
+			"word": "slight"
+		},
+		{
+			"hint": "SHRAOEUS",
+			"score": 1,
+			"word": "slice"
+		},
+		{
+			"hint": "SHRAOEUD",
+			"score": 1,
+			"word": "slide"
+		},
+		{
+			"hint": "SRAOEUB",
+			"score": 1,
+			"word": "vibe"
+		},
+		{
+			"hint": "SRAOEUL",
+			"score": 1,
+			"word": "vile"
+		},
+		{
+			"hint": "SRAOEUS",
+			"score": 1,
+			"word": "vice"
+		},
+		{
+			"hint": "SRAOEUZ",
+			"score": 1,
+			"word": "vise"
+		},
+		{
+			"hint": "SAOEUR",
+			"score": 1,
+			"word": "sire"
+		},
+		{
+			"hint": "SAOEUT",
+			"score": 1,
+			"word": "sight"
+		},
+		{
+			"hint": "SAOEUD",
+			"score": 1,
+			"word": "side"
+		},
+		{
+			"hint": "SAOEUZ",
+			"score": 1,
+			"word": "size"
+		},
+		{
+			"hint": "TKPWHRAOEUD",
+			"score": 1,
+			"word": "glide"
+		},
+		{
+			"hint": "TKPWRAOEUP",
+			"score": 1,
+			"word": "gripe"
+		},
+		{
+			"hint": "TKPWAOEUD",
+			"score": 1,
+			"word": "guide"
+		},
+		{
+			"hint": "TKRAOEUF",
+			"score": 1,
+			"word": "drive"
+		},
+		{
+			"hint": "TKRAOEUR",
+			"score": 1,
+			"word": "dryer"
+		},
+		{
+			"hint": "TKAOEUR",
+			"score": 1,
+			"word": "dire"
+		},
+		{
+			"hint": "TKAOEUL",
+			"score": 1,
+			"word": "dial"
+		},
+		{
+			"hint": "TKAOEUS",
+			"score": 1,
+			"word": "dice"
+		},
+		{
+			"hint": "TPHRAOEUT",
+			"score": 1,
+			"word": "flight"
+		},
+		{
+			"hint": "TPHAOEUF",
+			"score": 1,
+			"word": "knife"
+		},
+		{
+			"hint": "TPHAOEUT",
+			"score": 1,
+			"word": "night"
+		},
+		{
+			"hint": "TPHAOEUS",
+			"score": 1,
+			"word": "nice"
+		},
+		{
+			"hint": "TPRAOEUT",
+			"score": 1,
+			"word": "fright"
+		},
+		{
+			"hint": "TPRAOEUD",
+			"score": 1,
+			"word": "fried"
+		},
+		{
+			"hint": "TPAOEUF",
+			"score": 1,
+			"word": "five"
+		},
+		{
+			"hint": "TPAOEUR",
+			"score": 1,
+			"word": "fire"
+		},
+		{
+			"hint": "TPAOEUL",
+			"score": 1,
+			"word": "file"
+		},
+		{
+			"hint": "TPAOEUT",
+			"score": 1,
+			"word": "fight"
+		},
+		{
+			"hint": "TWAOEUS",
+			"score": 1,
+			"word": "twice"
+		},
+		{
+			"hint": "THRAOEUS",
+			"score": 1,
+			"word": "thrice"
+		},
+		{
+			"hint": "TRAOEUP",
+			"score": 1,
+			"word": "tripe"
+		},
+		{
+			"hint": "TRAOEUB",
+			"score": 1,
+			"word": "tribe"
+		},
+		{
+			"hint": "TRAOEUL",
+			"score": 1,
+			"word": "trial"
+		},
+		{
+			"hint": "TRAOEUT",
+			"score": 1,
+			"word": "trite"
+		},
+		{
+			"hint": "TRAOEUS",
+			"score": 1,
+			"word": "trice"
+		},
+		{
+			"hint": "TAOEUR",
+			"score": 1,
+			"word": "tire"
+		},
+		{
+			"hint": "TAOEUP",
+			"score": 1,
+			"word": "type"
+		},
+		{
+			"hint": "TAOEUL",
+			"score": 1,
+			"word": "tile"
+		},
+		{
+			"hint": "TAOEUT",
+			"score": 1,
+			"word": "tight"
+		},
+		{
+			"hint": "TAOEUD",
+			"score": 1,
+			"word": "tide"
+		},
+		{
+			"hint": "KWAOEUR",
+			"score": 1,
+			"word": "choir"
+		},
+		{
+			"hint": "KWAOEUT",
+			"score": 1,
+			"word": "quite"
+		},
+		{
+			"hint": "KHAOEUF",
+			"score": 1,
+			"word": "chive"
+		},
+		{
+			"hint": "KHAOEUD",
+			"score": 1,
+			"word": "chide"
+		},
+		{
+			"hint": "KRAOEUD",
+			"score": 1,
+			"word": "cried"
+		},
+		{
+			"hint": "KAOEUT",
+			"score": 1,
+			"word": "kite"
+		},
+		{
+			"hint": "PWHRAOEUT",
+			"score": 1,
+			"word": "blight"
+		},
+		{
+			"hint": "PWRAOEUB",
+			"score": 1,
+			"word": "bribe"
+		},
+		{
+			"hint": "PWRAOEUT",
+			"score": 1,
+			"word": "bright"
+		},
+		{
+			"hint": "PWRAOEUD",
+			"score": 1,
+			"word": "bride"
+		},
+		{
+			"hint": "PWAOEUL",
+			"score": 1,
+			"word": "bile"
+		},
+		{
+			"hint": "PWAOEUT",
+			"score": 1,
+			"word": "bite"
+		},
+		{
+			"hint": "PWAOEUD",
+			"score": 1,
+			"word": "bide"
+		},
+		{
+			"hint": "PHRAOEUT",
+			"score": 1,
+			"word": "plight"
+		},
+		{
+			"hint": "PHAOEUR",
+			"score": 1,
+			"word": "mire"
+		},
+		{
+			"hint": "PHAOEUL",
+			"score": 1,
+			"word": "mile"
+		},
+		{
+			"hint": "PHAOEUT",
+			"score": 1,
+			"word": "might"
+		},
+		{
+			"hint": "PHAOEUS",
+			"score": 1,
+			"word": "mice"
+		},
+		{
+			"hint": "PRAOEUR",
+			"score": 1,
+			"word": "prior"
+		},
+		{
+			"hint": "PRAOEUS",
+			"score": 1,
+			"word": "price"
+		},
+		{
+			"hint": "PRAOEUD",
+			"score": 1,
+			"word": "pride"
+		},
+		{
+			"hint": "PRAOEUZ",
+			"score": 1,
+			"word": "prize"
+		},
+		{
+			"hint": "PAOEUR",
+			"score": 1,
+			"word": "pyre"
+		},
+		{
+			"hint": "PAOEUP",
+			"score": 1,
+			"word": "pipe"
+		},
+		{
+			"hint": "PAOEUL",
+			"score": 1,
+			"word": "pile"
+		},
+		{
+			"hint": "WAOEUF",
+			"score": 1,
+			"word": "wife"
+		},
+		{
+			"hint": "WAOEUR",
+			"score": 1,
+			"word": "wire"
+		},
+		{
+			"hint": "WAOEUP",
+			"score": 1,
+			"word": "wipe"
+		},
+		{
+			"hint": "WAOEUL",
+			"score": 1,
+			"word": "wile"
+		},
+		{
+			"hint": "WAOEUS",
+			"score": 1,
+			"word": "wise"
+		},
+		{
+			"hint": "WAOEUD",
+			"score": 1,
+			"word": "wide"
+		},
+		{
+			"hint": "HRAOEUF",
+			"score": 1,
+			"word": "life"
+		},
+		{
+			"hint": "HRAOEUR",
+			"score": 1,
+			"word": "liar"
+		},
+		{
+			"hint": "HRAOEUT",
+			"score": 1,
+			"word": "light"
+		},
+		{
+			"hint": "HRAOEUS",
+			"score": 1,
+			"word": "lice"
+		},
+		{
+			"hint": "HAOEUP",
+			"score": 1,
+			"word": "hype"
+		},
+		{
+			"hint": "HAOEUT",
+			"score": 1,
+			"word": "height"
+		},
+		{
+			"hint": "HAOEUD",
+			"score": 1,
+			"word": "hide"
+		},
+		{
+			"hint": "RAOEUF",
+			"score": 1,
+			"word": "rife"
+		},
+		{
+			"hint": "RAOEUP",
+			"score": 1,
+			"word": "ripe"
+		},
+		{
+			"hint": "RAOEUL",
+			"score": 1,
+			"word": "rile"
+		},
+		{
+			"hint": "RAOEUT",
+			"score": 1,
+			"word": "right"
+		},
+		{
+			"hint": "RAOEUS",
+			"score": 1,
+			"word": "rice"
+		},
+		{
+			"hint": "RAOEUD",
+			"score": 1,
+			"word": "ride"
+		},
+		{
+			"hint": "AOEUR",
+			"score": 1,
+			"word": "ire"
+		},
+		{
+			"hint": "AOEUP",
+			"score": 1,
+			"word": "ipe"
+		},
+		{
+			"hint": "AOEUS",
+			"score": 1,
+			"word": "ice"
+		}
+	]
+}

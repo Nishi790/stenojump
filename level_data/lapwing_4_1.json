@@ -1,0 +1,689 @@
+{
+	"checkpoint": false,
+	"level": 13,
+	"next_level": "lapwing_4_2.json",
+	"order": "random",
+	"size": 35,
+	"targets": [
+		{
+			"hint": "STKAOEL",
+			"score": 1,
+			"word": "deal"
+		},
+		{
+			"hint": "STPHAOER",
+			"score": 1,
+			"word": "sneer"
+		},
+		{
+			"hint": "STPHAOEZ",
+			"score": 1,
+			"word": "sneeze"
+		},
+		{
+			"hint": "STRAOET",
+			"score": 1,
+			"word": "street"
+		},
+		{
+			"hint": "STAOER",
+			"score": 1,
+			"word": "steer"
+		},
+		{
+			"hint": "STAOEP",
+			"score": 1,
+			"word": "steep"
+		},
+		{
+			"hint": "STAOEL",
+			"score": 1,
+			"word": "steel"
+		},
+		{
+			"hint": "STAOED",
+			"score": 1,
+			"word": "steed"
+		},
+		{
+			"hint": "SKWRAOER",
+			"score": 1,
+			"word": "jeer"
+		},
+		{
+			"hint": "SKWRAOEP",
+			"score": 1,
+			"word": "jeep"
+		},
+		{
+			"hint": "SKWRAOEZ",
+			"score": 1,
+			"word": "jeez"
+		},
+		{
+			"hint": "SKWAOEL",
+			"score": 1,
+			"word": "squeal"
+		},
+		{
+			"hint": "SKWAOEZ",
+			"score": 1,
+			"word": "squeeze"
+		},
+		{
+			"hint": "SKRAOED",
+			"score": 1,
+			"word": "screed"
+		},
+		{
+			"hint": "SKAOET",
+			"score": 1,
+			"word": "skeet"
+		},
+		{
+			"hint": "SPHAOER",
+			"score": 1,
+			"word": "smear"
+		},
+		{
+			"hint": "SPAOER",
+			"score": 1,
+			"word": "spear"
+		},
+		{
+			"hint": "SPAOEL",
+			"score": 1,
+			"word": "spiel"
+		},
+		{
+			"hint": "SPAOED",
+			"score": 1,
+			"word": "speed"
+		},
+		{
+			"hint": "SWAOEP",
+			"score": 1,
+			"word": "sweep"
+		},
+		{
+			"hint": "SWAOET",
+			"score": 1,
+			"word": "sweet"
+		},
+		{
+			"hint": "SHRAOEP",
+			"score": 1,
+			"word": "sleep"
+		},
+		{
+			"hint": "SHRAOET",
+			"score": 1,
+			"word": "sleet"
+		},
+		{
+			"hint": "SHRAOEZ",
+			"score": 1,
+			"word": "sleaze"
+		},
+		{
+			"hint": "SHAOEF",
+			"score": 1,
+			"word": "sheaf"
+		},
+		{
+			"hint": "SHAOER",
+			"score": 1,
+			"word": "sheer"
+		},
+		{
+			"hint": "SHAOEP",
+			"score": 1,
+			"word": "sheep"
+		},
+		{
+			"hint": "SHAOET",
+			"score": 1,
+			"word": "sheet"
+		},
+		{
+			"hint": "SRAOER",
+			"score": 1,
+			"word": "veer"
+		},
+		{
+			"hint": "SRAOEP",
+			"score": 1,
+			"word": "veep"
+		},
+		{
+			"hint": "SRAOEL",
+			"score": 1,
+			"word": "veal"
+		},
+		{
+			"hint": "SAOER",
+			"score": 1,
+			"word": "seer"
+		},
+		{
+			"hint": "SAOEP",
+			"score": 1,
+			"word": "seep"
+		},
+		{
+			"hint": "SAOEL",
+			"score": 1,
+			"word": "seal"
+		},
+		{
+			"hint": "SAOET",
+			"score": 1,
+			"word": "seat"
+		},
+		{
+			"hint": "SAOED",
+			"score": 1,
+			"word": "seed"
+		},
+		{
+			"hint": "SAOEZ",
+			"score": 1,
+			"word": "seize"
+		},
+		{
+			"hint": "TKPWRAOEF",
+			"score": 1,
+			"word": "grief"
+		},
+		{
+			"hint": "TKPWRAOET",
+			"score": 1,
+			"word": "greet"
+		},
+		{
+			"hint": "TKPWRAOES",
+			"score": 1,
+			"word": "grease"
+		},
+		{
+			"hint": "TKPWRAOED",
+			"score": 1,
+			"word": "greed"
+		},
+		{
+			"hint": "TKPWAOER",
+			"score": 1,
+			"word": "gear"
+		},
+		{
+			"hint": "TKPWAOES",
+			"score": 1,
+			"word": "geese"
+		},
+		{
+			"hint": "TKWAOEB",
+			"score": 1,
+			"word": "dweeb"
+		},
+		{
+			"hint": "TKAOER",
+			"score": 1,
+			"word": "deer"
+		},
+		{
+			"hint": "TKAOEP",
+			"score": 1,
+			"word": "deep"
+		},
+		{
+			"hint": "TKAOEL",
+			"score": 1,
+			"word": "deal"
+		},
+		{
+			"hint": "TKAOED",
+			"score": 1,
+			"word": "deed"
+		},
+		{
+			"hint": "TPHRAOET",
+			"score": 1,
+			"word": "fleet"
+		},
+		{
+			"hint": "TPHRAOES",
+			"score": 1,
+			"word": "fleece"
+		},
+		{
+			"hint": "TPHAOER",
+			"score": 1,
+			"word": "near"
+		},
+		{
+			"hint": "TPHAOEP",
+			"score": 1,
+			"word": "neap"
+		},
+		{
+			"hint": "TPHAOEL",
+			"score": 1,
+			"word": "kneel"
+		},
+		{
+			"hint": "TPHAOET",
+			"score": 1,
+			"word": "neat"
+		},
+		{
+			"hint": "TPHAOES",
+			"score": 1,
+			"word": "niece"
+		},
+		{
+			"hint": "TPHAOED",
+			"score": 1,
+			"word": "need"
+		},
+		{
+			"hint": "TPRAOED",
+			"score": 1,
+			"word": "freed"
+		},
+		{
+			"hint": "TPRAOEZ",
+			"score": 1,
+			"word": "freeze"
+		},
+		{
+			"hint": "TPAOER",
+			"score": 1,
+			"word": "fear"
+		},
+		{
+			"hint": "TPAOEL",
+			"score": 1,
+			"word": "feel"
+		},
+		{
+			"hint": "TPAOET",
+			"score": 1,
+			"word": "feet"
+		},
+		{
+			"hint": "TPAOED",
+			"score": 1,
+			"word": "feed"
+		},
+		{
+			"hint": "TWAOET",
+			"score": 1,
+			"word": "tweet"
+		},
+		{
+			"hint": "TWAOED",
+			"score": 1,
+			"word": "tweed"
+		},
+		{
+			"hint": "TWAOEZ",
+			"score": 1,
+			"word": "tweeze"
+		},
+		{
+			"hint": "THAOEF",
+			"score": 1,
+			"word": "thief"
+		},
+		{
+			"hint": "THAOES",
+			"score": 1,
+			"word": "these"
+		},
+		{
+			"hint": "TRAOET",
+			"score": 1,
+			"word": "treat"
+		},
+		{
+			"hint": "TAOER",
+			"score": 1,
+			"word": "tier"
+		},
+		{
+			"hint": "TAOEL",
+			"score": 1,
+			"word": "teal"
+		},
+		{
+			"hint": "TAOET",
+			"score": 1,
+			"word": "teat"
+		},
+		{
+			"hint": "KWAOER",
+			"score": 1,
+			"word": "queer"
+		},
+		{
+			"hint": "KWAOES",
+			"score": 1,
+			"word": "quease"
+		},
+		{
+			"hint": "KHRAOEF",
+			"score": 1,
+			"word": "cleave"
+		},
+		{
+			"hint": "KHRAOER",
+			"score": 1,
+			"word": "clear"
+		},
+		{
+			"hint": "KHRAOET",
+			"score": 1,
+			"word": "cleat"
+		},
+		{
+			"hint": "KHAOEF",
+			"score": 1,
+			"word": "chief"
+		},
+		{
+			"hint": "KHAOER",
+			"score": 1,
+			"word": "cheer"
+		},
+		{
+			"hint": "KHAOEP",
+			"score": 1,
+			"word": "cheep"
+		},
+		{
+			"hint": "KHAOET",
+			"score": 1,
+			"word": "cheat"
+		},
+		{
+			"hint": "KHAOES",
+			"score": 1,
+			"word": "cheese"
+		},
+		{
+			"hint": "KRAOEP",
+			"score": 1,
+			"word": "creep"
+		},
+		{
+			"hint": "KRAOEL",
+			"score": 1,
+			"word": "creel"
+		},
+		{
+			"hint": "KRAOES",
+			"score": 1,
+			"word": "crease"
+		},
+		{
+			"hint": "KRAOED",
+			"score": 1,
+			"word": "creed"
+		},
+		{
+			"hint": "KAOEP",
+			"score": 1,
+			"word": "keep"
+		},
+		{
+			"hint": "KAOEL",
+			"score": 1,
+			"word": "keel"
+		},
+		{
+			"hint": "PWHRAOER",
+			"score": 1,
+			"word": "blear"
+		},
+		{
+			"hint": "PWHRAOEP",
+			"score": 1,
+			"word": "bleep"
+		},
+		{
+			"hint": "PWHRAOET",
+			"score": 1,
+			"word": "bleat"
+		},
+		{
+			"hint": "PWHRAOED",
+			"score": 1,
+			"word": "bleed"
+		},
+		{
+			"hint": "PWRAOEF",
+			"score": 1,
+			"word": "brief"
+		},
+		{
+			"hint": "PWRAOED",
+			"score": 1,
+			"word": "breed"
+		},
+		{
+			"hint": "PWRAOEZ",
+			"score": 1,
+			"word": "breeze"
+		},
+		{
+			"hint": "PWAOEF",
+			"score": 1,
+			"word": "beef"
+		},
+		{
+			"hint": "PWAOER",
+			"score": 1,
+			"word": "beer"
+		},
+		{
+			"hint": "PWAOEP",
+			"score": 1,
+			"word": "beep"
+		},
+		{
+			"hint": "PWAOET",
+			"score": 1,
+			"word": "beet"
+		},
+		{
+			"hint": "PWAOED",
+			"score": 1,
+			"word": "bead"
+		},
+		{
+			"hint": "PHRAOET",
+			"score": 1,
+			"word": "pleat"
+		},
+		{
+			"hint": "PHRAOED",
+			"score": 1,
+			"word": "plead"
+		},
+		{
+			"hint": "PHAOER",
+			"score": 1,
+			"word": "mere"
+		},
+		{
+			"hint": "PHAOEL",
+			"score": 1,
+			"word": "meal"
+		},
+		{
+			"hint": "PHAOET",
+			"score": 1,
+			"word": "meet"
+		},
+		{
+			"hint": "PAOER",
+			"score": 1,
+			"word": "peer"
+		},
+		{
+			"hint": "PAOEP",
+			"score": 1,
+			"word": "peep"
+		},
+		{
+			"hint": "PAOEL",
+			"score": 1,
+			"word": "peel"
+		},
+		{
+			"hint": "PAOET",
+			"score": 1,
+			"word": "peat"
+		},
+		{
+			"hint": "PAOES",
+			"score": 1,
+			"word": "piece"
+		},
+		{
+			"hint": "PAOED",
+			"score": 1,
+			"word": "peed"
+		},
+		{
+			"hint": "WAOER",
+			"score": 1,
+			"word": "weir"
+		},
+		{
+			"hint": "WAOEP",
+			"score": 1,
+			"word": "weep"
+		},
+		{
+			"hint": "WAOED",
+			"score": 1,
+			"word": "weed"
+		},
+		{
+			"hint": "HRAOEF",
+			"score": 1,
+			"word": "leaf"
+		},
+		{
+			"hint": "HRAOER",
+			"score": 1,
+			"word": "leer"
+		},
+		{
+			"hint": "HRAOEP",
+			"score": 1,
+			"word": "leap"
+		},
+		{
+			"hint": "HRAOEG",
+			"score": 1,
+			"word": "league"
+		},
+		{
+			"hint": "HRAOET",
+			"score": 1,
+			"word": "leet"
+		},
+		{
+			"hint": "HRAOED",
+			"score": 1,
+			"word": "lead"
+		},
+		{
+			"hint": "HAOER",
+			"score": 1,
+			"word": "here"
+		},
+		{
+			"hint": "HAOEP",
+			"score": 1,
+			"word": "heap"
+		},
+		{
+			"hint": "HAOEL",
+			"score": 1,
+			"word": "heel"
+		},
+		{
+			"hint": "HAOET",
+			"score": 1,
+			"word": "heat"
+		},
+		{
+			"hint": "HAOED",
+			"score": 1,
+			"word": "heed"
+		},
+		{
+			"hint": "RAOEF",
+			"score": 1,
+			"word": "reef"
+		},
+		{
+			"hint": "RAOER",
+			"score": 1,
+			"word": "rear"
+		},
+		{
+			"hint": "RAOEP",
+			"score": 1,
+			"word": "reap"
+		},
+		{
+			"hint": "RAOEL",
+			"score": 1,
+			"word": "reel"
+		},
+		{
+			"hint": "RAOET",
+			"score": 1,
+			"word": "rete"
+		},
+		{
+			"hint": "RAOED",
+			"score": 1,
+			"word": "reed"
+		},
+		{
+			"hint": "AOEF",
+			"score": 1,
+			"word": "eve"
+		},
+		{
+			"hint": "AOER",
+			"score": 1,
+			"word": "ear"
+		},
+		{
+			"hint": "AOEP",
+			"score": 1,
+			"word": "eep"
+		},
+		{
+			"hint": "AOEL",
+			"score": 1,
+			"word": "eel"
+		},
+		{
+			"hint": "AOET",
+			"score": 1,
+			"word": "eat"
+		},
+		{
+			"hint": "AOES",
+			"score": 1,
+			"word": "ease"
+		}
+	]
+}
