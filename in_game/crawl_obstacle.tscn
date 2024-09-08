@@ -5,57 +5,59 @@
 [ext_resource type="Resource" uid="uid://c1keb5cxkd32p" path="res://in_game/obstacle_sprite_data/chair_crawl_sprite_data.tres" id="3_2g8xj"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="3_i4tyt"]
 [ext_resource type="Resource" uid="uid://bmsot11g8ikd0" path="res://in_game/obstacle_sprite_data/tunnel_crawl_sprite_data.tres" id="4_32wwb"]
-[ext_resource type="Texture2D" uid="uid://h2sbysb3kt6d" path="res://textures/obstacle_sprites/tunnel.png" id="5_jgak8"]
+[ext_resource type="Resource" uid="uid://khia5cry0esq" path="res://in_game/obstacle_sprite_data/ibeam_crawl_obstacle.tres" id="5_x3x5y"]
+[ext_resource type="Texture2D" uid="uid://dpx4ma02lrogy" path="res://in_game/obstacle_sprite_data/crane.atlastex" id="6_1bp1m"]
+[ext_resource type="Texture2D" uid="uid://kqtqawb27qrp" path="res://in_game/obstacle_sprite_data/ibeam_atlas_tex.tres" id="7_f7ilq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwkr6"]
-size = Vector2(35, 20)
+size = Vector2(58, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y7nk"]
-size = Vector2(50, 69)
+size = Vector2(68, 69)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sao1m"]
-atlas = ExtResource("5_jgak8")
-region = Rect2(0, 0, 18, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_koqey"]
-atlas = ExtResource("5_jgak8")
-region = Rect2(18, 0, 18, 16)
-filter_clip = true
-
-[node name="CrawlObstacle" type="CharacterBody2D" node_paths=PackedStringArray("crawl_area", "front_sprite", "word_label", "target_container", "sprite")]
+[node name="CrawlObstacle" type="CharacterBody2D" node_paths=PackedStringArray("crawl_area", "crawl_shape", "front_sprite", "behind_par_sprite", "word_label", "target_container", "sprite", "collision_shape")]
 texture_filter = 1
 script = ExtResource("1_fdgri")
 crawl_area = NodePath("Area2D")
+crawl_shape = NodePath("Area2D/CollisionShape2D")
 front_sprite = NodePath("ObstacleFrontLayer")
+behind_par_sprite = NodePath("BehindParallaxImage")
 word_label = NodePath("TargetPanel/TargetWord")
 target_container = NodePath("TargetPanel")
 type = 1
 sprite = NodePath("ObstacleImage")
-textures = Array[ExtResource("2_467ko")]([ExtResource("3_2g8xj"), ExtResource("4_32wwb")])
+collision_shape = NodePath("CollisionShape2D")
+textures = Array[ExtResource("2_467ko")]([ExtResource("3_2g8xj"), ExtResource("4_32wwb"), ExtResource("5_x3x5y")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7.5, -75)
+position = Vector2(-10, -77)
 shape = SubResource("RectangleShape2D_vwkr6")
 
 [node name="Area2D" type="Area2D" parent="."]
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -24.5)
+position = Vector2(-3, -25)
 shape = SubResource("RectangleShape2D_0y7nk")
 
+[node name="BehindParallaxImage" type="Sprite2D" parent="."]
+position = Vector2(108, -380)
+scale = Vector2(6, 6)
+texture = ExtResource("6_1bp1m")
+
 [node name="ObstacleImage" type="Sprite2D" parent="."]
-position = Vector2(-6, -35)
-scale = Vector2(5, 5)
-texture = SubResource("AtlasTexture_sao1m")
+z_index = 1
+position = Vector2(108, -380)
+scale = Vector2(6, 6)
+texture = ExtResource("7_f7ilq")
 
 [node name="ObstacleFrontLayer" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(-6, -35)
 scale = Vector2(5, 5)
-texture = SubResource("AtlasTexture_koqey")
 
 [node name="TargetPanel" type="PanelContainer" parent="."]
+z_index = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

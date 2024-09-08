@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=5 format=3 uid="uid://bmsot11g8ikd0"]
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=7 format=3 uid="uid://bmsot11g8ikd0"]
 
 [ext_resource type="Texture2D" uid="uid://h2sbysb3kt6d" path="res://textures/obstacle_sprites/tunnel.png" id="1_aw1bj"]
 [ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_vim6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iklx1"]
+size = Vector2(50, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgbv1"]
+size = Vector2(43, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syybv"]
 atlas = ExtResource("1_aw1bj")
@@ -16,4 +22,8 @@ script = ExtResource("2_vim6i")
 texture = SubResource("AtlasTexture_k05nc")
 req_scale = Vector2(5, 5)
 req_offset = Vector2(-6, -35)
+collider = SubResource("RectangleShape2D_lgbv1")
+collidor_pos = Vector2(-3, -75)
+area_collider = SubResource("RectangleShape2D_iklx1")
+area_collider_pos = Vector2(0, -24.5)
 front_texture = SubResource("AtlasTexture_syybv")

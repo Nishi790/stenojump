@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=5 format=3 uid="uid://c1keb5cxkd32p"]
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=7 format=3 uid="uid://c1keb5cxkd32p"]
 
 [ext_resource type="Texture2D" uid="uid://swk3ewq3ry1f" path="res://textures/obstacle_sprites/chair.png" id="1_cwh3c"]
 [ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_lu2bx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c22ns"]
+size = Vector2(50, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v84t7"]
+size = Vector2(43, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5wg6"]
 atlas = ExtResource("1_cwh3c")
@@ -16,4 +22,8 @@ script = ExtResource("2_lu2bx")
 texture = SubResource("AtlasTexture_llufu")
 req_scale = Vector2(5, 5)
 req_offset = Vector2(0, -61)
+collider = SubResource("RectangleShape2D_v84t7")
+collidor_pos = Vector2(-3, -75)
+area_collider = SubResource("RectangleShape2D_c22ns")
+area_collider_pos = Vector2(0, -24.5)
 front_texture = SubResource("AtlasTexture_l5wg6")

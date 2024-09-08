@@ -72,3 +72,4 @@ position = Vector2(275, 979)
 shape = SubResource("SegmentShape2D_y13st")
 
 [node name="HUD" parent="." instance=ExtResource("11_c2pqa")]
+z_index = 2

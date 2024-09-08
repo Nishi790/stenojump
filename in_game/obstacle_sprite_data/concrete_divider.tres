@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=4 format=3 uid="uid://b8ey78pamx01n"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_cr2b2"]
+[ext_resource type="Texture2D" uid="uid://c0uc76ap0ykrn" path="res://textures/obstacle_sprites/concrete_divider.png" id="2_y1a0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43rts"]
+size = Vector2(35, 125)
+
+[resource]
+script = ExtResource("1_cr2b2")
+texture = ExtResource("2_y1a0o")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(0, -60)
+collider = SubResource("RectangleShape2D_43rts")
+collidor_pos = Vector2(0, -28)

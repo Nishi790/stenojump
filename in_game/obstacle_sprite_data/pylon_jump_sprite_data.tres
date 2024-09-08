@@ -1,10 +1,15 @@
-[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=3 format=3 uid="uid://dbquh1xpygoyk"]
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=4 format=3 uid="uid://dbquh1xpygoyk"]
 
 [ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_i2guo"]
-[ext_resource type="Texture2D" uid="uid://cfwpi42oihe1t" path="res://textures/pylon.png" id="2_6wkxc"]
+[ext_resource type="Texture2D" uid="uid://dmnwbqgceloy3" path="res://textures/obstacle_sprites/pylon.png" id="2_3jtx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xt2q"]
+size = Vector2(35, 62)
 
 [resource]
 script = ExtResource("1_i2guo")
-texture = ExtResource("2_6wkxc")
+texture = ExtResource("2_3jtx7")
 req_scale = Vector2(6, 6)
 req_offset = Vector2(0, -96)
+collider = SubResource("RectangleShape2D_1xt2q")
+collidor_pos = Vector2(0, -28)

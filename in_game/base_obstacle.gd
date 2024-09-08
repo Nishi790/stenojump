@@ -9,6 +9,7 @@ enum ObstacleType {JUMP, CRAWL}
 @export var target_container: Container
 @export var type: ObstacleType = ObstacleType.JUMP
 @export var sprite: Sprite2D
+@export var collision_shape: CollisionShape2D
 
 @export var textures: Array[ObstacleSpriteData]
 
@@ -33,6 +34,9 @@ func set_textures() -> void:
 	sprite.texture = chosen_texture.texture
 	sprite.scale = chosen_texture.req_scale
 	sprite.position = chosen_texture.req_offset
+
+	collision_shape.shape = chosen_texture.collider
+	collision_shape.position = chosen_texture.collidor_pos
 
 
 func set_target_word(target: String) -> void:
