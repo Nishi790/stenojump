@@ -62,13 +62,15 @@ monitorable = false
 script = ExtResource("12_01mxu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
-position = Vector2(870.5, 853.5)
+z_index = 1
+position = Vector2(1047.5, 853.5)
 shape = SubResource("RectangleShape2D_ooyp2")
 
 [node name="JumpRangeTrigger" type="Area2D" parent="."]
 position = Vector2(275, 979)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpRangeTrigger"]
+z_index = 1
 shape = SubResource("SegmentShape2D_y13st")
 
 [node name="HUD" parent="." instance=ExtResource("11_c2pqa")]

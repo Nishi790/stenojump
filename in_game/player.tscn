@@ -14,12 +14,12 @@ size = Vector2(101, 80)
 size = Vector2(144, 60)
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "physics_body")]
+z_index = 1
 script = ExtResource("1_h8u8b")
 sprite = NodePath("PlayerSprite")
 physics_body = NodePath("PlayerPhysics")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-z_index = 1
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(6, 6)
