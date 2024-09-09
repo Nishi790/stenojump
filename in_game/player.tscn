@@ -29,6 +29,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="PlayerPhysics" type="CharacterBody2D" parent="." node_paths=PackedStringArray("run_coll_shape", "jump_coll_shape", "crawl_coll_shape")]
+collision_mask = 6
 slide_on_ceiling = false
 script = ExtResource("3_a4i1d")
 run_coll_shape = NodePath("RunShape")

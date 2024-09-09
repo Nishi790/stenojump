@@ -12,6 +12,7 @@
 size = Vector2(35, 62)
 
 [node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container", "sprite", "collision_shape")]
+collision_layer = 4
 script = ExtResource("1_i8uxn")
 word_label = NodePath("TargetPanel/TargetWord")
 target_container = NodePath("TargetPanel")

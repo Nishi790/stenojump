@@ -76,7 +76,6 @@ func _ready() -> void:
 	@warning_ignore("unsafe_call_argument")
 	player.lives_changed.connect(Callable(hud.lives_counter.update_lives_counter))
 	hud.lives_counter.update_lives_counter(player.lives)
-	obstacle_manager.obstacle_queue_emptied.connect(player.end_level)
 	obstacle_detector.start_running.connect(player.start_run)
 
 	#Connect HUD Signals
@@ -141,6 +140,8 @@ func send_new_word(number: int) -> void:
 func reset_word(collider: Object) -> void:
 	#Remove all onscreen words
 	obstacle_manager.reset_words()
+	if level_complete:
+		level_complete = false
 
 	#Pause Word Generation
 	word_failed = true
@@ -182,7 +183,7 @@ func adjust_score(amount: int) -> void:
 
 ##Responds to Obstacle Manager signalling empty queue and prompts 'end level'
 func on_obstacle_queue_empty() -> void:
-	if word_queue.size() == next_word_index:
+	if word_queue.size() == next_word_index and not run_ended:
 		end_level()
 
 
@@ -195,6 +196,7 @@ func set_target_word(target: String) -> void:
 func game_over() -> void:
 	level_timer_active = false
 	run_ended = true
+	if level_complete: level_complete = false
 	hud.game_over()
 	obstacle_manager.game_over()
 	PlayerConfig.run_lost()
@@ -218,6 +220,7 @@ func end_level() -> void:
 	if on_last_level:
 		hud.game_won()
 	else:
+		player.end_level()
 		hud.level_complete()
 
 
@@ -228,6 +231,7 @@ func update_text(new_text: String) -> void:
 		return
 	current_text = new_text.strip_edges()
 	current_text.to_lower()
+	if word_failed: return
 	if current_text == target_word:
 		if level_timer_active == false:
 			level_timer_active = true

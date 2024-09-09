@@ -1,7 +1,7 @@
 {
 	"level": 1,
 	"order": "random",
-	"size": 30,
+	"size": 5,
 	"next_level": "lapwing_1_2.json",
 	"targets": [
 		{"word": "rad", "score": 1, "hint": "RAD"},

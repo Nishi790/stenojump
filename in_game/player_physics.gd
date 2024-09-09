@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
-	if get_last_slide_collision()!= null:
+	if get_last_slide_collision() != null:
 		collision.emit(get_last_slide_collision())
 		#this is a hacky way to determine basic ground height
 		#will break if the ground level ever changes during a level
@@ -78,3 +78,10 @@ func change_colliders(activating_collider: Colliders) -> void:
 			jump_coll_shape.set_deferred("disabled", false)
 			run_coll_shape.set_deferred("disabled", true)
 			crawl_coll_shape.set_deferred("disabled", true)
+
+
+func disable_obstacle_collision(disable: bool) -> void:
+	if disable:
+		call_deferred("set_collision_layer_value", 3, false)
+	else:
+		call_deferred("set_collision_layer_value", 3, true)

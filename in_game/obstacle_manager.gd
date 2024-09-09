@@ -21,6 +21,7 @@ var level_new_word_interval: float = 2:
 			new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
 var new_word_interval: float = 2 :
 	set(interval):
+		assert(interval > 0, "invalid timer interval")
 		new_word_interval = interval
 		new_word_timer.wait_time = new_word_interval
 var speed_modifier: float = 1.0:
@@ -38,7 +39,7 @@ var next_obstacle: Obstacle:
 	get():
 		if current_obstacle_queue.size() > 0:
 			return current_obstacle_queue[0]
-		else: return null
+		return null
 var upcoming_word: Array[Dictionary]
 var stroke_ratio: float = 1:
 	set(new_ratio):
@@ -135,7 +136,7 @@ func word_cleared() -> void:
 		score_changed.emit(obstacle.score)
 
 	if current_obstacle_queue.size() == 0:
-		obstacle_queue_emptied.emit()
+		obstacle.tree_exited.connect(end_level, ConnectFlags.CONNECT_ONE_SHOT)
 
 	if PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.NEXT:
 		current_obstacle_queue[0].hide_target(false)
@@ -193,6 +194,10 @@ func game_over() -> void:
 	get_tree().call_group("obstacles", "queue_free")
 	current_obstacle_queue.clear()
 	new_word_timer.stop()
+
+
+func end_level() -> void:
+	obstacle_queue_emptied.emit()
 
 
 func level_complete() -> void:

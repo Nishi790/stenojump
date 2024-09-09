@@ -76,7 +76,7 @@ func on_collision(collision: KinematicCollision2D) -> void:
 			lives_changed.emit(lives)
 		else:
 			game_over.emit()
-			change_states(State.IDLING)
+			change_states(State.DIE)
 
 
 ##Called when a word is correctly entered, cues correct avoidance
@@ -119,9 +119,13 @@ func link_animation() -> void:
 
 func change_states(new_state: State, time_of_flight: float = -1) -> void:
 	var old_state: State = movement_state
+	if old_state == State.DIE and new_state != State.IDLING:
+		return
 	movement_state = new_state
 	match new_state:
 		State.WALKING, State.IDLING:
+			if old_state == State.DIE:
+				physics_body.disable_obstacle_collision(false)
 			if physics_body.active_collider != 0:
 				physics_body.change_colliders(0)
 			player_movement_changed.emit(new_state)
@@ -133,6 +137,8 @@ func change_states(new_state: State, time_of_flight: float = -1) -> void:
 		State.STARTING_JUMP, State.ENDING_JUMP:
 			if physics_body.active_collider != 1:
 				physics_body.change_colliders(1)
+			if time_of_flight > 0:
+				calculate_jump_time(time_of_flight)
 		State.CRAWLING:
 			if physics_body.active_collider != 2:
 				physics_body.change_colliders(2)
@@ -141,18 +147,22 @@ func change_states(new_state: State, time_of_flight: float = -1) -> void:
 				physics_body.stop_jump()
 			if physics_body.active_collider != 0:
 				physics_body.change_colliders(0)
+				physics_body.disable_obstacle_collision(true)
 			player_movement_changed.emit(State.IDLING)
-	if time_of_flight > 0:
-		var sprite_frames: SpriteFrames = sprite.sprite_frames
-		var landing_anim_length: int = sprite_frames.get_frame_count("jump_down")
-		var landing_anim_speed: float = sprite_frames.get_animation_speed("jump_down")
-		var seconds_per_frame: float = 1/landing_anim_speed
-		var time_needed_to_land: float = seconds_per_frame * landing_anim_length
-		landing_timer = time_of_flight - time_needed_to_land
-		if landing_timer < 0:
-			straight_to_landing = true
-			landing_timer = 0
-		else: straight_to_landing = false
+
+
+
+func calculate_jump_time(time_of_flight: float) -> void:
+	var sprite_frames: SpriteFrames = sprite.sprite_frames
+	var landing_anim_length: int = sprite_frames.get_frame_count("jump_down")
+	var landing_anim_speed: float = sprite_frames.get_animation_speed("jump_down")
+	var seconds_per_frame: float = 1/landing_anim_speed
+	var time_needed_to_land: float = seconds_per_frame * landing_anim_length
+	landing_timer = time_of_flight - time_needed_to_land
+	if landing_timer < 0:
+		straight_to_landing = true
+		landing_timer = 0
+	else: straight_to_landing = false
 
 
 func start_run() -> void:
@@ -183,7 +193,6 @@ func stand_up() -> void:
 func end_level() -> void:
 	if movement_state == State.CRAWLING:
 		await player_movement_changed
-	await get_tree().create_timer(2).timeout
 	lives = 3
 	lives_changed.emit(lives)
 	change_states(State.WALKING)

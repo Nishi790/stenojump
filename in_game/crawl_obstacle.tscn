@@ -17,6 +17,7 @@ size = Vector2(68, 69)
 
 [node name="CrawlObstacle" type="CharacterBody2D" node_paths=PackedStringArray("crawl_area", "crawl_shape", "front_sprite", "behind_par_sprite", "word_label", "target_container", "sprite", "collision_shape")]
 texture_filter = 1
+collision_layer = 4
 script = ExtResource("1_fdgri")
 crawl_area = NodePath("Area2D")
 crawl_shape = NodePath("Area2D/CollisionShape2D")
@@ -34,6 +35,7 @@ position = Vector2(-10, -77)
 shape = SubResource("RectangleShape2D_vwkr6")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

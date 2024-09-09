@@ -46,18 +46,20 @@ position = Vector2(97, 877)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(100, 979)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_uo43n")
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
 shape = SubResource("WorldBoundaryShape2D_y0yrj")
 
 [node name="ObstacleDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
 monitorable = false
 script = ExtResource("12_01mxu")
 
@@ -68,6 +70,8 @@ shape = SubResource("RectangleShape2D_ooyp2")
 
 [node name="JumpRangeTrigger" type="Area2D" parent="."]
 position = Vector2(275, 979)
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpRangeTrigger"]
 z_index = 1
