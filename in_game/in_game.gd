@@ -51,8 +51,13 @@ var game_paused: bool = false
 var run_ended: bool = false
 var word_failed: bool = false
 
+var on_last_level: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
+	LevelLoader.last_level.connect(final_level_started)
+
 	#Set up obstacle manager
 	obstacle_manager.new_word_needed.connect(send_new_word)
 	obstacle_manager.words_returned.connect(return_words_to_queue)
@@ -151,8 +156,6 @@ func reset_word(collider: Object) -> void:
 	level_score = level_score - 1 #TODO scale death score penalty
 
 
-
-
 func resume_from_missed_word() -> void:
 	#Display countdown
 	var countdown_complete: bool = await hud.display_countdown()
@@ -197,6 +200,11 @@ func game_over() -> void:
 	PlayerConfig.run_lost()
 
 
+##Called when a level is loaded without a following level path (defacto last level)
+func final_level_started() -> void:
+	on_last_level = true
+
+
 ##Called when a player successfully completes a level.
 ##Handles reset of required elements, triggering of HUD
 func end_level() -> void:
@@ -207,7 +215,10 @@ func end_level() -> void:
 	PlayerConfig.current_score = score
 	level_score = 0
 	await get_tree().create_timer(2).timeout
-	hud.level_complete()
+	if on_last_level:
+		hud.game_won()
+	else:
+		hud.level_complete()
 
 
 ##Called to parse text changes in player input box whenever text changes
@@ -241,6 +252,22 @@ func enter_pressed(text: String) -> void:
 		word_failed = false
 		resume_from_missed_word()
 	elif level_complete:
+		if on_last_level:
+			if text.strip_edges().is_valid_int():
+				var speed_increase: int = text.to_int()
+				PlayerConfig.starting_wpm += speed_increase
+				if PlayerConfig.target_wpm:
+					PlayerConfig.target_wpm += speed_increase
+				PlayerConfig.current_wpm = PlayerConfig.starting_wpm
+				target_speed_changed.emit(PlayerConfig.current_wpm)
+				load_level_data(PlayerConfig.start_level_sequence(PlayerConfig.level_sequence))
+				await hud.start_next_level()
+				await hud.display_countdown()
+				level_complete = false
+				resume_game()
+			else:
+				main_menu_requested.emit()
+
 		var command_entered: String = text.strip_edges()
 		command_entered = command_entered.to_lower()
 		match command_entered:

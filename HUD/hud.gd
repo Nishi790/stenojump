@@ -18,6 +18,11 @@ var hint_string: String = "[center]You wrote [b]%s[/b].\n
 The word %s is stroked [b]%s[/b]. \n
 Press Enter (R-R) to continue.[/center] "
 
+var win_message: String = "[center]You win!\n
+Your total score was %d.\n
+Press enter (%s) to return to the menu.\n
+If you want to continue the run faster, type how much faster you want to go and press Enter (%s)[/center]"
+
 var paused: bool = false
 
 func _ready() -> void:
@@ -48,6 +53,7 @@ func display_countdown() -> bool:
 	return true
 
 
+##Called to display a hint after a failed word
 func display_hint(target_text: String, hint_text: String, error_text: String) -> void:
 	message_container.show()
 	ingame_message.set_text(hint_string % [error_text, target_text, hint_text])
@@ -55,6 +61,11 @@ func display_hint(target_text: String, hint_text: String, error_text: String) ->
 
 func level_complete() -> void:
 	ingame_message.set_text("[center]Level Complete! \n Press Enter (R-R) to proceed[/center]")
+	message_container.show()
+
+
+func game_won() -> void:
+	ingame_message.set_text(win_message % [PlayerConfig.current_score, "R-R", "R-R"])
 	message_container.show()
 
 

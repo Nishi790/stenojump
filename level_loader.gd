@@ -1,5 +1,7 @@
 extends Node
 
+signal last_level
+
 enum LevelOrder {RANDOM, ORDERED}
 
 var default_level_path_root: String = "res://level_data/"
@@ -32,6 +34,8 @@ func load_level(filepath : String) -> Error:
 		else: level_order = LevelOrder.ORDERED
 		default_level_size = data["size"]
 		next_level_path = data["next_level"]
+		if next_level_path == "":
+			last_level.emit()
 		level_targets = data["targets"]
 		if data.has("checkpoint"):
 			checkpoint = data["checkpoint"]

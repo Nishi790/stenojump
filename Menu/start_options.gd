@@ -183,7 +183,8 @@ func set_tts(enabled: bool) -> void:
 
 #Only called for custom level starts - otherwise uses the predefined start levels
 func set_starting_level(path: String) -> void:
-	PlayerConfig.current_level_path = path
+	PlayerConfig.custom_start_level = path
+	PlayerConfig.start_level_sequence(PlayerConfig.LevelSequence.OTHER)
 
 
 func start_game() -> void:
