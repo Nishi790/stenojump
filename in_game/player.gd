@@ -21,6 +21,7 @@ var movement_state: State = State.WALKING :
 		movement_state = state
 var landing_timer: float = 0
 var straight_to_landing: bool = false
+var move_queue: Array[int] = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -64,6 +65,7 @@ func _process(delta: float) -> void:
 	#control animations here
 
 
+##Called when player collides to cue death/game over if required
 func on_collision(collision: KinematicCollision2D) -> void:
 	if collision.get_collider().name=="Ground" or collision.get_collider().name == "Ceiling":
 		return
@@ -77,7 +79,17 @@ func on_collision(collision: KinematicCollision2D) -> void:
 			change_states(State.IDLING)
 
 
-func avoid_obstacle(type: Obstacle.ObstacleType) -> void:
+##Called when a word is correctly entered, cues correct avoidance
+##Adds actions to queue if currently unable to take an action
+func avoid_obstacle(type: Obstacle.ObstacleType, new_action: bool = true) -> void:
+	if movement_state == State.DIE:
+		return
+
+	#If currently crawyling, queue the action for when out of crawl zone
+	elif movement_state == State.CRAWLING and new_action:
+		move_queue.append(type)
+		return
+
 	match type:
 		Obstacle.ObstacleType.JUMP:
 			jump()
@@ -162,7 +174,10 @@ func crawl() -> void:
 
 
 func stand_up() -> void:
-	change_states(State.RUNNING)
+	if move_queue.is_empty():
+		change_states(State.RUNNING)
+	else:
+		avoid_obstacle(move_queue.pop_front(), false)
 
 
 func end_level() -> void:

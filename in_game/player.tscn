@@ -25,7 +25,7 @@ texture_repeat = 1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_yuis2")
 animation = &"die"
-frame = 5
+frame = 3
 frame_progress = 1.0
 
 [node name="PlayerPhysics" type="CharacterBody2D" parent="." node_paths=PackedStringArray("run_coll_shape", "jump_coll_shape", "crawl_coll_shape")]

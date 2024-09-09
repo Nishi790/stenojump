@@ -297,12 +297,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"die",
