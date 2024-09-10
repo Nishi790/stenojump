@@ -194,6 +194,7 @@ func set_target_word(target: String) -> void:
 
 ##Called when all lives are lost, triggers reset of current level in save file to last checkpoint level
 func game_over() -> void:
+	target_word = ""
 	level_timer_active = false
 	run_ended = true
 	if level_complete: level_complete = false
