@@ -15,7 +15,8 @@ signal game_options_requested
 @export var pause_menu_scene: PackedScene
 
 var hint_string: String = "[center]You wrote [b]%s[/b].\n
-The word %s is stroked [b]%s[/b]. \n
+The word %s is stroked.
+[font=res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf][font_size=100]%s[/font_size][/font]
 Press Enter (R-R) to continue.[/center] "
 
 var win_message: String = "[center]You win!\n

@@ -41,7 +41,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="GameMessagePanel" type="PanelContainer" parent="MarginContainer/GameMessageContainer"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 theme_type_variation = &"fullscreen_panel"
 
