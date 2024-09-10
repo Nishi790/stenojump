@@ -31,12 +31,15 @@ var speed_modifier: float = 1.0:
 		else:
 			new_word_timer.set_paused(false)
 			speed_modifier = mod
-			new_word_interval = level_new_word_interval * (1/speed_modifier) * stroke_ratio
+			var new_interval: float = level_new_word_interval * (1/speed_modifier) * stroke_ratio
+			if new_interval != 0:
+				new_word_interval = new_interval
 
 var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
 var next_obstacle: Obstacle:
 	get():
+
 		if current_obstacle_queue.size() > 0:
 			return current_obstacle_queue[0]
 		return null
