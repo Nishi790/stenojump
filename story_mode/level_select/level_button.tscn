@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://knljpoiuhla6"]
+
+[ext_resource type="Texture2D" uid="uid://c18ix4eoywy3x" path="res://textures/UI/dots.png" id="1_27bcc"]
+[ext_resource type="Script" path="res://story_mode/level_select/level_button.gd" id="2_ql22p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6u4f"]
+atlas = ExtResource("1_27bcc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1s2w"]
+atlas = ExtResource("1_27bcc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_ki7e2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, 100, 5, 5, 0, 0, 150, 300, 0, 0, 0, 0, 500, 500)
+}
+point_count = 3
+
+[node name="LevelButton" type="TextureButton"]
+z_index = 1
+texture_normal = SubResource("AtlasTexture_r6u4f")
+texture_disabled = SubResource("AtlasTexture_d1s2w")
+stretch_mode = 4
+script = ExtResource("2_ql22p")
+curve_to_next = SubResource("Curve2D_ki7e2")

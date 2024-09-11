@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://qtn8utnb0j6r"]
+
+[ext_resource type="Script" path="res://story_mode/level_select/level_select_screen.gd" id="1_8rod6"]
+[ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_7ufa4"]
+[ext_resource type="PackedScene" uid="uid://knljpoiuhla6" path="res://story_mode/level_select/level_button.tscn" id="3_7bpjj"]
+[ext_resource type="Curve2D" uid="uid://b2hfaaxx4mdrb" path="res://story_mode/level_select/curves/curve_1_1_to_1_2.tres" id="4_hxov8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnpje"]
+atlas = ExtResource("2_7ufa4")
+region = Rect2(16, 176, 96, 48)
+
+[node name="LevelSelectScreen" type="Control" node_paths=PackedStringArray("level_buttons")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rod6")
+level_buttons = [NodePath("LevelButton_1_1"), NodePath("LevelButton_1_2")]
+unlocked_levels = Array[int]([0])
+
+[node name="SelectBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jnpje")
+stretch_mode = 5
+
+[node name="LevelButton_1_1" parent="." node_paths=PackedStringArray("next_level_button") instance=ExtResource("3_7bpjj")]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 147.0
+offset_right = 118.0
+offset_bottom = 163.0
+scale = Vector2(4, 4)
+level_path = "res://story_mode/story_levels/"
+next_level_button = NodePath("../LevelButton_1_2")
+curve_to_next = ExtResource("4_hxov8")
+level_number = 1
+
+[node name="LevelButton_1_2" parent="." instance=ExtResource("3_7bpjj")]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 310.0
+offset_right = 275.0
+offset_bottom = 326.0
+scale = Vector2(4, 4)
+disabled = true
+level_number = 2
