@@ -23,6 +23,7 @@ general/text_to_speech=true
 
 LevelLoader="*res://level_loader.gd"
 PlayerConfig="*res://player_config.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [debug]
 
@@ -40,7 +41,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/parallax2d_preview/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/parallax2d_preview/plugin.cfg")
 
 [gui]
 
