@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ch4h4qt8poeo8"]
+
+[node name="QuestItem" type="HBoxContainer"]
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+
+[node name="QuestLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2

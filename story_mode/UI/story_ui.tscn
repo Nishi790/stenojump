@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://wu4owdvk0ao3"]
+
+[ext_resource type="Script" path="res://story_mode/UI/story_ui.gd" id="1_fdopu"]
+[ext_resource type="PackedScene" uid="uid://buc68cm2o0f7i" path="res://story_mode/UI/quest_panel.tscn" id="2_dja5f"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://addons/dialogue_manager/example_balloon/example_balloon.tscn" id="3_ute1d"]
+
+[node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fdopu")
+player_input = NodePath("MarginContainer/VertScreenSplitter/PlayerInput")
+dialog_balloon = NodePath("MarginContainer/VertScreenSplitter/ExampleBalloon")
+quest_display = NodePath("MarginContainer/VertScreenSplitter/HScreenSpilt/PanelContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VertScreenSplitter" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HScreenSpilt" type="HBoxContainer" parent="MarginContainer/VertScreenSplitter"]
+layout_mode = 2
+
+[node name="PanelContainer" parent="MarginContainer/VertScreenSplitter/HScreenSpilt" instance=ExtResource("2_dja5f")]
+layout_mode = 2
+
+[node name="PlayerInput" type="LineEdit" parent="MarginContainer/VertScreenSplitter"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ExampleBalloon" parent="MarginContainer/VertScreenSplitter" instance=ExtResource("3_ute1d")]

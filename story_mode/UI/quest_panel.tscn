@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://buc68cm2o0f7i"]
+
+[ext_resource type="PackedScene" uid="uid://ch4h4qt8poeo8" path="res://story_mode/UI/quest_item.tscn" id="1_bm7nw"]
+
+[node name="PanelContainer" type="PanelContainer"]
+
+[node name="ToDos" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="QuestItem" parent="ToDos" instance=ExtResource("1_bm7nw")]
+layout_mode = 2
