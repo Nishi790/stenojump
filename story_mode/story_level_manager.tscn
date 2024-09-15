@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://1llkkgcmubup"]
+
+[ext_resource type="Script" path="res://story_mode/story_level_manager.gd" id="1_cs0fv"]
+[ext_resource type="PackedScene" uid="uid://cqmcig52q8t60" path="res://story_mode/story_levels/level_1.tscn" id="2_p3qat"]
+[ext_resource type="PackedScene" uid="uid://c68eoq2241umv" path="res://story_mode/characters/self_nav_char.tscn" id="3_xewxg"]
+[ext_resource type="Script" path="res://story_mode/game_camera.gd" id="4_yqd4a"]
+
+[node name="StoryLevel" type="Node" node_paths=PackedStringArray("player", "camera", "level")]
+script = ExtResource("1_cs0fv")
+player = NodePath("Character")
+camera = NodePath("GameCamera")
+level = NodePath("Level")
+
+[node name="UISurface" type="CanvasLayer" parent="."]
+
+[node name="Level" parent="." instance=ExtResource("2_p3qat")]
+
+[node name="Character" parent="." instance=ExtResource("3_xewxg")]
+position = Vector2(1992, 624)
+
+[node name="GameCamera" type="Camera2D" parent="."]
+position = Vector2(188, 184)
+script = ExtResource("4_yqd4a")

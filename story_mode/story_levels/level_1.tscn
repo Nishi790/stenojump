@@ -1,10 +1,35 @@
-[gd_scene load_steps=11 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=13 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
+[ext_resource type="Script" path="res://story_mode/story_levels/level_words/story_level_data.gd" id="2_m7323"]
 [ext_resource type="Script" path="res://story_mode/interactables/door_interactable.gd" id="3_5t65q"]
 [ext_resource type="Script" path="res://story_mode/interactables/base_interactable.gd" id="3_37d32"]
 [ext_resource type="Script" path="res://story_mode/interactables/waypoint.gd" id="5_syuy4"]
+
+[sub_resource type="Resource" id="Resource_b0exf"]
+script = ExtResource("2_m7323")
+level_words = Array[Dictionary]([{
+"hint": "TAP",
+"word": "tap"
+}, {
+"hint": "SAT",
+"word": "sat"
+}, {
+"hint": "KAR",
+"word": "car"
+}, {
+"hint": "HAD",
+"word": "had"
+}, {}, {
+"hint": "RAG",
+"word": "rag"
+}, {
+"hint": "PAS",
+"word": "pass"
+}])
+tutorial_break_points = Array[int]([])
+tutorial_dialogue_keys = Array[Resource]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8g7a"]
 size = Vector2(100, 117)
@@ -16,20 +41,20 @@ size = Vector2(92, 58)
 size = Vector2(70, 88)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmfwv"]
-radius = 64.0
+radius = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mb5tf"]
-radius = 64.0
+radius = 48.0
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("waypoints", "interactables", "tile_map_holder", "tile_map_base", "tile_map_obstacles")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("waypoints", "tile_map_holder", "tile_map_base", "tile_map_obstacles")]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_m0lfx")
-waypoints = [null, null]
-interactables = [NodePath("BedroomDoor"), NodePath("Fridge"), NodePath("FrontHallDoor")]
+waypoints = [NodePath("BedroomDoor"), NodePath("Fridge"), NodePath("FrontHallDoor"), NodePath("Waypoint1"), NodePath("Waypoint2")]
 tile_map_holder = NodePath("TileMap")
 tile_map_base = NodePath("TileMap/FloorLayer")
 tile_map_obstacles = NodePath("TileMap/BGObjects")
+level_word_list = SubResource("Resource_b0exf")
 
 [node name="TileMap" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -91,7 +116,7 @@ hints_active = false
 shape = SubResource("CircleShape2D_lmfwv")
 
 [node name="Waypoint2" type="Area2D" parent="." node_paths=PackedStringArray("connected_points")]
-position = Vector2(1638, 337)
+position = Vector2(1673, 337)
 script = ExtResource("5_syuy4")
 connected_points = [NodePath("../BedroomDoor")]
 label_offset = Vector2i(0, 0)
