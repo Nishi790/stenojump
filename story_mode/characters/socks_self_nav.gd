@@ -2,6 +2,8 @@ class_name SelfNavCharacter
 extends Node2D
 
 @export var animations: AnimatedSprite2D
+@export var interaction_area: Area2D
+@export var speed: float = 300
 
 var nav_astar: AStar2D
 
@@ -12,7 +14,7 @@ var destination: Vector2
 
 var direction: Vector2 = Vector2.ZERO
 var direction_changed: bool = false
-@export var speed: float = 300
+
 var navigating: bool = false
 
 var can_interact: bool = false
@@ -24,17 +26,8 @@ func _ready() -> void:
 	select_animation()
 
 
-#TODO remove when interaction system is in place
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		nav_to_interest_point(Vector2(1312, 428))
-	elif event.is_action_pressed("ui_left"):
-		print("Trying interact")
-		if can_interact:
-			interact()
 
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if direction_changed:
 		select_animation()
 
@@ -59,7 +52,7 @@ func nav_to_interest_point(coords: Vector2) -> void:
 	print("Navigating to %s" % coords)
 	navigating = true
 	destination = coords
-	nav_path = nav_astar.get_point_path(nav_astar.get_closest_point(position), nav_astar.get_closest_point(destination))
+	nav_path = nav_astar.get_point_path(nav_astar.get_closest_point(position), nav_astar.get_closest_point(destination), true)
 	next_nav_point()
 
 
@@ -72,6 +65,7 @@ func next_nav_point() -> void:
 
 
 func end_navigation() -> void:
+	nav_index = 0
 	navigating = false
 	destination = Vector2.ZERO
 	next_point = Vector2.ZERO
@@ -106,12 +100,14 @@ func chain_anim() -> void:
 		"reach_up":
 			animations.play("paw_air")
 		"paw_air":
-			interactable._interact()
 			animations.play("paws_down")
 		"paws_down":
 			select_animation()
 
 
-func interact() -> void:
+func interact(anim_name: String) -> void:
 	print("interaction started")
-	animations.play("reach_up")
+	if anim_name == "":
+		animations.play("reach_up")
+	else:
+		animations.play(anim_name)

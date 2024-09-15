@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_indsc"]
 size = Vector2(115, 67)
 
-[node name="Character" type="Node2D" node_paths=PackedStringArray("animations")]
+[node name="Character" type="Node2D" node_paths=PackedStringArray("animations", "interaction_area")]
 script = ExtResource("1_jxr8n")
 animations = NodePath("CharacterAnims")
+interaction_area = NodePath("InteractionArea")
 
 [node name="CharacterAnims" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

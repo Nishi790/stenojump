@@ -1,6 +1,7 @@
 class_name LessonLevelMap
 extends Node2D
 
+signal word_used
 
 @export var waypoints: Array [Waypoint]
 
@@ -12,7 +13,10 @@ var astar_nav_grid: AStar2D
 @export var tile_map_obstacles: TileMapLayer
 @export var level_word_list: StoryLevelData
 
-@export var player: SelfNavCharacter
+@export var player: SelfNavCharacter:
+	set(new_player):
+		player = new_player
+		player.nav_astar = astar_nav_grid
 
 
 func _ready() -> void:
@@ -58,7 +62,10 @@ func _ready() -> void:
 	waypoint_astar_grid = AStar2D.new()
 	for way_index in waypoints.size():
 		var inter: Waypoint = waypoints[way_index]
+
 		inter.request_target_word.connect(provide_target.bind(inter))
+		inter.move_destination_selected.connect(set_player_destination)
+
 		if inter is ConnectionInteractable:
 			var area_shape: CollisionShape2D = inter.get_child(0)
 			var area_rect: Rect2 = area_shape.get_shape().get_rect()
@@ -87,14 +94,28 @@ func switch_point_connection(points: Vector2i) -> void:
 
 
 func provide_target(requester: Waypoint) -> void:
-	requester.set_target(level_word_list.get_next_word())
+	var next_word: Dictionary = level_word_list.get_next_word()
+	requester.set_target(next_word)
 
 
 func initiate_words() -> void:
 	var current_pos: Vector2 = player.global_position
 	var closest_point: int = waypoint_astar_grid.get_closest_point(current_pos)
 	var closest_obj: Waypoint = waypoints[closest_point]
-	closest_obj.initiate_words()
+	closest_obj.initiate_words(player.interaction_area)
+
+
+## Send text through available waypoints to look for match
+func propagate_entry(text: String)-> void:
+	for way in waypoints:
+		var match_found = way.check_target_match(text)
+		if match_found:
+			word_used.emit()
+			break
+
+
+func set_player_destination(point: Waypoint) -> void:
+	player.nav_to_interest_point(point.global_position)
 
 
 func _draw() -> void:
