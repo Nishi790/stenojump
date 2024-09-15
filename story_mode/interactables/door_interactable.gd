@@ -8,6 +8,10 @@ var connected_by_door: Vector2i
 
 @export var door_open: bool = false
 
+func _ready() -> void:
+	super()
+
+
 ##Sets which two Astar points are connected by the door
 func set_door_points(id_1: int, id_2: int) -> void:
 	connected_by_door = Vector2i(id_1, id_2)

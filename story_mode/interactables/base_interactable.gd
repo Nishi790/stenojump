@@ -6,6 +6,7 @@ var ready_to_interact: bool = false
 
 
 func _ready() -> void:
+	super()
 	area_entered.connect(_on_area_entered)
 
 
@@ -28,5 +29,7 @@ func _interact() -> void:
 
 
 func set_ready_to_interact(value: bool) -> void:
-	ready_to_interact = true
-	target_label.add_theme_color_override("default_color",Color.YELLOW)
+	ready_to_interact = value
+	if value:
+		target_label.add_theme_color_override("default_color",Color.YELLOW)
+	else: target_label.remove_theme_color_override("default_color")

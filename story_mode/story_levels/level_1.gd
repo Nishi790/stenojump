@@ -2,8 +2,7 @@ class_name LessonLevelMap
 extends Node2D
 
 
-@export var waypoints: Array [Marker2D]
-@export var interactables: Array[BaseInteractable]
+@export var waypoints: Array [Waypoint]
 
 var waypoint_astar_grid: AStar2D
 var astar_nav_grid: AStar2D
@@ -11,6 +10,7 @@ var astar_nav_grid: AStar2D
 @export var tile_map_holder: Node2D
 @export var tile_map_base: TileMapLayer
 @export var tile_map_obstacles: TileMapLayer
+@export var level_word_list: StoryLevelData
 
 @export var player: SelfNavCharacter
 
@@ -55,7 +55,10 @@ func _ready() -> void:
 	queue_redraw()
 
 	#Set up interactables
-	for inter in interactables:
+	waypoint_astar_grid = AStar2D.new()
+	for way_index in waypoints.size():
+		var inter: Waypoint = waypoints[way_index]
+		inter.request_target_word.connect(provide_target.bind(inter))
 		if inter is ConnectionInteractable:
 			var area_shape: CollisionShape2D = inter.get_child(0)
 			var area_rect: Rect2 = area_shape.get_shape().get_rect()
@@ -68,6 +71,12 @@ func _ready() -> void:
 				switch_point_connection(door_points)
 			inter.change_connection.connect(switch_point_connection)
 
+		waypoint_astar_grid.add_point(way_index, inter.global_position)
+		for connection in inter.connected_points:
+			var point_ID: int = waypoint_astar_grid.get_closest_point(connection.global_position)
+			if waypoint_astar_grid.get_point_position(point_ID) == connection.global_position:
+				waypoint_astar_grid.connect_points(point_ID, way_index)
+
 
 func switch_point_connection(points: Vector2i) -> void:
 	if astar_nav_grid.are_points_connected(points.x, points.y):
@@ -77,8 +86,19 @@ func switch_point_connection(points: Vector2i) -> void:
 	queue_redraw()
 
 
+func provide_target(requester: Waypoint) -> void:
+	requester.set_target(level_word_list.get_next_word())
+
+
+func initiate_words() -> void:
+	var current_pos: Vector2 = player.global_position
+	var closest_point: int = waypoint_astar_grid.get_closest_point(current_pos)
+	var closest_obj: Waypoint = waypoints[closest_point]
+	closest_obj.initiate_words()
+
+
 func _draw() -> void:
-	if Engine.is_editor_hint():
+	if OS.is_debug_build():
 		for point_id in astar_nav_grid.get_point_ids():
 			var point: Vector2i = astar_nav_grid.get_point_position(point_id)
 			draw_circle(point, 3, Color.GREEN)

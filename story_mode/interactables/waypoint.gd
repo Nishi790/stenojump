@@ -3,13 +3,13 @@ class_name Waypoint
 extends Area2D
 
 signal request_target_word
+signal move_destination_selected(destination: Waypoint)
 
 var target_label: RichTextLabel
 
 @export var connected_points: Array[Waypoint]:
 	set(points):
 		connected_points = points
-		print("Connected Points Changed")
 		if Engine.is_editor_hint():
 			reciprocate_connection(connected_points, points)
 			queue_redraw()
@@ -32,18 +32,17 @@ var default_height: float = 20
 			display_target()
 
 
+##Helper function to make connections reciprocal between waypoints - used only in editor
 func reciprocate_connection(old_points: Array, new_points: Array) -> void:
-	print("Old points %d, new points %d" % [old_points.size(), new_points.size()])
 	if new_points.size() >= old_points.size():
-		print("Point being added")
 		for point in new_points:
 			if point.connected_points.find(self) == -1:
 				point.connected_points.append(self)
 	else:
-		print("Point being removed")
-		var removed_connection: Array = old_points.filter(func (element): return new_points.find(element) == -1)
-		for element in removed_connection:
+		var removed_connection: Array = old_points.filter(func (element: Waypoint): return new_points.find(element) == -1)
+		for element: Waypoint in removed_connection:
 			element.connected_points.erase(self)
+
 
 func _ready() -> void:
 	target_label = RichTextLabel.new()
@@ -54,10 +53,7 @@ func _ready() -> void:
 	target_label.z_index = 4
 	add_child(target_label)
 	target_label.position = Vector2(target_label.custom_minimum_size.x/-2, -50)
-	request_target_word.emit()
 	target_label.visible = false
-
-	set_target({"word": "run", "hint": "RUPB"})
 
 
 func _draw() -> void:
@@ -71,11 +67,11 @@ func _draw() -> void:
 func set_target(data: Dictionary) -> void:
 	target_data = data
 	target_word = target_data["word"]
+	target_label.visible = true
 	display_target()
 
 
 func display_target() -> void:
-	target_label.visible = true
 	target_label.text = ""
 
 	target_label.text = "[center]%s[/center]" % target_word
@@ -84,8 +80,31 @@ func display_target() -> void:
 		target_label.push_context()
 		target_label.push_paragraph(HORIZONTAL_ALIGNMENT_CENTER)
 		target_label.push_font(load("res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf"), 80)
-		target_label.append_text(target_data["hint"])
+		target_label.append_text(target_data["hint"] as String)
 		target_label.position.y = label_offset.y - target_label.get_combined_minimum_size().y
 	else:
 		target_label.size = minimum_label_size
 		target_label.position.y = label_offset.y - minimum_label_size.y
+
+
+func initiate_words() -> void:
+	if target_data.is_empty():
+		request_target_word.emit()
+	for connection in connected_points:
+		if target_data.is_empty():
+			connection.request_target_word.emit()
+		else:
+			connection.display_target()
+
+
+##Respond to correct word entry
+func word_entered() -> void:
+	clear_target()
+	move_destination_selected.emit(self)
+
+
+##Called to clear target_word data and hide label
+func clear_target() -> void:
+	target_data.clear()
+	target_word = ""
+	target_label.visible = false
