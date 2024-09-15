@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=28 format=3 uid="uid://bauut0j20qrrw"]
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://bauut0j20qrrw"]
 
 [ext_resource type="StyleBox" uid="uid://blyaks1y4igf7" path="res://textures/UI/hover_button_stylebox.tres" id="1_s5kba"]
 [ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_0gxcr"]
@@ -153,6 +153,13 @@ texture_margin_right = 4.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kxrd"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rstq7"]
 atlas = ExtResource("2_0gxcr")
 region = Rect2(608, 16, 48, 64)
@@ -209,5 +216,8 @@ SpinBox/icons/updown = ExtResource("5_h5syq")
 TabContainer/colors/font_selected_color = Color(0.376471, 0.12549, 0, 1)
 TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_g27qn")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_dvnqa")
+TargetRichText/base_type = &"RichTextLabel"
+TargetRichText/colors/default_color = Color(1, 1, 1, 1)
+TargetRichText/styles/normal = SubResource("StyleBoxFlat_5kxrd")
 fullscreen_panel/base_type = &"PanelContainer"
 fullscreen_panel/styles/panel = SubResource("StyleBoxTexture_hhnfp")

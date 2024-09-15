@@ -6,15 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_indsc"]
 size = Vector2(115, 67)
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("animations")]
+[node name="Character" type="Node2D" node_paths=PackedStringArray("animations")]
 script = ExtResource("1_jxr8n")
-animations = NodePath("Character")
+animations = NodePath("CharacterAnims")
 
-[node name="Character" type="AnimatedSprite2D" parent="."]
+[node name="CharacterAnims" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_6vqsa")
-animation = &"walk_up"
+animation = &"paws_down"
 offset = Vector2(0, -16)
 
 [node name="InteractionArea" type="Area2D" parent="."]

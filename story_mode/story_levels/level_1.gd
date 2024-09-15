@@ -2,7 +2,7 @@ class_name LessonLevelMap
 extends Node2D
 
 
-@export var waypoints: Array [Vector2]
+@export var waypoints: Array [Marker2D]
 @export var interactables: Array[BaseInteractable]
 
 var waypoint_astar_grid: AStar2D
@@ -50,15 +50,39 @@ func _ready() -> void:
 					astar_nav_grid.connect_points(point_ID, index)
 			index += 1
 
-	player.nav_astar = astar_nav_grid
+	#player.nav_astar = astar_nav_grid
 	#For testing: draw grid
 	queue_redraw()
 
+	#Set up interactables
+	for inter in interactables:
+		if inter is ConnectionInteractable:
+			var area_shape: CollisionShape2D = inter.get_child(0)
+			var area_rect: Rect2 = area_shape.get_shape().get_rect()
+			var area_pos: Vector2 = inter.global_position
+			var right_index: int = astar_nav_grid.get_closest_point(area_pos + Vector2(area_rect.size.x/2, 0))
+			var left_index: int = astar_nav_grid.get_closest_point(area_pos - Vector2(area_rect.size.x/2, 0))
+			var door_points: Vector2i = Vector2i(right_index, left_index)
+			inter.connected_by_door = door_points
+			if not inter.door_open:
+				switch_point_connection(door_points)
+			inter.change_connection.connect(switch_point_connection)
+
+
+func switch_point_connection(points: Vector2i) -> void:
+	if astar_nav_grid.are_points_connected(points.x, points.y):
+		astar_nav_grid.disconnect_points(points.x, points.y)
+	else:
+		astar_nav_grid.connect_points(points.x, points.y)
+	queue_redraw()
+
+
 func _draw() -> void:
-	for point_id in astar_nav_grid.get_point_ids():
-		var point: Vector2i = astar_nav_grid.get_point_position(point_id)
-		draw_circle(point, 3, Color.GREEN)
-		var connected_points: PackedInt64Array = astar_nav_grid.get_point_connections(point_id)
-		for id in connected_points:
-			var connection_position: Vector2 = astar_nav_grid.get_point_position(id)
-			draw_line(point, connection_position, Color.WHITE)
+	if Engine.is_editor_hint():
+		for point_id in astar_nav_grid.get_point_ids():
+			var point: Vector2i = astar_nav_grid.get_point_position(point_id)
+			draw_circle(point, 3, Color.GREEN)
+			var connected_points: PackedInt64Array = astar_nav_grid.get_point_connections(point_id)
+			for id in connected_points:
+				var connection_position: Vector2 = astar_nav_grid.get_point_position(id)
+				draw_line(point, connection_position, Color.WHITE)
