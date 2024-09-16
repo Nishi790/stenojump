@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=2 format=3 uid="uid://sim7v1jiauav"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/quests/base_quest.gd" id="1_kxryy"]
+
+[resource]
+script = ExtResource("1_kxryy")
+name = "Open the Door"
+description = "Get Jenny to open the door"
+quest_type = 0
+req_total = 0
+reqs = {
+"bedroom_door_open": true
+}
+start_dialog_key = ""
+finished_dialog_key = "Jenny_opens_door"

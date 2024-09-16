@@ -30,7 +30,7 @@ var can_match: bool = false
 @export var hints_active: bool = true:
 	set(value):
 		hints_active = value
-		if target_label:
+		if target_label and target_word != "":
 			display_target()
 
 

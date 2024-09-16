@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://bxwxxkwqcustr"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_gykgd"]
+
+[resource]
+script = ExtResource("1_gykgd")
+name = "book_fallen"
+event_complete = false
+conditions = {}

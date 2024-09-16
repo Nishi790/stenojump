@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://b4ib2ign30q2k"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_puyxa"]
+
+[resource]
+script = ExtResource("1_puyxa")
+name = "bedroom_door_opened"
+event_complete = false
+conditions = {
+"meowed_at_door_twice": true
+}

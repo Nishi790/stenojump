@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=2 format=3 uid="uid://d0e7ioqok0xh0"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/quests/base_quest.gd" id="1_fh6pq"]
+
+[resource]
+script = ExtResource("1_fh6pq")
+name = "Check Bowl"
+description = "Go check Socks' bowl for something to eat."
+quest_type = 0
+req_total = 0
+reqs = {
+"interacted_with_bowl": true
+}
+start_dialog_key = ""
+finished_dialog_key = ""

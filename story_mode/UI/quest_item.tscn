@@ -1,10 +1,23 @@
-[gd_scene format=3 uid="uid://ch4h4qt8poeo8"]
+[gd_scene load_steps=2 format=3 uid="uid://ch4h4qt8poeo8"]
 
-[node name="QuestItem" type="HBoxContainer"]
+[ext_resource type="Script" path="res://story_mode/UI/quest_item.gd" id="1_02mt3"]
+
+[node name="QuestItem" type="HBoxContainer" node_paths=PackedStringArray("completed_box", "quest_label")]
+offset_right = 228.0
+offset_bottom = 69.0
+script = ExtResource("1_02mt3")
+completed_box = NodePath("CheckBox")
+quest_label = NodePath("QuestLabel")
 
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+mouse_filter = 2
 
 [node name="QuestLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+text = "Wake up Jenny
+Help Jenny get up for the day. "
+fit_content = true

@@ -1,0 +1,80 @@
+~ intro
+Socks: Oh, hiya, I'm Socks.
+	Yes, I know I don't have socks...
+Socks: I didn't name myself, okay? [wait=0.5]
+	Anyway, we've got a busy day ahead of us, starting with helping my person, Jenny.
+- What does she need help with?
+	Socks: She needs to get up and feed me! [wait=0.5]
+		I mean go to work. We need to help her get up and get ready for work. 
+- Okay, I can do that.
+Socks: Do you know how to stroke a basic word?
+- Of course
+	=> try_walk
+- Not really
+	=> steno_basics
+
+
+~ steno_basics
+Socks: In stenography, you stroke words by hitting multiple keys at once. 
+	Sounds at the start of the word or syllable are on the left.
+	Vowel sounds are on the thumb keys.
+	And sounds at the end of the word or syllable are on the right.
+Socks: Are you familiar with the steno keyboard?
+- Yes
+- A bit
+	=>< offer_hints
+- No
+	=>< offer_hints
+
+
+
+~ try_walk
+Socks: If you get stuck, you can always toggle hints for words on and off by hitting Enter (R-R), just in case.
+Socks: Okay! We're going to start with words that use the A key as the vowel. A is used for the short 'a' sound like in "cat".
+Socks: Speaking of cats, we're pretty awesome. [wait=0.5] 
+	Oh, A is also the vowel sound in words like "car" and "yarn". Be careful, 'r' can change how vowels sound. If it sounds like a pirate, use AR
+Socks: Hit Enter or click anywhere to close my dialogue and try walking to one of the nearby points.
+do level.level_word_list.start_quest("first_steps")
+=> END
+
+~ offer_hints
+Socks: Do you want to enable hints to show you how to stroke the words you'll find around the house?
+- Yes
+	do set_hints_visible(true)
+- No
+	do set_hints_visible(false)
+=> try_walk
+
+~ teach_interact
+Socks: You've got me moving. Good start, but Jenny's a heavy sleeper. Walking around probably isn't going to do it.
+Socks: If you reach a place where I can do something, a new word will appear in [Color={{PlayerConfig.interact_font_color}}] this color[/Color].
+	[wait=0.2]Just stroke the word and I'll do the rest!
+do level.level_word_list.start_quest("first_interact")
+=> END
+
+~ teach_gen_action
+Socks: I forgot to tell you! I can do some things from [i]anywhere[/i]. 
+	I can always meow, I'm very sociable! 
+Socks: You can see my general actions and the words to use them in the bottom right.
+Socks: Now you can help me wake Jenny up so that she's not late.
+	All you need to de is stroke the word you see to tell me where to go. 
+do level.level_word_list.start_quest("wake_up_jenny")
+=> END
+
+~ Jenny_woke_up
+Socks: Oh good! She's finally up. Now we can get out of here and see the rest of the house.
+do level.level_word_list.start_quest("open_the_door")
+=> END
+
+~ meowed_at_door
+Socks: You might have to keep trying,
+	Jenny's my favorite human, but...[wait=0.5]
+	She's not always the best listener.
+=> END
+
+~ Jenny_opens_door
+Jenny: Okay, okay. You can go out, Socks, but you know there isn't any food out there yet.
+Socks: Did she say something about food? Let's go check my bowl!
+do level.level_word_list.start_quest("check_bowl")
+=> END
+

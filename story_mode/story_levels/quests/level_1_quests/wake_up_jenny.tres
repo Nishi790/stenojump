@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=2 format=3 uid="uid://bwi027uekl0ca"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/quests/base_quest.gd" id="1_k34ml"]
+
+[resource]
+script = ExtResource("1_k34ml")
+name = "Wake Up Jenny"
+description = "Help Jenny get up on time. "
+quest_type = 1
+req_total = 3
+reqs = {
+"bedroom_curtains_open": true,
+"book_fallen": true,
+"knocked_over_alarm_clock": true,
+"meowed_beside_bed": true,
+"sat_on_bed": true
+}
+start_dialog_key = ""
+finished_dialog_key = "Jenny_woke_up"

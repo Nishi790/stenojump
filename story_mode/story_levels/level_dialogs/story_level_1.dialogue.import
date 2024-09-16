@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://c43kcgrhcuhyu"
+path="res://.godot/imported/story_level_1.dialogue-f91618b7cc3a458040f01492dca4278b.tres"
+
+[deps]
+
+source_file="res://story_mode/story_levels/level_dialogs/story_level_1.dialogue"
+dest_files=["res://.godot/imported/story_level_1.dialogue-f91618b7cc3a458040f01492dca4278b.tres"]
+
+[params]
+
+defaults=true

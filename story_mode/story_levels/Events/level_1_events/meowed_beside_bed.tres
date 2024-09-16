@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionStoryEvent" load_steps=2 format=3 uid="uid://dn0k3yrt00a5r"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/action_event_info.gd" id="1_k8286"]
+
+[resource]
+script = ExtResource("1_k8286")
+action_type = 0
+name = "meowed_beside_bed"
+event_complete = false
+conditions = {}

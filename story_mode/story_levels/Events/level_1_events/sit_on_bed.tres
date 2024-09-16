@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://cek1c4820elxq"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_2y3ty"]
+
+[resource]
+script = ExtResource("1_2y3ty")
+name = "sat_on_bed"
+event_complete = false
+conditions = {}

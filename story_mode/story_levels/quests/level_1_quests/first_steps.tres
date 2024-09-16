@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=2 format=3 uid="uid://ipbh6mduhwre"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/quests/base_quest.gd" id="1_r4ewu"]
+
+[resource]
+script = ExtResource("1_r4ewu")
+name = "Take your first steps."
+description = "Stroke any onscreen word to move Socks around."
+quest_type = 0
+req_total = 0
+reqs = {
+"first_move": true
+}
+start_dialog_key = ""
+finished_dialog_key = "teach_interact"

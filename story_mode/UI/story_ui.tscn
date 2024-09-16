@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_fdopu")
 player_input = NodePath("MarginContainer/VertScreenSplitter/PlayerInput")
 dialog_balloon = NodePath("MarginContainer/VertScreenSplitter/ExampleBalloon")
-quest_display = NodePath("MarginContainer/VertScreenSplitter/HScreenSpilt/PanelContainer")
+quest_display = NodePath("MarginContainer/VertScreenSplitter/HScreenSpilt/QuestDisplay")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -30,7 +30,7 @@ layout_mode = 2
 [node name="HScreenSpilt" type="HBoxContainer" parent="MarginContainer/VertScreenSplitter"]
 layout_mode = 2
 
-[node name="PanelContainer" parent="MarginContainer/VertScreenSplitter/HScreenSpilt" instance=ExtResource("2_dja5f")]
+[node name="QuestDisplay" parent="MarginContainer/VertScreenSplitter/HScreenSpilt" instance=ExtResource("2_dja5f")]
 layout_mode = 2
 
 [node name="PlayerInput" type="LineEdit" parent="MarginContainer/VertScreenSplitter"]

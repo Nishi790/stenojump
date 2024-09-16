@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ActionStoryEvent" load_steps=2 format=3 uid="uid://cip5hqdmnyfxg"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/action_event_info.gd" id="1_8bn7k"]
+
+[resource]
+script = ExtResource("1_8bn7k")
+action_type = 0
+name = "meowed_at_door_once"
+event_complete = false
+conditions = {
+"jenny_woke_up": true
+}

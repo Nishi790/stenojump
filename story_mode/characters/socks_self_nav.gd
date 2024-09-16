@@ -1,6 +1,8 @@
 class_name SelfNavCharacter
 extends Node2D
 
+enum GeneralActions {MEOW}
+
 @export var animations: AnimatedSprite2D
 @export var interaction_area: Area2D
 @export var speed: float = 300

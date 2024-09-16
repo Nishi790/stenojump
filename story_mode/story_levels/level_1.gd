@@ -2,6 +2,9 @@ class_name LessonLevelMap
 extends Node2D
 
 signal word_used
+signal quest_started(quest_data: BaseQuest)
+signal quest_completed(quest_name: String)
+signal dialogue_started(dialogue_key: String, dialogue: DialogueResource)
 
 @export var waypoints: Array [Waypoint]
 
@@ -11,7 +14,12 @@ var astar_nav_grid: AStar2D
 @export var tile_map_holder: Node2D
 @export var tile_map_base: TileMapLayer
 @export var tile_map_obstacles: TileMapLayer
-@export var level_word_list: StoryLevelData
+@export var level_word_list: StoryLevelData:
+	set(new_data):
+		level_word_list = new_data
+		level_word_list.quest_started.connect(start_new_quest)
+		level_word_list.quest_finished.connect(complete_quest)
+		level_word_list.dialog_started.connect(start_dialog)
 
 @export var player: SelfNavCharacter:
 	set(new_player):
@@ -84,6 +92,9 @@ func _ready() -> void:
 			if waypoint_astar_grid.get_point_position(point_ID) == connection.global_position:
 				waypoint_astar_grid.connect_points(point_ID, way_index)
 
+	await get_tree().process_frame
+	level_word_list.start_level()
+
 
 func switch_point_connection(points: Vector2i) -> void:
 	if astar_nav_grid.are_points_connected(points.x, points.y):
@@ -116,6 +127,19 @@ func propagate_entry(text: String)-> void:
 
 func set_player_destination(point: Waypoint) -> void:
 	player.nav_to_interest_point(point.global_position)
+
+
+func start_new_quest(quest_data: BaseQuest) -> void:
+	quest_started.emit(quest_data)
+
+
+func complete_quest(quest_name: String) -> void:
+	quest_completed.emit(quest_name)
+
+
+func start_dialog(dialogue_key: String, dialogue: DialogueResource) -> void:
+	print("Level received dialog: %s"  % dialogue_key)
+	dialogue_started.emit(dialogue_key, dialogue)
 
 
 func _draw() -> void:

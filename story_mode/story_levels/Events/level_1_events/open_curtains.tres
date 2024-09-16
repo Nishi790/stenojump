@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://flpssaglm2lw"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_aorc1"]
+
+[resource]
+script = ExtResource("1_aorc1")
+name = "bedroom_curtains_opened"
+event_complete = false
+conditions = {}

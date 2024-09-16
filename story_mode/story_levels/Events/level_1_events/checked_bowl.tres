@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://cbb5xgg8hc8q2"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_56c48"]
+
+[resource]
+script = ExtResource("1_56c48")
+name = "interacted_with_bowl"
+event_complete = false
+conditions = {}

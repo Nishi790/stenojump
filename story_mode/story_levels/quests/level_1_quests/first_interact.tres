@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=2 format=3 uid="uid://bi8dmetaqr3s3"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/quests/base_quest.gd" id="1_lb2oq"]
+
+[resource]
+script = ExtResource("1_lb2oq")
+name = "Interact with any object"
+description = "Stroke a colored word by an object to interact with it. "
+quest_type = 0
+req_total = 0
+reqs = {
+"first_interact": true
+}
+start_dialog_key = ""
+finished_dialog_key = "teach_gen_action"
