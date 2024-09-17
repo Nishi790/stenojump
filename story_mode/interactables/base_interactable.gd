@@ -5,11 +5,24 @@ extends Waypoint
 var ready_to_interact: bool = false
 var interactor: SelfNavCharacter = null
 
+@export var animation: AnimatedSprite2D
+@export var animation_offset: Vector2:
+	set(new_offset):
+		animation_offset = new_offset
+		if animation:
+			animation.offset = animation_offset
 @export var interaction_anim_name: String = ""
-
+@export var animation_frames: SpriteFrames:
+	set(new_frames):
+		animation_frames = new_frames
+		if animation:
+			animation.sprite_frames = animation_frames
+			animation.play("idle")
+@export var interact_events: Array[String]
 
 func _ready() -> void:
 	super()
+	animation.animation_finished.connect(return_to_idle)
 
 
 func _draw() -> void:
@@ -25,7 +38,18 @@ func _interact() -> void:
 
 
 func complete_interact() -> void:
+	if animation_frames.has_animation("interact"):
+		animation.play("interact")
+	for event_name in interact_events:
+		tried_event.emit(event_name, true)
 	print("Interacted with %s" % self.name)
+
+
+func return_to_idle() -> void:
+	if animation_frames.has_animation("idle_after_interact"):
+		animation.play("idle_after_interact")
+	else:
+		animation.play("idle")
 
 
 func initiate_words(area: Area2D)  -> void:

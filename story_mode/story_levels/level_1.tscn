@@ -1,16 +1,13 @@
-[gd_scene load_steps=31 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=25 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
 [ext_resource type="Resource" uid="uid://flpssaglm2lw" path="res://story_mode/story_levels/Events/level_1_events/open_curtains.tres" id="2_5uwng"]
 [ext_resource type="Resource" uid="uid://c43kcgrhcuhyu" path="res://story_mode/story_levels/level_dialogs/story_level_1.dialogue" id="2_ai6jn"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_words/story_level_data.gd" id="2_m7323"]
-[ext_resource type="Script" path="res://story_mode/interactables/door_interactable.gd" id="3_5t65q"]
-[ext_resource type="Script" path="res://story_mode/interactables/base_interactable.gd" id="3_37d32"]
 [ext_resource type="Resource" uid="uid://b4ib2ign30q2k" path="res://story_mode/story_levels/Events/level_1_events/bedroom_door_opened.tres" id="3_x6yku"]
 [ext_resource type="Resource" uid="uid://bxwxxkwqcustr" path="res://story_mode/story_levels/Events/level_1_events/knock_over_book.tres" id="4_lpupf"]
 [ext_resource type="Resource" uid="uid://cbb5xgg8hc8q2" path="res://story_mode/story_levels/Events/level_1_events/checked_bowl.tres" id="5_2ntke"]
-[ext_resource type="Script" path="res://story_mode/interactables/waypoint.gd" id="5_syuy4"]
 [ext_resource type="Resource" uid="uid://beyjdgi3eaaww" path="res://story_mode/story_levels/Events/level_1_events/jenny_woke_up.tres" id="6_36dv8"]
 [ext_resource type="Resource" uid="uid://cx654femgv4da" path="res://story_mode/story_levels/Events/level_1_events/knocked_over_alarm.tres" id="7_brp6k"]
 [ext_resource type="Resource" uid="uid://pqu7lay1wwae" path="res://story_mode/story_levels/Events/level_1_events/meowed_at_door_once.tres" id="8_gekdt"]
@@ -24,6 +21,8 @@
 [ext_resource type="Resource" uid="uid://bi8dmetaqr3s3" path="res://story_mode/story_levels/quests/level_1_quests/first_interact.tres" id="16_traon"]
 [ext_resource type="Resource" uid="uid://sim7v1jiauav" path="res://story_mode/story_levels/quests/level_1_quests/open_the_door.tres" id="17_jw8a0"]
 [ext_resource type="Resource" uid="uid://d0e7ioqok0xh0" path="res://story_mode/story_levels/quests/level_1_quests/check_bowl.tres" id="19_ojpot"]
+[ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
+[ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
 
 [sub_resource type="Resource" id="Resource_b0exf"]
 script = ExtResource("2_m7323")
@@ -72,26 +71,11 @@ quests = {
 "wake_up_jenny": ExtResource("14_yo6n8")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8g7a"]
-size = Vector2(100, 117)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcj71"]
-size = Vector2(92, 58)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u45bs"]
-size = Vector2(70, 88)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lmfwv"]
-radius = 48.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mb5tf"]
-radius = 48.0
-
 [node name="Level" type="Node2D" node_paths=PackedStringArray("waypoints", "tile_map_holder", "tile_map_base", "tile_map_obstacles")]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_m0lfx")
-waypoints = [NodePath("BedroomDoor"), NodePath("Fridge"), NodePath("FrontHallDoor"), NodePath("Waypoint1"), NodePath("Waypoint2")]
+waypoints = [NodePath("BookShelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom")]
 tile_map_holder = NodePath("TileMap")
 tile_map_base = NodePath("TileMap/FloorLayer")
 tile_map_obstacles = NodePath("TileMap/BGObjects")
@@ -120,48 +104,28 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAXAAEAAAACAAEAAAAXAAIAAAACAAEAAAAXAAMAAAACAAEAAAAXAAQAAAACAAEAAAAXAAUAAAACAAEAAAAXAAYAAAACAAEAAAAXAAcAAAACAAEAAAAXAAgAAAACAAEAAAAXAAkAAAACAAEAAAAXAAoAAAAEAAEAAAAKAAoAAAAEAAEAAAAFAAkAAAAAAAEAAAAFAAoAAAABAAIAAAAAAAEAAAAAAAgAAAAAAAIAAAAAAAgAAAAAAAMAAAAAAAgAAAAAAAQAAAAAAAgAAAAAAAUAAAAAAAgAAAAAAAYAAAAAAAgAAAAAAAcAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAkAAAAAAAgAAAAAAAoAAAADAAgAAAAIAAoAAAAEAAMAAAAIAAsAAAAEAAQAAAAGAAoAAAABAAIAAAAHAAoAAAABAAIAAAAJAAoAAAABAAIAAAABAAoAAAABAAkAAAACAAoAAAABAAkAAAADAAoAAAABAAkAAAAEAAoAAAABAAkAAAAKAAkAAAACAAEAAAAMAAIAAAACAAgAAAAMAAMAAAACAAgAAAAMAAUAAAACAAgAAAAMAAYAAAAEAAgAAAALAAYAAAABAAkAAAAKAAYAAAABAAkAAAAJAAYAAAABAAkAAAAIAAYAAAABAAkAAAAHAAYAAAABAAkAAAAGAAYAAAABAAkAAAAFAAYAAAABAAkAAAAEAAcAAAACAAgAAAAEAAgAAAACAAgAAAAEAAkAAAACAAgAAAANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAALAAkAAAAAAAEAAAALAAoAAAADAAEAAAAMAAoAAAABAAIAAAANAAoAAAABAAIAAAAOAAoAAAABAAIAAAAPAAoAAAABAAIAAAAQAAoAAAABAAIAAAARAAoAAAABAAIAAAASAAoAAAABAAIAAAATAAoAAAABAAIAAAAUAAoAAAABAAIAAAAVAAoAAAABAAIAAAAWAAoAAAABAAIAAAANAAcAAAAAAAEAAAANAAgAAAAAAAEAAAAMAAEAAAACAAgAAAAMAAAAAAAEAAcAAAA=")
 tile_set = ExtResource("1_c7u2v")
 
-[node name="BedroomDoor" type="Area2D" parent="." node_paths=PackedStringArray("connected_points")]
-position = Vector2(1248, 428)
-script = ExtResource("3_5t65q")
-connected_points = [NodePath("../Waypoint2"), NodePath("../Fridge")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BedroomDoor"]
-shape = SubResource("RectangleShape2D_d8g7a")
-
-[node name="Fridge" type="Area2D" parent="." node_paths=PackedStringArray("connected_points")]
-position = Vector2(1006, 303)
-script = ExtResource("3_37d32")
-connected_points = [NodePath("../Waypoint1"), NodePath("../BedroomDoor")]
-
-[node name="Area2D" type="CollisionShape2D" parent="Fridge"]
-position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_qcj71")
-
-[node name="FrontHallDoor" type="Area2D" parent="." node_paths=PackedStringArray("connected_points")]
-position = Vector2(481, 1009)
-script = ExtResource("3_5t65q")
-connected_points = [NodePath("../Waypoint1")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontHallDoor"]
-position = Vector2(-11, 0)
-shape = SubResource("RectangleShape2D_u45bs")
-
-[node name="Waypoint1" type="Area2D" parent="." node_paths=PackedStringArray("connected_points")]
-position = Vector2(622, 314)
-script = ExtResource("5_syuy4")
-connected_points = [NodePath("../Fridge"), NodePath("../FrontHallDoor")]
-label_offset = Vector2i(0, 0)
+[node name="BookShelf" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
+position = Vector2(1163, 902)
+interact_events = Array[String](["book_fallen", "first_interact"])
+connected_points = [NodePath("../BottomBedroom")]
 hints_active = false
+movement_events = Array[String](["first_move"])
+action_events = Array[String]([])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint1"]
-shape = SubResource("CircleShape2D_lmfwv")
+[node name="BottomBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
+position = Vector2(1487, 921)
+connected_points = [NodePath("../BookShelf"), NodePath("../MiddleBedroom")]
+movement_events = Array[String]([])
+action_events = Array[String]([])
 
-[node name="Waypoint2" type="Area2D" parent="." node_paths=PackedStringArray("connected_points")]
-position = Vector2(1673, 337)
-script = ExtResource("5_syuy4")
-connected_points = [NodePath("../BedroomDoor")]
-label_offset = Vector2i(0, 0)
-hints_active = false
+[node name="MiddleBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
+position = Vector2(1483, 625)
+connected_points = [NodePath("../BottomBedroom"), NodePath("../TopBedroom")]
+movement_events = Array[String](["first_move"])
+action_events = Array[String]([])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint2"]
-shape = SubResource("CircleShape2D_mb5tf")
+[node name="TopBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
+position = Vector2(1483, 342)
+connected_points = [NodePath("../MiddleBedroom")]
+movement_events = Array[String]([])
+action_events = Array[String]([])

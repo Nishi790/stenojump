@@ -18,7 +18,7 @@ func check_complete(event_dict: Dictionary) -> bool:
 	match quest_type:
 		QuestTypes.ALL:
 			var reqs_met: bool = true
-			for req in reqs:
+			for req: String in reqs:
 				if event_dict[req].event_complete == reqs[req]:
 					continue
 				else:
@@ -26,8 +26,8 @@ func check_complete(event_dict: Dictionary) -> bool:
 					break
 			return reqs_met
 		QuestTypes.SOME:
-			var reqs_met = 0
-			for req in reqs:
+			var reqs_met: int = 0
+			for req: String in reqs:
 				if event_dict[req].event_complete == reqs[req]:
 					reqs_met += 1
 				if reqs_met == req_total:

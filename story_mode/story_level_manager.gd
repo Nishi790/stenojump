@@ -31,6 +31,7 @@ func set_hints_visible(value: bool) -> void:
 
 
 func start_quest(quest_data: BaseQuest) -> void:
+	print("Starting quest %s" % quest_data.name)
 	UI.display_quest(quest_data)
 
 

@@ -28,7 +28,7 @@ func get_next_word() -> Dictionary:
 	return result_dict
 
 
-func start_level():
+func start_level() -> void:
 	dialog_started.emit("intro", dialogue_resource)
 
 
@@ -38,8 +38,14 @@ func update_event(event_name: String, value: bool) -> void:
 		var can_complete: bool = level_events[event_name].check_event_can_complete(level_events)
 		if can_complete:
 			level_events[event_name].event_complete = value
-	for key in active_quests.keys():
+	for key: String in active_quests.keys():
 		var quest_complete: bool = check_quest_complete(key)
+
+
+func update_action_event(event_name: String, action_type: SelfNavCharacter.GeneralActions) -> void:
+	if level_events.has(event_name):
+		if level_events[event_name].action_type == action_type:
+			update_event(event_name, true)
 
 
 ##Call on events with toggle subtype te flip value
@@ -48,7 +54,7 @@ func update_toggle_event(event_name: String) -> void:
 		var can_complete: bool = level_events[event_name].check_event_can_complete(level_events)
 		if can_complete:
 			level_events[event_name].event_complete = !level_events[event_name].event_complete
-	for key in active_quests.keys():
+	for key: String in active_quests.keys():
 		var quest_complete: bool = check_quest_complete(key)
 
 
@@ -63,7 +69,7 @@ func check_quest_complete(quest_id: String) -> bool:
 		active_quests.erase(quest_id)
 		if quest_data.finished_dialog_key != "":
 			dialog_started.emit(quest_data.finished_dialog_key, dialogue_resource)
-		quest_finished.emit(quest_id)
+		quest_finished.emit(quest_data.name)
 
 	return quest_complete
 

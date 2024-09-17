@@ -20,7 +20,7 @@ level = NodePath("Level")
 [node name="Level" parent="." instance=ExtResource("2_p3qat")]
 
 [node name="Character" parent="." instance=ExtResource("3_xewxg")]
-position = Vector2(1189, 465)
+position = Vector2(1494, 938)
 
 [node name="GameCamera" type="Camera2D" parent="."]
 position = Vector2(1344, 542)

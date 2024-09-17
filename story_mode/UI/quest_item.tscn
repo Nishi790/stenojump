@@ -18,6 +18,7 @@ mouse_filter = 2
 [node name="QuestLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+bbcode_enabled = true
 text = "Wake up Jenny
 Help Jenny get up for the day. "
 fit_content = true

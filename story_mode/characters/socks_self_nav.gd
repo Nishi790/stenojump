@@ -19,8 +19,6 @@ var direction_changed: bool = false
 
 var navigating: bool = false
 
-var can_interact: bool = false
-var interactable: BaseInteractable
 
 func _ready() -> void:
 
@@ -51,7 +49,6 @@ func _physics_process(delta: float) -> void:
 
 
 func nav_to_interest_point(coords: Vector2) -> void:
-	print("Navigating to %s" % coords)
 	navigating = true
 	destination = coords
 	nav_path = nav_astar.get_point_path(nav_astar.get_closest_point(position), nav_astar.get_closest_point(destination), true)
@@ -108,7 +105,6 @@ func chain_anim() -> void:
 
 
 func interact(anim_name: String) -> void:
-	print("interaction started")
 	if anim_name == "":
 		animations.play("reach_up")
 	else:

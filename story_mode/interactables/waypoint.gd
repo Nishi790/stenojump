@@ -4,9 +4,11 @@ extends Area2D
 
 signal request_target_word
 signal move_destination_selected(destination: Waypoint)
+signal tried_event(event_name: String, event_value: bool)
+signal tried_action(event_name: String, action:SelfNavCharacter.GeneralActions)
 
-var target_label: RichTextLabel
-
+@export var target_label: RichTextLabel
+@export var label_offset: Vector2i = Vector2i(0, -50)
 @export var connected_points: Array[Waypoint]:
 	set(points):
 		connected_points = points
@@ -15,9 +17,6 @@ var target_label: RichTextLabel
 			queue_redraw()
 		else:
 			connected_points = points
-
-
-@export var label_offset: Vector2i = Vector2i(0, -50)
 
 var minimum_label_size: Vector2 = Vector2(160, 30)
 
@@ -33,6 +32,8 @@ var can_match: bool = false
 		if target_label and target_word != "":
 			display_target()
 
+@export var movement_events: Array[String] ##Names of events that can be triggered by moving to this point
+@export var action_events: Array[String] ##Names of events triggered with an action at this location
 
 ##Helper function to make connections reciprocal between waypoints - used only in editor
 func reciprocate_connection(old_points: Array, new_points: Array) -> void:
@@ -41,7 +42,7 @@ func reciprocate_connection(old_points: Array, new_points: Array) -> void:
 			if point.connected_points.find(self) == -1:
 				point.connected_points.append(self)
 	else:
-		var removed_connection: Array = old_points.filter(func (element: Waypoint): return new_points.find(element) == -1)
+		var removed_connection: Array = old_points.filter(func (element: Waypoint) -> bool: return new_points.find(element) == -1)
 		for element: Waypoint in removed_connection:
 			element.connected_points.erase(self)
 
@@ -49,14 +50,7 @@ func reciprocate_connection(old_points: Array, new_points: Array) -> void:
 func _ready() -> void:
 	area_entered.connect(initiate_words)
 	area_exited.connect(hide_words)
-
-	target_label = RichTextLabel.new()
-	target_label.bbcode_enabled = true
 	target_label.custom_minimum_size = minimum_label_size
-	target_label.fit_content = true
-	target_label.theme_type_variation = "TargetRichText"
-	target_label.z_index = 4
-	add_child(target_label)
 	target_label.position = Vector2(target_label.custom_minimum_size.x/-2, -50)
 	target_label.visible = false
 
@@ -94,12 +88,21 @@ func display_target() -> void:
 		target_label.position.y = label_offset.y - minimum_label_size.y
 
 
+##Called when the character enters the area of the waypoint; tries movement events
 func initiate_words(_area: Area2D) -> void:
+	if not movement_events.is_empty():
+		for event_name in movement_events:
+			tried_event.emit(event_name, true)
 	for connection in connected_points:
 		if connection.target_data.is_empty():
 			connection.request_target_word.emit()
 		else:
 			connection.display_target()
+
+
+func try_action_event(action: SelfNavCharacter.GeneralActions) -> void:
+	for event in action_events:
+		tried_action.emit(event, action)
 
 
 func hide_words(area: Area2D)-> void:

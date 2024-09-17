@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ekpl1qnkwrf4"]
+
+[ext_resource type="Script" path="res://story_mode/interactables/base_interactable.gd" id="1_agijo"]
+[ext_resource type="SpriteFrames" uid="uid://conpbwuolhea" path="res://story_mode/interactables/falling_book_anims.tres" id="2_6xior"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8skgl"]
+size = Vector2(128, 64)
+
+[node name="BaseInteractable" type="Area2D" node_paths=PackedStringArray("animation", "target_label")]
+script = ExtResource("1_agijo")
+animation = NodePath("Animation")
+animation_offset = Vector2(0, -24)
+animation_frames = ExtResource("2_6xior")
+interact_events = null
+target_label = NodePath("TargetLabel")
+action_events = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_8skgl")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_6xior")
+animation = &"idle"
+frame_progress = 0.224409
+offset = Vector2(0, -24)
+
+[node name="TargetLabel" type="RichTextLabel" parent="."]
+z_index = 4
+custom_minimum_size = Vector2(160, 30)
+offset_left = -80.0
+offset_top = -50.0
+offset_right = 80.0
+offset_bottom = -20.0
+theme_type_variation = &"TargetRichText"
+bbcode_enabled = true
+fit_content = true

@@ -38,6 +38,6 @@ func start_dialogue(key: String, dialogue: DialogueResource, nodes: Array[Node])
 	dialog_balloon.start(dialogue, key, nodes)
 
 
-func end_dialogue(resource: DialogueResource) -> void:
+func end_dialogue(_resource: DialogueResource) -> void:
 	dialog_balloon.hide()
 	player_input.grab_focus()

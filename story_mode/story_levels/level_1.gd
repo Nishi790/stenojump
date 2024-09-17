@@ -73,6 +73,8 @@ func _ready() -> void:
 
 		inter.request_target_word.connect(provide_target.bind(inter))
 		inter.move_destination_selected.connect(set_player_destination)
+		inter.tried_event.connect(level_word_list.update_event)
+		inter.tried_action.connect(level_word_list.update_action_event)
 
 		if inter is ConnectionInteractable:
 			var area_shape: CollisionShape2D = inter.get_child(0)
