@@ -1,0 +1,77 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c7stpsqt1a6yw"]
+
+[ext_resource type="Texture2D" uid="uid://bcmjbsewmp7dw" path="res://story_mode/interactables/interactable_textures/curtains.png" id="1_pd576"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_854x7"]
+atlas = ExtResource("1_pd576")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh0c0"]
+atlas = ExtResource("1_pd576")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voop2"]
+atlas = ExtResource("1_pd576")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfbvd"]
+atlas = ExtResource("1_pd576")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5kmv"]
+atlas = ExtResource("1_pd576")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj82d"]
+atlas = ExtResource("1_pd576")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt4to"]
+atlas = ExtResource("1_pd576")
+region = Rect2(256, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fex2"]
+atlas = ExtResource("1_pd576")
+region = Rect2(320, 32, 64, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_854x7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh0c0")
+}],
+"loop": true,
+"name": &"idle_after_interact",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voop2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfbvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5kmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj82d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt4to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fex2")
+}],
+"loop": false,
+"name": &"interact",
+"speed": 5.0
+}]

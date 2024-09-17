@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=26 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://sim7v1jiauav" path="res://story_mode/story_levels/quests/level_1_quests/open_the_door.tres" id="17_jw8a0"]
 [ext_resource type="Resource" uid="uid://d0e7ioqok0xh0" path="res://story_mode/story_levels/quests/level_1_quests/check_bowl.tres" id="19_ojpot"]
 [ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
+[ext_resource type="SpriteFrames" uid="uid://c7stpsqt1a6yw" path="res://story_mode/interactables/curtain_anims.tres" id="24_na3mj"]
 [ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
 
 [sub_resource type="Resource" id="Resource_b0exf"]
@@ -75,7 +76,7 @@ quests = {
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_m0lfx")
-waypoints = [NodePath("BookShelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom")]
+waypoints = [NodePath("BookShelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("Curtain")]
 tile_map_holder = NodePath("TileMap")
 tile_map_base = NodePath("TileMap/FloorLayer")
 tile_map_obstacles = NodePath("TileMap/BGObjects")
@@ -94,9 +95,13 @@ tile_set = ExtResource("1_c7u2v")
 tile_map_data = PackedByteArray("AAAAAAAAAAAFAA0AAAAAAAEAAAAFAA4AAAABAAAAAAAHAAkAAAABAAEAAAAHAAoAAAACAAAAAAAGAA0AAAACAAEAAAAGAA4AAAADAAAAAAAGAAkAAAADAAEAAAAGAAoAAAAEAAAAAAAHAAkAAAAEAAEAAAAHAAoAAAAFAAAAAAAHAAkAAAAFAAEAAAAHAAoAAAAGAAAAAAAHAAkAAAAGAAEAAAAHAAoAAAAHAAAAAAAGAAkAAAAHAAEAAAAGAAoAAAAIAAAAAAAGAA0AAAAIAAEAAAAGAA4AAAAJAAAAAAAGAAkAAAAJAAEAAAAGAAoAAAAKAAAAAAAHAAkAAAAKAAEAAAAHAAoAAAALAAAAAAAGAAkAAAALAAEAAAAGAAoAAAAMAAAAAAAHAAsAAAAMAAEAAAAHAAwAAAANAAAAAAAPAAsAAAANAAEAAAAPAAwAAAAOAAAAAAAPAA0AAAAOAAEAAAAPAA4AAAAPAAAAAAAPAA0AAAAPAAEAAAAPAA4AAAAQAAAAAAAPAA0AAAAQAAEAAAAPAA4AAAARAAAAAAAPAA0AAAARAAEAAAAPAA4AAAASAAAAAAAPAA0AAAASAAEAAAAPAA4AAAATAAAAAAAPAA0AAAATAAEAAAAPAA4AAAAUAAAAAAAPAA0AAAAUAAEAAAAPAA4AAAAVAAAAAAAPAA0AAAAVAAEAAAAPAA4AAAAWAAAAAAAPAA0AAAAWAAEAAAAPAA4AAAAXAAAAAAAQAA0AAAAXAAEAAAAQAA4AAAAXAAIAAAAQAA8AAAAAAAIAAAAFAA8AAAAGAAcAAAAMAA0AAAAGAAgAAAAMAA4AAAAHAAcAAAAMAA0AAAAHAAgAAAAMAA4AAAAIAAcAAAAMAA0AAAAIAAgAAAAMAA4AAAAFAAcAAAAMAAsAAAAFAAgAAAAMAAwAAAAKAAcAAAANAAsAAAAKAAgAAAANAAwAAAAJAAcAAAAMAA0AAAAJAAgAAAAMAA4AAAALAAcAAAAPAAsAAAALAAgAAAAPAAwAAAAMAAcAAAAPAA0AAAAMAAgAAAAPAA4AAAA=")
 tile_set = ExtResource("1_c7u2v")
 
+[node name="WallDecor" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAASAAAAAgADAAgAAAASAAEAAgADAAkAAAATAAAAAgAEAAgAAAATAAEAAgAEAAkAAAAUAAAAAgAFAAgAAAAUAAEAAgAFAAkAAAAVAAAAAgAGAAgAAAAVAAEAAgAGAAkAAAA=")
+tile_set = ExtResource("1_c7u2v")
+
 [node name="BGObjects" type="TileMapLayer" parent="TileMap"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAKAAEAAgABAAsAAAAKAAIAAgABAAwAAAALAAEAAgADAA0AAAALAAIAAgADAA4AAAAJAAEAAgACAAsAAAAJAAIAAgACAAwAAAAMAAEAAgADAA0AAAAMAAIAAgADAA4AAAAIAAEAAgADAA0AAAAIAAIAAgADAA4AAAAHAAEAAgAEAA0AAAAHAAIAAgADAA4AAAAGAAEAAgADAA0AAAAGAAIAAgADAA4AAAACAAEAAgADAAsAAAACAAIAAgADAAwAAAADAAEAAgAEAAsAAAADAAIAAgAEAAwAAAABAAEAAgACAA4AAAABAAIAAgADAA4AAAAEAAEAAgAFAAsAAAAEAAIAAgAFAAwAAAAPAAAAAgAFAAgAAAAPAAEAAgAFAAkAAAAQAAAAAgAGAAgAAAAQAAEAAgAGAAkAAAATAAAAAgAFAAgAAAATAAEAAgAFAAkAAAAUAAAAAgAGAAgAAAAUAAEAAgAGAAkAAAAFAAUAAgAAABMAAAAGAAUAAgACABMAAAAFAAQAAgAAABEAAAAGAAQAAgACABEAAAAVAAEAAgAEABsAAAAVAAIAAgAEABwAAAAWAAEAAgAFABsAAAAWAAIAAgAFABwAAAAHAAQAAgADACEAAAA=")
+tile_map_data = PackedByteArray("AAAKAAEAAgABAAsAAAAKAAIAAgABAAwAAAALAAEAAgADAA0AAAALAAIAAgADAA4AAAAJAAEAAgACAAsAAAAJAAIAAgACAAwAAAAMAAEAAgADAA0AAAAMAAIAAgADAA4AAAAIAAEAAgADAA0AAAAIAAIAAgADAA4AAAAHAAEAAgAEAA0AAAAHAAIAAgADAA4AAAAGAAEAAgADAA0AAAAGAAIAAgADAA4AAAACAAEAAgADAAsAAAACAAIAAgADAAwAAAADAAEAAgAEAAsAAAADAAIAAgAEAAwAAAABAAEAAgACAA4AAAABAAIAAgADAA4AAAAEAAEAAgAFAAsAAAAEAAIAAgAFAAwAAAAFAAUAAgAAABMAAAAGAAUAAgACABMAAAAFAAQAAgAAABEAAAAGAAQAAgACABEAAAAVAAEAAgAEABsAAAAVAAIAAgAEABwAAAAWAAEAAgAFABsAAAAWAAIAAgAFABwAAAAHAAQAAgADACEAAAA=")
 tile_set = ExtResource("1_c7u2v")
 
 [node name="WallTops" type="TileMapLayer" parent="TileMap"]
@@ -126,6 +131,14 @@ action_events = Array[String]([])
 
 [node name="TopBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
 position = Vector2(1483, 342)
-connected_points = [NodePath("../MiddleBedroom")]
+connected_points = [NodePath("../MiddleBedroom"), NodePath("../Curtain")]
 movement_events = Array[String]([])
+action_events = Array[String]([])
+
+[node name="Curtain" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
+y_sort_enabled = true
+position = Vector2(1916, 238)
+animation_frames = ExtResource("24_na3mj")
+interact_events = Array[String](["bedroom_curtains_open", "first_interact"])
+connected_points = [NodePath("../TopBedroom")]
 action_events = Array[String]([])

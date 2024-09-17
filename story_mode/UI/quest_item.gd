@@ -9,7 +9,7 @@ var quest_title: String
 var quest_description: String
 
 var quest_complete_text: String = "[s]%s[/s]"
-var quest_text: String = "%s[p]%s[/p]"
+var quest_text: String = "[b]%s[/b][p]%s[/p]"
 
 
 func set_quest_complete() -> void:
