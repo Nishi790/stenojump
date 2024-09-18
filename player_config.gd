@@ -6,7 +6,7 @@ enum LevelSequence {LEARN_PLOVER, LAPWING, OTHER}
 enum WordOrder {DEFAULT, RANDOM, ORDERED}
 enum TargetVisibility {ALL, NEXT, IN_RANGE, NONE}
 
-@export var lapwing_level_1: String = "res://level_data/lapwing_1.json"
+@export var lapwing_level_1: String = "lapwing_1.json"
 @export var learn_plover_level_1: String
 
 var use_custom_size: bool = false
@@ -27,6 +27,9 @@ var starting_wpm: int
 var speed_building_mode: bool
 var target_wpm: int
 var step_size: int = 5
+
+## Path:[speed, accuracy] ## Path:[speed, accuracy]
+var level_records: Dictionary = {"res://level_data/lapwing_1.json": [20, 85]}
 
 var voice_output_enabled: bool
 var voice_all_ui: bool
@@ -235,3 +238,11 @@ func run_lost() -> void:
 	current_level_path = last_checkpoint_path
 	current_wpm = starting_wpm
 	save_game()
+
+
+func get_high_score(path: String) -> Array:
+	var record: Array
+	if level_records.has(path):
+		record = level_records[path]
+	else: record = [0, 0]
+	return record

@@ -23,7 +23,8 @@ func _ready() -> void:
 func create_level(filepath: String) -> String:
 	if not filepath.contains(":/"):
 		filepath = default_level_path_root + filepath
-	var level_path: String = filepath.get_slice("/", -1)
+	var path_index: int = filepath.get_slice_count("/") - 1
+	var level_path: String = filepath.get_slice("/", path_index)
 	#should error check for valid file path
 	var file := FileAccess.open(filepath, FileAccess.READ)
 	if file == null:

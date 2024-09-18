@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://sg4wsc3m2k8y"]
+[gd_scene load_steps=4 format=3 uid="uid://sg4wsc3m2k8y"]
 
 [ext_resource type="PackedScene" uid="uid://logrv4ke74tw" path="res://Menu/level_grid.tscn" id="1_6dmyq"]
 [ext_resource type="Script" path="res://Menu/select_level_screen.gd" id="1_ibr7v"]
+[ext_resource type="PackedScene" uid="uid://cv53712g0etej" path="res://Menu/level_preview.tscn" id="3_4ot00"]
 
-[node name="SelectLevel" type="HBoxContainer"]
+[node name="SelectLevel" type="HBoxContainer" node_paths=PackedStringArray("lapwing_tab", "level_preview", "starting_speed_select", "speed_step_select", "level_grid")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,6 +12,11 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 script = ExtResource("1_ibr7v")
+lapwing_tab = NodePath("LevelSequenceTabs/Lapwing")
+level_preview = NodePath("LevelPreview")
+starting_speed_select = NodePath("LevelSequenceTabs/Lapwing/Organizer/CurrentSettings/Speed")
+speed_step_select = NodePath("LevelSequenceTabs/Lapwing/Organizer/CurrentSettings/SpeedStep")
+level_grid = NodePath("LevelSequenceTabs/Lapwing/Organizer/Levels")
 
 [node name="LevelSequenceTabs" type="TabContainer" parent="."]
 layout_mode = 2
@@ -69,6 +75,5 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 7
 
-[node name="LevelPreview" type="PanelContainer" parent="."]
+[node name="LevelPreview" parent="." instance=ExtResource("3_4ot00")]
 layout_mode = 2
-size_flags_horizontal = 3

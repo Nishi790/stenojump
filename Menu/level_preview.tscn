@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv53712g0etej"]
+
+[ext_resource type="Script" path="res://Menu/level_preview.gd" id="1_4efts"]
+
+[node name="LevelPreview" type="PanelContainer" node_paths=PackedStringArray("bg_image", "level_label", "description_label", "size_label", "record_label", "start_button")]
+size_flags_horizontal = 3
+script = ExtResource("1_4efts")
+bg_image = NodePath("VBox/LevelBG")
+level_label = NodePath("VBox/LevelName")
+description_label = NodePath("VBox/Description")
+size_label = NodePath("VBox/LevelSize")
+record_label = NodePath("VBox/Stats")
+start_button = NodePath("VBox/SelectLevel")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LevelBG" type="TextureRect" parent="VBox"]
+layout_mode = 2
+
+[node name="LevelName" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="VBox"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]This is a description of the level[/center]"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="VBox"]
+layout_mode = 2
+
+[node name="LevelSize" type="Label" parent="VBox"]
+layout_mode = 2
+
+[node name="Stats" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Highest Speed: "
+horizontal_alignment = 1
+
+[node name="SelectLevel" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Start Level"

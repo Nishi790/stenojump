@@ -22,14 +22,30 @@ func _ready() -> void:
 			var index: int = file_data["level"] - 1
 			levels[index] = path
 	for index in levels.size():
+		var unlocked: bool = check_unlocked(index)
 		var level_select: Button = Button.new()
 		level_select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		level_select.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		level_select.text = str(index + 1)
-		level_select.pressed.connect(start_level.bind(levels[index]))
+		if unlocked:
+			level_select.pressed.connect(start_level.bind(levels[index]))
+		else:
+			level_select.disabled = true
 		add_child(level_select)
 
 
 func start_level(path: String) -> void:
 	print("Level selected: %s" % path)
 	level_selected.emit(path)
+
+
+func check_unlocked(index: int) -> bool:
+	if PlayerConfig.level_records.has(levels[index]):
+		return true
+	else:
+		if index == 0:
+			return true
+		else:
+			if PlayerConfig.level_records.has(levels[index]):
+				return true
+		return false

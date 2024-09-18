@@ -6,11 +6,13 @@ signal level_creator_selected
 
 @export var start_menu: PackedScene
 @export var options_menu: PackedScene
+@export var level_select_screen: PackedScene
 @export var resume_game_button: Button
 @export var new_game_button: Button
 @export var options_button: Button
 @export var quit_game_button: Button
 @export var level_creator_button: Button
+@export var speed_build_button: Button
 @export var player_input: MarginContainer
 var input_processor: Node = self
 
@@ -21,6 +23,7 @@ func _ready() -> void:
 	new_game_button.pressed.connect(new_game)
 	options_button.pressed.connect(open_options)
 	quit_game_button.pressed.connect(quit_game)
+	speed_build_button.pressed.connect(open_speed_build_selector)
 	level_creator_button.pressed.connect(launch_level_creator)
 	if PlayerConfig.has_saved_level():
 		resume_game_button.show()
@@ -44,6 +47,12 @@ func new_game() -> void:
 	input_processor = menu
 
 
+func open_speed_build_selector() -> void:
+	var level_select: Control = level_select_screen.instantiate()
+	level_select.start_level.connect(start_speed_build_level)
+	add_child(level_select)
+
+
 func open_options() -> void:
 	var options: Control = options_menu.instantiate()
 	options.returned_to_menu.connect(grab_text_processing)
@@ -51,6 +60,12 @@ func open_options() -> void:
 	options.side_focus = player_input.text_control
 	add_child(options)
 	input_processor = options
+
+
+func start_speed_build_level(path: String) -> void:
+	PlayerConfig.current_level_path = path
+	PlayerConfig.speed_building_mode = true
+	start_game()
 
 
 func start_game() -> void:
@@ -77,6 +92,10 @@ func parse_player_input(text: String) -> void:
 				open_options()
 			"quit", "quit game":
 				quit_game()
+			"build", "speed build", "build speed":
+				open_speed_build_selector()
+			"create", "create level":
+				launch_level_creator()
 			_:
 				player_input.unknown_command(text)
 	else:
