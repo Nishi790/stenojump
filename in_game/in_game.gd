@@ -302,18 +302,18 @@ func enter_pressed(text: String) -> void:
 ##Needs error handling for invalid level paths/level files
 func load_level_data(level_path: String = "") -> void:
 	if level_path != "":
-			var error: Error = LevelLoader.load_level(level_path)
-			if error: printerr(error_string(error))
-	word_queue = LevelLoader.level_targets.duplicate()
+			LevelLoader.load_level(level_path)
+
+	word_queue = LevelLoader.active_level.level_targets.duplicate()
 
 	#Set correct level size
-	var level_size: int = LevelLoader.default_level_size
+	var level_size: int = LevelLoader.active_level.default_level_size
 	if PlayerConfig.use_custom_size == true:
 		if level_size < PlayerConfig.min_level_length:
 			level_size = PlayerConfig.min_level_length
 		elif level_size > PlayerConfig.max_level_length:
 			level_size = PlayerConfig.max_level_length
-	if word_queue.size() < level_size:
+	while word_queue.size() < level_size:
 		word_queue.append_array(word_queue)
 
 	#shuffle words if needed
@@ -323,7 +323,7 @@ func load_level_data(level_path: String = "") -> void:
 		PlayerConfig.WordOrder.ORDERED:
 			pass
 		PlayerConfig.WordOrder.DEFAULT:
-			if LevelLoader.level_order == LevelLoader.LevelOrder.RANDOM:
+			if LevelLoader.active_level.level_order == LevelLoader.LevelOrder.RANDOM:
 				word_queue.shuffle()
 
 	word_queue = word_queue.slice(0, level_size)
