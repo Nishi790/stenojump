@@ -188,6 +188,7 @@ func set_starting_level(path: String) -> void:
 
 
 func start_game() -> void:
+	PlayerConfig.set_sequence_data()
 	start_game_pressed.emit()
 
 

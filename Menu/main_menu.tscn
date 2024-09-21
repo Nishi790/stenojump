@@ -67,14 +67,20 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
 focus_neighbor_top = NodePath("../ResumeGame")
 focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_bottom = NodePath("../CreateLevel")
-focus_next = NodePath("../CreateLevel")
+focus_neighbor_bottom = NodePath("../SpeedBuild")
+focus_next = NodePath("../SpeedBuild")
 focus_previous = NodePath("../ResumeGame")
 text = "New Game"
 script = ExtResource("5_7jtnf")
 
 [node name="SpeedBuild" type="Button" parent="PanelContainer/MenuContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
+focus_neighbor_bottom = NodePath("../CreateLevel")
+focus_next = NodePath("../CreateLevel")
+focus_previous = NodePath("../NewGame")
 text = "Speed Build"
 script = ExtResource("5_7jtnf")
 text_to_speak = "Speed build mode"
@@ -82,11 +88,11 @@ text_to_speak = "Speed build mode"
 [node name="CreateLevel" type="Button" parent="PanelContainer/MenuContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_top = NodePath("../SpeedBuild")
 focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
 focus_neighbor_bottom = NodePath("../Options")
 focus_next = NodePath("../Options")
-focus_previous = NodePath("../NewGame")
+focus_previous = NodePath("../SpeedBuild")
 text = "Create Level"
 script = ExtResource("5_7jtnf")
 

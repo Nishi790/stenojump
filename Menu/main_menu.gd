@@ -36,10 +36,12 @@ func _ready() -> void:
 
 func resume_game() -> void:
 	if PlayerConfig.load_game() == OK:
+		PlayerConfig.set_gameplay_state(PlayerConfig.RunMode.SEQUENCE)
 		start_game_pressed.emit()
 
 
 func new_game() -> void:
+	PlayerConfig.set_gameplay_state(PlayerConfig.RunMode.SEQUENCE)
 	var menu: Control = start_menu.instantiate()
 	menu.start_game_pressed.connect(start_game)
 	menu.game_canceled.connect(grab_text_processing)
@@ -48,6 +50,9 @@ func new_game() -> void:
 
 
 func open_speed_build_selector() -> void:
+	if PlayerConfig.level_records.is_empty():
+		PlayerConfig.load_game()
+	PlayerConfig.set_gameplay_state(PlayerConfig.RunMode.ARCADE)
 	var level_select: Control = level_select_screen.instantiate()
 	level_select.start_level.connect(start_speed_build_level)
 	add_child(level_select)

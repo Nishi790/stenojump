@@ -5,6 +5,7 @@ signal lives_updated
 enum LevelSequence {LEARN_PLOVER, LAPWING, OTHER}
 enum WordOrder {DEFAULT, RANDOM, ORDERED}
 enum TargetVisibility {ALL, NEXT, IN_RANGE, NONE}
+enum RunMode {SEQUENCE, ARCADE, STORY}
 
 @export var lapwing_level_1: String = "lapwing_1.json"
 @export var learn_plover_level_1: String
@@ -28,8 +29,20 @@ var speed_building_mode: bool
 var target_wpm: int
 var step_size: int = 5
 
-## Path:[speed, accuracy] ## Path:[speed, accuracy]
-var level_records: Dictionary = {"res://level_data/lapwing_1.json": [20, 85]}
+var run_play_mode: RunMode
+
+var sequence_save_start_wpm: int
+var sequence_save_target_wpm: int
+var sequence_save_step_size: int
+var sequence_save_current_wpm: int
+var sequence_save_current_level: String
+var sequence_save_last_checkpoint: String
+var sequence_save_score: int
+var sequence_save_lives: int
+var sequence_save_speed_build: bool
+
+## Path:[speed, accuracy]
+var level_records: Dictionary = {}
 
 var voice_output_enabled: bool
 var voice_all_ui: bool
@@ -69,7 +82,21 @@ func start_level_sequence(sequence: LevelSequence) -> String:
 		LevelSequence.OTHER:
 			current_level_path = custom_start_level
 			last_checkpoint_path = current_level_path
+
+	#Track the level info for a sequence playthrough
+	sequence_save_current_level = current_level_path
+	sequence_save_last_checkpoint = last_checkpoint_path
 	return current_level_path
+
+
+func set_gameplay_state(state: RunMode) -> void:
+	var past_state: RunMode = run_play_mode
+	run_play_mode = state
+	if past_state == RunMode.SEQUENCE:
+		set_sequence_data()
+
+	if run_play_mode == RunMode.SEQUENCE:
+		resume_sequence_data()
 
 
 func save_game(file_name: String = "") -> void:
@@ -86,21 +113,21 @@ func save_game(file_name: String = "") -> void:
 
 	config.set_value(config_level_settings, "LevelSequence", level_sequence)
 	if current_level_path != "":
-		config.set_value(config_level_settings, "CurrentLevel", current_level_path)
+		config.set_value(config_level_settings, "CurrentLevel", sequence_save_current_level)
 	if last_checkpoint_path != "":
-		config.set_value(config_level_settings, "Last Checkpoint", last_checkpoint_path)
+		config.set_value(config_level_settings, "Last Checkpoint", sequence_save_last_checkpoint)
 	if level_sequence == LevelSequence.OTHER:
 		config.set_value(config_level_settings, "CustomStartLevel", custom_start_level)
-	config.set_value(config_level_settings, "CurrentWPM", current_wpm)
-	config.set_value(config_level_settings, "CurrentScore", current_score)
-	config.set_value(config_level_settings, "CurrentLives", current_lives)
+	config.set_value(config_level_settings, "CurrentWPM", sequence_save_current_wpm)
+	config.set_value(config_level_settings, "CurrentScore", sequence_save_score)
+	config.set_value(config_level_settings, "CurrentLives", sequence_save_lives)
 
 	config.set_value(config_arcade_data, "ArcadeScores", level_records)
 
-	config.set_value(config_speed_build_settings, "SpeedBuildMode", speed_building_mode)
-	config.set_value(config_speed_build_settings, "StartingWPM", starting_wpm)
-	config.set_value(config_speed_build_settings, "TargetWPM", target_wpm)
-	config.set_value(config_speed_build_settings, "StepSize", step_size)
+	config.set_value(config_speed_build_settings, "SpeedBuildMode", sequence_save_speed_build)
+	config.set_value(config_speed_build_settings, "StartingWPM", sequence_save_start_wpm)
+	config.set_value(config_speed_build_settings, "TargetWPM", sequence_save_target_wpm)
+	config.set_value(config_speed_build_settings, "StepSize", sequence_save_step_size)
 
 	config.set_value(config_voice_settings, "Enabled", voice_output_enabled)
 
@@ -189,8 +216,8 @@ func load_game(file_name: String = "") -> Error:
 		return err
 
 	level_sequence = config.get_value(config_level_settings, "LevelSequence", null)
-	current_level_path = config.get_value(config_level_settings, "CurrentLevel", "")
-	last_checkpoint_path = config.get_value(config_level_settings, "Last Checkpoint", "")
+	sequence_save_current_level = config.get_value(config_level_settings, "CurrentLevel", "")
+	sequence_save_last_checkpoint = config.get_value(config_level_settings, "Last Checkpoint", "")
 	if level_sequence == LevelSequence.OTHER:
 		custom_start_level = config.get_value(config_level_settings, "CustomStartLevel", "")
 		if custom_start_level == "":
@@ -199,8 +226,8 @@ func load_game(file_name: String = "") -> Error:
 			else:
 				custom_start_level = current_level_path
 
-	current_wpm = config.get_value(config_level_settings, "CurrentWPM", 0)
-	current_score = config.get_value(config_level_settings, "CurrentScore")
+	sequence_save_current_wpm = config.get_value(config_level_settings, "CurrentWPM", 0)
+	sequence_save_score = config.get_value(config_level_settings, "CurrentScore")
 	current_lives = config.get_value(config_level_settings, "CurrentLives")
 	lives_updated.emit()
 
@@ -209,13 +236,14 @@ func load_game(file_name: String = "") -> Error:
 
 	level_records = config.get_value(config_arcade_data, "ArcadeScores", {})
 
-	speed_building_mode = config.get_value(config_speed_build_settings, "SpeedBuildMode", false)
-	starting_wpm = config.get_value(config_speed_build_settings, "StartingWPM", 0)
-	target_wpm = config.get_value(config_speed_build_settings, "TargetWPM", 0)
-	step_size = config.get_value(config_speed_build_settings, "StepSize", 0)
+	sequence_save_speed_build = config.get_value(config_speed_build_settings, "SpeedBuildMode", false)
+	sequence_save_start_wpm = config.get_value(config_speed_build_settings, "StartingWPM", 0)
+	sequence_save_target_wpm = config.get_value(config_speed_build_settings, "TargetWPM", 0)
+	sequence_save_step_size = config.get_value(config_speed_build_settings, "StepSize", 0)
 
 	voice_output_enabled = config.get_value(config_voice_settings, "Enabled")
 
+	resume_sequence_data()
 
 	return err
 
@@ -245,6 +273,13 @@ func run_lost() -> void:
 	current_score = 0
 	current_level_path = last_checkpoint_path
 	current_wpm = starting_wpm
+	match run_play_mode:
+		RunMode.SEQUENCE:
+			set_sequence_data()
+		RunMode.ARCADE:
+			pass
+		RunMode.STORY:
+			pass
 	save_game()
 
 
@@ -278,3 +313,35 @@ func set_high_score(path: String, level_size: int) -> void:
 		record[0] = current_wpm
 		record[1] = accuracy
 	level_records[local_path] = record
+
+
+##Transfer data from sequence run through to the save variables
+func set_sequence_data() -> void:
+	sequence_save_current_level = current_level_path
+	sequence_save_last_checkpoint = last_checkpoint_path
+
+	sequence_save_current_wpm = current_wpm
+	sequence_save_start_wpm = starting_wpm
+	sequence_save_target_wpm = target_wpm
+	sequence_save_step_size = step_size
+
+	sequence_save_lives = current_lives
+	sequence_save_score = current_score
+
+	sequence_save_speed_build = speed_building_mode
+
+
+##Grab sequence save data and put it in for the playthrough
+func resume_sequence_data() -> void:
+	current_level_path = sequence_save_current_level
+	last_checkpoint_path = sequence_save_last_checkpoint
+
+	current_wpm = sequence_save_current_wpm
+	starting_wpm = sequence_save_start_wpm
+	target_wpm = sequence_save_target_wpm
+	step_size = sequence_save_step_size
+
+	current_lives = sequence_save_lives
+	current_score = sequence_save_score
+
+	speed_building_mode = sequence_save_speed_build
