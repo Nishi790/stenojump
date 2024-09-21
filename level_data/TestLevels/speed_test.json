@@ -1,5 +1,5 @@
 {
-	"level": 100,
+	"level": 1,
 	"order": "random",
 	"size": 30,
 	"next_level": "test.json",
