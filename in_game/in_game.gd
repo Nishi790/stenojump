@@ -218,10 +218,11 @@ func end_level() -> void:
 	PlayerConfig.current_score = score
 	level_score = 0
 	await get_tree().create_timer(2).timeout
+	player.end_level()
+	PlayerConfig.set_high_score(PlayerConfig.current_level_path, word_queue.size())
 	if on_last_level:
 		hud.game_won()
 	else:
-		player.end_level()
 		hud.level_complete()
 
 
@@ -343,8 +344,9 @@ func increase_speed() -> void:
 ##Called whenever the player needs to start a level or resume from a pause
 func resume_game() -> void:
 	input_box.grab_focus()
-	obstacle_manager.resume_obstacles()
 	player.resume_movement()
+	obstacle_manager.resume_obstacles()
+
 
 
 ##Sets words per obstacle to determine number of targets to send obstacle manager when requested

@@ -189,7 +189,7 @@ func resume_obstacles() -> void:
 		new_target_word.emit(current_obstacle_queue[0].target_word)
 	new_word_timer.set_paused(false)
 	if new_word_timer.is_stopped():
-		new_word_timer.start()
+		new_word_timer.start(new_word_interval)
 
 
 #Stops timer and kills all obstacles
