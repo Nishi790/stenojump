@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://sg4wsc3m2k8y"]
 
-[ext_resource type="PackedScene" uid="uid://logrv4ke74tw" path="res://Menu/level_grid.tscn" id="1_6dmyq"]
 [ext_resource type="Script" path="res://Menu/select_level_screen.gd" id="1_ibr7v"]
+[ext_resource type="PackedScene" uid="uid://bl1chqx8nqo6d" path="res://Menu/select_level_panel.tscn" id="2_6qkha"]
 [ext_resource type="PackedScene" uid="uid://cv53712g0etej" path="res://Menu/level_preview.tscn" id="3_4ot00"]
 
-[node name="SelectLevel" type="HBoxContainer" node_paths=PackedStringArray("lapwing_tab", "level_preview", "starting_speed_select", "speed_step_select", "level_grid")]
+[node name="SelectLevel" type="HBoxContainer" node_paths=PackedStringArray("level_preview", "tab_cont")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,68 +12,13 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 script = ExtResource("1_ibr7v")
-lapwing_tab = NodePath("LevelSequenceTabs/Lapwing")
+sequence_panel_scene = ExtResource("2_6qkha")
 level_preview = NodePath("LevelPreview")
-starting_speed_select = NodePath("LevelSequenceTabs/Lapwing/Organizer/CurrentSettings/Speed")
-speed_step_select = NodePath("LevelSequenceTabs/Lapwing/Organizer/CurrentSettings/SpeedStep")
-level_grid = NodePath("LevelSequenceTabs/Lapwing/Organizer/Levels")
+tab_cont = NodePath("LevelSequenceTabs")
 
 [node name="LevelSequenceTabs" type="TabContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 0
-
-[node name="Lapwing" type="PanelContainer" parent="LevelSequenceTabs"]
-layout_mode = 2
-theme_type_variation = &"fullscreen_panel"
-metadata/_tab_index = 0
-
-[node name="Organizer" type="VBoxContainer" parent="LevelSequenceTabs/Lapwing"]
-layout_mode = 2
-
-[node name="Description" type="RichTextLabel" parent="LevelSequenceTabs/Lapwing/Organizer"]
-layout_mode = 2
-text = "This is the main game sequence and is intended for practice of theory concepts approximately in the sequence that they are introduced in \"Lapwing for Beginners\". Each level must be completed once, at any speed, to unlock the next one.
- "
-fit_content = true
-
-[node name="CurrentSettings" type="HBoxContainer" parent="LevelSequenceTabs/Lapwing/Organizer"]
-layout_mode = 2
-
-[node name="StartingSpeed" type="RichTextLabel" parent="LevelSequenceTabs/Lapwing/Organizer/CurrentSettings"]
-custom_minimum_size = Vector2(128, 0)
-layout_mode = 2
-text = "Starting Speed"
-fit_content = true
-scroll_active = false
-
-[node name="Speed" type="SpinBox" parent="LevelSequenceTabs/Lapwing/Organizer/CurrentSettings"]
-custom_minimum_size = Vector2(256, 0)
-layout_mode = 2
-max_value = 200.0
-step = 5.0
-value = 20.0
-suffix = "Strokes per minute"
-
-[node name="MarginContainer" type="MarginContainer" parent="LevelSequenceTabs/Lapwing/Organizer/CurrentSettings"]
-layout_mode = 2
-
-[node name="SpeedStepLabel" type="RichTextLabel" parent="LevelSequenceTabs/Lapwing/Organizer/CurrentSettings"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-text = "Increase speed by:"
-
-[node name="SpeedStep" type="SpinBox" parent="LevelSequenceTabs/Lapwing/Organizer/CurrentSettings"]
-layout_mode = 2
-value = 5.0
-
-[node name="Divider" type="HSeparator" parent="LevelSequenceTabs/Lapwing/Organizer"]
-layout_mode = 2
-
-[node name="Levels" parent="LevelSequenceTabs/Lapwing/Organizer" instance=ExtResource("1_6dmyq")]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 7
 
 [node name="LevelPreview" parent="." instance=ExtResource("3_4ot00")]
 layout_mode = 2

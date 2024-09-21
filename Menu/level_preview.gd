@@ -19,14 +19,12 @@ func _ready() -> void:
 
 
 func start_game() -> void:
-	print("starting level: %s" % level_path)
 	start_pressed.emit(level_path)
 
 
 func set_preview(path: String) -> void:
 	var path_index: int = path.get_slice_count("/") - 1
 	level_path = path.get_slice("/", path_index)
-	print(level_path)
 	if LevelLoader.levels.has(level_path):
 		var level_dat: RunnerLevel = LevelLoader.levels[level_path]
 		var level_name: String = "Level: " + str(level_dat.level_number)

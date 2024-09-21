@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl1chqx8nqo6d"]
+
+[ext_resource type="PackedScene" uid="uid://logrv4ke74tw" path="res://Menu/level_grid.tscn" id="1_iiyie"]
+[ext_resource type="Script" path="res://Menu/select_level_panel.gd" id="1_q3kmn"]
+
+[node name="Lapwing" type="PanelContainer" node_paths=PackedStringArray("starting_speed_select", "speed_step_select", "level_grid")]
+theme_type_variation = &"fullscreen_panel"
+script = ExtResource("1_q3kmn")
+level_folder = "res://level_data/Lapwing"
+starting_speed_select = NodePath("Organizer/CurrentSettings/Speed")
+speed_step_select = NodePath("Organizer/CurrentSettings/SpeedStep")
+level_grid = NodePath("Organizer/Levels")
+metadata/_tab_index = 0
+
+[node name="Organizer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="Organizer"]
+layout_mode = 2
+text = "This is the main game sequence and is intended for practice of theory concepts approximately in the sequence that they are introduced in \"Lapwing for Beginners\". Each level must be completed once, at any speed, to unlock the next one.
+ "
+fit_content = true
+
+[node name="CurrentSettings" type="HBoxContainer" parent="Organizer"]
+layout_mode = 2
+
+[node name="StartingSpeed" type="RichTextLabel" parent="Organizer/CurrentSettings"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Starting Speed"
+fit_content = true
+scroll_active = false
+
+[node name="Speed" type="SpinBox" parent="Organizer/CurrentSettings"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+max_value = 200.0
+step = 5.0
+value = 20.0
+suffix = "Strokes per minute"
+
+[node name="MarginContainer" type="MarginContainer" parent="Organizer/CurrentSettings"]
+layout_mode = 2
+
+[node name="SpeedStepLabel" type="RichTextLabel" parent="Organizer/CurrentSettings"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Increase speed by:"
+
+[node name="SpeedStep" type="SpinBox" parent="Organizer/CurrentSettings"]
+layout_mode = 2
+value = 5.0
+
+[node name="Divider" type="HSeparator" parent="Organizer"]
+layout_mode = 2
+
+[node name="Levels" parent="Organizer" instance=ExtResource("1_iiyie")]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 7

@@ -2,24 +2,32 @@ extends HBoxContainer
 
 signal start_level(path: String)
 
+@export var sequence_panel_scene: PackedScene
 @export var lapwing_tab: PanelContainer
 @export var level_preview: PanelContainer
-
-@export var starting_speed_select: SpinBox
-@export var speed_step_select: SpinBox
-@export var level_grid: GridContainer
+@export var tab_cont: TabContainer
 
 
 func _ready() -> void:
-	level_grid.level_selected.connect(preview_level)
 	level_preview.start_pressed.connect(level_started)
+	create_tabs()
+
+
+func create_tabs() -> void:
+	var directories: DirAccess = DirAccess.open(LevelLoader.default_level_path_root)
+	var dir_list: PackedStringArray = directories.get_directories()
+	for dir in dir_list:
+		var new_tab: PanelContainer = sequence_panel_scene.instantiate()
+		new_tab.level_folder = LevelLoader.default_level_path_root.path_join(dir)
+		new_tab.set_folder()
+		new_tab.name = dir
+		tab_cont.add_child(new_tab)
+		new_tab.level_selected.connect(preview_level)
 
 
 func level_started(path: String) -> void:
 	PlayerConfig.target_wpm = 200
-	PlayerConfig.starting_wpm = starting_speed_select.value
-	PlayerConfig.current_wpm = starting_speed_select.value
-	PlayerConfig.step_size = speed_step_select.value
+	tab_cont.get_current_tab_control().send_speed_settings()
 	start_level.emit(path)
 
 

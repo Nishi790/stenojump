@@ -25,7 +25,7 @@ func _ready() -> void:
 		var unlocked: bool = check_unlocked(index)
 		var level_select: Button = Button.new()
 		level_select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		level_select.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		level_select.size_flags_vertical = Control.SIZE_FILL
 		level_select.text = str(index + 1)
 		if unlocked:
 			level_select.pressed.connect(start_level.bind(levels[index]))

@@ -10,4 +10,4 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 5
 script = ExtResource("1_wn75d")
-sequence_folder = "res://level_data"
+sequence_folder = "res://level_data/Lapwing"

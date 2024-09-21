@@ -18,6 +18,13 @@ func _ready() -> void:
 		for file in level_files:
 			if file.ends_with(".json"):
 				create_level(file)
+		for dir in files.get_directories():
+			var folder_files: PackedStringArray = DirAccess.get_files_at(default_level_path_root.path_join(dir))
+			for file in folder_files:
+				var file_path: String = dir.path_join(file)
+				if file.ends_with(".json"):
+					create_level(file_path)
+
 
 
 func create_level(filepath: String) -> String:
