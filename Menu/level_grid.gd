@@ -34,7 +34,7 @@ func _ready() -> void:
 		add_child(level_select)
 
 
-func start_level(path: String) -> void:
+func start_level(path: String) -> void:#9
 	print("Level selected: %s" % path)
 	level_selected.emit(path)
 
@@ -46,6 +46,6 @@ func check_unlocked(index: int) -> bool:
 		if index == 0:
 			return true
 		else:
-			if PlayerConfig.level_records.has(levels[index]):
+			if PlayerConfig.level_records.has(levels[index-1]):
 				return true
 		return false

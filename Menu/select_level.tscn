@@ -67,7 +67,7 @@ text = "Increase speed by:"
 layout_mode = 2
 value = 5.0
 
-[node name="HSeparator" type="HSeparator" parent="LevelSequenceTabs/Lapwing/Organizer"]
+[node name="Divider" type="HSeparator" parent="LevelSequenceTabs/Lapwing/Organizer"]
 layout_mode = 2
 
 [node name="Levels" parent="LevelSequenceTabs/Lapwing/Organizer" instance=ExtResource("1_6dmyq")]

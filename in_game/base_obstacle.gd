@@ -44,7 +44,7 @@ func set_target_word(target: String) -> void:
 	word_label.set_text(target_word)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not stopped:
 		velocity = direction * speed * speed_modifier
 		move_and_slide()

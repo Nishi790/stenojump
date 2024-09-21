@@ -191,6 +191,7 @@ func stand_up() -> void:
 
 
 func end_level() -> void:
+	save_data()
 	if movement_state == State.CRAWLING:
 		await player_movement_changed
 	lives = 3

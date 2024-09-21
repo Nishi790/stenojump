@@ -46,6 +46,7 @@ var config_path: String = "user://settings.cfg"
 var game_save_path: String = "user://quick_save.cfg"
 var config_voice_settings: String = "TextToSpeech"
 var config_level_settings: String = "LevelSettings"
+var config_arcade_data: String = "ArcadeScores"
 var config_speed_build_settings: String = "SpeedBuildSettings"
 var config_graphics_settings: String = "GraphicsSettings"
 var config_gameplay_settings: String = "GameplaySettings"
@@ -93,6 +94,8 @@ func save_game(file_name: String = "") -> void:
 	config.set_value(config_level_settings, "CurrentWPM", current_wpm)
 	config.set_value(config_level_settings, "CurrentScore", current_score)
 	config.set_value(config_level_settings, "CurrentLives", current_lives)
+
+	config.set_value(config_arcade_data, "ArcadeScores", level_records)
 
 	config.set_value(config_speed_build_settings, "SpeedBuildMode", speed_building_mode)
 	config.set_value(config_speed_build_settings, "StartingWPM", starting_wpm)
@@ -204,6 +207,8 @@ func load_game(file_name: String = "") -> Error:
 	if current_level_path == "" and level_sequence != null:
 		start_level_sequence(level_sequence)
 
+	level_records = config.get_value(config_arcade_data, "ArcadeScores", {})
+
 	speed_building_mode = config.get_value(config_speed_build_settings, "SpeedBuildMode", false)
 	starting_wpm = config.get_value(config_speed_build_settings, "StartingWPM", 0)
 	target_wpm = config.get_value(config_speed_build_settings, "TargetWPM", 0)
@@ -215,12 +220,14 @@ func load_game(file_name: String = "") -> Error:
 	return err
 
 
+##Check whether current speed is the target speed for speed building sequence
 func at_target_speed() -> bool:
 	if current_wpm == target_wpm:
 		return true
 	else: return false
 
 
+##Returns the custom theme if one has been selected, and the default theme otherwise
 func get_theme() -> Theme:
 	if use_custom_target_theme and custom_target_style != null:
 		return custom_target_style
@@ -233,6 +240,7 @@ func speak_tts(text: String) -> void:
 	preferred_voice_pitch, preferred_voice_rate)
 
 
+##Clears score/speed and returns to last checkpoint after losing a run
 func run_lost() -> void:
 	current_score = 0
 	current_level_path = last_checkpoint_path
@@ -240,9 +248,33 @@ func run_lost() -> void:
 	save_game()
 
 
+##Retrieve high score (speed and accuracy) for a given level path
 func get_high_score(path: String) -> Array:
 	var record: Array
 	if level_records.has(path):
 		record = level_records[path]
 	else: record = [0, 0]
+	record = [int(record[0]), int(record[1])]
 	return record
+
+
+##Update high score for a given level (speed and accurcy)
+func set_high_score(path: String, level_size: int) -> void:
+	var local_path: String = ProjectSettings.localize_path(path)
+	var record: Array
+	var lives_used: int = 3 - current_lives
+	var accuracy: float = (level_size - lives_used)
+	accuracy = accuracy/level_size
+	accuracy = accuracy * 100
+	if level_records.has(local_path):
+		record = level_records[local_path]
+		if record[0] < current_wpm:
+			record = [current_wpm, accuracy]
+		elif record[0] == current_wpm:
+			if accuracy > record[1]:
+				record[1] = accuracy
+	else:
+		record.resize(2)
+		record[0] = current_wpm
+		record[1] = accuracy
+	level_records[local_path] = record
