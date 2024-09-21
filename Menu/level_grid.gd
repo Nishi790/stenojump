@@ -34,7 +34,7 @@ func _ready() -> void:
 		add_child(level_select)
 
 
-func start_level(path: String) -> void:#9
+func start_level(path: String) -> void:
 	print("Level selected: %s" % path)
 	level_selected.emit(path)
 
