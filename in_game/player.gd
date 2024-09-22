@@ -12,7 +12,7 @@ enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDL
 @export var physics_body: CharacterBody2D
 
 var speed: float
-var lives: int = 3
+var lives: int = PlayerConfig.max_lives
 
 var physics_position: Vector2
 var in_air: bool = false
@@ -194,7 +194,7 @@ func end_level() -> void:
 	save_data()
 	if movement_state == State.CRAWLING:
 		await player_movement_changed
-	lives = 3
+	lives = PlayerConfig.max_lives
 	lives_changed.emit(lives)
 	change_states(State.WALKING)
 

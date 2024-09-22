@@ -20,7 +20,7 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-modulate_color = Color(0.678943, 0.678944, 0.678944, 1)
+modulate_color = Color(0.499251, 0.625632, 0.493086, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dc3o0"]
 atlas = ExtResource("2_0gxcr")
@@ -162,6 +162,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [resource]
+Button/constants/align_to_largest_stylebox = 1
 Button/styles/disabled = SubResource("StyleBoxTexture_n3mvc")
 Button/styles/focus = ExtResource("1_s5kba")
 Button/styles/hover = SubResource("StyleBoxTexture_8oe6w")
@@ -185,6 +186,7 @@ MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
+OptionButton/constants/align_to_largest_stylebox = 1
 Panel/styles/panel = ExtResource("4_sk03o")
 PanelContainer/styles/panel = ExtResource("4_0tdmj")
 PopupMenu/colors/font_color = Color(1, 1, 1, 1)

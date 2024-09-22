@@ -45,7 +45,7 @@ func unknown_command(command: String) -> void:
 
 func check_anim(text: String) -> bool:
 	match text:
-		"sit", "snack time", "eat", "stand", "jump", "hello", "go":
+		"sit", "snack time", "eat", "stand", "jump", "hello", "go", "stop", "stand up":
 			animation.command(text)
 			return true
 		_:

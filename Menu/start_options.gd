@@ -41,6 +41,8 @@ func process_text(text: String) -> bool:
 		split_text.remove_at(0)
 		match target:
 			"sequence":
+				if split_text.size() == 0:
+					return false
 				var specifier: String = split_text[0]
 				split_text.remove_at(0)
 				if not match_sequence(specifier):
@@ -52,6 +54,8 @@ func process_text(text: String) -> bool:
 			"cancel":
 				cancel_new_game()
 			"speed":
+				if split_text.size() == 0:
+					return false
 				var specifier: String = split_text[0]
 				split_text.remove_at(0)
 				if not match_speed(specifier, STARTSPEED):

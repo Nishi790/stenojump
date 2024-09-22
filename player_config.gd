@@ -10,10 +10,14 @@ enum RunMode {SEQUENCE, ARCADE, STORY}
 @export var lapwing_level_1: String = "lapwing_1.json"
 @export var learn_plover_level_1: String
 
+var max_lives: int = 3
 var use_custom_size: bool = false
 var min_level_length: int = 0
 var max_level_length: int = 0
 var preferred_word_order: WordOrder = WordOrder.DEFAULT
+var checkpoints_enabled: bool = true
+var checkpoint_all: bool = false
+var autojump: bool = false
 
 var target_visibility: TargetVisibility = TargetVisibility.ALL
 var use_custom_target_theme: bool = false
@@ -164,6 +168,10 @@ func save_universal_settings() -> Error:
 	config.set_value(config_gameplay_settings, "MinLevelSize", min_level_length)
 	config.set_value(config_gameplay_settings, "MaxLevelSize", max_level_length)
 	config.set_value(config_gameplay_settings, "LevelOrder", preferred_word_order)
+	config.set_value(config_gameplay_settings, "MaxLives", max_lives)
+	config.set_value(config_gameplay_settings, "CheckpointsEnabled", checkpoints_enabled)
+	config.set_value(config_gameplay_settings, "CheckpointAll", checkpoint_all)
+	config.set_value(config_gameplay_settings, "Autojump", autojump)
 
 	config.set_value(config_voice_settings, "AllUIVoiced", voice_all_ui)
 	config.set_value(config_voice_settings, "Voice", preferred_voice)
@@ -192,6 +200,10 @@ func load_universal_settings() -> Error:
 	min_level_length = config.get_value(config_gameplay_settings, "MinLevelSize", 0)
 	max_level_length = config.get_value(config_gameplay_settings, "MaxLevelSize", 0)
 	preferred_word_order = config.get_value(config_gameplay_settings, "LevelOrder", WordOrder.DEFAULT)
+	max_lives = config.get_value(config_gameplay_settings, "MaxLives", 3)
+	checkpoints_enabled = config.get_value(config_gameplay_settings, "CheckpointsEnabled", true)
+	checkpoint_all = config.get_value(config_gameplay_settings, "CheckpointAll", false)
+	autojump = config.get_value(config_gameplay_settings, "Autojump", false)
 
 	voice_all_ui = config.get_value(config_voice_settings, "AllUIVoiced", false)
 	var saved_voice: String = config.get_value(config_voice_settings, "Voice", "")
@@ -297,7 +309,7 @@ func get_high_score(path: String) -> Array:
 func set_high_score(path: String, level_size: int) -> void:
 	var local_path: String = ProjectSettings.localize_path(path)
 	var record: Array
-	var lives_used: int = 3 - current_lives
+	var lives_used: int = max_lives - current_lives
 	var accuracy: float = (level_size - lives_used)
 	accuracy = accuracy/level_size
 	accuracy = accuracy * 100

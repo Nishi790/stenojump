@@ -31,7 +31,7 @@ func command(command_name: String) -> void:
 				return
 			else:
 				queued_anims.append("sit_down")
-		"stand":
+		"stand", "stand up":
 			if current_state == State.STANDING:
 				return
 			else:
@@ -44,12 +44,16 @@ func command(command_name: String) -> void:
 			queued_anims.append("look_at_player")
 		"go":
 			queued_anims.append("run")
+		"stop":
+			queued_anims.append("idle_stand")
 
 
 func next_anim() -> void:
 	if check_for_anim_chain():
 		return
 	elif queued_anims.size() == 0:
+		if animation == "run":
+			return
 		if current_state == State.SITTING and animation != "idle":
 			play("idle")
 		elif current_state == State.STANDING and animation != "idle_stand":

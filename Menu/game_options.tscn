@@ -34,10 +34,9 @@ offset_right = 370.0
 offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 2
+current_tab = 0
 
-[node name="Gameplay" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("level_size_toggle", "level_size_container", "min_level_size", "max_level_size", "level_order_selector", "menu_button")]
-visible = false
+[node name="Gameplay" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("level_size_toggle", "level_size_container", "min_level_size", "max_level_size", "level_order_selector", "max_lives_selector", "autojump_toggle", "enable_checkpoint", "checkpoint_every_level", "menu_button")]
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 script = ExtResource("2_kx0eo")
@@ -46,6 +45,10 @@ level_size_container = NodePath("VBoxContainer/LvlSizeSettings")
 min_level_size = NodePath("VBoxContainer/LvlSizeSettings/MinLvlSizeCntr/MinSizeSpinbox")
 max_level_size = NodePath("VBoxContainer/LvlSizeSettings/MaxLvlSizeCntr/MaxSizeSpinbox")
 level_order_selector = NodePath("VBoxContainer/LevelOrderCntr/OrderChoices")
+max_lives_selector = NodePath("VBoxContainer/AccuracyContainer/Lives")
+autojump_toggle = NodePath("VBoxContainer/AutoJump/AutoJumpToggle")
+enable_checkpoint = NodePath("VBoxContainer/CheckpointToggleContainer/UseCheckpoints")
+checkpoint_every_level = NodePath("VBoxContainer/CheckpointEveryLevelContainer/CheckAll")
 menu_button = NodePath("VBoxContainer/Save")
 metadata/_tab_index = 0
 
@@ -53,21 +56,43 @@ metadata/_tab_index = 0
 layout_mode = 2
 alignment = 1
 
+[node name="Title" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]General Gameplay Settings[/center]"
+fit_content = true
+
+[node name="AccuracyContainer" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+
+[node name="LivesLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/AccuracyContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Maximum [b]Lives[/b]"
+
+[node name="Lives" type="SpinBox" parent="OptionTabs/Gameplay/VBoxContainer/AccuracyContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_bottom = NodePath("../../LevelSizeToggleCntr/LevelSize")
+focus_next = NodePath("../../LevelSizeToggleCntr/LevelSize")
+focus_previous = NodePath("../../../..")
+
 [node name="LevelSizeToggleCntr" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
 layout_mode = 2
 
 [node name="LevelSize" type="CheckBox" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeToggleCntr"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_top = NodePath("../../AccuracyContainer/Lives")
 focus_neighbor_bottom = NodePath("../../LvlSizeSettings/MinLvlSizeCntr/MinSizeSpinbox")
 focus_next = NodePath("../../LvlSizeSettings/MinLvlSizeCntr/MinSizeSpinbox")
-focus_previous = NodePath("../../../..")
+focus_previous = NodePath("../../AccuracyContainer/Lives")
 
 [node name="LevelSizeLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/LevelSizeToggleCntr"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "Use Custom [b]Level Size[/b]"
+text = "Use Custom Level[b] Size[/b]"
 fit_content = true
 
 [node name="LvlSizeSettings" type="VBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
@@ -136,23 +161,86 @@ tooltip_text = "Default: Target order specified by the level
 Random: Force order always random
 In Order: Force items in order written in level.  You will never see any items past the level length the level length"
 focus_neighbor_top = NodePath("../../LvlSizeSettings/MaxLvlSizeCntr/MaxSizeSpinbox")
-focus_neighbor_bottom = NodePath("../../Save")
-focus_next = NodePath("../../Save")
+focus_neighbor_bottom = NodePath("../../AutoJump/AutoJumpToggle")
+focus_next = NodePath("../../AutoJump/AutoJumpToggle")
 focus_previous = NodePath("../../LvlSizeSettings/MaxLvlSizeCntr/MaxSizeSpinbox")
 selected = 0
 item_count = 3
 popup/item_0/text = "Default"
 popup/item_1/text = "Random"
 popup/item_1/id = 1
-popup/item_2/text = "In Order"
+popup/item_2/text = "Ordered"
 popup/item_2/id = 2
+
+[node name="AutoJump" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+
+[node name="AutoJumpToggle" type="CheckBox" parent="OptionTabs/Gameplay/VBoxContainer/AutoJump"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../../LevelOrderCntr/OrderChoices")
+focus_neighbor_bottom = NodePath("../../CheckpointToggleContainer/UseCheckpoints")
+focus_next = NodePath("../../CheckpointToggleContainer/UseCheckpoints")
+focus_previous = NodePath("../../LevelOrderCntr/OrderChoices")
+disabled = true
+
+[node name="AutojumpLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/AutoJump"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[b]Auto[/b]jump: Reduces reliance on precise reaction times by handling timing for words as long as they aren't late. "
+fit_content = true
+
+[node name="Divider" type="HSeparator" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+
+[node name="SequenceSettingsLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Progression Settings[/center]"
+fit_content = true
+
+[node name="CheckpointToggleContainer" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+
+[node name="UseCheckpoints" type="CheckBox" parent="OptionTabs/Gameplay/VBoxContainer/CheckpointToggleContainer"]
+layout_mode = 2
+tooltip_text = "Resume from last checkpoint if you die"
+focus_neighbor_top = NodePath("../../AutoJump/AutoJumpToggle")
+focus_neighbor_bottom = NodePath("../../CheckpointEveryLevelContainer/CheckAll")
+focus_next = NodePath("../../CheckpointEveryLevelContainer/CheckAll")
+focus_previous = NodePath("../../AutoJump/AutoJumpToggle")
+
+[node name="CheckpointsOn" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/CheckpointToggleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[b]Checkpoints[/b] enabled"
+fit_content = true
+
+[node name="CheckpointEveryLevelContainer" type="HBoxContainer" parent="OptionTabs/Gameplay/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckAll" type="CheckBox" parent="OptionTabs/Gameplay/VBoxContainer/CheckpointEveryLevelContainer"]
+layout_mode = 2
+tooltip_text = "Override sequence checkpoints and treat every level as a checkpoint"
+focus_neighbor_top = NodePath("../../CheckpointToggleContainer/UseCheckpoints")
+focus_neighbor_bottom = NodePath("../../Save")
+focus_next = NodePath("../../Save")
+focus_previous = NodePath("../../CheckpointToggleContainer/UseCheckpoints")
+
+[node name="CheckAllLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/CheckpointEveryLevelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Checkpoint on [b]all levels[/b]"
 
 [node name="Save" type="Button" parent="OptionTabs/Gameplay/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../LevelOrderCntr/OrderChoices")
+focus_neighbor_top = NodePath("../CheckpointEveryLevelContainer/CheckAll")
 focus_neighbor_bottom = NodePath("../../..")
 focus_next = NodePath("../../..")
-focus_previous = NodePath("../LevelOrderCntr/OrderChoices")
+focus_previous = NodePath("../CheckpointEveryLevelContainer/CheckAll")
 text = "Main Menu"
 
 [node name="Graphics" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("target_vis_picker", "target_background_toggle", "target_bg_picker", "target_color_picker", "target_preview", "background_options_container", "menu_button")]
@@ -171,6 +259,12 @@ metadata/_tab_index = 1
 [node name="GraphicsOrganizer" type="VBoxContainer" parent="OptionTabs/Graphics"]
 layout_mode = 2
 
+[node name="TargetSection" type="RichTextLabel" parent="OptionTabs/Graphics/GraphicsOrganizer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Target Word Appearance[/center]"
+fit_content = true
+
 [node name="TargetDisplayCntr" type="HBoxContainer" parent="OptionTabs/Graphics/GraphicsOrganizer"]
 layout_mode = 2
 
@@ -187,10 +281,10 @@ position = Vector2i(860, 440)
 size = Vector2i(400, 220)
 
 [node name="ModeDescriptions" type="RichTextLabel" parent="OptionTabs/Graphics/GraphicsOrganizer/TargetDisplayCntr/TargetVisibility/PopupPanel"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 216.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 395.0
+offset_bottom = 215.0
 bbcode_enabled = true
 text = "[b]All[/b]: Target words are always visible as soon as the obstacle enters the screen.
 [b]Next[/b]: Only the target on the closest obstacle is displayed. The next one is shown after jumping the closest one.
@@ -267,9 +361,11 @@ horizontal_alignment = 1
 
 [node name="Save" type="Button" parent="OptionTabs/Graphics/GraphicsOrganizer"]
 layout_mode = 2
+size_flags_vertical = 8
 text = "Main Menu"
 
 [node name="Sound" type="PanelContainer" parent="OptionTabs" node_paths=PackedStringArray("speak_UI", "voice_selector", "menu_button")]
+visible = false
 layout_mode = 2
 script = ExtResource("5_frqa1")
 speak_UI = NodePath("VBoxContainer/HBoxContainer/TTSAllUI")

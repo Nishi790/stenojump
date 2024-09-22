@@ -14,13 +14,9 @@ var custom_style: Theme
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visibility_changed.connect(load_current_settings)
 	#Grab current custom style for targets
-	if PlayerConfig.custom_target_style == null:
-		PlayerConfig.custom_target_style = PlayerConfig.target_style.duplicate(true)
-		var style_box: StyleBox = PlayerConfig.custom_target_style.get_stylebox("panel", "PanelContainer")
-		style_box.bg_color = Color.BLACK
-		PlayerConfig.custom_target_style.set_stylebox("panel", "PanelContainer", style_box)
-	custom_style = PlayerConfig.custom_target_style
+
 	target_preview.theme = custom_style
 	toggle_target_background(PlayerConfig.use_custom_target_theme)
 	target_vis_picker.item_selected.connect(update_target_visibility)
@@ -28,6 +24,17 @@ func _ready() -> void:
 	target_bg_picker.color_changed.connect(target_background_changed)
 	target_color_picker.color_changed.connect(target_color_changed)
 	menu_button.pressed.connect(back_to_menu)
+
+
+func load_current_settings() -> void:
+	target_vis_picker.select(PlayerConfig.target_visibility)
+	target_background_toggle.set_pressed(PlayerConfig.use_custom_target_theme)
+	if PlayerConfig.custom_target_style == null:
+		PlayerConfig.custom_target_style = PlayerConfig.target_style.duplicate(true)
+		var style_box: StyleBox = PlayerConfig.custom_target_style.get_stylebox("panel", "PanelContainer")
+		style_box.bg_color = Color.BLACK
+		PlayerConfig.custom_target_style.set_stylebox("panel", "PanelContainer", style_box)
+	custom_style = PlayerConfig.custom_target_style
 
 
 func update_target_visibility(selection_index: int) -> void:

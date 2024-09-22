@@ -163,5 +163,5 @@ texture_filter = 1
 position = Vector2(96, 0)
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("4_xts3i")
-animation = &"eat"
+animation = &"stare_at_player"
 script = ExtResource("5_7ha46")

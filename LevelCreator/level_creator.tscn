@@ -258,7 +258,6 @@ access = 2
 [node name="SaveConfirmed" type="PopupPanel" parent="Background" node_paths=PackedStringArray("pop_up_text")]
 initial_position = 1
 size = Vector2i(145, 100)
-visible = true
 theme = ExtResource("3_mso1w")
 script = ExtResource("4_66ijc")
 pop_up_text = NodePath("LevelSavedLabel")

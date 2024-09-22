@@ -70,7 +70,9 @@ func load_level(file_name : String) -> void:
 	if active_level.next_level_path == "":
 		last_level.emit()
 	PlayerConfig.current_level_path = ProjectSettings.globalize_path(active_level.level_path)
-	if active_level.checkpoint:
+	if active_level.checkpoint and PlayerConfig.checkpoints_enabled:
+		PlayerConfig.last_checkpoint_path = active_level.level_path
+	elif PlayerConfig.checkpoint_all:
 		PlayerConfig.last_checkpoint_path = active_level.level_path
 
 

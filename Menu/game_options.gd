@@ -21,7 +21,7 @@ func _ready() -> void:
 		tab_control.menu_button.focus_next = tab_bar.get_path()
 
 	tabs.tab_changed.connect(send_focus_neighbors)
-	send_focus_neighbors(0)
+	send_focus_neighbors(tabs.current_tab)
 
 
 func process_text(text: String) -> bool:
@@ -40,11 +40,11 @@ func send_focus_neighbors(tab: int) -> void:
 	match tab:
 		0:
 			#Create Array of focus neighbors in order left, top, right, bottom, next, previous
-			neighbor_array.append(gameplay_tab.level_size_toggle)
-			neighbor_array.append(gameplay_tab.level_size_toggle)
-			neighbor_array.append(gameplay_tab.level_size_toggle)
+			neighbor_array.append(gameplay_tab.max_lives_selector)
+			neighbor_array.append(gameplay_tab.max_lives_selector)
+			neighbor_array.append(gameplay_tab.max_lives_selector)
 			neighbor_array.append(gameplay_tab.menu_button)
-			neighbor_array.append(gameplay_tab.level_size_toggle)
+			neighbor_array.append(gameplay_tab.max_lives_selector)
 			neighbor_array.append(gameplay_tab.menu_button)
 		1:
 			neighbor_array.append(graphics_tab.target_vis_picker)
