@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 enum State {SITTING, STANDING}
 
+@export var sound_player: AudioStreamPlayer
 
 var current_state: State = State.SITTING
 var  queued_anims: Array[String] = []
@@ -83,6 +84,7 @@ func check_for_anim_chain() -> bool:
 			play("jump_down")
 		"look_at_player":
 			play("stare_at_player")
+			sound_player.play()
 		"stare_at_player":
 			play("look_ahead")
 		_:
