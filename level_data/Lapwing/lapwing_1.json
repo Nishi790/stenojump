@@ -1,5 +1,7 @@
 {
 	"level": 1,
+	"description": "Words using exactly 3 keys with basic short vowels",
+	"theme": "rundown",
 	"order": "random",
 	"size": 30,
 	"next_level": "lapwing_1_2.json",

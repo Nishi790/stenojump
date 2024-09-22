@@ -1,6 +1,7 @@
 {
 	"checkpoint": false,
 	"level": 5,
+	"description": "Left hand F, M, and QU",
 	"next_level": "lapwing_2_2.json",
 	"order": "random",
 	"size": 30,

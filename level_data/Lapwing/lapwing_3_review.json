@@ -1,6 +1,7 @@
 {
 	"checkpoint": true,
 	"level": 12,
+	"description": "Vowels review: OU, OE, AEU, AOU",
 	"next_level": "lapwing_4_1.json",
 	"order": "random",
 	"size": 40,

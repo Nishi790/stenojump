@@ -1,6 +1,7 @@
 {
 	"checkpoint": false,
 	"level": 9,
+	"description": "Vowels: OU for 'ow' as in 'shout', OE for long O as in 'note' and OEU for 'oi' as in 'oil'",
 	"next_level": "lapwing_3_2.json",
 	"order": "random",
 	"size": 30,

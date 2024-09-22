@@ -1,6 +1,7 @@
 {
 	"checkpoint": false,
 	"level": 11,
+	"description": "Vowels: AOU for the sounds 'ooh' as in 'to' and 'you' as in 'cute'",
 	"next_level": "lapwing_3_review.json",
 	"order": "random",
 	"size": 30,

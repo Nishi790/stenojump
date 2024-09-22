@@ -1,6 +1,7 @@
 {
 	"checkpoint": false,
 	"level": 15,
+	"description": "Vowels: AU for 'au' as in 'taught' - used when the sound is not spelled with a single 'o'",
 	"next_level": "lapwing_4_4.json",
 	"order": "random",
 	"size": 30,

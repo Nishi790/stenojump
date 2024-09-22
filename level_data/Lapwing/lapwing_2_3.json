@@ -1,5 +1,6 @@
 {
 	"checkpoint": false,
+	"description": "Left hand J, Z, and Z",
 	"level": 7,
 	"next_level": "lapwing_2_review.json",
 	"order": "random",

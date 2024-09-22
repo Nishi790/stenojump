@@ -1,6 +1,7 @@
 {
 	"checkpoint": false,
 	"level": 13,
+	"description": "Vowels: AOE for long E as in 'street'",	
 	"next_level": "lapwing_4_2.json",
 	"order": "random",
 	"size": 35,

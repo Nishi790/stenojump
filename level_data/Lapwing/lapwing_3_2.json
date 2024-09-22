@@ -1,5 +1,6 @@
 {
 	"checkpoint": false,
+	"description": "Vowels: AEU for the sound 'ay' as in 'may'",
 	"level": 10,
 	"next_level": "lapwing_3_3.json",
 	"order": "random",

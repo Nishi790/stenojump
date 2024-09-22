@@ -1,5 +1,6 @@
 {
 	"level": 2,
+	"description": "Left hand consonant combinations",
 	"order": "random",
 	"size": 30,
 	"next_level": "lapwing_1_3.json",

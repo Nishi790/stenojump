@@ -52,6 +52,10 @@ func create_level(filepath: String) -> String:
 		level_data.default_level_size = data["size"]
 		level_data.next_level_path = data["next_level"]
 		level_data.level_targets = data["targets"]
+		if data.has("description"):
+			level_data.level_description = data["description"]
+		#if data.has("theme"): TODO
+		#	level_data.environment = FIND Environment resource based on theme name!
 		if data.has("checkpoint"):
 			level_data.checkpoint = data["checkpoint"]
 		else: level_data.checkpoint = false

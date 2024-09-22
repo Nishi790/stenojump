@@ -9,7 +9,7 @@ signal start_pressed
 @export var record_label: Label
 @export var start_button: Button
 
-var size_string: String = "Level Size: %d words"
+var size_string: String = "%d words"
 var record_string: String = "Highest Speed: %s strokes per minute, %s%% accuracy"
 
 var level_path: String
@@ -29,6 +29,7 @@ func set_preview(path: String) -> void:
 		var level_dat: RunnerLevel = LevelLoader.levels[level_path]
 		var level_name: String = "Level: " + str(level_dat.level_number)
 		level_label.text = level_name
+		description_label.clear()
 		description_label.push_paragraph(HORIZONTAL_ALIGNMENT_CENTER)
 		description_label.append_text(level_dat.level_description)
 		size_label.text = size_string  % level_dat.default_level_size

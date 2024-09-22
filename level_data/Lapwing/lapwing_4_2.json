@@ -1,6 +1,7 @@
 {
 	"checkpoint": false,
 	"level": 14,
+	"description": "Vowels: AOEU as long I as in 'ice'",
 	"next_level": "lapwing_4_3.json",
 	"order": "random",
 	"size": 30,

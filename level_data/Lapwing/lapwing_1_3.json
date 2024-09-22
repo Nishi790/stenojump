@@ -1,5 +1,6 @@
 {
 	"level": 3,
+	"description": "Left hand consonants D, B, and L",
 	"order": "random",
 	"size": 30,
 	"next_level": "lapwing_1_review.json",

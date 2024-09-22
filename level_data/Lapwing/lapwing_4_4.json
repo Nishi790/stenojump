@@ -1,6 +1,7 @@
 {
 	"checkpoint": false,
 	"level": 16,
+	"description": "Using AE to disambiguate long A as in 'veil' and long E as in 'steal'",
 	"next_level": "lapwing_4_5.json",
 	"order": "random",
 	"size": 30,
