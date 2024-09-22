@@ -1,0 +1,24 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=10 format=3 uid="uid://dijfh5s7ig0jw"]
+
+[ext_resource type="AudioStream" uid="uid://b5q78h1gcu38m" path="res://sound/sound_effects/landing_sounds/land_1.wav" id="1_qtux7"]
+[ext_resource type="AudioStream" uid="uid://cl48p7o080cow" path="res://sound/sound_effects/landing_sounds/land_2.wav" id="2_vbgk5"]
+[ext_resource type="AudioStream" uid="uid://72x76akaeuq8" path="res://sound/sound_effects/landing_sounds/land_3.wav" id="3_4ji3i"]
+[ext_resource type="AudioStream" uid="uid://djei3imul2p20" path="res://sound/sound_effects/landing_sounds/land_4.wav" id="4_fc7dp"]
+[ext_resource type="AudioStream" uid="uid://ivmaxcnfcis2" path="res://sound/sound_effects/landing_sounds/land_5.wav" id="5_crs05"]
+[ext_resource type="AudioStream" uid="uid://b16okhk8pcihm" path="res://sound/sound_effects/landing_sounds/land_6.wav" id="6_cu13s"]
+[ext_resource type="AudioStream" uid="uid://cswdv4xsp3ni5" path="res://sound/sound_effects/landing_sounds/land_7.wav" id="7_8bmcu"]
+[ext_resource type="AudioStream" uid="uid://bug0wdy54qfws" path="res://sound/sound_effects/landing_sounds/land_8.wav" id="8_uxntl"]
+[ext_resource type="AudioStream" uid="uid://bysrvddo13ucx" path="res://sound/sound_effects/landing_sounds/land_9.wav" id="9_0gj0u"]
+
+[resource]
+playback_mode = 1
+streams_count = 9
+stream_0/stream = ExtResource("1_qtux7")
+stream_1/stream = ExtResource("2_vbgk5")
+stream_2/stream = ExtResource("3_4ji3i")
+stream_3/stream = ExtResource("4_fc7dp")
+stream_4/stream = ExtResource("5_crs05")
+stream_5/stream = ExtResource("6_cu13s")
+stream_6/stream = ExtResource("7_8bmcu")
+stream_7/stream = ExtResource("8_uxntl")
+stream_8/stream = ExtResource("9_0gj0u")

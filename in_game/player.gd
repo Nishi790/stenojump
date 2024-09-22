@@ -10,6 +10,7 @@ enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDL
 
 @export var sprite: AnimatedSprite2D
 @export var physics_body: CharacterBody2D
+@export var audio_player: AudioStreamPlayer2D
 
 var speed: float
 var lives: int = PlayerConfig.max_lives
@@ -134,6 +135,8 @@ func change_states(new_state: State, time_of_flight: float = -1) -> void:
 				physics_body.change_colliders(0)
 			if old_state == State.WALKING or old_state == State.IDLING:
 				player_movement_changed.emit(new_state)
+			if old_state == State.ENDING_JUMP:
+				play_sfx("land")
 		State.STARTING_JUMP, State.ENDING_JUMP:
 			if physics_body.active_collider != 1:
 				physics_body.change_colliders(1)
@@ -205,3 +208,9 @@ func set_lives() -> void:
 
 func save_data() -> void:
 	PlayerConfig.current_lives = lives
+
+
+func play_sfx(effect: String) -> void:
+	match effect:
+		"land":
+			audio_player.play()

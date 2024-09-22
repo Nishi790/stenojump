@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d37vmbd1g5pta"]
+[gd_scene load_steps=8 format=3 uid="uid://d37vmbd1g5pta"]
 
 [ext_resource type="Script" path="res://in_game/player.gd" id="1_h8u8b"]
 [ext_resource type="SpriteFrames" uid="uid://bxd74c38t8x8g" path="res://textures/character_animations/player_sprite_frames.tres" id="2_yuis2"]
 [ext_resource type="Script" path="res://in_game/player_physics.gd" id="3_a4i1d"]
+[ext_resource type="AudioStream" uid="uid://dijfh5s7ig0jw" path="res://sound/sound_effects/landing_sounds/soft_landings.tres" id="4_p7sph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wietx"]
 size = Vector2(101, 80)
@@ -13,11 +14,12 @@ size = Vector2(101, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7max"]
 size = Vector2(144, 60)
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "physics_body")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "physics_body", "audio_player")]
 z_index = 1
 script = ExtResource("1_h8u8b")
 sprite = NodePath("PlayerSprite")
 physics_body = NodePath("PlayerPhysics")
+audio_player = NodePath("AudioPlayer")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -47,3 +49,6 @@ shape = SubResource("RectangleShape2D_cteil")
 [node name="CrawlShape" type="CollisionShape2D" parent="PlayerPhysics"]
 position = Vector2(6.125, 66)
 shape = SubResource("RectangleShape2D_t7max")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p7sph")
