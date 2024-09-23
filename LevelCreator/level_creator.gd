@@ -92,6 +92,7 @@ func open_level_selector() -> void:
 
 
 func load_existing_level(path: String) -> void:
+	file_selector.hide()
 	active_level_data.read_level_data(path)
 	active_level_data.save_dir = path.trim_suffix(active_level_data.save_file_name)
 	tsv_text_box.clear()
