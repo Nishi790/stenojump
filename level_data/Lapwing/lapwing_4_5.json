@@ -1,0 +1,400 @@
+{
+	"checkpoint": false,
+	"description": "",
+	"level": 17,
+	"next_level": "lapwing_4_review.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STPHAOP",
+			"score": 1,
+			"word": "snoop"
+		},
+		{
+			"hint": "STPHAOT",
+			"score": 1,
+			"word": "snoot"
+		},
+		{
+			"hint": "STPHAOZ",
+			"score": 1,
+			"word": "snooze"
+		},
+		{
+			"hint": "STAOP",
+			"score": 1,
+			"word": "stoop"
+		},
+		{
+			"hint": "STAOL",
+			"score": 1,
+			"word": "stool"
+		},
+		{
+			"hint": "STAOD",
+			"score": 1,
+			"word": "stood"
+		},
+		{
+			"hint": "SKAOP",
+			"score": 1,
+			"word": "scoop"
+		},
+		{
+			"hint": "SKAOL",
+			"score": 1,
+			"word": "school"
+		},
+		{
+			"hint": "SKAOT",
+			"score": 1,
+			"word": "scoot"
+		},
+		{
+			"hint": "SPAOF",
+			"score": 1,
+			"word": "spoof"
+		},
+		{
+			"hint": "SPAOL",
+			"score": 1,
+			"word": "spool"
+		},
+		{
+			"hint": "SWAOP",
+			"score": 1,
+			"word": "swoop"
+		},
+		{
+			"hint": "SHRAOP",
+			"score": 1,
+			"word": "sloop"
+		},
+		{
+			"hint": "SHAOT",
+			"score": 1,
+			"word": "shoot"
+		},
+		{
+			"hint": "SAOR",
+			"score": 1,
+			"word": "soar"
+		},
+		{
+			"hint": "SAOT",
+			"score": 1,
+			"word": "soot"
+		},
+		{
+			"hint": "TKPWHRAOP",
+			"score": 1,
+			"word": "gloop"
+		},
+		{
+			"hint": "TKPWAOF",
+			"score": 1,
+			"word": "goof"
+		},
+		{
+			"hint": "TKPWAOP",
+			"score": 1,
+			"word": "goop"
+		},
+		{
+			"hint": "TKPWAOS",
+			"score": 1,
+			"word": "goose"
+		},
+		{
+			"hint": "TKPWAOD",
+			"score": 1,
+			"word": "good"
+		},
+		{
+			"hint": "TKRAOP",
+			"score": 1,
+			"word": "droop"
+		},
+		{
+			"hint": "TKRAOL",
+			"score": 1,
+			"word": "drool"
+		},
+		{
+			"hint": "TKAOR",
+			"score": 1,
+			"word": "door"
+		},
+		{
+			"hint": "TKAOP",
+			"score": 1,
+			"word": "doop"
+		},
+		{
+			"hint": "TKAOT",
+			"score": 1,
+			"word": "doot"
+		},
+		{
+			"hint": "TKAOD",
+			"score": 1,
+			"word": "dood"
+		},
+		{
+			"hint": "TPHRAOF",
+			"score": 1,
+			"word": "floof"
+		},
+		{
+			"hint": "TPHRAOR",
+			"score": 1,
+			"word": "floor"
+		},
+		{
+			"hint": "TPHRAOD",
+			"score": 1,
+			"word": "flood"
+		},
+		{
+			"hint": "TPHAOB",
+			"score": 1,
+			"word": "noob"
+		},
+		{
+			"hint": "TPHAOS",
+			"score": 1,
+			"word": "noose"
+		},
+		{
+			"hint": "TPAOL",
+			"score": 1,
+			"word": "fool"
+		},
+		{
+			"hint": "TPAOT",
+			"score": 1,
+			"word": "foot"
+		},
+		{
+			"hint": "TPAOD",
+			"score": 1,
+			"word": "food"
+		},
+		{
+			"hint": "TRAOP",
+			"score": 1,
+			"word": "troop"
+		},
+		{
+			"hint": "TAOL",
+			"score": 1,
+			"word": "tool"
+		},
+		{
+			"hint": "TAOT",
+			"score": 1,
+			"word": "toot"
+		},
+		{
+			"hint": "TAOD",
+			"score": 1,
+			"word": "toad"
+		},
+		{
+			"hint": "KHAOS",
+			"score": 1,
+			"word": "choose"
+		},
+		{
+			"hint": "KAOP",
+			"score": 1,
+			"word": "coop"
+		},
+		{
+			"hint": "KAOL",
+			"score": 1,
+			"word": "cool"
+		},
+		{
+			"hint": "PWHRAOP",
+			"score": 1,
+			"word": "bloop"
+		},
+		{
+			"hint": "PWHRAOD",
+			"score": 1,
+			"word": "blood"
+		},
+		{
+			"hint": "PWRAOD",
+			"score": 1,
+			"word": "brood"
+		},
+		{
+			"hint": "PWAOR",
+			"score": 1,
+			"word": "boar"
+		},
+		{
+			"hint": "PWAOL",
+			"score": 1,
+			"word": "bool"
+		},
+		{
+			"hint": "PWAOT",
+			"score": 1,
+			"word": "boot"
+		},
+		{
+			"hint": "PWAOZ",
+			"score": 1,
+			"word": "booze"
+		},
+		{
+			"hint": "PHAOR",
+			"score": 1,
+			"word": "moor"
+		},
+		{
+			"hint": "PHAOT",
+			"score": 1,
+			"word": "moot"
+		},
+		{
+			"hint": "PHAOS",
+			"score": 1,
+			"word": "moose"
+		},
+		{
+			"hint": "PHAOD",
+			"score": 1,
+			"word": "mood"
+		},
+		{
+			"hint": "PRAOF",
+			"score": 1,
+			"word": "proof"
+		},
+		{
+			"hint": "PAOF",
+			"score": 1,
+			"word": "poof"
+		},
+		{
+			"hint": "PAOR",
+			"score": 1,
+			"word": "poor"
+		},
+		{
+			"hint": "PAOP",
+			"score": 1,
+			"word": "poop"
+		},
+		{
+			"hint": "PAOL",
+			"score": 1,
+			"word": "pool"
+		},
+		{
+			"hint": "WAOF",
+			"score": 1,
+			"word": "woof"
+		},
+		{
+			"hint": "WAOP",
+			"score": 1,
+			"word": "woop"
+		},
+		{
+			"hint": "WAOL",
+			"score": 1,
+			"word": "wool"
+		},
+		{
+			"hint": "WAOT",
+			"score": 1,
+			"word": "woot"
+		},
+		{
+			"hint": "WAOD",
+			"score": 1,
+			"word": "wood"
+		},
+		{
+			"hint": "HRAOF",
+			"score": 1,
+			"word": "loaf"
+		},
+		{
+			"hint": "HRAOP",
+			"score": 1,
+			"word": "loop"
+		},
+		{
+			"hint": "HRAOT",
+			"score": 1,
+			"word": "loot"
+		},
+		{
+			"hint": "HRAOS",
+			"score": 1,
+			"word": "loose"
+		},
+		{
+			"hint": "HRAOD",
+			"score": 1,
+			"word": "load"
+		},
+		{
+			"hint": "HAOF",
+			"score": 1,
+			"word": "hoof"
+		},
+		{
+			"hint": "HAOP",
+			"score": 1,
+			"word": "hoop"
+		},
+		{
+			"hint": "HAOT",
+			"score": 1,
+			"word": "hoot"
+		},
+		{
+			"hint": "HAOD",
+			"score": 1,
+			"word": "hood"
+		},
+		{
+			"hint": "RAOF",
+			"score": 1,
+			"word": "roof"
+		},
+		{
+			"hint": "RAOT",
+			"score": 1,
+			"word": "root"
+		},
+		{
+			"hint": "RAOD",
+			"score": 1,
+			"word": "road"
+		},
+		{
+			"hint": "AOF",
+			"score": 1,
+			"word": "oof"
+		},
+		{
+			"hint": "AOR",
+			"score": 1,
+			"word": "oar"
+		},
+		{
+			"hint": "AOZ",
+			"score": 1,
+			"word": "ooze"
+		}
+	]
+}

@@ -1,0 +1,605 @@
+{
+	"checkpoint": false,
+	"description": "Right hand -F as 's'",
+	"level": 32,
+	"next_level": "lapwing_8_2.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "SKWROEUFT",
+			"score": 1,
+			"word": "joist"
+		},
+		{
+			"hint": "SKWROUFT",
+			"score": 1,
+			"word": "joust"
+		},
+		{
+			"hint": "SKWREUFT",
+			"score": 1,
+			"word": "gist"
+		},
+		{
+			"hint": "SKWREFT",
+			"score": 1,
+			"word": "jest"
+		},
+		{
+			"hint": "SKWRUFT",
+			"score": 1,
+			"word": "just"
+		},
+		{
+			"hint": "SWEUFT",
+			"score": 1,
+			"word": "swift"
+		},
+		{
+			"hint": "SHAFT",
+			"score": 1,
+			"word": "shaft"
+		},
+		{
+			"hint": "SHEUFT",
+			"score": 1,
+			"word": "shift"
+		},
+		{
+			"hint": "SRAFT",
+			"score": 1,
+			"word": "vast"
+		},
+		{
+			"hint": "SREFT",
+			"score": 1,
+			"word": "vest"
+		},
+		{
+			"hint": "SOFT",
+			"score": 1,
+			"word": "soft"
+		},
+		{
+			"hint": "SEUFT",
+			"score": 1,
+			"word": "sift"
+		},
+		{
+			"hint": "TKPWRAFT",
+			"score": 1,
+			"word": "graft"
+		},
+		{
+			"hint": "TKPWOEFT",
+			"score": 1,
+			"word": "ghost"
+		},
+		{
+			"hint": "TKPWEUFT",
+			"score": 1,
+			"word": "gift"
+		},
+		{
+			"hint": "TKPWEFT",
+			"score": 1,
+			"word": "guest"
+		},
+		{
+			"hint": "TKPWUFT",
+			"score": 1,
+			"word": "gust"
+		},
+		{
+			"hint": "TKRAFT",
+			"score": 1,
+			"word": "draft"
+		},
+		{
+			"hint": "TKREUFT",
+			"score": 1,
+			"word": "drift"
+		},
+		{
+			"hint": "TKAFT",
+			"score": 1,
+			"word": "daft"
+		},
+		{
+			"hint": "TKEFT",
+			"score": 1,
+			"word": "deft"
+		},
+		{
+			"hint": "TKUFT",
+			"score": 1,
+			"word": "dust"
+		},
+		{
+			"hint": "TPHEFT",
+			"score": 1,
+			"word": "nest"
+		},
+		{
+			"hint": "TPROFT",
+			"score": 1,
+			"word": "frost"
+		},
+		{
+			"hint": "TPAOEFT",
+			"score": 1,
+			"word": "feast"
+		},
+		{
+			"hint": "TPAFT",
+			"score": 1,
+			"word": "fast"
+		},
+		{
+			"hint": "TPOEUFT",
+			"score": 1,
+			"word": "foist"
+		},
+		{
+			"hint": "TPEUFT",
+			"score": 1,
+			"word": "fist"
+		},
+		{
+			"hint": "TPEFT",
+			"score": 1,
+			"word": "fest"
+		},
+		{
+			"hint": "TWEUFT",
+			"score": 1,
+			"word": "twist"
+		},
+		{
+			"hint": "THREUFT",
+			"score": 1,
+			"word": "thrift"
+		},
+		{
+			"hint": "THRUFT",
+			"score": 1,
+			"word": "thrust"
+		},
+		{
+			"hint": "THEFT",
+			"score": 1,
+			"word": "theft"
+		},
+		{
+			"hint": "TRUFT",
+			"score": 1,
+			"word": "trust"
+		},
+		{
+			"hint": "TAEUFT",
+			"score": 1,
+			"word": "taste"
+		},
+		{
+			"hint": "TOEFT",
+			"score": 1,
+			"word": "toast"
+		},
+		{
+			"hint": "TEFT",
+			"score": 1,
+			"word": "test"
+		},
+		{
+			"hint": "KWRAO*EFT",
+			"score": 1,
+			"word": "yeast"
+		},
+		{
+			"hint": "KWEFT",
+			"score": 1,
+			"word": "quest"
+		},
+		{
+			"hint": "KHREFT",
+			"score": 1,
+			"word": "cleft"
+		},
+		{
+			"hint": "KHEFT",
+			"score": 1,
+			"word": "chest"
+		},
+		{
+			"hint": "KRAFT",
+			"score": 1,
+			"word": "craft"
+		},
+		{
+			"hint": "KREFT",
+			"score": 1,
+			"word": "crest"
+		},
+		{
+			"hint": "KRUFT",
+			"score": 1,
+			"word": "crust"
+		},
+		{
+			"hint": "KAFT",
+			"score": 1,
+			"word": "cast"
+		},
+		{
+			"hint": "KOEFT",
+			"score": 1,
+			"word": "coast"
+		},
+		{
+			"hint": "KOFT",
+			"score": 1,
+			"word": "cost"
+		},
+		{
+			"hint": "KUFT",
+			"score": 1,
+			"word": "cust"
+		},
+		{
+			"hint": "PWHRAFT",
+			"score": 1,
+			"word": "blast"
+		},
+		{
+			"hint": "PWHREFT",
+			"score": 1,
+			"word": "blest"
+		},
+		{
+			"hint": "PWREFT",
+			"score": 1,
+			"word": "breast"
+		},
+		{
+			"hint": "PWAOEFT",
+			"score": 1,
+			"word": "beast"
+		},
+		{
+			"hint": "PWAOFT",
+			"score": 1,
+			"word": "boost"
+		},
+		{
+			"hint": "PWOEFT",
+			"score": 1,
+			"word": "boast"
+		},
+		{
+			"hint": "PWEFT",
+			"score": 1,
+			"word": "best"
+		},
+		{
+			"hint": "PWUFT",
+			"score": 1,
+			"word": "bust"
+		},
+		{
+			"hint": "PHAFT",
+			"score": 1,
+			"word": "mast"
+		},
+		{
+			"hint": "PHOEUFT",
+			"score": 1,
+			"word": "moist"
+		},
+		{
+			"hint": "PHOEFT",
+			"score": 1,
+			"word": "most"
+		},
+		{
+			"hint": "PHEUFT",
+			"score": 1,
+			"word": "mist"
+		},
+		{
+			"hint": "PHUFT",
+			"score": 1,
+			"word": "must"
+		},
+		{
+			"hint": "PRAOEFT",
+			"score": 1,
+			"word": "priest"
+		},
+		{
+			"hint": "PAEUFT",
+			"score": 1,
+			"word": "paste"
+		},
+		{
+			"hint": "PAFT",
+			"score": 1,
+			"word": "past"
+		},
+		{
+			"hint": "POEFT",
+			"score": 1,
+			"word": "post"
+		},
+		{
+			"hint": "PEFT",
+			"score": 1,
+			"word": "pest"
+		},
+		{
+			"hint": "WREUFT",
+			"score": 1,
+			"word": "wrist"
+		},
+		{
+			"hint": "WREFT",
+			"score": 1,
+			"word": "wrest"
+		},
+		{
+			"hint": "WAEUFT",
+			"score": 1,
+			"word": "waist"
+		},
+		{
+			"hint": "WAEFT",
+			"score": 1,
+			"word": "waste"
+		},
+		{
+			"hint": "WAUFT",
+			"score": 1,
+			"word": "waft"
+		},
+		{
+			"hint": "WAFT",
+			"score": 1,
+			"word": "waft"
+		},
+		{
+			"hint": "WEUFT",
+			"score": 1,
+			"word": "wist"
+		},
+		{
+			"hint": "WEFT",
+			"score": 1,
+			"word": "west"
+		},
+		{
+			"hint": "HRAOEFT",
+			"score": 1,
+			"word": "least"
+		},
+		{
+			"hint": "HRAFT",
+			"score": 1,
+			"word": "last"
+		},
+		{
+			"hint": "HROFT",
+			"score": 1,
+			"word": "loft"
+		},
+		{
+			"hint": "HREUFT",
+			"score": 1,
+			"word": "lift"
+		},
+		{
+			"hint": "HREFT",
+			"score": 1,
+			"word": "left"
+		},
+		{
+			"hint": "HRUFT",
+			"score": 1,
+			"word": "lust"
+		},
+		{
+			"hint": "HAOEUFT",
+			"score": 1,
+			"word": "heist"
+		},
+		{
+			"hint": "HAEUFT",
+			"score": 1,
+			"word": "haste"
+		},
+		{
+			"hint": "HOEUFT",
+			"score": 1,
+			"word": "hoist"
+		},
+		{
+			"hint": "HOEFT",
+			"score": 1,
+			"word": "host"
+		},
+		{
+			"hint": "HEFT",
+			"score": 1,
+			"word": "heft"
+		},
+		{
+			"hint": "RAOFT",
+			"score": 1,
+			"word": "roost"
+		},
+		{
+			"hint": "RAFT",
+			"score": 1,
+			"word": "raft"
+		},
+		{
+			"hint": "ROEFT",
+			"score": 1,
+			"word": "roast"
+		},
+		{
+			"hint": "REUFT",
+			"score": 1,
+			"word": "rift"
+		},
+		{
+			"hint": "REFT",
+			"score": 1,
+			"word": "rest"
+		},
+		{
+			"hint": "RUFT",
+			"score": 1,
+			"word": "rust"
+		},
+		{
+			"hint": "AOEFT",
+			"score": 1,
+			"word": "east"
+		},
+		{
+			"hint": "AFT",
+			"score": 1,
+			"word": "aft"
+		},
+		{
+			"hint": "OUFT",
+			"score": 1,
+			"word": "oust"
+		},
+		{
+			"hint": "TKEUFBG",
+			"score": 1,
+			"word": "disk"
+		},
+		{
+			"hint": "TKEFBG",
+			"score": 1,
+			"word": "desk"
+		},
+		{
+			"hint": "TKUFBG",
+			"score": 1,
+			"word": "dusk"
+		},
+		{
+			"hint": "TPHRAFBG",
+			"score": 1,
+			"word": "flask"
+		},
+		{
+			"hint": "TPREUFBG",
+			"score": 1,
+			"word": "frisk"
+		},
+		{
+			"hint": "TAFBG",
+			"score": 1,
+			"word": "task"
+		},
+		{
+			"hint": "TUFBG",
+			"score": 1,
+			"word": "tusk"
+		},
+		{
+			"hint": "KAFBG",
+			"score": 1,
+			"word": "cask"
+		},
+		{
+			"hint": "PWREUFBG",
+			"score": 1,
+			"word": "brisk"
+		},
+		{
+			"hint": "PWAFBG",
+			"score": 1,
+			"word": "bask"
+		},
+		{
+			"hint": "PWEUFBG",
+			"score": 1,
+			"word": "bisque"
+		},
+		{
+			"hint": "PHAFBG",
+			"score": 1,
+			"word": "mask"
+		},
+		{
+			"hint": "PHOFBG",
+			"score": 1,
+			"word": "mosque"
+		},
+		{
+			"hint": "PHEUFBG",
+			"score": 1,
+			"word": "misc"
+		},
+		{
+			"hint": "PHUFBG",
+			"score": 1,
+			"word": "musk"
+		},
+		{
+			"hint": "HUFBG",
+			"score": 1,
+			"word": "husk"
+		},
+		{
+			"hint": "REUFBG",
+			"score": 1,
+			"word": "risk"
+		},
+		{
+			"hint": "AFBG",
+			"score": 1,
+			"word": "ask"
+		},
+		{
+			"hint": "SPAFPL",
+			"score": 1,
+			"word": "spasm"
+		},
+		{
+			"hint": "SHEUFPL",
+			"score": 1,
+			"word": "schism"
+		},
+		{
+			"hint": "KAFPL",
+			"score": 1,
+			"word": "chasm"
+		},
+		{
+			"hint": "PWHROFPL",
+			"score": 1,
+			"word": "blossom"
+		},
+		{
+			"hint": "PWOFPL",
+			"score": 1,
+			"word": "bosom"
+		},
+		{
+			"hint": "PHRAFPL",
+			"score": 1,
+			"word": "plasm"
+		},
+		{
+			"hint": "PREUFPL",
+			"score": 1,
+			"word": "prism"
+		}
+	]
+}

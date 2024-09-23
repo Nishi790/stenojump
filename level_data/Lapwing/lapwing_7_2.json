@@ -1,0 +1,115 @@
+{
+	"checkpoint": false,
+	"description": "Right hand clusters: 'ment' and 'let', written as -PLT and -LT. ",
+	"level": 28,
+	"next_level": "lapwing_7_3.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STARLT",
+			"score": 1,
+			"word": "starlet"
+		},
+		{
+			"hint": "TKPWALT",
+			"score": 1,
+			"word": "galette"
+		},
+		{
+			"hint": "SKARLT",
+			"score": 1,
+			"word": "scarlet"
+		},
+		{
+			"hint": "SKEULT",
+			"score": 1,
+			"word": "skillet"
+		},
+		{
+			"hint": "SRAOEULT",
+			"score": 1,
+			"word": "violet"
+		},
+		{
+			"hint": "TKPWARPLT",
+			"score": 1,
+			"word": "garment"
+		},
+		{
+			"hint": "TKPWULT",
+			"score": 1,
+			"word": "gullet"
+		},
+		{
+			"hint": "TPOEPLT",
+			"score": 1,
+			"word": "foment"
+		},
+		{
+			"hint": "TPERPLT",
+			"score": 1,
+			"word": "ferment"
+		},
+		{
+			"hint": "TORPLT",
+			"score": 1,
+			"word": "torment"
+		},
+		{
+			"hint": "KHREPLT",
+			"score": 1,
+			"word": "clement"
+		},
+		{
+			"hint": "KOLT",
+			"score": 1,
+			"word": "collet"
+		},
+		{
+			"hint": "PWULT",
+			"score": 1,
+			"word": "bullet"
+		},
+		{
+			"hint": "PHOEPLT",
+			"score": 1,
+			"word": "moment"
+		},
+		{
+			"hint": "PAEUPLT",
+			"score": 1,
+			"word": "payment"
+		},
+		{
+			"hint": "PALT",
+			"score": 1,
+			"word": "pallet"
+		},
+		{
+			"hint": "PEUPLT",
+			"score": 1,
+			"word": "pigment"
+		},
+		{
+			"hint": "PELT",
+			"score": 1,
+			"word": "pelt"
+		},
+		{
+			"hint": "WAULT",
+			"score": 1,
+			"word": "wallet"
+		},
+		{
+			"hint": "HRAPLT",
+			"score": 1,
+			"word": "lament"
+		},
+		{
+			"hint": "RAOULT",
+			"score": 1,
+			"word": "roulette"
+		}
+	]
+}

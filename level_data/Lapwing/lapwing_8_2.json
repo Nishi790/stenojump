@@ -1,0 +1,180 @@
+{
+	"checkpoint": false,
+	"description": "Left hand orthographic chords",
+	"level": 33,
+	"next_level": ".json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "TPA*EUS",
+			"score": 1,
+			"word": "phase"
+		},
+		{
+			"hint": "TPA*RPL",
+			"score": 1,
+			"word": "pharm"
+		},
+		{
+			"hint": "TPA*T",
+			"score": 1,
+			"word": "phat"
+		},
+		{
+			"hint": "TPO*EPB",
+			"score": 1,
+			"word": "phone"
+		},
+		{
+			"hint": "WRAUT",
+			"score": 1,
+			"word": "wrought"
+		},
+		{
+			"hint": "WRAP",
+			"score": 1,
+			"word": "wrap"
+		},
+		{
+			"hint": "WRABG",
+			"score": 1,
+			"word": "wrack"
+		},
+		{
+			"hint": "WROET",
+			"score": 1,
+			"word": "wrote"
+		},
+		{
+			"hint": "WROPBG",
+			"score": 1,
+			"word": "wrong"
+		},
+		{
+			"hint": "KHAFPL",
+			"score": 1,
+			"word": "chasm"
+		},
+		{
+			"hint": "KHORD",
+			"score": 1,
+			"word": "chord"
+		},
+		{
+			"hint": "WHAEUL",
+			"score": 1,
+			"word": "whale"
+		},
+		{
+			"hint": "WHAOEL",
+			"score": 1,
+			"word": "wheel"
+		},
+		{
+			"hint": "WHAEL",
+			"score": 1,
+			"word": "wheal"
+		},
+		{
+			"hint": "WHAOET",
+			"score": 1,
+			"word": "wheat"
+		},
+		{
+			"hint": "WHAP",
+			"score": 1,
+			"word": "whap"
+		},
+		{
+			"hint": "WHAPL",
+			"score": 1,
+			"word": "wham"
+		},
+		{
+			"hint": "WHABG",
+			"score": 1,
+			"word": "whack"
+		},
+		{
+			"hint": "WHOE",
+			"score": 1,
+			"word": "whoa"
+		},
+		{
+			"hint": "WHOEL",
+			"score": 1,
+			"word": "whole"
+		},
+		{
+			"hint": "WHORL",
+			"score": 1,
+			"word": "whorl"
+		},
+		{
+			"hint": "WHOP",
+			"score": 1,
+			"word": "whop"
+		},
+		{
+			"hint": "WHEPB",
+			"score": 1,
+			"word": "when"
+		},
+		{
+			"hint": "WHAOUS",
+			"score": 1,
+			"word": "whose"
+		},
+		{
+			"hint": "KRAOEUT",
+			"score": 1,
+			"word": "cite"
+		},
+		{
+			"hint": "KREUFT",
+			"score": 1,
+			"word": "cyst"
+		},
+		{
+			"hint": "KREPBT",
+			"score": 1,
+			"word": "cent"
+		},
+		{
+			"hint": "KREPBTS",
+			"score": 1,
+			"word": "cents"
+		},
+		{
+			"hint": "KREL",
+			"score": 1,
+			"word": "cell"
+		},
+		{
+			"hint": "POEUS",
+			"score": 1,
+			"word": "poise"
+		},
+		{
+			"hint": "PWRAOUS",
+			"score": 1,
+			"word": "bruise"
+		},
+		{
+			"hint": "KRAOUS",
+			"score": 1,
+			"word": "cruise"
+		},
+		{
+			"hint": "KHAOS",
+			"score": 1,
+			"word": "choose"
+		},
+		{
+			"hint": "AOUS",
+			"score": 1,
+			"word": "use"
+		}
+	]
+}

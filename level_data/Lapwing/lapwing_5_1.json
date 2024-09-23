@@ -1,0 +1,235 @@
+{
+	"checkpoint": false,
+	"description": "Right hand 'v', using F, or *F if there is a conflict with a word with 'f'.",
+	"level": 19,
+	"next_level": "lapwing_5_2.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STAEUF",
+			"score": 1,
+			"word": "stave"
+		},
+		{
+			"hint": "STOEF",
+			"score": 1,
+			"word": "stove"
+		},
+		{
+			"hint": "SKWRAOEUF",
+			"score": 1,
+			"word": "jive"
+		},
+		{
+			"hint": "SKAOEF",
+			"score": 1,
+			"word": "skeeve"
+		},
+		{
+			"hint": "SKAF",
+			"score": 1,
+			"word": "scav"
+		},
+		{
+			"hint": "SWAUF",
+			"score": 1,
+			"word": "suave"
+		},
+		{
+			"hint": "SHRAOEF",
+			"score": 1,
+			"word": "sleeve"
+		},
+		{
+			"hint": "SHRAEUF",
+			"score": 1,
+			"word": "slave"
+		},
+		{
+			"hint": "SHAEUF",
+			"score": 1,
+			"word": "shave"
+		},
+		{
+			"hint": "SHOF",
+			"score": 1,
+			"word": "shove"
+		},
+		{
+			"hint": "SHEUF",
+			"score": 1,
+			"word": "shiv"
+		},
+		{
+			"hint": "SOF",
+			"score": 1,
+			"word": "solve"
+		},
+		{
+			"hint": "SEUF",
+			"score": 1,
+			"word": "sieve"
+		},
+		{
+			"hint": "TKPWHROF",
+			"score": 1,
+			"word": "glove"
+		},
+		{
+			"hint": "TKPWRAOF",
+			"score": 1,
+			"word": "groove"
+		},
+		{
+			"hint": "TKPWRAEUF",
+			"score": 1,
+			"word": "grave"
+		},
+		{
+			"hint": "TKPWROEF",
+			"score": 1,
+			"word": "grove"
+		},
+		{
+			"hint": "TKPWAEUF",
+			"score": 1,
+			"word": "gave"
+		},
+		{
+			"hint": "TKPWEUF",
+			"score": 1,
+			"word": "give"
+		},
+		{
+			"hint": "TKRAOEUF",
+			"score": 1,
+			"word": "drive"
+		},
+		{
+			"hint": "TKROEF",
+			"score": 1,
+			"word": "drove"
+		},
+		{
+			"hint": "TKAOEUF",
+			"score": 1,
+			"word": "dive"
+		},
+		{
+			"hint": "TPHAEUF",
+			"score": 1,
+			"word": "nave"
+		},
+		{
+			"hint": "TPAOEUF",
+			"score": 1,
+			"word": "five"
+		},
+		{
+			"hint": "TPAEUF",
+			"score": 1,
+			"word": "fave"
+		},
+		{
+			"hint": "THRAOEUF",
+			"score": 1,
+			"word": "thrive"
+		},
+		{
+			"hint": "TROEF",
+			"score": 1,
+			"word": "trove"
+		},
+		{
+			"hint": "KHRAOEF",
+			"score": 1,
+			"word": "cleave"
+		},
+		{
+			"hint": "KHROEF",
+			"score": 1,
+			"word": "clove"
+		},
+		{
+			"hint": "KHAOEUF",
+			"score": 1,
+			"word": "chive"
+		},
+		{
+			"hint": "KRAEUF",
+			"score": 1,
+			"word": "crave"
+		},
+		{
+			"hint": "KAEUF",
+			"score": 1,
+			"word": "cave"
+		},
+		{
+			"hint": "PWRAEUF",
+			"score": 1,
+			"word": "brave"
+		},
+		{
+			"hint": "PHAOUF",
+			"score": 1,
+			"word": "move"
+		},
+		{
+			"hint": "PRAOUF",
+			"score": 1,
+			"word": "prove"
+		},
+		{
+			"hint": "PAOEF",
+			"score": 1,
+			"word": "peeve"
+		},
+		{
+			"hint": "PAEUF",
+			"score": 1,
+			"word": "pave"
+		},
+		{
+			"hint": "WAOEF",
+			"score": 1,
+			"word": "weave"
+		},
+		{
+			"hint": "HROF",
+			"score": 1,
+			"word": "love"
+		},
+		{
+			"hint": "HREUF",
+			"score": 1,
+			"word": "live"
+		},
+		{
+			"hint": "HAOEUF",
+			"score": 1,
+			"word": "hive"
+		},
+		{
+			"hint": "HAOEF",
+			"score": 1,
+			"word": "heave"
+		},
+		{
+			"hint": "RAEUF",
+			"score": 1,
+			"word": "rave"
+		},
+		{
+			"hint": "ROEF",
+			"score": 1,
+			"word": "rove"
+		},
+		{
+			"hint": "AOEF",
+			"score": 1,
+			"word": "eve"
+		}
+	]
+}

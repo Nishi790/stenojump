@@ -1,0 +1,840 @@
+{
+	"checkpoint": false,
+	"description": "Right hand 'rve', 'rf', 'ng', and 'nk', written -FRB, *FRB, -PBG, *PBG",
+	"level": 24,
+	"next_level": "lapwing_6_3.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STAFRB",
+			"score": 1,
+			"word": "starve"
+		},
+		{
+			"hint": "SWEFRB",
+			"score": 1,
+			"word": "swerve"
+		},
+		{
+			"hint": "SREFRB",
+			"score": 1,
+			"word": "verve"
+		},
+		{
+			"hint": "SEFRB",
+			"score": 1,
+			"word": "serve"
+		},
+		{
+			"hint": "TPHEFRB",
+			"score": 1,
+			"word": "nerve"
+		},
+		{
+			"hint": "KAFRB",
+			"score": 1,
+			"word": "carve"
+		},
+		{
+			"hint": "KUFRB",
+			"score": 1,
+			"word": "curve"
+		},
+		{
+			"hint": "PEFRB",
+			"score": 1,
+			"word": "perve"
+		},
+		{
+			"hint": "SKA*FRB",
+			"score": 1,
+			"word": "scarf"
+		},
+		{
+			"hint": "SK*UFRB",
+			"score": 1,
+			"word": "scurf"
+		},
+		{
+			"hint": "SPH*UFRB",
+			"score": 1,
+			"word": "smurf"
+		},
+		{
+			"hint": "S*EFRB",
+			"score": 1,
+			"word": "serf"
+		},
+		{
+			"hint": "S*UFRB",
+			"score": 1,
+			"word": "surf"
+		},
+		{
+			"hint": "TKWA*FRB",
+			"score": 1,
+			"word": "dwarf"
+		},
+		{
+			"hint": "TPH*EFRB",
+			"score": 1,
+			"word": "nerf"
+		},
+		{
+			"hint": "T*UFRB",
+			"score": 1,
+			"word": "turf"
+		},
+		{
+			"hint": "PHO*FRB",
+			"score": 1,
+			"word": "morph"
+		},
+		{
+			"hint": "P*EFRB",
+			"score": 1,
+			"word": "perf"
+		},
+		{
+			"hint": "WHA*FRB",
+			"score": 1,
+			"word": "wharf"
+		},
+		{
+			"hint": "STRAEUPBG",
+			"score": 1,
+			"word": "strange"
+		},
+		{
+			"hint": "STROPBG",
+			"score": 1,
+			"word": "strong"
+		},
+		{
+			"hint": "STREUPBG",
+			"score": 1,
+			"word": "string"
+		},
+		{
+			"hint": "STRUPBG",
+			"score": 1,
+			"word": "strung"
+		},
+		{
+			"hint": "STEUPBG",
+			"score": 1,
+			"word": "sting"
+		},
+		{
+			"hint": "STUPBG",
+			"score": 1,
+			"word": "stung"
+		},
+		{
+			"hint": "SKROUPBG",
+			"score": 1,
+			"word": "scrounge"
+		},
+		{
+			"hint": "SPHRUPBG",
+			"score": 1,
+			"word": "splunge"
+		},
+		{
+			"hint": "SPRAPBG",
+			"score": 1,
+			"word": "sprang"
+		},
+		{
+			"hint": "SPREUPBG",
+			"score": 1,
+			"word": "spring"
+		},
+		{
+			"hint": "SPRUPBG",
+			"score": 1,
+			"word": "sprung"
+		},
+		{
+			"hint": "SPAPBG",
+			"score": 1,
+			"word": "spang"
+		},
+		{
+			"hint": "SPOPBG",
+			"score": 1,
+			"word": "sponge"
+		},
+		{
+			"hint": "SWEUPBG",
+			"score": 1,
+			"word": "swing"
+		},
+		{
+			"hint": "SWUPBG",
+			"score": 1,
+			"word": "swung"
+		},
+		{
+			"hint": "SHRAPBG",
+			"score": 1,
+			"word": "slang"
+		},
+		{
+			"hint": "SHREUPBG",
+			"score": 1,
+			"word": "sling"
+		},
+		{
+			"hint": "SHRUPBG",
+			"score": 1,
+			"word": "slung"
+		},
+		{
+			"hint": "SAPBG",
+			"score": 1,
+			"word": "sang"
+		},
+		{
+			"hint": "SOPBG",
+			"score": 1,
+			"word": "song"
+		},
+		{
+			"hint": "SEUPBG",
+			"score": 1,
+			"word": "sing"
+		},
+		{
+			"hint": "SUPBG",
+			"score": 1,
+			"word": "sung"
+		},
+		{
+			"hint": "TKPWRAEUPBG",
+			"score": 1,
+			"word": "grange"
+		},
+		{
+			"hint": "TKPWRUPBG",
+			"score": 1,
+			"word": "grunge"
+		},
+		{
+			"hint": "TKPWAPBG",
+			"score": 1,
+			"word": "gang"
+		},
+		{
+			"hint": "TKPWOPBG",
+			"score": 1,
+			"word": "gong"
+		},
+		{
+			"hint": "TKAPBG",
+			"score": 1,
+			"word": "dang"
+		},
+		{
+			"hint": "TKOPBG",
+			"score": 1,
+			"word": "dong"
+		},
+		{
+			"hint": "TKEUPBG",
+			"score": 1,
+			"word": "ding"
+		},
+		{
+			"hint": "TKUPBG",
+			"score": 1,
+			"word": "dung"
+		},
+		{
+			"hint": "TPHRAPBG",
+			"score": 1,
+			"word": "flange"
+		},
+		{
+			"hint": "TPHREUPBG",
+			"score": 1,
+			"word": "fling"
+		},
+		{
+			"hint": "TPHRUPBG",
+			"score": 1,
+			"word": "flung"
+		},
+		{
+			"hint": "TPREUPBG",
+			"score": 1,
+			"word": "fringe"
+		},
+		{
+			"hint": "TPAPBG",
+			"score": 1,
+			"word": "fang"
+		},
+		{
+			"hint": "TPUPBG",
+			"score": 1,
+			"word": "fung"
+		},
+		{
+			"hint": "TWEUPBG",
+			"score": 1,
+			"word": "twinge"
+		},
+		{
+			"hint": "THROPBG",
+			"score": 1,
+			"word": "throng"
+		},
+		{
+			"hint": "THEUPBG",
+			"score": 1,
+			"word": "thing"
+		},
+		{
+			"hint": "TAPBG",
+			"score": 1,
+			"word": "tang"
+		},
+		{
+			"hint": "TOPBG",
+			"score": 1,
+			"word": "tong"
+		},
+		{
+			"hint": "TEUPBG",
+			"score": 1,
+			"word": "tinge"
+		},
+		{
+			"hint": "TUPBG",
+			"score": 1,
+			"word": "tung"
+		},
+		{
+			"hint": "KWHUPBG",
+			"score": 1,
+			"word": "young"
+		},
+		{
+			"hint": "KHRAPBG",
+			"score": 1,
+			"word": "clang"
+		},
+		{
+			"hint": "KHREUPBG",
+			"score": 1,
+			"word": "cling"
+		},
+		{
+			"hint": "KHRUPBG",
+			"score": 1,
+			"word": "clung"
+		},
+		{
+			"hint": "KHAEUPBG",
+			"score": 1,
+			"word": "change"
+		},
+		{
+			"hint": "KREUPBG",
+			"score": 1,
+			"word": "cringe"
+		},
+		{
+			"hint": "KEUPBG",
+			"score": 1,
+			"word": "king"
+		},
+		{
+			"hint": "PWHREUPBG",
+			"score": 1,
+			"word": "bling"
+		},
+		{
+			"hint": "PWREUPBG",
+			"score": 1,
+			"word": "bring"
+		},
+		{
+			"hint": "PWRUPBG",
+			"score": 1,
+			"word": "brung"
+		},
+		{
+			"hint": "PWAPBG",
+			"score": 1,
+			"word": "bang"
+		},
+		{
+			"hint": "PWOEUPBG",
+			"score": 1,
+			"word": "boing"
+		},
+		{
+			"hint": "PWOPBG",
+			"score": 1,
+			"word": "bong"
+		},
+		{
+			"hint": "PWEUPBG",
+			"score": 1,
+			"word": "binge"
+		},
+		{
+			"hint": "PWUPBG",
+			"score": 1,
+			"word": "bung"
+		},
+		{
+			"hint": "PHRUPBG",
+			"score": 1,
+			"word": "plunge"
+		},
+		{
+			"hint": "PHAEUPBG",
+			"score": 1,
+			"word": "mange"
+		},
+		{
+			"hint": "PHUPBG",
+			"score": 1,
+			"word": "mung"
+		},
+		{
+			"hint": "PRAPBG",
+			"score": 1,
+			"word": "prang"
+		},
+		{
+			"hint": "PROPBG",
+			"score": 1,
+			"word": "prong"
+		},
+		{
+			"hint": "PAPBG",
+			"score": 1,
+			"word": "pang"
+		},
+		{
+			"hint": "POPBG",
+			"score": 1,
+			"word": "pong"
+		},
+		{
+			"hint": "PEUPBG",
+			"score": 1,
+			"word": "ping"
+		},
+		{
+			"hint": "WAPBG",
+			"score": 1,
+			"word": "wang"
+		},
+		{
+			"hint": "HRAPBG",
+			"score": 1,
+			"word": "lang"
+		},
+		{
+			"hint": "HROUPBG",
+			"score": 1,
+			"word": "lounge"
+		},
+		{
+			"hint": "HROPBG",
+			"score": 1,
+			"word": "long"
+		},
+		{
+			"hint": "HREUPBG",
+			"score": 1,
+			"word": "ling"
+		},
+		{
+			"hint": "HRUPBG",
+			"score": 1,
+			"word": "lung"
+		},
+		{
+			"hint": "HAPBG",
+			"score": 1,
+			"word": "hang"
+		},
+		{
+			"hint": "HEUPBG",
+			"score": 1,
+			"word": "hinge"
+		},
+		{
+			"hint": "HUPBG",
+			"score": 1,
+			"word": "hung"
+		},
+		{
+			"hint": "RAEUPBG",
+			"score": 1,
+			"word": "range"
+		},
+		{
+			"hint": "RAPBG",
+			"score": 1,
+			"word": "rang"
+		},
+		{
+			"hint": "REUPBG",
+			"score": 1,
+			"word": "ring"
+		},
+		{
+			"hint": "RUPBG",
+			"score": 1,
+			"word": "rung"
+		},
+		{
+			"hint": "EPBG",
+			"score": 1,
+			"word": "eng"
+		},
+		{
+			"hint": "STA*PBG",
+			"score": 1,
+			"word": "stank"
+		},
+		{
+			"hint": "STO*PBG",
+			"score": 1,
+			"word": "stonk"
+		},
+		{
+			"hint": "ST*EUPBG",
+			"score": 1,
+			"word": "stink"
+		},
+		{
+			"hint": "ST*UPBG",
+			"score": 1,
+			"word": "stunk"
+		},
+		{
+			"hint": "SKWRA*PBG",
+			"score": 1,
+			"word": "jank"
+		},
+		{
+			"hint": "SKWR*UPBG",
+			"score": 1,
+			"word": "junk"
+		},
+		{
+			"hint": "SKA*PBG",
+			"score": 1,
+			"word": "skank"
+		},
+		{
+			"hint": "SK*EUPBG",
+			"score": 1,
+			"word": "skink"
+		},
+		{
+			"hint": "SK*UPBG",
+			"score": 1,
+			"word": "skunk"
+		},
+		{
+			"hint": "SWA*PBG",
+			"score": 1,
+			"word": "swank"
+		},
+		{
+			"hint": "SHRAO*EPBG",
+			"score": 1,
+			"word": "slink"
+		},
+		{
+			"hint": "SHRA*PBG",
+			"score": 1,
+			"word": "shrank"
+		},
+		{
+			"hint": "SHR*EUPBG",
+			"score": 1,
+			"word": "shrink"
+		},
+		{
+			"hint": "SHR*UPBG",
+			"score": 1,
+			"word": "shrunk"
+		},
+		{
+			"hint": "SHA*PBG",
+			"score": 1,
+			"word": "shank"
+		},
+		{
+			"hint": "SA*PBG",
+			"score": 1,
+			"word": "sank"
+		},
+		{
+			"hint": "S*EUPBG",
+			"score": 1,
+			"word": "sink"
+		},
+		{
+			"hint": "S*UPBG",
+			"score": 1,
+			"word": "sunk"
+		},
+		{
+			"hint": "TKPW*UPBG",
+			"score": 1,
+			"word": "gunk"
+		},
+		{
+			"hint": "TKRA*PBG",
+			"score": 1,
+			"word": "drank"
+		},
+		{
+			"hint": "TKR*EUPBG",
+			"score": 1,
+			"word": "drink"
+		},
+		{
+			"hint": "TKR*UPBG",
+			"score": 1,
+			"word": "drunk"
+		},
+		{
+			"hint": "TKA*PBG",
+			"score": 1,
+			"word": "dank"
+		},
+		{
+			"hint": "TK*UPBG",
+			"score": 1,
+			"word": "dunk"
+		},
+		{
+			"hint": "TPHR*UPBG",
+			"score": 1,
+			"word": "flunk"
+		},
+		{
+			"hint": "TPRA*PBG",
+			"score": 1,
+			"word": "frank"
+		},
+		{
+			"hint": "TP*EUPBG",
+			"score": 1,
+			"word": "fink"
+		},
+		{
+			"hint": "TP*UPBG",
+			"score": 1,
+			"word": "funk"
+		},
+		{
+			"hint": "TW*EUPBG",
+			"score": 1,
+			"word": "twink"
+		},
+		{
+			"hint": "THA*PBG",
+			"score": 1,
+			"word": "thank"
+		},
+		{
+			"hint": "THO*PBG",
+			"score": 1,
+			"word": "thonk"
+		},
+		{
+			"hint": "TH*EUPBG",
+			"score": 1,
+			"word": "think"
+		},
+		{
+			"hint": "TH*UPBG",
+			"score": 1,
+			"word": "thunk"
+		},
+		{
+			"hint": "TR*UPBG",
+			"score": 1,
+			"word": "trunk"
+		},
+		{
+			"hint": "TA*PBG",
+			"score": 1,
+			"word": "tank"
+		},
+		{
+			"hint": "KWHA*PBG",
+			"score": 1,
+			"word": "yank"
+		},
+		{
+			"hint": "KHRA*PBG",
+			"score": 1,
+			"word": "clank"
+		},
+		{
+			"hint": "KHR*EUPBG",
+			"score": 1,
+			"word": "clink"
+		},
+		{
+			"hint": "KHR*UPBG",
+			"score": 1,
+			"word": "clunk"
+		},
+		{
+			"hint": "KH*UPBG",
+			"score": 1,
+			"word": "chunk"
+		},
+		{
+			"hint": "KRA*PBG",
+			"score": 1,
+			"word": "crank"
+		},
+		{
+			"hint": "PWHRA*PBG",
+			"score": 1,
+			"word": "blank"
+		},
+		{
+			"hint": "PWHR*EUPBG",
+			"score": 1,
+			"word": "blink"
+		},
+		{
+			"hint": "PWR*EUPBG",
+			"score": 1,
+			"word": "brink"
+		},
+		{
+			"hint": "PWA*PBG",
+			"score": 1,
+			"word": "bank"
+		},
+		{
+			"hint": "PWO*PBG",
+			"score": 1,
+			"word": "bonk"
+		},
+		{
+			"hint": "PW*UPBG",
+			"score": 1,
+			"word": "bunk"
+		},
+		{
+			"hint": "PHRA*PBG",
+			"score": 1,
+			"word": "plank"
+		},
+		{
+			"hint": "PHRO*PBG",
+			"score": 1,
+			"word": "plonk"
+		},
+		{
+			"hint": "PHR*EUPBG",
+			"score": 1,
+			"word": "plink"
+		},
+		{
+			"hint": "PHR*UPBG",
+			"score": 1,
+			"word": "plunk"
+		},
+		{
+			"hint": "PHO*PBG",
+			"score": 1,
+			"word": "monk"
+		},
+		{
+			"hint": "PH*EUPBG",
+			"score": 1,
+			"word": "mink"
+		},
+		{
+			"hint": "PRA*PBG",
+			"score": 1,
+			"word": "prank"
+		},
+		{
+			"hint": "P*EUPBG",
+			"score": 1,
+			"word": "pink"
+		},
+		{
+			"hint": "P*UPBG",
+			"score": 1,
+			"word": "punk"
+		},
+		{
+			"hint": "WA*PBG",
+			"score": 1,
+			"word": "wank"
+		},
+		{
+			"hint": "WO*PBG",
+			"score": 1,
+			"word": "wonk"
+		},
+		{
+			"hint": "W*EUPBG",
+			"score": 1,
+			"word": "wink"
+		},
+		{
+			"hint": "HRA*PBG",
+			"score": 1,
+			"word": "lank"
+		},
+		{
+			"hint": "HR*EUPBG",
+			"score": 1,
+			"word": "link"
+		},
+		{
+			"hint": "HA*PBG",
+			"score": 1,
+			"word": "hank"
+		},
+		{
+			"hint": "HO*PBG",
+			"score": 1,
+			"word": "honk"
+		},
+		{
+			"hint": "H*UPBG",
+			"score": 1,
+			"word": "hunk"
+		},
+		{
+			"hint": "RA*PBG",
+			"score": 1,
+			"word": "rank"
+		},
+		{
+			"hint": "R*EUPBG",
+			"score": 1,
+			"word": "rink"
+		},
+		{
+			"hint": "*EUPBG",
+			"score": 1,
+			"word": "ink"
+		}
+	]
+}

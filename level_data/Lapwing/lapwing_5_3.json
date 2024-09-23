@@ -1,0 +1,245 @@
+{
+	"checkpoint": false,
+	"description": "Right hand 'mp', 'th', and 'lk', written *PL, *T, and *LG",
+	"level": 21,
+	"next_level": "lapwing_5_review.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "SKA*EUT",
+			"score": 1,
+			"word": "scathe"
+		},
+		{
+			"hint": "SKA*PL",
+			"score": 1,
+			"word": "scamp"
+		},
+		{
+			"hint": "SWA*UPL",
+			"score": 1,
+			"word": "swamp"
+		},
+		{
+			"hint": "SWA*UT",
+			"score": 1,
+			"word": "swathe"
+		},
+		{
+			"hint": "SHRO*T",
+			"score": 1,
+			"word": "sloth"
+		},
+		{
+			"hint": "SHA*ET",
+			"score": 1,
+			"word": "sheath"
+		},
+		{
+			"hint": "SRA*PL",
+			"score": 1,
+			"word": "vamp"
+		},
+		{
+			"hint": "SO*UT",
+			"score": 1,
+			"word": "south"
+		},
+		{
+			"hint": "TKPWRA*PL",
+			"score": 1,
+			"word": "gramp"
+		},
+		{
+			"hint": "TKPWRO*ET",
+			"score": 1,
+			"word": "growth"
+		},
+		{
+			"hint": "TKA*UT",
+			"score": 1,
+			"word": "doth"
+		},
+		{
+			"hint": "TKA*PL",
+			"score": 1,
+			"word": "damp"
+		},
+		{
+			"hint": "TPRO*T",
+			"score": 1,
+			"word": "froth"
+		},
+		{
+			"hint": "TPA*EUT",
+			"score": 1,
+			"word": "faith"
+		},
+		{
+			"hint": "TRA*PL",
+			"score": 1,
+			"word": "tramp"
+		},
+		{
+			"hint": "TRO*T",
+			"score": 1,
+			"word": "troth"
+		},
+		{
+			"hint": "TA*PL",
+			"score": 1,
+			"word": "tamp"
+		},
+		{
+			"hint": "TA*LG",
+			"score": 1,
+			"word": "talc"
+		},
+		{
+			"hint": "KHRA*PL",
+			"score": 1,
+			"word": "clamp"
+		},
+		{
+			"hint": "KHRO*ET",
+			"score": 1,
+			"word": "clothe"
+		},
+		{
+			"hint": "KHRO*PL",
+			"score": 1,
+			"word": "clomp"
+		},
+		{
+			"hint": "KHRO*T",
+			"score": 1,
+			"word": "cloth"
+		},
+		{
+			"hint": "KHA*PL",
+			"score": 1,
+			"word": "champ"
+		},
+		{
+			"hint": "KHO*PL",
+			"score": 1,
+			"word": "chomp"
+		},
+		{
+			"hint": "KRA*PL",
+			"score": 1,
+			"word": "cramp"
+		},
+		{
+			"hint": "KA*PL",
+			"score": 1,
+			"word": "camp"
+		},
+		{
+			"hint": "KA*LG",
+			"score": 1,
+			"word": "calc"
+		},
+		{
+			"hint": "KO*PL",
+			"score": 1,
+			"word": "comp"
+		},
+		{
+			"hint": "PWRO*T",
+			"score": 1,
+			"word": "broth"
+		},
+		{
+			"hint": "PWA*EUT",
+			"score": 1,
+			"word": "bathe"
+		},
+		{
+			"hint": "PWA*T",
+			"score": 1,
+			"word": "bath"
+		},
+		{
+			"hint": "PWO*ET",
+			"score": 1,
+			"word": "both"
+		},
+		{
+			"hint": "PHA*T",
+			"score": 1,
+			"word": "math"
+		},
+		{
+			"hint": "PHO*UT",
+			"score": 1,
+			"word": "mouth"
+		},
+		{
+			"hint": "PHO*T",
+			"score": 1,
+			"word": "moth"
+		},
+		{
+			"hint": "PA*T",
+			"score": 1,
+			"word": "path"
+		},
+		{
+			"hint": "PO*PL",
+			"score": 1,
+			"word": "pomp"
+		},
+		{
+			"hint": "HRA*EUT",
+			"score": 1,
+			"word": "lathe"
+		},
+		{
+			"hint": "HRA*PL",
+			"score": 1,
+			"word": "lamp"
+		},
+		{
+			"hint": "HRA*T",
+			"score": 1,
+			"word": "lath"
+		},
+		{
+			"hint": "HRO*ET",
+			"score": 1,
+			"word": "loathe"
+		},
+		{
+			"hint": "HA*T",
+			"score": 1,
+			"word": "hath"
+		},
+		{
+			"hint": "RA*PL",
+			"score": 1,
+			"word": "ramp"
+		},
+		{
+			"hint": "RO*PL",
+			"score": 1,
+			"word": "romp"
+		},
+		{
+			"hint": "A*UT",
+			"score": 1,
+			"word": "auth"
+		},
+		{
+			"hint": "A*PL",
+			"score": 1,
+			"word": "amp"
+		},
+		{
+			"hint": "O*ET",
+			"score": 1,
+			"word": "oath"
+		}
+	]
+}

@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="3_mso1w"]
 [ext_resource type="Script" path="res://LevelCreator/save_confirmed.gd" id="4_66ijc"]
 
-[node name="LevelCreator" type="Control" node_paths=PackedStringArray("edit_existing_button", "new_level_button", "save_path_button", "file_selector", "save_file_name", "level_number_selector", "level_size_selector", "level_order_selector", "checkpoint_selector", "next_level_path_edit", "next_level_file_button", "select_targets_from_file_button", "tsv_text_box", "parse_tsv_button", "plain_text_box", "parse_text_button", "save_button", "save_complete_pop_up", "target_list", "manual_entry_button", "menu_button", "quit_button")]
+[node name="LevelCreator" type="Control" node_paths=PackedStringArray("edit_existing_button", "new_level_button", "save_path_button", "file_selector", "save_file_name", "level_number_selector", "level_description", "level_size_selector", "level_order_selector", "checkpoint_selector", "next_level_path_edit", "next_level_file_button", "select_targets_from_file_button", "tsv_text_box", "parse_tsv_button", "plain_text_box", "parse_text_button", "save_button", "save_complete_pop_up", "target_list", "manual_entry_button", "menu_button", "quit_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,22 +14,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mso1w")
 script = ExtResource("1_5ijgv")
-edit_existing_button = NodePath("Background/VBoxContainer/Split/LevelElements/HBoxContainer/EditLevel")
-new_level_button = NodePath("Background/VBoxContainer/Split/LevelElements/HBoxContainer/NewLevel")
-save_path_button = NodePath("Background/VBoxContainer/Split/LevelElements/SavePathButton")
+edit_existing_button = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/HBoxContainer/EditLevel")
+new_level_button = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/HBoxContainer/NewLevel")
+save_path_button = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/SavePathButton")
 file_selector = NodePath("Background/FileDialog")
-save_file_name = NodePath("Background/VBoxContainer/Split/LevelElements/SaveFileName")
-level_number_selector = NodePath("Background/VBoxContainer/Split/LevelElements/LvlNum/LevelNumber")
-level_size_selector = NodePath("Background/VBoxContainer/Split/LevelElements/LvlSze/LevelSize")
-level_order_selector = NodePath("Background/VBoxContainer/Split/LevelElements/OrderCntr/Orders")
-checkpoint_selector = NodePath("Background/VBoxContainer/Split/LevelElements/CheckpointCntr/IsCheckpoint")
-next_level_path_edit = NodePath("Background/VBoxContainer/Split/LevelElements/NextLevelCntr/NextLevelPath")
-next_level_file_button = NodePath("Background/VBoxContainer/Split/LevelElements/SelectNextLevel")
-select_targets_from_file_button = NodePath("Background/VBoxContainer/Split/LevelElements/TargetsFromFile")
-tsv_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/TSVCSVCopyPaste")
-parse_tsv_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParseTSV")
-plain_text_box = NodePath("Background/VBoxContainer/Split/LevelElements/PlainTextCopyPaste")
-parse_text_button = NodePath("Background/VBoxContainer/Split/LevelElements/ParsePlainText")
+save_file_name = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/SaveFileName")
+level_number_selector = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/LvlNum/LevelNumber")
+level_description = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/Desc/TextEdit")
+level_size_selector = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/LvlSze/LevelSize")
+level_order_selector = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/OrderCntr/Orders")
+checkpoint_selector = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/CheckpointCntr/IsCheckpoint")
+next_level_path_edit = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/NextLevelCntr/NextLevelPath")
+next_level_file_button = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/SelectNextLevel")
+select_targets_from_file_button = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/TargetsFromFile")
+tsv_text_box = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/TSVCSVCopyPaste")
+parse_tsv_button = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/ParseTSV")
+plain_text_box = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/PlainTextCopyPaste")
+parse_text_button = NodePath("Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/ParsePlainText")
 save_button = NodePath("Background/VBoxContainer/ReturnOrganizer/Save")
 save_complete_pop_up = NodePath("Background/SaveConfirmed")
 target_list = NodePath("Background/VBoxContainer/Split/ScrollContainer/TargetSide/TargetList")
@@ -54,68 +55,93 @@ layout_mode = 2
 [node name="Split" type="HSplitContainer" parent="Background/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 680
 
-[node name="LevelElements" type="VBoxContainer" parent="Background/VBoxContainer/Split"]
+[node name="ScrollLevelElements" type="ScrollContainer" parent="Background/VBoxContainer/Split"]
 layout_mode = 2
-size_flags_stretch_ratio = 2.0
+size_flags_horizontal = 3
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelElements" type="VBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 
-[node name="EditLevel" type="Button" parent="Background/VBoxContainer/Split/LevelElements/HBoxContainer"]
+[node name="EditLevel" type="Button" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Edit Existing Level"
 
-[node name="NewLevel" type="Button" parent="Background/VBoxContainer/Split/LevelElements/HBoxContainer"]
+[node name="NewLevel" type="Button" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create New Level"
 
-[node name="SavePathButton" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="SavePathButton" type="Button" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 text = "Select Level Path"
 
-[node name="SaveFileName" type="LineEdit" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="SaveFileName" type="LineEdit" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 placeholder_text = "Enter level file name"
 
-[node name="LvlNum" type="HBoxContainer" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="LvlNum" type="HBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/LvlNum"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/LvlNum"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Level Number:"
 fit_content = true
 
-[node name="LevelNumber" type="SpinBox" parent="Background/VBoxContainer/Split/LevelElements/LvlNum"]
+[node name="LevelNumber" type="SpinBox" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/LvlNum"]
 layout_mode = 2
 
-[node name="LvlSze" type="HBoxContainer" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="Desc" type="HBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/LvlSze"]
+[node name="Label" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/Desc"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Level Description:"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/Desc"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "This description will display when selecting this level in speed build mode."
+wrap_mode = 1
+
+[node name="LvlSze" type="HBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/LvlSze"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Level Size:"
 fit_content = true
 
-[node name="LevelSize" type="SpinBox" parent="Background/VBoxContainer/Split/LevelElements/LvlSze"]
+[node name="LevelSize" type="SpinBox" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/LvlSze"]
 layout_mode = 2
 
-[node name="OrderCntr" type="HBoxContainer" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="OrderCntr" type="HBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/OrderCntr"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/OrderCntr"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Default Level Order:"
 fit_content = true
 
-[node name="Orders" type="OptionButton" parent="Background/VBoxContainer/Split/LevelElements/OrderCntr"]
+[node name="Orders" type="OptionButton" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/OrderCntr"]
 layout_mode = 2
 selected = 0
 item_count = 2
@@ -123,15 +149,15 @@ popup/item_0/text = "Random"
 popup/item_1/text = "Ordered"
 popup/item_1/id = 1
 
-[node name="CheckpointCntr" type="HBoxContainer" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="CheckpointCntr" type="HBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 
-[node name="IsCheckpoint" type="CheckBox" parent="Background/VBoxContainer/Split/LevelElements/CheckpointCntr"]
+[node name="IsCheckpoint" type="CheckBox" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/CheckpointCntr"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/CheckpointCntr"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/CheckpointCntr"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -140,29 +166,29 @@ text = "This level is a checkpoint:
 Players can resume from this level if they lose all lives in a future level."
 fit_content = true
 
-[node name="NextLevelCntr" type="HBoxContainer" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="NextLevelCntr" type="HBoxContainer" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements/NextLevelCntr"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/NextLevelCntr"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Path to next level:"
 fit_content = true
 
-[node name="NextLevelPath" type="LineEdit" parent="Background/VBoxContainer/Split/LevelElements/NextLevelCntr"]
+[node name="NextLevelPath" type="LineEdit" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements/NextLevelCntr"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 text = "Enter an absolute path unless the next level is found in the level_data folder. If linking to a level_data file, you can simply provide the file name. "
 fit_content = true
 
-[node name="SelectNextLevel" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="SelectNextLevel" type="Button" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 text = "Select next level from file system"
 
-[node name="TargetInstructions" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="TargetInstructions" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 text = "A list of target words in a plain text file can be converted into a level automatically by selecting it below. 
 
@@ -171,40 +197,40 @@ For varied points per obstacle and hints, provide a comma or tab separated list 
 Reviewing and, if needed, editing the generated items is recommended before saving. All entries can be manually edited. "
 fit_content = true
 
-[node name="TargetsFromFile" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="TargetsFromFile" type="Button" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 text = "Add targets from a file"
 
-[node name="CopyPasteInstructions" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="CopyPasteInstructions" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 text = "If you have your elements in a plain text format as a tab or comma separated list, you can copy and paste it below to generate as if from a file. "
 fit_content = true
 
-[node name="TSVCSVCopyPaste" type="TextEdit" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="TSVCSVCopyPaste" type="TextEdit" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Paste your list here with one target word per line, followed by the hint and point value"
 wrap_mode = 1
 
-[node name="ParseTSV" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="ParseTSV" type="Button" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 disabled = true
 text = "Generate Targets"
 
-[node name="JustText" type="RichTextLabel" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="JustText" type="RichTextLabel" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
-text = "If you have text without hints or point values, paste it below to generate the target entries with no hint and a default score of 1 per target."
+text = "If you have text without hints or point values, paste it below to generate the target entries with no hints and a default score of 1 per target."
 fit_content = true
 
-[node name="PlainTextCopyPaste" type="TextEdit" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="PlainTextCopyPaste" type="TextEdit" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Paste your text here"
 wrap_mode = 1
 
-[node name="ParsePlainText" type="Button" parent="Background/VBoxContainer/Split/LevelElements"]
+[node name="ParsePlainText" type="Button" parent="Background/VBoxContainer/Split/ScrollLevelElements/MarginContainer/LevelElements"]
 layout_mode = 2
 disabled = true
 text = "Generate Targets"
@@ -212,6 +238,7 @@ text = "Generate Targets"
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/VBoxContainer/Split"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
 follow_focus = true
 horizontal_scroll_mode = 0
 

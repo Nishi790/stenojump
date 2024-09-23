@@ -1,0 +1,1805 @@
+{
+	"checkpoint": false,
+	"description": "Right Hand 'm' and 'k', written as -PL and -BG",
+	"level": 20,
+	"next_level": "lapwing_5_3.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STPHAOEBG",
+			"score": 1,
+			"word": "sneak"
+		},
+		{
+			"hint": "STPHAEUBG",
+			"score": 1,
+			"word": "snake"
+		},
+		{
+			"hint": "STPHABG",
+			"score": 1,
+			"word": "snack"
+		},
+		{
+			"hint": "STPHEUBG",
+			"score": 1,
+			"word": "snick"
+		},
+		{
+			"hint": "STPHUBG",
+			"score": 1,
+			"word": "snuck"
+		},
+		{
+			"hint": "STRAOEUBG",
+			"score": 1,
+			"word": "strike"
+		},
+		{
+			"hint": "STRAOEPL",
+			"score": 1,
+			"word": "stream"
+		},
+		{
+			"hint": "STRAOEBG",
+			"score": 1,
+			"word": "streak"
+		},
+		{
+			"hint": "STROEBG",
+			"score": 1,
+			"word": "stroke"
+		},
+		{
+			"hint": "STRUPL",
+			"score": 1,
+			"word": "strum"
+		},
+		{
+			"hint": "STRUBG",
+			"score": 1,
+			"word": "struck"
+		},
+		{
+			"hint": "STAOEPL",
+			"score": 1,
+			"word": "steam"
+		},
+		{
+			"hint": "STAEBG",
+			"score": 1,
+			"word": "steak"
+		},
+		{
+			"hint": "STAUBG",
+			"score": 1,
+			"word": "stalk"
+		},
+		{
+			"hint": "STABG",
+			"score": 1,
+			"word": "stack"
+		},
+		{
+			"hint": "STOEBG",
+			"score": 1,
+			"word": "stoke"
+		},
+		{
+			"hint": "STOBG",
+			"score": 1,
+			"word": "stock"
+		},
+		{
+			"hint": "STEUPL",
+			"score": 1,
+			"word": "stim"
+		},
+		{
+			"hint": "STEUBG",
+			"score": 1,
+			"word": "stick"
+		},
+		{
+			"hint": "STEPL",
+			"score": 1,
+			"word": "stem"
+		},
+		{
+			"hint": "STUBG",
+			"score": 1,
+			"word": "stuck"
+		},
+		{
+			"hint": "SKWRAOUBG",
+			"score": 1,
+			"word": "juke"
+		},
+		{
+			"hint": "SKWRAPL",
+			"score": 1,
+			"word": "jam"
+		},
+		{
+			"hint": "SKWRABG",
+			"score": 1,
+			"word": "jack"
+		},
+		{
+			"hint": "SKWROEBG",
+			"score": 1,
+			"word": "joke"
+		},
+		{
+			"hint": "SKWROBG",
+			"score": 1,
+			"word": "jock"
+		},
+		{
+			"hint": "SKWREUPL",
+			"score": 1,
+			"word": "gym"
+		},
+		{
+			"hint": "SKWREPL",
+			"score": 1,
+			"word": "gem"
+		},
+		{
+			"hint": "SKWAOEBG",
+			"score": 1,
+			"word": "squeak"
+		},
+		{
+			"hint": "SKWAUBG",
+			"score": 1,
+			"word": "squawk"
+		},
+		{
+			"hint": "SKRAOEPL",
+			"score": 1,
+			"word": "scream"
+		},
+		{
+			"hint": "SKRAPL",
+			"score": 1,
+			"word": "scram"
+		},
+		{
+			"hint": "SKREUPL",
+			"score": 1,
+			"word": "scrim"
+		},
+		{
+			"hint": "SKRUPL",
+			"score": 1,
+			"word": "scrum"
+		},
+		{
+			"hint": "SKAOEPL",
+			"score": 1,
+			"word": "scheme"
+		},
+		{
+			"hint": "SKAPL",
+			"score": 1,
+			"word": "scam"
+		},
+		{
+			"hint": "SKEUPL",
+			"score": 1,
+			"word": "skim"
+		},
+		{
+			"hint": "SKUPL",
+			"score": 1,
+			"word": "scum"
+		},
+		{
+			"hint": "SPHABG",
+			"score": 1,
+			"word": "smack"
+		},
+		{
+			"hint": "SPHOEBG",
+			"score": 1,
+			"word": "smoke"
+		},
+		{
+			"hint": "SPHOBG",
+			"score": 1,
+			"word": "smock"
+		},
+		{
+			"hint": "SPAOEUBG",
+			"score": 1,
+			"word": "spike"
+		},
+		{
+			"hint": "SPAOEBG",
+			"score": 1,
+			"word": "speak"
+		},
+		{
+			"hint": "SPAOBG",
+			"score": 1,
+			"word": "spook"
+		},
+		{
+			"hint": "SPAPL",
+			"score": 1,
+			"word": "spam"
+		},
+		{
+			"hint": "SPOEBG",
+			"score": 1,
+			"word": "spoke"
+		},
+		{
+			"hint": "SPEBG",
+			"score": 1,
+			"word": "speck"
+		},
+		{
+			"hint": "SWAPL",
+			"score": 1,
+			"word": "swam"
+		},
+		{
+			"hint": "SWEUPL",
+			"score": 1,
+			"word": "swim"
+		},
+		{
+			"hint": "SWUPL",
+			"score": 1,
+			"word": "swum"
+		},
+		{
+			"hint": "SHRAOEUPL",
+			"score": 1,
+			"word": "slime"
+		},
+		{
+			"hint": "SHRAOEBG",
+			"score": 1,
+			"word": "sleek"
+		},
+		{
+			"hint": "SHRAOPL",
+			"score": 1,
+			"word": "shroom"
+		},
+		{
+			"hint": "SHRAEUBG",
+			"score": 1,
+			"word": "slake"
+		},
+		{
+			"hint": "SHRAPL",
+			"score": 1,
+			"word": "slam"
+		},
+		{
+			"hint": "SHRABG",
+			"score": 1,
+			"word": "slack"
+		},
+		{
+			"hint": "SHREUPL",
+			"score": 1,
+			"word": "slim"
+		},
+		{
+			"hint": "SHREUBG",
+			"score": 1,
+			"word": "slick"
+		},
+		{
+			"hint": "SHRUPL",
+			"score": 1,
+			"word": "slum"
+		},
+		{
+			"hint": "SHAOBG",
+			"score": 1,
+			"word": "shook"
+		},
+		{
+			"hint": "SHAEUPL",
+			"score": 1,
+			"word": "shame"
+		},
+		{
+			"hint": "SHAEUBG",
+			"score": 1,
+			"word": "shake"
+		},
+		{
+			"hint": "SHAPL",
+			"score": 1,
+			"word": "sham"
+		},
+		{
+			"hint": "SHABG",
+			"score": 1,
+			"word": "shack"
+		},
+		{
+			"hint": "SHOBG",
+			"score": 1,
+			"word": "shock"
+		},
+		{
+			"hint": "SHEUPL",
+			"score": 1,
+			"word": "shim"
+		},
+		{
+			"hint": "SHUBG",
+			"score": 1,
+			"word": "shuck"
+		},
+		{
+			"hint": "SRABG",
+			"score": 1,
+			"word": "vac"
+		},
+		{
+			"hint": "SREUPL",
+			"score": 1,
+			"word": "vim"
+		},
+		{
+			"hint": "SAOEPL",
+			"score": 1,
+			"word": "seem"
+		},
+		{
+			"hint": "SAOEBG",
+			"score": 1,
+			"word": "seek"
+		},
+		{
+			"hint": "SAEUPL",
+			"score": 1,
+			"word": "same"
+		},
+		{
+			"hint": "SAEUBG",
+			"score": 1,
+			"word": "sake"
+		},
+		{
+			"hint": "SAEPL",
+			"score": 1,
+			"word": "seam"
+		},
+		{
+			"hint": "SAUPL",
+			"score": 1,
+			"word": "psalm"
+		},
+		{
+			"hint": "SAPL",
+			"score": 1,
+			"word": "sam"
+		},
+		{
+			"hint": "SABG",
+			"score": 1,
+			"word": "sack"
+		},
+		{
+			"hint": "SOEBG",
+			"score": 1,
+			"word": "soak"
+		},
+		{
+			"hint": "SOPL",
+			"score": 1,
+			"word": "some"
+		},
+		{
+			"hint": "SOBG",
+			"score": 1,
+			"word": "sock"
+		},
+		{
+			"hint": "SEUPL",
+			"score": 1,
+			"word": "sim"
+		},
+		{
+			"hint": "SEUBG",
+			"score": 1,
+			"word": "sick"
+		},
+		{
+			"hint": "SEBG",
+			"score": 1,
+			"word": "sec"
+		},
+		{
+			"hint": "SUPL",
+			"score": 1,
+			"word": "sum"
+		},
+		{
+			"hint": "SUBG",
+			"score": 1,
+			"word": "suck"
+		},
+		{
+			"hint": "TKPWHRAOEPL",
+			"score": 1,
+			"word": "gleam"
+		},
+		{
+			"hint": "TKPWHRAOPL",
+			"score": 1,
+			"word": "gloom"
+		},
+		{
+			"hint": "TKPWHRAPL",
+			"score": 1,
+			"word": "glam"
+		},
+		{
+			"hint": "TKPWHROEPL",
+			"score": 1,
+			"word": "gloam"
+		},
+		{
+			"hint": "TKPWHROPL",
+			"score": 1,
+			"word": "glom"
+		},
+		{
+			"hint": "TKPWHROBG",
+			"score": 1,
+			"word": "glock"
+		},
+		{
+			"hint": "TKPWHRUPL",
+			"score": 1,
+			"word": "glum"
+		},
+		{
+			"hint": "TKPWRAOEUPL",
+			"score": 1,
+			"word": "grime"
+		},
+		{
+			"hint": "TKPWRAOPL",
+			"score": 1,
+			"word": "groom"
+		},
+		{
+			"hint": "TKPWRAPL",
+			"score": 1,
+			"word": "gram"
+		},
+		{
+			"hint": "TKPWROBG",
+			"score": 1,
+			"word": "grok"
+		},
+		{
+			"hint": "TKPWREUPL",
+			"score": 1,
+			"word": "grim"
+		},
+		{
+			"hint": "TKPWAOEBG",
+			"score": 1,
+			"word": "geek"
+		},
+		{
+			"hint": "TKPWAEUPL",
+			"score": 1,
+			"word": "game"
+		},
+		{
+			"hint": "TKPWAUBG",
+			"score": 1,
+			"word": "gawk"
+		},
+		{
+			"hint": "TKPWUPL",
+			"score": 1,
+			"word": "gum"
+		},
+		{
+			"hint": "TKRAOEPL",
+			"score": 1,
+			"word": "dream"
+		},
+		{
+			"hint": "TKRAEUBG",
+			"score": 1,
+			"word": "drake"
+		},
+		{
+			"hint": "TKRAPL",
+			"score": 1,
+			"word": "dram"
+		},
+		{
+			"hint": "TKRUPL",
+			"score": 1,
+			"word": "drum"
+		},
+		{
+			"hint": "TKAOEUPL",
+			"score": 1,
+			"word": "dime"
+		},
+		{
+			"hint": "TKAOEUBG",
+			"score": 1,
+			"word": "dike"
+		},
+		{
+			"hint": "TKAOEPL",
+			"score": 1,
+			"word": "deem"
+		},
+		{
+			"hint": "TKAOUBG",
+			"score": 1,
+			"word": "duke"
+		},
+		{
+			"hint": "TKAOPL",
+			"score": 1,
+			"word": "doom"
+		},
+		{
+			"hint": "TKAEUPL",
+			"score": 1,
+			"word": "dame"
+		},
+		{
+			"hint": "TKAEPL",
+			"score": 1,
+			"word": "damn"
+		},
+		{
+			"hint": "TKAPL",
+			"score": 1,
+			"word": "dam"
+		},
+		{
+			"hint": "TKOPL",
+			"score": 1,
+			"word": "dom"
+		},
+		{
+			"hint": "TKOBG",
+			"score": 1,
+			"word": "dock"
+		},
+		{
+			"hint": "TKEUPL",
+			"score": 1,
+			"word": "dim"
+		},
+		{
+			"hint": "TKEBG",
+			"score": 1,
+			"word": "deck"
+		},
+		{
+			"hint": "TKUPL",
+			"score": 1,
+			"word": "dumb"
+		},
+		{
+			"hint": "TKUBG",
+			"score": 1,
+			"word": "duck"
+		},
+		{
+			"hint": "TPHRAOEBG",
+			"score": 1,
+			"word": "fleek"
+		},
+		{
+			"hint": "TPHRAOUPL",
+			"score": 1,
+			"word": "flume"
+		},
+		{
+			"hint": "TPHRAOUBG",
+			"score": 1,
+			"word": "fluke"
+		},
+		{
+			"hint": "TPHRAEUPL",
+			"score": 1,
+			"word": "flame"
+		},
+		{
+			"hint": "TPHRAEUBG",
+			"score": 1,
+			"word": "flake"
+		},
+		{
+			"hint": "TPHRABG",
+			"score": 1,
+			"word": "flak"
+		},
+		{
+			"hint": "TPHROBG",
+			"score": 1,
+			"word": "flock"
+		},
+		{
+			"hint": "TPHREUBG",
+			"score": 1,
+			"word": "flick"
+		},
+		{
+			"hint": "TPHREBG",
+			"score": 1,
+			"word": "fleck"
+		},
+		{
+			"hint": "TPHAOUBG",
+			"score": 1,
+			"word": "nuke"
+		},
+		{
+			"hint": "TPHAOBG",
+			"score": 1,
+			"word": "nook"
+		},
+		{
+			"hint": "TPHAEUPL",
+			"score": 1,
+			"word": "name"
+		},
+		{
+			"hint": "TPHABG",
+			"score": 1,
+			"word": "knack"
+		},
+		{
+			"hint": "TPHOEPL",
+			"score": 1,
+			"word": "gnome"
+		},
+		{
+			"hint": "TPHOPL",
+			"score": 1,
+			"word": "nom"
+		},
+		{
+			"hint": "TPHOBG",
+			"score": 1,
+			"word": "knock"
+		},
+		{
+			"hint": "TPHEUBG",
+			"score": 1,
+			"word": "nick"
+		},
+		{
+			"hint": "TPHEBG",
+			"score": 1,
+			"word": "neck"
+		},
+		{
+			"hint": "TPHUPL",
+			"score": 1,
+			"word": "numb"
+		},
+		{
+			"hint": "TPRAOEBG",
+			"score": 1,
+			"word": "freak"
+		},
+		{
+			"hint": "TPRAEUPL",
+			"score": 1,
+			"word": "frame"
+		},
+		{
+			"hint": "TPRABG",
+			"score": 1,
+			"word": "frac"
+		},
+		{
+			"hint": "TPROPL",
+			"score": 1,
+			"word": "from"
+		},
+		{
+			"hint": "TPROBG",
+			"score": 1,
+			"word": "frock"
+		},
+		{
+			"hint": "TPREUBG",
+			"score": 1,
+			"word": "frik"
+		},
+		{
+			"hint": "TPAOUPL",
+			"score": 1,
+			"word": "fume"
+		},
+		{
+			"hint": "TPAEUPL",
+			"score": 1,
+			"word": "fame"
+		},
+		{
+			"hint": "TPAEUBG",
+			"score": 1,
+			"word": "fake"
+		},
+		{
+			"hint": "TPOEPL",
+			"score": 1,
+			"word": "foam"
+		},
+		{
+			"hint": "TPOEBG",
+			"score": 1,
+			"word": "folk"
+		},
+		{
+			"hint": "TPEUPL",
+			"score": 1,
+			"word": "film"
+		},
+		{
+			"hint": "TWAOEBG",
+			"score": 1,
+			"word": "tweak"
+		},
+		{
+			"hint": "THAOEPL",
+			"score": 1,
+			"word": "theme"
+		},
+		{
+			"hint": "THEUBG",
+			"score": 1,
+			"word": "thick"
+		},
+		{
+			"hint": "THEPL",
+			"score": 1,
+			"word": "them"
+		},
+		{
+			"hint": "THUPL",
+			"score": 1,
+			"word": "thumb"
+		},
+		{
+			"hint": "TRAPL",
+			"score": 1,
+			"word": "tram"
+		},
+		{
+			"hint": "TRABG",
+			"score": 1,
+			"word": "track"
+		},
+		{
+			"hint": "TREUPL",
+			"score": 1,
+			"word": "trim"
+		},
+		{
+			"hint": "TREUBG",
+			"score": 1,
+			"word": "trick"
+		},
+		{
+			"hint": "TREBG",
+			"score": 1,
+			"word": "trek"
+		},
+		{
+			"hint": "TRUBG",
+			"score": 1,
+			"word": "truck"
+		},
+		{
+			"hint": "TAOEUPL",
+			"score": 1,
+			"word": "time"
+		},
+		{
+			"hint": "TAOEPL",
+			"score": 1,
+			"word": "teem"
+		},
+		{
+			"hint": "TAOEBG",
+			"score": 1,
+			"word": "teak"
+		},
+		{
+			"hint": "TAOUPL",
+			"score": 1,
+			"word": "tomb"
+		},
+		{
+			"hint": "TAOUBG",
+			"score": 1,
+			"word": "toque"
+		},
+		{
+			"hint": "TAOBG",
+			"score": 1,
+			"word": "took"
+		},
+		{
+			"hint": "TAEUPL",
+			"score": 1,
+			"word": "tame"
+		},
+		{
+			"hint": "TAEUBG",
+			"score": 1,
+			"word": "take"
+		},
+		{
+			"hint": "TAEPL",
+			"score": 1,
+			"word": "team"
+		},
+		{
+			"hint": "TAUBG",
+			"score": 1,
+			"word": "talk"
+		},
+		{
+			"hint": "TAPL",
+			"score": 1,
+			"word": "tam"
+		},
+		{
+			"hint": "TABG",
+			"score": 1,
+			"word": "tack"
+		},
+		{
+			"hint": "TOEBG",
+			"score": 1,
+			"word": "toke"
+		},
+		{
+			"hint": "TOPL",
+			"score": 1,
+			"word": "tom"
+		},
+		{
+			"hint": "TOBG",
+			"score": 1,
+			"word": "tock"
+		},
+		{
+			"hint": "TEUPL",
+			"score": 1,
+			"word": "tim"
+		},
+		{
+			"hint": "TEUBG",
+			"score": 1,
+			"word": "tick"
+		},
+		{
+			"hint": "TEBG",
+			"score": 1,
+			"word": "tech"
+		},
+		{
+			"hint": "TUBG",
+			"score": 1,
+			"word": "tuck"
+		},
+		{
+			"hint": "KWHAOEUBG",
+			"score": 1,
+			"word": "yike"
+		},
+		{
+			"hint": "KWHAPL",
+			"score": 1,
+			"word": "yam"
+		},
+		{
+			"hint": "KWHABG",
+			"score": 1,
+			"word": "yak"
+		},
+		{
+			"hint": "KWHUBG",
+			"score": 1,
+			"word": "yuck"
+		},
+		{
+			"hint": "KWHOEBG",
+			"score": 1,
+			"word": "yoke"
+		},
+		{
+			"hint": "KWAEUBG",
+			"score": 1,
+			"word": "quake"
+		},
+		{
+			"hint": "KWAUPL",
+			"score": 1,
+			"word": "qualm"
+		},
+		{
+			"hint": "KWABG",
+			"score": 1,
+			"word": "quack"
+		},
+		{
+			"hint": "KWEUBG",
+			"score": 1,
+			"word": "quick"
+		},
+		{
+			"hint": "KWEPL",
+			"score": 1,
+			"word": "quem"
+		},
+		{
+			"hint": "KHRAOEUPL",
+			"score": 1,
+			"word": "climb"
+		},
+		{
+			"hint": "KHRAEUPL",
+			"score": 1,
+			"word": "claim"
+		},
+		{
+			"hint": "KHRAPL",
+			"score": 1,
+			"word": "clam"
+		},
+		{
+			"hint": "KHRABG",
+			"score": 1,
+			"word": "clack"
+		},
+		{
+			"hint": "KHROEBG",
+			"score": 1,
+			"word": "cloak"
+		},
+		{
+			"hint": "KHROBG",
+			"score": 1,
+			"word": "clock"
+		},
+		{
+			"hint": "KHREUBG",
+			"score": 1,
+			"word": "click"
+		},
+		{
+			"hint": "KHRUBG",
+			"score": 1,
+			"word": "cluck"
+		},
+		{
+			"hint": "KHAOEUPL",
+			"score": 1,
+			"word": "chime"
+		},
+		{
+			"hint": "KHAOEBG",
+			"score": 1,
+			"word": "cheek"
+		},
+		{
+			"hint": "KHAUBG",
+			"score": 1,
+			"word": "chalk"
+		},
+		{
+			"hint": "KHOEBG",
+			"score": 1,
+			"word": "choke"
+		},
+		{
+			"hint": "KHOBG",
+			"score": 1,
+			"word": "chock"
+		},
+		{
+			"hint": "KHEUBG",
+			"score": 1,
+			"word": "chick"
+		},
+		{
+			"hint": "KHEBG",
+			"score": 1,
+			"word": "check"
+		},
+		{
+			"hint": "KHUPL",
+			"score": 1,
+			"word": "chum"
+		},
+		{
+			"hint": "KHUBG",
+			"score": 1,
+			"word": "chuck"
+		},
+		{
+			"hint": "KRAOEUPL",
+			"score": 1,
+			"word": "crime"
+		},
+		{
+			"hint": "KRAOEPL",
+			"score": 1,
+			"word": "cream"
+		},
+		{
+			"hint": "KRAOEBG",
+			"score": 1,
+			"word": "creek"
+		},
+		{
+			"hint": "KRAOBG",
+			"score": 1,
+			"word": "crook"
+		},
+		{
+			"hint": "KRAEBG",
+			"score": 1,
+			"word": "creak"
+		},
+		{
+			"hint": "KRAPL",
+			"score": 1,
+			"word": "cram"
+		},
+		{
+			"hint": "KRABG",
+			"score": 1,
+			"word": "crack"
+		},
+		{
+			"hint": "KROEPL",
+			"score": 1,
+			"word": "chrome"
+		},
+		{
+			"hint": "KROEBG",
+			"score": 1,
+			"word": "croak"
+		},
+		{
+			"hint": "KROBG",
+			"score": 1,
+			"word": "crock"
+		},
+		{
+			"hint": "KREUPL",
+			"score": 1,
+			"word": "cripple"
+		},
+		{
+			"hint": "KREUBG",
+			"score": 1,
+			"word": "crick"
+		},
+		{
+			"hint": "KREPL",
+			"score": 1,
+			"word": "creme"
+		},
+		{
+			"hint": "KRUPL",
+			"score": 1,
+			"word": "crumb"
+		},
+		{
+			"hint": "KAOBG",
+			"score": 1,
+			"word": "cook"
+		},
+		{
+			"hint": "KAEUPL",
+			"score": 1,
+			"word": "came"
+		},
+		{
+			"hint": "KAEUBG",
+			"score": 1,
+			"word": "cake"
+		},
+		{
+			"hint": "KAUPL",
+			"score": 1,
+			"word": "calm"
+		},
+		{
+			"hint": "KAUBG",
+			"score": 1,
+			"word": "caulk"
+		},
+		{
+			"hint": "KAPL",
+			"score": 1,
+			"word": "cam"
+		},
+		{
+			"hint": "KOEPL",
+			"score": 1,
+			"word": "comb"
+		},
+		{
+			"hint": "KOEBG",
+			"score": 1,
+			"word": "coke"
+		},
+		{
+			"hint": "KOPL",
+			"score": 1,
+			"word": "come"
+		},
+		{
+			"hint": "KEUBG",
+			"score": 1,
+			"word": "kick"
+		},
+		{
+			"hint": "PWHRAOEBG",
+			"score": 1,
+			"word": "bleak"
+		},
+		{
+			"hint": "PWHRAOPL",
+			"score": 1,
+			"word": "bloom"
+		},
+		{
+			"hint": "PWHRAEUPL",
+			"score": 1,
+			"word": "blame"
+		},
+		{
+			"hint": "PWHRABG",
+			"score": 1,
+			"word": "black"
+		},
+		{
+			"hint": "PWHROEBG",
+			"score": 1,
+			"word": "bloke"
+		},
+		{
+			"hint": "PWHROBG",
+			"score": 1,
+			"word": "block"
+		},
+		{
+			"hint": "PWRAOPL",
+			"score": 1,
+			"word": "broom"
+		},
+		{
+			"hint": "PWRAOBG",
+			"score": 1,
+			"word": "brook"
+		},
+		{
+			"hint": "PWRAEUBG",
+			"score": 1,
+			"word": "brake"
+		},
+		{
+			"hint": "PWRAEBG",
+			"score": 1,
+			"word": "break"
+		},
+		{
+			"hint": "PWROEBG",
+			"score": 1,
+			"word": "broke"
+		},
+		{
+			"hint": "PWREUPL",
+			"score": 1,
+			"word": "brim"
+		},
+		{
+			"hint": "PWREUBG",
+			"score": 1,
+			"word": "brick"
+		},
+		{
+			"hint": "PWAOEUBG",
+			"score": 1,
+			"word": "bike"
+		},
+		{
+			"hint": "PWAOEPL",
+			"score": 1,
+			"word": "beam"
+		},
+		{
+			"hint": "PWAOEBG",
+			"score": 1,
+			"word": "beak"
+		},
+		{
+			"hint": "PWAOPL",
+			"score": 1,
+			"word": "boom"
+		},
+		{
+			"hint": "PWAOBG",
+			"score": 1,
+			"word": "book"
+		},
+		{
+			"hint": "PWAEUBG",
+			"score": 1,
+			"word": "bake"
+		},
+		{
+			"hint": "PWAEPL",
+			"score": 1,
+			"word": "beam"
+		},
+		{
+			"hint": "PWAUPL",
+			"score": 1,
+			"word": "balm"
+		},
+		{
+			"hint": "PWAPL",
+			"score": 1,
+			"word": "bam"
+		},
+		{
+			"hint": "PWABG",
+			"score": 1,
+			"word": "back"
+		},
+		{
+			"hint": "PWOPL",
+			"score": 1,
+			"word": "bomb"
+		},
+		{
+			"hint": "PWOBG",
+			"score": 1,
+			"word": "bock"
+		},
+		{
+			"hint": "PWUPL",
+			"score": 1,
+			"word": "bum"
+		},
+		{
+			"hint": "PWUBG",
+			"score": 1,
+			"word": "buck"
+		},
+		{
+			"hint": "PHRAOUPL",
+			"score": 1,
+			"word": "plume"
+		},
+		{
+			"hint": "PHRABG",
+			"score": 1,
+			"word": "plaque"
+		},
+		{
+			"hint": "PHRUPL",
+			"score": 1,
+			"word": "plum"
+		},
+		{
+			"hint": "PHRUBG",
+			"score": 1,
+			"word": "pluck"
+		},
+		{
+			"hint": "PHAOEUPL",
+			"score": 1,
+			"word": "mime"
+		},
+		{
+			"hint": "PHAOEPL",
+			"score": 1,
+			"word": "meme"
+		},
+		{
+			"hint": "PHAOEBG",
+			"score": 1,
+			"word": "meek"
+		},
+		{
+			"hint": "PHAOBG",
+			"score": 1,
+			"word": "mook"
+		},
+		{
+			"hint": "PHAEUPL",
+			"score": 1,
+			"word": "maim"
+		},
+		{
+			"hint": "PHAEUBG",
+			"score": 1,
+			"word": "make"
+		},
+		{
+			"hint": "PHAUBG",
+			"score": 1,
+			"word": "mach"
+		},
+		{
+			"hint": "PHABG",
+			"score": 1,
+			"word": "mac"
+		},
+		{
+			"hint": "PHOPL",
+			"score": 1,
+			"word": "mom"
+		},
+		{
+			"hint": "PHOBG",
+			"score": 1,
+			"word": "mock"
+		},
+		{
+			"hint": "PHEUBG",
+			"score": 1,
+			"word": "mick"
+		},
+		{
+			"hint": "PHEBG",
+			"score": 1,
+			"word": "mech"
+		},
+		{
+			"hint": "PHUPL",
+			"score": 1,
+			"word": "mum"
+		},
+		{
+			"hint": "PHUBG",
+			"score": 1,
+			"word": "muck"
+		},
+		{
+			"hint": "PRAOEUPL",
+			"score": 1,
+			"word": "prime"
+		},
+		{
+			"hint": "PROPL",
+			"score": 1,
+			"word": "prom"
+		},
+		{
+			"hint": "PREUPL",
+			"score": 1,
+			"word": "prim"
+		},
+		{
+			"hint": "PREUBG",
+			"score": 1,
+			"word": "prick"
+		},
+		{
+			"hint": "PAOEUBG",
+			"score": 1,
+			"word": "pike"
+		},
+		{
+			"hint": "PAOEBG",
+			"score": 1,
+			"word": "peek"
+		},
+		{
+			"hint": "PAOUBG",
+			"score": 1,
+			"word": "puke"
+		},
+		{
+			"hint": "PAEBG",
+			"score": 1,
+			"word": "peak"
+		},
+		{
+			"hint": "PAUPL",
+			"score": 1,
+			"word": "palm"
+		},
+		{
+			"hint": "PAPL",
+			"score": 1,
+			"word": "pam"
+		},
+		{
+			"hint": "PABG",
+			"score": 1,
+			"word": "pack"
+		},
+		{
+			"hint": "POEBG",
+			"score": 1,
+			"word": "poke"
+		},
+		{
+			"hint": "POPL",
+			"score": 1,
+			"word": "pom"
+		},
+		{
+			"hint": "POBG",
+			"score": 1,
+			"word": "pock"
+		},
+		{
+			"hint": "PEUBG",
+			"score": 1,
+			"word": "pick"
+		},
+		{
+			"hint": "PEBG",
+			"score": 1,
+			"word": "peck"
+		},
+		{
+			"hint": "WRAOEBG",
+			"score": 1,
+			"word": "wreak"
+		},
+		{
+			"hint": "WRABG",
+			"score": 1,
+			"word": "wrack"
+		},
+		{
+			"hint": "WREBG",
+			"score": 1,
+			"word": "wreck"
+		},
+		{
+			"hint": "WAOEBG",
+			"score": 1,
+			"word": "week"
+		},
+		{
+			"hint": "WAOUPL",
+			"score": 1,
+			"word": "womb"
+		},
+		{
+			"hint": "WAEUBG",
+			"score": 1,
+			"word": "wake"
+		},
+		{
+			"hint": "WAEBG",
+			"score": 1,
+			"word": "weak"
+		},
+		{
+			"hint": "WAUBG",
+			"score": 1,
+			"word": "walk"
+		},
+		{
+			"hint": "WABG",
+			"score": 1,
+			"word": "wack"
+		},
+		{
+			"hint": "WOEBG",
+			"score": 1,
+			"word": "woke"
+		},
+		{
+			"hint": "WOPL",
+			"score": 1,
+			"word": "woman"
+		},
+		{
+			"hint": "WOBG",
+			"score": 1,
+			"word": "wok"
+		},
+		{
+			"hint": "WEUBG",
+			"score": 1,
+			"word": "wick"
+		},
+		{
+			"hint": "HRAOEUPL",
+			"score": 1,
+			"word": "lime"
+		},
+		{
+			"hint": "HRAOEUBG",
+			"score": 1,
+			"word": "like"
+		},
+		{
+			"hint": "HRAOEBG",
+			"score": 1,
+			"word": "leek"
+		},
+		{
+			"hint": "HRAOUPL",
+			"score": 1,
+			"word": "lume"
+		},
+		{
+			"hint": "HRAOPL",
+			"score": 1,
+			"word": "loom"
+		},
+		{
+			"hint": "HRAOBG",
+			"score": 1,
+			"word": "look"
+		},
+		{
+			"hint": "HRAEUPL",
+			"score": 1,
+			"word": "lame"
+		},
+		{
+			"hint": "HRAEUBG",
+			"score": 1,
+			"word": "lake"
+		},
+		{
+			"hint": "HRAEPL",
+			"score": 1,
+			"word": "lam"
+		},
+		{
+			"hint": "HRAEBG",
+			"score": 1,
+			"word": "leak"
+		},
+		{
+			"hint": "HRAPL",
+			"score": 1,
+			"word": "lamb"
+		},
+		{
+			"hint": "HRABG",
+			"score": 1,
+			"word": "lack"
+		},
+		{
+			"hint": "HROEPL",
+			"score": 1,
+			"word": "loam"
+		},
+		{
+			"hint": "HROBG",
+			"score": 1,
+			"word": "lock"
+		},
+		{
+			"hint": "HREUPL",
+			"score": 1,
+			"word": "limb"
+		},
+		{
+			"hint": "HREUBG",
+			"score": 1,
+			"word": "lick"
+		},
+		{
+			"hint": "HRUBG",
+			"score": 1,
+			"word": "luck"
+		},
+		{
+			"hint": "HAOEUBG",
+			"score": 1,
+			"word": "hike"
+		},
+		{
+			"hint": "HAOBG",
+			"score": 1,
+			"word": "hook"
+		},
+		{
+			"hint": "HAUBG",
+			"score": 1,
+			"word": "hawk"
+		},
+		{
+			"hint": "HAPL",
+			"score": 1,
+			"word": "ham"
+		},
+		{
+			"hint": "HABG",
+			"score": 1,
+			"word": "hack"
+		},
+		{
+			"hint": "HOEPL",
+			"score": 1,
+			"word": "home"
+		},
+		{
+			"hint": "HOBG",
+			"score": 1,
+			"word": "hock"
+		},
+		{
+			"hint": "HEUPL",
+			"score": 1,
+			"word": "him"
+		},
+		{
+			"hint": "HEUBG",
+			"score": 1,
+			"word": "hick"
+		},
+		{
+			"hint": "HEPL",
+			"score": 1,
+			"word": "hem"
+		},
+		{
+			"hint": "HEBG",
+			"score": 1,
+			"word": "heck"
+		},
+		{
+			"hint": "HUPL",
+			"score": 1,
+			"word": "hum"
+		},
+		{
+			"hint": "HUBG",
+			"score": 1,
+			"word": "huck"
+		},
+		{
+			"hint": "RAOEUPL",
+			"score": 1,
+			"word": "rhyme"
+		},
+		{
+			"hint": "RAOEPL",
+			"score": 1,
+			"word": "ream"
+		},
+		{
+			"hint": "RAOEBG",
+			"score": 1,
+			"word": "reek"
+		},
+		{
+			"hint": "RAOPL",
+			"score": 1,
+			"word": "room"
+		},
+		{
+			"hint": "RAOBG",
+			"score": 1,
+			"word": "rook"
+		},
+		{
+			"hint": "RAEUBG",
+			"score": 1,
+			"word": "rake"
+		},
+		{
+			"hint": "RAPL",
+			"score": 1,
+			"word": "ram"
+		},
+		{
+			"hint": "RABG",
+			"score": 1,
+			"word": "rack"
+		},
+		{
+			"hint": "ROEPL",
+			"score": 1,
+			"word": "roam"
+		},
+		{
+			"hint": "ROPL",
+			"score": 1,
+			"word": "rom"
+		},
+		{
+			"hint": "ROBG",
+			"score": 1,
+			"word": "rock"
+		},
+		{
+			"hint": "REUPL",
+			"score": 1,
+			"word": "rim"
+		},
+		{
+			"hint": "RUPL",
+			"score": 1,
+			"word": "rum"
+		},
+		{
+			"hint": "AOEBG",
+			"score": 1,
+			"word": "eke"
+		},
+		{
+			"hint": "AEUPL",
+			"score": 1,
+			"word": "aim"
+		},
+		{
+			"hint": "AEUBG",
+			"score": 1,
+			"word": "ache"
+		},
+		{
+			"hint": "AUPL",
+			"score": 1,
+			"word": "alm"
+		},
+		{
+			"hint": "AUBG",
+			"score": 1,
+			"word": "awk"
+		},
+		{
+			"hint": "APL",
+			"score": 1,
+			"word": "am"
+		},
+		{
+			"hint": "ABG",
+			"score": 1,
+			"word": "ack"
+		},
+		{
+			"hint": "OEPL",
+			"score": 1,
+			"word": "ohm"
+		},
+		{
+			"hint": "OEBG",
+			"score": 1,
+			"word": "oak"
+		},
+		{
+			"hint": "OPL",
+			"score": 1,
+			"word": "om"
+		},
+		{
+			"hint": "UPL",
+			"score": 1,
+			"word": "um"
+		}
+	]
+}

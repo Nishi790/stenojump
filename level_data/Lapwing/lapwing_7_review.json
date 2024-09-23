@@ -1,0 +1,815 @@
+{
+	"checkpoint": true,
+	"description": "Review right hand clusters: 'shun', 'kshun', 'x', 'ment', 'let', 'bl', 'bility', 'shus' and 'shal'",
+	"level": 31,
+	"next_level": "lapwing_8_1.json",
+	"order": "random",
+	"size": 45,
+	"targets": [
+		{
+			"hint": "STARLT",
+			"score": 1,
+			"word": "starlet"
+		},
+		{
+			"hint": "TKPWALT",
+			"score": 1,
+			"word": "galette"
+		},
+		{
+			"hint": "SKARLT",
+			"score": 1,
+			"word": "scarlet"
+		},
+		{
+			"hint": "SKEULT",
+			"score": 1,
+			"word": "skillet"
+		},
+		{
+			"hint": "SRAOEULT",
+			"score": 1,
+			"word": "violet"
+		},
+		{
+			"hint": "TKPWARPLT",
+			"score": 1,
+			"word": "garment"
+		},
+		{
+			"hint": "TKPWULT",
+			"score": 1,
+			"word": "gullet"
+		},
+		{
+			"hint": "TPOEPLT",
+			"score": 1,
+			"word": "foment"
+		},
+		{
+			"hint": "TPERPLT",
+			"score": 1,
+			"word": "ferment"
+		},
+		{
+			"hint": "TORPLT",
+			"score": 1,
+			"word": "torment"
+		},
+		{
+			"hint": "KHREPLT",
+			"score": 1,
+			"word": "clement"
+		},
+		{
+			"hint": "KOLT",
+			"score": 1,
+			"word": "collet"
+		},
+		{
+			"hint": "PWULT",
+			"score": 1,
+			"word": "bullet"
+		},
+		{
+			"hint": "PHOEPLT",
+			"score": 1,
+			"word": "moment"
+		},
+		{
+			"hint": "PAEUPLT",
+			"score": 1,
+			"word": "payment"
+		},
+		{
+			"hint": "PALT",
+			"score": 1,
+			"word": "pallet"
+		},
+		{
+			"hint": "PEUPLT",
+			"score": 1,
+			"word": "pigment"
+		},
+		{
+			"hint": "PELT",
+			"score": 1,
+			"word": "pelt"
+		},
+		{
+			"hint": "WAULT",
+			"score": 1,
+			"word": "wallet"
+		},
+		{
+			"hint": "HRAPLT",
+			"score": 1,
+			"word": "lament"
+		},
+		{
+			"hint": "RAOULT",
+			"score": 1,
+			"word": "roulette"
+		},
+		{
+			"hint": "TPEUGS",
+			"score": 1,
+			"word": "fission"
+		},
+		{
+			"hint": "STAEUGS",
+			"score": 1,
+			"word": "station"
+		},
+		{
+			"hint": "SREUGS",
+			"score": 1,
+			"word": "vision"
+		},
+		{
+			"hint": "SEGS",
+			"score": 1,
+			"word": "session"
+		},
+		{
+			"hint": "TPHAEUGS",
+			"score": 1,
+			"word": "nation"
+		},
+		{
+			"hint": "TPHOEGS",
+			"score": 1,
+			"word": "notion"
+		},
+		{
+			"hint": "TPAOUGS",
+			"score": 1,
+			"word": "fusion"
+		},
+		{
+			"hint": "TPAGS",
+			"score": 1,
+			"word": "fashion"
+		},
+		{
+			"hint": "TRAOUGS",
+			"score": 1,
+			"word": "trusion"
+		},
+		{
+			"hint": "KAUGS",
+			"score": 1,
+			"word": "caution"
+		},
+		{
+			"hint": "KUGS",
+			"score": 1,
+			"word": "cushion"
+		},
+		{
+			"hint": "PHOEGS",
+			"score": 1,
+			"word": "motion"
+		},
+		{
+			"hint": "PHEUGS",
+			"score": 1,
+			"word": "mission"
+		},
+		{
+			"hint": "PAGS",
+			"score": 1,
+			"word": "passion"
+		},
+		{
+			"hint": "POEGS",
+			"score": 1,
+			"word": "potion"
+		},
+		{
+			"hint": "HROEGS",
+			"score": 1,
+			"word": "lotion"
+		},
+		{
+			"hint": "RAGS",
+			"score": 1,
+			"word": "ration"
+		},
+		{
+			"hint": "OEGS",
+			"score": 1,
+			"word": "ocean"
+		},
+		{
+			"hint": "SROBGS",
+			"score": 1,
+			"word": "vox"
+		},
+		{
+			"hint": "SREBGS",
+			"score": 1,
+			"word": "vex"
+		},
+		{
+			"hint": "SABGS",
+			"score": 1,
+			"word": "sax"
+		},
+		{
+			"hint": "SEUBGS",
+			"score": 1,
+			"word": "six"
+		},
+		{
+			"hint": "TKOBGS",
+			"score": 1,
+			"word": "dox"
+		},
+		{
+			"hint": "TKEUBGS",
+			"score": 1,
+			"word": "diction"
+		},
+		{
+			"hint": "TPHRABGS",
+			"score": 1,
+			"word": "flax"
+		},
+		{
+			"hint": "TPHREBGS",
+			"score": 1,
+			"word": "flex"
+		},
+		{
+			"hint": "TPHRUBGS",
+			"score": 1,
+			"word": "flux"
+		},
+		{
+			"hint": "TPRABGS",
+			"score": 1,
+			"word": "fraction"
+		},
+		{
+			"hint": "TPREUBGS",
+			"score": 1,
+			"word": "friction"
+		},
+		{
+			"hint": "TPABGS",
+			"score": 1,
+			"word": "fax"
+		},
+		{
+			"hint": "TPOBGS",
+			"score": 1,
+			"word": "fox"
+		},
+		{
+			"hint": "TPEUBGS",
+			"score": 1,
+			"word": "fix"
+		},
+		{
+			"hint": "TABGS",
+			"score": 1,
+			"word": "tax"
+		},
+		{
+			"hint": "TOBGS",
+			"score": 1,
+			"word": "tox"
+		},
+		{
+			"hint": "TEBGS",
+			"score": 1,
+			"word": "tex"
+		},
+		{
+			"hint": "TUBGS",
+			"score": 1,
+			"word": "tux"
+		},
+		{
+			"hint": "KOEBGS",
+			"score": 1,
+			"word": "coax"
+		},
+		{
+			"hint": "PWOBGS",
+			"score": 1,
+			"word": "box"
+		},
+		{
+			"hint": "PHREBGS",
+			"score": 1,
+			"word": "plex"
+		},
+		{
+			"hint": "PHABGS",
+			"score": 1,
+			"word": "max"
+		},
+		{
+			"hint": "PHEUBGS",
+			"score": 1,
+			"word": "mix"
+		},
+		{
+			"hint": "PHUBGS",
+			"score": 1,
+			"word": "mux"
+		},
+		{
+			"hint": "PABGS",
+			"score": 1,
+			"word": "pax"
+		},
+		{
+			"hint": "POBGS",
+			"score": 1,
+			"word": "pox"
+		},
+		{
+			"hint": "PEBGS",
+			"score": 1,
+			"word": "pex"
+		},
+		{
+			"hint": "WABGS",
+			"score": 1,
+			"word": "wax"
+		},
+		{
+			"hint": "HRABGS",
+			"score": 1,
+			"word": "lax"
+		},
+		{
+			"hint": "HROBGS",
+			"score": 1,
+			"word": "lox"
+		},
+		{
+			"hint": "HOEBGS",
+			"score": 1,
+			"word": "hoax"
+		},
+		{
+			"hint": "HEBGS",
+			"score": 1,
+			"word": "hex"
+		},
+		{
+			"hint": "AUBGS",
+			"score": 1,
+			"word": "aux"
+		},
+		{
+			"hint": "ABGS",
+			"score": 1,
+			"word": "axe"
+		},
+		{
+			"hint": "OBGS",
+			"score": 1,
+			"word": "ox"
+		},
+		{
+			"hint": "TPA*BGS",
+			"score": 1,
+			"word": "faction"
+		},
+		{
+			"hint": "TRA*BGS",
+			"score": 1,
+			"word": "traction"
+		},
+		{
+			"hint": "A*BGS",
+			"score": 1,
+			"word": "action"
+		},
+		{
+			"hint": "STAEUBL",
+			"score": 1,
+			"word": "stable"
+		},
+		{
+			"hint": "STUBL",
+			"score": 1,
+			"word": "stubble"
+		},
+		{
+			"hint": "SKWAUBL",
+			"score": 1,
+			"word": "squabble"
+		},
+		{
+			"hint": "SKRABL",
+			"score": 1,
+			"word": "scrabble"
+		},
+		{
+			"hint": "SKREUBL",
+			"score": 1,
+			"word": "scribble"
+		},
+		{
+			"hint": "SRAOEUBL",
+			"score": 1,
+			"word": "viable"
+		},
+		{
+			"hint": "SRAOUBL",
+			"score": 1,
+			"word": "viewable"
+		},
+		{
+			"hint": "SAOEBL",
+			"score": 1,
+			"word": "seeable"
+		},
+		{
+			"hint": "TKPWHROEBL",
+			"score": 1,
+			"word": "global"
+		},
+		{
+			"hint": "TKPWAEUBL",
+			"score": 1,
+			"word": "gable"
+		},
+		{
+			"hint": "TKPWABL",
+			"score": 1,
+			"word": "gabble"
+		},
+		{
+			"hint": "TKPWOBL",
+			"score": 1,
+			"word": "gobble"
+		},
+		{
+			"hint": "TKRAOEUBL",
+			"score": 1,
+			"word": "dryable"
+		},
+		{
+			"hint": "TKABL",
+			"score": 1,
+			"word": "dabble"
+		},
+		{
+			"hint": "TKEUBL",
+			"score": 1,
+			"word": "dibble"
+		},
+		{
+			"hint": "TKUBL",
+			"score": 1,
+			"word": "double"
+		},
+		{
+			"hint": "TPHOEBL",
+			"score": 1,
+			"word": "noble"
+		},
+		{
+			"hint": "TPHEUBL",
+			"score": 1,
+			"word": "nibble"
+		},
+		{
+			"hint": "TPHUBL",
+			"score": 1,
+			"word": "nubble"
+		},
+		{
+			"hint": "TPAOEBL",
+			"score": 1,
+			"word": "feeble"
+		},
+		{
+			"hint": "TPAEUBL",
+			"score": 1,
+			"word": "fable"
+		},
+		{
+			"hint": "TRAOEUBL",
+			"score": 1,
+			"word": "tribal"
+		},
+		{
+			"hint": "TREBL",
+			"score": 1,
+			"word": "treble"
+		},
+		{
+			"hint": "TRUBL",
+			"score": 1,
+			"word": "trouble"
+		},
+		{
+			"hint": "TAEUBL",
+			"score": 1,
+			"word": "table"
+		},
+		{
+			"hint": "KWEUBL",
+			"score": 1,
+			"word": "quibble"
+		},
+		{
+			"hint": "KHAOUBL",
+			"score": 1,
+			"word": "chewable"
+		},
+		{
+			"hint": "KAEUBL",
+			"score": 1,
+			"word": "cable"
+		},
+		{
+			"hint": "KOBL",
+			"score": 1,
+			"word": "cobble"
+		},
+		{
+			"hint": "KEUBL",
+			"score": 1,
+			"word": "kibble"
+		},
+		{
+			"hint": "PWAUBL",
+			"score": 1,
+			"word": "bauble"
+		},
+		{
+			"hint": "PWABL",
+			"score": 1,
+			"word": "babble"
+		},
+		{
+			"hint": "PWOBL",
+			"score": 1,
+			"word": "bobble"
+		},
+		{
+			"hint": "PW*UBL",
+			"score": 1,
+			"word": "bulb"
+		},
+		{
+			"hint": "PWUBL",
+			"score": 1,
+			"word": "bubble"
+		},
+		{
+			"hint": "PHRAOEUBL",
+			"score": 1,
+			"word": "pliable"
+		},
+		{
+			"hint": "PHRAEUBL",
+			"score": 1,
+			"word": "playable"
+		},
+		{
+			"hint": "PHOEBL",
+			"score": 1,
+			"word": "mobile"
+		},
+		{
+			"hint": "WOBL",
+			"score": 1,
+			"word": "wobble"
+		},
+		{
+			"hint": "HRAOEUBL",
+			"score": 1,
+			"word": "liable"
+		},
+		{
+			"hint": "HRAEUBL",
+			"score": 1,
+			"word": "label"
+		},
+		{
+			"hint": "HOBL",
+			"score": 1,
+			"word": "hobble"
+		},
+		{
+			"hint": "HUBL",
+			"score": 1,
+			"word": "hubble"
+		},
+		{
+			"hint": "RAOUBL",
+			"score": 1,
+			"word": "ruble"
+		},
+		{
+			"hint": "RABL",
+			"score": 1,
+			"word": "rabble"
+		},
+		{
+			"hint": "REBL",
+			"score": 1,
+			"word": "rebel"
+		},
+		{
+			"hint": "RUBL",
+			"score": 1,
+			"word": "rubble"
+		},
+		{
+			"hint": "AEUBL",
+			"score": 1,
+			"word": "able"
+		},
+		{
+			"hint": "SPAOERBS",
+			"score": 1,
+			"word": "specious"
+		},
+		{
+			"hint": "SPAEURBS",
+			"score": 1,
+			"word": "spacious"
+		},
+		{
+			"hint": "SREURBS",
+			"score": 1,
+			"word": "vicious"
+		},
+		{
+			"hint": "TKPWRAEURBS",
+			"score": 1,
+			"word": "gracious"
+		},
+		{
+			"hint": "TPHAURBS",
+			"score": 1,
+			"word": "nauseous"
+		},
+		{
+			"hint": "KAURBS",
+			"score": 1,
+			"word": "cautious"
+		},
+		{
+			"hint": "PWARBS",
+			"score": 1,
+			"word": "barbs"
+		},
+		{
+			"hint": "PRERBS",
+			"score": 1,
+			"word": "precious"
+		},
+		{
+			"hint": "HRURBS",
+			"score": 1,
+			"word": "luscious"
+		},
+		{
+			"hint": "SPAEURBL",
+			"score": 1,
+			"word": "spatial"
+		},
+		{
+			"hint": "SPERBL",
+			"score": 1,
+			"word": "special"
+		},
+		{
+			"hint": "SREURBL",
+			"score": 1,
+			"word": "visual"
+		},
+		{
+			"hint": "SOERBL",
+			"score": 1,
+			"word": "social"
+		},
+		{
+			"hint": "TKPWHRAEURBL",
+			"score": 1,
+			"word": "glacial"
+		},
+		{
+			"hint": "TPAEURBL",
+			"score": 1,
+			"word": "facial"
+		},
+		{
+			"hint": "TPAURBL",
+			"score": 1,
+			"word": "faucial"
+		},
+		{
+			"hint": "TPARBL",
+			"score": 1,
+			"word": "fascial"
+		},
+		{
+			"hint": "KRAOURBL",
+			"score": 1,
+			"word": "crucial"
+		},
+		{
+			"hint": "KARBL",
+			"score": 1,
+			"word": "casual"
+		},
+		{
+			"hint": "RAEURBL",
+			"score": 1,
+			"word": "racial"
+		},
+		{
+			"hint": "STOPBL",
+			"score": 1,
+			"word": "stoppable"
+		},
+		{
+			"hint": "STOPBL",
+			"score": 1,
+			"word": "stoppable"
+		},
+		{
+			"hint": "STABLT",
+			"score": 1,
+			"word": "stability"
+		},
+		{
+			"hint": "SRAOEUBLT",
+			"score": 1,
+			"word": "viability"
+		},
+		{
+			"hint": "SRAEURBLT",
+			"score": 1,
+			"word": "variability"
+		},
+		{
+			"hint": "SREUFBLT",
+			"score": 1,
+			"word": "visibility"
+		},
+		{
+			"hint": "TPHOEBLT",
+			"score": 1,
+			"word": "nobility"
+		},
+		{
+			"hint": "TPAOEFBLT",
+			"score": 1,
+			"word": "feasibility"
+		},
+		{
+			"hint": "PHRAOEUBLT",
+			"score": 1,
+			"word": "pliability"
+		},
+		{
+			"hint": "PHRAUFBLT",
+			"score": 1,
+			"word": "plausibility"
+		},
+		{
+			"hint": "PHAOUFBLT",
+			"score": 1,
+			"word": "movability"
+		},
+		{
+			"hint": "PHOEBLT",
+			"score": 1,
+			"word": "mobility"
+		},
+		{
+			"hint": "PRAOUFBLT",
+			"score": 1,
+			"word": "provability"
+		},
+		{
+			"hint": "POFBLT",
+			"score": 1,
+			"word": "possibility"
+		},
+		{
+			"hint": "HREUFBLT",
+			"score": 1,
+			"word": "livability"
+		},
+		{
+			"hint": "ABLT",
+			"score": 1,
+			"word": "ability"
+		}
+	]
+}

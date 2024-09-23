@@ -1,0 +1,325 @@
+{
+	"checkpoint": false,
+	"description": "Right hand clusters: 'ble' and 'bility', written as -BL and -BLT",
+	"level": 29,
+	"next_level": "lapwing_7_4.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STAEUBL",
+			"score": 1,
+			"word": "stable"
+		},
+		{
+			"hint": "STUBL",
+			"score": 1,
+			"word": "stubble"
+		},
+		{
+			"hint": "SKWAUBL",
+			"score": 1,
+			"word": "squabble"
+		},
+		{
+			"hint": "SKRABL",
+			"score": 1,
+			"word": "scrabble"
+		},
+		{
+			"hint": "SKREUBL",
+			"score": 1,
+			"word": "scribble"
+		},
+		{
+			"hint": "SRAOEUBL",
+			"score": 1,
+			"word": "viable"
+		},
+		{
+			"hint": "SRAOUBL",
+			"score": 1,
+			"word": "viewable"
+		},
+		{
+			"hint": "SAOEBL",
+			"score": 1,
+			"word": "seeable"
+		},
+		{
+			"hint": "TKPWHROEBL",
+			"score": 1,
+			"word": "global"
+		},
+		{
+			"hint": "TKPWAEUBLs",
+			"score": 1,
+			"word": "gable"
+		},
+		{
+			"hint": "TKPWABL",
+			"score": 1,
+			"word": "gabble"
+		},
+		{
+			"hint": "TKPWOBL",
+			"score": 1,
+			"word": "gobble"
+		},
+		{
+			"hint": "TKRAOEUBL",
+			"score": 1,
+			"word": "dryable"
+		},
+		{
+			"hint": "TKABL",
+			"score": 1,
+			"word": "dabble"
+		},
+		{
+			"hint": "TKEUBL",
+			"score": 1,
+			"word": "dibble"
+		},
+		{
+			"hint": "TKUBL",
+			"score": 1,
+			"word": "double"
+		},
+		{
+			"hint": "TPHOEBL",
+			"score": 1,
+			"word": "noble"
+		},
+		{
+			"hint": "TPHEUBL",
+			"score": 1,
+			"word": "nibble"
+		},
+		{
+			"hint": "TPHUBL",
+			"score": 1,
+			"word": "nubble"
+		},
+		{
+			"hint": "TPAOEBL",
+			"score": 1,
+			"word": "feeble"
+		},
+		{
+			"hint": "TPAEUBL",
+			"score": 1,
+			"word": "fable"
+		},
+		{
+			"hint": "TRAOEUBL",
+			"score": 1,
+			"word": "tribal"
+		},
+		{
+			"hint": "TREBL",
+			"score": 1,
+			"word": "treble"
+		},
+		{
+			"hint": "TRUBL",
+			"score": 1,
+			"word": "trouble"
+		},
+		{
+			"hint": "TAEUBL",
+			"score": 1,
+			"word": "table"
+		},
+		{
+			"hint": "KWEUBL",
+			"score": 1,
+			"word": "quibble"
+		},
+		{
+			"hint": "KHAOUBL",
+			"score": 1,
+			"word": "chewable"
+		},
+		{
+			"hint": "KAEUBL",
+			"score": 1,
+			"word": "cable"
+		},
+		{
+			"hint": "KOBL",
+			"score": 1,
+			"word": "cobble"
+		},
+		{
+			"hint": "KEUBL",
+			"score": 1,
+			"word": "kibble"
+		},
+		{
+			"hint": "PWAUBL",
+			"score": 1,
+			"word": "bauble"
+		},
+		{
+			"hint": "PWABL",
+			"score": 1,
+			"word": "babble"
+		},
+		{
+			"hint": "PWOBL",
+			"score": 1,
+			"word": "bobble"
+		},
+		{
+			"hint": "PW*UBL",
+			"score": 1,
+			"word": "bulb"
+		},
+		{
+			"hint": "PWUBL",
+			"score": 1,
+			"word": "bubble"
+		},
+		{
+			"hint": "PHRAOEUBL",
+			"score": 1,
+			"word": "pliable"
+		},
+		{
+			"hint": "PHRAEUBL",
+			"score": 1,
+			"word": "playable"
+		},
+		{
+			"hint": "PHOEBL",
+			"score": 1,
+			"word": "mobile"
+		},
+		{
+			"hint": "WOBL",
+			"score": 1,
+			"word": "wobble"
+		},
+		{
+			"hint": "HRAOEUBL",
+			"score": 1,
+			"word": "liable"
+		},
+		{
+			"hint": "HRAEUBL",
+			"score": 1,
+			"word": "label"
+		},
+		{
+			"hint": "HOBL",
+			"score": 1,
+			"word": "hobble"
+		},
+		{
+			"hint": "HUBL",
+			"score": 1,
+			"word": "hubble"
+		},
+		{
+			"hint": "RAOUBL",
+			"score": 1,
+			"word": "ruble"
+		},
+		{
+			"hint": "RABL",
+			"score": 1,
+			"word": "rabble"
+		},
+		{
+			"hint": "REBL",
+			"score": 1,
+			"word": "rebel"
+		},
+		{
+			"hint": "RUBL",
+			"score": 1,
+			"word": "rubble"
+		},
+		{
+			"hint": "AEUBL",
+			"score": 1,
+			"word": "able"
+		},
+		{
+			"hint": "STOPBL",
+			"score": 1,
+			"word": "stoppable"
+		},
+		{
+			"hint": "STABLT",
+			"score": 1,
+			"word": "stability"
+		},
+		{
+			"hint": "SRAOEUBLT",
+			"score": 1,
+			"word": "viability"
+		},
+		{
+			"hint": "SRAEURBLT",
+			"score": 1,
+			"word": "variability"
+		},
+		{
+			"hint": "SREUFBLT",
+			"score": 1,
+			"word": "visibility"
+		},
+		{
+			"hint": "TPHOEBLT",
+			"score": 1,
+			"word": "nobility"
+		},
+		{
+			"hint": "TPAOEFBLT",
+			"score": 1,
+			"word": "feasibility"
+		},
+		{
+			"hint": "PHRAOEUBLT",
+			"score": 1,
+			"word": "pliability"
+		},
+		{
+			"hint": "PHRAUFBLT",
+			"score": 1,
+			"word": "plausibility"
+		},
+		{
+			"hint": "PHAOUFBLT",
+			"score": 1,
+			"word": "movability"
+		},
+		{
+			"hint": "PHOEBLT",
+			"score": 1,
+			"word": "mobility"
+		},
+		{
+			"hint": "PRAOUFBLT",
+			"score": 1,
+			"word": "provability"
+		},
+		{
+			"hint": "POFBLT",
+			"score": 1,
+			"word": "possibility"
+		},
+		{
+			"hint": "HREUFBLT",
+			"score": 1,
+			"word": "livability"
+		},
+		{
+			"hint": "ABLT",
+			"score": 1,
+			"word": "ability"
+		}
+	]
+}

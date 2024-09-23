@@ -1,0 +1,110 @@
+{
+	"checkpoint": false,
+	"description": "Right hand clusters: 'shus' and 'shal' written as -RBS and -RBL",
+	"level": 30,
+	"next_level": "lapwing_7_review.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "SPAOERBS",
+			"score": 1,
+			"word": "specious"
+		},
+		{
+			"hint": "SPAEURBS",
+			"score": 1,
+			"word": "spacious"
+		},
+		{
+			"hint": "SREURBS",
+			"score": 1,
+			"word": "vicious"
+		},
+		{
+			"hint": "TKPWRAEURBS",
+			"score": 1,
+			"word": "gracious"
+		},
+		{
+			"hint": "TPHAURBS",
+			"score": 1,
+			"word": "nauseous"
+		},
+		{
+			"hint": "KAURBS",
+			"score": 1,
+			"word": "cautious"
+		},
+		{
+			"hint": "PWARBS",
+			"score": 1,
+			"word": "barbs"
+		},
+		{
+			"hint": "PRERBS",
+			"score": 1,
+			"word": "precious"
+		},
+		{
+			"hint": "HRURBS",
+			"score": 1,
+			"word": "luscious"
+		},
+		{
+			"hint": "SPAEURBL",
+			"score": 1,
+			"word": "spatial"
+		},
+		{
+			"hint": "SPERBL",
+			"score": 1,
+			"word": "special"
+		},
+		{
+			"hint": "SREURBL",
+			"score": 1,
+			"word": "visual"
+		},
+		{
+			"hint": "SOERBL",
+			"score": 1,
+			"word": "social"
+		},
+		{
+			"hint": "TKPWHRAEURBL",
+			"score": 1,
+			"word": "glacial"
+		},
+		{
+			"hint": "TPAEURBL",
+			"score": 1,
+			"word": "facial"
+		},
+		{
+			"hint": "TPAURBL",
+			"score": 1,
+			"word": "faucial"
+		},
+		{
+			"hint": "TPARBL",
+			"score": 1,
+			"word": "fascial"
+		},
+		{
+			"hint": "KRAOURBL",
+			"score": 1,
+			"word": "crucial"
+		},
+		{
+			"hint": "KARBL",
+			"score": 1,
+			"word": "casual"
+		},
+		{
+			"hint": "RAEURBL",
+			"score": 1,
+			"word": "racial"
+		}
+	]
+}

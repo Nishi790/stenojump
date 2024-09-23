@@ -1,0 +1,930 @@
+{
+	"checkpoint": false,
+	"description": "Right hand 'ch', 'sh', 'shus', 'rch', and 'nch', written -FP, -RB, -RBS and -FRPB",
+	"level": 25,
+	"next_level": "lapwing_6_review.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "STPHAFP",
+			"score": 1,
+			"word": "snatch"
+		},
+		{
+			"hint": "STPHEUFP",
+			"score": 1,
+			"word": "snitch"
+		},
+		{
+			"hint": "STREFP",
+			"score": 1,
+			"word": "stretch"
+		},
+		{
+			"hint": "STEUFP",
+			"score": 1,
+			"word": "stitch"
+		},
+		{
+			"hint": "SKRAOEFP",
+			"score": 1,
+			"word": "screech"
+		},
+		{
+			"hint": "SKRAFP",
+			"score": 1,
+			"word": "scratch"
+		},
+		{
+			"hint": "SKAOFP",
+			"score": 1,
+			"word": "scooch"
+		},
+		{
+			"hint": "SKOFP",
+			"score": 1,
+			"word": "scotch"
+		},
+		{
+			"hint": "SKEFP",
+			"score": 1,
+			"word": "sketch"
+		},
+		{
+			"hint": "SPHROFP",
+			"score": 1,
+			"word": "splotch"
+		},
+		{
+			"hint": "SPHAOFP",
+			"score": 1,
+			"word": "smooch"
+		},
+		{
+			"hint": "SPAOEFP",
+			"score": 1,
+			"word": "speech"
+		},
+		{
+			"hint": "SWEUFP",
+			"score": 1,
+			"word": "switch"
+		},
+		{
+			"hint": "SHROUFP",
+			"score": 1,
+			"word": "slouch"
+		},
+		{
+			"hint": "SROUFP",
+			"score": 1,
+			"word": "vouch"
+		},
+		{
+			"hint": "SUFP",
+			"score": 1,
+			"word": "such"
+		},
+		{
+			"hint": "TKPWHREUFP",
+			"score": 1,
+			"word": "glitch"
+		},
+		{
+			"hint": "TKPWROUFP",
+			"score": 1,
+			"word": "grouch"
+		},
+		{
+			"hint": "TKEUFP",
+			"score": 1,
+			"word": "ditch"
+		},
+		{
+			"hint": "TPHOFP",
+			"score": 1,
+			"word": "notch"
+		},
+		{
+			"hint": "TPEFP",
+			"score": 1,
+			"word": "fetch"
+		},
+		{
+			"hint": "TWEUFP",
+			"score": 1,
+			"word": "twitch"
+		},
+		{
+			"hint": "TAOEFP",
+			"score": 1,
+			"word": "teach"
+		},
+		{
+			"hint": "TUFP",
+			"score": 1,
+			"word": "touch"
+		},
+		{
+			"hint": "KHRUFP",
+			"score": 1,
+			"word": "clutch"
+		},
+		{
+			"hint": "KROUFP",
+			"score": 1,
+			"word": "crouch"
+		},
+		{
+			"hint": "KROFP",
+			"score": 1,
+			"word": "crotch"
+		},
+		{
+			"hint": "KRUFP",
+			"score": 1,
+			"word": "crutch"
+		},
+		{
+			"hint": "KAFP",
+			"score": 1,
+			"word": "catch"
+		},
+		{
+			"hint": "KOEFP",
+			"score": 1,
+			"word": "coach"
+		},
+		{
+			"hint": "KOUFP",
+			"score": 1,
+			"word": "couch"
+		},
+		{
+			"hint": "KEFP",
+			"score": 1,
+			"word": "ketch"
+		},
+		{
+			"hint": "PWHRAOEFP",
+			"score": 1,
+			"word": "bleach"
+		},
+		{
+			"hint": "PWHROFP",
+			"score": 1,
+			"word": "blotch"
+		},
+		{
+			"hint": "PWRAOEFP",
+			"score": 1,
+			"word": "breech"
+		},
+		{
+			"hint": "PWRAOFP",
+			"score": 1,
+			"word": "brooch"
+		},
+		{
+			"hint": "PWRAEFP",
+			"score": 1,
+			"word": "breach"
+		},
+		{
+			"hint": "PWROEFP",
+			"score": 1,
+			"word": "broach"
+		},
+		{
+			"hint": "PWAOEFP",
+			"score": 1,
+			"word": "beech"
+		},
+		{
+			"hint": "PWAEFP",
+			"score": 1,
+			"word": "beach"
+		},
+		{
+			"hint": "PWAFP",
+			"score": 1,
+			"word": "batch"
+		},
+		{
+			"hint": "PWOFP",
+			"score": 1,
+			"word": "botch"
+		},
+		{
+			"hint": "PWUFP",
+			"score": 1,
+			"word": "butch"
+		},
+		{
+			"hint": "PHAOFP",
+			"score": 1,
+			"word": "mooch"
+		},
+		{
+			"hint": "PHAFP",
+			"score": 1,
+			"word": "match"
+		},
+		{
+			"hint": "PHUFP",
+			"score": 1,
+			"word": "much"
+		},
+		{
+			"hint": "PRAOEFP",
+			"score": 1,
+			"word": "preach"
+		},
+		{
+			"hint": "PAOEFP",
+			"score": 1,
+			"word": "peach"
+		},
+		{
+			"hint": "PAOFP",
+			"score": 1,
+			"word": "pooch"
+		},
+		{
+			"hint": "PAFP",
+			"score": 1,
+			"word": "patch"
+		},
+		{
+			"hint": "POEFP",
+			"score": 1,
+			"word": "poach"
+		},
+		{
+			"hint": "POUFP",
+			"score": 1,
+			"word": "pouch"
+		},
+		{
+			"hint": "PEUFP",
+			"score": 1,
+			"word": "pitch"
+		},
+		{
+			"hint": "WEUFP",
+			"score": 1,
+			"word": "witch"
+		},
+		{
+			"hint": "HRAOEFP",
+			"score": 1,
+			"word": "leech"
+		},
+		{
+			"hint": "HRAEFP",
+			"score": 1,
+			"word": "leach"
+		},
+		{
+			"hint": "HRAFP",
+			"score": 1,
+			"word": "latch"
+		},
+		{
+			"hint": "HAOFP",
+			"score": 1,
+			"word": "hooch"
+		},
+		{
+			"hint": "HAFP",
+			"score": 1,
+			"word": "hatch"
+		},
+		{
+			"hint": "HEUFP",
+			"score": 1,
+			"word": "hitch"
+		},
+		{
+			"hint": "HUFP",
+			"score": 1,
+			"word": "hutch"
+		},
+		{
+			"hint": "RAOEFP",
+			"score": 1,
+			"word": "reach"
+		},
+		{
+			"hint": "ROEFP",
+			"score": 1,
+			"word": "roach"
+		},
+		{
+			"hint": "REUFP",
+			"score": 1,
+			"word": "rich"
+		},
+		{
+			"hint": "REFP",
+			"score": 1,
+			"word": "retch"
+		},
+		{
+			"hint": "AOEFP",
+			"score": 1,
+			"word": "each"
+		},
+		{
+			"hint": "OUFP",
+			"score": 1,
+			"word": "ouch"
+		},
+		{
+			"hint": "EUFP",
+			"score": 1,
+			"word": "itch"
+		},
+		{
+			"hint": "EFP",
+			"score": 1,
+			"word": "etch"
+		},
+		{
+			"hint": "STARB",
+			"score": 1,
+			"word": "stash"
+		},
+		{
+			"hint": "SKWRORB",
+			"score": 1,
+			"word": "josh"
+		},
+		{
+			"hint": "SKWAURB",
+			"score": 1,
+			"word": "squash"
+		},
+		{
+			"hint": "SKWEURB",
+			"score": 1,
+			"word": "squish"
+		},
+		{
+			"hint": "SPHRARB",
+			"score": 1,
+			"word": "splash"
+		},
+		{
+			"hint": "SPHRORB",
+			"score": 1,
+			"word": "splosh"
+		},
+		{
+			"hint": "SPHARB",
+			"score": 1,
+			"word": "smash"
+		},
+		{
+			"hint": "SPHURB",
+			"score": 1,
+			"word": "smush"
+		},
+		{
+			"hint": "SWAORB",
+			"score": 1,
+			"word": "swoosh"
+		},
+		{
+			"hint": "SWEURB",
+			"score": 1,
+			"word": "swish"
+		},
+		{
+			"hint": "SHRARB",
+			"score": 1,
+			"word": "slash"
+		},
+		{
+			"hint": "SHRORB",
+			"score": 1,
+			"word": "slosh"
+		},
+		{
+			"hint": "SHRURB",
+			"score": 1,
+			"word": "slush"
+		},
+		{
+			"hint": "SHAOERB",
+			"score": 1,
+			"word": "sheesh"
+		},
+		{
+			"hint": "SHURB",
+			"score": 1,
+			"word": "shush"
+		},
+		{
+			"hint": "SARB",
+			"score": 1,
+			"word": "sash"
+		},
+		{
+			"hint": "TKPWARB",
+			"score": 1,
+			"word": "gash"
+		},
+		{
+			"hint": "TKPWOERB",
+			"score": 1,
+			"word": "gauche"
+		},
+		{
+			"hint": "TKPWORB",
+			"score": 1,
+			"word": "gosh"
+		},
+		{
+			"hint": "TKPWURB",
+			"score": 1,
+			"word": "gush"
+		},
+		{
+			"hint": "TKRURB",
+			"score": 1,
+			"word": "drush"
+		},
+		{
+			"hint": "TKARB",
+			"score": 1,
+			"word": "dash"
+		},
+		{
+			"hint": "TKORB",
+			"score": 1,
+			"word": "dosh"
+		},
+		{
+			"hint": "TKEURB",
+			"score": 1,
+			"word": "dish"
+		},
+		{
+			"hint": "TPHRARB",
+			"score": 1,
+			"word": "flash"
+		},
+		{
+			"hint": "TPHRERB",
+			"score": 1,
+			"word": "flesh"
+		},
+		{
+			"hint": "TPHRURB",
+			"score": 1,
+			"word": "flush"
+		},
+		{
+			"hint": "TPHARB",
+			"score": 1,
+			"word": "gnash"
+		},
+		{
+			"hint": "TPHORB",
+			"score": 1,
+			"word": "nosh"
+		},
+		{
+			"hint": "TPRERB",
+			"score": 1,
+			"word": "fresh"
+		},
+		{
+			"hint": "TPEURB",
+			"score": 1,
+			"word": "fish"
+		},
+		{
+			"hint": "THRARB",
+			"score": 1,
+			"word": "thrash"
+		},
+		{
+			"hint": "TRARB",
+			"score": 1,
+			"word": "trash"
+		},
+		{
+			"hint": "TURB",
+			"score": 1,
+			"word": "tush"
+		},
+		{
+			"hint": "KWAURB",
+			"score": 1,
+			"word": "quash"
+		},
+		{
+			"hint": "KWARB",
+			"score": 1,
+			"word": "quash"
+		},
+		{
+			"hint": "KHRARB",
+			"score": 1,
+			"word": "clash"
+		},
+		{
+			"hint": "KRARB",
+			"score": 1,
+			"word": "crash"
+		},
+		{
+			"hint": "KRERB",
+			"score": 1,
+			"word": "creche"
+		},
+		{
+			"hint": "KRURB",
+			"score": 1,
+			"word": "crush"
+		},
+		{
+			"hint": "KARB",
+			"score": 1,
+			"word": "cash"
+		},
+		{
+			"hint": "PWHRURB",
+			"score": 1,
+			"word": "blush"
+		},
+		{
+			"hint": "PWRARB",
+			"score": 1,
+			"word": "brash"
+		},
+		{
+			"hint": "PWRURB",
+			"score": 1,
+			"word": "brush"
+		},
+		{
+			"hint": "PWARB",
+			"score": 1,
+			"word": "bash"
+		},
+		{
+			"hint": "PWORB",
+			"score": 1,
+			"word": "bosh"
+		},
+		{
+			"hint": "PWURB",
+			"score": 1,
+			"word": "bush"
+		},
+		{
+			"hint": "PHRURB",
+			"score": 1,
+			"word": "plush"
+		},
+		{
+			"hint": "PHARB",
+			"score": 1,
+			"word": "mash"
+		},
+		{
+			"hint": "PHORB",
+			"score": 1,
+			"word": "mosh"
+		},
+		{
+			"hint": "PHERB",
+			"score": 1,
+			"word": "mesh"
+		},
+		{
+			"hint": "PHURB",
+			"score": 1,
+			"word": "mush"
+		},
+		{
+			"hint": "PORB",
+			"score": 1,
+			"word": "posh"
+		},
+		{
+			"hint": "PURB",
+			"score": 1,
+			"word": "push"
+		},
+		{
+			"hint": "WAURB",
+			"score": 1,
+			"word": "wash"
+		},
+		{
+			"hint": "WEURB",
+			"score": 1,
+			"word": "wish"
+		},
+		{
+			"hint": "HRAOERB",
+			"score": 1,
+			"word": "leash"
+		},
+		{
+			"hint": "HRARB",
+			"score": 1,
+			"word": "lash"
+		},
+		{
+			"hint": "HRURB",
+			"score": 1,
+			"word": "lush"
+		},
+		{
+			"hint": "HARB",
+			"score": 1,
+			"word": "hash"
+		},
+		{
+			"hint": "HURB",
+			"score": 1,
+			"word": "hush"
+		},
+		{
+			"hint": "RARB",
+			"score": 1,
+			"word": "rash"
+		},
+		{
+			"hint": "RURB",
+			"score": 1,
+			"word": "rush"
+		},
+		{
+			"hint": "ARB",
+			"score": 1,
+			"word": "ash"
+		},
+		{
+			"hint": "STAUFRPB",
+			"score": 1,
+			"word": "staunch"
+		},
+		{
+			"hint": "STAFRPB",
+			"score": 1,
+			"word": "starch"
+		},
+		{
+			"hint": "STEFRPB",
+			"score": 1,
+			"word": "stench"
+		},
+		{
+			"hint": "SKRUFRPB",
+			"score": 1,
+			"word": "scrunch"
+		},
+		{
+			"hint": "SKOFRPB",
+			"score": 1,
+			"word": "scorch"
+		},
+		{
+			"hint": "SPHEUFRPB",
+			"score": 1,
+			"word": "smirch"
+		},
+		{
+			"hint": "SEUFRPB",
+			"score": 1,
+			"word": "cinch"
+		},
+		{
+			"hint": "SEFRPB",
+			"score": 1,
+			"word": "search"
+		},
+		{
+			"hint": "TKREFRPB",
+			"score": 1,
+			"word": "drench"
+		},
+		{
+			"hint": "TPHREUFRPB",
+			"score": 1,
+			"word": "flinch"
+		},
+		{
+			"hint": "TPEUFRPB",
+			"score": 1,
+			"word": "finch"
+		},
+		{
+			"hint": "TRAUFRPB",
+			"score": 1,
+			"word": "tranche"
+		},
+		{
+			"hint": "TREFRPB",
+			"score": 1,
+			"word": "trench"
+		},
+		{
+			"hint": "KWEFRPB",
+			"score": 1,
+			"word": "quench"
+		},
+		{
+			"hint": "KHREUFRPB",
+			"score": 1,
+			"word": "clinch"
+		},
+		{
+			"hint": "KHREFRPB",
+			"score": 1,
+			"word": "clench"
+		},
+		{
+			"hint": "KHUFRPB",
+			"score": 1,
+			"word": "church"
+		},
+		{
+			"hint": "KRUFRPB",
+			"score": 1,
+			"word": "crunch"
+		},
+		{
+			"hint": "KOFRPB",
+			"score": 1,
+			"word": "conch"
+		},
+		{
+			"hint": "PWRAFRPB",
+			"score": 1,
+			"word": "branch"
+		},
+		{
+			"hint": "PWRUFRPB",
+			"score": 1,
+			"word": "brunch"
+		},
+		{
+			"hint": "PWEUFRPB",
+			"score": 1,
+			"word": "birch"
+		},
+		{
+			"hint": "PWEFRPB",
+			"score": 1,
+			"word": "bench"
+		},
+		{
+			"hint": "PWUFRPB",
+			"score": 1,
+			"word": "bunch"
+		},
+		{
+			"hint": "PHAFRPB",
+			"score": 1,
+			"word": "march"
+		},
+		{
+			"hint": "PHEFRPB",
+			"score": 1,
+			"word": "merch"
+		},
+		{
+			"hint": "PHUFRPB",
+			"score": 1,
+			"word": "munch"
+		},
+		{
+			"hint": "PAUFRPB",
+			"score": 1,
+			"word": "paunch"
+		},
+		{
+			"hint": "PAFRPB",
+			"score": 1,
+			"word": "parch"
+		},
+		{
+			"hint": "POFRPB",
+			"score": 1,
+			"word": "porch"
+		},
+		{
+			"hint": "PEUFRPB",
+			"score": 1,
+			"word": "pinch"
+		},
+		{
+			"hint": "PEFRPB",
+			"score": 1,
+			"word": "perch"
+		},
+		{
+			"hint": "PUFRPB",
+			"score": 1,
+			"word": "punch"
+		},
+		{
+			"hint": "WREFRPB",
+			"score": 1,
+			"word": "wrench"
+		},
+		{
+			"hint": "WEUFRPB",
+			"score": 1,
+			"word": "winch"
+		},
+		{
+			"hint": "WEFRPB",
+			"score": 1,
+			"word": "wench"
+		},
+		{
+			"hint": "HRAUFRPB",
+			"score": 1,
+			"word": "launch"
+		},
+		{
+			"hint": "HRAFRPB",
+			"score": 1,
+			"word": "larch"
+		},
+		{
+			"hint": "HRUFRPB",
+			"score": 1,
+			"word": "lurch"
+		},
+		{
+			"hint": "HAUFRPB",
+			"score": 1,
+			"word": "haunch"
+		},
+		{
+			"hint": "HUFRPB",
+			"score": 1,
+			"word": "hunch"
+		},
+		{
+			"hint": "RAUFRPB",
+			"score": 1,
+			"word": "raunch"
+		},
+		{
+			"hint": "RAFRPB",
+			"score": 1,
+			"word": "ranch"
+		},
+		{
+			"hint": "AFRPB",
+			"score": 1,
+			"word": "arch"
+		},
+		{
+			"hint": "EUFRPB",
+			"score": 1,
+			"word": "inch"
+		},
+		{
+			"hint": "SPAEURBS",
+			"score": 1,
+			"word": "spacious"
+		},
+		{
+			"hint": "SREURBS",
+			"score": 1,
+			"word": "vicious"
+		},
+		{
+			"hint": "TPHAURBS",
+			"score": 1,
+			"word": "nauseous"
+		},
+		{
+			"hint": "KAURBS",
+			"score": 1,
+			"word": "cautious"
+		},
+		{
+			"hint": "PRERBS",
+			"score": 1,
+			"word": "precious"
+		},
+		{
+			"hint": "HRURBS",
+			"score": 1,
+			"word": "luscious"
+		}
+	]
+}

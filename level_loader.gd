@@ -5,6 +5,7 @@ signal last_level
 enum LevelOrder {RANDOM, ORDERED}
 
 var default_level_path_root: String = "res://level_data/"
+var custom_level_path_root: String = "user://custom_levels/"
 
 var levels: Dictionary = {}
 
@@ -15,16 +16,35 @@ func _ready() -> void:
 	if DirAccess.dir_exists_absolute(default_level_path_root):
 		var files: DirAccess = DirAccess.open(default_level_path_root)
 		var level_files: PackedStringArray = files.get_files()
-		for file in level_files:
-			if file.ends_with(".json"):
-				create_level(file)
+		retrieve_level_files(level_files)
 		for dir in files.get_directories():
-			var folder_files: PackedStringArray = DirAccess.get_files_at(default_level_path_root.path_join(dir))
-			for file in folder_files:
-				var file_path: String = dir.path_join(file)
-				if file.ends_with(".json"):
-					create_level(file_path)
+			var folder_path: String = default_level_path_root.path_join(dir)
+			var folder_files: PackedStringArray = DirAccess.get_files_at(folder_path)
+			retrieve_level_files(folder_files, folder_path)
 
+	#Create directory for custom levels if it doesn't exist
+	if DirAccess.dir_exists_absolute(custom_level_path_root) == false:
+		DirAccess.make_dir_recursive_absolute(custom_level_path_root)
+
+	#Retrieve custom levels up to 1 folder deep in custom level directory
+	var custom_level_dir: DirAccess = DirAccess.open(custom_level_path_root)
+	var level_files: PackedStringArray = custom_level_dir.get_files()
+	retrieve_level_files(level_files)
+	for dir in custom_level_dir.get_directories():
+		var folder_path: String = custom_level_path_root.path_join(dir)
+		var folder_files: PackedStringArray = DirAccess.get_files_at(folder_path)
+		retrieve_level_files(folder_files, folder_path)
+
+
+func retrieve_level_files(file_names: PackedStringArray, path_root: String = "") -> void:
+	var path: String
+	for file in file_names:
+		if file.ends_with(".json"):
+			if path_root != "":
+				path = path_root.path_join(file)
+			else:
+				path = file
+			create_level(path)
 
 
 func create_level(filepath: String) -> String:

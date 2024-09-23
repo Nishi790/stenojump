@@ -16,11 +16,17 @@ func _ready() -> void:
 
 
 func create_tabs() -> void:
-	var directories: DirAccess = DirAccess.open(LevelLoader.default_level_path_root)
+	create_tabs_from_dir(LevelLoader.default_level_path_root)
+	create_tabs_from_dir(LevelLoader.custom_level_path_root)
+
+
+
+func create_tabs_from_dir(path_root: String) -> void:
+	var directories: DirAccess = DirAccess.open(path_root)
 	var dir_list: PackedStringArray = directories.get_directories()
 	for dir in dir_list:
 		var new_tab: PanelContainer = sequence_panel_scene.instantiate()
-		new_tab.level_folder = LevelLoader.default_level_path_root.path_join(dir)
+		new_tab.level_folder = path_root.path_join(dir)
 		new_tab.set_folder()
 		new_tab.name = dir
 		tab_cont.add_child(new_tab)

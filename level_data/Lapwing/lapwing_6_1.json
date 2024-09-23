@@ -1,0 +1,1260 @@
+{
+	"checkpoint": false,
+	"description": "Right hand 'n', 'j', and 'lj/lch'",
+	"level": 23,
+	"next_level": "lapwing_6_2.json",
+	"order": "random",
+	"size": 30,
+	"targets": [
+		{
+			"hint": "SKWELG",
+			"score": 1,
+			"word": "squelch"
+		},
+		{
+			"hint": "TKPWULG",
+			"score": 1,
+			"word": "gulch"
+		},
+		{
+			"hint": "TPELG",
+			"score": 1,
+			"word": "felch"
+		},
+		{
+			"hint": "PWEULG",
+			"score": 1,
+			"word": "bilge"
+		},
+		{
+			"hint": "PWELG",
+			"score": 1,
+			"word": "belch"
+		},
+		{
+			"hint": "PWULG",
+			"score": 1,
+			"word": "bulge"
+		},
+		{
+			"hint": "PHULG",
+			"score": 1,
+			"word": "mulch"
+		},
+		{
+			"hint": "WELG",
+			"score": 1,
+			"word": "welch"
+		},
+		{
+			"hint": "STRAOUPB",
+			"score": 1,
+			"word": "strewn"
+		},
+		{
+			"hint": "STRAEUPB",
+			"score": 1,
+			"word": "strain"
+		},
+		{
+			"hint": "STAEUPB",
+			"score": 1,
+			"word": "stain"
+		},
+		{
+			"hint": "STAPB",
+			"score": 1,
+			"word": "stan"
+		},
+		{
+			"hint": "STOEPB",
+			"score": 1,
+			"word": "stone"
+		},
+		{
+			"hint": "STUPB",
+			"score": 1,
+			"word": "stun"
+		},
+		{
+			"hint": "SKWRAOEPB",
+			"score": 1,
+			"word": "gene"
+		},
+		{
+			"hint": "SKWREUPB",
+			"score": 1,
+			"word": "gin"
+		},
+		{
+			"hint": "SKRAOEPB",
+			"score": 1,
+			"word": "screen"
+		},
+		{
+			"hint": "SKRAUPB",
+			"score": 1,
+			"word": "scrawn"
+		},
+		{
+			"hint": "SKAPB",
+			"score": 1,
+			"word": "scan"
+		},
+		{
+			"hint": "SKOEPB",
+			"score": 1,
+			"word": "scone"
+		},
+		{
+			"hint": "SKEUPB",
+			"score": 1,
+			"word": "skin"
+		},
+		{
+			"hint": "SPHRAOEUPB",
+			"score": 1,
+			"word": "spline"
+		},
+		{
+			"hint": "SPHRAOEPB",
+			"score": 1,
+			"word": "spleen"
+		},
+		{
+			"hint": "SPRAEUPB",
+			"score": 1,
+			"word": "sprain"
+		},
+		{
+			"hint": "SPAOEUPB",
+			"score": 1,
+			"word": "spine"
+		},
+		{
+			"hint": "SPAOPB",
+			"score": 1,
+			"word": "spoon"
+		},
+		{
+			"hint": "SPAUPB",
+			"score": 1,
+			"word": "spawn"
+		},
+		{
+			"hint": "SPAPB",
+			"score": 1,
+			"word": "span"
+		},
+		{
+			"hint": "SPEUPB",
+			"score": 1,
+			"word": "spin"
+		},
+		{
+			"hint": "SPUPB",
+			"score": 1,
+			"word": "spun"
+		},
+		{
+			"hint": "SWAOEUPB",
+			"score": 1,
+			"word": "swine"
+		},
+		{
+			"hint": "SWAOPB",
+			"score": 1,
+			"word": "swoon"
+		},
+		{
+			"hint": "SWAEUPB",
+			"score": 1,
+			"word": "swain"
+		},
+		{
+			"hint": "SWAUPB",
+			"score": 1,
+			"word": "swan"
+		},
+		{
+			"hint": "SHRAOEUPB",
+			"score": 1,
+			"word": "shrine"
+		},
+		{
+			"hint": "SHRAEUPB",
+			"score": 1,
+			"word": "slain"
+		},
+		{
+			"hint": "SHAOEUPB",
+			"score": 1,
+			"word": "shine"
+		},
+		{
+			"hint": "SHAOEPB",
+			"score": 1,
+			"word": "sheen"
+		},
+		{
+			"hint": "SHOEPB",
+			"score": 1,
+			"word": "shown"
+		},
+		{
+			"hint": "SHEUPB",
+			"score": 1,
+			"word": "shin"
+		},
+		{
+			"hint": "SHUPB",
+			"score": 1,
+			"word": "shun"
+		},
+		{
+			"hint": "SRAOEUPB",
+			"score": 1,
+			"word": "vine"
+		},
+		{
+			"hint": "SRAEUPB",
+			"score": 1,
+			"word": "vain"
+		},
+		{
+			"hint": "SRAEPB",
+			"score": 1,
+			"word": "vane"
+		},
+		{
+			"hint": "SRAPB",
+			"score": 1,
+			"word": "van"
+		},
+		{
+			"hint": "SROPB",
+			"score": 1,
+			"word": "von"
+		},
+		{
+			"hint": "SAOEUPB",
+			"score": 1,
+			"word": "sign"
+		},
+		{
+			"hint": "SAOEPB",
+			"score": 1,
+			"word": "seen"
+		},
+		{
+			"hint": "SAOPB",
+			"score": 1,
+			"word": "soon"
+		},
+		{
+			"hint": "SAEUPB",
+			"score": 1,
+			"word": "sane"
+		},
+		{
+			"hint": "SOEPB",
+			"score": 1,
+			"word": "sown"
+		},
+		{
+			"hint": "SOPB",
+			"score": 1,
+			"word": "son"
+		},
+		{
+			"hint": "SEUPB",
+			"score": 1,
+			"word": "sin"
+		},
+		{
+			"hint": "SEPB",
+			"score": 1,
+			"word": "sen"
+		},
+		{
+			"hint": "SUPB",
+			"score": 1,
+			"word": "sun"
+		},
+		{
+			"hint": "TKPWHRAOEPB",
+			"score": 1,
+			"word": "glean"
+		},
+		{
+			"hint": "TKPWHRAPB",
+			"score": 1,
+			"word": "glan"
+		},
+		{
+			"hint": "TKPWRAOEPB",
+			"score": 1,
+			"word": "green"
+		},
+		{
+			"hint": "TKPWRAOPB",
+			"score": 1,
+			"word": "groan"
+		},
+		{
+			"hint": "TKPWRAEUPB",
+			"score": 1,
+			"word": "grain"
+		},
+		{
+			"hint": "TKPWRAPB",
+			"score": 1,
+			"word": "gran"
+		},
+		{
+			"hint": "TKPWROEUPB",
+			"score": 1,
+			"word": "groin"
+		},
+		{
+			"hint": "TKPWROEPB",
+			"score": 1,
+			"word": "grown"
+		},
+		{
+			"hint": "TKPWREUPB",
+			"score": 1,
+			"word": "grin"
+		},
+		{
+			"hint": "TKPWAOPB",
+			"score": 1,
+			"word": "goon"
+		},
+		{
+			"hint": "TKPWAEUPB",
+			"score": 1,
+			"word": "gain"
+		},
+		{
+			"hint": "TKPWOUPB",
+			"score": 1,
+			"word": "gown"
+		},
+		{
+			"hint": "TKPWOPB",
+			"score": 1,
+			"word": "gone"
+		},
+		{
+			"hint": "TKRAEUPB",
+			"score": 1,
+			"word": "drain"
+		},
+		{
+			"hint": "TKRAUPB",
+			"score": 1,
+			"word": "drawn"
+		},
+		{
+			"hint": "TKROEPB",
+			"score": 1,
+			"word": "drone"
+		},
+		{
+			"hint": "TKROUPB",
+			"score": 1,
+			"word": "drown"
+		},
+		{
+			"hint": "TKAOEUPB",
+			"score": 1,
+			"word": "dine"
+		},
+		{
+			"hint": "TKAOEPB",
+			"score": 1,
+			"word": "dean"
+		},
+		{
+			"hint": "TKAOUPB",
+			"score": 1,
+			"word": "dune"
+		},
+		{
+			"hint": "TKAUPB",
+			"score": 1,
+			"word": "dawn"
+		},
+		{
+			"hint": "TKOUPB",
+			"score": 1,
+			"word": "down"
+		},
+		{
+			"hint": "TKOPB",
+			"score": 1,
+			"word": "done"
+		},
+		{
+			"hint": "TKEUPB",
+			"score": 1,
+			"word": "din"
+		},
+		{
+			"hint": "TKEPB",
+			"score": 1,
+			"word": "den"
+		},
+		{
+			"hint": "TPHRAPB",
+			"score": 1,
+			"word": "flan"
+		},
+		{
+			"hint": "TPHROEPB",
+			"score": 1,
+			"word": "flown"
+		},
+		{
+			"hint": "TPHAOPB",
+			"score": 1,
+			"word": "noon"
+		},
+		{
+			"hint": "TPHAUPB",
+			"score": 1,
+			"word": "none"
+		},
+		{
+			"hint": "TPHAPB",
+			"score": 1,
+			"word": "nan"
+		},
+		{
+			"hint": "TPHOEPB",
+			"score": 1,
+			"word": "known"
+		},
+		{
+			"hint": "TPHUPB",
+			"score": 1,
+			"word": "nun"
+		},
+		{
+			"hint": "TPROUPB",
+			"score": 1,
+			"word": "frown"
+		},
+		{
+			"hint": "TPAOEUPB",
+			"score": 1,
+			"word": "fine"
+		},
+		{
+			"hint": "TPAEUPB",
+			"score": 1,
+			"word": "feign"
+		},
+		{
+			"hint": "TPAUPB",
+			"score": 1,
+			"word": "fawn"
+		},
+		{
+			"hint": "TPAPB",
+			"score": 1,
+			"word": "fan"
+		},
+		{
+			"hint": "TPEUPB",
+			"score": 1,
+			"word": "fin"
+		},
+		{
+			"hint": "TPEPB",
+			"score": 1,
+			"word": "fen"
+		},
+		{
+			"hint": "TPUPB",
+			"score": 1,
+			"word": "fun"
+		},
+		{
+			"hint": "TWAOEUPB",
+			"score": 1,
+			"word": "twine"
+		},
+		{
+			"hint": "TWAEUPB",
+			"score": 1,
+			"word": "twain"
+		},
+		{
+			"hint": "TWEUPB",
+			"score": 1,
+			"word": "twin"
+		},
+		{
+			"hint": "THROEPB",
+			"score": 1,
+			"word": "throne"
+		},
+		{
+			"hint": "THAOEUPB",
+			"score": 1,
+			"word": "thine"
+		},
+		{
+			"hint": "THAPB",
+			"score": 1,
+			"word": "than"
+		},
+		{
+			"hint": "THEUPB",
+			"score": 1,
+			"word": "thin"
+		},
+		{
+			"hint": "THEPB",
+			"score": 1,
+			"word": "then"
+		},
+		{
+			"hint": "TRAEUPB",
+			"score": 1,
+			"word": "train"
+		},
+		{
+			"hint": "TRAPB",
+			"score": 1,
+			"word": "tran"
+		},
+		{
+			"hint": "TROPB",
+			"score": 1,
+			"word": "tron"
+		},
+		{
+			"hint": "TAOEUPB",
+			"score": 1,
+			"word": "tine"
+		},
+		{
+			"hint": "TAOEPB",
+			"score": 1,
+			"word": "teen"
+		},
+		{
+			"hint": "TAOUPB",
+			"score": 1,
+			"word": "tune"
+		},
+		{
+			"hint": "TAOPB",
+			"score": 1,
+			"word": "toon"
+		},
+		{
+			"hint": "TAPB",
+			"score": 1,
+			"word": "tan"
+		},
+		{
+			"hint": "TOEPB",
+			"score": 1,
+			"word": "tone"
+		},
+		{
+			"hint": "TOUPB",
+			"score": 1,
+			"word": "town"
+		},
+		{
+			"hint": "TOPB",
+			"score": 1,
+			"word": "ton"
+		},
+		{
+			"hint": "TEUPB",
+			"score": 1,
+			"word": "tin"
+		},
+		{
+			"hint": "TEPB",
+			"score": 1,
+			"word": "ten"
+		},
+		{
+			"hint": "TUPB",
+			"score": 1,
+			"word": "tun"
+		},
+		{
+			"hint": "KWRA*UPB",
+			"score": 1,
+			"word": "yawn"
+		},
+		{
+			"hint": "KWAOEPB",
+			"score": 1,
+			"word": "queen"
+		},
+		{
+			"hint": "KWEUPB",
+			"score": 1,
+			"word": "quin"
+		},
+		{
+			"hint": "KHRAOEPB",
+			"score": 1,
+			"word": "clean"
+		},
+		{
+			"hint": "KHRAPB",
+			"score": 1,
+			"word": "clan"
+		},
+		{
+			"hint": "KHROEPB",
+			"score": 1,
+			"word": "clone"
+		},
+		{
+			"hint": "KHROUPB",
+			"score": 1,
+			"word": "clown"
+		},
+		{
+			"hint": "KHROPB",
+			"score": 1,
+			"word": "colon"
+		},
+		{
+			"hint": "KHAOEUPB",
+			"score": 1,
+			"word": "chine"
+		},
+		{
+			"hint": "KHAEUPB",
+			"score": 1,
+			"word": "chain"
+		},
+		{
+			"hint": "KHEUPB",
+			"score": 1,
+			"word": "chin"
+		},
+		{
+			"hint": "KRAOPB",
+			"score": 1,
+			"word": "croon"
+		},
+		{
+			"hint": "KRAEUPB",
+			"score": 1,
+			"word": "crane"
+		},
+		{
+			"hint": "KROEPB",
+			"score": 1,
+			"word": "crone"
+		},
+		{
+			"hint": "KROUPB",
+			"score": 1,
+			"word": "crown"
+		},
+		{
+			"hint": "KAOEPB",
+			"score": 1,
+			"word": "keen"
+		},
+		{
+			"hint": "KAOPB",
+			"score": 1,
+			"word": "coon"
+		},
+		{
+			"hint": "KAEUPB",
+			"score": 1,
+			"word": "cane"
+		},
+		{
+			"hint": "KAPB",
+			"score": 1,
+			"word": "can"
+		},
+		{
+			"hint": "KOEUPB",
+			"score": 1,
+			"word": "coin"
+		},
+		{
+			"hint": "KOEPB",
+			"score": 1,
+			"word": "cone"
+		},
+		{
+			"hint": "KEUPB",
+			"score": 1,
+			"word": "kin"
+		},
+		{
+			"hint": "KEPB",
+			"score": 1,
+			"word": "ken"
+		},
+		{
+			"hint": "PWHROEPB",
+			"score": 1,
+			"word": "blown"
+		},
+		{
+			"hint": "PWRAOEUPB",
+			"score": 1,
+			"word": "brine"
+		},
+		{
+			"hint": "PWRAEUPB",
+			"score": 1,
+			"word": "brain"
+		},
+		{
+			"hint": "PWRAUPB",
+			"score": 1,
+			"word": "brawn"
+		},
+		{
+			"hint": "PWRAPB",
+			"score": 1,
+			"word": "bran"
+		},
+		{
+			"hint": "PWROUPB",
+			"score": 1,
+			"word": "brown"
+		},
+		{
+			"hint": "PWAOEPB",
+			"score": 1,
+			"word": "been"
+		},
+		{
+			"hint": "PWAOPB",
+			"score": 1,
+			"word": "boon"
+		},
+		{
+			"hint": "PWAEUPB",
+			"score": 1,
+			"word": "bane"
+		},
+		{
+			"hint": "PWAEPB",
+			"score": 1,
+			"word": "bean"
+		},
+		{
+			"hint": "PWAPB",
+			"score": 1,
+			"word": "ban"
+		},
+		{
+			"hint": "PWOEPB",
+			"score": 1,
+			"word": "bone"
+		},
+		{
+			"hint": "PWOPB",
+			"score": 1,
+			"word": "bon"
+		},
+		{
+			"hint": "PWEUPB",
+			"score": 1,
+			"word": "bin"
+		},
+		{
+			"hint": "PWUPB",
+			"score": 1,
+			"word": "bun"
+		},
+		{
+			"hint": "PHRAEUPB",
+			"score": 1,
+			"word": "plain"
+		},
+		{
+			"hint": "PHRAEPB",
+			"score": 1,
+			"word": "plane"
+		},
+		{
+			"hint": "PHRAPB",
+			"score": 1,
+			"word": "plan"
+		},
+		{
+			"hint": "PHAOEUPB",
+			"score": 1,
+			"word": "mine"
+		},
+		{
+			"hint": "PHAOEPB",
+			"score": 1,
+			"word": "mean"
+		},
+		{
+			"hint": "PHAOPB",
+			"score": 1,
+			"word": "moon"
+		},
+		{
+			"hint": "PHAEUPB",
+			"score": 1,
+			"word": "main"
+		},
+		{
+			"hint": "PHAEPB",
+			"score": 1,
+			"word": "mane"
+		},
+		{
+			"hint": "PHAPB",
+			"score": 1,
+			"word": "man"
+		},
+		{
+			"hint": "PHOEPB",
+			"score": 1,
+			"word": "moan"
+		},
+		{
+			"hint": "PHEPB",
+			"score": 1,
+			"word": "men"
+		},
+		{
+			"hint": "PRAOEPB",
+			"score": 1,
+			"word": "preen"
+		},
+		{
+			"hint": "PRAOUPB",
+			"score": 1,
+			"word": "prune"
+		},
+		{
+			"hint": "PRAUPB",
+			"score": 1,
+			"word": "prawn"
+		},
+		{
+			"hint": "PROEPB",
+			"score": 1,
+			"word": "prone"
+		},
+		{
+			"hint": "PAOEUPB",
+			"score": 1,
+			"word": "pine"
+		},
+		{
+			"hint": "PAOEPB",
+			"score": 1,
+			"word": "peen"
+		},
+		{
+			"hint": "PAEUPB",
+			"score": 1,
+			"word": "pain"
+		},
+		{
+			"hint": "PAEPB",
+			"score": 1,
+			"word": "pane"
+		},
+		{
+			"hint": "PAUPB",
+			"score": 1,
+			"word": "pawn"
+		},
+		{
+			"hint": "PAPB",
+			"score": 1,
+			"word": "pan"
+		},
+		{
+			"hint": "PEUPB",
+			"score": 1,
+			"word": "pin"
+		},
+		{
+			"hint": "PEPB",
+			"score": 1,
+			"word": "pen"
+		},
+		{
+			"hint": "PUPB",
+			"score": 1,
+			"word": "pun"
+		},
+		{
+			"hint": "WAOEUPB",
+			"score": 1,
+			"word": "wine"
+		},
+		{
+			"hint": "WAOEPB",
+			"score": 1,
+			"word": "wean"
+		},
+		{
+			"hint": "WAEUPB",
+			"score": 1,
+			"word": "wane"
+		},
+		{
+			"hint": "WAPB",
+			"score": 1,
+			"word": "wan"
+		},
+		{
+			"hint": "WOPB",
+			"score": 1,
+			"word": "won"
+		},
+		{
+			"hint": "WEUPB",
+			"score": 1,
+			"word": "win"
+		},
+		{
+			"hint": "WUPB",
+			"score": 1,
+			"word": "one"
+		},
+		{
+			"hint": "HRAOEUPB",
+			"score": 1,
+			"word": "line"
+		},
+		{
+			"hint": "HRAOEPB",
+			"score": 1,
+			"word": "lean"
+		},
+		{
+			"hint": "HRAOPB",
+			"score": 1,
+			"word": "loon"
+		},
+		{
+			"hint": "HRAEUPB",
+			"score": 1,
+			"word": "lain"
+		},
+		{
+			"hint": "HRAEPB",
+			"score": 1,
+			"word": "lane"
+		},
+		{
+			"hint": "HRAUPB",
+			"score": 1,
+			"word": "lawn"
+		},
+		{
+			"hint": "HRAPB",
+			"score": 1,
+			"word": "lan"
+		},
+		{
+			"hint": "HROEUPB",
+			"score": 1,
+			"word": "loin"
+		},
+		{
+			"hint": "HROEPB",
+			"score": 1,
+			"word": "lone"
+		},
+		{
+			"hint": "HOEPB",
+			"score": 1,
+			"word": "hone"
+		},
+		{
+			"hint": "HOPB",
+			"score": 1,
+			"word": "hon"
+		},
+		{
+			"hint": "HEPB",
+			"score": 1,
+			"word": "hen"
+		},
+		{
+			"hint": "RAEUPB",
+			"score": 1,
+			"word": "rain"
+		},
+		{
+			"hint": "RAEPB",
+			"score": 1,
+			"word": "reign"
+		},
+		{
+			"hint": "RAPB",
+			"score": 1,
+			"word": "ran"
+		},
+		{
+			"hint": "RUPB",
+			"score": 1,
+			"word": "run"
+		},
+		{
+			"hint": "APB",
+			"score": 1,
+			"word": "an"
+		},
+		{
+			"hint": "OEPB",
+			"score": 1,
+			"word": "own"
+		},
+		{
+			"hint": "STAOPBLG",
+			"score": 1,
+			"word": "stooge"
+		},
+		{
+			"hint": "STAEUPBLG",
+			"score": 1,
+			"word": "stage"
+		},
+		{
+			"hint": "SKWRUPBLG",
+			"score": 1,
+			"word": "judge"
+		},
+		{
+			"hint": "SPHROPBLG",
+			"score": 1,
+			"word": "splodge"
+		},
+		{
+			"hint": "SPHEUPBLG",
+			"score": 1,
+			"word": "smidge"
+		},
+		{
+			"hint": "SPHUPBLG",
+			"score": 1,
+			"word": "smudge"
+		},
+		{
+			"hint": "SHREPBLG",
+			"score": 1,
+			"word": "sledge"
+		},
+		{
+			"hint": "SHRUPBLG",
+			"score": 1,
+			"word": "sludge"
+		},
+		{
+			"hint": "SAOEPBLG",
+			"score": 1,
+			"word": "siege"
+		},
+		{
+			"hint": "SAEUPBLG",
+			"score": 1,
+			"word": "sage"
+		},
+		{
+			"hint": "SAPBLG",
+			"score": 1,
+			"word": "sadge"
+		},
+		{
+			"hint": "SEPBLG",
+			"score": 1,
+			"word": "sedge"
+		},
+		{
+			"hint": "TKPWRUPBLG",
+			"score": 1,
+			"word": "grudge"
+		},
+		{
+			"hint": "TKPWAEUPBLG",
+			"score": 1,
+			"word": "gauge"
+		},
+		{
+			"hint": "TKPWOUPBLG",
+			"score": 1,
+			"word": "gouge"
+		},
+		{
+			"hint": "TKREPBLG",
+			"score": 1,
+			"word": "dredge"
+		},
+		{
+			"hint": "TKRUPBLG",
+			"score": 1,
+			"word": "drudge"
+		},
+		{
+			"hint": "TKOPBLG",
+			"score": 1,
+			"word": "dodge"
+		},
+		{
+			"hint": "TPHREPBLG",
+			"score": 1,
+			"word": "fledge"
+		},
+		{
+			"hint": "TPHUPBLG",
+			"score": 1,
+			"word": "nudge"
+		},
+		{
+			"hint": "TPREUPBLG",
+			"score": 1,
+			"word": "fridge"
+		},
+		{
+			"hint": "TPUPBLG",
+			"score": 1,
+			"word": "fudge"
+		},
+		{
+			"hint": "TRUPBLG",
+			"score": 1,
+			"word": "trudge"
+		},
+		{
+			"hint": "KHRUPBLG",
+			"score": 1,
+			"word": "kludge"
+		},
+		{
+			"hint": "KAEUPBLG",
+			"score": 1,
+			"word": "cage"
+		},
+		{
+			"hint": "KAPBLG",
+			"score": 1,
+			"word": "cadge"
+		},
+		{
+			"hint": "PWREUPBLG",
+			"score": 1,
+			"word": "bridge"
+		},
+		{
+			"hint": "PWAEUPBLG",
+			"score": 1,
+			"word": "beige"
+		},
+		{
+			"hint": "PWAPBLG",
+			"score": 1,
+			"word": "badge"
+		},
+		{
+			"hint": "PWOPBLG",
+			"score": 1,
+			"word": "bodge"
+		},
+		{
+			"hint": "PWUPBLG",
+			"score": 1,
+			"word": "budge"
+		},
+		{
+			"hint": "PHREPBLG",
+			"score": 1,
+			"word": "pledge"
+		},
+		{
+			"hint": "PHEUPBLG",
+			"score": 1,
+			"word": "midge"
+		},
+		{
+			"hint": "PAEUPBLG",
+			"score": 1,
+			"word": "page"
+		},
+		{
+			"hint": "POPBLG",
+			"score": 1,
+			"word": "podge"
+		},
+		{
+			"hint": "WAEUPBLG",
+			"score": 1,
+			"word": "wage"
+		},
+		{
+			"hint": "WOPBLG",
+			"score": 1,
+			"word": "wodge"
+		},
+		{
+			"hint": "WEPBLG",
+			"score": 1,
+			"word": "wedge"
+		},
+		{
+			"hint": "HROPBLG",
+			"score": 1,
+			"word": "lodge"
+		},
+		{
+			"hint": "HREPBLG",
+			"score": 1,
+			"word": "ledge"
+		},
+		{
+			"hint": "HAOUPBLG",
+			"score": 1,
+			"word": "huge"
+		},
+		{
+			"hint": "HEPBLG",
+			"score": 1,
+			"word": "hedge"
+		},
+		{
+			"hint": "RAEUPBLG",
+			"score": 1,
+			"word": "rage"
+		},
+		{
+			"hint": "REUPBLG",
+			"score": 1,
+			"word": "ridge"
+		},
+		{
+			"hint": "AEUPBLG",
+			"score": 1,
+			"word": "age"
+		},
+		{
+			"hint": "EPBLG",
+			"score": 1,
+			"word": "edge"
+		}
+	]
+}

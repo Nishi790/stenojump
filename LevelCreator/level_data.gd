@@ -13,6 +13,8 @@ signal target_changed (target_index: int)
 @export var size: int
 @export var next_level: String
 @export var checkpoint: bool
+@export var description: String
+@export var theme: String
 
 @export var targets: Array
 
@@ -21,13 +23,36 @@ var score_key: String = "score"
 var hint_key: String = "hint"
 
 
-func read_level_data() -> void:
-	level = LevelLoader.level_number
-	order = LevelLoader.level_order
-	size = LevelLoader.default_level_size
-	next_level = LevelLoader.next_level_path
-	targets = LevelLoader.level_targets
-	checkpoint = LevelLoader.checkpoint
+func load_from_runner_data(runner: RunnerLevel):
+	level = runner.level_number
+	order = runner.level_order
+	size = runner.default_level_size
+	next_level = runner.next_level_path
+	checkpoint = runner.checkpoint
+	targets = runner.level_targets
+	description = runner.level_description
+	#theme = runner.environment.theme_name
+
+
+func convert_to_runner_data() -> RunnerLevel:
+	var new_level: RunnerLevel = RunnerLevel.new()
+
+	new_level.level_number = level
+	new_level.level_order = order
+	new_level.default_level_size = size
+	new_level.next_level_path = next_level
+	new_level.checkpoint = checkpoint
+	new_level.level_targets = targets
+	new_level.level_description = description
+
+	return new_level
+
+
+func read_level_data(path: String) -> void:
+	var path_index: int = path.get_slice_count("/") - 1
+	var level_key: String = path.get_slice("/", path_index)
+	save_file_name = level_key
+	load_from_runner_data(LevelLoader.levels[level_key])
 
 
 func add_target(target_data: Dictionary) -> void:
@@ -50,11 +75,17 @@ func update_entry(index: int, word: String, score: int, hint: String) -> void:
 
 
 func save() -> Error:
+#Return the updated data to the level dictionary
+	var run_data: RunnerLevel = convert_to_runner_data()
+	LevelLoader.levels[save_file_name] = run_data
+
+#Open the required file
 	var file: FileAccess = FileAccess.open(save_path, FileAccess.WRITE_READ)
 	if file == null:
 		printerr(FileAccess.get_open_error())
 		return FileAccess.get_open_error()
 
+#Store the file as a json for later use
 	var data_dict: Dictionary = {}
 	data_dict["level"] = level
 	if order == LevelLoader.LevelOrder.RANDOM:
@@ -64,6 +95,8 @@ func save() -> Error:
 	data_dict["next_level"] = next_level
 	data_dict["checkpoint"] = checkpoint
 	data_dict["targets"] = targets
+	data_dict["description"] = description
+
 	var json_string: String = JSON.stringify(data_dict, "\t")
 	file.store_string(json_string)
 	file.close()

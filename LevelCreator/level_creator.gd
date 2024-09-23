@@ -9,6 +9,7 @@ signal menu_pressed
 @export var file_selector: FileDialog
 @export var save_file_name: LineEdit
 @export var level_number_selector: SpinBox
+@export var level_description: TextEdit
 @export var level_size_selector: SpinBox
 @export var level_order_selector: OptionButton
 @export var checkpoint_selector: CheckBox
@@ -53,6 +54,7 @@ func _ready() -> void:
 	next_level_file_button.pressed.connect(choose_next_level)
 	next_level_path_edit.text_changed.connect(parse_next_level)
 	checkpoint_selector.toggled.connect(set_checkpoint)
+	level_description.text_changed.connect(set_description)
 
 	#set up target generation signals
 	select_targets_from_file_button.pressed.connect(select_file_to_parse)
@@ -90,15 +92,13 @@ func open_level_selector() -> void:
 
 
 func load_existing_level(path: String) -> void:
-	LevelLoader.load_level(path)
-	active_level_data.read_level_data()
-	var final_slice: int = path.get_slice_count("/") - 1
-	active_level_data.save_file_name = path.get_slice("/", final_slice)
+	active_level_data.read_level_data(path)
 	active_level_data.save_dir = path.trim_suffix(active_level_data.save_file_name)
 	tsv_text_box.clear()
 	plain_text_box.clear()
 	display_level_data()
 	select_targets_from_file_button.grab_focus()
+	save_button.disabled = false
 
 
 #Restores all level data being displayed to match the data
@@ -110,6 +110,7 @@ func display_level_data() -> void:
 		save_path_button.text = active_level_data.save_dir
 		save_file_name.text = active_level_data.save_file_name
 	level_number_selector.value = active_level_data.level
+	level_description.text = active_level_data.description
 	level_size_selector.value = active_level_data.size
 	checkpoint_selector.set_pressed_no_signal(active_level_data.checkpoint)
 	if active_level_data.order == LevelLoader.LevelOrder.RANDOM:
@@ -146,6 +147,10 @@ func set_save_file(text: String) -> void:
 		file_name = file_name + ".json"
 	active_level_data.save_file_name = file_name
 	save_button.disabled = false
+
+
+func set_description() -> void:
+	active_level_data.description = level_description.text
 
 
 func set_level_number(value: float) -> void:
