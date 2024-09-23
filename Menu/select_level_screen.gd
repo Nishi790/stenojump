@@ -1,15 +1,17 @@
-extends HBoxContainer
+extends PanelContainer
 
 signal start_level(path: String)
+signal cancel_select
 
 @export var sequence_panel_scene: PackedScene
-@export var lapwing_tab: PanelContainer
+@export var menu_button: Button
 @export var level_preview: PanelContainer
 @export var tab_cont: TabContainer
 
 
 func _ready() -> void:
 	level_preview.start_pressed.connect(level_started)
+	menu_button.pressed.connect(return_to_menu)
 	create_tabs()
 
 
@@ -33,3 +35,8 @@ func level_started(path: String) -> void:
 
 func preview_level(path: String) -> void:
 	level_preview.set_preview(path)
+
+
+func return_to_menu() -> void:
+	cancel_select.emit()
+	queue_free()

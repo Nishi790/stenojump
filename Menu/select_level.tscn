@@ -4,21 +4,32 @@
 [ext_resource type="PackedScene" uid="uid://bl1chqx8nqo6d" path="res://Menu/select_level_panel.tscn" id="2_6qkha"]
 [ext_resource type="PackedScene" uid="uid://cv53712g0etej" path="res://Menu/level_preview.tscn" id="3_4ot00"]
 
-[node name="SelectLevel" type="HBoxContainer" node_paths=PackedStringArray("level_preview", "tab_cont")]
+[node name="SelectLevel" type="PanelContainer" node_paths=PackedStringArray("menu_button", "level_preview", "tab_cont")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 script = ExtResource("1_ibr7v")
 sequence_panel_scene = ExtResource("2_6qkha")
-level_preview = NodePath("LevelPreview")
-tab_cont = NodePath("LevelSequenceTabs")
+menu_button = NodePath("VBoxContainer/ReturnToMenu")
+level_preview = NodePath("VBoxContainer/HBoxContainer/LevelPreview")
+tab_cont = NodePath("VBoxContainer/HBoxContainer/LevelSequenceTabs")
 
-[node name="LevelSequenceTabs" type="TabContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelSequenceTabs" type="TabContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LevelPreview" parent="." instance=ExtResource("3_4ot00")]
+[node name="LevelPreview" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_4ot00")]
 layout_mode = 2
+
+[node name="ReturnToMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Retun to Menu"

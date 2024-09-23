@@ -55,6 +55,7 @@ func open_speed_build_selector() -> void:
 	PlayerConfig.set_gameplay_state(PlayerConfig.RunMode.ARCADE)
 	var level_select: Control = level_select_screen.instantiate()
 	level_select.start_level.connect(start_speed_build_level)
+	level_select.cancel_select.connect(grab_text_processing)
 	add_child(level_select)
 
 

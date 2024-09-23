@@ -71,7 +71,7 @@ focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/Spee
 focus_neighbor_bottom = NodePath("../SpeedBuild")
 focus_next = NodePath("../SpeedBuild")
 focus_previous = NodePath("../ResumeGame")
-text = "New Game"
+text = "New Progression Game"
 script = ExtResource("5_7jtnf")
 
 [node name="SpeedBuild" type="Button" parent="PanelContainer/MenuContainer"]
