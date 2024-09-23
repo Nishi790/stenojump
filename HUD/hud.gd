@@ -21,8 +21,15 @@ Press Enter (R-R) to continue.[/center] "
 
 var win_message: String = "[center]You win!\n
 Your total score was %d.\n
+Your stroke speed was %d strokes per minute.\n
 Press enter (%s) to return to the menu.\n
 If you want to continue the run faster, type how much faster you want to go and press Enter (%s)[/center]"
+
+var game_over_message: String = "[center]Game Over \n
+Current speed: %d strokes per minute \n
+Press Enter (%s) to return to menu.[/center]"
+
+var enter_hint: String = "R-R"
 
 var paused: bool = false
 
@@ -66,19 +73,19 @@ func level_complete() -> void:
 
 
 func game_won() -> void:
-	ingame_message.set_text(win_message % [PlayerConfig.current_score, "R-R", "R-R"])
+	ingame_message.set_text(win_message % [PlayerConfig.current_score, PlayerConfig.current_wpm, enter_hint, enter_hint])
 	message_container.show()
 
 
 func start_next_level() -> void:
 	input_box.clear()
 	input_box.editable = false
-	ingame_message.set_text("Next level starting in:")
+	ingame_message.set_text("[center]Next level starting in:[/center]")
 	await get_tree().create_timer(1).timeout
 
 
 func game_over() -> void:
-	ingame_message.set_text("[center]Game Over \n Press Enter (%s) to return to menu.[/center]" % "R-R")
+	ingame_message.set_text(game_over_message % [PlayerConfig.current_wpm, enter_hint])
 	message_container.show()
 
 
