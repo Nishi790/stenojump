@@ -17,9 +17,7 @@ var lives: int = PlayerConfig.max_lives
 
 var physics_position: Vector2
 var in_air: bool = false
-var movement_state: State = State.WALKING :
-	set(state):
-		movement_state = state
+var movement_state: State = State.WALKING
 var landing_timer: float = 0
 var straight_to_landing: bool = false
 var move_queue: Array[int] = []
