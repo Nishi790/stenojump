@@ -11,13 +11,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgo0o"]
 size = Vector2(35, 62)
 
-[node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container", "sprite", "collision_shape")]
+[node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container", "sprite", "collision_shape", "visible_on_screen")]
 collision_layer = 4
 script = ExtResource("1_i8uxn")
 word_label = NodePath("TargetPanel/TargetWord")
 target_container = NodePath("TargetPanel")
 sprite = NodePath("ObstacleSprite")
 collision_shape = NodePath("CollisionShape")
+visible_on_screen = NodePath("VisibleOnScreenNotifier2D")
 textures = Array[ExtResource("2_qehfw")]([ExtResource("3_tyb5n"), ExtResource("4_f71f6"), ExtResource("5_skq2j")])
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -52,3 +53,7 @@ layout_mode = 2
 text = "Target Word"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-105, -174)
+rect = Rect2(-10, -10, 300, 200)

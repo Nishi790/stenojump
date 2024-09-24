@@ -15,7 +15,7 @@ size = Vector2(58, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y7nk"]
 size = Vector2(68, 69)
 
-[node name="CrawlObstacle" type="CharacterBody2D" node_paths=PackedStringArray("crawl_area", "crawl_shape", "front_sprite", "behind_par_sprite", "word_label", "target_container", "sprite", "collision_shape")]
+[node name="CrawlObstacle" type="CharacterBody2D" node_paths=PackedStringArray("crawl_area", "crawl_shape", "front_sprite", "behind_par_sprite", "word_label", "target_container", "sprite", "collision_shape", "visible_on_screen")]
 texture_filter = 1
 collision_layer = 4
 script = ExtResource("1_fdgri")
@@ -28,6 +28,7 @@ target_container = NodePath("TargetPanel")
 type = 1
 sprite = NodePath("ObstacleImage")
 collision_shape = NodePath("CollisionShape2D")
+visible_on_screen = NodePath("VisibleOnScreenNotifier2D")
 textures = Array[ExtResource("2_467ko")]([ExtResource("3_2g8xj"), ExtResource("4_32wwb"), ExtResource("5_x3x5y")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -78,3 +79,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Target word"
 horizontal_alignment = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-99, -190)
+rect = Rect2(-10, -10, 350, 200)
