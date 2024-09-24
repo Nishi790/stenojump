@@ -23,7 +23,7 @@ var score_key: String = "score"
 var hint_key: String = "hint"
 
 
-func load_from_runner_data(runner: RunnerLevel):
+func load_from_runner_data(runner: RunnerLevel) -> void:
 	level = runner.level_number
 	order = runner.level_order
 	size = runner.default_level_size

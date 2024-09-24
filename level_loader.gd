@@ -15,8 +15,8 @@ var active_level: RunnerLevel
 func _ready() -> void:
 	if DirAccess.dir_exists_absolute(default_level_path_root):
 		var files: DirAccess = DirAccess.open(default_level_path_root)
-		var level_files: PackedStringArray = files.get_files()
-		retrieve_level_files(level_files)
+		var built_in_files: PackedStringArray = files.get_files()
+		retrieve_level_files(built_in_files)
 		for dir in files.get_directories():
 			var folder_path: String = default_level_path_root.path_join(dir)
 			var folder_files: PackedStringArray = DirAccess.get_files_at(folder_path)

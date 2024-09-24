@@ -241,7 +241,6 @@ func update_text(new_text: String) -> void:
 		if level_timer_active == false:
 			level_timer_active = true
 		var obstacle_type: Obstacle.ObstacleType
-		var next = obstacle_manager.next_obstacle
 		if obstacle_manager.next_obstacle != null:
 			obstacle_type = obstacle_manager.next_obstacle.type
 			player.avoid_obstacle(obstacle_type)

@@ -301,6 +301,7 @@ func get_high_score(path: String) -> Array:
 	if level_records.has(path):
 		record = level_records[path]
 	else: record = [0, 0]
+	@warning_ignore("unsafe_call_argument")
 	record = [int(record[0]), int(record[1])]
 	return record
 
