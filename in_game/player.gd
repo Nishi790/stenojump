@@ -5,12 +5,14 @@ signal game_over
 signal reset_word (collider: Object)
 signal lives_changed (current_lives: int)
 signal player_movement_changed (movement_type: State)
+signal obstacle_in_range
 
 enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDLING, DIE}
 
 @export var sprite: AnimatedSprite2D
 @export var physics_body: CharacterBody2D
 @export var audio_player: AudioStreamPlayer2D
+@export var range_area: Area2D
 
 var speed: float
 var lives: int = PlayerConfig.max_lives
@@ -94,9 +96,16 @@ func avoid_obstacle(type: Obstacle.ObstacleType, new_action: bool = true) -> voi
 			jump()
 		Obstacle.ObstacleType.CRAWL:
 			crawl()
+			obstacle_in_range.emit()
 
 
 func jump() -> void:
+	##Check that the obstacle is in range
+	var bodies_in_range: Array = range_area.get_overlapping_bodies()
+	for body: Node2D in bodies_in_range:
+		if body.is_in_group("obstacles"):
+			obstacle_in_range.emit()
+			break
 	physics_body.jump()
 
 

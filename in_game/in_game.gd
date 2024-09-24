@@ -73,6 +73,7 @@ func _ready() -> void:
 	player.reset_word.connect(reset_word)
 	player.game_over.connect(game_over)
 	player.player_movement_changed.connect(change_move_speed)
+	player.obstacle_in_range.connect(clear_word)
 	@warning_ignore("unsafe_call_argument")
 	player.lives_changed.connect(Callable(hud.lives_counter.update_lives_counter))
 	hud.lives_counter.update_lives_counter(player.lives)
@@ -231,6 +232,8 @@ func end_level() -> void:
 func update_text(new_text: String) -> void:
 	if level_complete:
 		return
+	elif new_text == "":
+		return
 	current_text = new_text.strip_edges()
 	current_text.to_lower()
 	if word_failed: return
@@ -238,17 +241,24 @@ func update_text(new_text: String) -> void:
 		if level_timer_active == false:
 			level_timer_active = true
 		var obstacle_type: Obstacle.ObstacleType
+		var next = obstacle_manager.next_obstacle
 		if obstacle_manager.next_obstacle != null:
 			obstacle_type = obstacle_manager.next_obstacle.type
 			player.avoid_obstacle(obstacle_type)
+
 		characters_entered_correctly += target_word.length()
 		input_box.clear()
-		obstacle_manager.word_cleared()
-		target_word = obstacle_manager.provide_target_word()
-		obstacles_remaining = obstacles_remaining - 1
-		if obstacles_remaining > 0:
-			words_left -= max_words_per_obstacle
-		else: words_left = 0
+
+
+##Called if the player avoids an obstacle in range
+##Allows multiple attempts at a word if too early
+func clear_word() -> void:
+	obstacle_manager.word_cleared()
+	target_word = obstacle_manager.provide_target_word()
+	obstacles_remaining = obstacles_remaining - 1
+	if obstacles_remaining > 0:
+		words_left -= max_words_per_obstacle
+	else: words_left = 0
 
 
 ##Called when enter is pressed in player input box, used to move to next level/return to menu

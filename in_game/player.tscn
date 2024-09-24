@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d37vmbd1g5pta"]
+[gd_scene load_steps=9 format=3 uid="uid://d37vmbd1g5pta"]
 
 [ext_resource type="Script" path="res://in_game/player.gd" id="1_h8u8b"]
 [ext_resource type="SpriteFrames" uid="uid://bxd74c38t8x8g" path="res://textures/character_animations/player_sprite_frames.tres" id="2_yuis2"]
@@ -14,21 +14,23 @@ size = Vector2(101, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7max"]
 size = Vector2(144, 60)
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "physics_body", "audio_player")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gksud"]
+size = Vector2(250, 80)
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "physics_body", "audio_player", "range_area")]
 z_index = 1
 script = ExtResource("1_h8u8b")
 sprite = NodePath("PlayerSprite")
 physics_body = NodePath("PlayerPhysics")
 audio_player = NodePath("AudioPlayer")
+range_area = NodePath("InRangeDetector")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_yuis2")
-animation = &"die"
-frame = 3
-frame_progress = 1.0
+animation = &"idle_stand"
 
 [node name="PlayerPhysics" type="CharacterBody2D" parent="." node_paths=PackedStringArray("run_coll_shape", "jump_coll_shape", "crawl_coll_shape")]
 collision_mask = 6
@@ -52,3 +54,10 @@ shape = SubResource("RectangleShape2D_t7max")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_p7sph")
+
+[node name="InRangeDetector" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="RangeCollShape" type="CollisionShape2D" parent="InRangeDetector"]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_gksud")
