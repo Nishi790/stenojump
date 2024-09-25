@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=4 format=3 uid="uid://db5vc0rm8qu5u"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_j5jwq"]
+[ext_resource type="Texture2D" uid="uid://17atjewyhjoh" path="res://textures/obstacle_sprites/lumber.png" id="2_5vyf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6if3p"]
+radius = 44.0
+
+[resource]
+script = ExtResource("1_j5jwq")
+texture = ExtResource("2_5vyf6")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(49, -51)
+collider = SubResource("CircleShape2D_6if3p")
+collidor_pos = Vector2(-7.5, -8)
+area_collider_pos = Vector2(0, 0)
