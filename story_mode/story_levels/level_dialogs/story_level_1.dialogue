@@ -1,13 +1,11 @@
 ~ intro
-Socks: Oh, hiya, I'm Socks.
-	Yes, I know I don't have socks...
-Socks: I didn't name myself, okay? [wait=0.5]
-	Anyway, we've got a busy day ahead of us, starting with helping my person, Jenny.
+Socks: Hiya, I'm Socks.
+Socks: We've got a busy day ahead of us, starting with helping my person, Jenny.
 - What does she need help with?
-	Socks: She needs to get up and feed me! [wait=0.5]
-		I mean go to work. We need to help her get up and get ready for work. 
+	Socks: She needs to get up and feed me! [wait=0.75] I mean go to work.
+	We need to help her get up and get ready for work. 
 - Okay, I can do that.
-Socks: Do you know how to stroke a basic word?
+Socks: Do you know how to write a basic word?
 - Of course
 	=> try_walk
 - Not really
@@ -15,25 +13,31 @@ Socks: Do you know how to stroke a basic word?
 
 
 ~ steno_basics
-Socks: In stenography, you stroke words by hitting multiple keys at once. 
+Socks: In stenography, you write words by hitting multiple keys at once. 
 	Sounds at the start of the word or syllable are on the left.
 	Vowel sounds are on the thumb keys.
 	And sounds at the end of the word or syllable are on the right.
 Socks: Are you familiar with the steno keyboard?
 - Yes
 - A bit
-	=>< offer_hints
+	=> offer_hints
 - No
-	=>< offer_hints
+	=> offer_hints
 
 
 
 ~ try_walk
 Socks: If you get stuck, you can always toggle hints for words on and off by hitting Enter (R-R), just in case.
-Socks: Okay! We're going to start with words that use the A key as the vowel. A is used for the short 'a' sound like in "cat".
-Socks: Speaking of cats, we're pretty awesome. [wait=0.5] 
-	Oh, A is also the vowel sound in words like "car" and "yarn". Be careful, 'r' can change how vowels sound. If it sounds like a pirate, use AR
+Socks: Okay! We're going to start with words that have short vowels like 'cat', 'get', 'kid', 'top', and 'mud'.
+Socks: Short vowels have two main rules: [wait=0.75]
+	If you spell them with one letter, use that key to write them in a word. [wait=0.5]
+	If you spell them with more than one letter, use the key that matches the sound they make.
+Socks: We'll start with the short 'a' sound like in "cat".
+do display_stroke("A")
+Socks: Speaking of cats, have I mentioned how awesome I am?
+Socks: Oh, be careful with words that have an 'r' - they can make the vowel sound a little funny. Look at the word 'car' [do display_stroke("KAR")] it doesn't sound like the 'a' in 'cat', but it's written with the A key!
 Socks: Hit Enter or click anywhere to close my dialogue and try walking to one of the nearby points.
+do hide_stroke()
 do level.level_word_list.start_quest("first_steps")
 => END
 
@@ -47,7 +51,7 @@ Socks: Do you want to enable hints to show you how to stroke the words you'll fi
 
 ~ teach_interact
 Socks: You've got me moving. Good start, but Jenny's a heavy sleeper. Walking around probably isn't going to do it.
-Socks: If you reach a place where I can do something, a new word will appear in [Color={{PlayerConfig.interact_font_color}}] this color[/Color].
+Socks: If you reach a place where I can do something, a new word will appear in [color={{PlayerConfig.interact_font_color}}] this color[/color].
 	[wait=0.2]Just stroke the word and I'll do the rest!
 do level.level_word_list.start_quest("first_interact")
 => END
@@ -57,7 +61,7 @@ Socks: I forgot to tell you! I can do some things from [i]anywhere[/i].
 	I can always meow, I'm very sociable! 
 Socks: You can see my general actions and the words to use them in the bottom right.
 Socks: Now you can help me wake Jenny up so that she's not late.
-	All you need to de is stroke the word you see to tell me where to go. 
+	All you need to do is stroke the word you see to tell me where to go. 
 do level.level_word_list.start_quest("wake_up_jenny")
 => END
 
@@ -78,3 +82,37 @@ Socks: Did she say something about food? Let's go check my bowl!
 do level.level_word_list.start_quest("check_bowl")
 => END
 
+
+~ teach_o_vowel
+Socks: Seems like you're getting the hang of things. Let's add something new.
+Socks: Short 'o' is the sound in 'cot', 'dog', or 'rod'. 
+do display_stroke("O")
+Socks: It's also the sound in 'pore' or 'worn' - there's 'r' making things sound a little funny. 
+Socks: You can include it in a word using the O key. Now get going - there's more to do!
+do hide_stroke()
+
+~ teach_e_vowel
+Socks: Time for another vowel! Short 'e' is the sound in 'bed', 'men', and 'leg'. 
+do display_stroke("E")
+Socks: It's also the sound in 'her' or 'per'
+do display_stroke("HER")
+Socks: Be careful with the 'er' sound - it can also be spelled 'ir', like 'fir', or 'ur' like 'purr'. Remember the short vowel rules and use the key that matches the spelling. 
+do hide_stroke()
+
+~ teach_u_vowel
+Socks: You know the drill by now, right? Our next vowel is short 'u', which you can hear in 'bus', 'fun', and 'tub'.
+do display_stroke("U")
+Socks: Remember what I told you about things that sound like 'er' - pay attention to the spelling. 'Her' is written with the E key, but 'fur' is written with U. 
+do hide_stroke()
+
+~ teach_i_vowel
+Socks: Oh, you thought I was done? I have way more to teach you!
+Socks: There might not be any more vowel keys, but English definitely has more vowels.
+The last one for today is short 'i' - the sound in 'bit', 'tin', and 'miss'. 
+Socks: This one uses two keys. Stroke E and U at the same time for the short vowel 'i'. 
+do display_stroke("EU")
+Socks: Remember that if you hear a short vowel spelled with one letter, you should use the letter that matches the spelling.
+That means 'sir' is written like this.
+do display_stroke("SEUR")
+Socks: That's everything I have to teach you right now. You'd better hurry up and get things sorted out here so that we can get on with the rest of the day!
+do hide_stroke()

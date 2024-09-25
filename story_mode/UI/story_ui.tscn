@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://wu4owdvk0ao3"]
+[gd_scene load_steps=6 format=3 uid="uid://wu4owdvk0ao3"]
 
 [ext_resource type="Script" path="res://story_mode/UI/story_ui.gd" id="1_fdopu"]
+[ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_b5upg"]
 [ext_resource type="PackedScene" uid="uid://buc68cm2o0f7i" path="res://story_mode/UI/quest_panel.tscn" id="2_dja5f"]
+[ext_resource type="FontFile" uid="uid://dnn0f73am7f4b" path="res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf" id="3_cbgie"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://addons/dialogue_manager/example_balloon/example_balloon.tscn" id="3_ute1d"]
 
-[node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display")]
+[node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display", "stroke_display", "stroke_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +17,39 @@ script = ExtResource("1_fdopu")
 player_input = NodePath("MarginContainer/VertScreenSplitter/PlayerInput")
 dialog_balloon = NodePath("MarginContainer/VertScreenSplitter/ExampleBalloon")
 quest_display = NodePath("MarginContainer/VertScreenSplitter/HScreenSpilt/QuestDisplay")
+stroke_display = NodePath("ExampleMarginCont")
+stroke_label = NodePath("ExampleMarginCont/StrokePanel/StrokeExample")
+
+[node name="ExampleMarginCont" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -18.0
+offset_right = 166.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StrokePanel" type="PanelContainer" parent="ExampleMarginCont"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("2_b5upg")
+
+[node name="StrokeExample" type="RichTextLabel" parent="ExampleMarginCont/StrokePanel"]
+layout_mode = 2
+theme = ExtResource("2_b5upg")
+theme_override_fonts/normal_font = ExtResource("3_cbgie")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]EU[/center]"
+fit_content = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
