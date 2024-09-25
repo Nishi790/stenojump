@@ -1,11 +1,15 @@
-[gd_resource type="Theme" load_steps=28 format=3 uid="uid://bauut0j20qrrw"]
+[gd_resource type="Theme" load_steps=40 format=3 uid="uid://bauut0j20qrrw"]
 
 [ext_resource type="StyleBox" uid="uid://blyaks1y4igf7" path="res://textures/UI/hover_button_stylebox.tres" id="1_s5kba"]
 [ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_0gxcr"]
 [ext_resource type="StyleBox" uid="uid://bi2af42qjdyi1" path="res://textures/UI/button_default_stylebox.tres" id="3_icoew"]
 [ext_resource type="StyleBox" uid="uid://bxm45i8ngl6pk" path="res://textures/UI/notebook_stylebox.tres" id="4_0tdmj"]
+[ext_resource type="StyleBox" uid="uid://n86vk7yyutua" path="res://Menu/level_select_button_normal.stylebox" id="4_jm07c"]
 [ext_resource type="StyleBox" uid="uid://bk6a2lykuik3d" path="res://textures/UI/blank_paper_stylebox.stylebox" id="4_sk03o"]
 [ext_resource type="Texture2D" uid="uid://cuak7ollnv8me" path="res://textures/UI/arrows.png" id="5_h5syq"]
+[ext_resource type="StyleBox" uid="uid://br2u4f5r45dw6" path="res://textures/UI/level_select_button_pressed.stylebox" id="5_m1puw"]
+[ext_resource type="StyleBox" uid="uid://djj7qr0nbybl4" path="res://textures/UI/review_select_button_pressed.stylebox" id="8_t5c8r"]
+[ext_resource type="StyleBox" uid="uid://cl41wt2dqga03" path="res://textures/UI/review_select_button_normal.stylebox" id="9_1b7pl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8bn6n"]
 atlas = ExtResource("2_0gxcr")
@@ -52,6 +56,34 @@ color = Color(0.484951, 0.125491, 0, 1)
 grow_begin = -8.0
 grow_end = -8.0
 thickness = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibecl"]
+atlas = ExtResource("2_0gxcr")
+region = Rect2(224, 272, 32, 16)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bgmie"]
+texture = SubResource("AtlasTexture_ibecl")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.556863, 0.686275, 0.733333, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl3it"]
+atlas = ExtResource("2_0gxcr")
+region = Rect2(256, 272, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bxbrt"]
+texture = SubResource("AtlasTexture_rl3it")
+texture_margin_left = 15.0
+texture_margin_top = 3.0
+texture_margin_right = 15.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+draw_center = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8ssj"]
 atlas = ExtResource("2_0gxcr")
@@ -128,6 +160,33 @@ texture_margin_bottom = 5.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uv8w"]
+atlas = ExtResource("2_0gxcr")
+region = Rect2(224, 336, 32, 16)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xnbtm"]
+texture = SubResource("AtlasTexture_2uv8w")
+texture_margin_left = 8.0
+texture_margin_top = 3.0
+texture_margin_right = 8.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+modulate_color = Color(0.556342, 0.688182, 0.734413, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ismil"]
+atlas = ExtResource("2_0gxcr")
+region = Rect2(256, 336, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ote2"]
+texture = SubResource("AtlasTexture_ismil")
+texture_margin_left = 15.0
+texture_margin_top = 3.0
+texture_margin_right = 15.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+draw_center = false
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5n7lg"]
 atlas = ExtResource("2_0gxcr")
 region = Rect2(16, 384, 16, 16)
@@ -168,10 +227,25 @@ Button/styles/focus = ExtResource("1_s5kba")
 Button/styles/hover = SubResource("StyleBoxTexture_8oe6w")
 Button/styles/normal = ExtResource("3_icoew")
 Button/styles/pressed = SubResource("StyleBoxTexture_60fye")
+GridContainer/constants/h_separation = 8
+GridContainer/constants/v_separation = 6
 HSeparator/styles/separator = SubResource("StyleBoxLine_str5p")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 24
+LevelSelectButton/base_type = &"Button"
+LevelSelectButton/colors/font_color = Color(0.774529, 0.584981, 0.0529241, 1)
+LevelSelectButton/colors/font_disabled_color = Color(0.55609, 0.476129, 0.30127, 1)
+LevelSelectButton/colors/font_focus_color = Color(0.776471, 0.584314, 0.0509804, 1)
+LevelSelectButton/colors/font_hover_color = Color(0.776471, 0.584314, 0.0509804, 1)
+LevelSelectButton/colors/font_pressed_color = Color(0.776471, 0.584314, 0.0509804, 1)
+LevelSelectButton/constants/align_to_largest_stylebox = 1
+LevelSelectButton/styles/disabled = SubResource("StyleBoxTexture_bgmie")
+LevelSelectButton/styles/focus = SubResource("StyleBoxTexture_bxbrt")
+LevelSelectButton/styles/hover = ExtResource("5_m1puw")
+LevelSelectButton/styles/hover_pressed = ExtResource("5_m1puw")
+LevelSelectButton/styles/normal = ExtResource("4_jm07c")
+LevelSelectButton/styles/pressed = ExtResource("5_m1puw")
 LightLabel/base_type = &"Label"
 LightLabel/colors/font_color = Color(1, 1, 1, 1)
 LineEdit/colors/caret_color = Color(0, 0, 0, 1)
@@ -198,6 +272,20 @@ PopupMenu/styles/hover = SubResource("StyleBoxFlat_5brlm")
 PopupMenu/styles/panel = ExtResource("3_icoew")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_3sn82")
 PopupPanel/styles/panel = SubResource("StyleBoxTexture_j2xrl")
+ReviewLevelSelectButton/base_type = &"Button"
+ReviewLevelSelectButton/colors/font_color = Color(0.776471, 0.584314, 0.0509804, 1)
+ReviewLevelSelectButton/colors/font_disabled_color = Color(0.556863, 0.47451, 0.301961, 1)
+ReviewLevelSelectButton/colors/font_focus_color = Color(0.776471, 0.584314, 0.0509804, 1)
+ReviewLevelSelectButton/colors/font_hover_color = Color(0.776471, 0.584314, 0.0509804, 1)
+ReviewLevelSelectButton/colors/font_hover_pressed_color = Color(0.776471, 0.584314, 0.0509804, 1)
+ReviewLevelSelectButton/colors/font_pressed_color = Color(0.776471, 0.584314, 0.0509804, 1)
+ReviewLevelSelectButton/constants/align_to_largest_stylebox = 1
+ReviewLevelSelectButton/styles/disabled = SubResource("StyleBoxTexture_xnbtm")
+ReviewLevelSelectButton/styles/focus = SubResource("StyleBoxTexture_4ote2")
+ReviewLevelSelectButton/styles/hover = ExtResource("8_t5c8r")
+ReviewLevelSelectButton/styles/hover_pressed = ExtResource("8_t5c8r")
+ReviewLevelSelectButton/styles/normal = ExtResource("9_1b7pl")
+ReviewLevelSelectButton/styles/pressed = ExtResource("8_t5c8r")
 RichTextLabel/colors/default_color = Color(0.180842, 2.90289e-07, 3.00817e-08, 1)
 SpinBox/icons/updown = ExtResource("5_h5syq")
 TabContainer/colors/font_selected_color = Color(0.376471, 0.12549, 0, 1)

@@ -32,4 +32,4 @@ layout_mode = 2
 
 [node name="ReturnToMenu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Retun to Menu"
+text = "Return to Menu"

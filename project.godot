@@ -40,6 +40,10 @@ window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/rebel/Documents/1 Real Docs/Programming/GameExports/story_first_peek.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/parallax2d_preview/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")

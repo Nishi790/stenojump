@@ -24,3 +24,4 @@ corner_radius_bottom_left = 12
 Label/colors/font_color = Color(1, 1, 1, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_o7rwh")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_p7pkh")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)

@@ -24,6 +24,10 @@ func _ready() -> void:
 	for index in levels.size():
 		var unlocked: bool = check_unlocked(index)
 		var level_select: Button = Button.new()
+		if levels[index].contains("review"):
+			level_select.theme_type_variation = "ReviewLevelSelectButton"
+		else:
+			level_select.theme_type_variation = "LevelSelectButton"
 		level_select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		level_select.size_flags_vertical = Control.SIZE_FILL
 		level_select.text = str(index + 1)

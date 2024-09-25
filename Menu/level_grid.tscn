@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://logrv4ke74tw"]
+[gd_scene load_steps=3 format=3 uid="uid://logrv4ke74tw"]
 
+[ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="1_dmuys"]
 [ext_resource type="Script" path="res://Menu/level_grid.gd" id="1_wn75d"]
 
 [node name="Levels" type="GridContainer"]
@@ -8,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_dmuys")
 columns = 5
 script = ExtResource("1_wn75d")
 sequence_folder = "res://level_data/Lapwing"

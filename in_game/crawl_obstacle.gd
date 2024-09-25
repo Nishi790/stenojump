@@ -6,12 +6,13 @@ extends Obstacle
 @export var front_sprite: Sprite2D
 @export var behind_par_sprite: Sprite2D
 
+
 func _ready() -> void:
 	super()
 	crawl_area.body_exited.connect(_on_crawl_exited)
 
 
-
+##Set up additional crawling obstacle textures and crawl area shape
 func set_textures() -> void:
 	super()
 
@@ -29,6 +30,7 @@ func set_textures() -> void:
 	crawl_shape.position = chosen_texture.area_collider_pos
 
 
+##Cue player to stand on exiting the crawling area
 func _on_crawl_exited(body: Node2D) -> void:
 	if is_queued_for_deletion():
 		return
