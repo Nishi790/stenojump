@@ -24,8 +24,6 @@ Socks: Are you familiar with the steno keyboard?
 - No
 	=> offer_hints
 
-
-
 ~ try_walk
 Socks: If you get stuck, you can always toggle hints for words on and off by hitting Enter (R-R), just in case.
 Socks: Okay! We're going to start with words that have short vowels like 'cat', 'get', 'kid', 'top', and 'mud'.
@@ -90,6 +88,7 @@ do display_stroke("O")
 Socks: It's also the sound in 'pore' or 'worn' - there's 'r' making things sound a little funny. 
 Socks: You can include it in a word using the O key. Now get going - there's more to do!
 do hide_stroke()
+=> END
 
 ~ teach_e_vowel
 Socks: Time for another vowel! Short 'e' is the sound in 'bed', 'men', and 'leg'. 
@@ -98,12 +97,14 @@ Socks: It's also the sound in 'her' or 'per'
 do display_stroke("HER")
 Socks: Be careful with the 'er' sound - it can also be spelled 'ir', like 'fir', or 'ur' like 'purr'. Remember the short vowel rules and use the key that matches the spelling. 
 do hide_stroke()
+=> END
 
 ~ teach_u_vowel
 Socks: You know the drill by now, right? Our next vowel is short 'u', which you can hear in 'bus', 'fun', and 'tub'.
 do display_stroke("U")
 Socks: Remember what I told you about things that sound like 'er' - pay attention to the spelling. 'Her' is written with the E key, but 'fur' is written with U. 
 do hide_stroke()
+=> END
 
 ~ teach_i_vowel
 Socks: Oh, you thought I was done? I have way more to teach you!
@@ -116,3 +117,4 @@ That means 'sir' is written like this.
 do display_stroke("SEUR")
 Socks: That's everything I have to teach you right now. You'd better hurry up and get things sorted out here so that we can get on with the rest of the day!
 do hide_stroke()
+=> END

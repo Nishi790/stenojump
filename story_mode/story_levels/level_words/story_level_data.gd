@@ -13,16 +13,24 @@ signal dialog_started(dialog_key: String, dialogue: DialogueResource)
 ##Dictionary in format Name(String): BaseQuest
 @export var quests: Dictionary
 
+##Dict int:String - states index when a new lesson dialogue needs to be shown
+@export var lesson_indices: Dictionary
+
 var active_quests: Dictionary ##EventName: EventInfo
 var completed_quests: Array[String] ##Event names
 
+
 var cur_index: int = 0
+var lessons_completed: bool = false
 
 
 func get_next_word() -> Dictionary:
+	if lesson_indices.keys().has(cur_index) and not lessons_completed:
+		dialog_started.emit(lesson_indices[cur_index], dialogue_resource)
 	if cur_index == level_words.size():
 		level_words.shuffle()
 		cur_index = 0
+		lessons_completed = true
 	var result_dict: Dictionary = level_words[cur_index]
 	cur_index += 1
 	return result_dict

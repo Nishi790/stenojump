@@ -1,76 +1,11 @@
-[gd_scene load_steps=26 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=7 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
-[ext_resource type="Resource" uid="uid://flpssaglm2lw" path="res://story_mode/story_levels/Events/level_1_events/open_curtains.tres" id="2_5uwng"]
-[ext_resource type="Resource" uid="uid://c43kcgrhcuhyu" path="res://story_mode/story_levels/level_dialogs/story_level_1.dialogue" id="2_ai6jn"]
-[ext_resource type="Script" path="res://story_mode/story_levels/level_words/story_level_data.gd" id="2_m7323"]
-[ext_resource type="Resource" uid="uid://b4ib2ign30q2k" path="res://story_mode/story_levels/Events/level_1_events/bedroom_door_opened.tres" id="3_x6yku"]
-[ext_resource type="Resource" uid="uid://bxwxxkwqcustr" path="res://story_mode/story_levels/Events/level_1_events/knock_over_book.tres" id="4_lpupf"]
-[ext_resource type="Resource" uid="uid://cbb5xgg8hc8q2" path="res://story_mode/story_levels/Events/level_1_events/checked_bowl.tres" id="5_2ntke"]
-[ext_resource type="Resource" uid="uid://beyjdgi3eaaww" path="res://story_mode/story_levels/Events/level_1_events/jenny_woke_up.tres" id="6_36dv8"]
-[ext_resource type="Resource" uid="uid://cx654femgv4da" path="res://story_mode/story_levels/Events/level_1_events/knocked_over_alarm.tres" id="7_brp6k"]
-[ext_resource type="Resource" uid="uid://pqu7lay1wwae" path="res://story_mode/story_levels/Events/level_1_events/meowed_at_door_once.tres" id="8_gekdt"]
-[ext_resource type="Resource" uid="uid://cip5hqdmnyfxg" path="res://story_mode/story_levels/Events/level_1_events/meowed_at_door_twice.tres" id="9_3qifo"]
-[ext_resource type="Resource" uid="uid://dn0k3yrt00a5r" path="res://story_mode/story_levels/Events/level_1_events/meowed_beside_bed.tres" id="10_61xaf"]
-[ext_resource type="Resource" uid="uid://cek1c4820elxq" path="res://story_mode/story_levels/Events/level_1_events/sit_on_bed.tres" id="11_baogt"]
-[ext_resource type="Resource" uid="uid://ychmkqdwt7ov" path="res://story_mode/story_levels/Events/level_1_events/first_move.tres" id="12_matva"]
-[ext_resource type="Resource" uid="uid://b4vbyf1jfv4lu" path="res://story_mode/story_levels/Events/level_1_events/first_interact.tres" id="13_8e2a2"]
-[ext_resource type="Resource" uid="uid://bwi027uekl0ca" path="res://story_mode/story_levels/quests/level_1_quests/wake_up_jenny.tres" id="14_yo6n8"]
-[ext_resource type="Resource" uid="uid://ipbh6mduhwre" path="res://story_mode/story_levels/quests/level_1_quests/first_steps.tres" id="15_rti2l"]
-[ext_resource type="Resource" uid="uid://bi8dmetaqr3s3" path="res://story_mode/story_levels/quests/level_1_quests/first_interact.tres" id="16_traon"]
-[ext_resource type="Resource" uid="uid://sim7v1jiauav" path="res://story_mode/story_levels/quests/level_1_quests/open_the_door.tres" id="17_jw8a0"]
-[ext_resource type="Resource" uid="uid://d0e7ioqok0xh0" path="res://story_mode/story_levels/quests/level_1_quests/check_bowl.tres" id="19_ojpot"]
+[ext_resource type="Resource" uid="uid://bqdwup7yu3lw8" path="res://story_mode/story_levels/level_words/level_1_story_data.tres" id="2_eiump"]
 [ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
 [ext_resource type="SpriteFrames" uid="uid://c7stpsqt1a6yw" path="res://story_mode/interactables/curtain_anims.tres" id="24_na3mj"]
 [ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
-
-[sub_resource type="Resource" id="Resource_b0exf"]
-script = ExtResource("2_m7323")
-level_words = Array[Dictionary]([{
-"hint": "SAT",
-"word": "sat"
-}, {
-"hint": "KAR",
-"word": "car"
-}, {
-"hint": "HAD",
-"word": "had"
-}, {
-"hint": "WAR",
-"word": "war"
-}, {
-"hint": "RAG",
-"word": "rag"
-}, {
-"hint": "PAS",
-"word": "pass"
-}, {
-"hint": "TAP",
-"word": "tap"
-}])
-dialogue_resource = ExtResource("2_ai6jn")
-level_events = {
-"bedroom_curtains_open": ExtResource("2_5uwng"),
-"bedroom_door_open": ExtResource("3_x6yku"),
-"book_fallen": ExtResource("4_lpupf"),
-"first_interact": ExtResource("13_8e2a2"),
-"first_move": ExtResource("12_matva"),
-"interacted_with_bowl": ExtResource("5_2ntke"),
-"jenny_woke_up": ExtResource("6_36dv8"),
-"knocked_over_alarm_clock": ExtResource("7_brp6k"),
-"meowed_at_door_once": ExtResource("8_gekdt"),
-"meowed_at_door_twice": ExtResource("9_3qifo"),
-"meowed_beside_bed": ExtResource("10_61xaf"),
-"sat_on_bed": ExtResource("11_baogt")
-}
-quests = {
-"check_bowl": ExtResource("19_ojpot"),
-"first_interact": ExtResource("16_traon"),
-"first_steps": ExtResource("15_rti2l"),
-"open_the_door": ExtResource("17_jw8a0"),
-"wake_up_jenny": ExtResource("14_yo6n8")
-}
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("waypoints", "tile_map_holder", "tile_map_base", "tile_map_obstacles")]
 y_sort_enabled = true
@@ -80,7 +15,7 @@ waypoints = [NodePath("BookShelf"), NodePath("BottomBedroom"), NodePath("MiddleB
 tile_map_holder = NodePath("TileMap")
 tile_map_base = NodePath("TileMap/FloorLayer")
 tile_map_obstacles = NodePath("TileMap/BGObjects")
-level_word_list = SubResource("Resource_b0exf")
+level_word_list = ExtResource("2_eiump")
 
 [node name="TileMap" type="Node2D" parent="."]
 y_sort_enabled = true
