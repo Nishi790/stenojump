@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=12 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
 [ext_resource type="PackedScene" uid="uid://5w8ptyi4ic4y" path="res://in_game/background.tscn" id="2_f4riy"]
@@ -17,11 +17,7 @@ normal = Vector2(0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ooyp2"]
 size = Vector2(123, 187)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_y13st"]
-a = Vector2(0, -100)
-b = Vector2(0, 0)
-
-[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background", "obstacle_detector", "range_trigger")]
+[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background", "obstacle_detector")]
 texture_filter = 1
 script = ExtResource("1_igruv")
 obstacle_manager = NodePath("ObstacleManager")
@@ -29,7 +25,6 @@ player = NodePath("Player")
 hud = NodePath("HUD")
 background = NodePath("Background")
 obstacle_detector = NodePath("ObstacleDetector")
-range_trigger = NodePath("JumpRangeTrigger")
 
 [node name="Background" parent="." instance=ExtResource("2_f4riy")]
 
@@ -67,15 +62,6 @@ script = ExtResource("12_01mxu")
 z_index = 1
 position = Vector2(1047.5, 853.5)
 shape = SubResource("RectangleShape2D_ooyp2")
-
-[node name="JumpRangeTrigger" type="Area2D" parent="."]
-position = Vector2(275, 979)
-collision_layer = 2
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpRangeTrigger"]
-z_index = 1
-shape = SubResource("SegmentShape2D_y13st")
 
 [node name="HUD" parent="." instance=ExtResource("11_c2pqa")]
 z_index = 2

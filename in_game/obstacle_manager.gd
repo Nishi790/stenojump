@@ -149,16 +149,25 @@ func word_cleared() -> void:
 			current_obstacle_queue[0].speak_words()
 
 
-func reset_words() -> void:
+func reset_words(collider: Object) -> void:
 	new_word_timer.stop()
 	var score_reduction: int = 0
 	var words_to_reset: int = upcoming_word.size()
-	var obst_returned: int = get_tree().get_node_count_in_group("obstacles")
-	for obst in get_tree().get_nodes_in_group("obstacles"):
-		if current_obstacle_queue.find(obst) == -1:
-			score_reduction -= obst.score
+	var colliding_obst_found : bool = false
+	var obst_returned: int = current_obstacle_queue.size()
+	for obst in current_obstacle_queue:
 		words_to_reset += obst.number_of_targets
-		obst.queue_free()
+		if obst == collider:
+			score_reduction -= obst.score
+			colliding_obst_found = true
+	if not colliding_obst_found:
+		for obst in get_tree().get_nodes_in_group("obstacles"):
+			if obst == collider:
+				score_reduction -= obst.score
+				obst_returned += 1
+				words_to_reset += obst.number_of_targets
+				break
+	get_tree().call_group("obstacles", "queue_free")
 	current_obstacle_queue.clear()
 	score_changed.emit(score_reduction)
 	words_returned.emit(words_to_reset, obst_returned)

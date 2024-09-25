@@ -11,7 +11,6 @@ signal main_menu_requested
 @export var hud: HUD
 @export var background: BackgroundManager
 @export var obstacle_detector: Area2D
-@export var range_trigger: Area2D
 
 var input_box: LineEdit
 
@@ -140,7 +139,7 @@ func send_new_word(number: int) -> void:
 ##adjust score, and trigger relevant UI
 func reset_word(collider: Object) -> void:
 	#Remove all onscreen words
-	obstacle_manager.reset_words()
+	obstacle_manager.reset_words(collider)
 	if level_complete:
 		level_complete = false
 
