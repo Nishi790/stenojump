@@ -46,7 +46,7 @@ movie_writer/movie_file="C:/Users/rebel/Documents/1 Real Docs/Programming/GameEx
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/parallax2d_preview/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/parallax2d_preview/plugin.cfg")
 
 [gui]
 
