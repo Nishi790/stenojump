@@ -182,13 +182,12 @@ focus_neighbor_top = NodePath("../../LevelOrderCntr/OrderChoices")
 focus_neighbor_bottom = NodePath("../../CheckpointToggleContainer/UseCheckpoints")
 focus_next = NodePath("../../CheckpointToggleContainer/UseCheckpoints")
 focus_previous = NodePath("../../LevelOrderCntr/OrderChoices")
-disabled = true
 
 [node name="AutojumpLabel" type="RichTextLabel" parent="OptionTabs/Gameplay/VBoxContainer/AutoJump"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[b]Auto[/b]jump: Reduces reliance on precise reaction times by handling timing for words as long as they aren't late. "
+text = "[b]Auto[/b]jump: Reduces reliance on precise reaction times by delaying jumps to optimal timing if slightly too early."
 fit_content = true
 
 [node name="Divider" type="HSeparator" parent="OptionTabs/Gameplay/VBoxContainer"]

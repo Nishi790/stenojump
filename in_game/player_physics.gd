@@ -11,23 +11,40 @@ enum Colliders {RUN, JUMP, CRAWL}
 @export var jump_coll_shape: CollisionShape2D
 @export var crawl_coll_shape: CollisionShape2D
 
+const X_RETURN_VEL = 200.0
+const JUMP_VELOCITY = -500.0
+
 var time_of_flight: float
 var ground_height: float
 var take_off_height: float
-const JUMP_VELOCITY = -500.0
+
 
 var on_floor: bool = false
 var remaining_flight_time: float = 0
 var active_collider: Colliders
+var target_x_pos: float
 
 
 func _ready() -> void:
 	change_colliders(Colliders.RUN)
+	target_x_pos = position.x
 
 
 func _physics_process(delta: float) -> void:
+	#Reset horizontal movement
+	velocity.x = 0
+
+	#Add gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+	if position.x != target_x_pos:
+		var x_dist: float = target_x_pos - position.x
+		var x_vel: float = x_dist/delta
+		if absf(x_vel) > X_RETURN_VEL:
+			velocity.x = sign(x_vel) * X_RETURN_VEL
+		else:
+			velocity.x = x_vel
 	move_and_slide()
 	if get_last_slide_collision() != null:
 		collision.emit(get_last_slide_collision())

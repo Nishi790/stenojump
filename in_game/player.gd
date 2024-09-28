@@ -13,6 +13,7 @@ enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDL
 @export var physics_body: CharacterBody2D
 @export var audio_player: AudioStreamPlayer2D
 @export var range_area: Area2D
+@export var jump_ray: RayCast2D
 
 var speed: float
 var lives: int = PlayerConfig.max_lives
@@ -24,6 +25,10 @@ var landing_timer: float = 0
 var straight_to_landing: bool = false
 var move_queue: Array[int] = []
 
+var jump_queued: bool = false
+var dist_remaining: float = -999
+var obst_speed: int
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +36,10 @@ func _ready() -> void:
 	physics_body.state_changed.connect(change_states)
 	physics_body.stand_up_triggered.connect(stand_up)
 	sprite.animation_finished.connect(link_animation)
+	var gravity_magnitude : int = ProjectSettings.get_setting("physics/2d/default_gravity")
+	var ray_length: float = absf((200*physics_body.JUMP_VELOCITY)/gravity_magnitude)
+	jump_ray.target_position.x = ray_length
+
 	start_walk()
 	PlayerConfig.lives_updated.connect(set_lives)
 
@@ -66,6 +75,29 @@ func _process(delta: float) -> void:
 	#control animations here
 
 
+func _physics_process(delta: float) -> void:
+	if jump_queued:
+		if dist_remaining == -999 and jump_ray.is_colliding():
+			var colliding_obstacle: Object = jump_ray.get_collider()
+			var shape_id: int = jump_ray.get_collider_shape()
+			var owner_id: int = colliding_obstacle.shape_find_owner(shape_id)
+			var shape: Shape2D = colliding_obstacle.shape_owner_get_shape(owner_id, shape_id)
+			if shape is RectangleShape2D:
+				var inside_ray_amount: int = jump_ray.target_position.x - to_local(jump_ray.get_collision_point()).x
+				dist_remaining = shape.get_size().x/2 - inside_ray_amount
+			elif shape is CircleShape2D:
+				var inside_ray_amount: int = jump_ray.target_position.x - to_local(jump_ray.get_collision_point()).x
+				dist_remaining = shape.radius - inside_ray_amount
+			obst_speed = colliding_obstacle.speed
+
+		dist_remaining -= obst_speed * delta
+		if dist_remaining != -999 and dist_remaining <= 0:
+			jump()
+			jump_queued = false
+			dist_remaining = -999
+			obst_speed = 0
+
+
 ##Called when player collides to cue death/game over if required
 func on_collision(collision: KinematicCollision2D) -> void:
 	if collision.get_collider().name=="Ground" or collision.get_collider().name == "Ceiling":
@@ -93,19 +125,29 @@ func avoid_obstacle(type: Obstacle.ObstacleType, new_action: bool = true) -> voi
 
 	match type:
 		Obstacle.ObstacleType.JUMP:
-			jump()
+			if check_jump_range():
+				if PlayerConfig.autojump:
+					jump_queued = true
+				else:
+					jump()
+			else:
+				jump()
 		Obstacle.ObstacleType.CRAWL:
 			crawl()
 			obstacle_in_range.emit()
 
 
-func jump() -> void:
+func check_jump_range() -> bool:
 	##Check that the obstacle is in range
 	var bodies_in_range: Array = range_area.get_overlapping_bodies()
 	for body: Node2D in bodies_in_range:
 		if body.is_in_group("obstacles"):
 			obstacle_in_range.emit()
-			break
+			return true
+	return false
+
+
+func jump() -> void:
 	physics_body.jump()
 
 

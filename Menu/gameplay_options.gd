@@ -32,12 +32,6 @@ func _ready() -> void:
 	initiate_focus()
 
 
-func _input(event: InputEvent) -> void:
-	print("current focus ", get_viewport().gui_get_focus_owner())
-	await get_tree().process_frame
-	print("After input, focus owner is ", get_viewport().gui_get_focus_owner())
-
-
 func load_current_settings() -> void:
 	if visible:
 		level_size_toggle.set_pressed(PlayerConfig.use_custom_size)
