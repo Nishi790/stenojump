@@ -25,6 +25,7 @@ var landing_timer: float = 0
 var straight_to_landing: bool = false
 var move_queue: Array[int] = []
 
+var crawl_queued: bool = false
 var jump_queued: bool = false
 var dist_remaining: float = -999
 var obst_speed: int
@@ -37,7 +38,7 @@ func _ready() -> void:
 	physics_body.stand_up_triggered.connect(stand_up)
 	sprite.animation_finished.connect(link_animation)
 	var gravity_magnitude : int = ProjectSettings.get_setting("physics/2d/default_gravity")
-	var ray_length: float = absf((200*physics_body.JUMP_VELOCITY)/gravity_magnitude)
+	var ray_length: float = absf((200.0 * physics_body.JUMP_VELOCITY)/gravity_magnitude)
 	jump_ray.target_position.x = ray_length
 
 	start_walk()
@@ -72,9 +73,9 @@ func _process(delta: float) -> void:
 				sprite.play("sit_down")
 		State.DIE:
 			sprite.play("die")
-	#control animations here
 
 
+#Handle delayed jump for autojump
 func _physics_process(delta: float) -> void:
 	if jump_queued:
 		if dist_remaining == -999 and jump_ray.is_colliding():
@@ -83,10 +84,10 @@ func _physics_process(delta: float) -> void:
 			var owner_id: int = colliding_obstacle.shape_find_owner(shape_id)
 			var shape: Shape2D = colliding_obstacle.shape_owner_get_shape(owner_id, shape_id)
 			if shape is RectangleShape2D:
-				var inside_ray_amount: int = jump_ray.target_position.x - to_local(jump_ray.get_collision_point()).x
+				var inside_ray_amount: float = jump_ray.target_position.x - to_local(jump_ray.get_collision_point()).x
 				dist_remaining = shape.get_size().x/2 - inside_ray_amount
 			elif shape is CircleShape2D:
-				var inside_ray_amount: int = jump_ray.target_position.x - to_local(jump_ray.get_collision_point()).x
+				var inside_ray_amount: float = jump_ray.target_position.x - to_local(jump_ray.get_collision_point()).x
 				dist_remaining = shape.radius - inside_ray_amount
 			obst_speed = colliding_obstacle.speed
 
@@ -151,6 +152,10 @@ func jump() -> void:
 	physics_body.jump()
 
 
+func crawl() -> void:
+	change_states(State.CRAWLING)
+
+
 func link_animation() -> void:
 	match sprite.animation:
 		"jump_up":
@@ -186,14 +191,21 @@ func change_states(new_state: State, time_of_flight: float = -1) -> void:
 				player_movement_changed.emit(new_state)
 			if old_state == State.ENDING_JUMP:
 				play_sfx("land")
+				if crawl_queued:
+					change_states(State.CRAWLING)
 		State.STARTING_JUMP, State.ENDING_JUMP:
 			if physics_body.active_collider != 1:
 				physics_body.change_colliders(1)
 			if time_of_flight > 0:
 				calculate_jump_time(time_of_flight)
 		State.CRAWLING:
-			if physics_body.active_collider != 2:
-				physics_body.change_colliders(2)
+			if old_state == State.ENDING_JUMP or old_state == State.SOARING or old_state == State.STARTING_JUMP:
+				crawl_queued = true
+				movement_state = old_state
+			else:
+				crawl_queued = false
+				if physics_body.active_collider != 2:
+					physics_body.change_colliders(2)
 		State.DIE:
 			if old_state == State.STARTING_JUMP or old_state == State.SOARING:
 				physics_body.stop_jump()
@@ -231,8 +243,6 @@ func start_walk() -> void:
 	change_states(State.WALKING)
 
 
-func crawl() -> void:
-	change_states(State.CRAWLING)
 
 
 func stand_up() -> void:
