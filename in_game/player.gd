@@ -243,8 +243,6 @@ func start_walk() -> void:
 	change_states(State.WALKING)
 
 
-
-
 func stand_up() -> void:
 	if move_queue.is_empty():
 		change_states(State.RUNNING)

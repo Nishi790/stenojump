@@ -4,4 +4,6 @@
 
 [resource]
 default_font = ExtResource("1_df57p")
+Label/colors/font_color = Color(1, 1, 1, 1)
 Label/fonts/font = ExtResource("1_df57p")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
