@@ -62,12 +62,14 @@ func test_word_entered() -> void:
 	waypoint_double.target_data = {"word": "rap", "hint": "RAP"}
 	waypoint_double.target_word = "rap"
 	waypoint_double.target_label.visible = true
+	waypoint_double.can_match = true
 	watch_signals(waypoint_double)
 
 	waypoint_double.word_entered()
 	assert_eq_deep(waypoint_double.target_data, {})
 	assert_eq(waypoint_double.target_word, "", "Target word should be cleared")
 	assert_false(waypoint_double.target_label.visible, "Label should be hidden")
+	assert_false(waypoint_double.can_match, "Should not be able to match anything")
 	assert_signal_emitted_with_parameters(waypoint_double, "move_destination_selected", [waypoint_double])
 
 

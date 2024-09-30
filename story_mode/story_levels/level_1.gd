@@ -68,6 +68,7 @@ func _ready() -> void:
 
 	#Set up interactables
 	waypoint_astar_grid = AStar2D.new()
+	print(waypoints)
 	for way_index in waypoints.size():
 		var inter: Waypoint = waypoints[way_index]
 

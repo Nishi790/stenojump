@@ -53,6 +53,7 @@ func _ready() -> void:
 	target_label.custom_minimum_size = minimum_label_size
 	target_label.position = Vector2(target_label.custom_minimum_size.x/-2, -50)
 	target_label.visible = false
+	print("%s is ready" % name)
 
 
 func _draw() -> void:
@@ -138,4 +139,4 @@ func word_entered() -> void:
 func clear_target() -> void:
 	target_data = {}
 	target_word = ""
-	target_label.visible = false
+	hide_label()

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtwvpy41tht6y"]
+
+[ext_resource type="Script" path="res://story_mode/interactables/toggle_interactable.gd" id="1_fcen8"]
+[ext_resource type="SpriteFrames" uid="uid://c7stpsqt1a6yw" path="res://story_mode/interactables/interactable_textures/curtain_anims.tres" id="2_vbijc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4kl"]
+size = Vector2(128, 64)
+
+[node name="ToggleInteractable" type="Area2D" node_paths=PackedStringArray("animation", "target_label")]
+script = ExtResource("1_fcen8")
+animation = NodePath("AnimatedSprite2D")
+animation_offset = Vector2(0, -24)
+animation_frames = ExtResource("2_vbijc")
+target_label = NodePath("TargetLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fq4kl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_vbijc")
+animation = &"idle"
+frame_progress = 0.638885
+offset = Vector2(0, -24)
+
+[node name="TargetLabel" type="RichTextLabel" parent="."]
+visible = false
+z_index = 4
+custom_minimum_size = Vector2(160, 30)
+offset_left = -80.0
+offset_top = -50.0
+offset_right = 80.0
+offset_bottom = -20.0
+theme_type_variation = &"TargetRichText"
+bbcode_enabled = true
+fit_content = true

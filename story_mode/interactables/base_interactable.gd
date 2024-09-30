@@ -8,8 +8,10 @@ var interactor: SelfNavCharacter = null
 @export var animation: AnimatedSprite2D
 @export var animation_offset: Vector2:
 	set(new_offset):
+		print("animation offset changed on %s" % name)
 		animation_offset = new_offset
 		if animation:
+			print("Setting animation offset")
 			animation.offset = animation_offset
 @export var interaction_anim_name: String = ""
 @export var animation_frames: SpriteFrames:
@@ -40,6 +42,8 @@ func _interact() -> void:
 func complete_interact() -> void:
 	if animation_frames.has_animation("interact"):
 		animation.play("interact")
+	else:
+		return_to_idle()
 	for event_name in interact_events:
 		tried_event.emit(event_name, true)
 	print("Interacted with %s" % self.name)
@@ -58,12 +62,12 @@ func initiate_words(area: Area2D)  -> void:
 		var character: SelfNavCharacter = area.get_parent()
 		interactor = character
 		set_ready_to_interact(true)
-		if target_data.is_empty():
-			request_target_word.emit()
 
 
 func set_ready_to_interact(value: bool) -> void:
 	ready_to_interact = value
+	if target_data.is_empty() and ready_to_interact:
+		request_target_word.emit()
 	if value:
 		target_label.add_theme_color_override("default_color",Color.YELLOW)
 	else: target_label.remove_theme_color_override("default_color")

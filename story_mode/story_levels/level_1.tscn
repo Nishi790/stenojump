@@ -3,15 +3,15 @@
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
 [ext_resource type="Resource" uid="uid://bqdwup7yu3lw8" path="res://story_mode/story_levels/level_words/level_1_story_data.tres" id="2_eiump"]
-[ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
-[ext_resource type="SpriteFrames" uid="uid://c7stpsqt1a6yw" path="res://story_mode/interactables/interactable_textures/curtain_anims.tres" id="24_na3mj"]
+[ext_resource type="PackedScene" uid="uid://rgpvjjnooqeu" path="res://story_mode/interactables/one_shot_interactable.tscn" id="4_td581"]
+[ext_resource type="PackedScene" uid="uid://dtwvpy41tht6y" path="res://story_mode/interactables/toggle_interactable.tscn" id="6_n00nb"]
 [ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("waypoints", "tile_map_holder", "tile_map_base", "tile_map_obstacles")]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_m0lfx")
-waypoints = [NodePath("BookShelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("Curtain")]
+waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain")]
 tile_map_holder = NodePath("TileMap")
 tile_map_base = NodePath("TileMap/FloorLayer")
 tile_map_obstacles = NodePath("TileMap/BGObjects")
@@ -44,16 +44,15 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAXAAEAAAACAAEAAAAXAAIAAAACAAEAAAAXAAMAAAACAAEAAAAXAAQAAAACAAEAAAAXAAUAAAACAAEAAAAXAAYAAAACAAEAAAAXAAcAAAACAAEAAAAXAAgAAAACAAEAAAAXAAkAAAACAAEAAAAXAAoAAAAEAAEAAAAKAAoAAAAEAAEAAAAFAAkAAAAAAAEAAAAFAAoAAAABAAIAAAAAAAEAAAAAAAgAAAAAAAIAAAAAAAgAAAAAAAMAAAAAAAgAAAAAAAQAAAAAAAgAAAAAAAUAAAAAAAgAAAAAAAYAAAAAAAgAAAAAAAcAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAkAAAAAAAgAAAAAAAoAAAADAAgAAAAIAAoAAAAEAAMAAAAIAAsAAAAEAAQAAAAGAAoAAAABAAIAAAAHAAoAAAABAAIAAAAJAAoAAAABAAIAAAABAAoAAAABAAkAAAACAAoAAAABAAkAAAADAAoAAAABAAkAAAAEAAoAAAABAAkAAAAKAAkAAAACAAEAAAAMAAIAAAACAAgAAAAMAAMAAAACAAgAAAAMAAUAAAACAAgAAAAMAAYAAAAEAAgAAAALAAYAAAABAAkAAAAKAAYAAAABAAkAAAAJAAYAAAABAAkAAAAIAAYAAAABAAkAAAAHAAYAAAABAAkAAAAGAAYAAAABAAkAAAAFAAYAAAABAAkAAAAEAAcAAAACAAgAAAAEAAgAAAACAAgAAAAEAAkAAAACAAgAAAANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAALAAkAAAAAAAEAAAALAAoAAAADAAEAAAAMAAoAAAABAAIAAAANAAoAAAABAAIAAAAOAAoAAAABAAIAAAAPAAoAAAABAAIAAAAQAAoAAAABAAIAAAARAAoAAAABAAIAAAASAAoAAAABAAIAAAATAAoAAAABAAIAAAAUAAoAAAABAAIAAAAVAAoAAAABAAIAAAAWAAoAAAABAAIAAAANAAcAAAAAAAEAAAANAAgAAAAAAAEAAAAMAAEAAAACAAgAAAAMAAAAAAAEAAcAAAA=")
 tile_set = ExtResource("1_c7u2v")
 
-[node name="BookShelf" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
+[node name="Shelf" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("4_td581")]
 position = Vector2(1163, 902)
 interact_events = Array[String](["book_fallen", "first_interact"])
 connected_points = [NodePath("../BottomBedroom")]
-hints_active = false
-movement_events = Array[String](["first_move"])
+movement_events = Array[String](["first_movement"])
 
 [node name="BottomBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
 position = Vector2(1487, 921)
-connected_points = [NodePath("../BookShelf"), NodePath("../MiddleBedroom")]
+connected_points = [NodePath("../MiddleBedroom"), NodePath("../Shelf")]
 movement_events = Array[String]([])
 action_events = Array[String]([])
 
@@ -65,13 +64,11 @@ action_events = Array[String]([])
 
 [node name="TopBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
 position = Vector2(1483, 342)
-connected_points = [NodePath("../MiddleBedroom"), NodePath("../Curtain")]
+connected_points = [NodePath("../MiddleBedroom"), NodePath("../LeftCurtain")]
 movement_events = Array[String]([])
 action_events = Array[String]([])
 
-[node name="Curtain" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
-y_sort_enabled = true
-position = Vector2(1916, 238)
-animation_frames = ExtResource("24_na3mj")
-interact_events = Array[String](["bedroom_curtains_open", "first_interact"])
+[node name="LeftCurtain" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("6_n00nb")]
+position = Vector2(1916, 239)
+interact_events = Array[String](["first_interact", "bedroom_curtains_open"])
 connected_points = [NodePath("../TopBedroom")]
