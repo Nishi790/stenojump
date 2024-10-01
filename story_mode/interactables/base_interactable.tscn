@@ -3,21 +3,25 @@
 [ext_resource type="Script" path="res://story_mode/interactables/base_interactable.gd" id="1_agijo"]
 [ext_resource type="SpriteFrames" uid="uid://conpbwuolhea" path="res://story_mode/interactables/interactable_textures/falling_book_anims.tres" id="2_6xior"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8skgl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr3do"]
 size = Vector2(128, 64)
 
 [node name="BaseInteractable" type="Area2D" node_paths=PackedStringArray("animation", "target_label")]
 script = ExtResource("1_agijo")
 animation = NodePath("Animation")
 animation_offset = Vector2(0, -24)
+collision_shape = SubResource("RectangleShape2D_nr3do")
+interact_end_pos = null
+at_height = null
 animation_frames = ExtResource("2_6xior")
 target_label = NodePath("TargetLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_8skgl")
+shape = SubResource("RectangleShape2D_nr3do")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
+z_index = -1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_6xior")
 animation = &"idle"

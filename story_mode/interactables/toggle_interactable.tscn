@@ -10,6 +10,8 @@ size = Vector2(128, 64)
 script = ExtResource("1_fcen8")
 animation = NodePath("AnimatedSprite2D")
 animation_offset = Vector2(0, -24)
+interact_end_pos = null
+at_height = null
 animation_frames = ExtResource("2_vbijc")
 target_label = NodePath("TargetLabel")
 
@@ -20,7 +22,7 @@ shape = SubResource("RectangleShape2D_fq4kl")
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_vbijc")
 animation = &"idle"
-frame_progress = 0.638885
+frame_progress = 0.450507
 offset = Vector2(0, -24)
 
 [node name="TargetLabel" type="RichTextLabel" parent="."]

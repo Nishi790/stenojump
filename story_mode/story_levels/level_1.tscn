@@ -1,17 +1,22 @@
-[gd_scene load_steps=7 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=10 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
 [ext_resource type="Resource" uid="uid://bqdwup7yu3lw8" path="res://story_mode/story_levels/level_words/level_1_story_data.tres" id="2_eiump"]
 [ext_resource type="PackedScene" uid="uid://rgpvjjnooqeu" path="res://story_mode/interactables/one_shot_interactable.tscn" id="4_td581"]
 [ext_resource type="PackedScene" uid="uid://dtwvpy41tht6y" path="res://story_mode/interactables/toggle_interactable.tscn" id="6_n00nb"]
+[ext_resource type="SpriteFrames" uid="uid://h0gbq0km6s1s" path="res://story_mode/interactables/interactable_textures/jenny_bed_anims.tres" id="8_qjxqd"]
+[ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
 [ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5d1g"]
+size = Vector2(200, 100)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("waypoints", "tile_map_holder", "tile_map_base", "tile_map_obstacles")]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_m0lfx")
-waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain")]
+waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain"), NodePath("Bed")]
 tile_map_holder = NodePath("TileMap")
 tile_map_base = NodePath("TileMap/FloorLayer")
 tile_map_obstacles = NodePath("TileMap/BGObjects")
@@ -46,6 +51,8 @@ tile_set = ExtResource("1_c7u2v")
 
 [node name="Shelf" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("4_td581")]
 position = Vector2(1163, 902)
+interact_end_pos = Vector2(0, 0)
+at_height = false
 interact_events = Array[String](["book_fallen", "first_interact"])
 connected_points = [NodePath("../BottomBedroom")]
 movement_events = Array[String](["first_movement"])
@@ -58,7 +65,7 @@ action_events = Array[String]([])
 
 [node name="MiddleBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
 position = Vector2(1483, 625)
-connected_points = [NodePath("../BottomBedroom"), NodePath("../TopBedroom")]
+connected_points = [NodePath("../BottomBedroom"), NodePath("../TopBedroom"), NodePath("../Bed")]
 movement_events = Array[String](["first_move"])
 action_events = Array[String]([])
 
@@ -70,5 +77,18 @@ action_events = Array[String]([])
 
 [node name="LeftCurtain" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("6_n00nb")]
 position = Vector2(1916, 239)
+interact_end_pos = Vector2(0, 0)
+at_height = false
 interact_events = Array[String](["first_interact", "bedroom_curtains_open"])
-connected_points = [NodePath("../TopBedroom")]
+connected_points = [NodePath("../TopBedroom"), NodePath("../Bed")]
+
+[node name="Bed" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
+position = Vector2(2001, 626)
+animation_offset = Vector2(8, -16)
+collision_shape = SubResource("RectangleShape2D_j5d1g")
+interaction_anim_name = "jump_up_sleep"
+interact_end_pos = Vector2(104, -36)
+at_height = true
+animation_frames = ExtResource("8_qjxqd")
+interact_events = Array[String](["sat_on_bed", "first_interact"])
+connected_points = [NodePath("../MiddleBedroom"), NodePath("../LeftCurtain")]

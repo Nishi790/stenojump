@@ -8,12 +8,22 @@ var interactor: SelfNavCharacter = null
 @export var animation: AnimatedSprite2D
 @export var animation_offset: Vector2:
 	set(new_offset):
-		print("animation offset changed on %s" % name)
 		animation_offset = new_offset
 		if animation:
-			print("Setting animation offset")
 			animation.offset = animation_offset
+@export var collision_shape: Shape2D:
+	set(shape):
+		collision_shape = shape
+		if get_node_or_null("CollisionShape2D") != null:
+			$CollisionShape2D.shape = null
+			$CollisionShape2D.shape = shape
 @export var interaction_anim_name: String = ""
+@export var interact_end_pos: Vector2 = Vector2.ZERO:
+	set(new_pos):
+		interact_end_pos = new_pos
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export var at_height: bool = false
 @export var animation_frames: SpriteFrames:
 	set(new_frames):
 		animation_frames = new_frames
@@ -29,12 +39,15 @@ func _ready() -> void:
 
 func _draw() -> void:
 	super()
+	if Engine.is_editor_hint():
+		draw_circle(interact_end_pos, 2, Color.YELLOW)
 
 
 ##Virtual function implemented by all interactables to complete the interaction (play animations, call 'complete interaction'
 ##Complete interaction is for actions by the interactable that should only be completed once the player animation is finished
 func _interact() -> void:
-	interactor.interact(interaction_anim_name)
+	var global_target_pos: Vector2 = to_global(interact_end_pos)
+	interactor.interact(interaction_anim_name, global_target_pos)
 	interactor.animations.animation_finished.connect(complete_interact, CONNECT_ONE_SHOT)
 	set_ready_to_interact(false)
 
@@ -46,7 +59,6 @@ func complete_interact() -> void:
 		return_to_idle()
 	for event_name in interact_events:
 		tried_event.emit(event_name, true)
-	print("Interacted with %s" % self.name)
 
 
 func return_to_idle() -> void:
