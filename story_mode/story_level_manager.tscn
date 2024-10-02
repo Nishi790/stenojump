@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://story_mode/story_level_manager.gd" id="1_cs0fv"]
 [ext_resource type="PackedScene" uid="uid://wu4owdvk0ao3" path="res://story_mode/UI/story_ui.tscn" id="2_2yj0d"]
 [ext_resource type="PackedScene" uid="uid://cqmcig52q8t60" path="res://story_mode/story_levels/level_1.tscn" id="2_p3qat"]
-[ext_resource type="PackedScene" uid="uid://c68eoq2241umv" path="res://story_mode/characters/self_nav_char.tscn" id="3_xewxg"]
+[ext_resource type="PackedScene" uid="uid://c68eoq2241umv" path="res://story_mode/characters/socks_self_nav.tscn" id="3_xewxg"]
 [ext_resource type="Script" path="res://story_mode/game_camera.gd" id="4_yqd4a"]
 
 [node name="StoryLevel" type="Node" node_paths=PackedStringArray("player", "UI", "camera", "level")]
@@ -21,6 +21,7 @@ level = NodePath("Level")
 
 [node name="Character" parent="." instance=ExtResource("3_xewxg")]
 position = Vector2(1494, 938)
+speed = 300.0
 
 [node name="GameCamera" type="Camera2D" parent="."]
 position = Vector2(1344, 542)

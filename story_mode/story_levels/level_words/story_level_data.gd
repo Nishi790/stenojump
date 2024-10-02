@@ -4,6 +4,7 @@ extends Resource
 signal quest_started(quest_data:BaseQuest)
 signal quest_finished(name: String)
 signal dialog_started(dialog_key: String, dialogue: DialogueResource)
+signal event_triggered(event_name: String)
 
 @export var level_words: Array[Dictionary]
 @export var dialogue_resource: DialogueResource
@@ -78,6 +79,12 @@ func check_quest_complete(quest_id: String) -> bool:
 		if quest_data.finished_dialog_key != "":
 			dialog_started.emit(quest_data.finished_dialog_key, dialogue_resource)
 		quest_finished.emit(quest_data.name)
+		if not quest_data.events_triggered.is_empty():
+			for key: String in quest_data.events_triggered.keys():
+				if quest_data.events_triggered[key].is_empty():
+					event_triggered.emit(key)
+				else:
+					event_triggered.emit(key, quest_data.events_triggered[key])
 
 	return quest_complete
 

@@ -16,6 +16,8 @@ size = Vector2(200, 100)
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_m0lfx")
+jenny_start_pos = Vector2(2104, 542)
+jenny_nav_points = Array[Vector2]([Vector2(2167, 897), Vector2(1305, 432)])
 waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain"), NodePath("Bed")]
 tile_map_holder = NodePath("TileMap")
 tile_map_base = NodePath("TileMap/FloorLayer")
@@ -55,7 +57,7 @@ interact_end_pos = Vector2(0, 0)
 at_height = false
 interact_events = Array[String](["book_fallen", "first_interact"])
 connected_points = [NodePath("../BottomBedroom")]
-movement_events = Array[String](["first_movement"])
+movement_events = Array[String](["first_move"])
 
 [node name="BottomBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
 position = Vector2(1487, 921)

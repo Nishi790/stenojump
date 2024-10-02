@@ -13,6 +13,8 @@ enum QuestTypes {ALL, SOME}
 @export var start_dialog_key: String = ""
 @export var finished_dialog_key: String = ""
 
+@export var events_triggered: Dictionary #Event Name as key, value is Array of values to pass
+
 
 func check_complete(event_dict: Dictionary) -> bool:
 	match quest_type:

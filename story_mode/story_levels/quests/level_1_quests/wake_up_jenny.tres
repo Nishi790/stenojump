@@ -17,3 +17,6 @@ reqs = {
 }
 start_dialog_key = ""
 finished_dialog_key = "Jenny_woke_up"
+events_triggered = {
+"wake_jenny": []
+}
