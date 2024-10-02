@@ -22,7 +22,7 @@ shape = SubResource("RectangleShape2D_fq4kl")
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_vbijc")
 animation = &"idle"
-frame_progress = 0.450507
+frame_progress = 0.584373
 offset = Vector2(0, -24)
 
 [node name="TargetLabel" type="RichTextLabel" parent="."]

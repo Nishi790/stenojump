@@ -68,6 +68,11 @@ func return_to_idle() -> void:
 		animation.play("idle")
 
 
+#To connect to signal for interactables that have a different state after interact only until Socks leaves
+func reset_idle() -> void:
+	animation.play("idle")
+
+
 func initiate_words(area: Area2D)  -> void:
 	super(area)
 	if area.get_parent() is SelfNavCharacter:
