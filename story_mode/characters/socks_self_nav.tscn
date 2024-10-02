@@ -11,6 +11,7 @@ position = Vector2(480, 398)
 script = ExtResource("1_jxr8n")
 animations = NodePath("CharacterAnims")
 interaction_area = NodePath("InteractionArea")
+speed = null
 
 [node name="CharacterAnims" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
