@@ -41,6 +41,7 @@ func _draw() -> void:
 	super()
 	if Engine.is_editor_hint():
 		draw_circle(interact_end_pos, 2, Color.YELLOW)
+		draw_rect(get_tex_rect(), Color.BLUE, false, 4)
 
 
 ##Virtual function implemented by all interactables to complete the interaction (play animations, call 'complete interaction'
@@ -102,3 +103,11 @@ func word_entered() -> void:
 		_interact()
 	else:
 		move_destination_selected.emit(self)
+
+
+#Return a rect containing the animation texture
+func get_tex_rect() -> Rect2:
+	var texture: Texture2D = animation_frames.get_frame_texture(animation.animation, animation.frame)
+	var rect_size: Vector2 = texture.get_size() * animation.scale
+	var tex_pos: Vector2 = (animation.position + animation.offset) * animation.scale - rect_size/2
+	return Rect2(tex_pos, rect_size)

@@ -166,6 +166,7 @@ animations = [{
 size = Vector2(100, 64)
 
 [node name="Jenny" type="Node2D" node_paths=PackedStringArray("animations", "interaction_area")]
+y_sort_enabled = true
 position = Vector2(592, 276)
 script = ExtResource("1_6bkhg")
 animations = NodePath("Sprite")

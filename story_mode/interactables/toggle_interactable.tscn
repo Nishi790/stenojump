@@ -10,8 +10,6 @@ size = Vector2(128, 64)
 script = ExtResource("1_fcen8")
 animation = NodePath("AnimatedSprite2D")
 animation_offset = Vector2(0, -24)
-interact_end_pos = null
-at_height = null
 animation_frames = ExtResource("2_vbijc")
 target_label = NodePath("TargetLabel")
 
