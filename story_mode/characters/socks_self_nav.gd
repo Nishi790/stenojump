@@ -68,5 +68,7 @@ func interact(anim_name: String, final_pos: Vector2 = Vector2.ZERO) -> void:
 func change_height(anim_name: String) -> void:
 	if anim_name.contains("jump_up"):
 		at_height = true
+		z_index = 1
 	elif anim_name.contains("jump_down"):
 		at_height = false
+		z_index = 0

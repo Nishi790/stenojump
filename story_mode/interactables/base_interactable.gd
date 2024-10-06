@@ -17,6 +17,11 @@ var interactor: SelfNavCharacter = null
 		if get_node_or_null("CollisionShape2D") != null:
 			$CollisionShape2D.shape = null
 			$CollisionShape2D.shape = shape
+@export var collision_position: Vector2:
+	set(pos):
+		collision_position = pos
+		if get_node_or_null("CollisionShape2D") != null:
+			$CollisionShape2D.position = pos
 @export var interaction_anim_name: String = ""
 @export var interact_end_pos: Vector2 = Vector2.ZERO:
 	set(new_pos):
@@ -40,7 +45,7 @@ func _ready() -> void:
 func _draw() -> void:
 	super()
 	if Engine.is_editor_hint():
-		draw_circle(interact_end_pos, 2, Color.YELLOW)
+		draw_circle(interact_end_pos, 6, Color.YELLOW)
 		var tex_rect: Rect2 = get_tex_rect()
 		var local_rect: Rect2 = Rect2(to_local(tex_rect.position), tex_rect.size)
 		draw_rect(local_rect, Color.BLUE, false, 4)

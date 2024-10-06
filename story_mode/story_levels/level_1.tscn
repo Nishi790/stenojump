@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5d1g"]
-size = Vector2(200, 100)
+size = Vector2(200, 150)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("waypoints", "tile_map_holder")]
 y_sort_enabled = true
@@ -85,11 +85,12 @@ connected_points = [NodePath("../TopBedroom"), NodePath("../Bed")]
 
 [node name="Bed" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
 y_sort_enabled = true
-position = Vector2(1979, 629)
-animation_offset = Vector2(20, -14)
+position = Vector2(1992, 739)
+animation_offset = Vector2(20, -32)
 collision_shape = SubResource("RectangleShape2D_j5d1g")
+collision_position = Vector2(50, -92)
 interaction_anim_name = "jump_up_sleep"
-interact_end_pos = Vector2(60, -18)
+interact_end_pos = Vector2(60, -132)
 at_height = true
 animation_frames = ExtResource("8_qjxqd")
 interact_events = Array[String](["sat_on_bed", "first_interact"])

@@ -11,6 +11,7 @@ script = ExtResource("1_agijo")
 animation = NodePath("Animation")
 animation_offset = Vector2(0, -24)
 collision_shape = SubResource("RectangleShape2D_nr3do")
+collision_position = null
 animation_frames = ExtResource("2_6xior")
 target_label = NodePath("TargetLabel")
 

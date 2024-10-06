@@ -10,6 +10,7 @@ size = Vector2(128, 64)
 script = ExtResource("1_6c121")
 animation = NodePath("Animation")
 animation_offset = Vector2(0, -24)
+collision_position = null
 animation_frames = ExtResource("2_doekw")
 target_label = NodePath("TargetLabel")
 
