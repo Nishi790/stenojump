@@ -44,6 +44,7 @@ func _ready() -> void:
 		inter.tried_action.connect(level_word_list.update_action_event)
 		if inter is BaseInteractable:
 			var tex_rect: Rect2 = inter.get_tex_rect()
+
 			tile_map_holder.disable_points(tex_rect)
 
 		if inter is ConnectionInteractable:
@@ -117,11 +118,17 @@ func _draw() -> void:
 	if OS.is_debug_build():
 		for point_id in astar_nav_grid.get_point_ids():
 			var point: Vector2i = astar_nav_grid.get_point_position(point_id)
-			draw_circle(point, 3, Color.GREEN)
+			if astar_nav_grid.is_point_disabled(point_id):
+				draw_circle(point, 3, Color.RED)
+			else:
+				draw_circle(point, 3, Color.GREEN)
 			var connected_points: PackedInt64Array = astar_nav_grid.get_point_connections(point_id)
 			for id in connected_points:
 				var connection_position: Vector2 = astar_nav_grid.get_point_position(id)
-				draw_line(point, connection_position, Color.WHITE)
+				if astar_nav_grid.is_point_disabled(id):
+					draw_line(point, connection_position, Color.RED)
+				else:
+					draw_line(point, connection_position, Color.WHITE)
 
 
 func call_event(event_name: String, args: Array = []) -> void:

@@ -41,6 +41,8 @@ func _draw() -> void:
 	super()
 	if Engine.is_editor_hint():
 		draw_circle(interact_end_pos, 2, Color.YELLOW)
+		var tex_rect: Rect2 = get_tex_rect()
+		var local_rect: Rect2 = Rect2(to_local(tex_rect.position), tex_rect.size)
 		draw_rect(get_tex_rect(), Color.BLUE, false, 4)
 
 
@@ -110,4 +112,5 @@ func get_tex_rect() -> Rect2:
 	var texture: Texture2D = animation_frames.get_frame_texture(animation.animation, animation.frame)
 	var rect_size: Vector2 = texture.get_size() * animation.scale
 	var tex_pos: Vector2 = (animation.position + animation.offset) * animation.scale - rect_size/2
+	tex_pos = to_global(tex_pos)
 	return Rect2(tex_pos, rect_size)

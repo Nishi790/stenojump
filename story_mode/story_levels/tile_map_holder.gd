@@ -59,8 +59,10 @@ func create_and_connect_point(tile_data: TileData, tile_world_coords: Vector2i, 
 
 #Utility for removing all points under a specoific rect
 func disable_points(rect: Rect2) -> void:
+	print(rect)
 	for point in astar_grid.get_point_ids():
-		if rect.has_point(astar_grid.get_point_position(point)):
+		var point_pos: Vector2 = astar_grid.get_point_position(point)
+		if rect.has_point(point_pos):
 			astar_grid.set_point_disabled(point)
 
 
