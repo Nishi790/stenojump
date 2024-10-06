@@ -8,20 +8,22 @@
 
 [node name="StoryLevel" type="Node" node_paths=PackedStringArray("player", "UI", "camera", "level")]
 script = ExtResource("1_cs0fv")
-player = NodePath("Character")
+player = NodePath("Node2D/Character")
 UI = NodePath("UISurface/StoryUI")
 camera = NodePath("GameCamera")
-level = NodePath("Level")
+level = NodePath("Node2D/Level")
 
 [node name="UISurface" type="CanvasLayer" parent="."]
 
 [node name="StoryUI" parent="UISurface" instance=ExtResource("2_2yj0d")]
 
-[node name="Level" parent="." instance=ExtResource("2_p3qat")]
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Character" parent="." instance=ExtResource("3_xewxg")]
-position = Vector2(1494, 938)
-speed = 300.0
+[node name="Level" parent="Node2D" instance=ExtResource("2_p3qat")]
+
+[node name="Character" parent="Node2D" instance=ExtResource("3_xewxg")]
+position = Vector2(1472, 893)
 
 [node name="GameCamera" type="Camera2D" parent="."]
 position = Vector2(1344, 542)

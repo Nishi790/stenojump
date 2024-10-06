@@ -10,7 +10,8 @@ var hints_visible: bool = false
 func _ready() -> void:
 	camera.player = player
 	camera.follow_player = true
-	#camera.update_limits(level.tile_map_holder.base_map_layer, level.tile_map_holder.scale)
+	print("Level map holder position is ", level.global_position)
+	camera.update_limits(level.tile_map_holder.base_map_layer, level.tile_map_holder.scale)
 
 	level.player = player
 	level.word_used.connect(UI.clear_line)
