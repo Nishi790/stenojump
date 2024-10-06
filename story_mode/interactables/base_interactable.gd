@@ -43,7 +43,7 @@ func _draw() -> void:
 		draw_circle(interact_end_pos, 2, Color.YELLOW)
 		var tex_rect: Rect2 = get_tex_rect()
 		var local_rect: Rect2 = Rect2(to_local(tex_rect.position), tex_rect.size)
-		draw_rect(get_tex_rect(), Color.BLUE, false, 4)
+		draw_rect(local_rect, Color.BLUE, false, 4)
 
 
 ##Virtual function implemented by all interactables to complete the interaction (play animations, call 'complete interaction'

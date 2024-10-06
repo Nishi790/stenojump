@@ -70,18 +70,18 @@ func _draw() -> void:
 	if Engine.is_editor_hint():
 		for point_id in astar_grid.get_point_ids():
 			if astar_grid.is_point_disabled(point_id):
-				var point_pos: Vector2 = astar_grid.get_point_position(point_id)
+				var point_pos: Vector2 = to_local(astar_grid.get_point_position(point_id))
 				draw_circle(point_pos, 3, Color.RED)
 				var connected_points: PackedInt64Array = astar_grid.get_point_connections(point_id)
 				for id in connected_points:
-					var connection_position: Vector2 = astar_grid.get_point_position(id)
+					var connection_position: Vector2 = to_local(astar_grid.get_point_position(id))
 					draw_dashed_line(point_pos, connection_position, Color.RED, 1, 1)
 			else:
-				var point_pos: Vector2 = astar_grid.get_point_position(point_id)
+				var point_pos: Vector2 = to_local(astar_grid.get_point_position(point_id))
 				draw_circle(point_pos, 3, Color.GREEN)
 				var connected_points: PackedInt64Array = astar_grid.get_point_connections(point_id)
 				for id in connected_points:
-					var connection_position: Vector2 = astar_grid.get_point_position(id)
+					var connection_position: Vector2 = to_local(astar_grid.get_point_position(id))
 					if astar_grid.is_point_disabled(id):
 						draw_dashed_line(point_pos, connection_position, Color.RED, 1, 1)
 					else:

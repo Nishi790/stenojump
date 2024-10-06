@@ -85,11 +85,11 @@ connected_points = [NodePath("../TopBedroom"), NodePath("../Bed")]
 
 [node name="Bed" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
 y_sort_enabled = true
-position = Vector2(2055, 629)
-animation_offset = Vector2(8, -16)
+position = Vector2(1979, 629)
+animation_offset = Vector2(20, -14)
 collision_shape = SubResource("RectangleShape2D_j5d1g")
 interaction_anim_name = "jump_up_sleep"
-interact_end_pos = Vector2(50, -36)
+interact_end_pos = Vector2(60, -18)
 at_height = true
 animation_frames = ExtResource("8_qjxqd")
 interact_events = Array[String](["sat_on_bed", "first_interact"])
