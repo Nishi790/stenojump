@@ -3,7 +3,7 @@ Socks: Hiya, I'm Socks.
 Socks: We've got a busy day ahead of us, starting with helping my person, Jenny.
 - What does she need help with?
 	Socks: She needs to get up and feed me! [wait=0.75] I mean go to work.
-	We need to help her get up and get ready for work. 
+		We need to help her get up and get ready for work. 
 - Okay, I can do that.
 Socks: Do you know how to write a basic word?
 - Of course
@@ -30,11 +30,12 @@ Socks: Okay! We're going to start with words that have short vowels like 'cat', 
 Socks: Short vowels have two main rules: [wait=0.75]
 	If you spell them with one letter, use that key to write them in a word. [wait=0.5]
 	If you spell them with more than one letter, use the key that matches the sound they make.
-Socks: We'll start with the short 'a' sound like in "cat".
 do display_stroke("A")
+Socks: We'll start with the short 'a' sound like in "cat".
 Socks: Speaking of cats, have I mentioned how awesome I am?
 Socks: Oh, be careful with words that have an 'r' - they can make the vowel sound a little funny. Look at the word 'car' [do display_stroke("KAR")] it doesn't sound like the 'a' in 'cat', but it's written with the A key!
-Socks: Hit Enter or click anywhere to close my dialogue and try walking to one of the nearby points.
+Socks: Now, to got around here, all you need to do is write the word where you want to go, and I'll head over there. 
+	Hit Enter or click anywhere to close my dialogue and try walking to one of the nearby points.
 do hide_stroke()
 do level.level_word_list.start_quest("first_steps")
 => END
@@ -49,7 +50,7 @@ Socks: Do you want to enable hints to show you how to stroke the words you'll fi
 
 ~ teach_interact
 Socks: You've got me moving. Good start, but Jenny's a heavy sleeper. Walking around probably isn't going to do it.
-Socks: If you reach a place where I can do something, a new word will appear in [color={{PlayerConfig.interact_font_color}}] this color[/color].
+Socks: If you reach a place where I can do something, a new word will appear in [bgcolor=BLACK][color={{PlayerConfig.interact_font_color}}]this color[/color][/bgcolor].
 	[wait=0.2]Just stroke the word and I'll do the rest!
 do level.level_word_list.start_quest("first_interact")
 => END
@@ -82,17 +83,17 @@ do level.level_word_list.start_quest("check_bowl")
 
 
 ~ teach_o_vowel
-Socks: Seems like you're getting the hang of things. Let's add something new.
-Socks: Short 'o' is the sound in 'cot', 'dog', or 'rod'. 
 do display_stroke("O")
-Socks: It's also the sound in 'pore' or 'worn' - there's 'r' making things sound a little funny. 
+Socks: Seems like you're getting the hang of things. Let's add something new.
+	Short 'o' is the sound in 'cot', 'dog', or 'rod'. 
+Socks: It's also the sound in 'core' or 'worn' - there's 'r' making things sound a little funny. 
 Socks: You can include it in a word using the O key. Now get going - there's more to do!
 do hide_stroke()
 => END
 
 ~ teach_e_vowel
-Socks: Time for another vowel! Short 'e' is the sound in 'bed', 'men', and 'leg'. 
 do display_stroke("E")
+Socks: Time for another vowel! Short 'e' is the sound in 'bed', 'men', and 'leg'. 
 Socks: It's also the sound in 'her' or 'per'
 do display_stroke("HER")
 Socks: Be careful with the 'er' sound - it can also be spelled 'ir', like 'fir', or 'ur' like 'purr'. Remember the short vowel rules and use the key that matches the spelling. 
@@ -100,21 +101,25 @@ do hide_stroke()
 => END
 
 ~ teach_u_vowel
-Socks: You know the drill by now, right? Our next vowel is short 'u', which you can hear in 'bus', 'fun', and 'tub'.
 do display_stroke("U")
+Socks: You know the drill by now, right? Our next vowel is short 'u', which you can hear in 'bus', 'fun', and 'tub'.
 Socks: Remember what I told you about things that sound like 'er' - pay attention to the spelling. 'Her' is written with the E key, but 'fur' is written with U. 
 do hide_stroke()
 => END
 
 ~ teach_i_vowel
 Socks: Oh, you thought I was done? I have way more to teach you!
+do display_stroke("EU")
 Socks: There might not be any more vowel keys, but English definitely has more vowels.
 The last one for today is short 'i' - the sound in 'bit', 'tin', and 'miss'. 
 Socks: This one uses two keys. Stroke E and U at the same time for the short vowel 'i'. 
-do display_stroke("EU")
 Socks: Remember that if you hear a short vowel spelled with one letter, you should use the letter that matches the spelling.
 That means 'sir' is written like this.
 do display_stroke("SEUR")
-Socks: That's everything I have to teach you right now. You'd better hurry up and get things sorted out here so that we can get on with the rest of the day!
+Socks: That's everything I have to teach you right now. You'd better hurry up and finish things up in the house. I have to meet my friends at the park. 
 do hide_stroke()
+=> END
+
+~ door_locked
+Socks: Usually I can get doors open myself, but this one is pretty stuck. We're going to need Jenny's help to get it loosened up before I can open it. 
 => END

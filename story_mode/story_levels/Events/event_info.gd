@@ -9,7 +9,7 @@ extends Resource
 
 func check_event_can_complete(event_dict: Dictionary) -> bool:
 	var reqs_met: bool = true
-	for req in conditions:
+	for req: String in conditions:
 		if event_dict[req].event_complete == conditions[req]:
 			continue
 		else:

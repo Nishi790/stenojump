@@ -2,15 +2,38 @@
 class_name BaseInteractable
 extends Waypoint
 
+signal failed_interact(dialogue_key: String)
+
 var ready_to_interact: bool = false
 var interactor: SelfNavCharacter = null
 
+@export var interaction_enabled: bool = true
+@export var enable_requirement: String #Should be a specific event name
+@export var fail_dialogue_key: String
+
+@export var at_height: bool = false
+@export var interact_events: Array[String]
+
+@export_group("Animation")
 @export var animation: AnimatedSprite2D
 @export var animation_offset: Vector2:
 	set(new_offset):
 		animation_offset = new_offset
 		if animation:
 			animation.offset = animation_offset
+@export var animation_frames: SpriteFrames:
+	set(new_frames):
+		animation_frames = new_frames
+		if animation:
+			animation.sprite_frames = animation_frames
+			animation.play("idle")
+@export var interaction_anim_name: String = ""
+@export var interact_end_pos: Vector2 = Vector2.ZERO:
+	set(new_pos):
+		interact_end_pos = new_pos
+		if Engine.is_editor_hint():
+			queue_redraw()
+@export_group("Collisions")
 @export var collision_shape: Shape2D:
 	set(shape):
 		collision_shape = shape
@@ -22,20 +45,7 @@ var interactor: SelfNavCharacter = null
 		collision_position = pos
 		if get_node_or_null("CollisionShape2D") != null:
 			$CollisionShape2D.position = pos
-@export var interaction_anim_name: String = ""
-@export var interact_end_pos: Vector2 = Vector2.ZERO:
-	set(new_pos):
-		interact_end_pos = new_pos
-		if Engine.is_editor_hint():
-			queue_redraw()
-@export var at_height: bool = false
-@export var animation_frames: SpriteFrames:
-	set(new_frames):
-		animation_frames = new_frames
-		if animation:
-			animation.sprite_frames = animation_frames
-			animation.play("idle")
-@export var interact_events: Array[String]
+
 
 func _ready() -> void:
 	super()
@@ -94,7 +104,7 @@ func set_ready_to_interact(value: bool) -> void:
 	if target_data.is_empty() and ready_to_interact:
 		request_target_word.emit()
 	if value:
-		target_label.add_theme_color_override("default_color",Color.YELLOW)
+		target_label.add_theme_color_override("default_color", PlayerConfig.interact_font_color)
 	else: target_label.remove_theme_color_override("default_color")
 
 
@@ -106,8 +116,10 @@ func hide_words(area: Area2D) -> void:
 ##Respond to word entry
 func word_entered() -> void:
 	clear_target()
-	if ready_to_interact:
+	if ready_to_interact and interaction_enabled:
 		_interact()
+	elif ready_to_interact:
+		failed_interact.emit(fail_dialogue_key)
 	else:
 		move_destination_selected.emit(self)
 
@@ -119,3 +131,8 @@ func get_tex_rect() -> Rect2:
 	var tex_pos: Vector2 = (animation.position + animation.offset) * animation.scale - rect_size/2
 	tex_pos = to_global(tex_pos)
 	return Rect2(tex_pos, rect_size)
+
+
+func enable_interact(event_name: String, _args: Array) -> void:
+	if enable_requirement == event_name:
+		interaction_enabled = not interaction_enabled

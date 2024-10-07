@@ -24,6 +24,8 @@ var use_custom_target_theme: bool = false
 var target_style: Theme = load("res://textures/target_theme.tres")
 var custom_target_style: Theme
 
+var interact_font_color: String = Color.YELLOW.to_html()
+
 var level_sequence: LevelSequence
 var custom_start_level: String
 var current_level_path: String
@@ -358,3 +360,7 @@ func resume_sequence_data() -> void:
 	current_score = sequence_save_score
 
 	speed_building_mode = sequence_save_speed_build
+
+
+func set_interact_font_color(new_color: Color) -> void:
+	interact_font_color = new_color.to_html()

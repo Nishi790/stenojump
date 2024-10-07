@@ -24,7 +24,7 @@ func wake_up(target_pos: Vector2) -> void:
 
 
 func get_dressed() -> void:
-	var target_pos = interest_points["dresser"]
+	var target_pos: Vector2 = interest_points["dresser"]
 	nav_to_interest_point(target_pos)
 	has_situational_idle = true
 	situational_idle = "dressing"

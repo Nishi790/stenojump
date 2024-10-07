@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx2wul4em514e"]
+
+[ext_resource type="Script" path="res://story_mode/interactables/door_interactable.gd" id="1_t5pgr"]
+[ext_resource type="SpriteFrames" uid="uid://2itqke64cewc" path="res://story_mode/interactables/interactable_textures/wood_door_open_close.tres" id="2_760ma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrnlt"]
+size = Vector2(140, 100)
+
+[node name="ConnectionInteractable" type="Area2D" node_paths=PackedStringArray("animation", "target_label")]
+collision_layer = 4
+script = ExtResource("1_t5pgr")
+enable_requirement = null
+fail_dialogue_key = null
+animation = NodePath("AnimatedSprite2D")
+animation_frames = ExtResource("2_760ma")
+collision_shape = SubResource("RectangleShape2D_yrnlt")
+target_label = NodePath("TargetLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yrnlt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_760ma")
+animation = &"interact_close"
+frame = 4
+frame_progress = 1.0
+offset = Vector2(-2, 0)
+
+[node name="TargetLabel" type="RichTextLabel" parent="."]
+z_index = 4
+custom_minimum_size = Vector2(160, 30)
+offset_left = -80.0
+offset_top = -50.0
+offset_right = 80.0
+offset_bottom = -20.0
+theme_type_variation = &"TargetRichText"
+bbcode_enabled = true
+fit_content = true

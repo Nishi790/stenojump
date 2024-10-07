@@ -21,6 +21,20 @@ func _draw() -> void:
 	super()
 
 
-func _interact() -> void:
+
+func complete_interact() -> void:
+	if animation_frames.has_animation("interact_open") and not door_open:
+		animation.play("interact_open")
+	elif animation_frames.has_animation("interact_close") and door_open:
+		animation.play("interact_close")
+	else:
+		return_to_idle()
+
 	door_open = false if door_open else true
 	change_connection.emit(connected_by_door)
+	for event_name in interact_events:
+		tried_event.emit(event_name, door_open)
+
+
+func get_tex_rect() -> Rect2:
+	return Rect2(Vector2.ZERO, Vector2.ZERO)

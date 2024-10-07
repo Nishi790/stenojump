@@ -6,16 +6,16 @@
 radius = 48.0
 
 [node name="WayPoint" type="Area2D" node_paths=PackedStringArray("target_label")]
+collision_layer = 4
 script = ExtResource("1_r1asq")
 target_label = NodePath("TargetLabel")
 hints_active = false
-movement_events = null
-action_events = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u5ce8")
 
 [node name="TargetLabel" type="RichTextLabel" parent="."]
+visible = false
 z_index = 4
 custom_minimum_size = Vector2(160, 30)
 offset_left = -80.0

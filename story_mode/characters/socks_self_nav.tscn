@@ -18,12 +18,13 @@ y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_6vqsa")
-animation = &"lie_down"
-frame = 8
+animation = &"scratch"
+frame = 28
 frame_progress = 1.0
 offset = Vector2(0, -16)
 
 [node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(-5.5, -33.5)

@@ -11,7 +11,7 @@ func _ready() -> void:
 	event_funcs = {"wake_jenny" : wake_up_jenny}
 
 
-func wake_up_jenny(args: Array) -> void:
+func wake_up_jenny(_args: Array) -> void:
 	jenny_character = jenny_scene.instantiate()
 	if waypoints[5].animation_frames.has_animation("get up"):
 		waypoints[5].animation.play("get up")

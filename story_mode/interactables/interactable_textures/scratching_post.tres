@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://4wvjx4e3sgh8"]
+
+[ext_resource type="Texture2D" uid="uid://cugt8es322y3k" path="res://story_mode/interactables/interactable_textures/scratching_post.png" id="1_dq55e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgfa2"]
+atlas = ExtResource("1_dq55e")
+region = Rect2(0, 0, 16, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgfa2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]

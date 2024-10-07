@@ -7,12 +7,13 @@
 size = Vector2(128, 64)
 
 [node name="BaseInteractable" type="Area2D" node_paths=PackedStringArray("animation", "target_label")]
+y_sort_enabled = true
+collision_layer = 4
 script = ExtResource("1_agijo")
 animation = NodePath("Animation")
 animation_offset = Vector2(0, -24)
-collision_shape = SubResource("RectangleShape2D_nr3do")
-collision_position = null
 animation_frames = ExtResource("2_6xior")
+collision_shape = SubResource("RectangleShape2D_nr3do")
 target_label = NodePath("TargetLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

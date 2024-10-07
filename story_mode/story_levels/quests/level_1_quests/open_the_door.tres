@@ -13,3 +13,6 @@ reqs = {
 }
 start_dialog_key = ""
 finished_dialog_key = "Jenny_opens_door"
+events_triggered = {
+"unlock_door": []
+}

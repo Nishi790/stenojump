@@ -18,11 +18,6 @@ func create_astar_grid() -> void:
 	astar_grid = AStar2D.new()
 	var index: int = 0
 
-	var top_point: Vector2i
-	var bottom_point: Vector2i
-	var left_point: Vector2i
-	var right_point: Vector2i
-
 	for child in get_children():
 		if child is TileMapLayer:
 			var tile_size_x: Vector2i = Vector2i(child.tile_set.tile_size.x, 0)
@@ -34,7 +29,7 @@ func create_astar_grid() -> void:
 
 				if child == base_map_layer:
 					if tile_data.get_custom_data("navigable"):
-						index = create_and_connect_point(tile_data, tile_world_coords, tile_size_y, tile_size_x, index)
+						index = create_and_connect_point(tile_world_coords, tile_size_y, tile_size_x, index)
 				#Check if this point already exists, if so, just adjust whether or not it's enabled
 				elif astar_grid.get_point_position(closest_astar_point) as Vector2i == tile_world_coords:
 					var navigable: bool = tile_data.get_custom_data("navigable")
@@ -43,14 +38,14 @@ func create_astar_grid() -> void:
 
 
 
-func create_and_connect_point(tile_data: TileData, tile_world_coords: Vector2i, tile_size_y: Vector2i, tile_size_x: Vector2i, index: int) -> int:
+func create_and_connect_point(tile_world_coords: Vector2i, tile_size_y: Vector2i, tile_size_x: Vector2i, index: int) -> int:
 	astar_grid.add_point(index, tile_world_coords)
-	var top_point = tile_world_coords + tile_size_y * Vector2i(scale)
-	var bottom_point = tile_world_coords - tile_size_y * Vector2i(scale)
-	var left_point = tile_world_coords - tile_size_x * Vector2i(scale)
-	var right_point = tile_world_coords + tile_size_x * Vector2i(scale)
+	var top_point: Vector2i = tile_world_coords + tile_size_y * Vector2i(scale)
+	var bottom_point: Vector2i = tile_world_coords - tile_size_y * Vector2i(scale)
+	var left_point: Vector2i = tile_world_coords - tile_size_x * Vector2i(scale)
+	var right_point: Vector2i = tile_world_coords + tile_size_x * Vector2i(scale)
 	var surrounding_points: Array[Vector2i] = [top_point, bottom_point, left_point, right_point]
-	for coord in surrounding_points:
+	for coord: Vector2i in surrounding_points:
 		var point_ID: int = astar_grid.get_closest_point(coord)
 		if astar_grid.get_point_position(point_ID) as Vector2i == coord:
 			astar_grid.connect_points(point_ID, index)

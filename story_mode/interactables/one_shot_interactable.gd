@@ -2,7 +2,7 @@
 class_name OneShotInteractable
 extends BaseInteractable
 
-var has_interacted = false
+var has_interacted: bool = false
 
 
 func _interact() -> void:

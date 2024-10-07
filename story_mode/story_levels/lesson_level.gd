@@ -43,8 +43,10 @@ func _ready() -> void:
 		inter.tried_event.connect(level_word_list.update_event)
 		inter.tried_action.connect(level_word_list.update_action_event)
 		if inter is BaseInteractable:
+			if not inter.enable_requirement.is_empty():
+				level_word_list.event_triggered.connect(inter.enable_interact)
+			inter.failed_interact.connect(start_dialog)
 			var tex_rect: Rect2 = inter.get_tex_rect()
-
 			tile_map_holder.disable_points(tex_rect)
 
 		if inter is ConnectionInteractable:
@@ -91,7 +93,7 @@ func initiate_words() -> void:
 ## Send text through available waypoints to look for match
 func propagate_entry(text: String)-> void:
 	for way in waypoints:
-		var match_found = way.check_target_match(text)
+		var match_found: bool = way.check_target_match(text)
 		if match_found:
 			word_used.emit()
 			break
@@ -109,7 +111,7 @@ func complete_quest(quest_name: String) -> void:
 	quest_completed.emit(quest_name)
 
 
-func start_dialog(dialogue_key: String, dialogue: DialogueResource) -> void:
+func start_dialog(dialogue_key: String, dialogue: DialogueResource = level_word_list.dialogue_resource) -> void:
 	print("Level received dialog: %s"  % dialogue_key)
 	dialogue_started.emit(dialogue_key, dialogue)
 
