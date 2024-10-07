@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgejfac77qyb"]
+
+[ext_resource type="Script" path="res://Menu/credits.gd" id="1_q21he"]
+[ext_resource type="PackedScene" uid="uid://cql1p6h11f0ny" path="res://Menu/Credits/godot_credit_scene.tscn" id="2_x610a"]
+
+[node name="Credits" type="Control" node_paths=PackedStringArray("credit_container", "menu_button", "dev_header", "font_header", "art_header", "audio_header")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q21he")
+credit_container = NodePath("MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer")
+development_credits = Array[String](["RebelNishi"])
+font_credit = Array[String](["Stenodisplay 2.1"])
+credit_list = Array[String](["RebelNishi", "Cat Animations by Bow.PixelBow.Pixel, adapted by RebelNishi", "CC-By-4.0:", "Kitchen and more - RPG Tileset by LimeZu", "Parallax Backgrounds by The Pixel Nook, modified by RebelNishi", "CC0:", "UI Assets Pack 2 by Sr. Toasty"])
+menu_button = NodePath("MarginContainer/VBoxContainer/MainMenu")
+dev_header = NodePath("MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer/DevelopmentCreditHeader")
+font_header = NodePath("MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer/Fonts")
+art_header = NodePath("MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer/ArtAndAnimation")
+audio_header = NodePath("MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer/Audio")
+godot_credit_scene = ExtResource("2_x610a")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=54]Credits[/font][/center]"
+fit_content = true
+
+[node name="ScrollableCredits" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="CreditContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollableCredits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="DevelopmentCreditHeader" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=32]Design and development by:[/font][/center]"
+fit_content = true
+
+[node name="Fonts" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=32]Fonts:[/font][/center]"
+fit_content = true
+
+[node name="ArtAndAnimation" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=32]Art and Animations:[/font][/center]"
+fit_content = true
+
+[node name="Audio" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollableCredits/CreditContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=32]Music and Sound Effects:[/font][/center]"
+fit_content = true
+
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"

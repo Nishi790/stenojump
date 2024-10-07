@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cql1p6h11f0ny"]
+
+[ext_resource type="Script" path="res://Menu/Credits/godot_credit_scene.gd" id="1_e7d0c"]
+[ext_resource type="Texture2D" uid="uid://mk0lmo28dtld" path="res://icon.svg" id="2_003fh"]
+
+[node name="GodotCreditScene" type="VBoxContainer" node_paths=PackedStringArray("license_label")]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_e7d0c")
+license_label = NodePath("LicenseLabel")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="MadeLabel" type="Label" parent="Header"]
+layout_mode = 2
+text = "Made with Godot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="Header"]
+layout_mode = 2
+texture = ExtResource("2_003fh")
+
+[node name="LicenseLabel" type="Label" parent="."]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Some Godot engine components are used under license from other organizations or developers. For full copright and license information, see \"godot_license.txt\" in the game install folder. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

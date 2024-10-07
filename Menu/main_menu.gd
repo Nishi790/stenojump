@@ -7,12 +7,14 @@ signal level_creator_selected
 @export var start_menu: PackedScene
 @export var options_menu: PackedScene
 @export var level_select_screen: PackedScene
+@export var credits_scene: PackedScene
 @export var resume_game_button: Button
 @export var new_game_button: Button
 @export var options_button: Button
 @export var quit_game_button: Button
 @export var level_creator_button: Button
 @export var speed_build_button: Button
+@export var credits_button: Button
 @export var player_input: MarginContainer
 var input_processor: Node = self
 
@@ -25,6 +27,7 @@ func _ready() -> void:
 	quit_game_button.pressed.connect(quit_game)
 	speed_build_button.pressed.connect(open_speed_build_selector)
 	level_creator_button.pressed.connect(launch_level_creator)
+	credits_button.pressed.connect(open_credits)
 	if PlayerConfig.has_saved_level():
 		resume_game_button.show()
 	else: resume_game_button.hide()
@@ -66,6 +69,13 @@ func open_options() -> void:
 	options.side_focus = player_input.text_control
 	add_child(options)
 	input_processor = options
+
+
+func open_credits() -> void:
+	var credits: Control = credits_scene.instantiate()
+	credits.main_menu_pressed.connect(grab_text_processing)
+	add_child(credits)
+	input_processor = credits
 
 
 func start_speed_build_level(path: String) -> void:

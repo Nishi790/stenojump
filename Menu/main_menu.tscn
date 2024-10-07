@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dygsnrdif2a23"]
+[gd_scene load_steps=13 format=3 uid="uid://dygsnrdif2a23"]
 
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_lrdci"]
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="1_swgrh"]
@@ -9,10 +9,11 @@
 [ext_resource type="Script" path="res://Menu/player_menu.gd" id="5_7ha46"]
 [ext_resource type="Script" path="res://Menu/custom_focus_button.gd" id="5_7jtnf"]
 [ext_resource type="PackedScene" uid="uid://sg4wsc3m2k8y" path="res://Menu/select_level.tscn" id="5_mpm13"]
+[ext_resource type="PackedScene" uid="uid://dgejfac77qyb" path="res://Menu/Credits/credits.tscn" id="6_6t70r"]
 [ext_resource type="Script" path="res://Menu/menu_interact_line.gd" id="7_pwv6e"]
 [ext_resource type="AudioStream" uid="uid://syn8en16n8hs" path="res://sound/sound_effects/gentle_meow.wav" id="11_t83tv"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("resume_game_button", "new_game_button", "options_button", "quit_game_button", "level_creator_button", "speed_build_button", "player_input")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("resume_game_button", "new_game_button", "options_button", "quit_game_button", "level_creator_button", "speed_build_button", "credits_button", "player_input")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -27,12 +28,14 @@ script = ExtResource("1_lrdci")
 start_menu = ExtResource("2_lg5sn")
 options_menu = ExtResource("3_e05b5")
 level_select_screen = ExtResource("5_mpm13")
+credits_scene = ExtResource("6_6t70r")
 resume_game_button = NodePath("PanelContainer/MenuContainer/ResumeGame")
 new_game_button = NodePath("PanelContainer/MenuContainer/NewGame")
 options_button = NodePath("PanelContainer/MenuContainer/Options")
 quit_game_button = NodePath("PanelContainer/MenuContainer/QuitGame")
 level_creator_button = NodePath("PanelContainer/MenuContainer/CreateLevel")
 speed_build_button = NodePath("PanelContainer/MenuContainer/SpeedBuild")
+credits_button = NodePath("PanelContainer/MenuContainer/Credits")
 player_input = NodePath("PlayerTextOrganizer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -106,6 +109,11 @@ focus_neighbor_bottom = NodePath("../QuitGame")
 focus_next = NodePath("../QuitGame")
 focus_previous = NodePath("../CreateLevel")
 text = "Options"
+script = ExtResource("5_7jtnf")
+
+[node name="Credits" type="Button" parent="PanelContainer/MenuContainer"]
+layout_mode = 2
+text = "Credits"
 script = ExtResource("5_7jtnf")
 
 [node name="QuitGame" type="Button" parent="PanelContainer/MenuContainer"]
