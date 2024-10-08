@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://crjhuj2d2atr6"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_5hhco"]
+
+[resource]
+script = ExtResource("1_5hhco")
+name = "sink_overflow"
+event_complete = false
+conditions = {}
+triggers_global_event = true
+global_event_name = "jenny_enters_kitchen"

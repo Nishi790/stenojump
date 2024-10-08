@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ActionStoryEvent" load_steps=2 format=3 uid="uid://1di5pth8max4"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/action_event_info.gd" id="1_vyefj"]
+
+[resource]
+script = ExtResource("1_vyefj")
+action_type = 0
+name = "got_jennys_attention"
+event_complete = false
+conditions = {
+"jenny_in_kitchen": true
+}
+triggers_global_event = true
+global_event_name = "feed_socks"

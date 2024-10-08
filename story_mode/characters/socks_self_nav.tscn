@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://story_mode/characters/socks_self_nav.gd" id="1_jxr8n"]
 [ext_resource type="SpriteFrames" uid="uid://bxd74c38t8x8g" path="res://textures/character_animations/player_sprite_frames.tres" id="2_6vqsa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_indsc"]
-size = Vector2(115, 67)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0d8ce"]
+radius = 32.0
 
 [node name="Character" type="Node2D" node_paths=PackedStringArray("animations", "interaction_area")]
 y_sort_enabled = true
@@ -18,14 +18,12 @@ y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_6vqsa")
-animation = &"scratch"
-frame = 28
-frame_progress = 1.0
+animation = &"walk_up"
 offset = Vector2(0, -16)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(-5.5, -33.5)
-shape = SubResource("RectangleShape2D_indsc")
+position = Vector2(0, -33.5)
+shape = SubResource("CircleShape2D_0d8ce")

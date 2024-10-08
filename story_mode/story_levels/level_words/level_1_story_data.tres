@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StoryLevelData" load_steps=20 format=3 uid="uid://bqdwup7yu3lw8"]
+[gd_resource type="Resource" script_class="StoryLevelData" load_steps=28 format=3 uid="uid://bqdwup7yu3lw8"]
 
 [ext_resource type="Resource" uid="uid://c43kcgrhcuhyu" path="res://story_mode/story_levels/level_dialogs/story_level_1.dialogue" id="1_vuym1"]
 [ext_resource type="Resource" uid="uid://flpssaglm2lw" path="res://story_mode/story_levels/Events/level_1_events/open_curtains.tres" id="2_4cq67"]
@@ -14,11 +14,19 @@
 [ext_resource type="Resource" uid="uid://dn0k3yrt00a5r" path="res://story_mode/story_levels/Events/level_1_events/meowed_beside_bed.tres" id="12_0crl4"]
 [ext_resource type="Resource" uid="uid://cek1c4820elxq" path="res://story_mode/story_levels/Events/level_1_events/sit_on_bed.tres" id="13_rgggb"]
 [ext_resource type="Resource" uid="uid://d0e7ioqok0xh0" path="res://story_mode/story_levels/quests/level_1_quests/check_bowl.tres" id="14_mjixx"]
+[ext_resource type="Resource" uid="uid://dk1t2s0gnp1g5" path="res://story_mode/story_levels/quests/level_1_quests/jenny_in_kitchen.tres" id="14_ycfyh"]
+[ext_resource type="Resource" uid="uid://crjhuj2d2atr6" path="res://story_mode/story_levels/Events/level_1_events/sink_overflow.tres" id="15_avut0"]
 [ext_resource type="Resource" uid="uid://bi8dmetaqr3s3" path="res://story_mode/story_levels/quests/level_1_quests/first_interact.tres" id="15_sd1mf"]
+[ext_resource type="Resource" uid="uid://1di5pth8max4" path="res://story_mode/story_levels/Events/level_1_events/got_jennys_attention_for_breakfast.tres" id="16_q8g5p"]
 [ext_resource type="Resource" uid="uid://ipbh6mduhwre" path="res://story_mode/story_levels/quests/level_1_quests/first_steps.tres" id="16_uviey"]
 [ext_resource type="Resource" uid="uid://sim7v1jiauav" path="res://story_mode/story_levels/quests/level_1_quests/open_the_door.tres" id="17_gd2ck"]
+[ext_resource type="Resource" uid="uid://bqv4wfpnm6y8o" path="res://story_mode/story_levels/Events/level_1_events/headphones_revealed.tres" id="17_wdd34"]
+[ext_resource type="Resource" uid="uid://dha7fkn8e8hf4" path="res://story_mode/story_levels/Events/level_1_events/bring_jenny_to_headphones.tres" id="18_6pbqv"]
 [ext_resource type="Resource" uid="uid://bwi027uekl0ca" path="res://story_mode/story_levels/quests/level_1_quests/wake_up_jenny.tres" id="18_wyxbg"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_words/story_level_data.gd" id="19_bk54k"]
+[ext_resource type="Resource" uid="uid://dqoxm2sfnqx53" path="res://story_mode/story_levels/Events/level_1_events/breakfast_eaten.tres" id="19_j03xo"]
+[ext_resource type="Resource" uid="uid://dj4v5tm7mmme1" path="res://story_mode/story_levels/quests/level_1_quests/eat_breakfast.tres" id="20_shxik"]
+[ext_resource type="Resource" uid="uid://bchji4itk2172" path="res://story_mode/story_levels/quests/level_1_quests/find_headphones.tres" id="26_7ch2e"]
 
 [resource]
 script = ExtResource("19_bk54k")
@@ -67,24 +75,89 @@ level_words = Array[Dictionary]([{
 }, {
 "hint": "HER",
 "word": "her"
-}])
+}, {
+"hint": "SEL",
+"word": "sell"
+}, {
+"hint": "KEG",
+"word": "keg"
+}, {
+"hint": "TEL",
+"word": "tell"
+}, {
+"hint": "WEB",
+"word": "web"
+}, {
+"hint": "REF",
+"word": "ref"
+}, {
+"hint": "SED",
+"word": "said"
+}, {
+"hint": "PUB",
+"word": "pub"
+}, {
+"hint": "RUF",
+"word": "rough"
+}, {
+"hint": "PUF",
+"word": "puff"
+}, {
+"hint": "HUT",
+"word": "hut"
+}, {
+"hint": "TUG",
+"word": "tug"
+}, {
+"hint": "KUD",
+"word": "could"
+}, {
+"hint": "SUP",
+"word": "sup"
+}, {
+"hint": "REUG",
+"word": "rig"
+}, {
+"hint": "KEUS",
+"word": "kiss"
+}, {
+"hint": "TEUL",
+"word": "till"
+}, {
+"hint": "WEUP",
+"word": "whip"
+}, {
+"hint": "SEUS",
+"word": "sis"
+}, {
+"hint": "REUB",
+"word": "rib"
+}, {}])
 dialogue_resource = ExtResource("1_vuym1")
 level_events = {
 "bedroom_curtains_open": ExtResource("2_4cq67"),
 "bedroom_door_open": ExtResource("3_wduau"),
 "book_fallen": ExtResource("4_xk82c"),
+"breakfast_eaten": ExtResource("19_j03xo"),
+"bring_jenny_to_headphones": ExtResource("18_6pbqv"),
 "first_interact": ExtResource("5_lmloy"),
 "first_move": ExtResource("6_q52s0"),
+"got_jennys_attention": ExtResource("16_q8g5p"),
+"headphones_revealed": ExtResource("17_wdd34"),
 "interacted_with_bowl": ExtResource("7_mk4wa"),
+"jenny_in_kitchen": ExtResource("14_ycfyh"),
 "jenny_woke_up": ExtResource("8_3f5lv"),
 "knocked_over_alarm_clock": ExtResource("9_nc0gx"),
 "meowed_at_door_once": ExtResource("10_8em8r"),
 "meowed_at_door_twice": ExtResource("11_add37"),
 "meowed_beside_bed": ExtResource("12_0crl4"),
-"sat_on_bed": ExtResource("13_rgggb")
+"sat_on_bed": ExtResource("13_rgggb"),
+"sink_overflow": ExtResource("15_avut0")
 }
 quests = {
 "check_bowl": ExtResource("14_mjixx"),
+"eat_breakfast": ExtResource("20_shxik"),
+"find_jennys_headphones": ExtResource("26_7ch2e"),
 "first_interact": ExtResource("15_sd1mf"),
 "first_steps": ExtResource("16_uviey"),
 "open_the_door": ExtResource("17_gd2ck"),
@@ -92,5 +165,7 @@ quests = {
 }
 lesson_indices = {
 7: "teach_o_vowel",
-14: "teach_e_vowel"
+14: "teach_e_vowel",
+21: "teach_u_vowel",
+28: "teach_i_vowel"
 }

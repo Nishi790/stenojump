@@ -22,7 +22,10 @@ func _ready() -> void:
 	set_hints_visible(false)
 
 	UI.input_received.connect(level.propagate_entry)
-
+	for action: ActionDisplay in UI.all_actions:
+		action.word_requested.connect(level.provide_action_target.bind(action))
+		action.action_taken.connect(level.propagate_action)
+	UI.show_actions(level.available_actions)
 
 
 func set_hints_visible(value: bool) -> void:

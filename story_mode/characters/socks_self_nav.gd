@@ -1,7 +1,7 @@
 class_name SelfNavCharacter
 extends BaseSelfNavCharacter
 
-enum GeneralActions {MEOW, USE_ITEM}
+enum GeneralActions {MEOW, USE_ITEM, HISS}
 
 var at_height: bool = false
 

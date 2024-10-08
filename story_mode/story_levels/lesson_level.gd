@@ -26,6 +26,10 @@ var event_funcs: Dictionary #Should be given keys/values in inherited class
 		player = new_player
 		player.nav_astar = astar_nav_grid
 
+@export var available_actions: int = 3
+
+var current_player_point: Waypoint
+
 
 func _ready() -> void:
 	#Initialize AStar grid
@@ -42,6 +46,7 @@ func _ready() -> void:
 		inter.move_destination_selected.connect(set_player_destination)
 		inter.tried_event.connect(level_word_list.update_event)
 		inter.tried_action.connect(level_word_list.update_action_event)
+		inter.became_current_point.connect(set_current_player_point)
 		if inter is BaseInteractable:
 			if not inter.enable_requirement.is_empty():
 				level_word_list.event_triggered.connect(inter.enable_interact)
@@ -83,11 +88,20 @@ func provide_target(requester: Waypoint) -> void:
 	requester.set_target(next_word)
 
 
+func provide_action_target(requester: ActionDisplay) -> void:
+	var next_word: Dictionary = level_word_list.get_next_word()
+	requester.set_target_word(next_word)
+
+
 func initiate_words() -> void:
 	var current_pos: Vector2 = player.global_position
 	var closest_point: int = waypoint_astar_grid.get_closest_point(current_pos)
 	var closest_obj: Waypoint = waypoints[closest_point]
 	closest_obj.initiate_words(player.interaction_area)
+
+
+func set_current_player_point(point: Waypoint) -> void:
+	current_player_point = point
 
 
 ## Send text through available waypoints to look for match
@@ -97,6 +111,11 @@ func propagate_entry(text: String)-> void:
 		if match_found:
 			word_used.emit()
 			break
+
+
+func propagate_action(action: SelfNavCharacter.GeneralActions) -> void:
+	print("Trying action %s on %s" % [SelfNavCharacter.GeneralActions.find_key(action), current_player_point.target_word])
+	current_player_point.try_action_event(action)
 
 
 func set_player_destination(point: Waypoint) -> void:

@@ -44,9 +44,12 @@ func start_level() -> void:
 ##Called when an in level event occurs to update data
 func update_event(event_name: String, value: bool) -> void:
 	if level_events.has(event_name):
-		var can_complete: bool = level_events[event_name].check_event_can_complete(level_events)
+		var event_data: StoryEvent = level_events[event_name]
+		var can_complete: bool = event_data.check_event_can_complete(level_events)
 		if can_complete:
-			level_events[event_name].event_complete = value
+			event_data.event_complete = value
+			if event_data.triggers_global_event and value == true:
+				event_triggered.emit(event_data.global_event_name)
 	for key: String in active_quests.keys():
 		var quest_complete: bool = check_quest_complete(key)
 
@@ -82,7 +85,7 @@ func check_quest_complete(quest_id: String) -> bool:
 		if not quest_data.events_triggered.is_empty():
 			for key: String in quest_data.events_triggered.keys():
 				if quest_data.events_triggered[key].is_empty():
-					event_triggered.emit(key)
+					event_triggered.emit(key, [])
 				else:
 					event_triggered.emit(key, quest_data.events_triggered[key])
 

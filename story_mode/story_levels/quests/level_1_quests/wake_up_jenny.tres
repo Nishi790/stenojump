@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_k34ml")
-name = "Wake Up Jenny"
+name = "Wake up Jenny"
 description = "Help Jenny get up on time. "
 quest_type = 1
 req_total = 3

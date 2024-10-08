@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=2 format=3 uid="uid://bchji4itk2172"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/quests/base_quest.gd" id="1_h7lyn"]
+
+[resource]
+script = ExtResource("1_h7lyn")
+name = "Find Jenny's headphones"
+description = "Jenny won't leave for work until she finds her headphones for the walk. Help her find them so we can both get out of here."
+quest_type = 0
+req_total = 0
+reqs = {
+"bring_jenny_to_headphones": true,
+"headphones_revealed": true
+}
+start_dialog_key = ""
+finished_dialog_key = ""
+events_triggered = {
+"jenny_leaves": []
+}

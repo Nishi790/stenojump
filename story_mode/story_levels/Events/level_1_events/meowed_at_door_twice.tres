@@ -5,8 +5,9 @@
 [resource]
 script = ExtResource("1_8bn7k")
 action_type = 0
-name = "meowed_at_door_once"
+name = "meowed_at_door_twice"
 event_complete = false
 conditions = {
-"jenny_woke_up": true
+"jenny_woke_up": true,
+"meowed_at_door_once": true
 }

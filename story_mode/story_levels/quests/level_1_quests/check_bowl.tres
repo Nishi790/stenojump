@@ -13,3 +13,4 @@ reqs = {
 }
 start_dialog_key = ""
 finished_dialog_key = ""
+events_triggered = {}

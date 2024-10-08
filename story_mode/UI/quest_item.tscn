@@ -11,9 +11,11 @@ quest_label = NodePath("QuestLabel")
 
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 focus_mode = 0
 mouse_filter = 2
+theme_override_constants/align_to_largest_stylebox = 0
 
 [node name="QuestLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(200, 0)

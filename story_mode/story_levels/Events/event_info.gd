@@ -5,6 +5,8 @@ extends Resource
 @export var event_complete: bool = false
 ##Conditions should be name of event as key, bool as value
 @export var conditions: Dictionary
+@export var triggers_global_event: bool = false
+@export var global_event_name: String = ""
 
 
 func check_event_can_complete(event_dict: Dictionary) -> bool:

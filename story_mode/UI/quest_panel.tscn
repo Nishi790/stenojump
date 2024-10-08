@@ -4,12 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://ch4h4qt8poeo8" path="res://story_mode/UI/quest_item.tscn" id="1_bm7nw"]
 
 [node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("quest_list")]
+custom_minimum_size = Vector2(300, 300)
 script = ExtResource("1_0djpr")
 quest_item_scene = ExtResource("1_bm7nw")
-quest_list = NodePath("ToDos")
+quest_list = NodePath("ScrollContainer/ToDos")
 
-[node name="ToDos" type="VBoxContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ToDos" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="QuestItem" parent="ToDos" instance=ExtResource("1_bm7nw")]
+[node name="QuestItem" parent="ScrollContainer/ToDos" instance=ExtResource("1_bm7nw")]
 layout_mode = 2

@@ -8,8 +8,14 @@ signal input_received(text: String)
 @export var quest_display: QuestPanel
 @export var stroke_display: MarginContainer
 @export var stroke_label: RichTextLabel
+@export var meow_action: ActionDisplay
+@export var hiss_action: ActionDisplay
+@export var item_action: ActionDisplay
+
+var all_actions: Array[ActionDisplay]
 
 func _ready() -> void:
+	all_actions = [meow_action, hiss_action, item_action]
 	player_input.text_changed.connect(send_new_text)
 	player_input.grab_focus()
 
@@ -17,11 +23,31 @@ func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(end_dialogue)
 
 
+func show_actions(action_number: int) -> void:
+	match action_number:
+		1:
+			hiss_action.hide()
+			item_action.hide()
+		2:
+			hiss_action.hide()
+		_:
+			pass
+	initialize_actions()
+
+
+func initialize_actions():
+	for action: ActionDisplay in all_actions:
+		if action.visible:
+			input_received.connect(action.check_target_match)
+			action.action_taken.connect(clear_line)
+			action.word_requested.emit()
+
+
 func send_new_text(text: String)-> void:
 	input_received.emit(text)
 
 
-func clear_line() -> void:
+func clear_line(_args = null) -> void:
 	player_input.clear()
 
 

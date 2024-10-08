@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=2 format=3 uid="uid://dj4v5tm7mmme1"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/quests/base_quest.gd" id="1_4w7yc"]
+
+[resource]
+script = ExtResource("1_4w7yc")
+name = "Eat Breakfast"
+description = "Get Socks some fuel for the busy day ahead. "
+quest_type = 0
+req_total = 0
+reqs = {
+"breakfast_eaten": true,
+"got_jennys_attention": true,
+"jenny_in_kitchen": true
+}
+start_dialog_key = ""
+finished_dialog_key = ""
+events_triggered = {
+"jenny_leaves": []
+}

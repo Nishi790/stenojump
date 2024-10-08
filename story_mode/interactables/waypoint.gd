@@ -6,6 +6,7 @@ signal request_target_word
 signal move_destination_selected(destination: Waypoint)
 signal tried_event(event_name: String, event_value: bool)
 signal tried_action(event_name: String, action:SelfNavCharacter.GeneralActions)
+signal became_current_point(current_point: Waypoint)
 
 @export var target_label: RichTextLabel
 @export var label_offset: Vector2i = Vector2i(0, -50)
@@ -91,6 +92,7 @@ func display_target() -> void:
 
 ##Called when the character enters the area of the waypoint; tries movement events
 func initiate_words(_area: Area2D) -> void:
+	became_current_point.emit(self)
 	if not movement_events.is_empty():
 		for event_name in movement_events:
 			tried_event.emit(event_name, true)

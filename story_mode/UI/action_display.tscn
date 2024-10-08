@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://btctdu2obcr7k"]
+
+[ext_resource type="Script" path="res://story_mode/UI/action_display.gd" id="1_j1b8e"]
+[ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_ism1t"]
+[ext_resource type="Texture2D" uid="uid://mk0lmo28dtld" path="res://icon.svg" id="3_robel"]
+
+[node name="ActionDisplay" type="VBoxContainer" node_paths=PackedStringArray("target_label", "action_name")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j1b8e")
+target_label = NodePath("PanelContainer/Target")
+action_name = NodePath("ActionIcon/ActionName")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_ism1t")
+
+[node name="Target" type="RichTextLabel" parent="PanelContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("2_ism1t")
+bbcode_enabled = true
+text = "Target Word"
+fit_content = true
+
+[node name="ActionIcon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_robel")
+stretch_mode = 3
+
+[node name="ActionName" type="Label" parent="ActionIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Meow"

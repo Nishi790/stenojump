@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://dqoxm2sfnqx53"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_1gcwo"]
+
+[resource]
+script = ExtResource("1_1gcwo")
+name = "breakfast_eaten"
+event_complete = false
+conditions = {
+"got_jennys_attention": true
+}
+triggers_global_event = false
+global_event_name = ""

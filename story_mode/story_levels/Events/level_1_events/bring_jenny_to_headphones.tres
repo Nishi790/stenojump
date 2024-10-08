@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://dha7fkn8e8hf4"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_rsul7"]
+
+[resource]
+script = ExtResource("1_rsul7")
+name = "bring_jenny_to_headphones"
+event_complete = false
+conditions = {
+"headphones_revealed": true
+}
+triggers_global_event = false
+global_event_name = ""

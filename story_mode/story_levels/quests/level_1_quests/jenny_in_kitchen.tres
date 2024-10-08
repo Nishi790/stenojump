@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://dk1t2s0gnp1g5"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_enwrq"]
+
+[resource]
+script = ExtResource("1_enwrq")
+name = "jenny_in_kitchen"
+event_complete = false
+conditions = {
+"bedroom_door_open": true
+}
+triggers_global_event = false
+global_event_name = ""
