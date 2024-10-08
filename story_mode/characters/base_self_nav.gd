@@ -53,11 +53,16 @@ func _physics_process(delta: float) -> void:
 			next_nav_point()
 
 
-func nav_to_interest_point(coords: Vector2) -> void:
+func nav_to_interest_point(coords: Vector2) -> bool:
 	navigating = true
 	destination = coords
-	nav_path = nav_astar.get_point_path(nav_astar.get_closest_point(position), nav_astar.get_closest_point(destination), true)
-	next_nav_point()
+	nav_path = nav_astar.get_point_path(nav_astar.get_closest_point(position), nav_astar.get_closest_point(destination), false)
+	if nav_path.is_empty():
+		end_navigation()
+		return false
+	else:
+		next_nav_point()
+		return true
 
 
 func next_nav_point() -> void:

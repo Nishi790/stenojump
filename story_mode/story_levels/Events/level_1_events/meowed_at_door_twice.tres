@@ -11,3 +11,5 @@ conditions = {
 "jenny_woke_up": true,
 "meowed_at_door_once": true
 }
+triggers_global_event = true
+global_event_name = "unlock_door"

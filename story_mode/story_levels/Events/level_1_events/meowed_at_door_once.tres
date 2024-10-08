@@ -10,3 +10,5 @@ event_complete = false
 conditions = {
 "jenny_woke_up": true
 }
+triggers_global_event = true
+global_event_name = "dialog_meowed_at_door"

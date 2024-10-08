@@ -30,6 +30,7 @@ func get_dressed() -> void:
 	situational_idle = "dressing"
 
 
-func nav_to_interest_point(target_pos: Vector2) -> void:
-	super(target_pos)
+func nav_to_interest_point(target_pos: Vector2) -> bool:
 	has_situational_idle = false
+	super(target_pos)
+	return true

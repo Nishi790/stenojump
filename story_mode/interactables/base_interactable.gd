@@ -133,6 +133,6 @@ func get_tex_rect() -> Rect2:
 	return Rect2(tex_pos, rect_size)
 
 
-func enable_interact(event_name: String, _args: Array) -> void:
+func enable_interact(event_name: String, _args: Array = []) -> void:
 	if enable_requirement == event_name:
 		interaction_enabled = not interaction_enabled

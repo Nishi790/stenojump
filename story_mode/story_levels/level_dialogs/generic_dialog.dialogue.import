@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://b1u3eg1djnfai"
+path="res://.godot/imported/generic_dialog.dialogue-21de300c9beee21c9bb11ca510a5e681.tres"
+
+[deps]
+
+source_file="res://story_mode/story_levels/level_dialogs/generic_dialog.dialogue"
+dest_files=["res://.godot/imported/generic_dialog.dialogue-21de300c9beee21c9bb11ca510a5e681.tres"]
+
+[params]
+
+defaults=true

@@ -11,6 +11,7 @@ signal dialogue_started(dialogue_key: String, dialogue: DialogueResource)
 var waypoint_astar_grid: AStar2D
 var astar_nav_grid: AStar2D
 var event_funcs: Dictionary #Should be given keys/values in inherited class
+@export var generic_dialog: DialogueResource
 
 @export var tile_map_holder: Node2D
 @export var level_word_list: StoryLevelData:
@@ -119,7 +120,20 @@ func propagate_action(action: SelfNavCharacter.GeneralActions) -> void:
 
 
 func set_player_destination(point: Waypoint) -> void:
-	player.nav_to_interest_point(point.global_position)
+	var navigation_success: bool = player.nav_to_interest_point(point.global_position)
+	if not navigation_success and point is ConnectionInteractable:
+		var door_collider: Shape2D = point.shape_owner_get_shape(0, 0)
+		var door_collider_rect: Rect2 = door_collider.get_rect()
+		var door_collider_left_side: Vector2 = point.to_global(door_collider_rect.position) +  Vector2(0, door_collider_rect.size.y/2)
+		var door_collider_right_side: Vector2 = door_collider_left_side + Vector2(door_collider_rect.size.x, 0)
+		navigation_success = player.nav_to_interest_point(door_collider_left_side)
+		if not navigation_success:
+			navigation_success = player.nav_to_interest_point(door_collider_right_side)
+
+	if not navigation_success:
+		start_dialog("failed_navigation", generic_dialog)
+		current_player_point.initiate_words(player.interaction_area)
+
 
 
 func start_new_quest(quest_data: BaseQuest) -> void:
@@ -153,5 +167,9 @@ func _draw() -> void:
 
 
 func call_event(event_name: String, args: Array = []) -> void:
-	var event_callable: Callable = event_funcs[event_name]
-	event_callable.call(args)
+	if event_name.begins_with("dialog"):
+		var dialog_name: String = event_name.lstrip("dialog_")
+		start_dialog(dialog_name)
+	else:
+		var event_callable: Callable = event_funcs[event_name]
+		event_callable.call(args)

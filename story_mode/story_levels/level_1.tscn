@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=22 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
 [ext_resource type="Resource" uid="uid://bqdwup7yu3lw8" path="res://story_mode/story_levels/level_words/level_1_story_data.tres" id="2_eiump"]
+[ext_resource type="Resource" uid="uid://b1u3eg1djnfai" path="res://story_mode/story_levels/level_dialogs/generic_dialog.dialogue" id="2_p6h6h"]
 [ext_resource type="Script" path="res://story_mode/story_levels/tile_map_holder.gd" id="3_6q8rh"]
 [ext_resource type="PackedScene" uid="uid://rgpvjjnooqeu" path="res://story_mode/interactables/one_shot_interactable.tscn" id="4_td581"]
 [ext_resource type="PackedScene" uid="uid://dtwvpy41tht6y" path="res://story_mode/interactables/toggle_interactable.tscn" id="6_n00nb"]
@@ -42,6 +43,7 @@ jenny_nav_points = Array[Vector2]([Vector2(2167, 897), Vector2(1305, 432), Vecto
 bedroom_door = NodePath("BedroomDoor")
 food_bowl = NodePath("FoodBowl")
 waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain"), NodePath("Bed"), NodePath("BedroomDoor"), NodePath("AlarmClock"), NodePath("FoodBowl"), NodePath("ScratchingPost"), NodePath("Sink")]
+generic_dialog = ExtResource("2_p6h6h")
 tile_map_holder = NodePath("TileMap")
 level_word_list = ExtResource("2_eiump")
 available_actions = 1
@@ -71,6 +73,7 @@ tile_map_data = PackedByteArray("AAAKAAEAAgABAAsAAAAKAAIAAgABAAwAAAALAAEAAgADAA0
 tile_set = ExtResource("1_c7u2v")
 
 [node name="WallTops" type="TileMapLayer" parent="TileMap"]
+z_index = 1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAFAAkAAAAAAAEAAAAAAAEAAAAAAAgAAAAAAAIAAAAAAAgAAAAAAAMAAAAAAAgAAAABAAoAAAABAAkAAAACAAoAAAABAAkAAAADAAoAAAABAAkAAAAEAAoAAAABAAkAAAAKAAkAAAACAAEAAAAMAAIAAAACAAgAAAAMAAMAAAACAAgAAAAMAAUAAAACAAgAAAAMAAYAAAAEAAgAAAALAAYAAAABAAkAAAAKAAYAAAABAAkAAAAJAAYAAAABAAkAAAAIAAYAAAABAAkAAAAHAAYAAAABAAkAAAAGAAYAAAABAAkAAAAFAAYAAAABAAkAAAAEAAcAAAACAAgAAAAEAAgAAAACAAgAAAAEAAkAAAACAAgAAAANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAALAAkAAAAAAAEAAAALAAoAAAADAAEAAAAMAAoAAAABAAIAAAANAAoAAAABAAIAAAAOAAoAAAABAAIAAAAPAAoAAAABAAIAAAAQAAoAAAABAAIAAAARAAoAAAABAAIAAAASAAoAAAABAAIAAAATAAoAAAABAAIAAAAUAAoAAAABAAIAAAAVAAoAAAABAAIAAAAWAAoAAAABAAIAAAANAAcAAAAAAAEAAAANAAgAAAAAAAEAAAAMAAEAAAACAAgAAAAMAAAAAAAEAAcAAAAbAAgAAAACAAEAAAAbAAkAAAACAAEAAAAXAAoAAAABAAIAAAAYAAoAAAABAAIAAAAZAAoAAAABAAIAAAAaAAoAAAABAAIAAAAbAAoAAAAEAAEAAAAYAAUAAAACAAUAAAAYAAYAAAACAAYAAAAZAAYAAAADAAYAAAAZAAUAAAADAAUAAAAXAAAAAAACAAAAAAAXAAEAAAACAAEAAAAWAAAAAAABAAAAAAAXAAIAAAACAAEAAAAXAAMAAAACAAEAAAAXAAQAAAACAAEAAAAXAAUAAAAAAAQAAAAAAAQAAAADAAsAAAD8/wYAAAAAAAgAAAD8/wcAAAAAAAgAAAD8/wgAAAAAAAgAAAD8/wkAAAAAAAgAAAD8/woAAAADAAgAAAD9/woAAAABAAkAAAD+/woAAAABAAkAAAD//woAAAABAAkAAAAAAAoAAAABAAkAAAAIAAsAAAAEAAMAAAAFAAsAAAADAAEAAAAGAAsAAAABAAIAAAAHAAsAAAABAAIAAAAIAAwAAAAEAAQAAAAJAAsAAAABAAIAAAAKAAsAAAAEAAEAAAAKAAoAAAACAAEAAAA=")
 tile_set = ExtResource("1_c7u2v")
@@ -121,7 +124,7 @@ enable_requirement = "unlock_door"
 fail_dialogue_key = "door_locked"
 interact_events = Array[String](["bedroom_door_open"])
 connected_points = [NodePath("../TopBedroom"), NodePath("../MiddleBedroom"), NodePath("../FoodBowl"), NodePath("../Sink")]
-action_events = Array[String](["meowed_at_door_once", "meowed_at_door_twice"])
+action_events = Array[String](["meowed_at_door_twice", "meowed_at_door_once"])
 
 [node name="AlarmClock" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("4_td581")]
 position = Vector2(1866, 525)
@@ -132,12 +135,12 @@ collision_shape = SubResource("RectangleShape2D_2do5s")
 connected_points = [NodePath("../Bed"), NodePath("../LeftCurtain"), NodePath("../MiddleBedroom"), NodePath("../TopBedroom")]
 
 [node name="FoodBowl" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
-position = Vector2(1070, 616)
+position = Vector2(1079, 617)
 interact_events = Array[String](["interacted_with_bowl"])
 animation_offset = Vector2(0, -5)
 animation_frames = ExtResource("12_wymo2")
 collision_shape = SubResource("RectangleShape2D_05wjc")
-collision_position = Vector2(32, 0)
+collision_position = Vector2(16, 0)
 connected_points = [NodePath("../BedroomDoor"), NodePath("../Sink")]
 
 [node name="ScratchingPost" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
