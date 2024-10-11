@@ -4,12 +4,12 @@ extends GutTest
 var interactable_scene: PackedScene = load("res://story_mode/interactables/base_interactable.tscn")
 
 var interactable: BaseInteractable
-var character: SelfNavCharacter
+var character: Socks
 
 func before_each() -> void:
 	interactable = partial_double(interactable_scene).instantiate()
 	add_child(interactable)
-	character = partial_double(SelfNavCharacter).new()
+	character = partial_double(Socks).new()
 	character.animations = autoqfree(AnimatedSprite2D.new())
 	character.animations.sprite_frames = load("res://textures/character_animations/player_sprite_frames.tres")
 	add_child(character)

@@ -3,10 +3,10 @@ extends GutTest
 var one_shot_scene: PackedScene = load("res://story_mode/interactables/one_shot_interactable.tscn")
 var one_shot_interact: OneShotInteractable
 var connected_waypoint: Waypoint
-var player: SelfNavCharacter
+var player: Socks
 
 func before_each() -> void:
-	player = double(SelfNavCharacter).new()
+	player = double(Socks).new()
 	one_shot_interact = partial_double(one_shot_scene).instantiate()
 	one_shot_interact.interactor = player
 	var player_area: Area2D = autoqfree(Area2D.new())

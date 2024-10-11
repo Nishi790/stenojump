@@ -3,10 +3,10 @@ extends GutTest
 var toggle_interact_scene: PackedScene = load("res://story_mode/interactables/toggle_interactable.tscn")
 
 var toggle_interact: ToggleInteractable
-var character: SelfNavCharacter
+var character: Socks
 
 func before_each() -> void:
-	character = double(SelfNavCharacter).new()
+	character = double(Socks).new()
 	var interact_area: Area2D = autoqfree(Area2D.new())
 	character.add_child(interact_area)
 	toggle_interact = partial_double(toggle_interact_scene).instantiate()

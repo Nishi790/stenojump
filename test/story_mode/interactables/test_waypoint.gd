@@ -5,12 +5,12 @@ var waypoint_scene: PackedScene = load("res://story_mode/interactables/way_point
 
 var waypoint_double: Waypoint
 var connected_waypoint: Waypoint
-var character: SelfNavCharacter
+var character: Socks
 
 func before_each() -> void:
 	waypoint_double = partial_double(waypoint_scene).instantiate()
 	connected_waypoint = partial_double(waypoint_scene).instantiate()
-	character = double(SelfNavCharacter).new()
+	character = double(Socks).new()
 	var interact_area: Area2D = autoqfree(Area2D.new())
 	character.add_child(interact_area)
 	character.interaction_area = interact_area
