@@ -93,7 +93,9 @@ func display_target() -> void:
 
 
 ##Called when the character enters the area of the waypoint; tries movement events
-func initiate_words(_area: Area2D) -> void:
+func initiate_words(area: Area2D) -> void:
+	if not area.get_parent() is Socks:
+		return
 	became_current_point.emit(self)
 	if not movement_events.is_empty():
 		for event_name in movement_events:
