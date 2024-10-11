@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var player: SelfNavCharacter
+@export var player: Socks
 
 var follow_player: bool = false
 

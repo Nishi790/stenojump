@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c68eoq2241umv"]
 
-[ext_resource type="Script" path="res://story_mode/characters/socks_self_nav.gd" id="1_jxr8n"]
+[ext_resource type="Script" path="res://story_mode/characters/socks.gd" id="1_jxr8n"]
 [ext_resource type="SpriteFrames" uid="uid://bxd74c38t8x8g" path="res://textures/character_animations/player_sprite_frames.tres" id="2_6vqsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0d8ce"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChangeDefaultAnimationContainer" load_steps=3 format=3 uid="uid://r2vsx2jw1mxp"]
+
+[ext_resource type="Resource" uid="uid://dyagyxn665h3r" path="res://story_mode/interactables/interactable_textures/animations/basic_idle_after_interact.tres" id="1_sgxyr"]
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_default_animation_container.gd" id="2_ttrbs"]
+
+[resource]
+script = ExtResource("2_ttrbs")
+new_default = ExtResource("1_sgxyr")
+oneshot = true
+pre_animation_name = &""
+animation_name = &"interact"
+post_animation_name = &""

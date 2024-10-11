@@ -41,6 +41,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="StrokePanel" type="PanelContainer" parent="ExampleMarginCont"]
+visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("2_n7d8i")
@@ -86,6 +87,7 @@ alignment = 2
 
 [node name="HissAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
+action_type = null
 
 [node name="ItemAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
@@ -93,6 +95,7 @@ action_type = 1
 
 [node name="MeowAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
+action_type = null
 
 [node name="ExampleBalloon" parent="MarginContainer/VertScreenSplitter" instance=ExtResource("3_ute1d")]
 visible = false

@@ -1,18 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://rgpvjjnooqeu"]
+[gd_scene load_steps=7 format=3 uid="uid://rgpvjjnooqeu"]
 
 [ext_resource type="Script" path="res://story_mode/interactables/one_shot_interactable.gd" id="1_6c121"]
 [ext_resource type="SpriteFrames" uid="uid://conpbwuolhea" path="res://story_mode/interactables/interactable_textures/falling_book_anims.tres" id="2_doekw"]
+[ext_resource type="Resource" uid="uid://r2vsx2jw1mxp" path="res://story_mode/interactables/interactable_textures/animations/basic_one_shot_interact.tres" id="3_ok7u0"]
+[ext_resource type="Script" path="res://story_mode/animator.gd" id="3_uvsbw"]
+[ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="4_jrhgl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3vbe"]
 size = Vector2(128, 64)
 
-[node name="OneShotInteractable" type="Area2D" node_paths=PackedStringArray("animation", "target_label")]
+[node name="OneShotInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "sprite", "target_label")]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_6c121")
-animation = NodePath("Animation")
+interaction_enabled = false
+animation_controller = NodePath("Animator")
+sprite = NodePath("Animation")
 animation_offset = Vector2(0, -24)
 animation_frames = ExtResource("2_doekw")
+default_animation = ExtResource("4_jrhgl")
+animation_list = {
+"interact": ExtResource("3_ok7u0")
+}
 target_label = NodePath("TargetLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,3 +44,10 @@ offset_bottom = -20.0
 theme_type_variation = &"TargetRichText"
 bbcode_enabled = true
 fit_content = true
+
+[node name="Animator" type="Node" parent="."]
+script = ExtResource("3_uvsbw")
+animations = {
+"interact": ExtResource("3_ok7u0")
+}
+default_animation = ExtResource("4_jrhgl")

@@ -1,18 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtwvpy41tht6y"]
+[gd_scene load_steps=7 format=3 uid="uid://dtwvpy41tht6y"]
 
 [ext_resource type="Script" path="res://story_mode/interactables/toggle_interactable.gd" id="1_fcen8"]
 [ext_resource type="SpriteFrames" uid="uid://c7stpsqt1a6yw" path="res://story_mode/interactables/interactable_textures/curtain_anims.tres" id="2_vbijc"]
+[ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="3_2gika"]
+[ext_resource type="Resource" uid="uid://ctyypxwv8x13q" path="res://story_mode/interactables/interactable_textures/animations/basic_toggle_interact_anim.tres" id="3_p1vr7"]
+[ext_resource type="Script" path="res://story_mode/animator.gd" id="4_3tdgu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4kl"]
 size = Vector2(128, 64)
 
-[node name="ToggleInteractable" type="Area2D" node_paths=PackedStringArray("animation", "target_label")]
+[node name="ToggleInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "sprite", "target_label")]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_fcen8")
-animation = NodePath("AnimatedSprite2D")
+interaction_enabled = false
+animation_controller = NodePath("Animator")
+sprite = NodePath("AnimatedSprite2D")
 animation_offset = Vector2(0, -24)
 animation_frames = ExtResource("2_vbijc")
+default_animation = ExtResource("3_2gika")
+animation_list = {
+"interact": ExtResource("3_p1vr7")
+}
 target_label = NodePath("TargetLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -36,3 +45,10 @@ offset_bottom = -20.0
 theme_type_variation = &"TargetRichText"
 bbcode_enabled = true
 fit_content = true
+
+[node name="Animator" type="Node" parent="."]
+script = ExtResource("4_3tdgu")
+animations = {
+"interact": ExtResource("3_p1vr7")
+}
+default_animation = ExtResource("3_2gika")

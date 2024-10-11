@@ -23,12 +23,11 @@ func _draw() -> void:
 
 
 func complete_interact() -> void:
-	if animation_frames.has_animation("interact_open") and not door_open:
-		animation.play("interact_open")
-	elif animation_frames.has_animation("interact_close") and door_open:
-		animation.play("interact_close")
+	if not door_open:
+		animation_controller.play_animation("interact_open")
 	else:
-		return_to_idle()
+		animation_controller.play_animation("interact_close")
+
 
 	door_open = false if door_open else true
 	change_connection.emit(connected_by_door)

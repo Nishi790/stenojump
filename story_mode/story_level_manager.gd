@@ -1,6 +1,7 @@
+class_name StoryLevelManager
 extends Node
 
-@export var player: SelfNavCharacter
+@export var player: Socks
 @export var UI: StoryUI
 @export var camera: Camera2D
 @export var level: LessonLevelMap

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ChangeNamedAnimationsContainer" load_steps=3 format=3 uid="uid://ctyypxwv8x13q"]
+
+[ext_resource type="Resource" uid="uid://dyagyxn665h3r" path="res://story_mode/interactables/interactable_textures/animations/basic_idle_after_interact.tres" id="1_na4nv"]
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_named_animations_container.gd" id="2_4b6fk"]
+
+[resource]
+script = ExtResource("2_4b6fk")
+changed_anims = {
+"interact": "res://story_mode/interactables/interactable_textures/animations/basic_toggle_reverse_interact_anim.tres"
+}
+new_default = ExtResource("1_na4nv")
+oneshot = true
+pre_animation_name = &""
+animation_name = &"interact"
+post_animation_name = &""

@@ -1,7 +1,5 @@
 extends BaseSelfNavCharacter
 
-@export var interest_points: Dictionary
-
 
 func _ready() -> void:
 	pass
@@ -23,8 +21,7 @@ func wake_up(target_pos: Vector2) -> void:
 	select_animation()
 
 
-func get_dressed() -> void:
-	var target_pos: Vector2 = interest_points["dresser"]
+func get_dressed(target_pos: Vector2) -> void:
 	nav_to_interest_point(target_pos)
 	has_situational_idle = true
 	situational_idle = "dressing"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AnimationContainer" load_steps=2 format=3 uid="uid://dyagyxn665h3r"]
+
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/animation_container.gd" id="1_vq2iq"]
+
+[resource]
+script = ExtResource("1_vq2iq")
+oneshot = false
+pre_animation_name = &""
+animation_name = &"idle_after_interact"
+post_animation_name = &""

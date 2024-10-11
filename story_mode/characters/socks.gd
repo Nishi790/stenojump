@@ -1,4 +1,4 @@
-class_name SelfNavCharacter
+class_name Socks
 extends BaseSelfNavCharacter
 
 enum GeneralActions {MEOW, USE_ITEM, HISS}

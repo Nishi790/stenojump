@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://cad14t475s723"]
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://cad14t475s723"]
 
 [ext_resource type="Texture2D" uid="uid://cyqtmfsy6uts7" path="res://story_mode/interactables/interactable_textures/counters.png" id="1_vnk3s"]
 
@@ -25,6 +25,10 @@ region = Rect2(96, 128, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsfha"]
 atlas = ExtResource("1_vnk3s")
 region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcsah"]
+atlas = ExtResource("1_vnk3s")
+region = Rect2(0, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fip7p"]
 atlas = ExtResource("1_vnk3s")
@@ -98,6 +102,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_after_interact",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcsah")
+}],
+"loop": true,
+"name": &"idle_full",
 "speed": 5.0
 }, {
 "frames": [{

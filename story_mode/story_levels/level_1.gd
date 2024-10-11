@@ -16,12 +16,8 @@ func _load_event_funcs() -> void:
 
 func wake_up_jenny(_args: Array) -> void:
 	jenny_character = jenny_scene.instantiate()
-	if waypoints[5].animation_frames.has_animation("get up"):
-		waypoints[5].animation.play("get up")
-		waypoints[5].animation.animation_finished.connect(add_jenny, CONNECT_ONE_SHOT)
-	else:
-		waypoints[5].animation.play("idle_jenny_awake")
-		add_jenny()
+	waypoints[5].animation_controller.play_animation("jenny_wakes_up")
+	add_jenny()
 	level_word_list.update_event("jenny_woke_up", true)
 
 
@@ -30,6 +26,8 @@ func add_jenny() -> void:
 	jenny_character.global_position = jenny_start_pos
 	jenny_character.nav_astar = astar_nav_grid
 	jenny_character.wake_up(Vector2(1920, 520))
+	await get_tree().create_timer(5).timeout
+	jenny_character.get_dressed(jenny_nav_points[4])
 
 
 func unlock_door(_args: Array) -> void:
@@ -52,7 +50,7 @@ func feed_socks(_args: Array) -> void:
 func jenny_enter_kitchen(_args: Array) -> void:
 	print("Jenny is in the kitchen")
 	level_word_list.update_event("jenny_in_kitchen", true)
-	start_dialog(level_word_list.dialogue_resource, "missing_headphones")
+	start_dialog("missing_headphones", level_word_list.dialogue_resource)
 
 
 func jenny_leave_home() -> void:

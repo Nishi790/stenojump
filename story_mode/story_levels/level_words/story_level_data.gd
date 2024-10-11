@@ -49,12 +49,12 @@ func update_event(event_name: String, value: bool) -> void:
 		if can_complete:
 			event_data.event_complete = value
 			if event_data.triggers_global_event and value == true:
-				event_triggered.emit(event_data.global_event_name)
+				event_triggered.emit(event_data.global_event_name, [])
 	for key: String in active_quests.keys():
 		var quest_complete: bool = check_quest_complete(key)
 
 
-func update_action_event(event_name: String, action_type: SelfNavCharacter.GeneralActions) -> void:
+func update_action_event(event_name: String, action_type: Socks.GeneralActions) -> void:
 	if level_events.has(event_name):
 		if level_events[event_name].action_type == action_type:
 			update_event(event_name, true)

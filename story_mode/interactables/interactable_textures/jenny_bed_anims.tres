@@ -1,6 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://h0gbq0km6s1s"]
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://h0gbq0km6s1s"]
 
 [ext_resource type="Texture2D" uid="uid://bnq1klwktmem0" path="res://story_mode/interactables/interactable_textures/jenny_bed.png" id="1_w7wok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhnts"]
+atlas = ExtResource("1_w7wok")
+region = Rect2(32, 64, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8lujg"]
 atlas = ExtResource("1_w7wok")
@@ -44,6 +48,14 @@ region = Rect2(32, 192, 32, 64)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhnts")
+}],
+"loop": true,
+"name": &"get_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8lujg")

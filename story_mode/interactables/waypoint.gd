@@ -5,7 +5,7 @@ extends Area2D
 signal request_target_word
 signal move_destination_selected(destination: Waypoint)
 signal tried_event(event_name: String, event_value: bool)
-signal tried_action(event_name: String, action:SelfNavCharacter.GeneralActions)
+signal tried_action(event_name: String, action:Socks.GeneralActions)
 signal became_current_point(current_point: Waypoint)
 
 @export var target_label: RichTextLabel
@@ -103,13 +103,13 @@ func initiate_words(_area: Area2D) -> void:
 			connection.display_target()
 
 
-func try_action_event(action: SelfNavCharacter.GeneralActions) -> void:
+func try_action_event(action: Socks.GeneralActions) -> void:
 	for event in action_events:
 		tried_action.emit(event, action)
 
 
 func hide_words(area: Area2D)-> void:
-	if area.get_parent() is SelfNavCharacter:
+	if area.get_parent() is Socks:
 		for connection in connected_points:
 			connection.hide_label()
 

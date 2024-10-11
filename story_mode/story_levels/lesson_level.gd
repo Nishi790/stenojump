@@ -17,12 +17,14 @@ var event_funcs: Dictionary #Should be given keys/values in inherited class
 @export var level_word_list: StoryLevelData:
 	set(new_data):
 		level_word_list = new_data
+		if new_data == null:
+			return
 		level_word_list.quest_started.connect(start_new_quest)
 		level_word_list.quest_finished.connect(complete_quest)
 		level_word_list.dialog_started.connect(start_dialog)
 		level_word_list.event_triggered.connect(call_event)
 
-@export var player: SelfNavCharacter:
+@export var player: Socks:
 	set(new_player):
 		player = new_player
 		player.nav_astar = astar_nav_grid
@@ -75,6 +77,11 @@ func _ready() -> void:
 
 	await get_tree().process_frame
 	level_word_list.start_level()
+	_load_event_funcs()
+
+
+func _load_event_funcs() -> void:
+	pass
 
 
 func switch_point_connection(points: Vector2i) -> void:
@@ -114,8 +121,8 @@ func propagate_entry(text: String)-> void:
 			break
 
 
-func propagate_action(action: SelfNavCharacter.GeneralActions) -> void:
-	print("Trying action %s on %s" % [SelfNavCharacter.GeneralActions.find_key(action), current_player_point.target_word])
+func propagate_action(action: Socks.GeneralActions) -> void:
+	print("Trying action %s on %s" % [Socks.GeneralActions.find_key(action), current_player_point.target_word])
 	current_player_point.try_action_event(action)
 
 
@@ -169,7 +176,7 @@ func _draw() -> void:
 func call_event(event_name: String, args: Array = []) -> void:
 	if event_name.begins_with("dialog"):
 		var dialog_name: String = event_name.lstrip("dialog_")
-		start_dialog(dialog_name)
+		start_dialog(dialog_name, level_word_list.dialogue_resource)
 	else:
 		var event_callable: Callable = event_funcs[event_name]
 		event_callable.call(args)

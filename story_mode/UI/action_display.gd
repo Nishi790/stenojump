@@ -7,7 +7,7 @@ signal action_taken(action_type)
 @export var target_label: RichTextLabel
 @export var action_name: Label
 
-@export var action_type: SelfNavCharacter.GeneralActions
+@export var action_type: Socks.GeneralActions
 
 var target_data: Dictionary
 var target_word: String
@@ -17,7 +17,7 @@ var minimum_label_height: float = 24
 
 
 func _ready() -> void:
-	action_name.set_text(SelfNavCharacter.GeneralActions.find_key(action_type))
+	action_name.set_text(Socks.GeneralActions.find_key(action_type))
 
 
 func check_target_match(word: String) -> void:
