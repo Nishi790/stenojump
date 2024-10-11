@@ -116,12 +116,34 @@ Socks: This one uses two keys. Stroke E and U at the same time for the short vow
 Socks: Remember that if you hear a short vowel spelled with one letter, you should use the letter that matches the spelling.
 That means 'sir' is written like this.
 do display_stroke("SEUR")
-Socks: That's everything I have to teach you right now. You'd better hurry up and finish things up in the house. I have to meet my friends at the park. 
+Socks: That's everything I have to teach you right now. You'd better hurry up and get Jenny off to work. I have to meet my friends at the park. 
 do hide_stroke()
+do level.level_word_list.start_quest("get_jenny_out_the_door")
 => END
 
 ~ door_locked
 Socks: Usually I can get doors open myself, but this one is pretty stuck. We're going to need Jenny's help to get it loosened up before I can open it. 
 => END
 
-~
+~ missing_headphones
+Jenny: Socks, have you seen my headphones? They aren't by my head where I left them...
+Socks: Uh-oh... I might have played with those last night...
+Socks: She'll never leave for work without those. Jenny always sticks them in when she leaves. I better find them.
+do level.level_word_list.start_quest("find_jennys_headphones")
+=> END
+
+~ empty_bowl
+Socks: This is unacceptable! Where's my breakfast? Every morning I get up and have my kibble before I go out.
+Socks: Has Jenny forgotten me? Doesn't she realize that I need to eat? I guess I have to remind her.
+do level.level_word_list.start_quest("eat_breakfast")
+=> END
+
+~ end_level
+Jenny: Bye Socks! Be good at home today, okay? No more hiding things.
+Socks: Meow. [i]I don't just stay home all day, that would be boring[/i]
+Jenny: Seriously, I've got a big day at work today, and am going out with Nick after. That's a lot of hours for you to get into something...Don't.
+Socks: Purr [i]Stop worrying about me and have a good day, okay?[/i]
+Jenny: I love you too.
+do level.jenny_leave_home()
+Socks: Well, she's all set, so now we can get going. Let's head out!
+=> END

@@ -9,5 +9,5 @@ event_complete = false
 conditions = {
 "bedroom_door_open": true
 }
-triggers_global_event = false
-global_event_name = ""
+triggers_global_event = true
+global_event_name = "dialog_missing_headphones"

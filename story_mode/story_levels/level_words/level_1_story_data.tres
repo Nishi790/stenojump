@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StoryLevelData" load_steps=28 format=3 uid="uid://bqdwup7yu3lw8"]
+[gd_resource type="Resource" script_class="StoryLevelData" load_steps=29 format=3 uid="uid://bqdwup7yu3lw8"]
 
 [ext_resource type="Resource" uid="uid://c43kcgrhcuhyu" path="res://story_mode/story_levels/level_dialogs/story_level_1.dialogue" id="1_vuym1"]
 [ext_resource type="Resource" uid="uid://flpssaglm2lw" path="res://story_mode/story_levels/Events/level_1_events/open_curtains.tres" id="2_4cq67"]
@@ -27,6 +27,7 @@
 [ext_resource type="Resource" uid="uid://dqoxm2sfnqx53" path="res://story_mode/story_levels/Events/level_1_events/breakfast_eaten.tres" id="19_j03xo"]
 [ext_resource type="Resource" uid="uid://dj4v5tm7mmme1" path="res://story_mode/story_levels/quests/level_1_quests/eat_breakfast.tres" id="20_shxik"]
 [ext_resource type="Resource" uid="uid://bchji4itk2172" path="res://story_mode/story_levels/quests/level_1_quests/find_headphones.tres" id="26_7ch2e"]
+[ext_resource type="Resource" uid="uid://nwe8ag4n3d1" path="res://story_mode/story_levels/quests/level_1_quests/get_jenny_out_the_door.tres" id="27_iw21d"]
 
 [resource]
 script = ExtResource("19_bk54k")
@@ -160,6 +161,7 @@ quests = {
 "find_jennys_headphones": ExtResource("26_7ch2e"),
 "first_interact": ExtResource("15_sd1mf"),
 "first_steps": ExtResource("16_uviey"),
+"get_jenny_out_the_door": ExtResource("27_iw21d"),
 "open_the_door": ExtResource("17_gd2ck"),
 "wake_up_jenny": ExtResource("18_wyxbg")
 }

@@ -12,5 +12,5 @@ reqs = {
 "interacted_with_bowl": true
 }
 start_dialog_key = ""
-finished_dialog_key = ""
+finished_dialog_key = "empty_bowl"
 events_triggered = {}

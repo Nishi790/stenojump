@@ -8,8 +8,8 @@ var jenny_character: BaseSelfNavCharacter
 @export var bedroom_door: BaseInteractable
 @export var food_bowl: BaseInteractable
 
-func _ready() -> void:
-	super()
+
+func _load_event_funcs() -> void:
 	event_funcs = {"wake_jenny" : wake_up_jenny, "unlock_door": unlock_door, "jenny_leaves": jenny_leave_home,
 	"feed_socks": feed_socks, "jenny_enters_kitchen": jenny_enter_kitchen}
 
@@ -52,9 +52,10 @@ func feed_socks(_args: Array) -> void:
 func jenny_enter_kitchen(_args: Array) -> void:
 	print("Jenny is in the kitchen")
 	level_word_list.update_event("jenny_in_kitchen", true)
+	start_dialog(level_word_list.dialogue_resource, "missing_headphones")
 
 
-func jenny_leave_home(_args: Array) -> void:
+func jenny_leave_home() -> void:
 	jenny_character.nav_to_interest_point(jenny_nav_points[3])
 	jenny_character.navigation_finished.connect(jenny_character.queue_free, CONNECT_ONE_SHOT)
 	print("Bye Jennv!")

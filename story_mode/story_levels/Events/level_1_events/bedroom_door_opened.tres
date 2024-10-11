@@ -9,3 +9,5 @@ event_complete = false
 conditions = {
 "meowed_at_door_twice": true
 }
+triggers_global_event = false
+global_event_name = ""
