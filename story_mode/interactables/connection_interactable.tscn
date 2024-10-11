@@ -30,9 +30,7 @@ shape = SubResource("RectangleShape2D_yrnlt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_760ma")
-animation = &"interact_close"
-frame = 4
-frame_progress = 1.0
+animation = &"idle_closed"
 offset = Vector2(-2, 0)
 
 [node name="TargetLabel" type="RichTextLabel" parent="."]

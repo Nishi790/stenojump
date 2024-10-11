@@ -19,14 +19,6 @@ signal became_current_point(current_point: Waypoint)
 		else:
 			connected_points = points
 
-var minimum_label_size: Vector2 = Vector2(160, 30)
-
-var target_data: Dictionary
-var target_word: String
-var default_height: float = 20
-
-var can_match: bool = false
-
 @export var hints_active: bool = true:
 	set(value):
 		hints_active = value
@@ -35,6 +27,16 @@ var can_match: bool = false
 
 @export var movement_events: Array[String] ##Names of events that can be triggered by moving to this point
 @export var action_events: Array[String] ##Names of events triggered with an action at this location
+
+var minimum_label_size: Vector2 = Vector2(160, 30)
+
+var target_data: Dictionary
+var target_word: String
+var default_height: float = 20
+
+var can_match: bool = false
+
+var astar_point: int
 
 ##Helper function to make connections reciprocal between waypoints - used only in editor
 func reciprocate_connection(old_points: Array, new_points: Array) -> void:

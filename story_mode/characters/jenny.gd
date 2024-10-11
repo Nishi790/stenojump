@@ -22,12 +22,12 @@ func wake_up(target_pos: Vector2) -> void:
 
 
 func get_dressed(target_pos: Vector2) -> void:
-	nav_to_interest_point(target_pos)
+	nav_to_coords(target_pos)
 	has_situational_idle = true
 	situational_idle = "dressing"
 
 
-func nav_to_interest_point(target_pos: Vector2) -> bool:
+func nav_to_coords(target_pos: Vector2) -> bool:
 	has_situational_idle = false
 	super(target_pos)
 	return true

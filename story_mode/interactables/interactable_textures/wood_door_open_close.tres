@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cd8d7p6c4rsri" path="res://story_mode/interactables/interactable_textures/wood_door.png" id="1_oi3i5"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybkt6"]
+atlas = ExtResource("1_oi3i5")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewi5g"]
+atlas = ExtResource("1_oi3i5")
+region = Rect2(64, 0, 16, 17)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_42ewu"]
 atlas = ExtResource("1_oi3i5")
 region = Rect2(64, 0, 16, 17)
@@ -17,10 +25,6 @@ region = Rect2(32, 0, 16, 17)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjig7"]
 atlas = ExtResource("1_oi3i5")
 region = Rect2(16, 0, 16, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ybkt6"]
-atlas = ExtResource("1_oi3i5")
-region = Rect2(0, 0, 16, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4dbm"]
 atlas = ExtResource("1_oi3i5")
@@ -38,12 +42,24 @@ region = Rect2(32, 0, 16, 17)
 atlas = ExtResource("1_oi3i5")
 region = Rect2(48, 0, 16, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ewi5g"]
-atlas = ExtResource("1_oi3i5")
-region = Rect2(64, 0, 16, 17)
-
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybkt6")
+}],
+"loop": true,
+"name": &"idle_closed",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewi5g")
+}],
+"loop": true,
+"name": &"idle_open",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_42ewu")

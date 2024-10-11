@@ -13,7 +13,7 @@ var astar_nav_grid: AStar2D
 var event_funcs: Dictionary #Should be given keys/values in inherited class
 @export var generic_dialog: DialogueResource
 
-@export var tile_map_holder: Node2D
+@export var tile_map_holder: TileMapHolder
 @export var level_word_list: StoryLevelData:
 	set(new_data):
 		level_word_list = new_data
@@ -45,39 +45,57 @@ func _ready() -> void:
 	for way_index in waypoints.size():
 		var inter: Waypoint = waypoints[way_index]
 
-		inter.request_target_word.connect(provide_target.bind(inter))
-		inter.move_destination_selected.connect(set_player_destination)
-		inter.tried_event.connect(level_word_list.update_event)
-		inter.tried_action.connect(level_word_list.update_action_event)
-		inter.became_current_point.connect(set_current_player_point)
+		set_up_waypoint(inter)
+
 		if inter is BaseInteractable:
-			if not inter.enable_requirement.is_empty():
-				level_word_list.event_triggered.connect(inter.enable_interact)
-			inter.failed_interact.connect(start_dialog)
-			var tex_rect: Rect2 = inter.get_tex_rect()
-			tile_map_holder.disable_points(tex_rect)
+			set_up_interactable(inter)
 
 		if inter is ConnectionInteractable:
-			var area_shape: CollisionShape2D = inter.get_child(0)
-			var area_rect: Rect2 = area_shape.get_shape().get_rect()
-			var area_pos: Vector2 = inter.global_position
-			var right_index: int = astar_nav_grid.get_closest_point(area_pos + Vector2(area_rect.size.x/2, 0))
-			var left_index: int = astar_nav_grid.get_closest_point(area_pos - Vector2(area_rect.size.x/2, 0))
-			var door_points: Vector2i = Vector2i(right_index, left_index)
-			inter.connected_by_door = door_points
-			if not inter.door_open:
-				switch_point_connection(door_points)
-			inter.change_connection.connect(switch_point_connection)
+			set_up_connection_interactable(inter)
 
 		waypoint_astar_grid.add_point(way_index, inter.global_position)
+
 		for connection in inter.connected_points:
 			var point_ID: int = waypoint_astar_grid.get_closest_point(connection.global_position)
 			if waypoint_astar_grid.get_point_position(point_ID) == connection.global_position:
 				waypoint_astar_grid.connect_points(point_ID, way_index)
 
 	await get_tree().process_frame
+	for point: Waypoint in waypoints:
+		if astar_nav_grid.is_point_disabled(point.astar_point):
+			set_astar_point(point)
 	level_word_list.start_level()
 	_load_event_funcs()
+
+
+func set_up_interactable(inter: BaseInteractable) -> void:
+	if not inter.enable_requirement.is_empty():
+		level_word_list.event_triggered.connect(inter.enable_interact)
+	inter.failed_interact.connect(start_dialog)
+	var tex_rect: Rect2 = inter.get_tex_rect()
+	tile_map_holder.disable_points(tex_rect)
+
+
+func set_up_connection_interactable(inter: ConnectionInteractable) -> void:
+	var area_shape: CollisionShape2D = inter.get_child(0)
+	var area_rect: Rect2 = area_shape.get_shape().get_rect()
+	var area_pos: Vector2 = inter.global_position
+	var right_index: int = astar_nav_grid.get_closest_point(area_pos + Vector2(area_rect.size.x/2, 0))
+	var left_index: int = astar_nav_grid.get_closest_point(area_pos - Vector2(area_rect.size.x/2, 0))
+	var door_points: Vector2i = Vector2i(right_index, left_index)
+	inter.connected_by_door = door_points
+	if not inter.door_open:
+		switch_point_connection(door_points)
+	inter.change_connection.connect(switch_point_connection)
+
+
+func set_up_waypoint(inter: Waypoint) -> void:
+	inter.request_target_word.connect(provide_target.bind(inter))
+	inter.move_destination_selected.connect(set_player_destination)
+	inter.tried_event.connect(level_word_list.update_event)
+	inter.tried_action.connect(level_word_list.update_action_event)
+	inter.became_current_point.connect(set_current_player_point)
+	set_astar_point(inter)
 
 
 func _load_event_funcs() -> void:
@@ -89,6 +107,12 @@ func switch_point_connection(points: Vector2i) -> void:
 		astar_nav_grid.disconnect_points(points.x, points.y)
 	else:
 		astar_nav_grid.connect_points(points.x, points.y)
+
+
+func set_astar_point(inter: Waypoint) -> void:
+	var relative_pos: Vector2 = inter.global_position
+	var point: int = astar_nav_grid.get_closest_point(relative_pos)
+	inter.astar_point = point
 
 
 func provide_target(requester: Waypoint) -> void:
@@ -127,15 +151,18 @@ func propagate_action(action: Socks.GeneralActions) -> void:
 
 
 func set_player_destination(point: Waypoint) -> void:
-	var navigation_success: bool = player.nav_to_interest_point(point.global_position)
+	var player_point: int = -1
+	if current_player_point:
+		player_point = current_player_point.astar_point
+	var navigation_success: bool = player.nav_to_astar_point(point.astar_point, player_point)
 	if not navigation_success and point is ConnectionInteractable:
 		var door_collider: Shape2D = point.shape_owner_get_shape(0, 0)
 		var door_collider_rect: Rect2 = door_collider.get_rect()
 		var door_collider_left_side: Vector2 = point.to_global(door_collider_rect.position) +  Vector2(0, door_collider_rect.size.y/2)
 		var door_collider_right_side: Vector2 = door_collider_left_side + Vector2(door_collider_rect.size.x, 0)
-		navigation_success = player.nav_to_interest_point(door_collider_left_side)
+		navigation_success = player.nav_to_coords(door_collider_left_side)
 		if not navigation_success:
-			navigation_success = player.nav_to_interest_point(door_collider_right_side)
+			navigation_success = player.nav_to_coords(door_collider_right_side)
 
 	if not navigation_success:
 		start_dialog("failed_navigation", generic_dialog)

@@ -25,13 +25,13 @@ func add_jenny() -> void:
 	add_child(jenny_character)
 	jenny_character.global_position = jenny_start_pos
 	jenny_character.nav_astar = astar_nav_grid
-	jenny_character.wake_up(Vector2(1920, 520))
+	jenny_character.wake_up(Vector2(1920, 600))
 	await get_tree().create_timer(5).timeout
 	jenny_character.get_dressed(jenny_nav_points[4])
 
 
 func unlock_door(_args: Array) -> void:
-	jenny_character.nav_to_interest_point(jenny_nav_points[2])
+	jenny_character.nav_to_coords(jenny_nav_points[2])
 	jenny_character.navigation_finished.connect(animate_unlock_door, CONNECT_ONE_SHOT)
 
 
@@ -54,6 +54,6 @@ func jenny_enter_kitchen(_args: Array) -> void:
 
 
 func jenny_leave_home() -> void:
-	jenny_character.nav_to_interest_point(jenny_nav_points[3])
+	jenny_character.nav_to_coords(jenny_nav_points[3])
 	jenny_character.navigation_finished.connect(jenny_character.queue_free, CONNECT_ONE_SHOT)
 	print("Bye Jennv!")

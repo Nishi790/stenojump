@@ -1,4 +1,5 @@
 @tool
+class_name TileMapHolder
 extends Node2D
 
 var astar_grid: AStar2D

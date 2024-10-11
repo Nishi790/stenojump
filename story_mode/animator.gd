@@ -48,28 +48,19 @@ func play_default_animation() -> void:
 
 
 func _play_anim(animation: AnimationContainer) -> void:
-	print("starting animation is: %s, designated interact animation is %s" % [current_animation.animation_name, animations["interact"].animation_name])
 	await current_animation._post_animation()
-	print("post_animation run")
 	await current_animation._after_animation_hook()
-	print("after_animation_hook run")
 	current_animation = animation
 	await current_animation._before_animation_hook()
-	print("before_animation_hook run")
 	await current_animation._pre_animation()
-	print("pre_animation run")
 	await current_animation._after_pre_animation_hook()
-	print("after_pre_animation_hook run")
-	print("New animation is: %s, new designated interact animation is %s" % [current_animation.animation_name, animations["interact"].animation_name])
 	if current_animation.oneshot:
 		await current_animation._play()
 		await current_animation._before_post_animation_hook()
-		print("one shot animation played")
 		play_default_animation()
 	else:
 		await current_animation._play()
 		await current_animation._before_post_animation_hook()
-		print("animation playing")
 
 
 
@@ -80,6 +71,4 @@ func change_default_anim(new_anim: AnimationContainer) -> void:
 func change_named_anims(new_pairs: Dictionary) -> void:
 	for key: String in new_pairs:
 		var new_animation: AnimationContainer = load(new_pairs[key])
-		print("loaded animation: ", new_animation.animation_name)
 		animations[key] = new_animation
-		print(animations[key].animation_name)
