@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ChangeDefaultAnimationContainer" load_steps=3 format=3 uid="uid://df4va7jy4ml06"]
+[gd_resource type="Resource" script_class="ChangeDefaultAnimationContainer" load_steps=4 format=3 uid="uid://df4va7jy4ml06"]
 
 [ext_resource type="Resource" uid="uid://31ju6hcglxlu" path="res://story_mode/interactables/interactable_textures/animations/basic_idle_open.tres" id="1_nmd3j"]
+[ext_resource type="AudioStream" uid="uid://bbmteck3pc5qd" path="res://sound/sound_effects/indoor_sounds/door_open.wav" id="1_xkxmq"]
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_default_animation_container.gd" id="2_vxafw"]
 
 [resource]
@@ -10,3 +11,4 @@ oneshot = false
 pre_animation_name = &""
 animation_name = &"interact_open"
 post_animation_name = &""
+animation_sound = ExtResource("1_xkxmq")

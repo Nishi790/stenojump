@@ -8,6 +8,12 @@ extends Node
 
 var hints_visible: bool = false
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip_dialogue"):
+		UI.skip_dialogue()
+
+
 func _ready() -> void:
 	camera.player = player
 	camera.follow_player = true

@@ -155,7 +155,7 @@ func propagate_action(action: Socks.GeneralActions) -> void:
 
 func set_player_destination(point: Waypoint) -> void:
 	var player_point: int = -1
-	if current_player_point:
+	if current_player_point and current_player_point is not ConnectionInteractable:
 		player_point = current_player_point.astar_point
 	var navigation_success: bool = player.nav_to_astar_point(point.astar_point, player_point)
 	if not navigation_success and point is ConnectionInteractable:

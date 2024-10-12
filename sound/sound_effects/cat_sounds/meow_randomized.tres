@@ -4,6 +4,6 @@
 
 [resource]
 random_pitch = 1.2
-random_volume_offset_db = 4.0
+random_volume_offset_db = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("1_de5wh")

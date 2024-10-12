@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ChangeDefaultAnimationContainer" load_steps=3 format=3 uid="uid://bxe7udt0sd7ny"]
+[gd_resource type="Resource" script_class="ChangeDefaultAnimationContainer" load_steps=4 format=3 uid="uid://bxe7udt0sd7ny"]
 
+[ext_resource type="AudioStream" uid="uid://bu4iq0tbnr80b" path="res://sound/sound_effects/indoor_sounds/door_close.wav" id="1_3vnv6"]
 [ext_resource type="Resource" uid="uid://dcanapfc5r0m5" path="res://story_mode/interactables/interactable_textures/animations/basic_idle_door_closed.tres" id="1_tlxlf"]
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_default_animation_container.gd" id="2_0582f"]
 
@@ -10,3 +11,4 @@ oneshot = false
 pre_animation_name = &""
 animation_name = &"interact_close"
 post_animation_name = &""
+animation_sound = ExtResource("1_3vnv6")

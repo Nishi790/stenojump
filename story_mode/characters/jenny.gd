@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func wake_up(target_pos: Vector2) -> void:
 	animations.play("sleep")
-	get_tree().create_timer(animations.current_animation_length).timeout
+	await get_tree().create_timer(animations.current_animation_length).timeout
 	animations.play("idle_down")
 	await get_tree().create_timer(0.2).timeout
 	var move_tween: Tween = create_tween()

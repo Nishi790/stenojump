@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=34 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
@@ -17,6 +17,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cad14t475s723" path="res://story_mode/interactables/interactable_textures/sink_overflow.tres" id="14_6q0wm"]
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_default_animation_container.gd" id="14_sw8ju"]
 [ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="15_nqyta"]
+[ext_resource type="AudioStream" uid="uid://dse5b6nc8bl6s" path="res://sound/sound_effects/indoor_sounds/alarm_wobble_ring.wav" id="17_ta45y"]
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_named_animations_container.gd" id="20_siors"]
 [ext_resource type="SpriteFrames" uid="uid://buqwcv0vlkshx" path="res://story_mode/interactables/interactable_textures/couch.tres" id="21_ss7xx"]
 [ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
@@ -41,15 +42,16 @@ animation_name = &"get_up"
 post_animation_name = &""
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dl67o"]
-points = PackedVector2Array(-48, 0, 128, 0, 128, -150, 20, -150, 20, -64)
+points = PackedVector2Array(-64, 0, 128, 0, 128, -150, 20, -150, -64, -36)
 
-[sub_resource type="Resource" id="Resource_vexxf"]
+[sub_resource type="Resource" id="Resource_fit33"]
 script = ExtResource("14_sw8ju")
 new_default = ExtResource("12_bhab7")
 oneshot = true
 pre_animation_name = &""
 animation_name = &"interact"
 post_animation_name = &""
+animation_sound = ExtResource("17_ta45y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2do5s"]
 size = Vector2(64, 64)
@@ -136,16 +138,16 @@ position = Vector2(1487, 921)
 connected_points = [NodePath("../MiddleBedroom"), NodePath("../Shelf"), NodePath("../ScratchingPost")]
 
 [node name="MiddleBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
-position = Vector2(1483, 625)
+position = Vector2(1489, 622)
 connected_points = [NodePath("../BottomBedroom"), NodePath("../TopBedroom"), NodePath("../Bed"), NodePath("../BedroomDoor"), NodePath("../AlarmClock"), NodePath("../ScratchingPost")]
 movement_events = Array[String](["first_move"])
 
 [node name="TopBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
-position = Vector2(1483, 342)
+position = Vector2(1491, 338)
 connected_points = [NodePath("../MiddleBedroom"), NodePath("../LeftCurtain"), NodePath("../BedroomDoor"), NodePath("../AlarmClock")]
 
 [node name="LeftCurtain" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("6_n00nb")]
-position = Vector2(1868, 239)
+position = Vector2(1871, 237)
 interaction_enabled = true
 interact_events = Array[String](["first_interact", "bedroom_curtains_open"])
 animation_offset = Vector2(8, -24)
@@ -153,7 +155,7 @@ collision_shape = SubResource("CircleShape2D_tgucy")
 connected_points = [NodePath("../TopBedroom"), NodePath("../AlarmClock")]
 
 [node name="Bed" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
-position = Vector2(1992, 739)
+position = Vector2(2021, 763)
 at_height = true
 interact_events = Array[String](["sat_on_bed", "first_interact"])
 animation_offset = Vector2(20, -32)
@@ -180,13 +182,13 @@ connected_points = [NodePath("../TopBedroom"), NodePath("../MiddleBedroom"), Nod
 action_events = Array[String](["meowed_at_door_twice", "meowed_at_door_once"])
 
 [node name="AlarmClock" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("4_td581")]
-position = Vector2(1866, 525)
+position = Vector2(1888, 518)
 interaction_enabled = true
 interact_events = Array[String](["knocked_over_alarm_clock", "first_interact"])
-animation_offset = Vector2(16, -16)
+animation_offset = Vector2(16, -8)
 animation_frames = ExtResource("11_el2rh")
 animation_list = {
-"interact": SubResource("Resource_vexxf")
+"interact": SubResource("Resource_fit33")
 }
 collision_shape = SubResource("RectangleShape2D_2do5s")
 connected_points = [NodePath("../Bed"), NodePath("../LeftCurtain"), NodePath("../MiddleBedroom"), NodePath("../TopBedroom")]

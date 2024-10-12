@@ -68,6 +68,7 @@ var interactor: Socks = null
 
 func _ready() -> void:
 	super()
+	animation_controller.audio_player = audio_player
 	animation_controller.set_up()
 
 
