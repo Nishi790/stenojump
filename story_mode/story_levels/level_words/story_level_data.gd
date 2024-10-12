@@ -51,7 +51,7 @@ func update_event(event_name: String, value: bool) -> void:
 			if event_data.triggers_global_event and value == true:
 				event_triggered.emit(event_data.global_event_name, [])
 	for key: String in active_quests.keys():
-		var quest_complete: bool = check_quest_complete(key)
+		var _quest_complete: bool = check_quest_complete(key)
 
 
 func update_action_event(event_name: String, action_type: Socks.GeneralActions) -> void:
@@ -67,7 +67,7 @@ func update_toggle_event(event_name: String) -> void:
 		if can_complete:
 			level_events[event_name].event_complete = !level_events[event_name].event_complete
 	for key: String in active_quests.keys():
-		var quest_complete: bool = check_quest_complete(key)
+		var _quest_complete: bool = check_quest_complete(key)
 
 
 ##Checks whether doing an event has completed any quests

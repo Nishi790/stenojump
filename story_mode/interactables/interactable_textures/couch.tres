@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://buqwcv0vlkshx"]
+
+[ext_resource type="Texture2D" uid="uid://cxu37gst6ax0o" path="res://story_mode/interactables/interactable_textures/couch.png" id="1_hqbb6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a080w"]
+atlas = ExtResource("1_hqbb6")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a080w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]

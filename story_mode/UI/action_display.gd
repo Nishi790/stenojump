@@ -2,7 +2,7 @@ class_name ActionDisplay
 extends VBoxContainer
 
 signal word_requested
-signal action_taken(action_type)
+signal action_taken(action_type: Socks.GeneralActions)
 
 @export var target_label: RichTextLabel
 @export var action_name: Label

@@ -4,7 +4,8 @@ extends Node2D
 
 signal navigation_finished
 
-@export var animations: AnimatedSprite2D
+@export var animations: AnimationPlayer
+@export var sprite: AnimatedSprite2D
 @export var interaction_area: Area2D
 @export var speed: float = 300
 
@@ -103,7 +104,7 @@ func select_animation() -> void:
 			if direction.x < 0:
 				animations.play("walk_left")
 			else:
-				animations.play("walk_left")
+				animations.play("walk_right")
 		else:
 			if direction.y > 0:
 				animations.play("walk_down")
@@ -115,20 +116,18 @@ func select_animation() -> void:
 		animations.play("idle_down")
 
 
-func chain_anim() -> void:
+func chain_anim(_finished_anim: StringName) -> void:
 	pass
 
 
-func translate_in_anim(target_pos: Vector2, anim_name: String) -> void:
+func translate_in_anim(target_pos: Vector2, _anim_name: String) -> void:
 	var x_direction: float = target_pos.x - global_position.x
 	if x_direction < 0:
-		animations.flip_h = true
+		sprite.flip_h = true
 	else:
-		animations.flip_h = false
+		sprite.flip_h = false
 
-	var anim_frame_length: float = animations.sprite_frames.get_frame_count(anim_name)
-	var anim_speed: float = animations.sprite_frames.get_animation_speed(anim_name)
-	var anim_length: float = anim_frame_length/anim_speed
+	var anim_length: float = animations.current_animation_length
 
 	var pos_tween: Tween = get_tree().create_tween()
 	pos_tween.tween_property(self, "position", target_pos, anim_length)

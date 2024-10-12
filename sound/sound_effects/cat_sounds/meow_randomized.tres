@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://k36der1mf4g7"]
+
+[ext_resource type="AudioStream" uid="uid://syn8en16n8hs" path="res://sound/sound_effects/cat_sounds/gentle_meow.wav" id="1_de5wh"]
+
+[resource]
+random_pitch = 1.2
+random_volume_offset_db = 4.0
+streams_count = 1
+stream_0/stream = ExtResource("1_de5wh")

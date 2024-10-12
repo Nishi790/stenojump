@@ -1,7 +1,9 @@
 class_name AnimationContainer
 extends Resource
 
+@warning_ignore("unused_signal")
 signal change_animations(new_pairs: Dictionary)
+@warning_ignore("unused_signal")
 signal default_changed(new_default: AnimationContainer)
 
 @export var frames: SpriteFrames = null

@@ -22,7 +22,7 @@ func _draw() -> void:
 
 
 
-func complete_interact() -> void:
+func complete_interact(_animation_name: StringName) -> void:
 	if not door_open:
 		animation_controller.play_animation("interact_open")
 	else:

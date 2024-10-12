@@ -48,9 +48,11 @@ func _ready() -> void:
 		set_up_waypoint(inter)
 
 		if inter is BaseInteractable:
+			@warning_ignore("unsafe_call_argument")
 			set_up_interactable(inter)
 
 		if inter is ConnectionInteractable:
+			@warning_ignore("unsafe_call_argument")
 			set_up_connection_interactable(inter)
 
 		waypoint_astar_grid.add_point(way_index, inter.global_position)
@@ -148,6 +150,7 @@ func propagate_entry(text: String)-> void:
 func propagate_action(action: Socks.GeneralActions) -> void:
 	print("Trying action %s on %s" % [Socks.GeneralActions.find_key(action), current_player_point.target_word])
 	current_player_point.try_action_event(action)
+	player.do_action(action)
 
 
 func set_player_destination(point: Waypoint) -> void:

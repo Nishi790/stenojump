@@ -7,9 +7,9 @@ func _ready() -> void:
 
 func wake_up(target_pos: Vector2) -> void:
 	animations.play("sleep")
-	await animations.animation_looped
+	get_tree().create_timer(animations.current_animation_length).timeout
 	animations.play("idle_down")
-	await animations.frame_changed
+	await get_tree().create_timer(0.2).timeout
 	var move_tween: Tween = create_tween()
 	direction = target_pos - position
 	direction_changed = true
@@ -23,8 +23,8 @@ func wake_up(target_pos: Vector2) -> void:
 
 func get_dressed(target_pos: Vector2) -> void:
 	nav_to_coords(target_pos)
-	has_situational_idle = true
-	situational_idle = "dressing"
+	#has_situational_idle = true
+	#situational_idle = "dressing"
 
 
 func nav_to_coords(target_pos: Vector2) -> bool:

@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ckw56gvf05xt5"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://ckw56gvf05xt5"]
 
 [ext_resource type="Texture2D" uid="uid://7jt01i6ox7xc" path="res://textures/tiles/building_interior_floors_and_walls.png" id="1_n5qd3"]
+[ext_resource type="Texture2D" uid="uid://cyqtmfsy6uts7" path="res://story_mode/interactables/interactable_textures/counters.png" id="2_cc0pp"]
 [ext_resource type="Texture2D" uid="uid://cpwpvrke7p8ta" path="res://textures/tiles/tileset.png" id="2_podic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trat8"]
@@ -464,6 +465,33 @@ texture = ExtResource("1_n5qd3")
 16:15/0 = 0
 6:6/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pire5"]
+texture = ExtResource("2_cc0pp")
+2:0/size_in_atlas = Vector2i(1, 2)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 8)
+2:0/0/y_sort_origin = -16
+0:2/size_in_atlas = Vector2i(1, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 8)
+0:2/0/y_sort_origin = -16
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/y_sort_origin = -16
+1:0/size_in_atlas = Vector2i(1, 2)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 8)
+1:0/0/y_sort_origin = -16
+3:0/size_in_atlas = Vector2i(1, 2)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 8)
+3:0/0/y_sort_origin = -16
+1:2/size_in_atlas = Vector2i(1, 2)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 8)
+1:2/0/y_sort_origin = -16
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xhfq"]
 resource_name = "kitchen_place_holder"
 texture = ExtResource("2_podic")
@@ -749,3 +777,4 @@ custom_data_layer_0/name = "navigable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_trat8")
 sources/2 = SubResource("TileSetAtlasSource_7xhfq")
+sources/1 = SubResource("TileSetAtlasSource_pire5")

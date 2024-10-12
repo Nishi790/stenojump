@@ -36,7 +36,7 @@ func show_actions(action_number: int) -> void:
 	initialize_actions()
 
 
-func initialize_actions():
+func initialize_actions() -> void:
 	for action: ActionDisplay in all_actions:
 		if action.visible:
 			input_received.connect(action.check_target_match)
@@ -48,7 +48,7 @@ func send_new_text(text: String)-> void:
 	input_received.emit(text)
 
 
-func clear_line(_args = null) -> void:
+func clear_line(_args: Variant = null) -> void:
 	player_input.clear()
 
 

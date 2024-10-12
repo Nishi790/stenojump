@@ -90,7 +90,7 @@ func _interact() -> void:
 	set_ready_to_interact(false)
 
 
-func complete_interact() -> void:
+func complete_interact(_animation_name: StringName) -> void:
 	animation_controller.play_animation("interact")
 	for event_name in interact_events:
 		tried_event.emit(event_name, true)

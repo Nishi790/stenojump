@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=33 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_default_animation_container.gd" id="14_sw8ju"]
 [ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="15_nqyta"]
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_named_animations_container.gd" id="20_siors"]
+[ext_resource type="SpriteFrames" uid="uid://buqwcv0vlkshx" path="res://story_mode/interactables/interactable_textures/couch.tres" id="21_ss7xx"]
 [ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
 [ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
 
@@ -115,11 +116,10 @@ tile_set = ExtResource("1_c7u2v")
 
 [node name="BGObjects" type="TileMapLayer" parent="TileMap"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAKAAEAAgABAAsAAAAKAAIAAgABAAwAAAALAAEAAgADAA0AAAALAAIAAgADAA4AAAAJAAEAAgACAAsAAAAJAAIAAgACAAwAAAAMAAEAAgADAA0AAAAMAAIAAgADAA4AAAAIAAEAAgADAA0AAAAIAAIAAgADAA4AAAAHAAEAAgAEAA0AAAAHAAIAAgADAA4AAAAGAAEAAgADAA0AAAAGAAIAAgADAA4AAAACAAEAAgADAAsAAAACAAIAAgADAAwAAAADAAEAAgAEAAsAAAADAAIAAgAEAAwAAAABAAEAAgACAA4AAAABAAIAAgADAA4AAAAEAAEAAgAFAAsAAAAEAAIAAgAFAAwAAAAFAAUAAgAAABMAAAAGAAUAAgACABMAAAAFAAQAAgAAABEAAAAGAAQAAgACABEAAAAHAAQAAgADACEAAAAXAAIAAgAEABkAAAA=")
+tile_map_data = PackedByteArray("AAAFAAUAAgAAABMAAAAGAAUAAgACABMAAAAFAAQAAgAAABEAAAAGAAQAAgACABEAAAAHAAQAAgADACEAAAAXAAIAAgAEABkAAAALAAIAAQAAAAIAAAAJAAIAAQAAAAAAAAAHAAIAAQAAAAAAAAAFAAIAAQACAAAAAAADAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQABAAAAAAAEAAIAAQABAAAAAAAGAAIAAQADAAAAAAAIAAIAAQABAAAAAAAKAAIAAQABAAAAAAAMAAIAAQABAAIAAAA=")
 tile_set = ExtResource("1_c7u2v")
 
 [node name="WallTops" type="TileMapLayer" parent="TileMap"]
-z_index = 1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAFAAkAAAAAAAEAAAAAAAEAAAAAAAgAAAAAAAIAAAAAAAgAAAAAAAMAAAAAAAgAAAABAAoAAAABAAkAAAACAAoAAAABAAkAAAADAAoAAAABAAkAAAAEAAoAAAABAAkAAAAKAAkAAAACAAEAAAAMAAIAAAACAAgAAAAMAAMAAAACAAgAAAAMAAUAAAACAAgAAAAMAAYAAAAEAAgAAAALAAYAAAABAAkAAAAKAAYAAAABAAkAAAAJAAYAAAABAAkAAAAIAAYAAAABAAkAAAAHAAYAAAABAAkAAAAGAAYAAAABAAkAAAAFAAYAAAABAAkAAAAEAAcAAAACAAgAAAAEAAgAAAACAAgAAAAEAAkAAAACAAgAAAANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAALAAkAAAAAAAEAAAALAAoAAAADAAEAAAAMAAoAAAABAAIAAAANAAoAAAABAAIAAAAOAAoAAAABAAIAAAAPAAoAAAABAAIAAAAQAAoAAAABAAIAAAARAAoAAAABAAIAAAASAAoAAAABAAIAAAATAAoAAAABAAIAAAAUAAoAAAABAAIAAAAVAAoAAAABAAIAAAAWAAoAAAABAAIAAAANAAcAAAAAAAEAAAANAAgAAAAAAAEAAAAMAAEAAAACAAgAAAAMAAAAAAAEAAcAAAAbAAgAAAACAAEAAAAbAAkAAAACAAEAAAAXAAoAAAABAAIAAAAYAAoAAAABAAIAAAAZAAoAAAABAAIAAAAaAAoAAAABAAIAAAAbAAoAAAAEAAEAAAAYAAUAAAACAAUAAAAYAAYAAAACAAYAAAAZAAYAAAADAAYAAAAZAAUAAAADAAUAAAAXAAAAAAACAAAAAAAXAAEAAAACAAEAAAAWAAAAAAABAAAAAAAXAAIAAAACAAEAAAAXAAMAAAACAAEAAAAXAAQAAAACAAEAAAAXAAUAAAAAAAQAAAAAAAQAAAADAAsAAAD8/wYAAAAAAAgAAAD8/wcAAAAAAAgAAAD8/wgAAAAAAAgAAAD8/wkAAAAAAAgAAAD8/woAAAADAAgAAAD9/woAAAABAAkAAAD+/woAAAABAAkAAAD//woAAAABAAkAAAAAAAoAAAABAAkAAAAIAAsAAAAEAAMAAAAFAAsAAAADAAEAAAAGAAsAAAABAAIAAAAHAAsAAAABAAIAAAAIAAwAAAAEAAQAAAAJAAsAAAABAAIAAAAKAAsAAAAEAAEAAAAKAAoAAAACAAEAAAA=")
 tile_set = ExtResource("1_c7u2v")
@@ -163,7 +163,7 @@ animation_list = {
 "interact": ExtResource("12_bhab7"),
 "jenny_wakes_up": SubResource("Resource_rtmmf")
 }
-interaction_anim_name = "jump_up_sleep"
+interaction_anim_name = "Socks/jump_up_sleep"
 interact_end_pos = Vector2(60, -132)
 collision_shape = SubResource("ConvexPolygonShape2D_dl67o")
 connected_points = [NodePath("../MiddleBedroom"), NodePath("../AlarmClock"), NodePath("../ScratchingPost")]
@@ -218,7 +218,7 @@ connected_points = [NodePath("../BottomBedroom"), NodePath("../Bed"), NodePath("
 movement_events = Array[String](["first_move"])
 
 [node name="Sink" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("6_n00nb")]
-position = Vector2(836, 287)
+position = Vector2(764, 288)
 interaction_enabled = true
 animation_offset = Vector2(0, -16)
 animation_frames = ExtResource("14_6q0wm")
@@ -228,3 +228,13 @@ animation_list = {
 collision_shape = SubResource("RectangleShape2D_sgdm2")
 collision_position = Vector2(-16, 24)
 connected_points = [NodePath("../FoodBowl"), NodePath("../BedroomDoor")]
+
+[node name="Couch" parent="." instance=ExtResource("24_n3j0x")]
+position = Vector2(-177, 712)
+animation_frames = ExtResource("21_ss7xx")
+animation_list = {
+"idle": ExtResource("15_nqyta"),
+"interact": ExtResource("15_nqyta")
+}
+interaction_anim_name = "Socks/jump_up_sleep"
+interact_end_pos = Vector2(0, -148)

@@ -9,7 +9,7 @@ func _interact() -> void:
 	super()
 
 
-func complete_interact() -> void:
+func complete_interact(_animation_name: StringName) -> void:
 	toggle_value = not toggle_value
 	for event in interact_events:
 		tried_event.emit(event, toggle_value)
