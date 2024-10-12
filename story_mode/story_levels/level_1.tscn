@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=32 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
@@ -52,6 +52,13 @@ post_animation_name = &""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2do5s"]
 size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_abr2d"]
+script = ExtResource("13_gd0rk")
+oneshot = true
+pre_animation_name = &""
+animation_name = &"interact"
+post_animation_name = &""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05wjc"]
 size = Vector2(64, 64)
@@ -185,12 +192,16 @@ collision_shape = SubResource("RectangleShape2D_2do5s")
 connected_points = [NodePath("../Bed"), NodePath("../LeftCurtain"), NodePath("../MiddleBedroom"), NodePath("../TopBedroom")]
 
 [node name="FoodBowl" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
-position = Vector2(1103, 622)
+position = Vector2(915, 595)
 interact_events = Array[String](["interacted_with_bowl"])
 animation_offset = Vector2(0, -5)
 animation_frames = ExtResource("12_wymo2")
+animation_list = {
+"idle": ExtResource("15_nqyta"),
+"interact": SubResource("Resource_abr2d")
+}
 collision_shape = SubResource("RectangleShape2D_05wjc")
-collision_position = Vector2(16, 0)
+collision_position = Vector2(0, 16)
 connected_points = [NodePath("../BedroomDoor"), NodePath("../Sink")]
 
 [node name="ScratchingPost" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]

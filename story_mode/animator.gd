@@ -48,6 +48,10 @@ func play_default_animation() -> void:
 
 
 func _play_anim(animation: AnimationContainer) -> void:
+	if Engine.is_editor_hint():
+		await current_animation._play()
+		return
+
 	await current_animation._post_animation()
 	await current_animation._after_animation_hook()
 	current_animation = animation

@@ -23,7 +23,7 @@ y_sort_enabled = true
 [node name="Level" parent="Node2D" instance=ExtResource("2_p3qat")]
 
 [node name="Character" parent="Node2D" instance=ExtResource("3_xewxg")]
-position = Vector2(1489, 998)
+position = Vector2(1493, 1006)
 
 [node name="GameCamera" type="Camera2D" parent="."]
 position = Vector2(1344, 542)
