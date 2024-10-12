@@ -9,12 +9,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3vbe"]
 size = Vector2(128, 64)
 
-[node name="OneShotInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "sprite", "target_label")]
+[node name="OneShotInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "audio_player", "sprite", "target_label")]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_6c121")
 interaction_enabled = false
 animation_controller = NodePath("Animator")
+audio_player = NodePath("AudioPlayer")
 sprite = NodePath("Animation")
 animation_offset = Vector2(0, -24)
 animation_frames = ExtResource("2_doekw")
@@ -51,3 +52,5 @@ animations = {
 "interact": ExtResource("3_ok7u0")
 }
 default_animation = ExtResource("4_jrhgl")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]

@@ -1,16 +1,18 @@
-@tool
 class_name Animator
 extends Node
 
 var sprite: AnimatedSprite2D
-@export var animations: Dictionary #Animation Name: animation_container resource
+var audio_player: AudioStreamPlayer2D
 
+@export var animations: Dictionary #Animation Name: animation_container resource
 @export var default_animation: AnimationContainer
+
 
 var current_animation: AnimationContainer:
 	set(animation):
 		if current_animation:
 			current_animation.sprite = null
+			current_animation.audio_player = null
 
 		current_animation = animation.duplicate()
 		if not current_animation.change_animations.is_connected(change_named_anims):
@@ -23,6 +25,7 @@ var current_animation: AnimationContainer:
 			current_animation.frames = sprite.sprite_frames
 		else:
 			sprite.sprite_frames = current_animation.frames
+		current_animation.audio_player = audio_player
 
 
 func set_up() -> void:

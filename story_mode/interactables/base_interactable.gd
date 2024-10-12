@@ -16,7 +16,7 @@ var interactor: Socks = null
 
 @export_group("Animation")
 @export var animation_controller: Animator
-
+@export var audio_player: AudioStreamPlayer2D
 @export var sprite: AnimatedSprite2D:
 	set(new_sprite):
 		sprite = new_sprite

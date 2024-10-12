@@ -9,12 +9,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4kl"]
 size = Vector2(128, 64)
 
-[node name="ToggleInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "sprite", "target_label")]
+[node name="ToggleInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "audio_player", "sprite", "target_label")]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_fcen8")
 interaction_enabled = false
 animation_controller = NodePath("Animator")
+audio_player = NodePath("AudioStream")
 sprite = NodePath("AnimatedSprite2D")
 animation_offset = Vector2(0, -24)
 animation_frames = ExtResource("2_vbijc")
@@ -52,3 +53,5 @@ animations = {
 "interact": ExtResource("3_p1vr7")
 }
 default_animation = ExtResource("3_2gika")
+
+[node name="AudioStream" type="AudioStreamPlayer2D" parent="."]

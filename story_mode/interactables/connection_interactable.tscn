@@ -10,10 +10,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrnlt"]
 size = Vector2(140, 100)
 
-[node name="ConnectionInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "sprite", "target_label")]
+[node name="ConnectionInteractable" type="Area2D" node_paths=PackedStringArray("animation_controller", "audio_player", "sprite", "target_label")]
 collision_layer = 4
 script = ExtResource("1_t5pgr")
 animation_controller = NodePath("Animator")
+audio_player = NodePath("AudioPlayer")
 sprite = NodePath("AnimatedSprite2D")
 animation_frames = ExtResource("2_760ma")
 default_animation = ExtResource("5_wficf")
@@ -52,3 +53,5 @@ animations = {
 "interact_open": ExtResource("3_34lgt")
 }
 default_animation = ExtResource("5_wficf")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
