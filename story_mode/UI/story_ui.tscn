@@ -25,6 +25,7 @@ hiss_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/HissAction"
 item_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/ItemAction")
 
 [node name="ExampleMarginCont" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,7 +42,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="StrokePanel" type="PanelContainer" parent="ExampleMarginCont"]
-visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("2_n7d8i")

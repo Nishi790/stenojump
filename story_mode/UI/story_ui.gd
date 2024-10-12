@@ -13,6 +13,7 @@ signal input_received(text: String)
 @export var item_action: ActionDisplay
 
 var all_actions: Array[ActionDisplay]
+var dialogue_queue: Array[Callable]
 
 func _ready() -> void:
 	all_actions = [meow_action, hiss_action, item_action]
@@ -62,13 +63,25 @@ func finish_quest(quest_name: String) -> void:
 
 func start_dialogue(key: String, dialogue: DialogueResource, nodes: Array[Node]) -> void:
 	nodes.append(self)
+	var dialogue_callable: Callable = call_dialogue.bind(key, dialogue, nodes)
+	if dialog_balloon.visible:
+		dialogue_queue.append(dialogue_callable)
+	else:
+		dialogue_callable.call()
+
+
+func call_dialogue(key: String, dialogue: DialogueResource, nodes: Array[Node]) -> void:
 	dialog_balloon.show()
 	dialog_balloon.start(dialogue, key, nodes)
 
 
 func end_dialogue(_resource: DialogueResource) -> void:
 	dialog_balloon.hide()
-	player_input.grab_focus()
+	if dialogue_queue.size() > 0:
+		var dialogue_callable: Callable = dialogue_queue.pop_front()
+		dialogue_callable.call()
+	else:
+		player_input.grab_focus()
 
 
 ##Shows a stroke in the center of the screen - for use as part of learning dialogues

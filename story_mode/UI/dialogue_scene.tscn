@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcbnho06e8427"]
+
+[ext_resource type="Script" path="res://story_mode/UI/dialogue_scene.gd" id="1_614aq"]
+[ext_resource type="Texture2D" uid="uid://mk0lmo28dtld" path="res://icon.svg" id="2_kp450"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="3_jc3tw"]
+[ext_resource type="Script" path="res://story_mode/UI/dialogue_responses_container.gd" id="4_0efe1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywe2v"]
+
+[node name="DialogueScene" type="HBoxContainer" node_paths=PackedStringArray("speaker_texture", "speaker_name_label", "dialogue_label", "response_container")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -944.0
+offset_top = -332.0
+offset_right = 944.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_614aq")
+speaker_texture = NodePath("MarginContainer/HBoxContainer/SpeakerContainer/SpeakerSprite")
+speaker_name_label = NodePath("MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel/PanelContainer/SpeakerLabel")
+dialogue_label = NodePath("MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel/MarginContainer/DialogueLabel")
+response_container = NodePath("ResponseChoices/ResponsePanel/DialogueResponsesContainer")
+portrait_dict = {
+"Socks": SubResource("AtlasTexture_ywe2v")
+}
+skip_action = &"ui_accept"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SpeakerContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/SpeakerContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SpeakerSprite" type="TextureRect" parent="MarginContainer/HBoxContainer/SpeakerContainer"]
+layout_mode = 2
+texture = ExtResource("2_kp450")
+stretch_mode = 3
+
+[node name="DialogueContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/DialogueContainer"]
+layout_mode = 2
+
+[node name="DialoguePanel" type="Panel" parent="MarginContainer/HBoxContainer/DialogueContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_type_variation = &"fullscreen_panel"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -133.0
+offset_top = -25.0
+offset_right = -51.0
+offset_bottom = 29.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="SpeakerLabel" type="Label" parent="MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel/PanelContainer"]
+layout_mode = 2
+text = "Socks"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel/MarginContainer"]
+custom_minimum_size = Vector2(800, 150)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "
+"
+script = ExtResource("3_jc3tw")
+skip_action = &"ui_accept"
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+
+[node name="ResponseChoices" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ResponsePanel" type="PanelContainer" parent="ResponseChoices"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_type_variation = &"fullscreen_panel"
+
+[node name="DialogueResponsesContainer" type="VBoxContainer" parent="ResponseChoices/ResponsePanel"]
+layout_mode = 2
+script = ExtResource("4_0efe1")
+
+[node name="Button2" type="Button" parent="ResponseChoices/ResponsePanel/DialogueResponsesContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Another response"
+
+[node name="Button" type="Button" parent="ResponseChoices/ResponsePanel/DialogueResponsesContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Sample Response"
