@@ -133,7 +133,10 @@ level_words = Array[Dictionary]([{
 }, {
 "hint": "REUB",
 "word": "rib"
-}, {}])
+}, {
+"hint": "PEUT",
+"word": "pit"
+}])
 dialogue_resource = ExtResource("1_vuym1")
 level_events = {
 "bedroom_curtains_open": ExtResource("2_4cq67"),

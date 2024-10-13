@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ChangeNamedAnimationsContainer" load_steps=7 format=3 uid="uid://cyp3pg6jbvuix"]
+
+[ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="1_4yd7q"]
+[ext_resource type="Resource" uid="uid://dnu2hwdw781xr" path="res://story_mode/interactables/interactable_textures/animations/interact_no_post_interact.tres" id="1_64w6y"]
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_named_animations_container.gd" id="2_fo547"]
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/animation_container.gd" id="3_xqaen"]
+
+[sub_resource type="Resource" id="Resource_vcq8c"]
+script = ExtResource("2_fo547")
+changed_anims = {
+"interact": ExtResource("1_64w6y")
+}
+new_default = ExtResource("1_4yd7q")
+oneshot = true
+pre_animation_name = &""
+animation_name = &"eat"
+post_animation_name = &""
+
+[sub_resource type="Resource" id="Resource_22e00"]
+script = ExtResource("3_xqaen")
+oneshot = false
+pre_animation_name = &""
+animation_name = &"idle_full"
+post_animation_name = &""
+
+[resource]
+script = ExtResource("2_fo547")
+changed_anims = {
+"interact": SubResource("Resource_vcq8c")
+}
+new_default = SubResource("Resource_22e00")
+oneshot = true
+pre_animation_name = &""
+animation_name = &"fill_bowl"
+post_animation_name = &""

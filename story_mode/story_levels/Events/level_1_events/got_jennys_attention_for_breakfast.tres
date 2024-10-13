@@ -8,6 +8,7 @@ action_type = 0
 name = "got_jennys_attention"
 event_complete = false
 conditions = {
+"got_jennys_attention": false,
 "jenny_in_kitchen": true
 }
 triggers_global_event = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cqmcig52q8t60"]
+[gd_scene load_steps=32 format=4 uid="uid://cqmcig52q8t60"]
 
 [ext_resource type="TileSet" uid="uid://ckw56gvf05xt5" path="res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres" id="1_c7u2v"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_1.gd" id="1_m0lfx"]
@@ -7,42 +7,26 @@
 [ext_resource type="Script" path="res://story_mode/story_levels/tile_map_holder.gd" id="3_6q8rh"]
 [ext_resource type="PackedScene" uid="uid://rgpvjjnooqeu" path="res://story_mode/interactables/one_shot_interactable.tscn" id="4_td581"]
 [ext_resource type="PackedScene" uid="uid://dtwvpy41tht6y" path="res://story_mode/interactables/toggle_interactable.tscn" id="6_n00nb"]
-[ext_resource type="SpriteFrames" uid="uid://h0gbq0km6s1s" path="res://story_mode/interactables/interactable_textures/jenny_bed_anims.tres" id="8_qjxqd"]
 [ext_resource type="PackedScene" uid="uid://bx2wul4em514e" path="res://story_mode/interactables/connection_interactable.tscn" id="10_ndvpi"]
 [ext_resource type="SpriteFrames" uid="uid://tjvny3j6237c" path="res://story_mode/interactables/interactable_textures/alarm_knock_down.tres" id="11_el2rh"]
 [ext_resource type="Resource" uid="uid://dyagyxn665h3r" path="res://story_mode/interactables/interactable_textures/animations/basic_idle_after_interact.tres" id="12_bhab7"]
 [ext_resource type="SpriteFrames" uid="uid://dp780kx1u8etg" path="res://story_mode/interactables/interactable_textures/empty_food_bowl.tres" id="12_wymo2"]
-[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/animation_container.gd" id="13_gd0rk"]
 [ext_resource type="SpriteFrames" uid="uid://4wvjx4e3sgh8" path="res://story_mode/interactables/interactable_textures/scratching_post.tres" id="13_qn52o"]
 [ext_resource type="SpriteFrames" uid="uid://cad14t475s723" path="res://story_mode/interactables/interactable_textures/sink_overflow.tres" id="14_6q0wm"]
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_default_animation_container.gd" id="14_sw8ju"]
 [ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="15_nqyta"]
 [ext_resource type="AudioStream" uid="uid://dse5b6nc8bl6s" path="res://sound/sound_effects/indoor_sounds/alarm_wobble_ring.wav" id="17_ta45y"]
+[ext_resource type="Resource" uid="uid://dnu2hwdw781xr" path="res://story_mode/interactables/interactable_textures/animations/interact_no_post_interact.tres" id="17_uim0k"]
+[ext_resource type="Resource" uid="uid://cyp3pg6jbvuix" path="res://story_mode/interactables/interactable_textures/animations/fill_bowl.tres" id="18_yvjpy"]
 [ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_named_animations_container.gd" id="20_siors"]
 [ext_resource type="SpriteFrames" uid="uid://buqwcv0vlkshx" path="res://story_mode/interactables/interactable_textures/couch.tres" id="21_ss7xx"]
+[ext_resource type="PackedScene" uid="uid://c33ve66yylg07" path="res://story_mode/interactables/CustomInteractable/jenny_bed.tscn" id="22_plqjv"]
+[ext_resource type="Shape2D" uid="uid://c7a0i3exh8a1c" path="res://story_mode/interactables/CustomInteractable/jenny_bed_interact_area.tres" id="23_t1ie7"]
 [ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="24_n3j0x"]
 [ext_resource type="PackedScene" uid="uid://dm3xse45w73i6" path="res://story_mode/interactables/way_point.tscn" id="25_4wkxj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tgucy"]
 radius = 40.0
-
-[sub_resource type="Resource" id="Resource_ravcq"]
-script = ExtResource("13_gd0rk")
-oneshot = false
-pre_animation_name = &""
-animation_name = &"idle_jenny_awake"
-post_animation_name = &""
-
-[sub_resource type="Resource" id="Resource_rtmmf"]
-script = ExtResource("14_sw8ju")
-new_default = SubResource("Resource_ravcq")
-oneshot = true
-pre_animation_name = &""
-animation_name = &"get_up"
-post_animation_name = &""
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dl67o"]
-points = PackedVector2Array(-64, 0, 128, 0, 128, -150, 20, -150, -64, -36)
 
 [sub_resource type="Resource" id="Resource_fit33"]
 script = ExtResource("14_sw8ju")
@@ -55,13 +39,6 @@ animation_sound = ExtResource("17_ta45y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2do5s"]
 size = Vector2(64, 64)
-
-[sub_resource type="Resource" id="Resource_abr2d"]
-script = ExtResource("13_gd0rk")
-oneshot = true
-pre_animation_name = &""
-animation_name = &"interact"
-post_animation_name = &""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05wjc"]
 size = Vector2(64, 64)
@@ -83,15 +60,17 @@ post_animation_name = &""
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgdm2"]
 size = Vector2(100, 100)
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("bedroom_door", "food_bowl", "waypoints", "tile_map_holder")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("bedroom_door", "food_bowl", "bed", "sink", "waypoints", "tile_map_holder")]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_m0lfx")
-jenny_start_pos = Vector2(2104, 542)
-jenny_nav_points = Array[Vector2]([Vector2(2167, 897), Vector2(1305, 432), Vector2(1300, 525), Vector2(815, 1200), Vector2(2496, 900)])
+jenny_start_pos = Vector2(2100, 636)
+jenny_nav_points = Array[Vector2]([Vector2(1920, 600), Vector2(1975, 250), Vector2(1300, 525), Vector2(815, 1200), Vector2(2496, 900), Vector2(815, 525)])
 bedroom_door = NodePath("BedroomDoor")
 food_bowl = NodePath("FoodBowl")
-waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain"), NodePath("Bed"), NodePath("BedroomDoor"), NodePath("AlarmClock"), NodePath("FoodBowl"), NodePath("ScratchingPost"), NodePath("Sink")]
+bed = NodePath("JBed")
+sink = NodePath("Sink")
+waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain"), NodePath("BedroomDoor"), NodePath("AlarmClock"), NodePath("FoodBowl"), NodePath("ScratchingPost"), NodePath("Sink"), NodePath("JBed")]
 generic_dialog = ExtResource("2_p6h6h")
 tile_map_holder = NodePath("TileMap")
 level_word_list = ExtResource("2_eiump")
@@ -139,7 +118,7 @@ connected_points = [NodePath("../MiddleBedroom"), NodePath("../Shelf"), NodePath
 
 [node name="MiddleBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
 position = Vector2(1489, 622)
-connected_points = [NodePath("../BottomBedroom"), NodePath("../TopBedroom"), NodePath("../Bed"), NodePath("../BedroomDoor"), NodePath("../AlarmClock"), NodePath("../ScratchingPost")]
+connected_points = [NodePath("../BottomBedroom"), NodePath("../TopBedroom"), NodePath("../BedroomDoor"), NodePath("../AlarmClock"), NodePath("../ScratchingPost"), NodePath("../JBed")]
 movement_events = Array[String](["first_move"])
 
 [node name="TopBedroom" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("25_4wkxj")]
@@ -153,23 +132,6 @@ interact_events = Array[String](["first_interact", "bedroom_curtains_open"])
 animation_offset = Vector2(8, -24)
 collision_shape = SubResource("CircleShape2D_tgucy")
 connected_points = [NodePath("../TopBedroom"), NodePath("../AlarmClock")]
-
-[node name="Bed" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
-position = Vector2(2021, 763)
-at_height = true
-interact_events = Array[String](["sat_on_bed", "first_interact"])
-animation_offset = Vector2(20, -32)
-animation_frames = ExtResource("8_qjxqd")
-animation_list = {
-"idle": ExtResource("15_nqyta"),
-"interact": ExtResource("12_bhab7"),
-"jenny_wakes_up": SubResource("Resource_rtmmf")
-}
-interaction_anim_name = "Socks/jump_up_sleep"
-interact_end_pos = Vector2(60, -132)
-collision_shape = SubResource("ConvexPolygonShape2D_dl67o")
-connected_points = [NodePath("../MiddleBedroom"), NodePath("../AlarmClock"), NodePath("../ScratchingPost")]
-action_events = Array[String](["meowed_beside_bed"])
 
 [node name="BedroomDoor" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("10_ndvpi")]
 y_sort_enabled = true
@@ -191,16 +153,17 @@ animation_list = {
 "interact": SubResource("Resource_fit33")
 }
 collision_shape = SubResource("RectangleShape2D_2do5s")
-connected_points = [NodePath("../Bed"), NodePath("../LeftCurtain"), NodePath("../MiddleBedroom"), NodePath("../TopBedroom")]
+connected_points = [NodePath("../LeftCurtain"), NodePath("../MiddleBedroom"), NodePath("../TopBedroom"), NodePath("../JBed")]
 
 [node name="FoodBowl" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("24_n3j0x")]
-position = Vector2(915, 595)
+position = Vector2(910, 612)
 interact_events = Array[String](["interacted_with_bowl"])
-animation_offset = Vector2(0, -5)
+animation_offset = Vector2(-8, -5)
 animation_frames = ExtResource("12_wymo2")
 animation_list = {
+"fill_bowl": ExtResource("18_yvjpy"),
 "idle": ExtResource("15_nqyta"),
-"interact": SubResource("Resource_abr2d")
+"interact": ExtResource("17_uim0k")
 }
 collision_shape = SubResource("RectangleShape2D_05wjc")
 collision_position = Vector2(0, 16)
@@ -216,12 +179,13 @@ animation_list = {
 }
 collision_shape = SubResource("RectangleShape2D_ei5ax")
 collision_position = Vector2(-22, 8)
-connected_points = [NodePath("../BottomBedroom"), NodePath("../Bed"), NodePath("../MiddleBedroom")]
+connected_points = [NodePath("../BottomBedroom"), NodePath("../MiddleBedroom"), NodePath("../JBed")]
 movement_events = Array[String](["first_move"])
 
 [node name="Sink" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("6_n00nb")]
 position = Vector2(764, 288)
 interaction_enabled = true
+interact_events = Array[String](["sink_overflow"])
 animation_offset = Vector2(0, -16)
 animation_frames = ExtResource("14_6q0wm")
 animation_list = {
@@ -238,5 +202,12 @@ animation_list = {
 "idle": ExtResource("15_nqyta"),
 "interact": ExtResource("15_nqyta")
 }
-interaction_anim_name = "Socks/jump_up_sleep"
+interaction_anim_name = "jump_up_sleep"
 interact_end_pos = Vector2(0, -148)
+
+[node name="JBed" parent="." node_paths=PackedStringArray("connected_points") instance=ExtResource("22_plqjv")]
+position = Vector2(2021, 763)
+interaction_anim_name = "jump_up_sleep"
+interact_end_pos = Vector2(60, -64)
+collision_shape = ExtResource("23_t1ie7")
+connected_points = [NodePath("../MiddleBedroom"), NodePath("../ScratchingPost"), NodePath("../AlarmClock")]

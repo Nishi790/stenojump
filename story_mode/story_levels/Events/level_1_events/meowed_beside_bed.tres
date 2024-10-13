@@ -8,3 +8,5 @@ action_type = 0
 name = "meowed_beside_bed"
 event_complete = false
 conditions = {}
+triggers_global_event = true
+global_event_name = "dialog_sleepy_jenny"

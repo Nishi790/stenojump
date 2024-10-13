@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c68eoq2241umv"]
+[gd_scene load_steps=34 format=3 uid="uid://c68eoq2241umv"]
 
 [ext_resource type="Script" path="res://story_mode/characters/socks.gd" id="1_jxr8n"]
 [ext_resource type="SpriteFrames" uid="uid://bxd74c38t8x8g" path="res://textures/character_animations/player_sprite_frames.tres" id="2_6vqsa"]
@@ -11,139 +11,22 @@ radius = 32.0
 
 [sub_resource type="Animation" id="Animation_f6v56"]
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioPlayer:playing")
+tracks/0/path = NodePath("AudioPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_53yap"]
-_data = {
-"RESET": SubResource("Animation_f6v56")
-}
-
-[sub_resource type="Animation" id="Animation_8758u"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioPlayer:stream")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_7lh8i"]
-resource_name = "crawl"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterAnims:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterAnims:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["crawl"]
-}
-
-[sub_resource type="Animation" id="Animation_0md06"]
-resource_name = "die"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterAnims:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterAnims:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["die"]
-}
-
-[sub_resource type="Animation" id="Animation_4byav"]
-resource_name = "eat"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterAnims:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterAnims:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["eat"]
-}
-
-[sub_resource type="Animation" id="Animation_kb5k8"]
+[sub_resource type="Animation" id="Animation_qk0m2"]
 resource_name = "idle"
 length = 1.6
 loop_mode = 1
@@ -172,7 +55,93 @@ tracks/1/keys = {
 "values": ["idle"]
 }
 
-[sub_resource type="Animation" id="Animation_kd5a8"]
+[sub_resource type="Animation" id="Animation_asef2"]
+resource_name = "crawl"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterAnims:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterAnims:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["crawl"]
+}
+
+[sub_resource type="Animation" id="Animation_86nx4"]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterAnims:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterAnims:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["die"]
+}
+
+[sub_resource type="Animation" id="Animation_usyt6"]
+resource_name = "eat"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterAnims:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterAnims:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["eat"]
+}
+
+[sub_resource type="Animation" id="Animation_2m0q3"]
 resource_name = "idle_stand"
 length = 1.6
 loop_mode = 1
@@ -201,7 +170,7 @@ tracks/1/keys = {
 "values": ["idle_stand"]
 }
 
-[sub_resource type="Animation" id="Animation_01w2f"]
+[sub_resource type="Animation" id="Animation_thaor"]
 resource_name = "jump_down"
 length = 0.4
 tracks/0/type = "value"
@@ -229,7 +198,7 @@ tracks/1/keys = {
 "values": ["jump_down"]
 }
 
-[sub_resource type="Animation" id="Animation_sogup"]
+[sub_resource type="Animation" id="Animation_lopjk"]
 resource_name = "jump_glide"
 length = 0.2
 loop_mode = 1
@@ -258,7 +227,7 @@ tracks/1/keys = {
 "values": ["jump_glide"]
 }
 
-[sub_resource type="Animation" id="Animation_gc6l2"]
+[sub_resource type="Animation" id="Animation_rcqne"]
 resource_name = "jump_up"
 length = 0.4
 tracks/0/type = "value"
@@ -286,7 +255,7 @@ tracks/1/keys = {
 "values": ["jump_up"]
 }
 
-[sub_resource type="Animation" id="Animation_e35oe"]
+[sub_resource type="Animation" id="Animation_0ana2"]
 resource_name = "jump_up_sleep"
 length = 0.666667
 tracks/0/type = "value"
@@ -314,7 +283,7 @@ tracks/1/keys = {
 "values": ["jump_up_sleep"]
 }
 
-[sub_resource type="Animation" id="Animation_iakwp"]
+[sub_resource type="Animation" id="Animation_ueq0h"]
 resource_name = "lie_down"
 length = 2.25
 tracks/0/type = "value"
@@ -342,7 +311,7 @@ tracks/1/keys = {
 "values": ["lie_down"]
 }
 
-[sub_resource type="Animation" id="Animation_m56jp"]
+[sub_resource type="Animation" id="Animation_jt7yq"]
 resource_name = "look_ahead"
 length = 0.8
 tracks/0/type = "value"
@@ -370,7 +339,7 @@ tracks/1/keys = {
 "values": ["look_ahead"]
 }
 
-[sub_resource type="Animation" id="Animation_ix5jy"]
+[sub_resource type="Animation" id="Animation_hfv4s"]
 resource_name = "look_at_player"
 length = 0.8
 tracks/0/type = "value"
@@ -398,7 +367,7 @@ tracks/1/keys = {
 "values": ["look_at_player"]
 }
 
-[sub_resource type="Animation" id="Animation_t2xgv"]
+[sub_resource type="Animation" id="Animation_w87rm"]
 resource_name = "meow"
 length = 1.6
 tracks/0/type = "value"
@@ -441,7 +410,7 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = false
 
-[sub_resource type="Animation" id="Animation_88db3"]
+[sub_resource type="Animation" id="Animation_a3vua"]
 resource_name = "paw_air"
 length = 0.8
 tracks/0/type = "value"
@@ -469,7 +438,7 @@ tracks/1/keys = {
 "values": ["paw_air"]
 }
 
-[sub_resource type="Animation" id="Animation_fq5pm"]
+[sub_resource type="Animation" id="Animation_kuiiv"]
 resource_name = "paws_down"
 length = 1.2
 tracks/0/type = "value"
@@ -497,7 +466,7 @@ tracks/1/keys = {
 "values": ["paws_down"]
 }
 
-[sub_resource type="Animation" id="Animation_wpsgp"]
+[sub_resource type="Animation" id="Animation_xki6k"]
 resource_name = "reach_up"
 length = 1.2
 tracks/0/type = "value"
@@ -525,7 +494,7 @@ tracks/1/keys = {
 "values": ["reach_up"]
 }
 
-[sub_resource type="Animation" id="Animation_jbfdi"]
+[sub_resource type="Animation" id="Animation_2sx5i"]
 resource_name = "run"
 length = 0.333333
 loop_mode = 1
@@ -554,7 +523,7 @@ tracks/1/keys = {
 "values": ["run"]
 }
 
-[sub_resource type="Animation" id="Animation_nhykw"]
+[sub_resource type="Animation" id="Animation_58c1k"]
 resource_name = "scratch"
 length = 5.8
 tracks/0/type = "value"
@@ -582,7 +551,7 @@ tracks/1/keys = {
 "values": ["scratch"]
 }
 
-[sub_resource type="Animation" id="Animation_c7mxf"]
+[sub_resource type="Animation" id="Animation_hov7d"]
 resource_name = "sit_down"
 length = 0.666667
 tracks/0/type = "value"
@@ -610,7 +579,7 @@ tracks/1/keys = {
 "values": ["sit_down"]
 }
 
-[sub_resource type="Animation" id="Animation_qlca4"]
+[sub_resource type="Animation" id="Animation_xg14b"]
 resource_name = "sleep"
 length = 2.0
 loop_mode = 1
@@ -653,7 +622,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_0lb3n"]
+[sub_resource type="Animation" id="Animation_uvod2"]
 resource_name = "stand_up"
 length = 0.666667
 tracks/0/type = "value"
@@ -681,7 +650,7 @@ tracks/1/keys = {
 "values": ["stand_up"]
 }
 
-[sub_resource type="Animation" id="Animation_7c6fp"]
+[sub_resource type="Animation" id="Animation_04wwb"]
 resource_name = "stare_at_player"
 length = 0.8
 loop_mode = 1
@@ -710,7 +679,7 @@ tracks/1/keys = {
 "values": ["stare_at_player"]
 }
 
-[sub_resource type="Animation" id="Animation_g7jdd"]
+[sub_resource type="Animation" id="Animation_nlyf0"]
 resource_name = "walk"
 loop_mode = 1
 tracks/0/type = "value"
@@ -738,7 +707,7 @@ tracks/1/keys = {
 "values": ["walk"]
 }
 
-[sub_resource type="Animation" id="Animation_on5v1"]
+[sub_resource type="Animation" id="Animation_g7mew"]
 resource_name = "walk_down"
 length = 0.8
 loop_mode = 1
@@ -767,7 +736,7 @@ tracks/1/keys = {
 "values": ["walk_down"]
 }
 
-[sub_resource type="Animation" id="Animation_cgpoa"]
+[sub_resource type="Animation" id="Animation_2cx2o"]
 resource_name = "walk_up"
 length = 1.6
 loop_mode = 1
@@ -796,34 +765,34 @@ tracks/1/keys = {
 "values": ["walk_up"]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_msdc3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53yap"]
 _data = {
-"RESET": SubResource("Animation_8758u"),
-"crawl": SubResource("Animation_7lh8i"),
-"die": SubResource("Animation_0md06"),
-"eat": SubResource("Animation_4byav"),
-"idle": SubResource("Animation_kb5k8"),
-"idle_stand": SubResource("Animation_kd5a8"),
-"jump_down": SubResource("Animation_01w2f"),
-"jump_glide": SubResource("Animation_sogup"),
-"jump_up": SubResource("Animation_gc6l2"),
-"jump_up_sleep": SubResource("Animation_e35oe"),
-"lie_down": SubResource("Animation_iakwp"),
-"look_ahead": SubResource("Animation_m56jp"),
-"look_at_player": SubResource("Animation_ix5jy"),
-"meow": SubResource("Animation_t2xgv"),
-"paw_air": SubResource("Animation_88db3"),
-"paws_down": SubResource("Animation_fq5pm"),
-"reach_up": SubResource("Animation_wpsgp"),
-"run": SubResource("Animation_jbfdi"),
-"scratch": SubResource("Animation_nhykw"),
-"sit_down": SubResource("Animation_c7mxf"),
-"sleep": SubResource("Animation_qlca4"),
-"stand_up": SubResource("Animation_0lb3n"),
-"stare_at_player": SubResource("Animation_7c6fp"),
-"walk": SubResource("Animation_g7jdd"),
-"walk_down": SubResource("Animation_on5v1"),
-"walk_up": SubResource("Animation_cgpoa")
+"RESET": SubResource("Animation_f6v56"),
+"crawl": SubResource("Animation_asef2"),
+"die": SubResource("Animation_86nx4"),
+"eat": SubResource("Animation_usyt6"),
+"idle": SubResource("Animation_qk0m2"),
+"idle_stand": SubResource("Animation_2m0q3"),
+"jump_down": SubResource("Animation_thaor"),
+"jump_glide": SubResource("Animation_lopjk"),
+"jump_up": SubResource("Animation_rcqne"),
+"jump_up_sleep": SubResource("Animation_0ana2"),
+"lie_down": SubResource("Animation_ueq0h"),
+"look_ahead": SubResource("Animation_jt7yq"),
+"look_at_player": SubResource("Animation_hfv4s"),
+"meow": SubResource("Animation_w87rm"),
+"paw_air": SubResource("Animation_a3vua"),
+"paws_down": SubResource("Animation_kuiiv"),
+"reach_up": SubResource("Animation_xki6k"),
+"run": SubResource("Animation_2sx5i"),
+"scratch": SubResource("Animation_58c1k"),
+"sit_down": SubResource("Animation_hov7d"),
+"sleep": SubResource("Animation_xg14b"),
+"stand_up": SubResource("Animation_uvod2"),
+"stare_at_player": SubResource("Animation_04wwb"),
+"walk": SubResource("Animation_nlyf0"),
+"walk_down": SubResource("Animation_g7mew"),
+"walk_up": SubResource("Animation_2cx2o")
 }
 
 [node name="Character" type="Node2D" node_paths=PackedStringArray("soundfx", "animations", "sprite", "interaction_area")]
@@ -843,7 +812,7 @@ y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_6vqsa")
-animation = &"sleep"
+animation = &"idle"
 offset = Vector2(0, -16)
 
 [node name="InteractionArea" type="Area2D" parent="."]
@@ -858,6 +827,5 @@ script = ExtResource("4_up0hx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_53yap"),
-"Socks": SubResource("AnimationLibrary_msdc3")
+"": SubResource("AnimationLibrary_53yap")
 }

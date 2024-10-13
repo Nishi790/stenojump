@@ -7,7 +7,8 @@ script = ExtResource("1_enwrq")
 name = "jenny_in_kitchen"
 event_complete = false
 conditions = {
-"bedroom_door_open": true
+"bedroom_door_open": true,
+"jenny_in_kitchen": false
 }
-triggers_global_event = true
-global_event_name = "dialog_missing_headphones"
+triggers_global_event = false
+global_event_name = ""

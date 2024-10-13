@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://chv3fr0b2dky8"]
+[gd_scene load_steps=34 format=3 uid="uid://chv3fr0b2dky8"]
 
 [ext_resource type="Script" path="res://story_mode/characters/jenny.gd" id="1_6bkhg"]
 [ext_resource type="Texture2D" uid="uid://dcpvbx1b2o2hu" path="res://textures/character_animations/jenny_animations.png" id="2_4gtvd"]
@@ -18,6 +18,14 @@ region = Rect2(48, 160, 24, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfe5e"]
 atlas = ExtResource("2_4gtvd")
 region = Rect2(72, 160, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upo1d"]
+atlas = ExtResource("2_4gtvd")
+region = Rect2(48, 96, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1hl8"]
+atlas = ExtResource("2_4gtvd")
+region = Rect2(24, 96, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2jfc"]
 atlas = ExtResource("2_4gtvd")
@@ -95,6 +103,17 @@ animations = [{
 "speed": 4.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upo1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1hl8")
+}],
+"loop": true,
+"name": &"interact",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.8,
 "texture": SubResource("AtlasTexture_q2jfc")
 }, {
@@ -165,6 +184,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jsus"]
 size = Vector2(100, 64)
 
+[sub_resource type="Animation" id="Animation_bu4x4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_3eeus"]
 loop_mode = 1
 tracks/0/type = "value"
@@ -190,6 +224,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["idle_down"]
+}
+
+[sub_resource type="Animation" id="Animation_wtpcd"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["interact"]
 }
 
 [sub_resource type="Animation" id="Animation_mx3xg"]
@@ -334,7 +395,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0bfuh"]
 _data = {
+"RESET": SubResource("Animation_bu4x4"),
 "idle_down": SubResource("Animation_3eeus"),
+"interact": SubResource("Animation_wtpcd"),
 "sleep": SubResource("Animation_mx3xg"),
 "walk_down": SubResource("Animation_5eq3h"),
 "walk_left": SubResource("Animation_n5ej4"),
@@ -353,7 +416,7 @@ interaction_area = NodePath("InteractionArea")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_fctn5")
-animation = &"walk_right"
+animation = &"interact"
 offset = Vector2(0, -16)
 
 [node name="InteractionArea" type="Area2D" parent="."]

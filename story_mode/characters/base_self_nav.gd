@@ -26,10 +26,8 @@ var navigating: bool = false
 
 
 func _ready() -> void:
-
 	animations.animation_finished.connect(chain_anim)
 	select_animation()
-
 
 
 func _process(_delta: float) -> void:

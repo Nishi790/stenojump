@@ -47,9 +47,9 @@ func update_event(event_name: String, value: bool) -> void:
 		var event_data: StoryEvent = level_events[event_name]
 		var can_complete: bool = event_data.check_event_can_complete(level_events)
 		if can_complete:
-			event_data.event_complete = value
 			if event_data.triggers_global_event and value == true:
 				event_triggered.emit(event_data.global_event_name, [])
+			event_data.event_complete = value
 	for key: String in active_quests.keys():
 		var _quest_complete: bool = check_quest_complete(key)
 

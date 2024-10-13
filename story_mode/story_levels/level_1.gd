@@ -7,6 +7,8 @@ var jenny_character: BaseSelfNavCharacter
 
 @export var bedroom_door: BaseInteractable
 @export var food_bowl: BaseInteractable
+@export var bed: BaseInteractable
+@export var sink: BaseInteractable
 
 
 func _load_event_funcs() -> void:
@@ -16,7 +18,7 @@ func _load_event_funcs() -> void:
 
 func wake_up_jenny(_args: Array) -> void:
 	jenny_character = jenny_scene.instantiate()
-	waypoints[5].animation_controller.play_animation("jenny_wakes_up")
+	bed.animation_controller.play_animation("jenny_wakes_up")
 	add_jenny()
 	level_word_list.update_event("jenny_woke_up", true)
 
@@ -25,7 +27,7 @@ func add_jenny() -> void:
 	add_child(jenny_character)
 	jenny_character.global_position = jenny_start_pos
 	jenny_character.nav_astar = astar_nav_grid
-	jenny_character.wake_up(Vector2(1920, 600))
+	jenny_character.wake_up(jenny_nav_points[0])
 	await get_tree().create_timer(5).timeout
 	jenny_character.get_dressed(jenny_nav_points[4])
 
@@ -42,13 +44,28 @@ func animate_unlock_door() -> void:
 
 func feed_socks(_args: Array) -> void:
 	print("Socks has food")
+	if level_word_list.level_events["door_opened"] == false and jenny_character.global_position.x > 1250:
+		jenny_character.nav_to_astar_point(bedroom_door.astar_point)
+		await jenny_character.navigation_finished
+		bedroom_door._interact()
+
+	jenny_character.nav_to_coords(jenny_nav_points[5])
+	await jenny_character.navigation_finished
+
+	food_bowl.animation_controller.play_animation("fill_bowl")
+	food_bowl.interact_events.clear()
+	food_bowl.interact_events.append("breakfast_eaten")
 	#change animation frames to the ones for food
 	#Change to a new node, of type OneShotInteractable
 	#update interact event to "breakfast_eaten"
 
 
 func jenny_enter_kitchen(_args: Array) -> void:
-	print("Jenny is in the kitchen")
+	await sink.sprite.animation_changed
+	jenny_character.nav_to_astar_point(sink.astar_point)
+	await jenny_character.navigation_finished
+	sink.complete_interact("interact")
+
 	level_word_list.update_event("jenny_in_kitchen", true)
 	start_dialog("missing_headphones", level_word_list.dialogue_resource)
 

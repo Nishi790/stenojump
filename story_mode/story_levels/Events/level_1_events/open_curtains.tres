@@ -7,3 +7,5 @@ script = ExtResource("1_aorc1")
 name = "bedroom_curtains_opened"
 event_complete = false
 conditions = {}
+triggers_global_event = true
+global_event_name = "dialog_sleepy_jenny"

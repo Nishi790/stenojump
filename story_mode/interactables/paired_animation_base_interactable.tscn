@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://80ln2wsbco7e"]
+
+[ext_resource type="Script" path="res://story_mode/interactables/CustomInteractable/jenny_bed.gd" id="1_oytpn"]
+[ext_resource type="SpriteFrames" uid="uid://h3ob0hs3h17y" path="res://story_mode/interactables/interactable_textures/jenny_bed_main_body.tres" id="2_b3mht"]
+[ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="3_5vvmh"]
+[ext_resource type="Shape2D" uid="uid://c7a0i3exh8a1c" path="res://story_mode/interactables/CustomInteractable/jenny_bed_interact_area.tres" id="4_26rji"]
+[ext_resource type="Resource" uid="uid://b3mpx8pcc66ua" path="res://story_mode/interactables/interactable_textures/animations/basic_interact.tres" id="4_ij0rp"]
+[ext_resource type="Script" path="res://story_mode/animator.gd" id="5_cgibk"]
+[ext_resource type="SpriteFrames" uid="uid://cny73t48d7j47" path="res://story_mode/interactables/interactable_textures/jenny_bed_head.tres" id="7_f82vs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr3do"]
+size = Vector2(128, 64)
+
+[node name="BaseInteractable" type="Area2D" node_paths=PackedStringArray("secondary_sprite", "animation_controller", "audio_player", "sprite", "target_label")]
+y_sort_enabled = true
+position = Vector2(600, 600)
+collision_layer = 4
+script = ExtResource("1_oytpn")
+secondary_sprite = NodePath("SecondaryAnimation")
+at_height = true
+animation_controller = NodePath("Animator")
+audio_player = NodePath("AudioPlayer")
+sprite = NodePath("Animation")
+animation_offset = Vector2(20, -32)
+animation_frames = ExtResource("2_b3mht")
+default_animation = ExtResource("3_5vvmh")
+collision_shape = ExtResource("4_26rji")
+target_label = NodePath("TargetLabel")
+
+[node name="SecondaryAnimation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("7_f82vs")
+animation = &"idle"
+offset = Vector2(20, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_nr3do")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_b3mht")
+animation = &"idle"
+offset = Vector2(20, -32)
+
+[node name="TargetLabel" type="RichTextLabel" parent="."]
+visible = false
+z_index = 4
+custom_minimum_size = Vector2(160, 30)
+offset_left = -80.0
+offset_top = -50.0
+offset_right = 80.0
+offset_bottom = -20.0
+theme_type_variation = &"TargetRichText"
+bbcode_enabled = true
+fit_content = true
+
+[node name="Animator" type="Node" parent="."]
+script = ExtResource("5_cgibk")
+animations = {
+"idle": ExtResource("3_5vvmh"),
+"interact": ExtResource("4_ij0rp")
+}
+default_animation = ExtResource("3_5vvmh")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]

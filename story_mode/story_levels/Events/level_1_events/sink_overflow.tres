@@ -6,6 +6,9 @@
 script = ExtResource("1_5hhco")
 name = "sink_overflow"
 event_complete = false
-conditions = {}
+conditions = {
+"bedroom_door_open": true,
+"sink_overflow": false
+}
 triggers_global_event = true
 global_event_name = "jenny_enters_kitchen"

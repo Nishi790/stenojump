@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://c33ve66yylg07"]
+
+[ext_resource type="PackedScene" uid="uid://ekpl1qnkwrf4" path="res://story_mode/interactables/base_interactable.tscn" id="1_2ja6h"]
+[ext_resource type="Script" path="res://story_mode/interactables/CustomInteractable/jenny_bed.gd" id="2_oi4qt"]
+[ext_resource type="SpriteFrames" uid="uid://h3ob0hs3h17y" path="res://story_mode/interactables/interactable_textures/jenny_bed_main_body.tres" id="3_43pv3"]
+[ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="4_6m7mc"]
+[ext_resource type="SpriteFrames" uid="uid://cny73t48d7j47" path="res://story_mode/interactables/interactable_textures/jenny_bed_head.tres" id="4_fy3bc"]
+[ext_resource type="Resource" uid="uid://dyagyxn665h3r" path="res://story_mode/interactables/interactable_textures/animations/basic_idle_after_interact.tres" id="5_o4uyb"]
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/animation_container.gd" id="6_22utm"]
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_default_animation_container.gd" id="7_aog00"]
+
+[sub_resource type="Resource" id="Resource_77opq"]
+script = ExtResource("6_22utm")
+oneshot = false
+pre_animation_name = &""
+animation_name = &"idle_unmade"
+post_animation_name = &""
+
+[sub_resource type="Resource" id="Resource_4tgeh"]
+script = ExtResource("7_aog00")
+new_default = SubResource("Resource_77opq")
+oneshot = true
+pre_animation_name = &""
+animation_name = &"get_up"
+post_animation_name = &""
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kcvk"]
+size = Vector2(200, 64)
+
+[node name="BaseInteractable" node_paths=PackedStringArray("secondary_sprite") instance=ExtResource("1_2ja6h")]
+script = ExtResource("2_oi4qt")
+secondary_sprite = NodePath("SecondaryAnim")
+secondary_offset = Vector2(0, -16)
+at_height = true
+interact_events = Array[String](["first_interact", "sat_on_bed"])
+animation_offset = Vector2(20, -24)
+animation_frames = ExtResource("3_43pv3")
+animation_list = {
+"idle": ExtResource("4_6m7mc"),
+"interact": ExtResource("5_o4uyb"),
+"jenny_wakes_up": SubResource("Resource_4tgeh")
+}
+interaction_anim_name = "Socks/jump_up_sleep"
+interact_end_pos = Vector2(60, -132)
+collision_shape = SubResource("RectangleShape2D_3kcvk")
+action_events = Array[String](["meowed_beside_bed"])
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_3kcvk")
+
+[node name="Animation" parent="." index="1"]
+sprite_frames = ExtResource("3_43pv3")
+frame_progress = 0.0
+offset = Vector2(20, -24)
+
+[node name="Animator" parent="." index="3"]
+animations = {
+"idle": ExtResource("4_6m7mc"),
+"interact": ExtResource("5_o4uyb"),
+"jenny_wakes_up": SubResource("Resource_4tgeh")
+}
+
+[node name="SecondaryAnim" type="AnimatedSprite2D" parent="." index="5"]
+position = Vector2(120, -240)
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("4_fy3bc")
+animation = &"idle"

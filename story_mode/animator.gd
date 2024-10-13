@@ -1,5 +1,8 @@
+@tool
 class_name Animator
 extends Node
+
+signal animation_changed
 
 var sprite: AnimatedSprite2D
 var audio_player: AudioStreamPlayer2D
@@ -26,6 +29,7 @@ var current_animation: AnimationContainer:
 		else:
 			sprite.sprite_frames = current_animation.frames
 		current_animation.audio_player = audio_player
+		animation_changed.emit()
 
 
 func set_up() -> void:
@@ -34,6 +38,8 @@ func set_up() -> void:
 
 
 func play_animation(animation_name: String) -> void:
+	if Engine.is_editor_hint():
+		return
 	var next_anim: AnimationContainer
 	if animations.has(animation_name):
 		next_anim = animations[animation_name]

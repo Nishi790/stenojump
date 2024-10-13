@@ -37,3 +37,11 @@ func check_complete(event_dict: Dictionary) -> bool:
 			return false
 		_:
 			return false
+
+
+func get_quest_progress(event_dict: Dictionary) -> int:
+	var reqs_met: int = 0
+	for req: String in reqs:
+		if event_dict[req].event_complete == reqs[req]:
+			reqs_met += 1
+	return reqs_met

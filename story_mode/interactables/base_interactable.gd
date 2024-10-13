@@ -5,7 +5,7 @@ extends Waypoint
 signal failed_interact(dialogue_key: String)
 
 var ready_to_interact: bool = false
-var interactor: Socks = null
+var interactor: BaseSelfNavCharacter = null
 
 @export var interaction_enabled: bool = true
 @export var enable_requirement: String #Should be a specific event name
@@ -22,11 +22,14 @@ var interactor: Socks = null
 		sprite = new_sprite
 		if animation_controller:
 			animation_controller.sprite = sprite
+
 @export var animation_offset: Vector2:
 	set(new_offset):
+		if not is_node_ready():
+			await ready
 		animation_offset = new_offset
-		if sprite:
-			sprite.offset = animation_offset
+		set_animation_offset()
+
 @export var animation_frames: SpriteFrames:
 	set(new_frames):
 		animation_frames = new_frames
@@ -72,6 +75,11 @@ func _ready() -> void:
 	animation_controller.set_up()
 
 
+func set_animation_offset() -> void:
+	if sprite:
+		sprite.offset = animation_offset
+
+
 func _draw() -> void:
 	super()
 	if Engine.is_editor_hint():
@@ -95,6 +103,14 @@ func complete_interact(_animation_name: StringName) -> void:
 	animation_controller.play_animation("interact")
 	for event_name in interact_events:
 		tried_event.emit(event_name, true)
+
+
+func npc_interact(npc: BaseSelfNavCharacter) -> void:
+	var old_interactor: BaseSelfNavCharacter = interactor
+	interactor = npc
+	_interact()
+	await complete_interact
+	interactor = old_interactor
 
 
 #To connect to signal for interactables that have a different state after interact only until Socks leaves

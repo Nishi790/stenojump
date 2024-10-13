@@ -7,3 +7,5 @@ script = ExtResource("1_gykgd")
 name = "book_fallen"
 event_complete = false
 conditions = {}
+triggers_global_event = true
+global_event_name = "dialog_sleepy_jenny"

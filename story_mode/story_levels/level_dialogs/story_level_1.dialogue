@@ -5,7 +5,7 @@ Socks: We've got a busy day ahead of us, starting with helping my person, Jenny.
 	Socks: She needs to get up and feed me! [wait=0.75] I mean go to work.
 		We need to help her get up and get ready for work. 
 - Okay, I can do that.
-Socks: Do you know how to write a basic word?
+Socks: Do you know the basics of how stenography works?
 - Of course
 	=> try_walk
 - Not really
@@ -111,10 +111,10 @@ do hide_stroke()
 Socks: Oh, you thought I was done? I have way more to teach you!
 do display_stroke("EU")
 Socks: There might not be any more vowel keys, but English definitely has more vowels.
-The last one for today is short 'i' - the sound in 'bit', 'tin', and 'miss'. 
+	The last one for today is short 'i' - the sound in 'bit', 'tin', and 'miss'. 
 Socks: This one uses two keys. Stroke E and U at the same time for the short vowel 'i'. 
 Socks: Remember that if you hear a short vowel spelled with one letter, you should use the letter that matches the spelling.
-That means 'sir' is written like this.
+	That means 'sir' is written like this.
 do display_stroke("SEUR")
 Socks: That's everything I have to teach you right now. You'd better hurry up and get Jenny off to work. I have to meet my friends at the park. 
 do hide_stroke()
@@ -126,7 +126,7 @@ Socks: Usually I can get doors open myself, but this one is pretty stuck. We're 
 => END
 
 ~ missing_headphones
-Jenny: Socks, have you seen my headphones? They aren't by my head where I left them...
+Jenny: Socks, have you seen my headphones? They aren't by my bed where I left them...
 Socks: Uh-oh... I might have played with those last night...
 Socks: She'll never leave for work without those. Jenny always sticks them in when she leaves. I better find them.
 do level.level_word_list.start_quest("find_jennys_headphones")
@@ -138,6 +138,17 @@ Socks: Has Jenny forgotten me? Doesn't she realize that I need to eat? I guess I
 do level.level_word_list.start_quest("eat_breakfast")
 => END
 
+
+~ eating_breakfast
+if level.level_word_list.level_events["breakfast_eaten"].event_complete == false:
+	Socks: Kibble again. Delicious, but I'd much rather have some wet food. Or some fish, I do like fish...
+	Socks: Well, I can always find some treats when I'm out later today. 
+else:
+	% Socks: I've already eaten breakfast. And Jenny is probably too smart to feed me twice... Let's get her out to work and then we can find someone to give me some more treats. 
+	% Socks: All out of kibble...
+=> END
+
+
 ~ end_level
 Jenny: Bye Socks! Be good at home today, okay? No more hiding things.
 Socks: Meow. [i]I don't just stay home all day, that would be boring[/i]
@@ -146,4 +157,14 @@ Socks: Purr [i]Stop worrying about me and have a good day, okay?[/i]
 Jenny: I love you too.
 do level.jenny_leave_home()
 Socks: Well, she's all set, so now we can get going. Let's head out!
+=> END
+
+
+~ sleepy_jenny
+if level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events) == 0:
+	Jenny: Zzzzz...
+elif level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events) == 1:
+	Jenny: Wha? I'm up...[wait = 0.3] Zzzzz...
+else:
+	Socks: I have completed {{level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events)}} events
 => END

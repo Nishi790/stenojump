@@ -9,5 +9,5 @@ event_complete = false
 conditions = {
 "got_jennys_attention": true
 }
-triggers_global_event = false
-global_event_name = ""
+triggers_global_event = true
+global_event_name = "dialog_eating_breakfast"
