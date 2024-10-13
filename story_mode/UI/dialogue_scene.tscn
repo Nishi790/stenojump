@@ -22,7 +22,7 @@ script = ExtResource("1_614aq")
 speaker_texture = NodePath("MarginContainer/HBoxContainer/SpeakerContainer/SpeakerSprite")
 speaker_name_label = NodePath("MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel/PanelContainer/SpeakerLabel")
 dialogue_label = NodePath("MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel/MarginContainer/DialogueLabel")
-response_container = NodePath("ResponseChoices/ResponsePanel/DialogueResponsesContainer")
+response_container = NodePath("ResponseChoices/ResponsePanel")
 portrait_dict = {
 "Socks": SubResource("AtlasTexture_ywe2v")
 }
@@ -105,23 +105,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="ResponsePanel" type="PanelContainer" parent="ResponseChoices"]
+[node name="ResponsePanel" type="PanelContainer" parent="ResponseChoices" node_paths=PackedStringArray("response_organizer")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_type_variation = &"fullscreen_panel"
+script = ExtResource("4_0efe1")
+response_organizer = NodePath("DialogueResponsesContainer")
 
 [node name="DialogueResponsesContainer" type="VBoxContainer" parent="ResponseChoices/ResponsePanel"]
 layout_mode = 2
-script = ExtResource("4_0efe1")
-
-[node name="Button2" type="Button" parent="ResponseChoices/ResponsePanel/DialogueResponsesContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Another response"
-
-[node name="Button" type="Button" parent="ResponseChoices/ResponsePanel/DialogueResponsesContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Sample Response"

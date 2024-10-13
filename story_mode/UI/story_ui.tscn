@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://buc68cm2o0f7i" path="res://story_mode/UI/quest_panel.tscn" id="2_dja5f"]
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="2_n7d8i"]
 [ext_resource type="FontFile" uid="uid://dnn0f73am7f4b" path="res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf" id="3_cbgie"]
-[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://addons/dialogue_manager/example_balloon/example_balloon.tscn" id="3_ute1d"]
 [ext_resource type="PackedScene" uid="uid://btctdu2obcr7k" path="res://story_mode/UI/action_display.tscn" id="5_mec4o"]
+[ext_resource type="PackedScene" uid="uid://bcbnho06e8427" path="res://story_mode/UI/dialogue_scene.tscn" id="6_s18n2"]
 
 [node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display", "stroke_display", "stroke_label", "meow_action", "hiss_action", "item_action")]
 layout_mode = 3
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fdopu")
 player_input = NodePath("MarginContainer/VertScreenSplitter/PlayerInput")
-dialog_balloon = NodePath("MarginContainer/VertScreenSplitter/ExampleBalloon")
+dialog_balloon = NodePath("MarginContainer/VertScreenSplitter/DialogueScene")
 quest_display = NodePath("MarginContainer/VertScreenSplitter/HScreenSpilt/QuestDisplay")
 stroke_display = NodePath("ExampleMarginCont")
 stroke_label = NodePath("ExampleMarginCont/StrokePanel/StrokeExample")
@@ -97,5 +97,5 @@ action_type = 1
 layout_mode = 2
 action_type = null
 
-[node name="ExampleBalloon" parent="MarginContainer/VertScreenSplitter" instance=ExtResource("3_ute1d")]
-visible = false
+[node name="DialogueScene" parent="MarginContainer/VertScreenSplitter" instance=ExtResource("6_s18n2")]
+layout_mode = 2

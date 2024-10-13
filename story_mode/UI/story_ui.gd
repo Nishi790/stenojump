@@ -4,7 +4,7 @@ extends Control
 signal input_received(text: String)
 
 @export var player_input: LineEdit
-@export var dialog_balloon: CanvasLayer
+@export var dialog_balloon: DialogueScene
 @export var quest_display: QuestPanel
 @export var stroke_display: MarginContainer
 @export var stroke_label: RichTextLabel
@@ -94,3 +94,8 @@ func display_stroke(text: String) -> void:
 
 func hide_stroke() -> void:
 	stroke_display.hide()
+
+
+
+func skip_dialogue() -> void:
+	dialog_balloon.skip_dialogue()
