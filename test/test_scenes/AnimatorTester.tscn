@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c6vvbodfl78jq"]
 
-[ext_resource type="SpriteFrames" uid="uid://dp780kx1u8etg" path="res://story_mode/interactables/interactable_textures/empty_food_bowl.tres" id="1_w04w8"]
+[ext_resource type="SpriteFrames" uid="uid://c7stpsqt1a6yw" path="res://story_mode/interactables/interactable_textures/curtain_anims.tres" id="1_d1wmt"]
 [ext_resource type="Script" path="res://test/test_scenes/animation_tester.gd" id="2_3c3vk"]
 [ext_resource type="Script" path="res://story_mode/animator.gd" id="3_s2t0g"]
 [ext_resource type="AudioStream" uid="uid://dse5b6nc8bl6s" path="res://sound/sound_effects/indoor_sounds/alarm_wobble_ring.wav" id="4_87xtg"]
@@ -20,10 +20,8 @@ animation_sound = ExtResource("4_87xtg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" node_paths=PackedStringArray("animator", "audio")]
 position = Vector2(929, 541)
 scale = Vector2(6, 6)
-sprite_frames = ExtResource("1_w04w8")
-animation = &"eat"
-frame = 3
-frame_progress = 1.0
+sprite_frames = ExtResource("1_d1wmt")
+animation = &"close_curtain"
 script = ExtResource("2_3c3vk")
 animator = NodePath("Animator")
 audio = NodePath("AudioStreamPlayer2D")

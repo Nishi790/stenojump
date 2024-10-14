@@ -3,6 +3,7 @@ class_name Animator
 extends Node
 
 signal animation_changed
+signal post_animation_hook
 
 var sprite: AnimatedSprite2D
 var audio_player: AudioStreamPlayer2D
@@ -71,6 +72,7 @@ func _play_anim(animation: AnimationContainer) -> void:
 	else:
 		await current_animation._play()
 		await current_animation._before_post_animation_hook()
+		post_animation_hook.emit()
 
 
 

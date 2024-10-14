@@ -38,13 +38,12 @@ func unlock_door(_args: Array) -> void:
 
 
 func animate_unlock_door() -> void:
-	print("Jenny is unlocking the door")
 	bedroom_door.interaction_enabled = true
+	start_dialog("jenny_opens_door", level_word_list.dialogue_resource)
 
 
 func feed_socks(_args: Array) -> void:
-	print("Socks has food")
-	if level_word_list.level_events["door_opened"] == false and jenny_character.global_position.x > 1250:
+	if level_word_list.level_events["bedroom_door_open"].event_complete == false and jenny_character.global_position.x > 1250:
 		jenny_character.nav_to_astar_point(bedroom_door.astar_point)
 		await jenny_character.navigation_finished
 		bedroom_door._interact()
@@ -61,7 +60,8 @@ func feed_socks(_args: Array) -> void:
 
 
 func jenny_enter_kitchen(_args: Array) -> void:
-	await sink.sprite.animation_changed
+	while sink.sprite.animation != "idle_after_interact":
+		await sink.sprite.animation_changed
 	jenny_character.nav_to_astar_point(sink.astar_point)
 	await jenny_character.navigation_finished
 	sink.complete_interact("interact")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://doxw4uubyawgm"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_hr3yn"]
+
+[resource]
+script = ExtResource("1_hr3yn")
+name = "jump_on_couch"
+event_complete = false
+conditions = {}
+triggers_global_event = true
+global_event_name = "dialog_sit_on_couch"

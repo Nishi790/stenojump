@@ -1,0 +1,82 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c6uk8bhletts5"]
+
+[ext_resource type="Texture2D" uid="uid://dv6dbddmwlv7m" path="res://story_mode/interactables/interactable_textures/shoe_rack.png" id="1_ynkj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5khf8"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jju63"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(0, 40, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oygqc"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(0, 60, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfrbl"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(0, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a8pq"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(16, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igpmd"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(32, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clxo1"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(48, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g24dw"]
+atlas = ExtResource("1_ynkj0")
+region = Rect2(64, 20, 16, 20)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5khf8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jju63")
+}],
+"loop": true,
+"name": &"idle_after_interact",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oygqc")
+}],
+"loop": true,
+"name": &"idle_headphones_taken",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfrbl")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_5a8pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igpmd")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_clxo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g24dw")
+}],
+"loop": false,
+"name": &"interact",
+"speed": 8.0
+}]

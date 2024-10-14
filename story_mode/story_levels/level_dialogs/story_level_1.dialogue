@@ -60,22 +60,25 @@ Socks: I forgot to tell you! I can do some things from [i]anywhere[/i].
 	I can always meow, I'm very sociable! 
 Socks: You can see my general actions and the words to use them in the bottom right.
 Socks: Now you can help me wake Jenny up so that she's not late.
-	All you need to do is stroke the word you see to tell me where to go. 
 do level.level_word_list.start_quest("wake_up_jenny")
 => END
 
 ~ Jenny_woke_up
-Socks: Oh good! She's finally up. Now we can get out of here and see the rest of the house.
+Jenny: I'm up, I'm up! Can't you ever let me sleep in, Socks?
+Socks: Oh good! She's [i]finally[/i] up. Now we can get out of here and see the rest of the house.
 do level.level_word_list.start_quest("open_the_door")
 => END
 
 ~ meowed_at_door
-Socks: You might have to keep trying,
-	Jenny's my favorite human, but...[wait=0.5]
-	She's not always the best listener.
+if level.level_word_list.event_list["meowed_once"].event_complete == false:
+	Socks: You might have to keep trying,
+		Jenny's my favorite human, but...[wait=0.5]
+		She's not always the best listener.
+else: 
+	Socks: I think she's coming!
 => END
 
-~ Jenny_opens_door
+~ jenny_opens_door
 Jenny: Okay, okay. You can go out, Socks, but you know there isn't any food out there yet.
 Socks: Did she say something about food? Let's go check my bowl!
 do level.level_word_list.start_quest("check_bowl")
@@ -113,10 +116,10 @@ do display_stroke("EU")
 Socks: There might not be any more vowel keys, but English definitely has more vowels.
 	The last one for today is short 'i' - the sound in 'bit', 'tin', and 'miss'. 
 Socks: This one uses two keys. Stroke E and U at the same time for the short vowel 'i'. 
+do display_stroke("SEUR")
 Socks: Remember that if you hear a short vowel spelled with one letter, you should use the letter that matches the spelling.
 	That means 'sir' is written like this.
-do display_stroke("SEUR")
-Socks: That's everything I have to teach you right now. You'd better hurry up and get Jenny off to work. I have to meet my friends at the park. 
+Socks: That's everything I have to teach you right now. You'd better hurry up and get Jenny off to work. Then we can meet my friends at the park. 
 do hide_stroke()
 do level.level_word_list.start_quest("get_jenny_out_the_door")
 => END
@@ -164,7 +167,28 @@ Socks: Well, she's all set, so now we can get going. Let's head out!
 if level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events) == 0:
 	Jenny: Zzzzz...
 elif level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events) == 1:
-	Jenny: Wha? I'm up...[wait = 0.3] Zzzzz...
-else:
-	Socks: I have completed {{level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events)}} events
+	Jenny: Wha? I'm up...[wait = 0.3]
+	Jenny: Zzzzz...
 => END
+
+
+~ nothing_here
+if level.level_word_list.level_events["headphones_revealed"].event_complete == false:
+	Socks: Nope, nothing here. Hmmm...
+=> END
+
+~ sit_on_couch
+Socks: Jenny and I cuddle here in the evening. It's pretty much the best part of the day. 
+Socks: She always pets the good spot behind my ears. Sometimes I even get extra treats. 
+if level.level_word_list.level_events["headphones_revealed"].event_complete == false:
+	Socks: Oh yes, the headphones!
+	=> nothing_here
+
+
+~ leave_home
+if level.level_word_list.active_quests.has("get_jenny_out_the_door"):
+	Socks: I can't leave yet, Jenny's still here.
+	% Socks: She needs to find her headphones for her walk.
+	% [if level.level_word_list.active_quests.has("eat_breakfast")] Socks: And I haven't even had my breakfast!
+	% Socks: She doesn't know I go out all day, but there's so much interesting stuff out there!
+

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StoryLevelData" load_steps=29 format=3 uid="uid://bqdwup7yu3lw8"]
+[gd_resource type="Resource" script_class="StoryLevelData" load_steps=32 format=3 uid="uid://bqdwup7yu3lw8"]
 
 [ext_resource type="Resource" uid="uid://c43kcgrhcuhyu" path="res://story_mode/story_levels/level_dialogs/story_level_1.dialogue" id="1_vuym1"]
 [ext_resource type="Resource" uid="uid://flpssaglm2lw" path="res://story_mode/story_levels/Events/level_1_events/open_curtains.tres" id="2_4cq67"]
@@ -25,7 +25,10 @@
 [ext_resource type="Resource" uid="uid://bwi027uekl0ca" path="res://story_mode/story_levels/quests/level_1_quests/wake_up_jenny.tres" id="18_wyxbg"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_words/story_level_data.gd" id="19_bk54k"]
 [ext_resource type="Resource" uid="uid://dqoxm2sfnqx53" path="res://story_mode/story_levels/Events/level_1_events/breakfast_eaten.tres" id="19_j03xo"]
+[ext_resource type="Resource" uid="uid://dghgqallsx5fr" path="res://story_mode/story_levels/Events/level_1_events/paw_jacket.tres" id="20_hqfsr"]
 [ext_resource type="Resource" uid="uid://dj4v5tm7mmme1" path="res://story_mode/story_levels/quests/level_1_quests/eat_breakfast.tres" id="20_shxik"]
+[ext_resource type="Resource" uid="uid://doxw4uubyawgm" path="res://story_mode/story_levels/Events/level_1_events/jump_on_couch.tres" id="21_vosxq"]
+[ext_resource type="Resource" uid="uid://dr84lxq75c7qb" path="res://story_mode/story_levels/Events/level_1_events/try_to_leave_home.tres" id="22_pqfjm"]
 [ext_resource type="Resource" uid="uid://bchji4itk2172" path="res://story_mode/story_levels/quests/level_1_quests/find_headphones.tres" id="26_7ch2e"]
 [ext_resource type="Resource" uid="uid://nwe8ag4n3d1" path="res://story_mode/story_levels/quests/level_1_quests/get_jenny_out_the_door.tres" id="27_iw21d"]
 
@@ -151,12 +154,15 @@ level_events = {
 "interacted_with_bowl": ExtResource("7_mk4wa"),
 "jenny_in_kitchen": ExtResource("14_ycfyh"),
 "jenny_woke_up": ExtResource("8_3f5lv"),
+"jump_on_couch": ExtResource("21_vosxq"),
 "knocked_over_alarm_clock": ExtResource("9_nc0gx"),
 "meowed_at_door_once": ExtResource("10_8em8r"),
 "meowed_at_door_twice": ExtResource("11_add37"),
 "meowed_beside_bed": ExtResource("12_0crl4"),
+"paw_jacket": ExtResource("20_hqfsr"),
 "sat_on_bed": ExtResource("13_rgggb"),
-"sink_overflow": ExtResource("15_avut0")
+"sink_overflow": ExtResource("15_avut0"),
+"try_to_leave": ExtResource("22_pqfjm")
 }
 quests = {
 "check_bowl": ExtResource("14_mjixx"),

@@ -58,7 +58,10 @@ func chain_anim(finished_anim: StringName) -> void:
 			select_animation()
 
 
-func interact(anim_name: String, final_pos: Vector2 = Vector2.ZERO) -> void:
+func interact(anim_name: String, interactee_x_pos: float, final_pos: Vector2 = Vector2.ZERO) -> void:
+	if interactee_x_pos < global_position.x + sprite.offset.x:
+		sprite.flip_h = true
+	else: sprite.flip_h = false
 	if anim_name == "":
 		animations.play("reach_up")
 	else:

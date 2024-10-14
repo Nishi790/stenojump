@@ -28,6 +28,7 @@ collision_shape = ExtResource("4_26rji")
 target_label = NodePath("TargetLabel")
 
 [node name="SecondaryAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(120, -288)
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("7_f82vs")
 animation = &"idle"

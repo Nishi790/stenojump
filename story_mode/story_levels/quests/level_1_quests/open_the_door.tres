@@ -12,5 +12,5 @@ reqs = {
 "bedroom_door_open": true
 }
 start_dialog_key = ""
-finished_dialog_key = "Jenny_opens_door"
+finished_dialog_key = ""
 events_triggered = {}

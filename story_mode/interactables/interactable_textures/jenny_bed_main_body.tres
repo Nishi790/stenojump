@@ -75,7 +75,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"get_up",
-"speed": 9.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,

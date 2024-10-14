@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ChangeNamedAnimationsContainer" load_steps=3 format=3 uid="uid://dxspm57p8b1ir"]
+
+[ext_resource type="Resource" uid="uid://b7kq1uuusa5ug" path="res://story_mode/interactables/interactable_textures/animations/basic_idle.tres" id="2_c0kyn"]
+[ext_resource type="Script" path="res://story_mode/interactables/interactable_textures/animations/change_named_animations_container.gd" id="3_elohd"]
+
+[resource]
+script = ExtResource("3_elohd")
+changed_anims = {
+"interact": "res://story_mode/interactables/interactable_textures/animations/interact_no_post_interact.tres"
+}
+new_default = ExtResource("2_c0kyn")
+oneshot = true
+pre_animation_name = &""
+animation_name = &"eat"
+post_animation_name = &""

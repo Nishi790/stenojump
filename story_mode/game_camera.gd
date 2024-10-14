@@ -4,7 +4,7 @@ extends Camera2D
 
 var follow_player: bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if follow_player:
 		global_position = player.global_position
 

@@ -94,13 +94,14 @@ func _draw() -> void:
 ##Complete interaction is for actions by the interactable that should only be completed once the player animation is finished
 func _interact() -> void:
 	var global_target_pos: Vector2 = to_global(interact_end_pos)
-	interactor.interact(interaction_anim_name, global_target_pos)
+	interactor.interact(interaction_anim_name, global_position.x + animation_offset.x, global_target_pos)
 	interactor.animations.animation_finished.connect(complete_interact, CONNECT_ONE_SHOT)
 	set_ready_to_interact(false)
 
 
 func complete_interact(_animation_name: StringName) -> void:
 	animation_controller.play_animation("interact")
+	await animation_controller.post_animation_hook
 	for event_name in interact_events:
 		tried_event.emit(event_name, true)
 
@@ -109,7 +110,7 @@ func npc_interact(npc: BaseSelfNavCharacter) -> void:
 	var old_interactor: BaseSelfNavCharacter = interactor
 	interactor = npc
 	_interact()
-	await complete_interact
+	await animation_controller.animation_changed
 	interactor = old_interactor
 
 

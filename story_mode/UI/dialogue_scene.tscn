@@ -88,6 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 30
 
 [node name="DialogueLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/DialogueContainer/MarginContainer/DialoguePanel/MarginContainer"]
 custom_minimum_size = Vector2(800, 150)

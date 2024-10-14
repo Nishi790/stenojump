@@ -16,7 +16,7 @@ func set_responses(responses: Array) -> void:
 	for resp_button: Button in response_buttons:
 		resp_button.queue_free()
 	await get_tree().process_frame
-	for response in responses:
+	for response: DialogueResponse in responses:
 		var new_scene: Button
 		if response_scene:
 			new_scene = response_scene.instantiate()

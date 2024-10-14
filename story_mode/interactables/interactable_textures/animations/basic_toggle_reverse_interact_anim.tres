@@ -9,7 +9,7 @@ changed_anims = {
 "interact": "res://story_mode/interactables/interactable_textures/animations/basic_toggle_interact_anim.tres"
 }
 new_default = ExtResource("2_dgvei")
-oneshot = false
+oneshot = true
 pre_animation_name = &""
 animation_name = &"reverse_interact"
 post_animation_name = &""

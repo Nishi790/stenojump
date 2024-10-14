@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MovementStoryEvent" load_steps=2 format=3 uid="uid://dr84lxq75c7qb"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/movement_event_info.gd" id="1_vc4vx"]
+
+[resource]
+script = ExtResource("1_vc4vx")
+name = "try_to_leave"
+event_complete = false
+conditions = {}
+triggers_global_event = true
+global_event_name = "dialog_leave_home"

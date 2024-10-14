@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StoryEvent" load_steps=2 format=3 uid="uid://dghgqallsx5fr"]
+
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/event_info.gd" id="1_yo6ev"]
+
+[resource]
+script = ExtResource("1_yo6ev")
+name = "paw_jacket"
+event_complete = false
+conditions = {}
+triggers_global_event = true
+global_event_name = "dialog_nothing_here"
