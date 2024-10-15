@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5w8ptyi4ic4y"]
+[gd_scene load_steps=10 format=3 uid="uid://5w8ptyi4ic4y"]
 
 [ext_resource type="Script" path="res://in_game/background.gd" id="1_huj2q"]
 [ext_resource type="Texture2D" uid="uid://gupaloe50edb" path="res://textures/parallax_rundown_city/night_sky.atlastex" id="2_cddla"]
@@ -6,9 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://3oos6eerqovs" path="res://textures/parallax_rundown_city/night_buildings.atlastex" id="4_nswpj"]
 [ext_resource type="Texture2D" uid="uid://dytk6ix5m5o1b" path="res://textures/parallax_rundown_city/graffiti_wall.atlastex" id="5_glb5x"]
 [ext_resource type="Texture2D" uid="uid://bciadfb4ac4b7" path="res://textures/parallax_rundown_city/sidewalk.atlastex" id="6_jlp2l"]
+[ext_resource type="Texture2D" uid="uid://c78p7tfiktduj" path="res://textures/Backgrounds/inside_house/sky_with_clouds.png" id="7_8f52y"]
+[ext_resource type="Texture2D" uid="uid://bllf1sd5lsiu6" path="res://textures/Backgrounds/inside_house/trees_out_window.png" id="8_txrdj"]
+[ext_resource type="Texture2D" uid="uid://vg8mtm81xdhv" path="res://textures/Backgrounds/inside_house/house_parallax.png" id="9_apb6x"]
 
 [node name="Background" type="Node2D"]
 script = ExtResource("1_huj2q")
+parallax_layer_textures = {
+0: {
+0: ExtResource("7_8f52y"),
+2: ExtResource("8_txrdj"),
+4: ExtResource("9_apb6x")
+},
+1: {
+0: ExtResource("2_cddla"),
+1: ExtResource("3_qaf5d"),
+2: ExtResource("4_nswpj"),
+3: ExtResource("5_glb5x"),
+4: ExtResource("6_jlp2l")
+}
+}
 
 [node name="SkyBackground" type="Parallax2D" parent="."]
 process_mode = 3

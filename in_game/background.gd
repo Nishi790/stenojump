@@ -5,9 +5,27 @@ var base_autoscroll_speeds: Array[Vector2] = [Vector2(-20, 0), Vector2(-50, 0), 
 var speed_scale: float = 1.0
 var speed_multiplier: float
 
+@export var parallax_layer_textures: Dictionary
+var current_theme: RunnerGame.RunnerThemes
 
 func _ready() -> void:
-	pass
+	set_parallax_textures(RunnerGame.RunnerThemes.STREET_DIRTY)
+
+
+func set_parallax_textures(theme: RunnerGame.RunnerThemes, transition: bool = false) -> void:
+	if not transition:
+		current_theme = theme
+		if parallax_layer_textures.has(current_theme):
+			var theme_dict: Dictionary = parallax_layer_textures[current_theme]
+			var theme_keys: Array = theme_dict.keys()
+			var number_of_layers: int = get_child_count()
+			for index: int in number_of_layers:
+				var sprite: Sprite2D = get_child(index).get_child(0)
+				if theme_keys.has(index):
+					sprite.texture = theme_dict[index]
+				else:
+					sprite.texture = null
+
 
 
 func run_parallax(multiplier: float = 1.0) -> void:

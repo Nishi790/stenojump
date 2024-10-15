@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0ueamcot62y"]
+
+[ext_resource type="Script" path="res://story_mode/story_runner.gd" id="1_lcbt7"]
+
+[node name="StoryRunner" type="Node2D"]
+script = ExtResource("1_lcbt7")

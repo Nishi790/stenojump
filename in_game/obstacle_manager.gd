@@ -64,6 +64,10 @@ func _ready() -> void:
 	new_word_timer.start()
 
 
+func set_obstacle_theme(new_theme: RunnerGame.RunnerThemes) -> void:
+	pass
+
+
 func request_word() -> void:
 	new_word_needed.emit(words_per_obstacle)
 	#Calculate number of strokes of next word based on the score, and uses as multiplier on timer

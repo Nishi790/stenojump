@@ -1,4 +1,7 @@
+class_name RunnerGame
 extends Node2D
+
+enum RunnerThemes {HOUSE_CLEAN, STREET_DIRTY, HOUSE_MESSY, PARK, STREET_SUBURB}
 
 signal score_changed (new_score: int)
 signal words_left_changed (remaining_words: int)
@@ -11,6 +14,8 @@ signal main_menu_requested
 @export var hud: HUD
 @export var background: BackgroundManager
 @export var obstacle_detector: Area2D
+
+var level_theme: RunnerThemes
 
 var input_box: LineEdit
 
@@ -40,7 +45,7 @@ var level_score: int = 0
 var words_left: int:
 	set(number_of_words):
 		words_left = number_of_words
-		if words_left < 0:
+		if words_left <= 0:
 			words_left = 0
 		words_left_changed.emit(words_left)
 var max_words_per_obstacle: int = 1
@@ -90,6 +95,8 @@ func _ready() -> void:
 	hud.resume_game_requested.connect(resume_game)
 	hud.main_menu_requested.connect(quit_game)
 
+	set_level_theme(RunnerThemes.HOUSE_CLEAN)
+
 	#load selected level
 	load_level_data(PlayerConfig.current_level_path)
 	target_speed_changed.emit(PlayerConfig.current_wpm)
@@ -106,6 +113,12 @@ func _process(delta: float) -> void:
 		var normal_words: float = characters_entered_correctly/5.0
 		var minutes: float = level_time/60.0
 		wpm = normal_words/minutes
+
+
+func set_level_theme(new_theme: RunnerThemes, transition: bool = false)-> void:
+	background.set_parallax_textures(new_theme, transition)
+	obstacle_manager.set_obstacle_theme(new_theme)
+	level_theme = new_theme
 
 
 ##Dynamically adjusts obstacle and scroll speed when player is walking instead of running (i.e. level start)
@@ -133,6 +146,7 @@ func send_new_word(number: int) -> void:
 				words_to_send.append(word_queue[next_word_index])
 				next_word_index += 1
 		obstacle_manager.add_word(words_to_send)
+		obstacles_remaining -= 1
 
 
 ##Called on failure of an obstacle to reset section
@@ -253,10 +267,8 @@ func update_text(new_text: String) -> void:
 func clear_word() -> void:
 	obstacle_manager.word_cleared()
 	target_word = obstacle_manager.provide_target_word()
-	obstacles_remaining = obstacles_remaining - 1
-	if obstacles_remaining > 0:
-		words_left -= max_words_per_obstacle
-	else: words_left = 0
+	words_left -= max_words_per_obstacle
+
 
 
 ##Called when enter is pressed in player input box, used to move to next level/return to menu
@@ -311,7 +323,7 @@ func enter_pressed(text: String) -> void:
 ##Needs error handling for invalid level paths/level files
 func load_level_data(level_path: String = "") -> void:
 	if level_path != "":
-			LevelLoader.load_level(level_path)
+		LevelLoader.load_level(level_path)
 
 	word_queue = LevelLoader.active_level.level_targets.duplicate()
 
@@ -338,6 +350,7 @@ func load_level_data(level_path: String = "") -> void:
 	word_queue = word_queue.slice(0, level_size)
 	next_word_index = 0
 	words_left = word_queue.size()
+	obstacles_remaining = ceili(words_left/max_words_per_obstacle)
 
 
 ##Increases level strokes per minute by step amount
