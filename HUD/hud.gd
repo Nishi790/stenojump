@@ -14,6 +14,14 @@ signal game_options_requested
 @export var input_box: LineEdit
 @export var pause_menu_scene: PackedScene
 
+var data: RunnerSave:
+	set(save_data):
+		data = save_data
+		data.lives_changed.connect(propagate_data_change)
+		data.score_changed.connect(propagate_data_change)
+		propagate_data_change()
+
+
 var hint_string: String = "[center]You wrote [b]%s[/b].\n
 The word %s is stroked.
 [font=res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf][font_size=100]%s[/font_size][/font]
@@ -40,6 +48,11 @@ func _ready() -> void:
 func life_lost_reset() -> void:
 	input_box.editable = false
 	input_box.clear()
+
+
+func propagate_data_change() -> void:
+	score_counter.update_score_text(data.total_score)
+	lives_counter.update_lives_counter(data.current_lives)
 
 
 func display_countdown() -> bool:
@@ -73,7 +86,7 @@ func level_complete() -> void:
 
 
 func game_won() -> void:
-	ingame_message.set_text(win_message % [PlayerConfig.current_score, PlayerConfig.current_wpm, enter_hint, enter_hint])
+	ingame_message.set_text(win_message % [data.current_score, data.current_speed, enter_hint, enter_hint])
 	message_container.show()
 
 
@@ -85,7 +98,7 @@ func start_next_level() -> void:
 
 
 func game_over() -> void:
-	ingame_message.set_text(game_over_message % [PlayerConfig.current_wpm, enter_hint])
+	ingame_message.set_text(game_over_message % [data.current_speed, enter_hint])
 	message_container.show()
 
 

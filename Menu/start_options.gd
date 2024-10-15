@@ -1,6 +1,6 @@
 extends Control
 
-signal start_game_pressed
+signal start_game_pressed(data_container: RunnerSave)
 signal game_canceled
 
 enum {STARTSPEED, TARGETSPEED, STEPSIZE}
@@ -162,29 +162,30 @@ func change_level_sequence(sequence: int) -> void:
 
 func select_speed(speed: float) -> void:
 	level_data.starting_speed = int(speed)
-	PlayerConfig.current_wpm = int(speed)
+	level_data.current_speed = int(speed)
 
 
 func set_build_speed(build_speed: bool) -> void:
-	PlayerConfig.speed_building_mode = build_speed
-	@warning_ignore("narrowing_conversion")
-	PlayerConfig.target_wpm = target_speed_selector.value
-	@warning_ignore("narrowing_conversion")
-	PlayerConfig.step_size = speed_step_selector.value
+	level_data.speed_building_mode = build_speed
+
 	if build_speed:
+		level_data.target_speed = target_speed_selector.value
+		level_data.step_size = speed_step_selector.value
 		target_speed_container.set_visible(true)
 		speed_step_container.set_visible(true)
 	else:
+		level_data.target_speed = 0
+		level_data.step_size = 5
 		target_speed_container.set_visible(false)
 		speed_step_container.set_visible(false)
 
 
 func set_target_speed(speed: float) -> void:
-	PlayerConfig.target_wpm = int(speed)
+	level_data.target_speed = int(speed)
 
 
 func set_speed_step(step: float) -> void:
-	PlayerConfig.step_size = int(step)
+	level_data.step_size = int(step)
 
 
 func set_tts(enabled: bool) -> void:
@@ -193,13 +194,12 @@ func set_tts(enabled: bool) -> void:
 
 #Only called for custom level starts - otherwise uses the predefined start levels
 func set_starting_level(path: String) -> void:
-	PlayerConfig.custom_start_level = path
-	PlayerConfig.start_level_sequence(PlayerConfig.LevelSequence.OTHER)
+	level_data.custom_start_level = path
 
 
 func start_game() -> void:
-	PlayerConfig.set_sequence_data()
-	start_game_pressed.emit()
+	level_data.select_start_level()
+	start_game_pressed.emit(level_data)
 
 
 func cancel_new_game() -> void:

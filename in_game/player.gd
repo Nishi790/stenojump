@@ -15,6 +15,8 @@ enum State {WALKING, STARTING_JUMP, SOARING, ENDING_JUMP, RUNNING, CRAWLING, IDL
 @export var range_area: Area2D
 @export var jump_ray: RayCast2D
 
+var data: RunnerSave
+
 var speed: float
 var lives: int = PlayerConfig.max_lives
 
@@ -42,7 +44,6 @@ func _ready() -> void:
 	jump_ray.target_position.x = ray_length
 
 	start_walk()
-	PlayerConfig.lives_updated.connect(set_lives)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -104,10 +105,9 @@ func on_collision(collision: KinematicCollision2D) -> void:
 	if collision.get_collider().name=="Ground" or collision.get_collider().name == "Ceiling":
 		return
 	else:
-		if lives>0:
-			lives=lives-1
+		if data.current_lives > 0:
+			data.current_lives -= 1
 			reset_word.emit(collision.get_collider())
-			lives_changed.emit(lives)
 		else:
 			game_over.emit()
 			change_states(State.DIE)
@@ -251,20 +251,10 @@ func stand_up() -> void:
 
 
 func end_level() -> void:
-	save_data()
 	if movement_state == State.CRAWLING:
 		await player_movement_changed
-	lives = PlayerConfig.max_lives
-	lives_changed.emit(lives)
+	data.current_lives = PlayerConfig.max_lives
 	change_states(State.WALKING)
-
-
-func set_lives() -> void:
-	lives = PlayerConfig.current_lives
-
-
-func save_data() -> void:
-	PlayerConfig.current_lives = lives
 
 
 func play_sfx(effect: String) -> void:

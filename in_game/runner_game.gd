@@ -4,7 +4,6 @@ extends Node2D
 enum RunnerThemes {HOUSE_CLEAN, STREET_DIRTY, HOUSE_MESSY, PARK, STREET_SUBURB}
 enum RunnerMode {PROGRESSION, STORY, SPEEDBUILD}
 
-signal score_changed (new_score: int)
 signal words_left_changed (remaining_words: int)
 signal target_speed_changed (target_speed: int)
 signal wpm_updated (wpm: float)
@@ -37,15 +36,6 @@ var wpm: float = 0:
 		if level_time > 0.5:
 			wpm_updated.emit(wpm)
 var level_timer_active: bool = false
-
-#Total Score across levels
-var score: int = 0:
-	set(new_score):
-		score = new_score
-		score_changed.emit(score)
-
-#Score in this level - lost if quit mid-level
-var level_score: int = 0
 
 var words_left: int:
 	set(number_of_words):
@@ -83,15 +73,10 @@ func _ready() -> void:
 	player.game_over.connect(game_over)
 	player.player_movement_changed.connect(change_move_speed)
 	player.obstacle_in_range.connect(clear_word)
-	@warning_ignore("unsafe_call_argument")
-	player.lives_changed.connect(Callable(hud.lives_counter.update_lives_counter))
-	hud.lives_counter.update_lives_counter(player.lives)
 	obstacle_detector.start_running.connect(player.start_run)
 
 	#Connect HUD Signals
 	input_box = hud.input_box
-	@warning_ignore("unsafe_call_argument")
-	score_changed.connect(hud.score_counter.update_score_text)
 	@warning_ignore("unsafe_call_argument")
 	words_left_changed.connect(hud.word_counter.update_word_count)
 	input_box.text_changed.connect(update_text)
@@ -100,20 +85,21 @@ func _ready() -> void:
 	hud.resume_game_requested.connect(resume_game)
 	hud.main_menu_requested.connect(quit_game)
 
-	set_level_theme(RunnerThemes.HOUSE_CLEAN)
+	change_move_speed(Player.State.WALKING)
 	input_box.grab_focus()
 
 
-func start_level(data: RunnerSave) -> void:
+func start_level(data: RunnerSave, mode: RunnerMode) -> void:
+	game_mode = mode
 	save_data = data
 	save_data.next_level.connect(start_next_level)
 	save_data.speed_updated.connect(update_speed_flag)
 	speed_updated = true
-	score = save_data.current_score
 	player.data = save_data
 	hud.data = save_data
 
 	load_level_data(save_data.current_level_path)
+	set_level_theme(RunnerThemes.HOUSE_CLEAN)
 	resume_game()
 
 
@@ -178,8 +164,7 @@ func reset_word(collider: Object) -> void:
 
 	# adjust score
 	hud.life_lost_reset()
-	score = score - 1
-	level_score = level_score - 1 #TODO scale death score penalty
+	save_data.level_score -= 1  #TODO scale death score penalty
 
 
 func resume_from_missed_word() -> void:
@@ -202,8 +187,7 @@ func return_words_to_queue(number_of_words: int, number_of_obstacles: int) -> vo
 
 
 func adjust_score(amount: int) -> void:
-	level_score += amount
-	score += amount
+	save_data.level_score += amount
 
 
 func update_speed_flag() -> void:
@@ -229,7 +213,8 @@ func game_over() -> void:
 	if level_complete: level_complete = false
 	hud.game_over()
 	obstacle_manager.game_over()
-	PlayerConfig.run_lost()
+	save_data.reset_progress()
+	PlayerConfig.save_runner(game_mode, save_data.serialize_data())
 
 
 ##Called when a level is loaded without a following level path (defacto last level)
@@ -244,11 +229,10 @@ func end_level() -> void:
 	level_time = 0
 	characters_entered_correctly = 0
 	level_complete = true
-	PlayerConfig.current_score = score
-	level_score = 0
+	save_data.update_saved_score()
 	await get_tree().create_timer(2).timeout
 	player.end_level()
-	PlayerConfig.set_high_score(PlayerConfig.current_level_path, word_queue.size())
+	PlayerConfig.set_high_score(save_data, word_queue.size())
 	if on_last_level:
 		hud.game_won()
 	else:
@@ -383,7 +367,7 @@ func resume_game() -> void:
 	player.resume_movement()
 	if speed_updated:
 		speed_updated = false
-		obstacle_manager.set_speed(save_data.current_wpm)
+		obstacle_manager.set_speed(save_data.current_speed)
 	obstacle_manager.resume_obstacles()
 
 
@@ -407,7 +391,6 @@ func pause_game(menu_open: bool = false) -> void:
 ##Saves data before quitting, first sending player class data to the PlayerConfig
 ##Then saves run related data to file before requesting return to menu
 func quit_game(at_next_level: bool = false) -> void:
-	player.save_data()
-	save_data.serialize_data(at_next_level)
-	PlayerConfig.save_runner(game_mode)
+	var serialized_data: Dictionary = save_data.serialize_data(at_next_level)
+	PlayerConfig.save_runner(game_mode, serialized_data)
 	main_menu_requested.emit()

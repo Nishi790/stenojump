@@ -21,7 +21,5 @@ func new_level_selected(path: String) -> void:
 	level_selected.emit(path)
 
 
-func send_speed_settings() -> void:
-	PlayerConfig.starting_wpm = int(starting_speed_select.value)
-	PlayerConfig.current_wpm = int(starting_speed_select.value)
-	PlayerConfig.step_size = int(speed_step_select.value)
+func send_speed_settings() -> Array:
+	return [starting_speed_select.value, speed_step_select.value]

@@ -2,10 +2,8 @@ extends Node
 
 signal lives_updated
 
-enum LevelSequence {LEARN_PLOVER, LAPWING, OTHER}
 enum WordOrder {DEFAULT, RANDOM, ORDERED}
 enum TargetVisibility {ALL, NEXT, IN_RANGE, NONE}
-enum RunMode {SEQUENCE, ARCADE, STORY}
 
 @export var lapwing_level_1: String = "lapwing_1.json"
 @export var learn_plover_level_1: String
@@ -29,26 +27,6 @@ var interact_font_color: String = Color.YELLOW.to_html()
 var arcade_sequence_save_dictionary: Dictionary
 var story_save_dictionary: Dictionary
 
-var level_sequence: LevelSequence
-var custom_start_level: String
-var current_level_path: String
-var last_checkpoint_path: String
-var starting_wpm: int
-var speed_building_mode: bool
-var target_wpm: int
-var step_size: int = 5
-
-var run_play_mode: RunMode
-
-var sequence_save_start_wpm: int
-var sequence_save_target_wpm: int
-var sequence_save_step_size: int
-var sequence_save_current_wpm: int
-var sequence_save_current_level: String
-var sequence_save_last_checkpoint: String
-var sequence_save_score: int
-var sequence_save_lives: int
-var sequence_save_speed_build: bool
 
 ## Path:[speed, accuracy]
 var level_records: Dictionary = {}
@@ -59,10 +37,6 @@ var preferred_voice: String
 var preferred_voice_rate: float = 1
 var preferred_voice_pitch: float = 1
 var preferred_voice_volume: int = 50
-
-var current_wpm: int
-var current_score: int = 0
-var current_lives: int = 3
 
 var config_path: String = "user://settings.cfg"
 var game_save_path: String = "user://quick_save.cfg"
@@ -79,17 +53,6 @@ var config_sound_settings: String = "SoundSettings"
 func _ready() -> void:
 	var voices: PackedStringArray = DisplayServer.tts_get_voices_for_language("en")
 	preferred_voice = voices[0]
-
-
-
-func set_gameplay_state(state: RunMode) -> void:
-	var past_state: RunMode = run_play_mode
-	run_play_mode = state
-	if past_state == RunMode.SEQUENCE:
-		set_sequence_data()
-
-	if run_play_mode == RunMode.SEQUENCE:
-		resume_sequence_data()
 
 
 func save_game(file_name: String = "") -> void:
@@ -121,8 +84,10 @@ func has_saved_level() -> bool:
 	var err: Error = config.load(game_save_path)
 	if err != OK:
 		return false
-	var saved_level: Dictionary = config.get_value(runner_config, "ArcadeProgression", null)
-	if saved_level == null:
+	var saved_level: Dictionary = config.get_value(runner_config, "ArcadeProgression", {})
+	if saved_level.is_empty():
+		if config.get_value(config_level_settings, "CurrentLevel", "") != "":
+			return true
 		return false
 	else: return true
 
@@ -231,13 +196,6 @@ func parse_legacy_save(config: ConfigFile) -> void:
 	arcade_sequence_save_dictionary = level_dict
 
 
-##Check whether current speed is the target speed for speed building sequence
-func at_target_speed() -> bool:
-	if current_wpm == target_wpm:
-		return true
-	else: return false
-
-
 ##Returns the custom theme if one has been selected, and the default theme otherwise
 func get_theme() -> Theme:
 	if use_custom_target_theme and custom_target_style != null:
@@ -251,18 +209,12 @@ func speak_tts(text: String) -> void:
 	preferred_voice_pitch, preferred_voice_rate)
 
 
-##Clears score/speed and returns to last checkpoint after losing a run
-func run_lost() -> void:
-	current_score = 0
-	current_level_path = last_checkpoint_path
-	current_wpm = starting_wpm
-	match run_play_mode:
-		RunMode.SEQUENCE:
-			set_sequence_data()
-		RunMode.ARCADE:
-			pass
-		RunMode.STORY:
-			pass
+func save_runner(mode: RunnerGame.RunnerMode, serialized_data: Dictionary) -> void:
+	match mode:
+		RunnerGame.RunnerMode.PROGRESSION:
+			arcade_sequence_save_dictionary = serialized_data
+		RunnerGame.RunnerMode.STORY:
+			story_save_dictionary
 	save_game()
 
 
@@ -278,57 +230,26 @@ func get_high_score(path: String) -> Array:
 
 
 ##Update high score for a given level (speed and accurcy)
-func set_high_score(path: String, level_size: int) -> void:
-	var local_path: String = ProjectSettings.localize_path(path)
+func set_high_score(data: RunnerSave, level_size: int) -> void:
+	var local_path: String = ProjectSettings.localize_path(LevelLoader.active_level.level_path)
 	var record: Array
-	var lives_used: int = max_lives - current_lives
+	var lives_used: int = max_lives - data.current_lives
 	var accuracy: float = (level_size - lives_used)
 	accuracy = accuracy/level_size
 	accuracy = accuracy * 100
 	if level_records.has(local_path):
 		record = level_records[local_path]
-		if record[0] < current_wpm:
-			record = [current_wpm, accuracy]
-		elif record[0] == current_wpm:
+		if record[0] < data.current_speed:
+			record = [data.current_speed, accuracy]
+		elif record[0] == data.current_speed:
 			if accuracy > record[1]:
 				record[1] = accuracy
 	else:
 		record.resize(2)
-		record[0] = current_wpm
+		record[0] = data.current_speed
 		record[1] = accuracy
 	level_records[local_path] = record
 
-
-##Transfer data from sequence run through to the save variables
-func set_sequence_data() -> void:
-	sequence_save_current_level = current_level_path
-	sequence_save_last_checkpoint = last_checkpoint_path
-
-	sequence_save_current_wpm = current_wpm
-	sequence_save_start_wpm = starting_wpm
-	sequence_save_target_wpm = target_wpm
-	sequence_save_step_size = step_size
-
-	sequence_save_lives = current_lives
-	sequence_save_score = current_score
-
-	sequence_save_speed_build = speed_building_mode
-
-
-##Grab sequence save data and put it in for the playthrough
-func resume_sequence_data() -> void:
-	current_level_path = sequence_save_current_level
-	last_checkpoint_path = sequence_save_last_checkpoint
-
-	current_wpm = sequence_save_current_wpm
-	starting_wpm = sequence_save_start_wpm
-	target_wpm = sequence_save_target_wpm
-	step_size = sequence_save_step_size
-
-	current_lives = sequence_save_lives
-	current_score = sequence_save_score
-
-	speed_building_mode = sequence_save_speed_build
 
 
 func set_interact_font_color(new_color: Color) -> void:

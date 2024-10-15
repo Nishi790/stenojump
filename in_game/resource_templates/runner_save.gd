@@ -5,6 +5,8 @@ enum LevelSequence {LEARN_PLOVER, LAPWING, OTHER}
 
 signal next_level(new_level_needed: bool)
 signal speed_updated
+signal lives_changed
+signal score_changed
 
 var lapwing_level_1: String = "lapwing_1.json"
 var learn_plover_level_1: String = ""
@@ -18,8 +20,20 @@ var learn_plover_level_1: String = ""
 	set(new_speed):
 		current_speed = new_speed
 		speed_updated.emit()
-@export var current_score: int = 0
-@export var current_lives: int = 3
+@export var save_score: int = 0
+
+var level_score: int = 0:
+	set(score):
+		level_score = score
+		score_changed.emit()
+var total_score: int:
+	get():
+		return save_score + level_score
+
+@export var current_lives: int = 3:
+	set(lives):
+		current_lives = lives
+		lives_changed.emit
 
 @export var speed_building_mode: bool
 @export var starting_speed: int
@@ -43,8 +57,8 @@ func _init(save_data: Dictionary = {}):
 	current_level_path = save_data["CurrentLevel"] if save_data.has("CurrentLevel") else last_checkpoint_path
 
 	current_speed = save_data["CurrentSpeed"] if save_data.has("CurrentSpeed") else starting_speed
-	current_score = save_data["CurrentScore"] if save_data.has("CurrentScore") else 0
-	current_lives = save_data["CurrentLives"] if save_data.has("CurrentLives") else 3
+	save_score = save_data["CurrentScore"] if save_data.has("CurrentScore") else 0
+	current_lives = save_data["CurrentLives"] if save_data.has("CurrentLives") else PlayerConfig.max_lives
 
 	speed_building_mode = save_data["SpeedBuildMode"] if save_data.has("SpeedBuildMode") else false
 	if speed_building_mode:
@@ -63,7 +77,7 @@ func serialize_data(current_level_complete: bool = false) -> Dictionary:
 	save_dict["LastCheckpoint"] = last_checkpoint_path
 
 	save_dict["CurrentLives"] = current_lives
-	save_dict["CurrentScore"] = current_score
+	save_dict["CurrentScore"] = save_score
 	save_dict["CurrentSpeed"] = current_speed
 
 	save_dict["SpeedBuildMode"] = speed_building_mode
@@ -110,7 +124,12 @@ func update_level_paths() -> void:
 			last_checkpoint_path = LevelLoader.get_checkpoint_path()
 
 
-func start_level_sequence() -> bool:
+func update_saved_score() -> void:
+	save_score += level_score
+	level_score = 0
+
+
+func select_start_level() -> void:
 	match level_sequence:
 		LevelSequence.LAPWING:
 			current_level_path = lapwing_level_1
@@ -118,11 +137,19 @@ func start_level_sequence() -> bool:
 		LevelSequence.LEARN_PLOVER:
 			current_level_path = learn_plover_level_1
 			last_checkpoint_path = current_level_path
-		LevelSequence.OTHER:
+		_:
 			current_level_path = custom_start_level
 			last_checkpoint_path = current_level_path
-		_:
-			return false
 
+
+func start_level_sequence() -> void:
+	select_start_level()
 	LevelLoader.load_level(current_level_path)
-	return true
+
+
+func reset_progress() -> void:
+	select_start_level()
+	save_score = 0
+	current_lives = PlayerConfig.max_lives
+	if speed_building_mode:
+		current_speed = starting_speed

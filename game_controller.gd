@@ -1,6 +1,6 @@
 extends Control
 
-enum GameStates {MENU, GAME, LEVEL_CREATOR}
+enum GameStates {MENU, RUNNER, LEVEL_CREATOR}
 @export var game_scene: PackedScene
 @export var menu_scene: PackedScene
 @export var level_creation_scene: PackedScene
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		if game_state == GameStates.GAME:
+		if game_state == GameStates.RUNNER:
 			game.pause_game(true)
 			viewport.set_input_as_handled()
 		elif game_state == GameStates.MENU:
@@ -40,13 +40,13 @@ func change_state(new_state: GameStates) -> void:
 			game_state = GameStates.MENU
 			menu = menu_scene.instantiate()
 			add_child(menu)
-			menu.start_game_pressed.connect(start_game)
+			menu.start_game_pressed.connect(start_runner)
 			menu.quit_game_pressed.connect(quit_game)
 			menu.level_creator_selected.connect(change_state.bind(GameStates.LEVEL_CREATOR))
-		GameStates.GAME:
+		GameStates.RUNNER:
 			if menu != null:
 				menu.queue_free()
-			game_state = GameStates.GAME
+			game_state = GameStates.RUNNER
 			game = game_scene.instantiate()
 			add_child(game)
 			game.main_menu_requested.connect(change_state.bind(GameStates.MENU))
@@ -62,8 +62,9 @@ func change_state(new_state: GameStates) -> void:
 	return
 
 
-func start_game() -> void:
-	change_state(GameStates.GAME)
+func start_runner(save_data: RunnerSave, mode: RunnerGame.RunnerMode) -> void:
+	change_state(GameStates.RUNNER)
+	game.start_level(save_data, mode)
 
 
 func quit_game() -> void:

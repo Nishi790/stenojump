@@ -8,17 +8,19 @@ signal cancel_select
 @export var level_preview: PanelContainer
 @export var tab_cont: TabContainer
 
+var level_data: RunnerSave
 
 func _ready() -> void:
 	level_preview.start_pressed.connect(level_started)
 	menu_button.pressed.connect(return_to_menu)
+	level_data = RunnerSave.new()
 	create_tabs()
+
 
 
 func create_tabs() -> void:
 	create_tabs_from_dir(LevelLoader.default_level_path_root)
 	create_tabs_from_dir(LevelLoader.custom_level_path_root)
-
 
 
 func create_tabs_from_dir(path_root: String) -> void:
@@ -34,9 +36,13 @@ func create_tabs_from_dir(path_root: String) -> void:
 
 
 func level_started(path: String) -> void:
-	PlayerConfig.target_wpm = 200
-	tab_cont.get_current_tab_control().send_speed_settings()
-	start_level.emit(path)
+	level_data.target_speed = 200
+	var speed_settings: Array = tab_cont.get_current_tab_control().send_speed_settings()
+	level_data.current_speed = speed_settings[0]
+	level_data.starting_speed = speed_settings[0]
+	level_data.step_size = speed_settings[1]
+	level_data.current_level_path = path
+	start_level.emit(level_data)
 
 
 func preview_level(path: String) -> void:
