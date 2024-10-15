@@ -17,8 +17,12 @@ enum {STARTSPEED, TARGETSPEED, STEPSIZE}
 @export var file_selector_dialogue: FileDialog
 @export var cancel_button: Button
 
+var level_data: RunnerSave
+
 
 func _ready() -> void:
+	level_data = RunnerSave.new()
+
 	level_sequence_selector.item_selected.connect(change_level_sequence)
 	start_speed_selector.value_changed.connect(select_speed)
 	speed_builder_button.toggled.connect(set_build_speed)
@@ -27,10 +31,12 @@ func _ready() -> void:
 	voice_output_toggle.toggled.connect(set_tts)
 	start_button.pressed.connect(start_game)
 	file_selector_dialogue.file_selected.connect(set_starting_level)
+
+
 	@warning_ignore("narrowing_conversion")
-	PlayerConfig.current_wpm = start_speed_selector.value
+	level_data.current_speed = start_speed_selector.value
 	@warning_ignore("narrowing_conversion")
-	PlayerConfig.starting_wpm = start_speed_selector.value
+	level_data.starting_speed = start_speed_selector.value
 	cancel_button.pressed.connect(cancel_new_game)
 
 
@@ -140,22 +146,22 @@ func change_level_sequence(sequence: int) -> void:
 	level_sequence_selector.select(level_sequence_selector.get_item_index(sequence))
 	match sequence:
 		0:
-			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.LAPWING
+			level_data.level_sequence = RunnerSave.LevelSequence.LAPWING
 		1:
-			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.LEARN_PLOVER
+			level_data.level_sequence = RunnerSave.LevelSequence.LEARN_PLOVER
 		2:
-			PlayerConfig.level_sequence = PlayerConfig.LevelSequence.OTHER
+			level_data.level_sequence = RunnerSave.LevelSequence.OTHER
 			file_selector_dialogue.set_visible(true)
 			file_selector_dialogue.grab_focus()
 		_:
 			printerr("invalid level selection")
 			return
-	PlayerConfig.start_level_sequence(PlayerConfig.level_sequence)
+
 	start_button.disabled = false
 
 
 func select_speed(speed: float) -> void:
-	PlayerConfig.starting_wpm = int(speed)
+	level_data.starting_speed = int(speed)
 	PlayerConfig.current_wpm = int(speed)
 
 

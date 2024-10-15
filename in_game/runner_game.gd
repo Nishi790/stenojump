@@ -2,6 +2,7 @@ class_name RunnerGame
 extends Node2D
 
 enum RunnerThemes {HOUSE_CLEAN, STREET_DIRTY, HOUSE_MESSY, PARK, STREET_SUBURB}
+enum RunnerMode {PROGRESSION, STORY, SPEEDBUILD}
 
 signal score_changed (new_score: int)
 signal words_left_changed (remaining_words: int)
@@ -15,7 +16,11 @@ signal main_menu_requested
 @export var background: BackgroundManager
 @export var obstacle_detector: Area2D
 
+var game_mode: RunnerMode
 var level_theme: RunnerThemes
+var save_data: RunnerSave
+
+var speed_updated: bool
 
 var input_box: LineEdit
 
@@ -96,15 +101,21 @@ func _ready() -> void:
 	hud.main_menu_requested.connect(quit_game)
 
 	set_level_theme(RunnerThemes.HOUSE_CLEAN)
-
-	#load selected level
-	load_level_data(PlayerConfig.current_level_path)
-	target_speed_changed.emit(PlayerConfig.current_wpm)
-	score = PlayerConfig.current_score
-
-	change_move_speed(Player.State.WALKING)
-
 	input_box.grab_focus()
+
+
+func start_level(data: RunnerSave) -> void:
+	save_data = data
+	save_data.next_level.connect(start_next_level)
+	save_data.speed_updated.connect(update_speed_flag)
+	speed_updated = true
+	score = save_data.current_score
+	player.data = save_data
+	hud.data = save_data
+
+	load_level_data(save_data.current_level_path)
+	resume_game()
+
 
 
 func _process(delta: float) -> void:
@@ -195,6 +206,10 @@ func adjust_score(amount: int) -> void:
 	score += amount
 
 
+func update_speed_flag() -> void:
+	speed_updated = true
+
+
 ##Responds to Obstacle Manager signalling empty queue and prompts 'end level'
 func on_obstacle_queue_empty() -> void:
 	if word_queue.size() == next_word_index and not run_ended:
@@ -281,42 +296,45 @@ func enter_pressed(text: String) -> void:
 		if on_last_level:
 			if text.strip_edges().is_valid_int():
 				var speed_increase: int = text.to_int()
-				PlayerConfig.starting_wpm += speed_increase
-				if PlayerConfig.target_wpm:
-					PlayerConfig.target_wpm += speed_increase
-				PlayerConfig.current_wpm = PlayerConfig.starting_wpm
-				target_speed_changed.emit(PlayerConfig.current_wpm)
-				load_level_data(PlayerConfig.start_level_sequence(PlayerConfig.level_sequence))
-				await hud.start_next_level()
-				await hud.display_countdown()
-				level_complete = false
-				resume_game()
+				save_data.increase_target_speed(speed_increase)
+				save_data.start_level_sequence()
+				initiate_level()
+				return
 			else:
 				main_menu_requested.emit()
+				return
 
 		var command_entered: String = text.strip_edges()
 		command_entered = command_entered.to_lower()
 		match command_entered:
 			"quit":
-				LevelLoader.save_next_level()
-				PlayerConfig.save_game()
-				main_menu_requested.emit()
+				var serialized_data: Dictionary
+				if save_data.at_target_speed():
+					LevelLoader.save_next_level()
+					quit_game(true)
+				else:
+					quit_game(false)
+
 			_:
-				if PlayerConfig.speed_building_mode == true:
-					if not PlayerConfig.at_target_speed():
-						increase_speed()
-					else:
-						PlayerConfig.current_wpm = PlayerConfig.starting_wpm
-						LevelLoader.load_next_level()
-					target_speed_changed.emit(PlayerConfig.current_wpm)
-				else: LevelLoader.load_next_level()
-				load_level_data()
-				await hud.start_next_level()
-				await hud.display_countdown()
-				level_complete = false
-				resume_game()
+				save_data.step_speed()
+
 	elif run_ended:
 		main_menu_requested.emit()
+
+
+func start_next_level(new_level: bool) -> void:
+	if new_level:
+		LevelLoader.load_next_level()
+		save_data.update_level_paths()
+	initiate_level()
+
+
+func initiate_level() -> void:
+	load_level_data()
+	await hud.start_next_level()
+	await hud.display_countdown()
+	level_complete = false
+	resume_game()
 
 
 ##Requests level data from the LevelLoader singleton and uses the data to set up the level
@@ -325,7 +343,12 @@ func load_level_data(level_path: String = "") -> void:
 	if level_path != "":
 		LevelLoader.load_level(level_path)
 
-	word_queue = LevelLoader.active_level.level_targets.duplicate()
+	word_queue = LevelLoader.get_wordlist()
+
+#Error out if no words are in the level data
+	if word_queue.is_empty():
+		printerr("Invalid Level Data. Level contains no target words.")
+		main_menu_requested.emit()
 
 	#Set correct level size
 	var level_size: int = LevelLoader.active_level.default_level_size
@@ -334,6 +357,7 @@ func load_level_data(level_path: String = "") -> void:
 			level_size = PlayerConfig.min_level_length
 		elif level_size > PlayerConfig.max_level_length:
 			level_size = PlayerConfig.max_level_length
+
 	while word_queue.size() < level_size:
 		word_queue.append_array(word_queue)
 
@@ -353,19 +377,13 @@ func load_level_data(level_path: String = "") -> void:
 	obstacles_remaining = ceili(words_left/max_words_per_obstacle)
 
 
-##Increases level strokes per minute by step amount
-func increase_speed() -> void:
-	var current_speed: int = PlayerConfig.current_wpm
-	current_speed = current_speed + PlayerConfig.step_size
-	if current_speed > PlayerConfig.target_wpm:
-		current_speed = PlayerConfig.target_wpm
-	PlayerConfig.current_wpm = current_speed
-
-
 ##Called whenever the player needs to start a level or resume from a pause
 func resume_game() -> void:
 	input_box.grab_focus()
 	player.resume_movement()
+	if speed_updated:
+		speed_updated = false
+		obstacle_manager.set_speed(save_data.current_wpm)
 	obstacle_manager.resume_obstacles()
 
 
@@ -388,7 +406,8 @@ func pause_game(menu_open: bool = false) -> void:
 
 ##Saves data before quitting, first sending player class data to the PlayerConfig
 ##Then saves run related data to file before requesting return to menu
-func quit_game() -> void:
+func quit_game(at_next_level: bool = false) -> void:
 	player.save_data()
-	PlayerConfig.save_game()
+	save_data.serialize_data(at_next_level)
+	PlayerConfig.save_runner(game_mode)
 	main_menu_requested.emit()

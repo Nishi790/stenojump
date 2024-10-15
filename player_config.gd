@@ -26,6 +26,9 @@ var custom_target_style: Theme
 
 var interact_font_color: String = Color.YELLOW.to_html()
 
+var arcade_sequence_save_dictionary: Dictionary
+var story_save_dictionary: Dictionary
+
 var level_sequence: LevelSequence
 var custom_start_level: String
 var current_level_path: String
@@ -63,6 +66,7 @@ var current_lives: int = 3
 
 var config_path: String = "user://settings.cfg"
 var game_save_path: String = "user://quick_save.cfg"
+var runner_config: String = "RunnerSaveData"
 var config_voice_settings: String = "TextToSpeech"
 var config_level_settings: String = "LevelSettings"
 var config_arcade_data: String = "ArcadeScores"
@@ -76,23 +80,6 @@ func _ready() -> void:
 	var voices: PackedStringArray = DisplayServer.tts_get_voices_for_language("en")
 	preferred_voice = voices[0]
 
-
-func start_level_sequence(sequence: LevelSequence) -> String:
-	match sequence:
-		LevelSequence.LAPWING:
-			current_level_path = lapwing_level_1
-			last_checkpoint_path = current_level_path
-		LevelSequence.LEARN_PLOVER:
-			current_level_path = learn_plover_level_1
-			last_checkpoint_path = current_level_path
-		LevelSequence.OTHER:
-			current_level_path = custom_start_level
-			last_checkpoint_path = current_level_path
-
-	#Track the level info for a sequence playthrough
-	sequence_save_current_level = current_level_path
-	sequence_save_last_checkpoint = last_checkpoint_path
-	return current_level_path
 
 
 func set_gameplay_state(state: RunMode) -> void:
@@ -117,27 +104,12 @@ func save_game(file_name: String = "") -> void:
 	if err != OK:
 		printerr("Creating New Save File")
 
-	config.set_value(config_level_settings, "LevelSequence", level_sequence)
-	if current_level_path != "":
-		config.set_value(config_level_settings, "CurrentLevel", sequence_save_current_level)
-	if last_checkpoint_path != "":
-		config.set_value(config_level_settings, "Last Checkpoint", sequence_save_last_checkpoint)
-	if level_sequence == LevelSequence.OTHER:
-		config.set_value(config_level_settings, "CustomStartLevel", custom_start_level)
-	config.set_value(config_level_settings, "CurrentWPM", sequence_save_current_wpm)
-	config.set_value(config_level_settings, "CurrentScore", sequence_save_score)
-	config.set_value(config_level_settings, "CurrentLives", sequence_save_lives)
+	config.set_value(runner_config, "ArcadeProgression", arcade_sequence_save_dictionary)
+	config.set_value(runner_config, "StoryProgression", story_save_dictionary)
 
 	config.set_value(config_arcade_data, "ArcadeScores", level_records)
 
-	config.set_value(config_speed_build_settings, "SpeedBuildMode", sequence_save_speed_build)
-	config.set_value(config_speed_build_settings, "StartingWPM", sequence_save_start_wpm)
-	config.set_value(config_speed_build_settings, "TargetWPM", sequence_save_target_wpm)
-	config.set_value(config_speed_build_settings, "StepSize", sequence_save_step_size)
-
 	config.set_value(config_voice_settings, "Enabled", voice_output_enabled)
-
-
 
 	err = config.save(save_path)
 	if err != OK:
@@ -148,9 +120,8 @@ func has_saved_level() -> bool:
 	var config: ConfigFile = ConfigFile.new()
 	var err: Error = config.load(game_save_path)
 	if err != OK:
-		printerr("Save game not detected")
 		return false
-	var saved_level: String = config.get_value(config_level_settings, "CurrentLevel", null)
+	var saved_level: Dictionary = config.get_value(runner_config, "ArcadeProgression", null)
 	if saved_level == null:
 		return false
 	else: return true
@@ -229,37 +200,35 @@ func load_game(file_name: String = "") -> Error:
 		printerr("Couldn't load saved game, start a new one")
 		return err
 
-	level_sequence = config.get_value(config_level_settings, "LevelSequence", null)
-	sequence_save_current_level = config.get_value(config_level_settings, "CurrentLevel", "")
-	sequence_save_last_checkpoint = config.get_value(config_level_settings, "Last Checkpoint", "")
-	if level_sequence == LevelSequence.OTHER:
-		custom_start_level = config.get_value(config_level_settings, "CustomStartLevel", "")
-		if custom_start_level == "":
-			if last_checkpoint_path != "":
-				custom_start_level = last_checkpoint_path
-			else:
-				custom_start_level = current_level_path
+	if config.has_section(runner_config):
+		arcade_sequence_save_dictionary = config.get_value(runner_config, "ArcadeProgression", {})
+		story_save_dictionary = config.get_value(runner_config, "StoryProgression", {})
 
-	sequence_save_current_wpm = config.get_value(config_level_settings, "CurrentWPM", 0)
-	sequence_save_score = config.get_value(config_level_settings, "CurrentScore")
-	current_lives = config.get_value(config_level_settings, "CurrentLives")
-	lives_updated.emit()
-
-	if current_level_path == "" and level_sequence != null:
-		start_level_sequence(level_sequence)
+	else:
+		parse_legacy_save(config)
 
 	level_records = config.get_value(config_arcade_data, "ArcadeScores", {})
-
-	sequence_save_speed_build = config.get_value(config_speed_build_settings, "SpeedBuildMode", false)
-	sequence_save_start_wpm = config.get_value(config_speed_build_settings, "StartingWPM", 0)
-	sequence_save_target_wpm = config.get_value(config_speed_build_settings, "TargetWPM", 0)
-	sequence_save_step_size = config.get_value(config_speed_build_settings, "StepSize", 0)
-
 	voice_output_enabled = config.get_value(config_voice_settings, "Enabled")
 
-	resume_sequence_data()
-
 	return err
+
+
+func parse_legacy_save(config: ConfigFile) -> void:
+	var level_dict: Dictionary = {}
+	level_dict["LevelSequence"] = config.get_value(config_level_settings, "LevelSequence", null)
+	level_dict["CurrentLevel"] = config.get_value(config_level_settings, "CurrentLevel", "")
+	level_dict["LastCheckpoint"] = config.get_value(config_level_settings, "LastCheckpoint", "")
+	level_dict["CustomStartLevel"] = config.get_value(config_level_settings, "CustomStartLevel", "")
+	level_dict["CurrentSpeed"] = config.get_value(config_level_settings, "CurrentWPM", 0)
+	level_dict["CurrentScore"] = config.get_value(config_level_settings, "CurrentScore", 0)
+	level_dict["CurrentLives"] = config.get_value(config_level_settings, "CurrentLives", max_lives)
+
+	level_dict["SpeedBuildMode"] = config.get_value(config_speed_build_settings, "SpeedBuildMode", false)
+	level_dict["StartingSpeed"] = config.get_value(config_speed_build_settings, "StartingWPM", 0)
+	level_dict["TargetSpeed"] = config.get_value(config_speed_build_settings, "TargetWPM", 0)
+	level_dict["StepSize"] = config.get_value(config_speed_build_settings, "StepSize", 0)
+
+	arcade_sequence_save_dictionary = level_dict
 
 
 ##Check whether current speed is the target speed for speed building sequence

@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://b2kw0v3c282km"]
 
-[ext_resource type="Script" path="res://in_game/in_game.gd" id="1_igruv"]
-[ext_resource type="PackedScene" uid="uid://5w8ptyi4ic4y" path="res://in_game/background.tscn" id="2_f4riy"]
-[ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="2_g7afp"]
-[ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="2_ggvbu"]
-[ext_resource type="PackedScene" uid="uid://cgc8oqwrimdq2" path="res://in_game/crawl_obstacle.tscn" id="5_blfh0"]
-[ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="7_n7ocu"]
-[ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="11_c2pqa"]
-[ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="12_01mxu"]
+[ext_resource type="Script" path="res://in_game/runner_game.gd" id="1_geaxw"]
+[ext_resource type="PackedScene" uid="uid://5w8ptyi4ic4y" path="res://in_game/background.tscn" id="2_vdwwl"]
+[ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="3_bwybn"]
+[ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="4_87jbf"]
+[ext_resource type="PackedScene" uid="uid://cgc8oqwrimdq2" path="res://in_game/crawl_obstacle.tscn" id="5_my4cf"]
+[ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="6_75c83"]
+[ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="7_cxqw2"]
+[ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="8_qxthh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
 
@@ -17,26 +17,26 @@ normal = Vector2(0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ooyp2"]
 size = Vector2(123, 187)
 
-[node name="InGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background", "obstacle_detector")]
+[node name="RunnerGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background", "obstacle_detector")]
 texture_filter = 1
-script = ExtResource("1_igruv")
+script = ExtResource("1_geaxw")
 obstacle_manager = NodePath("ObstacleManager")
 player = NodePath("Player")
 hud = NodePath("HUD")
 background = NodePath("Background")
 obstacle_detector = NodePath("ObstacleDetector")
 
-[node name="Background" parent="." instance=ExtResource("2_f4riy")]
+[node name="Background" parent="." instance=ExtResource("2_vdwwl")]
 
 [node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("new_word_timer")]
-script = ExtResource("7_n7ocu")
-basic_obstacle = ExtResource("2_g7afp")
-crawl_obstacle = ExtResource("5_blfh0")
+script = ExtResource("3_bwybn")
+basic_obstacle = ExtResource("4_87jbf")
+crawl_obstacle = ExtResource("5_my4cf")
 new_word_timer = NodePath("NewWordTimer")
 
 [node name="NewWordTimer" type="Timer" parent="ObstacleManager"]
 
-[node name="Player" parent="." instance=ExtResource("2_ggvbu")]
+[node name="Player" parent="." instance=ExtResource("6_75c83")]
 position = Vector2(97, 877)
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -56,12 +56,12 @@ shape = SubResource("WorldBoundaryShape2D_y0yrj")
 collision_layer = 2
 collision_mask = 4
 monitorable = false
-script = ExtResource("12_01mxu")
+script = ExtResource("7_cxqw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
 z_index = 1
 position = Vector2(1047.5, 853.5)
 shape = SubResource("RectangleShape2D_ooyp2")
 
-[node name="HUD" parent="." instance=ExtResource("11_c2pqa")]
+[node name="HUD" parent="." instance=ExtResource("8_qxthh")]
 z_index = 2

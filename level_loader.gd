@@ -36,6 +36,34 @@ func _ready() -> void:
 		retrieve_level_files(folder_files, folder_path)
 
 
+func get_level_path() -> String:
+	if active_level:
+		return ProjectSettings.globalize_path(active_level.level_path)
+	else:
+		return ""
+
+
+func get_checkpoint_path() -> String:
+	if active_level:
+		return active_level.level_path
+	else:
+		return ""
+
+
+func get_checkpoint() -> bool:
+	if active_level:
+		return active_level.checkpoint
+	else:
+		return false
+
+
+func get_wordlist() -> Array:
+	if active_level:
+		return active_level.level_targets.duplicate()
+	else:
+		return []
+
+
 func retrieve_level_files(file_names: PackedStringArray, path_root: String = "") -> void:
 	var path: String
 	for file in file_names:
@@ -93,11 +121,6 @@ func load_level(file_name : String) -> void:
 		active_level = levels[level_key]
 	if active_level.next_level_path == "":
 		last_level.emit()
-	PlayerConfig.current_level_path = ProjectSettings.globalize_path(active_level.level_path)
-	if active_level.checkpoint and PlayerConfig.checkpoints_enabled:
-		PlayerConfig.last_checkpoint_path = active_level.level_path
-	elif PlayerConfig.checkpoint_all:
-		PlayerConfig.last_checkpoint_path = active_level.level_path
 
 
 func load_next_level() -> void:
@@ -114,4 +137,3 @@ func load_next_level() -> void:
 func save_next_level() -> void:
 	if not active_level.next_level_path.contains(":/"):
 		active_level.next_level_path = default_level_path_root + active_level.next_level_path
-	PlayerConfig.current_level_path = active_level.next_level_path
