@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc6dl61hkmait"]
+
+[ext_resource type="Script" path="res://Menu/arcade_menu.gd" id="1_aaejy"]
+[ext_resource type="Script" path="res://Menu/custom_controls/narrated_icon.gd" id="2_d0lf0"]
+[ext_resource type="PackedScene" uid="uid://sg4wsc3m2k8y" path="res://Menu/select_level.tscn" id="2_uu3ur"]
+[ext_resource type="PackedScene" uid="uid://clib450qsryve" path="res://Menu/start_options.tscn" id="3_te70n"]
+[ext_resource type="Script" path="res://Menu/custom_focus_button.gd" id="3_xc6ox"]
+
+[node name="ArcadeMenu" type="Control" node_paths=PackedStringArray("steno_jump_resume", "steno_jump_new_game", "steno_jump_speed_build", "return_to_menu_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aaejy")
+steno_jump_resume = NodePath("MarginContainer/VBoxContainer/ArcadeChoice/VBoxContainer/ResumeGame")
+steno_jump_new_game = NodePath("MarginContainer/VBoxContainer/ArcadeChoice/VBoxContainer/NewGame")
+steno_jump_speed_build = NodePath("MarginContainer/VBoxContainer/ArcadeChoice/VBoxContainer/SpeedBuild")
+steno_jump_level_select_screen = ExtResource("2_uu3ur")
+steno_jump_start_menu = ExtResource("3_te70n")
+return_to_menu_button = NodePath("MarginContainer/VBoxContainer/ReturnToMain")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ArcadeChoice" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ArcadeChoice"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StenoJumpIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ArcadeChoice/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_d0lf0")
+alt_text = "Steno jump"
+
+[node name="ResumeGame" type="Button" parent="MarginContainer/VBoxContainer/ArcadeChoice/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resume Progression"
+script = ExtResource("3_xc6ox")
+
+[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer/ArcadeChoice/VBoxContainer"]
+layout_mode = 2
+text = "New Progression Run"
+script = ExtResource("3_xc6ox")
+
+[node name="SpeedBuild" type="Button" parent="MarginContainer/VBoxContainer/ArcadeChoice/VBoxContainer"]
+layout_mode = 2
+text = "Build Speed
+"
+script = ExtResource("3_xc6ox")
+
+[node name="ReturnToMain" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return to Main Menu"
+script = ExtResource("3_xc6ox")

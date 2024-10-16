@@ -1,4 +1,7 @@
+class_name StoryLevelSelector
 extends Control
+
+enum LevelType {STORY, RUNNER}
 
 @export var level_buttons: Array[LevelSelectButton]
 @export var unlocked_levels: Array[int]
@@ -22,7 +25,7 @@ func _input(event: InputEvent) -> void:
 
 
 func start_level(path: String) -> void:
-	print("Level Starting")
+	if
 
 
 func add_curve(curve: Line2D) -> void:

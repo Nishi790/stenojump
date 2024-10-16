@@ -227,6 +227,7 @@ Button/styles/focus = ExtResource("1_s5kba")
 Button/styles/hover = SubResource("StyleBoxTexture_8oe6w")
 Button/styles/normal = ExtResource("3_icoew")
 Button/styles/pressed = SubResource("StyleBoxTexture_60fye")
+CheckBox/constants/align_to_largest_stylebox = 0
 GridContainer/constants/h_separation = 8
 GridContainer/constants/v_separation = 6
 HSeparator/styles/separator = SubResource("StyleBoxLine_str5p")

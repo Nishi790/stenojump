@@ -1,6 +1,6 @@
 extends LineEdit
 
-enum MenuState {MAIN, OPTIONS, NEW}
+enum MenuState {MAIN, OPTIONS}
 
 @export var main_menu_focus_neighbors: Array[Control]
 var start_game_focus_neigbours: Array[Control]
@@ -41,8 +41,7 @@ func reset_focus_neighbors(menu_arrangement: MenuState) -> void:
 			new_neighbors = main_menu_focus_neighbors
 		MenuState.OPTIONS:
 			new_neighbors = options_focus_neighbors
-		MenuState.NEW:
-			new_neighbors = start_game_focus_neigbours
+
 
 	focus_neighbor_left = get_path_to(new_neighbors[0])
 	focus_neighbor_top = get_path_to(new_neighbors[1])

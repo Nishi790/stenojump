@@ -1,19 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://dygsnrdif2a23"]
+[gd_scene load_steps=11 format=3 uid="uid://dygsnrdif2a23"]
 
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_lrdci"]
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="1_swgrh"]
-[ext_resource type="PackedScene" uid="uid://clib450qsryve" path="res://Menu/start_options.tscn" id="2_lg5sn"]
 [ext_resource type="PackedScene" uid="uid://clwt0ahelro30" path="res://Menu/game_options.tscn" id="3_e05b5"]
 [ext_resource type="Script" path="res://Menu/player_input.gd" id="3_ntyr4"]
 [ext_resource type="SpriteFrames" uid="uid://bxd74c38t8x8g" path="res://textures/character_animations/player_sprite_frames.tres" id="4_xts3i"]
 [ext_resource type="Script" path="res://Menu/player_menu.gd" id="5_7ha46"]
 [ext_resource type="Script" path="res://Menu/custom_focus_button.gd" id="5_7jtnf"]
-[ext_resource type="PackedScene" uid="uid://sg4wsc3m2k8y" path="res://Menu/select_level.tscn" id="5_mpm13"]
 [ext_resource type="PackedScene" uid="uid://dgejfac77qyb" path="res://Menu/Credits/credits.tscn" id="6_6t70r"]
 [ext_resource type="Script" path="res://Menu/menu_interact_line.gd" id="7_pwv6e"]
 [ext_resource type="AudioStream" uid="uid://syn8en16n8hs" path="res://sound/sound_effects/cat_sounds/gentle_meow.wav" id="11_t83tv"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("resume_game_button", "new_game_button", "options_button", "quit_game_button", "level_creator_button", "speed_build_button", "credits_button", "player_input")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("story_mode_button", "arcade_mode_button", "options_button", "quit_game_button", "level_creator_button", "credits_button", "story_menu", "new_story_button", "load_story_button", "cancel_story_button", "player_input")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -25,17 +23,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_swgrh")
 script = ExtResource("1_lrdci")
-start_menu = ExtResource("2_lg5sn")
 options_menu = ExtResource("3_e05b5")
-level_select_screen = ExtResource("5_mpm13")
 credits_scene = ExtResource("6_6t70r")
-resume_game_button = NodePath("PanelContainer/MenuContainer/ResumeGame")
-new_game_button = NodePath("PanelContainer/MenuContainer/NewGame")
+story_mode_button = NodePath("PanelContainer/MenuContainer/StoryMode")
+arcade_mode_button = NodePath("PanelContainer/MenuContainer/ArcadeMode")
 options_button = NodePath("PanelContainer/MenuContainer/Options")
 quit_game_button = NodePath("PanelContainer/MenuContainer/QuitGame")
 level_creator_button = NodePath("PanelContainer/MenuContainer/CreateLevel")
-speed_build_button = NodePath("PanelContainer/MenuContainer/SpeedBuild")
 credits_button = NodePath("PanelContainer/MenuContainer/Credits")
+story_menu = NodePath("StoryStartMenu")
+new_story_button = NodePath("StoryStartMenu/MarginContainer/VBoxContainer/NewGame")
+load_story_button = NodePath("StoryStartMenu/MarginContainer/VBoxContainer/LoadGame")
+cancel_story_button = NodePath("StoryStartMenu/MarginContainer/VBoxContainer/Cancel")
 player_input = NodePath("PlayerTextOrganizer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -55,48 +54,22 @@ grow_vertical = 2
 [node name="MenuContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="ResumeGame" type="Button" parent="PanelContainer/MenuContainer"]
+[node name="StoryMode" type="Button" parent="PanelContainer/MenuContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_top = NodePath("../QuitGame")
-focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_bottom = NodePath("../NewGame")
-focus_next = NodePath("../NewGame")
-focus_previous = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-text = "Resume Game"
+text = "Story Mode"
 script = ExtResource("5_7jtnf")
 
-[node name="NewGame" type="Button" parent="PanelContainer/MenuContainer"]
+[node name="ArcadeMode" type="Button" parent="PanelContainer/MenuContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_top = NodePath("../ResumeGame")
-focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_bottom = NodePath("../SpeedBuild")
-focus_next = NodePath("../SpeedBuild")
-focus_previous = NodePath("../ResumeGame")
-text = "New Progression Game"
+text = "Arcade Mode"
 script = ExtResource("5_7jtnf")
-
-[node name="SpeedBuild" type="Button" parent="PanelContainer/MenuContainer"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_top = NodePath("../NewGame")
-focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_bottom = NodePath("../CreateLevel")
-focus_next = NodePath("../CreateLevel")
-focus_previous = NodePath("../NewGame")
-text = "Speed Build"
-script = ExtResource("5_7jtnf")
-text_to_speak = "Speed build mode"
 
 [node name="CreateLevel" type="Button" parent="PanelContainer/MenuContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_top = NodePath("../SpeedBuild")
 focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
 focus_neighbor_bottom = NodePath("../Options")
 focus_next = NodePath("../Options")
-focus_previous = NodePath("../SpeedBuild")
 text = "Create Level"
 script = ExtResource("5_7jtnf")
 
@@ -121,7 +94,6 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
 focus_neighbor_top = NodePath("../Options")
 focus_neighbor_right = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
-focus_neighbor_bottom = NodePath("../ResumeGame")
 focus_next = NodePath("../../../PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble/PlayerInput")
 focus_previous = NodePath("../Options")
 text = "Quit Game"
@@ -154,14 +126,10 @@ layout_mode = 2
 
 [node name="PlayerInput" type="LineEdit" parent="PlayerTextOrganizer/VBoxContainer/SpeechMargins/SpeechBubble" node_paths=PackedStringArray("main_menu_focus_neighbors")]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame")
-focus_neighbor_top = NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame")
-focus_neighbor_right = NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame")
 focus_neighbor_bottom = NodePath("../../../../../PanelContainer/MenuContainer/QuitGame")
-focus_next = NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame")
 focus_previous = NodePath("../../../../../PanelContainer/MenuContainer/QuitGame")
 script = ExtResource("7_pwv6e")
-main_menu_focus_neighbors = [NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame"), NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame"), NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame"), NodePath("../../../../../PanelContainer/MenuContainer/QuitGame"), NodePath("../../../../../PanelContainer/MenuContainer/ResumeGame"), NodePath("../../../../../PanelContainer/MenuContainer/QuitGame")]
+main_menu_focus_neighbors = [NodePath("../../../../../PanelContainer/MenuContainer/StoryMode"), NodePath("../../../../../PanelContainer/MenuContainer/StoryMode"), NodePath("../../../../../PanelContainer/MenuContainer/StoryMode"), NodePath("../../../../../PanelContainer/MenuContainer/QuitGame"), NodePath("../../../../../PanelContainer/MenuContainer/StoryMode"), NodePath("../../../../../PanelContainer/MenuContainer/QuitGame")]
 
 [node name="Control" type="Control" parent="PlayerTextOrganizer/VBoxContainer"]
 custom_minimum_size = Vector2(192, 192)
@@ -178,3 +146,40 @@ sound_player = NodePath("CatSounds")
 
 [node name="CatSounds" type="AudioStreamPlayer" parent="PlayerTextOrganizer/VBoxContainer/Control/PlayerMenu"]
 stream = ExtResource("11_t83tv")
+
+[node name="StoryStartMenu" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -10.0
+offset_right = 8.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="StoryStartMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StoryStartMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="StoryStartMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+script = ExtResource("5_7jtnf")
+
+[node name="LoadGame" type="Button" parent="StoryStartMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Load Game"
+script = ExtResource("5_7jtnf")
+
+[node name="Cancel" type="Button" parent="StoryStartMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel
+"
+script = ExtResource("5_7jtnf")
