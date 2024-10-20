@@ -1,8 +1,6 @@
 class_name DialogueScene
 extends HBoxContainer
 
-signal dialogue_finished
-
 @export var speaker_texture: TextureRect
 @export var speaker_name_label: Label
 @export var dialogue_label: DialogueLabel
@@ -102,7 +100,6 @@ func set_character_portrait(character_name: String) -> void:
 
 
 func end_dialogue() -> void:
-	dialogue_finished.emit()
 	hide()
 
 

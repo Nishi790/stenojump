@@ -38,11 +38,10 @@ offset_top = 147.0
 offset_right = 118.0
 offset_bottom = 163.0
 scale = Vector2(4, 4)
-level_path = "res://story_mode/story_levels/level_1.tscn"
+level_name = "story_1"
 next_level_button = NodePath("../LevelButton_1_2")
 curve_to_next = ExtResource("4_hxov8")
 level_number = 1
-focus_text = null
 
 [node name="LevelButton_1_2" parent="." instance=ExtResource("3_7bpjj")]
 layout_mode = 0
@@ -52,6 +51,6 @@ offset_right = 275.0
 offset_bottom = 326.0
 scale = Vector2(4, 4)
 disabled = true
-level_path = null
+level_type = 1
+level_name = "runner_1"
 level_number = 2
-focus_text = null

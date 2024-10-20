@@ -99,3 +99,8 @@ func hide_stroke() -> void:
 
 func skip_dialogue() -> void:
 	dialog_balloon.skip_dialogue()
+
+
+func set_hints_visible(value: bool) -> void:
+	for action: ActionDisplay in all_actions:
+		action.set_hints_active(value)

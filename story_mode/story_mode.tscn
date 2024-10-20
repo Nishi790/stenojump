@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfwubvq26pbny"]
+
+[ext_resource type="Script" path="res://story_mode/story_mode.gd" id="1_l5xq8"]
+[ext_resource type="PackedScene" uid="uid://cqmcig52q8t60" path="res://story_mode/story_levels/level_1.tscn" id="2_8apcm"]
+[ext_resource type="PackedScene" uid="uid://1llkkgcmubup" path="res://story_mode/story_level_manager.tscn" id="3_t55wv"]
+[ext_resource type="PackedScene" uid="uid://qtn8utnb0j6r" path="res://story_mode/level_select/level_select_screen.tscn" id="4_lne6k"]
+
+[node name="StoryMode" type="Node" node_paths=PackedStringArray("story_level_manager", "story_level_select_screen")]
+script = ExtResource("1_l5xq8")
+story_level_manager = NodePath("StoryLevelManager")
+story_level_select_screen = NodePath("LevelSelectScreen")
+level_list = {
+"story_1": ExtResource("2_8apcm")
+}
+
+[node name="StoryLevelManager" parent="." instance=ExtResource("3_t55wv")]
+
+[node name="LevelSelectScreen" parent="." instance=ExtResource("4_lne6k")]

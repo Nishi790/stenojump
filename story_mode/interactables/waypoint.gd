@@ -22,7 +22,7 @@ signal became_current_point(current_point: Waypoint)
 @export var hints_active: bool = true:
 	set(value):
 		hints_active = value
-		if target_label and target_word != "":
+		if target_label and target_label.visible and not target_data.is_empty():
 			display_target()
 
 @export var movement_events: Array[String] ##Names of events that can be triggered by moving to this point

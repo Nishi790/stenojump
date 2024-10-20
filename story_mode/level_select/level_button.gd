@@ -1,12 +1,12 @@
 class_name LevelSelectButton
 extends TextureButton
 
-signal level_selected(level_path: String, level_type)
+signal level_selected(level_name: String, level_type)
 signal add_curve(curve: Line2D)
 
 
 @export var level_type: StoryLevelSelector.LevelType
-@export var level_path: String
+@export var level_name: String
 @export var next_level_button: LevelSelectButton
 @export var curve_to_next: Curve2D
 @export var level_number: int
@@ -28,8 +28,8 @@ func speak_tts() -> void:
 
 
 func start_level() -> void:
-	print("Starting the level at %s" % level_path)
-	level_selected.emit(level_path, level_type)
+	print("Starting %s" % level_name)
+	level_selected.emit(level_name, level_type)
 
 
 func unlock() -> void:

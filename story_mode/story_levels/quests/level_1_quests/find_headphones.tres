@@ -10,7 +10,8 @@ quest_type = 0
 req_total = 0
 reqs = {
 "bring_jenny_to_headphones": true,
-"headphones_revealed": true
+"headphones_revealed": true,
+"headphones_taken": true
 }
 start_dialog_key = ""
 finished_dialog_key = ""

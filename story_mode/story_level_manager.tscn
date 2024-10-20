@@ -1,28 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://1llkkgcmubup"]
+[gd_scene load_steps=5 format=3 uid="uid://1llkkgcmubup"]
 
 [ext_resource type="Script" path="res://story_mode/story_level_manager.gd" id="1_cs0fv"]
 [ext_resource type="PackedScene" uid="uid://wu4owdvk0ao3" path="res://story_mode/UI/story_ui.tscn" id="2_2yj0d"]
-[ext_resource type="PackedScene" uid="uid://cqmcig52q8t60" path="res://story_mode/story_levels/level_1.tscn" id="2_p3qat"]
 [ext_resource type="PackedScene" uid="uid://c68eoq2241umv" path="res://story_mode/characters/socks_self_nav.tscn" id="3_xewxg"]
 [ext_resource type="Script" path="res://story_mode/game_camera.gd" id="4_yqd4a"]
 
-[node name="StoryLevel" type="Node" node_paths=PackedStringArray("player", "UI", "camera", "level")]
+[node name="StoryLevel" type="Node" node_paths=PackedStringArray("player", "UI", "camera", "level_holder")]
 script = ExtResource("1_cs0fv")
-player = NodePath("Node2D/Character")
+player = NodePath("LevelHolder/Character")
 UI = NodePath("UISurface/StoryUI")
 camera = NodePath("GameCamera")
-level = NodePath("Node2D/Level")
+level_holder = NodePath("LevelHolder")
 
 [node name="UISurface" type="CanvasLayer" parent="."]
 
 [node name="StoryUI" parent="UISurface" instance=ExtResource("2_2yj0d")]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="LevelHolder" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Level" parent="Node2D" instance=ExtResource("2_p3qat")]
-
-[node name="Character" parent="Node2D" instance=ExtResource("3_xewxg")]
+[node name="Character" parent="LevelHolder" instance=ExtResource("3_xewxg")]
 position = Vector2(1469, 977)
 
 [node name="GameCamera" type="Camera2D" parent="."]

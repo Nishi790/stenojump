@@ -87,7 +87,6 @@ alignment = 2
 
 [node name="HissAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
-action_type = null
 
 [node name="ItemAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
@@ -95,7 +94,6 @@ action_type = 1
 
 [node name="MeowAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
-action_type = null
 
 [node name="DialogueScene" parent="MarginContainer/VertScreenSplitter" instance=ExtResource("6_s18n2")]
 layout_mode = 2

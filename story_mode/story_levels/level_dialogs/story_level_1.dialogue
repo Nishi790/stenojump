@@ -64,13 +64,12 @@ do level.level_word_list.start_quest("wake_up_jenny")
 => END
 
 ~ Jenny_woke_up
-Jenny: I'm up, I'm up! Can't you ever let me sleep in, Socks?
 Socks: Oh good! She's [i]finally[/i] up. Now we can get out of here and see the rest of the house.
 do level.level_word_list.start_quest("open_the_door")
 => END
 
 ~ meowed_at_door
-if level.level_word_list.event_list["meowed_once"].event_complete == false:
+if level.level_word_list.level_events["meowed_at_door_once"].event_complete == false:
 	Socks: You might have to keep trying,
 		Jenny's my favorite human, but...[wait=0.5]
 		She's not always the best listener.
@@ -154,12 +153,13 @@ else:
 
 ~ end_level
 Jenny: Bye Socks! Be good at home today, okay? No more hiding things.
-Socks: Meow. [i]I don't just stay home all day, that would be boring[/i]
+Socks: Meow. \n[i]I don't just stay home all day, that would be boring[/i]
 Jenny: Seriously, I've got a big day at work today, and am going out with Nick after. That's a lot of hours for you to get into something...Don't.
-Socks: Purr [i]Stop worrying about me and have a good day, okay?[/i]
+Socks: Purr \n[i]Stop worrying about me and have a good day, okay?[/i]
 Jenny: I love you too.
 do level.jenny_leave_home()
 Socks: Well, she's all set, so now we can get going. Let's head out!
+do level.finish_level()
 => END
 
 
@@ -169,6 +169,8 @@ if level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_
 elif level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events) == 1:
 	Jenny: Wha? I'm up...[wait = 0.3]
 	Jenny: Zzzzz...
+elif level.level_word_list.quests["wake_up_jenny"].get_quest_progress(level.level_word_list.level_events) == 2:
+	Jenny: I'm up, I'm up! Can't you ever let me sleep in, Socks?
 => END
 
 
@@ -177,12 +179,19 @@ if level.level_word_list.level_events["headphones_revealed"].event_complete == f
 	Socks: Nope, nothing here. Hmmm...
 => END
 
+
 ~ sit_on_couch
 Socks: Jenny and I cuddle here in the evening. It's pretty much the best part of the day. 
 Socks: She always pets the good spot behind my ears. Sometimes I even get extra treats. 
 if level.level_word_list.level_events["headphones_revealed"].event_complete == false:
 	Socks: Oh yes, the headphones!
 	=> nothing_here
+
+
+~ headphones_found
+Jenny: Oh, there they are. I must have dropped them when I got home. Weird...
+Socks: Meow \n[i]Yep, that's definitely what happened...[/i]
+=> END
 
 
 ~ leave_home

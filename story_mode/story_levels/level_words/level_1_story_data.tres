@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="StoryLevelData" load_steps=32 format=3 uid="uid://bqdwup7yu3lw8"]
+[gd_resource type="Resource" script_class="StoryLevelData" load_steps=34 format=3 uid="uid://bqdwup7yu3lw8"]
 
 [ext_resource type="Resource" uid="uid://c43kcgrhcuhyu" path="res://story_mode/story_levels/level_dialogs/story_level_1.dialogue" id="1_vuym1"]
 [ext_resource type="Resource" uid="uid://flpssaglm2lw" path="res://story_mode/story_levels/Events/level_1_events/open_curtains.tres" id="2_4cq67"]
 [ext_resource type="Resource" uid="uid://b4ib2ign30q2k" path="res://story_mode/story_levels/Events/level_1_events/bedroom_door_opened.tres" id="3_wduau"]
 [ext_resource type="Resource" uid="uid://bxwxxkwqcustr" path="res://story_mode/story_levels/Events/level_1_events/knock_over_book.tres" id="4_xk82c"]
 [ext_resource type="Resource" uid="uid://b4vbyf1jfv4lu" path="res://story_mode/story_levels/Events/level_1_events/first_interact.tres" id="5_lmloy"]
+[ext_resource type="Script" path="res://story_mode/story_levels/Events/action_event_info.gd" id="6_dgeuy"]
 [ext_resource type="Resource" uid="uid://ychmkqdwt7ov" path="res://story_mode/story_levels/Events/level_1_events/first_move.tres" id="6_q52s0"]
 [ext_resource type="Resource" uid="uid://cbb5xgg8hc8q2" path="res://story_mode/story_levels/Events/level_1_events/checked_bowl.tres" id="7_mk4wa"]
 [ext_resource type="Resource" uid="uid://beyjdgi3eaaww" path="res://story_mode/story_levels/Events/level_1_events/jenny_woke_up.tres" id="8_3f5lv"]
@@ -21,7 +22,6 @@
 [ext_resource type="Resource" uid="uid://ipbh6mduhwre" path="res://story_mode/story_levels/quests/level_1_quests/first_steps.tres" id="16_uviey"]
 [ext_resource type="Resource" uid="uid://sim7v1jiauav" path="res://story_mode/story_levels/quests/level_1_quests/open_the_door.tres" id="17_gd2ck"]
 [ext_resource type="Resource" uid="uid://bqv4wfpnm6y8o" path="res://story_mode/story_levels/Events/level_1_events/headphones_revealed.tres" id="17_wdd34"]
-[ext_resource type="Resource" uid="uid://dha7fkn8e8hf4" path="res://story_mode/story_levels/Events/level_1_events/bring_jenny_to_headphones.tres" id="18_6pbqv"]
 [ext_resource type="Resource" uid="uid://bwi027uekl0ca" path="res://story_mode/story_levels/quests/level_1_quests/wake_up_jenny.tres" id="18_wyxbg"]
 [ext_resource type="Script" path="res://story_mode/story_levels/level_words/story_level_data.gd" id="19_bk54k"]
 [ext_resource type="Resource" uid="uid://dqoxm2sfnqx53" path="res://story_mode/story_levels/Events/level_1_events/breakfast_eaten.tres" id="19_j03xo"]
@@ -29,8 +29,20 @@
 [ext_resource type="Resource" uid="uid://dj4v5tm7mmme1" path="res://story_mode/story_levels/quests/level_1_quests/eat_breakfast.tres" id="20_shxik"]
 [ext_resource type="Resource" uid="uid://doxw4uubyawgm" path="res://story_mode/story_levels/Events/level_1_events/jump_on_couch.tres" id="21_vosxq"]
 [ext_resource type="Resource" uid="uid://dr84lxq75c7qb" path="res://story_mode/story_levels/Events/level_1_events/try_to_leave_home.tres" id="22_pqfjm"]
+[ext_resource type="Resource" uid="uid://cd3fxmj2vgjf3" path="res://story_mode/story_levels/Events/level_1_events/headphones_taken.tres" id="23_ffu5o"]
 [ext_resource type="Resource" uid="uid://bchji4itk2172" path="res://story_mode/story_levels/quests/level_1_quests/find_headphones.tres" id="26_7ch2e"]
 [ext_resource type="Resource" uid="uid://nwe8ag4n3d1" path="res://story_mode/story_levels/quests/level_1_quests/get_jenny_out_the_door.tres" id="27_iw21d"]
+
+[sub_resource type="Resource" id="Resource_nsoew"]
+script = ExtResource("6_dgeuy")
+action_type = 0
+name = "bring_jenny_to_headphones"
+event_complete = false
+conditions = {
+"headphones_revealed": true
+}
+triggers_global_event = true
+global_event_name = "jenny_finds_headphones"
 
 [resource]
 script = ExtResource("19_bk54k")
@@ -146,11 +158,12 @@ level_events = {
 "bedroom_door_open": ExtResource("3_wduau"),
 "book_fallen": ExtResource("4_xk82c"),
 "breakfast_eaten": ExtResource("19_j03xo"),
-"bring_jenny_to_headphones": ExtResource("18_6pbqv"),
+"bring_jenny_to_headphones": SubResource("Resource_nsoew"),
 "first_interact": ExtResource("5_lmloy"),
 "first_move": ExtResource("6_q52s0"),
 "got_jennys_attention": ExtResource("16_q8g5p"),
 "headphones_revealed": ExtResource("17_wdd34"),
+"headphones_taken": ExtResource("23_ffu5o"),
 "interacted_with_bowl": ExtResource("7_mk4wa"),
 "jenny_in_kitchen": ExtResource("14_ycfyh"),
 "jenny_woke_up": ExtResource("8_3f5lv"),

@@ -9,11 +9,12 @@ var jenny_character: BaseSelfNavCharacter
 @export var food_bowl: BaseInteractable
 @export var bed: BaseInteractable
 @export var sink: BaseInteractable
+@export var shoe_rack: BaseInteractable
 
 
 func _load_event_funcs() -> void:
 	event_funcs = {"wake_jenny" : wake_up_jenny, "unlock_door": unlock_door, "jenny_leaves": jenny_leave_home,
-	"feed_socks": feed_socks, "jenny_enters_kitchen": jenny_enter_kitchen}
+	"feed_socks": feed_socks, "jenny_enters_kitchen": jenny_enter_kitchen, "jenny_finds_headphones": jenny_finds_headphones}
 
 
 func wake_up_jenny(_args: Array) -> void:
@@ -34,10 +35,7 @@ func add_jenny() -> void:
 
 func unlock_door(_args: Array) -> void:
 	jenny_character.nav_to_coords(jenny_nav_points[2])
-	jenny_character.navigation_finished.connect(animate_unlock_door, CONNECT_ONE_SHOT)
-
-
-func animate_unlock_door() -> void:
+	await jenny_character.navigation_finished
 	bedroom_door.interaction_enabled = true
 	start_dialog("jenny_opens_door", level_word_list.dialogue_resource)
 
@@ -68,6 +66,15 @@ func jenny_enter_kitchen(_args: Array) -> void:
 
 	level_word_list.update_event("jenny_in_kitchen", true)
 	start_dialog("missing_headphones", level_word_list.dialogue_resource)
+
+
+func jenny_finds_headphones(_args: Array) -> void:
+	jenny_character.nav_to_coords(jenny_nav_points[6])
+	await jenny_character.navigation_finished
+	start_dialog("headphones_found", level_word_list.dialogue_resource)
+	shoe_rack.animation_controller.play_animation("take_headphones")
+	level_word_list.update_event("headphones_taken", true)
+
 
 
 func jenny_leave_home() -> void:
