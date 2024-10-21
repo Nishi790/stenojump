@@ -1,0 +1,14 @@
+[title]Short Vowels - A and O[/title]
+[p]Lapwing theory primarily uses the sounds of words to determine how to write them. Vowels have lots of variation between accents and dialects, so if you have a different accent from the creator of the theory, you may have different intuitions about which vowel is which. Lapwing primarily uses "standard" American pronunciation, which may not always match your intuition. As you learn, you may need to customize your dictionary to make things work for you.[/p]
+[p]
+"Short" vowels are a concept borrowed from reading and spelling instruction to identify the sounds usually made by each vowel letter (a, e , i, o, and u) in simple words like "cat" and "sun". Each short vowel will be introduced with example words, so don't worry too much if you're not familiar with the concept.[/p]
+[p]There are two rules for short vowels to remember:[/p]
+[ol type=1]When a short vowel is written with 1 letter, use the key for that letter to write the vowel.
+When a short vowel is written with multiple letters, use the key that corresponds to the sound
+[/ol]
+[p]The A key is used for the short "a" sound. This is the sound used in "cat", "pan", "tap" and "sad". See below for examples of "tap" and "sad".[/p]
+[center][steno]TAP SAD[/steno][/center]
+[p]The O key is used for the short "o" sound. This is the sound used in "pop", "hot", "nod", and "for". See below for examples of "pop" and "hot"[/p]
+[center][steno]POP HOT[/steno][/center]
+[p]You'll notice that the letter "r" after vowels can alter the sound. For Lapwing purposes, the sounds "ar" as in "car" and "or" as in "for", "war", or "tore" count as short vowels and need to follow rules 1 and 2. Remember to use the key for the letter when the vowel is only one sound, meaning that "war" is written with the A key, while "tore" is written with the "O" key.[/p]
+[center][steno]WAR TOR[/steno][/center]

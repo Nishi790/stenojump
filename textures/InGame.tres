@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=40 format=3 uid="uid://bauut0j20qrrw"]
+[gd_resource type="Theme" load_steps=41 format=3 uid="uid://bauut0j20qrrw"]
 
 [ext_resource type="StyleBox" uid="uid://blyaks1y4igf7" path="res://textures/UI/hover_button_stylebox.tres" id="1_s5kba"]
 [ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_0gxcr"]
@@ -187,6 +187,8 @@ texture_margin_bottom = 3.0
 axis_stretch_horizontal = 1
 draw_center = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r57n1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5n7lg"]
 atlas = ExtResource("2_0gxcr")
 region = Rect2(16, 384, 16, 16)
@@ -290,6 +292,7 @@ ReviewLevelSelectButton/styles/pressed = ExtResource("8_t5c8r")
 RichTextLabel/colors/default_color = Color(0.180842, 2.90289e-07, 3.00817e-08, 1)
 SpinBox/icons/updown = ExtResource("5_h5syq")
 TabContainer/colors/font_selected_color = Color(0.376471, 0.12549, 0, 1)
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_r57n1")
 TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_g27qn")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_dvnqa")
 TargetRichText/base_type = &"RichTextLabel"

@@ -1,0 +1,17 @@
+[title]Introduction to Stenography[/title]
+Stenography lets you write words as a series of strokes, rather than a series of individual key presses. For example, the word "spot" is typed with four separate movements, one for each letter. In stenography, it's written with one press of the "S", "P", "O", and "T" keys all at once. Once proficient, this lets you write words more quickly with less strain on your hands. 
+
+Each stroke uses a group of keys to indicate different sounds.
+
+Keys on the left of the keyboard represent sounds at the start of a word or syllable, the 4 thumb keys are used for vowels, and keys on the right are used for the end of the word or syllable.
+
+To get started, we'll be learning to write basic words using short vowels and the sounds that are available as single keys on the keyboard. You'll press all the keys needed for each word at the same time.
+
+Below, you'll see the stenography keyboard with all the consonant letters labeled. Each letter can be used for the sound it usually represents in standard English spelling.
+
+[center][steno]STKPWHR-FRPBLGTSDZ[/steno][/center]
+
+[left]
+As you play, you will learn how to write different sounds and words to guide Socks on his journey. Hints will be available at any time of you get stuck. Steno hints may take the form of a diagram showing you what to press, like the above, or be written as "raw" steno, a string of capitalized letters. Each letter represents a key. Letters on the left of the vowels or asterisk are on the left of the keyboard and letters on the right represent keys on the right of the keyboard. If there are no vowels, a hyphen will separate the left and right keys.
+
+Select "Short A and O" on the left to get started with your first words.[/left]

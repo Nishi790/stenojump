@@ -1,0 +1,304 @@
+[gd_scene load_steps=8 format=3 uid="uid://ynoj8widbk65"]
+
+[ext_resource type="Script" path="res://Menu/custom_focus_button.gd" id="1_aba0h"]
+[ext_resource type="Script" path="res://story_mode/UI/ingame_menu.gd" id="1_d60bc"]
+[ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_xo37n"]
+[ext_resource type="Script" path="res://Menu/custom_controls/bound_text_button.gd" id="3_axkbk"]
+[ext_resource type="Script" path="res://story_mode/UI/theory_lesson_container.gd" id="3_cfqtk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrc0b"]
+atlas = ExtResource("2_xo37n")
+region = Rect2(608, 80, 48, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_moo7w"]
+content_margin_left = 18.0
+content_margin_top = 18.0
+content_margin_right = 18.0
+content_margin_bottom = 18.0
+texture = SubResource("AtlasTexture_xrc0b")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+draw_center = false
+
+[node name="Control" type="Control" node_paths=PackedStringArray("theory_button", "gameplay_button", "options_button", "menu_button", "theory_container", "gameplay_container", "options_container", "theory_content", "menu_content", "gameplay_content")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d60bc")
+theory_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/Theory")
+gameplay_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlay")
+options_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/Options")
+menu_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/Menu")
+theory_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions")
+gameplay_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics")
+options_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer/ScrollContainer/OptionsTopics")
+theory_content = NodePath("StoryMenu/BookBG/GamePlay/Content/TheoryLesson")
+menu_content = NodePath("StoryMenu/BookBG/GamePlay/Content/MenuContainer")
+gameplay_content = NodePath("StoryMenu/BookBG/GamePlay/Content/GamePlayTips")
+
+[node name="StoryMenu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BookBG" type="PanelContainer" parent="StoryMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"fullscreen_panel"
+
+[node name="GamePlay" type="HBoxContainer" parent="StoryMenu/BookBG"]
+layout_mode = 2
+
+[node name="Index" type="MarginContainer" parent="StoryMenu/BookBG/GamePlay"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Vbox" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index"]
+layout_mode = 2
+
+[node name="Theory" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+layout_mode = 2
+text = "Theory"
+script = ExtResource("1_aba0h")
+
+[node name="GamePlay" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+layout_mode = 2
+text = "Gameplay
+"
+script = ExtResource("1_aba0h")
+
+[node name="Options" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+layout_mode = 2
+text = "Options"
+script = ExtResource("1_aba0h")
+
+[node name="Menu" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+layout_mode = 2
+text = "Menu"
+script = ExtResource("1_aba0h")
+
+[node name="TheoryContainer" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_moo7w")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer"]
+layout_mode = 2
+
+[node name="TheoryOptions" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Introduction" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Introduction"
+script = ExtResource("3_axkbk")
+text_to_return = "res://story_mode/UI/theory_lessons/1_intro.txt"
+
+[node name="ShortAO" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions"]
+layout_mode = 2
+toggle_mode = true
+text = "Short A and O"
+script = ExtResource("3_axkbk")
+text_to_return = "res://story_mode/UI/theory_lessons/2_short_vowels_AO.txt"
+
+[node name="ShortEU" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions"]
+layout_mode = 2
+toggle_mode = true
+text = "Short E and U"
+script = ExtResource("3_axkbk")
+
+[node name="ShortI" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions"]
+layout_mode = 2
+toggle_mode = true
+text = "Short I"
+script = ExtResource("3_axkbk")
+
+[node name="LeftHandClusters" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions"]
+layout_mode = 2
+toggle_mode = true
+text = "Left Hand Clusters"
+script = ExtResource("3_axkbk")
+
+[node name="GamePlayHelp" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_moo7w")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp"]
+layout_mode = 2
+
+[node name="GamePlayTopics" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+alignment = 1
+
+[node name="BasicMovement" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Movement"
+script = ExtResource("1_aba0h")
+
+[node name="Interactions" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Interactions"
+script = ExtResource("1_aba0h")
+
+[node name="Quests" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Completing Quests"
+script = ExtResource("1_aba0h")
+
+[node name="GeneralActionsMEOW" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Universal Interactions: Meow"
+script = ExtResource("1_aba0h")
+
+[node name="GeneralActionsUseObject" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
+visible = false
+layout_mode = 2
+toggle_mode = true
+text = "Universal Interactions: Use Item"
+script = ExtResource("1_aba0h")
+
+[node name="GeneralActionsHiss" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
+visible = false
+layout_mode = 2
+toggle_mode = true
+text = "Universal Interactions: Hiss"
+script = ExtResource("1_aba0h")
+
+[node name="StenoJump" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Mini-Games: StenoJump"
+script = ExtResource("1_aba0h")
+
+[node name="OptionsContainer" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_moo7w")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer"]
+layout_mode = 2
+
+[node name="OptionsTopics" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Gameplay" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer/ScrollContainer/OptionsTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Gameplay"
+script = ExtResource("1_aba0h")
+
+[node name="Graphics" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer/ScrollContainer/OptionsTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Graphics"
+script = ExtResource("1_aba0h")
+
+[node name="Audio" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer/ScrollContainer/OptionsTopics"]
+layout_mode = 2
+toggle_mode = true
+text = "Audio
+"
+script = ExtResource("1_aba0h")
+
+[node name="Spacer" type="Control" parent="StoryMenu/BookBG/GamePlay"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Content" type="MarginContainer" parent="StoryMenu/BookBG/GamePlay"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TheoryLesson" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Content" node_paths=PackedStringArray("title_label", "lesson_body")]
+layout_mode = 2
+script = ExtResource("3_cfqtk")
+title_label = NodePath("TopicTitle")
+lesson_body = NodePath("Body")
+
+[node name="TopicTitle" type="RichTextLabel" parent="StoryMenu/BookBG/GamePlay/Content/TheoryLesson"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=24]Introduction to Stenography[/font][/center]"
+fit_content = true
+
+[node name="Body" type="RichTextLabel" parent="StoryMenu/BookBG/GamePlay/Content/TheoryLesson"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Stenography lets you write words as a series of strokes, rather than a series of individual key presses. For example, the word \"spot\" is typed with four separate movements, one for each letter. In stenography, it's written with one press of the \"S\", \"P\", \"O\", and \"T\" keys all at once. Once proficient, this lets you write words more quickly with less strain on your hands. 
+
+Each stroke uses a group of keys to indicate different sounds.
+
+Keys on the left of the keyboard represent sounds at the start of a word or syllable, the 4 thumb keys are used for vowels, and keys on the right are used for the end of the word or syllable.
+
+To get started, we'll be learning to write basic words using short vowels and the sounds that are available as single keys on the keyboard. You'll press all the keys needed for each word at the same time.
+
+Below, you'll see the stenography keyboard with all the consonant letters labeled. Each letter can be used for the sound it usually represents in standard English spelling.
+
+[center][font=res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf][font size=200]STKPWHR-FRPBLGTSDZ[/font][/font][/center]
+
+[left]
+As you play, you will learn how to write different sounds and words to guide Socks on his journey. Hints will be available at any time of you get stuck. Steno hints may take the form of a diagram showing you what to press, like the above, or be written as \"raw\" steno, a string of capitalized letters. Each letter represents a key. Letters on the left of the vowels or asterisk are on the left of the keyboard and letters on the right represent keys on the right of the keyboard. If there are no vowels, a hyphen will separate the left and right keys.
+
+Select \"Short A and O\" on the left to get started with your first words.[/left]"
+
+[node name="MenuContainer" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Content"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="StoryMenu/BookBG/GamePlay/Content/MenuContainer"]
+layout_mode = 2
+text = "Resume Game"
+script = ExtResource("1_aba0h")
+
+[node name="ReturnToMenu" type="Button" parent="StoryMenu/BookBG/GamePlay/Content/MenuContainer"]
+layout_mode = 2
+text = "Return to Menu"
+script = ExtResource("1_aba0h")
+
+[node name="GamePlayTips" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Content"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="StoryMenu/BookBG/GamePlay/Content/GamePlayTips"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=24]Basic Movement[/font][/center]"
+fit_content = true
+
+[node name="Content" type="RichTextLabel" parent="StoryMenu/BookBG/GamePlay/Content/GamePlayTips"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Write the word you see to move Socks where you want him to go. Words may be placed on items of interest, or on waypoints throughout the level to get you close enough to reach an item of interest. 
+[img]res://textures/UI/help_pics_and_gifs/basic_movement.png[/img]
+The word on each point will be replaced each time you go there to give you practice with different words related to the theory concept you're learning. 
+
+If you can't reach the place you chose, Socks will let you know. You may need to open up a connection first."
