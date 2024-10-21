@@ -3,6 +3,7 @@ extends TextureButton
 
 signal level_selected(level_name: String, level_type)
 signal add_curve(curve: Line2D)
+signal level_unlocked(level_number: int)
 
 
 @export var level_type: StoryLevelSelector.LevelType
@@ -38,6 +39,7 @@ func unlock() -> void:
 	modulate.a = 0
 	show()
 	tween.tween_property(self, "modulate:a", 1, 0.5)
+	level_unlocked.emit(level_number)
 
 
 
@@ -59,7 +61,8 @@ func unlock_next_level() -> void:
 			var tween_time: float = line_length / growth_speed
 			tween.tween_method(line_to_next.add_point, curve_points[index - 1], curve_points[index - 1], 0)
 			tween.tween_method(grow_line.bind(index), curve_points[index - 1], curve_points[index], tween_time)
-	tween.finished.connect(next_level_button.unlock)
+	if next_level_button != null:
+		tween.finished.connect(next_level_button.unlock)
 
 func grow_line(point: Vector2, point_index: int) -> void:
 	line_to_next.set_point_position(point_index, point)

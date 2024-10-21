@@ -1,40 +1,44 @@
+class_name StoryRunner
 extends Node2D
 
-@export var runner_level: PackedScene
+signal next_level_requested
+signal main_menu_requested
 
-
-
-@export var house_jump_obstacle_textures: Array[Texture]
-@export var house_crawl_obstacle_textures: Array[Texture]
-@export var house_long_obstacles: PackedScene
-@export var house_parallax_layers: Dictionary
-
+var runner_level: PackedScene = load("res://in_game/runner_game.tscn")
 var runner: RunnerGame
+var runner_save: RunnerSave
 
 
-func _init(level_theme: RunnerGame.RunnerThemes = RunnerGame.RunnerThemes.HOUSE_CLEAN, speed_required: int = 20) -> void:
-	runner = runner_level.instantiate()
-	match level_theme:
-		RunnerGame.RunnerThemes.HOUSE_CLEAN:
-			runner.obstacle_manager.theme_jump_texture = house_jump_obstacle_textures
-			runner.obstacle_manager.theme_crawl_texture = house_crawl_obstacle_textures
-			runner.obstacle_manager.theme_long_texture = house_long_obstacles
-# address set up of background
-		RunnerGame.RunnerThemes.HOUSE_MESSY:
-			pass
-		RunnerGame.RunnerThemes.STREET_DIRTY:
-			pass
-		RunnerGame.RunnerThemes.PARK:
-			pass
-		RunnerGame.RunnerThemes.STREET_SUBURB:
-			pass
+func _init(level_key: String = "lapwing_1.json", speed_required: int = 20) -> void:
+	runner_save = RunnerSave.new(create_runner_save_data(level_key, speed_required))
 
-	runner.target_speed = speed_required
-	runner.current_speed = speed_required - 10
-	runner.speed_step = 5
-
-	add_child(runner)
 
 
 func _ready() -> void:
-	pass
+	runner = runner_level.instantiate()
+	runner.next_story_level.connect(next_level)
+	runner.main_menu_requested.connect(go_to_menu)
+	add_child(runner)
+	runner.start_level(runner_save, RunnerGame.RunnerMode.STORY)
+
+
+func create_runner_save_data(level_key: String, target_speed: int) -> Dictionary:
+	var data: Dictionary = {}
+	data["SpeedBuildingMode"] = true
+	data["StartingSpeed"] = target_speed - 10
+	data["CurrentSpeed"] = target_speed - 10
+	data["StepSize"] = 5
+	data["TargetSpeed"] = target_speed
+	data["CurrentLevel"] = level_key
+	data["LastCheckpoint"] = level_key
+	return data
+
+
+func next_level() -> void:
+	queue_free()
+	next_level_requested.emit()
+
+
+func go_to_menu() -> void:
+	queue_free()
+	main_menu_requested.emit()

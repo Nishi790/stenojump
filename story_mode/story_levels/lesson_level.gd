@@ -5,7 +5,7 @@ signal word_used
 signal quest_started(quest_data: BaseQuest)
 signal quest_completed(quest_name: String)
 signal dialogue_started(dialogue_key: String, dialogue: DialogueResource)
-signal level_complete()
+signal level_complete
 
 @export var waypoints: Array [Waypoint]
 
@@ -206,7 +206,7 @@ func start_dialog(dialogue_key: String, dialogue: DialogueResource = level_word_
 
 func call_event(event_name: String, args: Array = []) -> void:
 	if event_name.begins_with("dialog"):
-		var dialog_name: String = event_name.lstrip("dialog_")
+		var dialog_name: String = event_name.trim_prefix("dialog_")
 		start_dialog(dialog_name, level_word_list.dialogue_resource)
 	else:
 		var event_callable: Callable = event_funcs[event_name]
@@ -214,4 +214,5 @@ func call_event(event_name: String, args: Array = []) -> void:
 
 
 func finish_level() -> void:
+	print("Level complete")
 	level_complete.emit()

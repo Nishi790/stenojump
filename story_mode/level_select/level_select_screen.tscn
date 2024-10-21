@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://qtn8utnb0j6r"]
+[gd_scene load_steps=7 format=3 uid="uid://qtn8utnb0j6r"]
 
 [ext_resource type="Script" path="res://story_mode/level_select/level_select_screen.gd" id="1_8rod6"]
 [ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_7ufa4"]
@@ -8,6 +8,12 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnpje"]
 atlas = ExtResource("2_7ufa4")
 region = Rect2(16, 176, 96, 48)
+
+[sub_resource type="Curve2D" id="Curve2D_863rx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 259, 310, 0, 0, 0, 0, 500, 250)
+}
+point_count = 2
 
 [node name="LevelSelectScreen" type="Control" node_paths=PackedStringArray("level_buttons")]
 texture_filter = 1
@@ -53,4 +59,5 @@ scale = Vector2(4, 4)
 disabled = true
 level_type = 1
 level_name = "runner_1"
+curve_to_next = SubResource("Curve2D_863rx")
 level_number = 2

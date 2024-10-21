@@ -11,6 +11,8 @@ signal score_changed
 var lapwing_level_1: String = "lapwing_1.json"
 var learn_plover_level_1: String = ""
 
+var level_data: RunnerLevel
+
 @export var level_sequence: LevelSequence
 @export var custom_start_level: String
 @export var current_level_path: String

@@ -1,7 +1,7 @@
 class_name StoryLevelManager
 extends Node
 
-signal level_complete()
+signal level_complete
 
 @export var player: Socks
 @export var UI: StoryUI

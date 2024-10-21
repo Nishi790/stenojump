@@ -8,6 +8,7 @@ signal words_left_changed (remaining_words: int)
 signal target_speed_changed (target_speed: int)
 signal wpm_updated (wpm: float)
 signal main_menu_requested
+signal next_story_level
 
 @export var obstacle_manager: ObstacleManager
 @export var player: Player
@@ -211,10 +212,14 @@ func game_over() -> void:
 	level_timer_active = false
 	run_ended = true
 	if level_complete: level_complete = false
-	hud.game_over()
-	obstacle_manager.game_over()
-	save_data.reset_progress()
-	PlayerConfig.save_runner(game_mode, save_data.serialize_data())
+	if game_mode != RunnerMode.STORY:
+		hud.game_over()
+		obstacle_manager.game_over()
+		save_data.reset_progress()
+		PlayerConfig.save_runner(game_mode, save_data.serialize_data())
+	else:
+		obstacle_manager.game_over()
+		hud.story_game_over()
 
 
 ##Called when a level is loaded without a following level path (defacto last level)
@@ -236,7 +241,13 @@ func end_level() -> void:
 	if on_last_level:
 		hud.game_won()
 	else:
-		hud.level_complete()
+		if game_mode == RunnerMode.STORY:
+			if save_data.at_target_speed():
+				exit_story_level()
+			else:
+				hud.level_complete()
+		else:
+			hud.level_complete()
 
 
 ##Called to parse text changes in player input box whenever text changes
@@ -277,7 +288,7 @@ func enter_pressed(text: String) -> void:
 		word_failed = false
 		resume_from_missed_word()
 	elif level_complete:
-		if on_last_level:
+		if on_last_level and game_mode != RunnerMode.STORY:
 			if text.strip_edges().is_valid_int():
 				var speed_increase: int = text.to_int()
 				save_data.increase_target_speed(speed_increase)
@@ -386,6 +397,10 @@ func pause_game(menu_open: bool = false) -> void:
 		hud.open_pause_menu()
 	else:
 		player.change_states(Player.State.DIE)
+
+
+func exit_story_level() -> void:
+	next_story_level.emit()
 
 
 ##Saves data before quitting, first sending player class data to the PlayerConfig
