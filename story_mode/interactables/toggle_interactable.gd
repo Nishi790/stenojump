@@ -11,10 +11,7 @@ func _interact() -> void:
 
 func complete_interact(_animation_name: StringName) -> void:
 	toggle_value = not toggle_value
-	for event in interact_events:
-		tried_event.emit(event, toggle_value)
-	await animation_controller.play_animation("interact")
-	set_ready_to_interact(true)
+	super(_animation_name)
 
 #
 #func select_interact_anim() -> bool:

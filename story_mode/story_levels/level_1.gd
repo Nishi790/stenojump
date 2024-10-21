@@ -52,9 +52,6 @@ func feed_socks(_args: Array) -> void:
 	food_bowl.animation_controller.play_animation("fill_bowl")
 	food_bowl.interact_events.clear()
 	food_bowl.interact_events.append("breakfast_eaten")
-	#change animation frames to the ones for food
-	#Change to a new node, of type OneShotInteractable
-	#update interact event to "breakfast_eaten"
 
 
 func jenny_enter_kitchen(_args: Array) -> void:

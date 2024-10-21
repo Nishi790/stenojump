@@ -9,6 +9,8 @@ signal level_complete
 @export var level_holder: Node2D
 @export var level: LessonLevelMap
 
+@export var test_level: PackedScene
+
 var hints_visible: bool = false
 
 
@@ -24,8 +26,7 @@ func _ready() -> void:
 	camera.follow_player = true
 
 
-	if level:
-		set_level(level)
+	set_level(test_level.instantiate())
 
 
 

@@ -27,12 +27,14 @@ func complete_interact(_animation_name: StringName) -> void:
 		animation_controller.play_animation("interact_open")
 	else:
 		animation_controller.play_animation("interact_close")
-
+	await animation_controller.post_animation_hook
 
 	door_open = false if door_open else true
 	change_connection.emit(connected_by_door)
 	for event_name in interact_events:
 		tried_event.emit(event_name, door_open)
+	set_ready_to_interact(true)
+
 
 
 func get_tex_rect() -> Rect2:

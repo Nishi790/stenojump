@@ -183,7 +183,6 @@ func complete_quest(quest_name: String) -> void:
 
 
 func start_dialog(dialogue_key: String, dialogue: DialogueResource = level_word_list.dialogue_resource) -> void:
-	print("Level received dialog: %s"  % dialogue_key)
 	dialogue_started.emit(dialogue_key, dialogue)
 
 
