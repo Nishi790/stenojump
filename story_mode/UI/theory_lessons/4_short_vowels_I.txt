@@ -1,0 +1,7 @@
+[title]Short Vowels - I[/title]
+[p]English has more vowels than the steno keyboard has vowel keys. So, many vowels are written using a combination of vowel keys. The first of these is the short "i". [/p]
+[p]The E and U keys are used together for the short "i" sound. You can press both keys at once by placing your thumb roughly in the crack between the two keys. It might take some practice for you to get it right. Short "i" is the sound used in "win", "pit", "hip" and "sill". See below for examples of "rib" and "kit".[/p]
+[center][steno]RIB KIT[/steno][/center]
+[p]"ir" makes the "er" sound, like in the word "fir" or "sir". Following short vowel rule 1, use EUR to write "er" when it's spelt with an "i".[/p]
+[center][steno]SEUR[/steno][/center]
+[p]The last short vowel in English is the schwa. It is unstressed and is written with a variety of letters in English. Schwa sounds a little like short "u" and is the sound written with an "e" in the word "roses" or the sound of the first "a" in "banana". Typically you hear schwa in words with more than one syllable. No need to memorize it now, but you might need it when you get to multisyllabic words.[/p]

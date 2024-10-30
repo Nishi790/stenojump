@@ -1,5 +1,5 @@
 [title]Introduction to Stenography[/title]
-Stenography lets you write words as a series of strokes, rather than a series of individual key presses. For example, the word "spot" is typed with four separate movements, one for each letter. In stenography, it's written with one press of the "S", "P", "O", and "T" keys all at once. Once proficient, this lets you write words more quickly with less strain on your hands. 
+Stenography lets you write words as a series of strokes, rather than a series of individual key presses. For example, the word "spot" is typed with four separate movements, one for each letter. In stenography, it's written with one press of the "S", "P", "O", and "T" keys all at once. Once proficient, this lets you write words more quickly with less strain on your hands.
 
 Each stroke uses a group of keys to indicate different sounds.
 

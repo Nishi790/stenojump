@@ -10,5 +10,5 @@ When a short vowel is written with multiple letters, use the key that correspond
 [center][steno]TAP SAD[/steno][/center]
 [p]The O key is used for the short "o" sound. This is the sound used in "pop", "hot", "nod", and "for". See below for examples of "pop" and "hot"[/p]
 [center][steno]POP HOT[/steno][/center]
-[p]You'll notice that the letter "r" after vowels can alter the sound. For Lapwing purposes, the sounds "ar" as in "car" and "or" as in "for", "war", or "tore" count as short vowels and need to follow rules 1 and 2. Remember to use the key for the letter when the vowel is only one sound, meaning that "war" is written with the A key, while "tore" is written with the "O" key.[/p]
+[p]You'll notice that the letter "r" after vowels can alter the sound. For Lapwing purposes, the sounds "ar" as in "car" and "or" as in "for", "war", or "tore" count as short vowels and need to follow rules 1 and 2. Remember to use the key for the letter when the vowel is spelled with one letter, meaning that "war" is written with the A key, while "tore" is written with the "O" key.[/p]
 [center][steno]WAR TOR[/steno][/center]

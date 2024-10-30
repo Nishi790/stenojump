@@ -1,0 +1,8 @@
+[title]Short Vowels - E and U[/title]
+[p]Our next vowels are short "e" and short "u". Both of these are on the right vowel keys.[/p]
+[p]The E key is used for the short "e" sound. This is the sound used in "well", "per", "hen" and "let". See below for examples of "set" and "well".[/p]
+[center][steno]SET WEL[/steno][/center]
+[p]The U key is used for the short "u" sound. This is the sound used in "bus", "hut", "sub", and "cut". See below for examples of "sub" and "hut"[/p]
+[center][steno]SUB HUT[/steno][/center]
+[p]For Lapwing purposes, the "er" sound is a short vowel. This sound is written in a number of ways in English, including 'er' as in "her", 'ur' as in "purr" and 'ir' as in "sir". Remember to use the key for the letter when the vowel is only written with one letter.[/p]
+[center][steno]PUR HER[/steno][/center]
