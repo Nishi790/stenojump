@@ -44,8 +44,10 @@ func show_actions(action_number: int) -> void:
 func initialize_actions() -> void:
 	for action: ActionDisplay in all_actions:
 		if action.visible:
-			input_received.connect(action.check_target_match)
-			action.action_taken.connect(clear_line)
+			if not input_received.is_connected(action.check_target_match):
+				input_received.connect(action.check_target_match)
+			if not action.action_taken.is_connected(clear_line):
+				action.action_taken.connect(clear_line)
 			action.word_requested.emit()
 
 

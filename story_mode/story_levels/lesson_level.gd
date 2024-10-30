@@ -63,7 +63,6 @@ func _ready() -> void:
 			if waypoint_astar_grid.get_point_position(point_ID) == connection.global_position:
 				waypoint_astar_grid.connect_points(point_ID, way_index)
 
-	await get_tree().process_frame
 	for point: Waypoint in waypoints:
 		if astar_nav_grid.is_point_disabled(point.astar_point):
 			set_astar_point(point)

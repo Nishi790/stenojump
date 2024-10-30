@@ -13,13 +13,14 @@ var required_speed: int = 40
 func _ready() -> void:
 	story_level_select_screen.story_started.connect(start_story_level)
 	story_level_select_screen.runner_started.connect(start_runner_level)
-	remove_child(story_level_manager)
 	story_level_manager.level_complete.connect(start_next_level)
 
 	for level: String in LevelLoader.levels:
 		if level.begins_with(theory_name):
 			var level_name: String = "runner_" + level.trim_prefix(theory_name).trim_suffix(".json")
-			level_list[level_name] = level
+			level_list[level_name] = level_list
+
+	open_level_select_screen()
 
 
 
