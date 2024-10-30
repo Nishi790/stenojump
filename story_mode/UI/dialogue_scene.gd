@@ -191,3 +191,10 @@ func wait_for_input() -> void:
 		is_waiting_for_input = true
 		focus_mode = Control.FOCUS_ALL
 		grab_focus()
+
+
+func set_focus() -> void:
+	if not response_container.response_buttons.is_empty():
+		response_container.response_buttons[0].grab_focus()
+	else:
+		grab_focus()

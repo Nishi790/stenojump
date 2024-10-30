@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wu4owdvk0ao3"]
+[gd_scene load_steps=8 format=3 uid="uid://wu4owdvk0ao3"]
 
 [ext_resource type="Script" path="res://story_mode/UI/story_ui.gd" id="1_fdopu"]
 [ext_resource type="PackedScene" uid="uid://buc68cm2o0f7i" path="res://story_mode/UI/quest_panel.tscn" id="2_dja5f"]
@@ -6,8 +6,9 @@
 [ext_resource type="FontFile" uid="uid://dnn0f73am7f4b" path="res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf" id="3_cbgie"]
 [ext_resource type="PackedScene" uid="uid://btctdu2obcr7k" path="res://story_mode/UI/action_display.tscn" id="5_mec4o"]
 [ext_resource type="PackedScene" uid="uid://bcbnho06e8427" path="res://story_mode/UI/dialogue_scene.tscn" id="6_s18n2"]
+[ext_resource type="PackedScene" uid="uid://ynoj8widbk65" path="res://story_mode/UI/ingame_menu.tscn" id="7_dfexk"]
 
-[node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display", "stroke_display", "stroke_label", "meow_action", "hiss_action", "item_action")]
+[node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display", "stroke_display", "stroke_label", "meow_action", "hiss_action", "item_action", "menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ stroke_label = NodePath("ExampleMarginCont/StrokePanel/StrokeExample")
 meow_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/MeowAction")
 hiss_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/HissAction")
 item_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/ItemAction")
+menu = NodePath("GameMenuContainer/InGameMenu")
 
 [node name="ExampleMarginCont" type="MarginContainer" parent="."]
 visible = false
@@ -96,4 +98,17 @@ action_type = 1
 layout_mode = 2
 
 [node name="DialogueScene" parent="MarginContainer/VertScreenSplitter" instance=ExtResource("6_s18n2")]
+layout_mode = 2
+
+[node name="GameMenuContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InGameMenu" parent="GameMenuContainer" instance=ExtResource("7_dfexk")]
+visible = false
 layout_mode = 2

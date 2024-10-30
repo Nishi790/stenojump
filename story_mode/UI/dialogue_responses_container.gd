@@ -14,7 +14,8 @@ func _ready() -> void:
 
 func set_responses(responses: Array) -> void:
 	for resp_button: Button in response_buttons:
-		resp_button.queue_free()
+		if is_instance_valid(resp_button):
+			resp_button.queue_free()
 	await get_tree().process_frame
 	for response: DialogueResponse in responses:
 		var new_scene: Button
@@ -30,6 +31,9 @@ func set_responses(responses: Array) -> void:
 
 
 func send_response(response: DialogueResponse) -> void:
+	for button in response_buttons:
+		button.queue_free()
+	response_buttons.clear()
 	response_selected.emit(response)
 
 

@@ -1,6 +1,8 @@
 class_name StoryUI
 extends Control
 
+
+signal quit_to_menu
 signal input_received(text: String)
 
 @export var player_input: LineEdit
@@ -11,6 +13,7 @@ signal input_received(text: String)
 @export var meow_action: ActionDisplay
 @export var hiss_action: ActionDisplay
 @export var item_action: ActionDisplay
+@export var menu: InGameMenu
 
 var all_actions: Array[ActionDisplay]
 var dialogue_queue: Array[Callable]
@@ -22,6 +25,8 @@ func _ready() -> void:
 
 	dialog_balloon.hide()
 	DialogueManager.dialogue_ended.connect(end_dialogue)
+	menu.resume_game_pressed.connect(resume_from_menu)
+	menu.quit_game_pressed.connect(quit)
 
 
 func show_actions(action_number: int) -> void:
@@ -104,3 +109,19 @@ func skip_dialogue() -> void:
 func set_hints_visible(value: bool) -> void:
 	for action: ActionDisplay in all_actions:
 		action.set_hints_active(value)
+
+
+func menu_open(open_type: InGameMenu.MenuState = InGameMenu.MenuState.MENU, lesson_index: int = 0) -> void:
+	menu.open(open_type, lesson_index)
+
+
+func resume_from_menu() -> void:
+	menu.hide()
+	if dialog_balloon.visible:
+		dialog_balloon.set_focus()
+	else:
+		player_input.grab_focus()
+
+
+func quit() -> void:
+	quit_to_menu.emit()
