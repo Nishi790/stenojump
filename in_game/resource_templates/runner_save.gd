@@ -35,7 +35,7 @@ var total_score: int:
 @export var current_lives: int = 3:
 	set(lives):
 		current_lives = lives
-		lives_changed.emit
+		lives_changed.emit()
 
 @export var speed_building_mode: bool
 @export var starting_speed: int
@@ -43,7 +43,7 @@ var total_score: int:
 @export var step_size: int = 5
 
 
-func _init(save_data: Dictionary = {}):
+func _init(save_data: Dictionary = {}) -> void:
 	level_sequence = save_data["LevelSequence"] if save_data.has("LevelSequence") else LevelSequence.LAPWING
 	custom_start_level = save_data["CustomStartLevel"] if save_data.has("CustomStartLevel") else ""
 	if save_data.has("LastCheckpoint"):
