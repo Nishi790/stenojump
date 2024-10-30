@@ -188,8 +188,6 @@ quests = {
 "wake_up_jenny": ExtResource("18_wyxbg")
 }
 lesson_indices = {
-7: "teach_o_vowel",
-14: "teach_e_vowel",
-21: "teach_u_vowel",
+14: "teach_e_u_vowel",
 28: "teach_i_vowel"
 }
