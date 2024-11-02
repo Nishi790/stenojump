@@ -1,0 +1,6 @@
+[title]Basic Movement[/title]
+Write the word you see to move Socks where you want him to go. Words may be placed on items of interest, or on waypoints throughout the level to get you close enough to reach an item of interest.
+[img]res://textures/UI/help_pics_and_gifs/basic_movement.png[/img]
+The word on each point will be replaced each time you go there to give you practice with different words related to the theory concept you're learning.
+
+If you can't reach the place you chose, Socks will let you know. You may need to open up a connection first.

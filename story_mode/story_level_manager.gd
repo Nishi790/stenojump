@@ -2,6 +2,7 @@ class_name StoryLevelManager
 extends Node
 
 signal level_complete
+signal menu_requested
 
 @export var player: Socks
 @export var UI: StoryUI
@@ -24,7 +25,7 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	camera.player = player
 	camera.follow_player = true
-
+	UI.quit_to_menu.connect(quit_to_menu)
 
 	set_level(test_level.instantiate())
 
@@ -44,7 +45,7 @@ func set_level(new_level: LessonLevelMap) -> void:
 	level.quest_started.connect(start_quest)
 	level.quest_completed.connect(finish_quest)
 	level.dialogue_started.connect(start_dialogue)
-	level.level_complete.connect(func end_level(): level_complete.emit())
+	level.level_complete.connect(func end_level() -> void: level_complete.emit())
 
 	camera.update_limits(level.tile_map_holder.base_map_layer, level.tile_map_holder.scale)
 	set_hints_visible(false)
@@ -55,6 +56,7 @@ func set_level(new_level: LessonLevelMap) -> void:
 
 	UI.input_received.connect(level.propagate_entry)
 	UI.show_actions(level.available_actions)
+
 
 
 func set_hints_visible(value: bool) -> void:
@@ -75,3 +77,7 @@ func finish_quest(quest_name: String) -> void:
 func start_dialogue(key: String, dialogue: DialogueResource) -> void:
 	print("dialogue start requested with key %s" % key)
 	UI.start_dialogue(key, dialogue, [self])
+
+
+func quit_to_menu() -> void:
+	menu_requested.emit()

@@ -1,6 +1,6 @@
 extends Control
 
-signal story_started(load_path)
+signal story_started(load_path: String)
 signal quit_game_pressed
 signal level_creator_selected
 signal arcade_mode_selected
@@ -29,7 +29,7 @@ func _ready() -> void:
 	story_mode_button.pressed.connect(func open_panel() -> void:
 		story_menu.show()
 		new_story_button.grab_focus())
-	arcade_mode_button.pressed.connect(func arcade(): arcade_mode_selected.emit())
+	arcade_mode_button.pressed.connect(func arcade() -> void: arcade_mode_selected.emit())
 	options_button.pressed.connect(open_options)
 	quit_game_button.pressed.connect(quit_game)
 	level_creator_button.pressed.connect(launch_level_creator)

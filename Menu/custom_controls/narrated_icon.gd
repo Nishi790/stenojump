@@ -10,5 +10,5 @@ func _ready() -> void:
 		focus_mode = FocusMode.FOCUS_ALL
 
 
-func _on_focus_entered():
-	PlayerConfig.speak_tts("alt_text")
+func _on_focus_entered() -> void:
+	PlayerConfig.speak_tts(alt_text)

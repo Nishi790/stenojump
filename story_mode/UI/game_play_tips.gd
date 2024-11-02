@@ -1,19 +1,13 @@
-class_name TheoryLessonContainer
 extends VBoxContainer
 
 @export var title_label: RichTextLabel
-@export var lesson_body: RichTextLabel
-
-static var steno_open_tags: String = "[font=res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf][font size=100]"
-static var steno_close_tags: String = "[/font][/font]"
+@export var tip_body: RichTextLabel
 
 static var title_open_tags: String = "[center][font size=%s]"
 static var title_close_tags: String = "[/font][/center]"
 var title_font_size: int = 32
 
-
-
-static func parse_lesson_text(path: String) -> Dictionary:
+static func parse_tip_text(path: String) -> Dictionary:
 	var return_dict: Dictionary = {}
 	var file_access: FileAccess = FileAccess.open(path, FileAccess.READ)
 	var file_content: String = file_access.get_as_text()
@@ -22,8 +16,6 @@ static func parse_lesson_text(path: String) -> Dictionary:
 	return_dict["title"] = title_string
 
 	var body_string: String = file_content.get_slice("[/title]", 1)
-	body_string = body_string.replace("[steno]", steno_open_tags)
-	body_string = body_string.replace("[/steno]", steno_close_tags)
 
 	return_dict["body"] = body_string
 
@@ -31,12 +23,13 @@ static func parse_lesson_text(path: String) -> Dictionary:
 
 
 func _ready() -> void:
-	var lesson_dictionary: Dictionary = parse_lesson_text("res://story_mode/UI/theory_lessons/1_intro.txt")
-	display_lesson(lesson_dictionary)
+	var tip_dict: Dictionary = parse_tip_text("res://story_mode/UI/game_play_tips/0_basic_movement.txt")
+	display_tip(tip_dict)
 
 
-func display_lesson(lesson_dict: Dictionary) -> void:
+func display_tip(dict: Dictionary) -> void:
 	var title_text: String = title_open_tags % title_font_size
-	title_text = title_text + lesson_dict["title"] + title_close_tags
+	title_text += dict["title"]
+	title_text += title_close_tags
 	title_label.set_text(title_text)
-	lesson_body.set_text(lesson_dict["body"])
+	tip_body.set_text(dict["body"])

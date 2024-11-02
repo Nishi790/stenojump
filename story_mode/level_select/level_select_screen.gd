@@ -5,21 +5,25 @@ enum LevelType {STORY, RUNNER}
 
 signal runner_started(level_name: String)
 signal story_started(level_name: String)
+signal return_to_menu
 
 @export var level_buttons: Array[LevelSelectButton]
 @export var unlocked_levels: Array[int]
 @export var current_curves: Array[Line2D]
+@export var quit_button: Button
 
 
 
 func _ready() -> void:
+	quit_button.pressed.connect(func quit() -> void:
+		return_to_menu.emit())
 	unlock_levels()
 	for button in level_buttons:
 		if button.disabled:
 			button.hide()
 		button.level_selected.connect(start_level)
 		button.add_curve.connect(add_curve)
-		button.level_unlocked.connect(func add_to_unlocked(level_number: int):
+		button.level_unlocked.connect(func add_to_unlocked(level_number: int) -> void:
 			if not unlocked_levels.has(level_number - 1):
 				unlocked_levels.append(level_number - 1))
 

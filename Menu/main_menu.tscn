@@ -148,6 +148,7 @@ sound_player = NodePath("CatSounds")
 stream = ExtResource("11_t83tv")
 
 [node name="StoryStartMenu" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

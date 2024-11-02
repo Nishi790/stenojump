@@ -42,6 +42,8 @@ func change_state(new_state: GameStates) -> void:
 				level_creator.queue_free()
 			if arcade_menu != null:
 				arcade_menu.queue_free()
+			if story != null:
+				story.queue_free()
 			game_state = GameStates.MENU
 			menu = menu_scene.instantiate()
 			add_child(menu)
@@ -49,6 +51,7 @@ func change_state(new_state: GameStates) -> void:
 			menu.quit_game_pressed.connect(quit_game)
 			menu.level_creator_selected.connect(change_state.bind(GameStates.LEVEL_CREATOR))
 			menu.arcade_mode_selected.connect(change_state.bind(GameStates.ARCADE_MENU))
+
 		GameStates.RUNNER:
 			if menu != null:
 				menu.queue_free()
@@ -76,6 +79,15 @@ func change_state(new_state: GameStates) -> void:
 			add_child(arcade_menu)
 			arcade_menu.return_to_main.connect(change_state.bind(GameStates.MENU))
 			arcade_menu.start_runner.connect(start_runner)
+
+		GameStates.STORY:
+			if menu != null:
+				menu.queue_free()
+
+			game_state = GameStates.STORY
+			story = story_scene.instantiate()
+			add_child(story)
+			story.menu_requested.connect(change_state.bind(GameStates.MENU))
 
 	return
 

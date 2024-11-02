@@ -44,7 +44,7 @@ func set_target_word(word_data: Dictionary) -> void:
 		target_label.size.y = minimum_label_height
 
 
-func set_hints_active(value) -> void:
+func set_hints_active(value: bool) -> void:
 	hints_active = value
 	if target_data:
 		set_target_word(target_data)

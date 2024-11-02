@@ -214,7 +214,7 @@ func save_runner(mode: RunnerGame.RunnerMode, serialized_data: Dictionary) -> vo
 		RunnerGame.RunnerMode.PROGRESSION:
 			arcade_sequence_save_dictionary = serialized_data
 		RunnerGame.RunnerMode.STORY:
-			story_save_dictionary
+			story_save_dictionary #TODO Determine story saving mechanism
 	save_game()
 
 

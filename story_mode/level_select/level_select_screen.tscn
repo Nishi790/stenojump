@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://qtn8utnb0j6r"]
+[gd_scene load_steps=9 format=3 uid="uid://qtn8utnb0j6r"]
 
 [ext_resource type="Script" path="res://story_mode/level_select/level_select_screen.gd" id="1_8rod6"]
 [ext_resource type="Texture2D" uid="uid://dgcpinrdvq6ga" path="res://textures/UI/UI books & more.png" id="2_7ufa4"]
 [ext_resource type="PackedScene" uid="uid://knljpoiuhla6" path="res://story_mode/level_select/level_button.tscn" id="3_7bpjj"]
+[ext_resource type="Texture2D" uid="uid://dfc4g0bghn4qd" path="res://story_mode/UI/level_select_textures/focused_button.atlastex" id="4_eo1kh"]
 [ext_resource type="Curve2D" uid="uid://b2hfaaxx4mdrb" path="res://story_mode/level_select/curves/curve_1_1_to_1_2.tres" id="4_hxov8"]
+[ext_resource type="Script" path="res://Menu/custom_focus_button.gd" id="6_siwo4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnpje"]
 atlas = ExtResource("2_7ufa4")
@@ -15,7 +17,7 @@ _data = {
 }
 point_count = 2
 
-[node name="LevelSelectScreen" type="Control" node_paths=PackedStringArray("level_buttons")]
+[node name="LevelSelectScreen" type="Control" node_paths=PackedStringArray("level_buttons", "quit_button")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -26,6 +28,7 @@ grow_vertical = 2
 script = ExtResource("1_8rod6")
 level_buttons = [NodePath("LevelButton_1_1"), NodePath("LevelButton_1_2")]
 unlocked_levels = Array[int]([0])
+quit_button = NodePath("Quit")
 
 [node name="SelectBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -44,6 +47,7 @@ offset_top = 147.0
 offset_right = 118.0
 offset_bottom = 163.0
 scale = Vector2(4, 4)
+texture_focused = ExtResource("4_eo1kh")
 level_name = "story_1"
 next_level_button = NodePath("../LevelButton_1_2")
 curve_to_next = ExtResource("4_hxov8")
@@ -57,7 +61,23 @@ offset_right = 275.0
 offset_bottom = 326.0
 scale = Vector2(4, 4)
 disabled = true
+texture_focused = ExtResource("4_eo1kh")
 level_type = 1
 level_name = "runner_1"
 curve_to_next = SubResource("Curve2D_863rx")
 level_number = 2
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -31.0
+offset_right = 61.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit to menu"
+script = ExtResource("6_siwo4")

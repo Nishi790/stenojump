@@ -42,14 +42,16 @@ func _ready() -> void:
 	options_button.pressed.connect(set_menu_state.bind(MenuState.OPTIONS))
 
 	theory_container.button_selected.connect(display_theory_lesson)
+	theory_container.pass_focus.connect(pass_focus.bind(gameplay_container))
 	gameplay_container.button_selected.connect(display_gameplay_tip)
+	gameplay_container.pass_focus.connect(pass_focus.bind(options_container))
 	options_container.button_selected.connect(display_options_page)
+	options_container.pass_focus.connect(pass_focus.bind(theory_button))
 
 	resume_button.pressed.connect(resume_game)
 	quit_button.pressed.connect(quit_story)
 
-	theory_button.set_pressed(true)
-	theory_button.pressed.emit()
+	open(MenuState.MENU, 0)
 
 
 func set_menu_state(new_state: MenuState) -> void:
@@ -106,9 +108,15 @@ func open(open_type: MenuState, page_index: int = 0) -> void:
 			set_menu_state(MenuState.OPTIONS)
 
 
+func pass_focus(new_focus: Control) -> void:
+	new_focus.grab_focus()
+	print("Current Focus is %" % get_viewport().gui_get_focus_owner())
+
+
 func resume_game() -> void:
 	hide()
 	resume_game_pressed.emit()
+
 
 func quit_story() -> void:
 	quit_game_pressed.emit()

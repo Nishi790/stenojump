@@ -303,7 +303,6 @@ func enter_pressed(text: String) -> void:
 		command_entered = command_entered.to_lower()
 		match command_entered:
 			"quit":
-				var serialized_data: Dictionary
 				if save_data.at_target_speed():
 					LevelLoader.save_next_level()
 					quit_game(true)

@@ -1,7 +1,7 @@
 class_name LevelSelectButton
 extends TextureButton
 
-signal level_selected(level_name: String, level_type)
+signal level_selected(level_name: String, level_type: StoryLevelSelector.LevelType)
 signal add_curve(curve: Line2D)
 signal level_unlocked(level_number: int)
 
@@ -35,7 +35,7 @@ func start_level() -> void:
 
 func unlock() -> void:
 	disabled = false
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	modulate.a = 0
 	show()
 	tween.tween_property(self, "modulate:a", 1, 0.5)

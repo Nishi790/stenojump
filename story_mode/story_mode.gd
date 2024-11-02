@@ -1,5 +1,7 @@
 class_name StoryMode extends Node
 
+signal menu_requested
+
 @export var story_level_manager: StoryLevelManager
 @export var story_level_select_screen: StoryLevelSelector
 var runner: StoryRunner
@@ -13,15 +15,19 @@ var required_speed: int = 40
 func _ready() -> void:
 	story_level_select_screen.story_started.connect(start_story_level)
 	story_level_select_screen.runner_started.connect(start_runner_level)
+	story_level_select_screen.return_to_menu.connect(quit_to_menu)
 	story_level_manager.level_complete.connect(start_next_level)
+	story_level_manager.menu_requested.connect(open_level_select_screen)
 
 	for level: String in LevelLoader.levels:
 		if level.begins_with(theory_name):
 			var level_name: String = "runner_" + level.trim_prefix(theory_name).trim_suffix(".json")
 			level_list[level_name] = level
-
 	open_level_select_screen()
 
+
+func start_new_story() -> void:
+	start_story_level("story_1")
 
 
 func start_story_level(level_name: String) -> void:
@@ -66,3 +72,7 @@ func display_demo_over() -> void:
 	var demo_over_scene: Control = load("res://story_mode/UI/demo_over.tscn").instantiate()
 	add_child(demo_over_scene)
 	demo_over_scene.return_to_level_select.connect(open_level_select_screen)
+
+
+func quit_to_menu() -> void:
+	menu_requested.emit()
