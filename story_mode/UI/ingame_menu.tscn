@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ynoj8widbk65"]
+[gd_scene load_steps=13 format=3 uid="uid://ynoj8widbk65"]
 
 [ext_resource type="Script" path="res://Menu/custom_focus_button.gd" id="1_aba0h"]
 [ext_resource type="Script" path="res://story_mode/UI/ingame_menu.gd" id="1_d60bc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://story_mode/UI/theory_lesson_container.gd" id="3_cfqtk"]
 [ext_resource type="Script" path="res://story_mode/UI/in_game_menu_button_container.gd" id="4_v6sgb"]
 [ext_resource type="ButtonGroup" uid="uid://xibu6gh1ojmh" path="res://story_mode/UI/theory_button_group.tres" id="5_5rext"]
+[ext_resource type="ButtonGroup" uid="uid://bglj1mmdy76vf" path="res://story_mode/UI/gameplay_button_group.tres" id="8_66uuf"]
 [ext_resource type="Script" path="res://story_mode/UI/game_play_tips.gd" id="9_yxtwq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrc0b"]
@@ -38,9 +39,9 @@ theory_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/Theory")
 gameplay_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlay")
 options_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/Options")
 menu_button = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/Menu")
-theory_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions")
-gameplay_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics")
-options_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer/ScrollContainer/OptionsTopics")
+theory_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer")
+gameplay_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp")
+options_container = NodePath("StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer")
 theory_content = NodePath("StoryMenu/BookBG/GamePlay/Content/TheoryLesson")
 menu_content = NodePath("StoryMenu/BookBG/GamePlay/Content/MenuContainer")
 gameplay_content = NodePath("StoryMenu/BookBG/GamePlay/Content/GamePlayTips")
@@ -55,7 +56,9 @@ steno_lesson_dict = {
 }
 gameplay_tip_dict = {
 0: "res://story_mode/UI/game_play_tips/0_basic_movement.txt",
-1: "res://story_mode/UI/game_play_tips/1_interact.txt"
+1: "res://story_mode/UI/game_play_tips/1_interact.txt",
+2: "res://story_mode/UI/game_play_tips/2_quests.txt",
+3: "res://story_mode/UI/game_play_tips/3_meow.txt"
 }
 
 [node name="StoryMenu" type="MarginContainer" parent="."]
@@ -127,22 +130,23 @@ button_group = ExtResource("2_0p6vg")
 text = "Menu"
 script = ExtResource("1_aba0h")
 
-[node name="TheoryContainer" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+[node name="TheoryContainer" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox" node_paths=PackedStringArray("button_array")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_moo7w")
+script = ExtResource("4_v6sgb")
+button_array = [NodePath("ScrollContainer/TheoryOptions/Introduction"), NodePath("ScrollContainer/TheoryOptions/ShortAO"), NodePath("ScrollContainer/TheoryOptions/ShortEU"), NodePath("ScrollContainer/TheoryOptions/ShortI"), NodePath("ScrollContainer/TheoryOptions/LeftHandClusters")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer"]
 layout_mode = 2
 
-[node name="TheoryOptions" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer" node_paths=PackedStringArray("button_array")]
+[node name="TheoryOptions" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-focus_mode = 2
 alignment = 1
-script = ExtResource("4_v6sgb")
-button_array = [NodePath("Introduction"), NodePath("ShortAO"), NodePath("ShortEU"), NodePath("ShortI"), NodePath("LeftHandClusters")]
 
 [node name="Introduction" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/TheoryContainer/ScrollContainer/TheoryOptions"]
 layout_mode = 2
@@ -202,22 +206,23 @@ button_group = ExtResource("5_5rext")
 text = "Left Hand Clusters"
 script = ExtResource("3_axkbk")
 
-[node name="GamePlayHelp" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+[node name="GamePlayHelp" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox" node_paths=PackedStringArray("button_array")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_moo7w")
+script = ExtResource("4_v6sgb")
+button_array = [NodePath("ScrollContainer/GamePlayTopics/BasicMovement"), NodePath("ScrollContainer/GamePlayTopics/Interactions"), NodePath("ScrollContainer/GamePlayTopics/Quests"), NodePath("ScrollContainer/GamePlayTopics/GeneralActionsMEOW"), NodePath("ScrollContainer/GamePlayTopics/GeneralActionsUseObject"), NodePath("ScrollContainer/GamePlayTopics/GeneralActionsHiss"), NodePath("ScrollContainer/GamePlayTopics/StenoJump")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp"]
 layout_mode = 2
 
-[node name="GamePlayTopics" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer" node_paths=PackedStringArray("button_array")]
+[node name="GamePlayTopics" type="VBoxContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-focus_mode = 2
 alignment = 1
-script = ExtResource("4_v6sgb")
-button_array = [NodePath("BasicMovement"), NodePath("Interactions"), NodePath("Quests"), NodePath("GeneralActionsMEOW"), NodePath("GeneralActionsUseObject"), NodePath("GeneralActionsHiss"), NodePath("StenoJump")]
 
 [node name="BasicMovement" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
 layout_mode = 2
@@ -226,6 +231,7 @@ focus_neighbor_bottom = NodePath("../Interactions")
 focus_next = NodePath("../../../../Theory")
 focus_previous = NodePath("../../../../Menu")
 toggle_mode = true
+button_group = ExtResource("8_66uuf")
 text = "Movement"
 script = ExtResource("1_aba0h")
 
@@ -236,6 +242,7 @@ focus_neighbor_bottom = NodePath("../Quests")
 focus_next = NodePath("../../../../Theory")
 focus_previous = NodePath("../../../../Menu")
 toggle_mode = true
+button_group = ExtResource("8_66uuf")
 text = "Interactions"
 script = ExtResource("1_aba0h")
 
@@ -246,6 +253,7 @@ focus_neighbor_bottom = NodePath("../GeneralActionsMEOW")
 focus_next = NodePath("../../../../Theory")
 focus_previous = NodePath("../../../../Menu")
 toggle_mode = true
+button_group = ExtResource("8_66uuf")
 text = "Completing Quests"
 script = ExtResource("1_aba0h")
 
@@ -256,6 +264,7 @@ focus_neighbor_bottom = NodePath("../StenoJump")
 focus_next = NodePath("../../../../Theory")
 focus_previous = NodePath("../../../../Menu")
 toggle_mode = true
+button_group = ExtResource("8_66uuf")
 text = "Universal Interactions: Meow"
 script = ExtResource("1_aba0h")
 
@@ -267,6 +276,7 @@ focus_neighbor_bottom = NodePath("../GeneralActionsHiss")
 focus_next = NodePath("../../../../Theory")
 focus_previous = NodePath("../../../../Menu")
 toggle_mode = true
+button_group = ExtResource("8_66uuf")
 text = "Universal Interactions: Use Item"
 script = ExtResource("1_aba0h")
 
@@ -278,19 +288,25 @@ focus_neighbor_bottom = NodePath("../StenoJump")
 focus_next = NodePath("../../../../Theory")
 focus_previous = NodePath("../../../../Menu")
 toggle_mode = true
+button_group = ExtResource("8_66uuf")
 text = "Universal Interactions: Hiss"
 script = ExtResource("1_aba0h")
 
 [node name="StenoJump" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/GamePlayHelp/ScrollContainer/GamePlayTopics"]
 layout_mode = 2
 toggle_mode = true
+button_group = ExtResource("8_66uuf")
 text = "Mini-Games: StenoJump"
 script = ExtResource("1_aba0h")
 
-[node name="OptionsContainer" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox"]
+[node name="OptionsContainer" type="PanelContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox" node_paths=PackedStringArray("button_array")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_moo7w")
+script = ExtResource("4_v6sgb")
+button_array = [NodePath("ScrollContainer/OptionsTopics/Gameplay"), NodePath("ScrollContainer/OptionsTopics/Graphics"), NodePath("ScrollContainer/OptionsTopics/Audio")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer"]
 layout_mode = 2
@@ -299,9 +315,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-focus_mode = 2
 alignment = 1
-script = ExtResource("4_v6sgb")
 
 [node name="Gameplay" type="Button" parent="StoryMenu/BookBG/GamePlay/Index/Vbox/OptionsContainer/ScrollContainer/OptionsTopics"]
 layout_mode = 2

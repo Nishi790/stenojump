@@ -1,0 +1,6 @@
+[title]Interaction[/title]
+[p]When you see a word in a different colour, it indicates that you can interact with that object. Write the word and Socks will interact with the object. Interacting with objects will let you complete different tasks and quests to help Socks get through the day.
+[/p]
+[center][img]res://textures/UI/help_pics_and_gifs/basic_interaction.png[/img][/center]
+[p]
+You can only interact with an item if you are next to it. Approach different places and objects to see what Socks can do.[/p]

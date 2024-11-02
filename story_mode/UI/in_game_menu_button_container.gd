@@ -1,5 +1,5 @@
 class_name InGameMenuButtonContainer
-extends VBoxContainer
+extends PanelContainer
 
 signal button_selected(index: int)
 signal pass_focus

@@ -11,9 +11,9 @@ signal quit_game_pressed
 @export var options_button: Button
 @export var menu_button: Button
 
-@export var theory_container: VBoxContainer
-@export var gameplay_container: VBoxContainer
-@export var options_container: VBoxContainer
+@export var theory_container: PanelContainer
+@export var gameplay_container: PanelContainer
+@export var options_container: PanelContainer
 var button_containers: Array[Control]
 
 @export var theory_content: VBoxContainer
@@ -85,7 +85,12 @@ func display_theory_lesson(index: int) -> void:
 
 
 func display_gameplay_tip(index: int) -> void:
-	gameplay_content.parse_tip_text(gameplay_tip_dict[index])
+	if gameplay_tip_dict.has(index):
+		var tip_dict = gameplay_content.parse_tip_text(gameplay_tip_dict[index])
+		gameplay_content.display_tip(tip_dict)
+	else:
+		print_debug("Invalid tip index - there is no tip with the ID %d" % index)
+		gameplay_container.reset_selection()
 
 
 func display_options_page(index: int) -> void:

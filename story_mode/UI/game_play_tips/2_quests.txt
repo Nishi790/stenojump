@@ -1,0 +1,3 @@
+[title]Quests[/title]
+[p]Throughout each level, you will encounter various quests, visible in the top right. Quest details are visible beneath the quest name.
+Completed quests will be crossed off the list automatically.[/p]
