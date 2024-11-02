@@ -25,7 +25,12 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	pass
+	if event.is_action_pressed("unlock_all_levels"):
+		accept_event()
+		for index: int in level_buttons.size():
+			if not unlocked_levels.has(index):
+				unlocked_levels.append(index)
+		unlock_levels()
 
 
 func start_level(level_name: String, level_type: LevelType) -> void:

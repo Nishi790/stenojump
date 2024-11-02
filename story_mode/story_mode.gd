@@ -18,7 +18,7 @@ func _ready() -> void:
 	for level: String in LevelLoader.levels:
 		if level.begins_with(theory_name):
 			var level_name: String = "runner_" + level.trim_prefix(theory_name).trim_suffix(".json")
-			level_list[level_name] = level_list
+			level_list[level_name] = level
 
 	open_level_select_screen()
 
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func start_story_level(level_name: String) -> void:
 	if level_name == "":
-		open_level_select_screen()
+		display_demo_over()
 		return
 	current_level = level_name
 	if not story_level_manager.is_inside_tree():
@@ -39,6 +39,7 @@ func start_story_level(level_name: String) -> void:
 
 func start_runner_level(level_name: String) -> void:
 	current_level = level_name
+	print(level_list)
 	runner = StoryRunner.new(level_list[level_name], required_speed)
 	runner.next_level_requested.connect(start_next_level)
 	runner.main_menu_requested.connect(open_level_select_screen)
@@ -59,3 +60,9 @@ func open_level_select_screen() -> void:
 	if not story_level_select_screen.is_inside_tree():
 		add_child(story_level_select_screen)
 		story_level_select_screen.initiate_focus()
+
+
+func display_demo_over() -> void:
+	var demo_over_scene: Control = load("res://story_mode/UI/demo_over.tscn").instantiate()
+	add_child(demo_over_scene)
+	demo_over_scene.return_to_level_select.connect(open_level_select_screen)
