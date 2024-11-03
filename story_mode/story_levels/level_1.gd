@@ -59,7 +59,7 @@ func jenny_enter_kitchen(_args: Array) -> void:
 		await sink.sprite.animation_changed
 	jenny_character.nav_to_astar_point(sink.astar_point)
 	await jenny_character.navigation_finished
-	sink.complete_interact("interact")
+	sink.complete_interact(&"interact")
 
 	level_word_list.update_event("jenny_in_kitchen", true)
 	start_dialog("missing_headphones", level_word_list.dialogue_resource)

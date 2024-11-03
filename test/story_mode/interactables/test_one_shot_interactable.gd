@@ -9,10 +9,17 @@ func before_each() -> void:
 	player = double(Socks).new()
 	one_shot_interact = partial_double(one_shot_scene).instantiate()
 	one_shot_interact.interactor = player
+	one_shot_interact.animation_controller = autoqfree(Animator.new())
+	one_shot_interact.animation_controller.sprite = autoqfree(AnimatedSprite2D.new())
+	one_shot_interact.default_animation = AnimationContainer.new()
+	one_shot_interact.default_animation.frames = SpriteFrames.new()
+	one_shot_interact.interaction_enabled = true
+
 	var player_area: Area2D = autoqfree(Area2D.new())
 	player.add_child(player_area)
 	player.interaction_area = player_area
-	player.animations = autoqfree(AnimatedSprite2D.new())
+	player.animations = autoqfree(AnimationPlayer.new())
+	player.sprite = autoqfree(AnimatedSprite2D.new())
 
 
 func test_can_interact() -> void:
@@ -74,11 +81,13 @@ func test_enter_word_for_move_then_interact() -> void:
 	assert_eq(one_shot_interact.target_word, "sit")
 
 	#interact with interactable
+	assert_true(one_shot_interact.can_match)
+	assert_true(one_shot_interact.interaction_enabled, "Interaction should be enabled by default")
 	one_shot_interact.check_target_match("sit")
 
 	assert_called(one_shot_interact, "_interact")
 
-	one_shot_interact.complete_interact()
+	one_shot_interact.complete_interact(&"Animation")
 
 	assert_false(one_shot_interact.target_label.visible, "Should not see target label")
 	assert_false(one_shot_interact.ready_to_interact, "Should not be able to interact")

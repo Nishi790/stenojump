@@ -9,9 +9,13 @@ var character: Socks
 func before_each() -> void:
 	interactable = partial_double(interactable_scene).instantiate()
 	add_child(interactable)
+	interactable.animation_controller = autoqfree(Animator.new())
+	interactable.animation_controller.sprite = autoqfree(AnimatedSprite2D.new())
+	interactable.default_animation = AnimationContainer.new()
+	interactable.default_animation.frames = SpriteFrames.new()
 	character = partial_double(Socks).new()
-	character.animations = autoqfree(AnimatedSprite2D.new())
-	character.animations.sprite_frames = load("res://textures/character_animations/player_sprite_frames.tres")
+	character.animations = autoqfree(AnimationPlayer.new())
+	character.sprite = autoqfree(AnimatedSprite2D.new())
 	add_child(character)
 	var interact_area: Area2D = Area2D.new()
 	character.interaction_area = interact_area
@@ -35,12 +39,14 @@ func test_interact() -> void:
 	watch_signals(interactable)
 	stub(character.interact).to_do_nothing()
 
+
 	interactable._interact()
 	assert_called(character, "interact")
 	assert_false(interactable.ready_to_interact, "Interactable should be disabled after interacting")
 
-	character.animations.animation_finished.emit()
+	character.animations.animation_finished.emit(&"reach_up")
 	assert_called(interactable, "complete_interact")
+	interactable.animation_controller.post_animation_hook.emit()
 	assert_signal_emitted_with_parameters(interactable, "tried_event", [interactable.interact_events[0], true])
 
 

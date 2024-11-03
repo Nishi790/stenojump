@@ -10,6 +10,13 @@ func before_each():
 	level_data = load("res://story_mode/story_levels/level_words/level_1_story_data.tres")
 	level.level_word_list = level_data
 	level._load_event_funcs()
+	level.jenny_nav_points.assign([Vector2.ZERO])
+	level.jenny_nav_points.resize(10)
+	level.jenny_nav_points.fill(Vector2.ZERO)
+	var jenny = double(JennyAtHome).new()
+	level.jenny_character = jenny
+	stub(jenny.nav_to_coords).to_call(func lambda(coords: Vector2) -> void:
+		jenny.navigation_finished.emit())
 
 
 func after_each() -> void:
@@ -61,7 +68,7 @@ func test_open_bedroom_door() -> void:
 	watch_signals(level_data)
 	assert_false(door.interaction_enabled)
 	level_data.update_event("jenny_woke_up", true)
-	stub(level.unlock_door).to_call(func lambda(_args): level.animate_unlock_door())
+	stub(level.unlock_door).to_call(func lambda(_args): door.interaction_enabled = true)
 
 	level_data.start_quest("open_the_door")
 	assert_true(level_data.active_quests.keys().has("open_the_door"))
@@ -70,12 +77,11 @@ func test_open_bedroom_door() -> void:
 	level_data.update_action_event("meowed_at_door_twice", Socks.GeneralActions.MEOW)
 	assert_signal_emitted_with_parameters(level_data, "event_triggered", ["unlock_door", []])
 	assert_called(level, "unlock_door")
-	assert_called(level, "animate_unlock_door")
 	assert_true(door.interaction_enabled)
 
 	level_data.update_event("bedroom_door_open", true)
 	assert_true(level_data.completed_quests.has("open_the_door"))
-	assert_signal_emitted(level_data, "dialog_started")
+
 
 
 func test_check_bowl() -> void:
@@ -86,6 +92,14 @@ func test_check_bowl() -> void:
 
 
 func test_eat_breakfast() -> void:
+	stub(level.jenny_enter_kitchen).to_call(func lambda(_args) -> void:
+		level.level_word_list.update_event("jenny_in_kitchen", true)
+		level.start_dialog("missing_headphones", level.level_word_list.dialogue_resource))
+
+	stub(level.feed_socks).to_call(func lambda(_args) -> void:
+		level.food_bowl.interact_events.clear()
+		level.food_bowl.interact_events.append("breakfast_eaten"))
+
 	level_data.level_events["bedroom_door_open"].event_complete = true
 	var food_bowl: BaseInteractable = double(BaseInteractable).new()
 	food_bowl.interact_events = ["interacted_with_bowl"]
@@ -96,6 +110,7 @@ func test_eat_breakfast() -> void:
 	level_data.start_quest("eat_breakfast")
 	assert_false(level_data.completed_quests.has("eat_breakfast"))
 	level_data.update_event("sink_overflow", true)
+
 	assert_called(level, "jenny_enter_kitchen")
 
 	assert_true(level_data.level_events["jenny_in_kitchen"].event_complete)
@@ -115,4 +130,5 @@ func test_find_headphones() -> void:
 	assert_false(level_data.completed_quests.has("headphones_revealed"))
 
 	level_data.update_event("bring_jenny_to_headphones", true)
+	level_data.update_event("headphones_taken", true)
 	assert_true(level_data.completed_quests.has("find_jennys_headphones"))

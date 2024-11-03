@@ -102,9 +102,14 @@ func _interact() -> void:
 func complete_interact(_animation_name: StringName) -> void:
 	animation_controller.play_animation("interact")
 	await animation_controller.post_animation_hook
+	emit_interact_events()
+	set_ready_to_interact(true)
+
+
+func emit_interact_events()-> void:
 	for event_name in interact_events:
 		tried_event.emit(event_name, true)
-	set_ready_to_interact(true)
+
 
 
 func npc_interact(npc: BaseSelfNavCharacter) -> void:

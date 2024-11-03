@@ -13,6 +13,11 @@ func complete_interact(_animation_name: StringName) -> void:
 	toggle_value = not toggle_value
 	super(_animation_name)
 
+
+func emit_interact_events() -> void:
+	for event in interact_events:
+		tried_event.emit(event, toggle_value)
+
 #
 #func select_interact_anim() -> bool:
 	#if toggle_value == true:
