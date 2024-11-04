@@ -10,9 +10,14 @@ signal words_per_obstacle_changed (number_of_words: int)
 
 @export var basic_obstacle: PackedScene
 @export var crawl_obstacle: PackedScene
+@export var extended_obstacle: PackedScene
 @export var new_word_timer: Timer
 
 var obstacle_types: Array[PackedScene]
+var new_obstacle: Obstacle
+var upcoming_obstacle: Obstacle
+
+var obstacle_group_name: StringName = &"obstacles"
 
 var level_new_word_interval: float = 2:
 	set(interval):
@@ -39,7 +44,6 @@ var words_per_obstacle: int = 1
 var current_obstacle_queue: Array[Obstacle] = []
 var next_obstacle: Obstacle:
 	get():
-
 		if current_obstacle_queue.size() > 0:
 			return current_obstacle_queue[0]
 		return null
@@ -57,8 +61,8 @@ var obstacle_start_location: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_limit: Vector2 = get_viewport_rect().size
-	obstacle_start_location = Vector2(screen_limit.x + 30,  979)
-	obstacle_types = [basic_obstacle, crawl_obstacle]
+	obstacle_start_location = Vector2(screen_limit.x + 150,  979)
+	obstacle_types = [basic_obstacle, crawl_obstacle, extended_obstacle]
 
 	new_word_timer.timeout.connect(request_word)
 	new_word_timer.start()
@@ -69,12 +73,62 @@ func set_obstacle_theme(new_theme: RunnerGame.RunnerThemes) -> void:
 
 
 func request_word() -> void:
-	new_word_needed.emit(words_per_obstacle)
-	#Calculate number of strokes of next word based on the score, and uses as multiplier on timer
+	var words_on_current_obstacle: int = 1
+
+	if new_obstacle != null:
+		upcoming_obstacle = new_obstacle
+
+	if upcoming_obstacle != null and upcoming_obstacle is ExtendableObstacle:
+		words_on_current_obstacle = upcoming_obstacle.number_of_word_slots
+
+	if upcoming_obstacle is ExtendableObstacle:
+		assert(words_on_current_obstacle != 1)
+
+	if new_obstacle == null and upcoming_obstacle == null: #This must be the first obstacle in the run, make it a single word
+		new_obstacle = basic_obstacle.instantiate()
+	else:
+		new_obstacle = obstacle_types.pick_random().instantiate()
+
+	new_obstacle.position = obstacle_start_location
+	new_obstacle.speed_modifier = speed_modifier
+	add_child(new_obstacle)
+	new_obstacle.stopped = true
+	new_obstacle.add_to_group(obstacle_group_name)
+
+	var number_of_slots: int = 1
+
+	if new_obstacle is ExtendableObstacle:
+		number_of_slots = new_obstacle.check_fit(level_new_word_interval)
+		new_word_needed.emit(number_of_slots * words_per_obstacle)
+	else:
+		new_word_needed.emit(words_per_obstacle)
+
 	var total_strokes: int = 0
-	for word in upcoming_word:
+	var word_array: Array[Dictionary] = []
+
+	var upcoming_obstacle_stroke_ratio = 0
+
+	if upcoming_obstacle is ExtendableObstacle:
+		var strokes_on_upcoming_obstacle: int = 0
+		for word in upcoming_obstacle.target_data_array:
+			strokes_on_upcoming_obstacle += word["score"]
+		if upcoming_obstacle.score != 0:
+			strokes_on_upcoming_obstacle += upcoming_obstacle.score
+		upcoming_obstacle_stroke_ratio = float(strokes_on_upcoming_obstacle)/float(words_on_current_obstacle)
+
+	word_array = upcoming_word
+	var word_array_size_modifier: int = 0
+	if new_obstacle is ExtendableObstacle:
+		word_array_size_modifier = ceili(float(word_array.size())/float(new_obstacle.number_of_word_slots))
+	#Calculate number of strokes of next word based on the score, and uses as multiplier on timer
+
+	if word_array_size_modifier > 0:
+		word_array = upcoming_word.slice(0, word_array_size_modifier)
+
+	for word in word_array:
 		total_strokes += word["score"]
-	stroke_ratio = float(total_strokes)/float(words_per_obstacle)
+	stroke_ratio = float(total_strokes)/float(words_per_obstacle) + upcoming_obstacle_stroke_ratio
+
 
 
 
@@ -87,63 +141,56 @@ func provide_target_word() -> String:
 func add_word(new_words: Array[Dictionary]) -> void:
 	if new_words.is_empty():
 		level_complete()
+
 	if upcoming_word == null or upcoming_word.is_empty():
 		upcoming_word = new_words
+
 		if upcoming_word.is_empty():
 			return
 		else:
+			upcoming_obstacle = basic_obstacle.instantiate()
+			upcoming_obstacle.position = obstacle_start_location
+			upcoming_obstacle.speed_modifier = speed_modifier
+			add_child(upcoming_obstacle)
+			upcoming_obstacle.stopped = true
+			upcoming_obstacle.add_to_group(obstacle_group_name)
 			new_word_needed.emit(words_per_obstacle)
 			return
+
 	#Create Obstacle
-	var obs_scene: PackedScene = obstacle_types.pick_random()
-	var new_obstacle: Obstacle = obs_scene.instantiate()
-	new_obstacle.position = obstacle_start_location
-	new_obstacle.speed_modifier = speed_modifier
-	add_child(new_obstacle)
-	new_obstacle.add_to_group("obstacles")
-	current_obstacle_queue.push_back(new_obstacle)
+	upcoming_obstacle.stopped = false
+	current_obstacle_queue.push_back(upcoming_obstacle)
 
-	#Get obstacle data
-	var target_words: PackedStringArray = []
-	var point_value: int = 0
-	var hints: PackedStringArray = []
-	for word in upcoming_word:
-		@warning_ignore("unsafe_call_argument")
-		target_words.append(word["word"])
-		point_value += word["score"]
-		@warning_ignore("unsafe_call_argument")
-		hints.append(word["hint"])
-	var separator: String = " "
-	var final_target: String = separator.join(target_words)
-	var final_hint: String = separator.join(hints)
-
-	#Set obstacle data
-	new_obstacle.set_target_word(final_target)
-	new_obstacle.score = point_value
-	new_obstacle.hint = final_hint
-	new_obstacle.number_of_targets = upcoming_word.size()
+	upcoming_obstacle.parse_targets(upcoming_word)
 	upcoming_word = new_words
+
 	if PlayerConfig.target_visibility != PlayerConfig.TargetVisibility.ALL:
-		new_obstacle.hide_target(true)
+		upcoming_obstacle.hide_target(true)
 
 	#notify game of the current target if this is the only target on screen
 	if current_obstacle_queue.size() == 1:
-		new_target_word.emit(new_obstacle.target_word)
+		new_target_word.emit(upcoming_obstacle.target_word)
 		if PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.NEXT:
-			new_obstacle.hide_target(false)
+			upcoming_obstacle.hide_target(false)
 		if PlayerConfig.voice_output_enabled == true:
-			new_obstacle.speak_words()
+			upcoming_obstacle.speak_words()
+
 
 
 func word_cleared() -> void:
-	var obstacle: Obstacle = current_obstacle_queue.pop_front()
+	if current_obstacle_queue[0] is ExtendableObstacle and not current_obstacle_queue[0].target_data_array.is_empty():
+		var obstacle: ExtendableObstacle = current_obstacle_queue[0]
+		score_changed.emit(obstacle.score)
+		obstacle.update_targets()
+	else:
+		var obstacle: Obstacle = current_obstacle_queue.pop_front()
 
 	#TODO design and implement scoring system
-	if obstacle:
-		score_changed.emit(obstacle.score)
+		if obstacle:
+			score_changed.emit(obstacle.score)
 
-	if current_obstacle_queue.size() == 0:
-		obstacle.tree_exited.connect(end_level, ConnectFlags.CONNECT_ONE_SHOT)
+		if current_obstacle_queue.size() == 0:
+			obstacle.tree_exited.connect(end_level, ConnectFlags.CONNECT_ONE_SHOT)
 
 	if PlayerConfig.target_visibility == PlayerConfig.TargetVisibility.NEXT:
 		current_obstacle_queue[0].hide_target(false)
@@ -165,24 +212,26 @@ func reset_words(collider: Object) -> void:
 			score_reduction -= obst.score
 			colliding_obst_found = true
 	if not colliding_obst_found:
-		for obst in get_tree().get_nodes_in_group("obstacles"):
+		for obst in get_tree().get_nodes_in_group(obstacle_group_name):
 			if obst == collider:
 				score_reduction -= obst.score
 				obst_returned += 1
 				words_to_reset += obst.number_of_targets
 				break
-	get_tree().call_group("obstacles", "queue_free")
+	get_tree().call_group(obstacle_group_name, "queue_free")
 	current_obstacle_queue.clear()
 	score_changed.emit(score_reduction)
 	words_returned.emit(words_to_reset, obst_returned)
 	upcoming_word.clear()
+	upcoming_obstacle = null
+	new_obstacle = null
 	return
 
 
 #Adjust the speed multiplier when character speed changes
 func modify_speed(multiplier: float) -> void:
 	speed_modifier = multiplier
-	for obstacle in current_obstacle_queue:
+	for obstacle in get_tree().get_nodes_in_group(obstacle_group_name):
 		obstacle.speed_modifier = multiplier
 
 
@@ -207,7 +256,7 @@ func resume_obstacles() -> void:
 
 #Stops timer and kills all obstacles
 func game_over() -> void:
-	get_tree().call_group("obstacles", "queue_free")
+	get_tree().call_group(obstacle_group_name, "queue_free")
 	current_obstacle_queue.clear()
 	new_word_timer.stop()
 
@@ -225,8 +274,8 @@ func set_speed(wpm: int) -> void:
 	var wpm_ratio: float = float(wpm)/50
 	words_per_obstacle = ceili(wpm_ratio)
 	@warning_ignore("integer_division")
-	var obstacles_per_min: int = wpm/words_per_obstacle
-	level_new_word_interval = 60.0/float(obstacles_per_min)
+	var obstacles_per_min: float = wpm/words_per_obstacle
+	level_new_word_interval = 60.0/obstacles_per_min
 	words_per_obstacle_changed.emit(words_per_obstacle)
 
 

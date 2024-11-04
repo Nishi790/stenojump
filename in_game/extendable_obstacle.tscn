@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://mqni14eorxw"]
+
+[ext_resource type="Script" path="res://in_game/extendable_obstacle.gd" id="1_n3r14"]
+[ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_h74od"]
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_uat0b"]
+[ext_resource type="Shape2D" uid="uid://d3xuefrrhnjli" path="res://in_game/obstacle_sprite_data/basic_couch_area_collider.tres" id="3_tme6c"]
+[ext_resource type="Shape2D" uid="uid://ymfxv6ut2nph" path="res://in_game/obstacle_sprite_data/basic_couch_collider.tres" id="4_aao6a"]
+[ext_resource type="Texture2D" uid="uid://e15kfxbg82ht" path="res://in_game/obstacle_sprite_data/couch_basic_front.atlastex" id="5_h5re3"]
+[ext_resource type="Script" path="res://in_game/long_obstacle_sprite_data.gd" id="6_nf7uk"]
+[ext_resource type="Texture2D" uid="uid://hxta4e36hysg" path="res://textures/obstacle_sprites/in_house_obstacles/couch.png" id="7_aj66h"]
+[ext_resource type="Texture2D" uid="uid://hyt08sjgevax" path="res://in_game/obstacle_sprite_data/couch_basic.atlastex" id="8_c8jn1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x8py"]
+atlas = ExtResource("7_aj66h")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="Resource" id="Resource_phlcv"]
+script = ExtResource("6_nf7uk")
+alternate_sizes = Array[ExtResource("2_uat0b")]([])
+texture = SubResource("AtlasTexture_2x8py")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(180, -84)
+collider = ExtResource("4_aao6a")
+collidor_pos = Vector2(180, -64)
+area_collider = ExtResource("3_tme6c")
+area_collider_pos = Vector2(183, -10)
+front_texture = ExtResource("5_h5re3")
+
+[node name="ExtendableObstacle" type="CharacterBody2D" node_paths=PackedStringArray("crawl_area", "crawl_shape", "front_sprite", "behind_par_sprite", "word_label", "target_container", "sprite", "collision_shape", "visible_on_screen")]
+collision_layer = 4
+script = ExtResource("1_n3r14")
+crawl_area = NodePath("CrawlArea")
+crawl_shape = NodePath("CrawlArea/CrawlAreaShape")
+front_sprite = NodePath("ObstacleFrontLayer")
+behind_par_sprite = NodePath("BehindParallaxSprite")
+word_label = NodePath("TargetPanel/TargetWord")
+target_container = NodePath("TargetPanel")
+type = 1
+sprite = NodePath("ObstacleImage")
+collision_shape = NodePath("ObstacleCollision")
+visible_on_screen = NodePath("VisibleOnScreenNotifier2D")
+textures = Array[ExtResource("2_uat0b")]([SubResource("Resource_phlcv")])
+
+[node name="ObstacleCollision" type="CollisionShape2D" parent="."]
+z_index = 3
+position = Vector2(180, -64)
+shape = ExtResource("4_aao6a")
+
+[node name="CrawlArea" type="Area2D" parent="."]
+collision_layer = 4
+monitorable = false
+
+[node name="CrawlAreaShape" type="CollisionShape2D" parent="CrawlArea"]
+position = Vector2(183, -10)
+shape = ExtResource("3_tme6c")
+
+[node name="BehindParallaxSprite" type="Sprite2D" parent="."]
+
+[node name="ObstacleImage" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(180, -84)
+scale = Vector2(6, 6)
+texture = ExtResource("8_c8jn1")
+
+[node name="ObstacleFrontLayer" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(180, -84)
+scale = Vector2(6, 6)
+texture = ExtResource("5_h5re3")
+
+[node name="TargetPanel" type="PanelContainer" parent="."]
+z_index = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -200.0
+offset_right = 76.0
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_h74od")
+
+[node name="TargetWord" type="Label" parent="TargetPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Target word"
+horizontal_alignment = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-95.8333, -174.95)
+scale = Vector2(1.91667, 1.005)
+rect = Rect2(-10, -10, 300, 200)

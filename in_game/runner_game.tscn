@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=13 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/runner_game.gd" id="1_geaxw"]
 [ext_resource type="PackedScene" uid="uid://5w8ptyi4ic4y" path="res://in_game/background.tscn" id="2_vdwwl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="4_87jbf"]
 [ext_resource type="PackedScene" uid="uid://cgc8oqwrimdq2" path="res://in_game/crawl_obstacle.tscn" id="5_my4cf"]
 [ext_resource type="PackedScene" uid="uid://d37vmbd1g5pta" path="res://in_game/player.tscn" id="6_75c83"]
+[ext_resource type="PackedScene" uid="uid://mqni14eorxw" path="res://in_game/extendable_obstacle.tscn" id="6_uxi2j"]
 [ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="7_cxqw2"]
 [ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="8_qxthh"]
 
@@ -32,6 +33,7 @@ obstacle_detector = NodePath("ObstacleDetector")
 script = ExtResource("3_bwybn")
 basic_obstacle = ExtResource("4_87jbf")
 crawl_obstacle = ExtResource("5_my4cf")
+extended_obstacle = ExtResource("6_uxi2j")
 new_word_timer = NodePath("NewWordTimer")
 
 [node name="NewWordTimer" type="Timer" parent="ObstacleManager"]

@@ -28,18 +28,42 @@ var stopped: bool = false
 func _ready() -> void:
 	visible_on_screen.screen_exited.connect(queue_free)
 	target_container.set_theme(PlayerConfig.get_theme())
+	chosen_texture = textures.pick_random()
 	set_textures()
 
 
 ##Set up appropriate visual and collisions for randomly selected texture
 func set_textures() -> void:
-	chosen_texture = textures.pick_random()
+
 	sprite.texture = chosen_texture.texture
 	sprite.scale = chosen_texture.req_scale
 	sprite.position = chosen_texture.req_offset
 
 	collision_shape.shape = chosen_texture.collider
 	collision_shape.position = chosen_texture.collidor_pos
+
+
+func parse_targets(upcoming_word: Array[Dictionary]) -> void:
+	#Get obstacle data
+	var target_words: PackedStringArray = []
+	var point_value: int = 0
+	var hints: PackedStringArray = []
+	for word in upcoming_word:
+		@warning_ignore("unsafe_call_argument")
+		target_words.append(word["word"])
+		point_value += word["score"]
+		@warning_ignore("unsafe_call_argument")
+		hints.append(word["hint"])
+	var separator: String = " "
+	var final_target: String = separator.join(target_words)
+	var final_hint: String = separator.join(hints)
+
+	#Set obstacle data
+	set_target_word(final_target)
+	score = point_value
+	hint = final_hint
+	number_of_targets = upcoming_word.size()
+
 
 
 ##Set and display target word on label

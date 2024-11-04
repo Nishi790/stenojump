@@ -9,7 +9,7 @@ var runner: RunnerGame
 var runner_save: RunnerSave
 
 
-func _init(level_key: String = "lapwing_1.json", speed_required: int = 20) -> void:
+func _init(level_key: String = "lapwing_1.json", speed_required: int = 40) -> void:
 	runner_save = RunnerSave.new(create_runner_save_data(level_key, speed_required))
 
 
