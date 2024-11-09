@@ -106,11 +106,11 @@ func request_word() -> void:
 	var total_strokes: int = 0
 	var word_array: Array[Dictionary] = []
 
-	var upcoming_obstacle_stroke_ratio = 0
+	var upcoming_obstacle_stroke_ratio: float = 0
 
 	if upcoming_obstacle is ExtendableObstacle:
 		var strokes_on_upcoming_obstacle: int = 0
-		for word in upcoming_obstacle.target_data_array:
+		for word: Dictionary in upcoming_obstacle.target_data_array:
 			strokes_on_upcoming_obstacle += word["score"]
 		if upcoming_obstacle.score != 0:
 			strokes_on_upcoming_obstacle += upcoming_obstacle.score

@@ -85,7 +85,6 @@ func check_fit(obstacle_word_interval: float) -> int:
 
 	var width_ratio: float = float(obstacle_width)/float(obstacle_space_per_word)
 	number_of_word_slots = ceili(width_ratio)
-	assert(number_of_word_slots != 1)
 	var space_consumed: int = number_of_word_slots * obstacle_space_per_word
 	var jump_space: int = space_consumed - obstacle_width
 	if jump_space < 100:
@@ -97,16 +96,36 @@ func check_fit(obstacle_word_interval: float) -> int:
 		var min_obstacle_width: int = obstacle_width + min_pixels_to_add
 		var max_obstacle_width: int = obstacle_width + max_pixels_to_add
 
-		var alt_sprite_index: int = 0
+		print("Need obstacle width between %s and %s for %d word slots" % [min_obstacle_width, max_obstacle_width, number_of_word_slots])
+
+		var alt_sprite_index: int = -1
 
 		for index: int in sprite_size_variants.size():
-			alt_sprite_index = index
 			var alt_data: ObstacleSpriteData = sprite_size_variants[index]
-			var width: int = alt_data.area_collider.get_rect().size.x
+			var width: int = alt_data.collider.get_rect().size.x
 			if width > min_obstacle_width and width < max_obstacle_width:
+				alt_sprite_index = index
 				break
+			else:
+				var test_width_ratio: float = float(width)/float(obstacle_space_per_word)
+				var test_number_of_word_slots: int = ceili(width_ratio)
+				var test_space_consumed: int = number_of_word_slots * obstacle_space_per_word
+				var test_jump_space: int = space_consumed - obstacle_width
+				print("Tried alternate slots: %d. Jump space was %d" % [test_number_of_word_slots, test_jump_space])
+				if test_jump_space > 100:
+					number_of_word_slots = test_number_of_word_slots
+					alt_sprite_index = index
+					print("chose new number of slots %d, using obstacle of width %s" % [number_of_word_slots, width])
+					break
+
+		if alt_sprite_index == -1:
+			printerr("No valid texture available for word interval %f seconds." % obstacle_word_interval)
+			return -1
 
 		chosen_texture = sprite_size_variants[alt_sprite_index]
 		set_textures()
+		print("Selected alt texture width is %d" % chosen_texture.collider.get_rect().size.x)
+	else:
+		print("Default texture size of %s works" % obstacle_width)
 
 	return number_of_word_slots
