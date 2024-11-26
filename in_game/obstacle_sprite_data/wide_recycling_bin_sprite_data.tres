@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=4 format=3 uid="uid://dqx3kq51acbo5"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_l3go0"]
+[ext_resource type="Texture2D" uid="uid://glowpl8wxl5r" path="res://textures/obstacle_sprites/in_house_obstacles/recycling_bin_wider.png" id="2_mapiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3xa4"]
+size = Vector2(72, 56)
+
+[resource]
+script = ExtResource("1_l3go0")
+texture = ExtResource("2_mapiq")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(0, -42)
+collider = SubResource("RectangleShape2D_a3xa4")
+collidor_pos = Vector2(-3, -28)
+area_collider_pos = Vector2(0, 0)

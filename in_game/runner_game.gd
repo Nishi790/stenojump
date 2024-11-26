@@ -101,7 +101,7 @@ func start_level(data: RunnerSave, mode: RunnerMode) -> void:
 	hud.data = save_data
 
 	load_level_data(save_data.current_level_path)
-	set_level_theme(RunnerThemes.STREET_DIRTY)
+	set_level_theme(RunnerThemes.HOUSE_CLEAN)
 	resume_game()
 
 

@@ -87,6 +87,7 @@ func check_fit(obstacle_word_interval: float) -> int:
 	number_of_word_slots = ceili(width_ratio)
 	var space_consumed: int = number_of_word_slots * obstacle_space_per_word
 	var jump_space: int = space_consumed - obstacle_width
+	print("initial jump space is %d" % jump_space)
 	if jump_space < 100:
 		number_of_word_slots += 1
 
@@ -106,7 +107,11 @@ func check_fit(obstacle_word_interval: float) -> int:
 			if width > min_obstacle_width and width < max_obstacle_width:
 				alt_sprite_index = index
 				break
-			else:
+		if alt_sprite_index == -1:
+			for index: int in sprite_size_variants.size():
+				var alt_data: ObstacleSpriteData = sprite_size_variants[index]
+				var width: int = alt_data.collider.get_rect().size.x
+
 				var test_width_ratio: float = float(width)/float(obstacle_space_per_word)
 				var test_number_of_word_slots: int = ceili(test_width_ratio)
 				var test_space_consumed: int = test_number_of_word_slots * obstacle_space_per_word
@@ -116,7 +121,6 @@ func check_fit(obstacle_word_interval: float) -> int:
 					number_of_word_slots = test_number_of_word_slots
 					alt_sprite_index = index
 					print("chose new number of slots %d, using obstacle of width %s" % [number_of_word_slots, width])
-					break
 
 		if alt_sprite_index == -1:
 			printerr("No valid texture available for word interval %f seconds." % obstacle_word_interval)
