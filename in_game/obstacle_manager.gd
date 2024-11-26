@@ -13,6 +13,7 @@ signal words_per_obstacle_changed (number_of_words: int)
 @export var extended_obstacle: PackedScene
 @export var new_word_timer: Timer
 
+var current_theme: LevelTheme
 var obstacle_types: Array[PackedScene]
 var new_obstacle: Obstacle
 var upcoming_obstacle: Obstacle
@@ -68,8 +69,8 @@ func _ready() -> void:
 	new_word_timer.start()
 
 
-func set_obstacle_theme(new_theme: RunnerGame.RunnerThemes) -> void:
-	pass
+func set_obstacle_theme(new_theme: LevelTheme) -> void:
+	current_theme = new_theme
 
 
 func request_word() -> void:
@@ -81,13 +82,23 @@ func request_word() -> void:
 	if upcoming_obstacle != null and upcoming_obstacle is ExtendableObstacle:
 		words_on_current_obstacle = upcoming_obstacle.number_of_word_slots
 
-	if upcoming_obstacle is ExtendableObstacle:
-		assert(words_on_current_obstacle != 1)
-
 	if new_obstacle == null and upcoming_obstacle == null: #This must be the first obstacle in the run, make it a single word
 		new_obstacle = basic_obstacle.instantiate()
+		new_obstacle.textures = current_theme.jump_obstacles
 	else:
-		new_obstacle = obstacle_types.pick_random().instantiate()
+		var obstacle_roll: float = randf()
+		var obst_odds: float = current_theme.obstacle_frequency[0]
+		if obstacle_roll <= obst_odds:
+			new_obstacle = obstacle_types[2].instantiate()
+			new_obstacle.textures.assign(current_theme.extendable_obstacles)
+		else:
+			obst_odds = obst_odds + current_theme.obstacle_frequency[1]
+			if obstacle_roll <= obst_odds:
+				new_obstacle = obstacle_types[0].instantiate()
+				new_obstacle.textures = current_theme.jump_obstacles
+			else:
+				new_obstacle = obstacle_types[1].instantiate()
+				new_obstacle.textures = current_theme.crawl_obstacles
 
 	new_obstacle.position = obstacle_start_location
 	new_obstacle.speed_modifier = speed_modifier
@@ -149,6 +160,7 @@ func add_word(new_words: Array[Dictionary]) -> void:
 			return
 		else:
 			upcoming_obstacle = basic_obstacle.instantiate()
+			upcoming_obstacle.textures = current_theme.jump_obstacles
 			upcoming_obstacle.position = obstacle_start_location
 			upcoming_obstacle.speed_modifier = speed_modifier
 			add_child(upcoming_obstacle)

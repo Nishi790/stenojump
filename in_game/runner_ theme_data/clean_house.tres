@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="LevelTheme" load_steps=10 format=3 uid="uid://lffcfvdd05yx"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_74tsa"]
+[ext_resource type="Script" path="res://in_game/long_obstacle_sprite_data.gd" id="2_21bpt"]
+[ext_resource type="Resource" uid="uid://y31iegb3e0qi" path="res://in_game/obstacle_sprite_data/couch_long_sprite_data.tres" id="3_fruwr"]
+[ext_resource type="Resource" uid="uid://6oh8ujiq0bix" path="res://in_game/obstacle_sprite_data/book_pile_jump_sprite_data.tres" id="4_u4i3v"]
+[ext_resource type="Resource" uid="uid://pk1vjdnjh5re" path="res://in_game/obstacle_sprite_data/recycling_bin_jump_sprite_data.tres" id="5_pak8t"]
+[ext_resource type="Texture2D" uid="uid://c78p7tfiktduj" path="res://textures/Backgrounds/inside_house/sky_with_clouds.png" id="6_vu3k8"]
+[ext_resource type="Texture2D" uid="uid://bllf1sd5lsiu6" path="res://textures/Backgrounds/inside_house/trees_out_window.png" id="7_qrxpk"]
+[ext_resource type="Texture2D" uid="uid://vg8mtm81xdhv" path="res://textures/Backgrounds/inside_house/house_parallax.png" id="8_mqgg0"]
+[ext_resource type="Script" path="res://in_game/resource_templates/level_theme.gd" id="9_l8ynp"]
+
+[resource]
+script = ExtResource("9_l8ynp")
+parallax_layers = {
+0: ExtResource("6_vu3k8"),
+2: ExtResource("7_qrxpk"),
+4: ExtResource("8_mqgg0")
+}
+extendable_obstacles = Array[ExtResource("2_21bpt")]([ExtResource("3_fruwr")])
+jump_obstacles = Array[ExtResource("1_74tsa")]([ExtResource("4_u4i3v"), ExtResource("5_pak8t")])
+crawl_obstacles = Array[ExtResource("1_74tsa")]([])
+obstacle_frequency = Array[float]([0.25, 0.75, 0.0])

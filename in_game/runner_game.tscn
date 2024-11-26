@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=15 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/runner_game.gd" id="1_geaxw"]
+[ext_resource type="Resource" uid="uid://lffcfvdd05yx" path="res://in_game/runner_ theme_data/clean_house.tres" id="2_5jj4b"]
 [ext_resource type="PackedScene" uid="uid://5w8ptyi4ic4y" path="res://in_game/background.tscn" id="2_vdwwl"]
+[ext_resource type="Resource" uid="uid://crsqsw5jwgxoj" path="res://in_game/runner_ theme_data/night_rundown_city.tres" id="3_1b0ox"]
 [ext_resource type="Script" path="res://in_game/obstacle_manager.gd" id="3_bwybn"]
 [ext_resource type="PackedScene" uid="uid://d01kvemmmpbje" path="res://in_game/base_obstacle.tscn" id="4_87jbf"]
 [ext_resource type="PackedScene" uid="uid://cgc8oqwrimdq2" path="res://in_game/crawl_obstacle.tscn" id="5_my4cf"]
@@ -21,6 +23,10 @@ size = Vector2(123, 187)
 [node name="RunnerGame" type="Node2D" node_paths=PackedStringArray("obstacle_manager", "player", "hud", "background", "obstacle_detector")]
 texture_filter = 1
 script = ExtResource("1_geaxw")
+theme_data = {
+0: ExtResource("2_5jj4b"),
+1: ExtResource("3_1b0ox")
+}
 obstacle_manager = NodePath("ObstacleManager")
 player = NodePath("Player")
 hud = NodePath("HUD")

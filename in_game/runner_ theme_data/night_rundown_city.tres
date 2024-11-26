@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="LevelTheme" load_steps=14 format=3 uid="uid://crsqsw5jwgxoj"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_ffhji"]
+[ext_resource type="Resource" uid="uid://khia5cry0esq" path="res://in_game/obstacle_sprite_data/ibeam_crawl_obstacle.tres" id="2_6rxsc"]
+[ext_resource type="Resource" uid="uid://c1keb5cxkd32p" path="res://in_game/obstacle_sprite_data/chair_crawl_sprite_data.tres" id="3_6ghdv"]
+[ext_resource type="Script" path="res://in_game/long_obstacle_sprite_data.gd" id="4_w4eeo"]
+[ext_resource type="Resource" uid="uid://dbquh1xpygoyk" path="res://in_game/obstacle_sprite_data/pylon_jump_sprite_data.tres" id="5_00gv7"]
+[ext_resource type="Resource" uid="uid://b0ffaplsdp7g" path="res://in_game/obstacle_sprite_data/trashcan_jump_sprite_data.tres" id="6_vli2e"]
+[ext_resource type="Resource" uid="uid://b8ey78pamx01n" path="res://in_game/obstacle_sprite_data/concrete_divider.tres" id="7_gelpr"]
+[ext_resource type="Texture2D" uid="uid://gupaloe50edb" path="res://textures/parallax_rundown_city/night_sky.atlastex" id="8_keiyd"]
+[ext_resource type="Texture2D" uid="uid://b6pa1ue8cggn8" path="res://textures/2.Clouds.png" id="9_kqyb6"]
+[ext_resource type="Texture2D" uid="uid://3oos6eerqovs" path="res://textures/parallax_rundown_city/night_buildings.atlastex" id="10_80dxe"]
+[ext_resource type="Texture2D" uid="uid://dytk6ix5m5o1b" path="res://textures/parallax_rundown_city/graffiti_wall.atlastex" id="11_shqe8"]
+[ext_resource type="Texture2D" uid="uid://bciadfb4ac4b7" path="res://textures/parallax_rundown_city/sidewalk.atlastex" id="12_cqyre"]
+[ext_resource type="Script" path="res://in_game/resource_templates/level_theme.gd" id="13_rcmws"]
+
+[resource]
+script = ExtResource("13_rcmws")
+parallax_layers = {
+0: ExtResource("8_keiyd"),
+1: ExtResource("9_kqyb6"),
+2: ExtResource("10_80dxe"),
+3: ExtResource("11_shqe8"),
+4: ExtResource("12_cqyre")
+}
+extendable_obstacles = Array[ExtResource("4_w4eeo")]([])
+jump_obstacles = Array[ExtResource("1_ffhji")]([ExtResource("5_00gv7"), ExtResource("6_vli2e"), ExtResource("7_gelpr")])
+crawl_obstacles = Array[ExtResource("1_ffhji")]([ExtResource("2_6rxsc"), ExtResource("3_6ghdv")])
+obstacle_frequency = Array[float]([0.0, 0.7, 0.3])

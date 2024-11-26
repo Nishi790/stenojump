@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d01kvemmmpbje"]
+[gd_scene load_steps=11 format=3 uid="uid://d01kvemmmpbje"]
 
 [ext_resource type="Script" path="res://in_game/base_obstacle.gd" id="1_i8uxn"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_kgoey"]
@@ -6,6 +6,12 @@
 [ext_resource type="Resource" uid="uid://dbquh1xpygoyk" path="res://in_game/obstacle_sprite_data/pylon_jump_sprite_data.tres" id="3_tyb5n"]
 [ext_resource type="Resource" uid="uid://b0ffaplsdp7g" path="res://in_game/obstacle_sprite_data/trashcan_jump_sprite_data.tres" id="4_f71f6"]
 [ext_resource type="Resource" uid="uid://b8ey78pamx01n" path="res://in_game/obstacle_sprite_data/concrete_divider.tres" id="5_skq2j"]
+[ext_resource type="Resource" uid="uid://6oh8ujiq0bix" path="res://in_game/obstacle_sprite_data/book_pile_jump_sprite_data.tres" id="6_xwj7l"]
+[ext_resource type="Resource" uid="uid://pk1vjdnjh5re" path="res://in_game/obstacle_sprite_data/recycling_bin_jump_sprite_data.tres" id="7_wi8kb"]
+[ext_resource type="Texture2D" uid="uid://bhxpcm21md0nj" path="res://textures/obstacle_sprites/in_house_obstacles/recycling_bin.png" id="8_rhasi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h035q"]
+size = Vector2(48, 54)
 
 [node name="BaseObstacle" type="CharacterBody2D" node_paths=PackedStringArray("word_label", "target_container", "sprite", "collision_shape", "visible_on_screen")]
 collision_layer = 4
@@ -15,17 +21,19 @@ target_container = NodePath("TargetPanel")
 sprite = NodePath("ObstacleSprite")
 collision_shape = NodePath("CollisionShape")
 visible_on_screen = NodePath("VisibleOnScreenNotifier2D")
-textures = Array[ExtResource("2_qehfw")]([ExtResource("3_tyb5n"), ExtResource("4_f71f6"), ExtResource("5_skq2j")])
+textures = Array[ExtResource("2_qehfw")]([ExtResource("3_tyb5n"), ExtResource("4_f71f6"), ExtResource("5_skq2j"), ExtResource("6_xwj7l"), ExtResource("7_wi8kb")])
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 z_index = 3
-position = Vector2(-7.5, -8)
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_h035q")
 
 [node name="ObstacleSprite" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-position = Vector2(49, -51)
+position = Vector2(0, -42)
 scale = Vector2(6, 6)
+texture = ExtResource("8_rhasi")
 
 [node name="TargetPanel" type="PanelContainer" parent="."]
 z_index = 1

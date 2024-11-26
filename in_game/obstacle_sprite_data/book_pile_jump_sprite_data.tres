@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=4 format=3 uid="uid://6oh8ujiq0bix"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_g5dly"]
+[ext_resource type="Texture2D" uid="uid://wi6bvbsqqyax" path="res://textures/obstacle_sprites/in_house_obstacles/book_pile.png" id="2_abfhr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xycbw"]
+size = Vector2(48, 66)
+
+[resource]
+script = ExtResource("1_g5dly")
+texture = ExtResource("2_abfhr")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(0, -42)
+collider = SubResource("RectangleShape2D_xycbw")
+collidor_pos = Vector2(0, -32)
+area_collider_pos = Vector2(0, 0)

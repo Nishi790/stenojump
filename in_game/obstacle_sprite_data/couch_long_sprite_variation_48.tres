@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteData" load_steps=6 format=3 uid="uid://cte55ksuwalt8"]
+
+[ext_resource type="Texture2D" uid="uid://cp8k0h0adml7q" path="res://in_game/obstacle_sprite_data/couch_48_front.atlastex" id="1_g24jy"]
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="2_jco43"]
+[ext_resource type="Texture2D" uid="uid://cpsvt8n3qerbm" path="res://in_game/obstacle_sprite_data/couch_48.tres" id="3_adif2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7ht4"]
+size = Vector2(288, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd74j"]
+size = Vector2(272, 6)
+
+[resource]
+script = ExtResource("2_jco43")
+texture = ExtResource("3_adif2")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(138, -84)
+collider = SubResource("RectangleShape2D_bd74j")
+collidor_pos = Vector2(138, -64)
+area_collider = SubResource("RectangleShape2D_g7ht4")
+area_collider_pos = Vector2(140, -10)
+front_texture = ExtResource("1_g24jy")

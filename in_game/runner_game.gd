@@ -10,6 +10,7 @@ signal wpm_updated (wpm: float)
 signal main_menu_requested
 signal next_story_level
 
+@export var theme_data: Dictionary #int(RunnerTheme): LevelTheme
 @export var obstacle_manager: ObstacleManager
 @export var player: Player
 @export var hud: HUD
@@ -100,7 +101,7 @@ func start_level(data: RunnerSave, mode: RunnerMode) -> void:
 	hud.data = save_data
 
 	load_level_data(save_data.current_level_path)
-	set_level_theme(RunnerThemes.HOUSE_CLEAN)
+	set_level_theme(RunnerThemes.STREET_DIRTY)
 	resume_game()
 
 
@@ -114,8 +115,9 @@ func _process(delta: float) -> void:
 
 
 func set_level_theme(new_theme: RunnerThemes, transition: bool = false)-> void:
-	background.set_parallax_textures(new_theme, transition)
-	obstacle_manager.set_obstacle_theme(new_theme)
+	var theme: LevelTheme = theme_data[new_theme as int]
+	background.set_parallax_textures(theme, transition)
+	obstacle_manager.set_obstacle_theme(theme)
 	level_theme = new_theme
 
 

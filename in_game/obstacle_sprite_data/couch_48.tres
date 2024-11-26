@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cpsvt8n3qerbm"]
+
+[ext_resource type="Texture2D" uid="uid://d0jjmthqrkj6b" path="res://textures/obstacle_sprites/in_house_obstacles/obstacle_couch_48.png" id="1_a3gek"]
+
+[resource]
+atlas = ExtResource("1_a3gek")
+region = Rect2(0, 0, 48, 32)

@@ -108,9 +108,9 @@ func check_fit(obstacle_word_interval: float) -> int:
 				break
 			else:
 				var test_width_ratio: float = float(width)/float(obstacle_space_per_word)
-				var test_number_of_word_slots: int = ceili(width_ratio)
-				var test_space_consumed: int = number_of_word_slots * obstacle_space_per_word
-				var test_jump_space: int = space_consumed - obstacle_width
+				var test_number_of_word_slots: int = ceili(test_width_ratio)
+				var test_space_consumed: int = test_number_of_word_slots * obstacle_space_per_word
+				var test_jump_space: int = test_space_consumed - width
 				print("Tried alternate slots: %d. Jump space was %d" % [test_number_of_word_slots, test_jump_space])
 				if test_jump_space > 100:
 					number_of_word_slots = test_number_of_word_slots

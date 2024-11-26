@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="LongObstacleSpriteData" load_steps=10 format=3 uid="uid://y31iegb3e0qi"]
+
+[ext_resource type="Script" path="res://in_game/obstacle_sprite_data.gd" id="1_2f7ij"]
+[ext_resource type="Shape2D" uid="uid://d3xuefrrhnjli" path="res://in_game/obstacle_sprite_data/basic_couch_area_collider.tres" id="2_a2cdm"]
+[ext_resource type="Resource" uid="uid://cte55ksuwalt8" path="res://in_game/obstacle_sprite_data/couch_long_sprite_variation_48.tres" id="2_hewpd"]
+[ext_resource type="Resource" uid="uid://dyah8oy2b4wkc" path="res://in_game/obstacle_sprite_data/couch_long_sprite_variation_80.tres" id="3_h5ucx"]
+[ext_resource type="Shape2D" uid="uid://ymfxv6ut2nph" path="res://in_game/obstacle_sprite_data/basic_couch_collider.tres" id="3_t4if1"]
+[ext_resource type="Texture2D" uid="uid://e15kfxbg82ht" path="res://in_game/obstacle_sprite_data/couch_basic_front.atlastex" id="4_c0waq"]
+[ext_resource type="Script" path="res://in_game/long_obstacle_sprite_data.gd" id="5_02h01"]
+[ext_resource type="Texture2D" uid="uid://hxta4e36hysg" path="res://textures/obstacle_sprites/in_house_obstacles/couch.png" id="6_famom"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x8py"]
+atlas = ExtResource("6_famom")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+script = ExtResource("5_02h01")
+alternate_sizes = Array[ExtResource("1_2f7ij")]([ExtResource("2_hewpd"), ExtResource("3_h5ucx")])
+texture = SubResource("AtlasTexture_2x8py")
+req_scale = Vector2(6, 6)
+req_offset = Vector2(180, -84)
+collider = ExtResource("3_t4if1")
+collidor_pos = Vector2(180, -64)
+area_collider = ExtResource("2_a2cdm")
+area_collider_pos = Vector2(183, -10)
+front_texture = ExtResource("4_c0waq")
