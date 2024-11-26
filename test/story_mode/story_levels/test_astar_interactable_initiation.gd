@@ -5,8 +5,8 @@ var layers: Array[TileMapLayer]
 var waypoint: Waypoint
 
 
-func before_all() -> void:
-	var floor_layer: TileMapLayer = autoqfree(TileMapLayer.new())
+func before_each() -> void:
+	var floor_layer: TileMapLayer = TileMapLayer.new()
 	layers.append(floor_layer)
 	var tileset: TileSet = load("res://story_mode/story_levels/Tilesets/placeholder_interior_walls_floors.tres")
 	floor_layer.tile_set = tileset
@@ -22,7 +22,7 @@ func before_all() -> void:
 		column_index = 0
 		row_index += 1
 
-	var obstacle_layer: TileMapLayer = autoqfree(TileMapLayer.new())
+	var obstacle_layer: TileMapLayer = TileMapLayer.new()
 	layers.append(obstacle_layer)
 	obstacle_layer.tile_set = tileset
 	obstacle_layer.set_cell(Vector2i(2,2), 0, Vector2i(6,10))
@@ -75,3 +75,7 @@ func test_set_astar_point() -> void:
 	waypoint.position = Vector2(8, 17)
 	level.set_up_waypoint(waypoint)
 	assert_eq(waypoint.astar_point, 1)
+
+func after_all() -> void:
+	print("GUT entering teardown")
+	gut.p("Tests finished")

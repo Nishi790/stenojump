@@ -8,8 +8,7 @@ var alt_sizes: Array = [[Vector2(60, 16), Vector2(44, 16), Vector2(76, 16)],
 [Vector2(48, 16), Vector2(64, 16), Vector2(80, 16)],
 [Vector2(36, 16), Vector2(48, 16), Vector2(64, 16)],
 [Vector2(64, 16), Vector2(80, 16), Vector2(96, 16)],
-[Vector2(32, 16), Vector2(44, 16), Vector2(60, 16)],
-[Vector2(64, 16), Vector2(48, 16)]]
+[Vector2(32, 16), Vector2(44, 16), Vector2(60, 16)]]
 
 func before_each() -> void:
 	extendable_obstacle = partial_double(ExtendableObstacle).new()
