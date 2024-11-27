@@ -18,7 +18,7 @@ signal next_story_level
 @export var obstacle_detector: Area2D
 
 var game_mode: RunnerMode
-var level_theme: RunnerThemes
+var level_theme: RunnerThemes = 0
 var save_data: RunnerSave
 
 var speed_updated: bool
@@ -100,8 +100,8 @@ func start_level(data: RunnerSave, mode: RunnerMode) -> void:
 	player.data = save_data
 	hud.data = save_data
 
-	load_level_data(save_data.current_level_path)
-	set_level_theme(RunnerThemes.HOUSE_CLEAN)
+	await load_level_data(save_data.current_level_path)
+	await set_level_theme(level_theme, false)
 	resume_game()
 
 
@@ -115,10 +115,17 @@ func _process(delta: float) -> void:
 
 
 func set_level_theme(new_theme: RunnerThemes, transition: bool = false)-> void:
+	if transition:
+		await transition_socks_off_screen()
+
 	var theme: LevelTheme = theme_data[new_theme as int]
-	background.set_parallax_textures(theme, transition)
+	background.set_parallax_textures(theme)
 	obstacle_manager.set_obstacle_theme(theme)
 	level_theme = new_theme
+
+	if transition:
+		await transition_socks_on_screen()
+
 
 
 ##Dynamically adjusts obstacle and scroll speed when player is walking instead of running (i.e. level start)
@@ -326,7 +333,7 @@ func start_next_level(new_level: bool) -> void:
 
 
 func initiate_level() -> void:
-	load_level_data()
+	await load_level_data()
 	await hud.start_next_level()
 	await hud.display_countdown()
 	level_complete = false
@@ -367,6 +374,9 @@ func load_level_data(level_path: String = "") -> void:
 			if LevelLoader.active_level.level_order == LevelLoader.LevelOrder.RANDOM:
 				word_queue.shuffle()
 
+	if not LevelLoader.active_level.environment == level_theme:
+		await set_level_theme(LevelLoader.active_level.environment, true)
+
 	word_queue = word_queue.slice(0, level_size)
 	next_word_index = 0
 	words_left = word_queue.size()
@@ -388,6 +398,16 @@ func resume_game() -> void:
 func set_words_per_obstacle(number: int) -> void:
 	max_words_per_obstacle = number
 	obstacles_remaining = ceili(float(word_queue.size())/max_words_per_obstacle)
+
+
+func transition_socks_off_screen() -> void:
+	await player.exit_screen()
+	await hud.fade_to_black()
+
+
+func transition_socks_on_screen() -> void:
+	await hud.fade_in()
+	await player.enter_screen()
 
 
 ##Handles pausing main game for all cases (actual pause menu and resetting obstacles)

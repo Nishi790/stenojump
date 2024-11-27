@@ -29,8 +29,10 @@ var move_queue: Array[int] = []
 
 var crawl_queued: bool = false
 var jump_queued: bool = false
+var in_cutscene: bool = false
 var dist_remaining: float = -999
 var obst_speed: int
+var start_position: Vector2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -48,6 +50,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if in_cutscene:
+		return
 	physics_position=physics_body.position
 	sprite.set_position(physics_position)
 	if landing_timer > 0:
@@ -261,3 +265,36 @@ func play_sfx(effect: String) -> void:
 	match effect:
 		"land":
 			audio_player.play()
+
+
+func exit_screen() -> void:
+	start_position = sprite.global_position
+	var final_x_pos: int = get_viewport_rect().size.x + 96
+	var jump_x_pos: int = get_viewport_rect().size.x - 128
+	var distance: int = jump_x_pos - start_position.x
+	var time: float = distance/200.0
+	var pos_to_glide: float = 0.4 * 200.0 + jump_x_pos
+	var glide_time: float = (final_x_pos - pos_to_glide)/200.0
+	in_cutscene = true
+	sprite.play("run")
+	player_movement_changed.emit(State.IDLING)
+	var tween: Tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property(sprite, "global_position:x", jump_x_pos, time)
+	tween.tween_callback(sprite.play.bind("jump_up"))
+	tween.tween_property(sprite, "global_position:x", pos_to_glide, 0.4)
+	tween.tween_callback(sprite.play.bind("jump_glide"))
+	tween.tween_property(sprite, "global_position:x", final_x_pos, glide_time)
+	await tween.finished
+
+
+func enter_screen() -> void:
+	sprite.global_position.x = -128
+	var sprite_walk_time: float = (start_position.x - sprite.global_position.x)/200.0
+	sprite.play("walk")
+	var tween: Tween = create_tween()
+	tween.tween_property(sprite, "global_position:x", start_position.x, sprite_walk_time)
+	await tween.finished
+	in_cutscene = false
+	if not movement_state == State.IDLING:
+		change_states(State.IDLING)

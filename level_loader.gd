@@ -102,8 +102,10 @@ func create_level(filepath: String) -> String:
 		level_data.level_targets = data["targets"]
 		if data.has("description"):
 			level_data.level_description = data["description"]
-		#if data.has("theme"): TODO
-		#	level_data.environment = FIND Environment resource based on theme name!
+		if data.has("theme"):
+			level_data.environment = data["theme"] as RunnerGame.RunnerThemes
+		else:
+			level_data.environment = RunnerGame.RunnerThemes.HOUSE_CLEAN
 		if data.has("checkpoint"):
 			level_data.checkpoint = data["checkpoint"]
 		else: level_data.checkpoint = false

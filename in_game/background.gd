@@ -11,17 +11,16 @@ var current_theme: LevelTheme
 #	set_parallax_textures(current_theme)
 
 
-func set_parallax_textures(theme: LevelTheme, transition: bool = false) -> void:
-	if not transition:
-		current_theme = theme
-		var parallax_textures: Dictionary = current_theme.parallax_layers
-		var number_of_layers: int = get_child_count()
-		for index: int in number_of_layers:
-			var sprite: Sprite2D = get_child(index).get_child(0)
-			if parallax_textures.has(index):
-				sprite.texture = parallax_textures[index]
-			else:
-				sprite.texture = null
+func set_parallax_textures(theme: LevelTheme) -> void:
+	current_theme = theme
+	var parallax_textures: Dictionary = current_theme.parallax_layers
+	var number_of_layers: int = get_child_count()
+	for index: int in number_of_layers:
+		var sprite: Sprite2D = get_child(index).get_child(0)
+		if parallax_textures.has(index):
+			sprite.texture = parallax_textures[index]
+		else:
+			sprite.texture = null
 
 
 

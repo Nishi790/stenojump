@@ -31,7 +31,7 @@ texture_filter = 1
 texture_repeat = 1
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_yuis2")
-animation = &"idle_stand"
+animation = &"jump_up"
 
 [node name="PlayerPhysics" type="CharacterBody2D" parent="." node_paths=PackedStringArray("run_coll_shape", "jump_coll_shape", "crawl_coll_shape")]
 collision_mask = 6

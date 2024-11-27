@@ -13,6 +13,7 @@ signal game_options_requested
 @export var message_container: Container
 @export var input_box: LineEdit
 @export var pause_menu_scene: PackedScene
+@export var fade_rect: ColorRect
 
 var data: RunnerSave:
 	set(save_data):
@@ -23,13 +24,13 @@ var data: RunnerSave:
 
 
 var hint_string: String = "[center]You wrote [b]%s[/b].\n
-The word %s is stroked.
+The word %s is written
 [font=res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf][font_size=100]%s[/font_size][/font]
 Press Enter (R-R) to continue.[/center] "
 
 var win_message: String = "[center]You win!\n
 Your total score was %d.\n
-Your stroke speed was %d strokes per minute.\n
+Your estimated speed was %d strokes per minute.\n
 Press enter (%s) to return to the menu.\n
 If you want to continue the run faster, type how much faster you want to go and press Enter (%s)[/center]"
 
@@ -56,6 +57,8 @@ func propagate_data_change() -> void:
 
 
 func display_countdown() -> bool:
+	if not message_container.visible:
+		message_container.show()
 	ingame_message.set_text("[center]3[/center]")
 	await get_tree().create_timer(1).timeout
 	if paused == true:
@@ -134,3 +137,20 @@ func open_game_options() -> void:
 	#TODO decide how to handle opening game options while in game
 	#Probably child of hud - give hud the packed scene? Or child of game controller...
 	game_options_requested.emit()
+
+
+func fade_in() -> void:
+	if fade_rect.color.a == 0:
+		return
+	var tween: Tween = create_tween()
+	tween.tween_property(fade_rect, "color:a", 0.0, 1.0).set_trans(Tween.TRANS_SINE).from(1.0)
+	await tween.finished
+
+
+func fade_to_black() -> void:
+	if fade_rect.color.a == 1.0:
+		return
+	var tween: Tween = create_tween()
+	tween.tween_property(fade_rect, "color:a", 1.0, 3).set_trans(Tween.TRANS_SINE).from(0.0)
+	await tween.finished
+	message_container.hide()

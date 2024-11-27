@@ -9,4 +9,4 @@ class_name  RunnerLevel extends Resource
 @export var checkpoint: bool
 
 @export var level_description: String
-@export var environment: Resource #TODO provide info to define the correct environment for the specific level
+@export var environment: RunnerGame.RunnerThemes
