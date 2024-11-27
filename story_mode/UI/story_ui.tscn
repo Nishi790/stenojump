@@ -1,14 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://wu4owdvk0ao3"]
+[gd_scene load_steps=14 format=3 uid="uid://wu4owdvk0ao3"]
 
 [ext_resource type="Script" path="res://story_mode/UI/story_ui.gd" id="1_fdopu"]
 [ext_resource type="PackedScene" uid="uid://buc68cm2o0f7i" path="res://story_mode/UI/quest_panel.tscn" id="2_dja5f"]
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="2_n7d8i"]
 [ext_resource type="FontFile" uid="uid://dnn0f73am7f4b" path="res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf" id="3_cbgie"]
 [ext_resource type="PackedScene" uid="uid://btctdu2obcr7k" path="res://story_mode/UI/action_display.tscn" id="5_mec4o"]
+[ext_resource type="Texture2D" uid="uid://bnr4mcjperky0" path="res://textures/character_animations/portraits_and_symbols/attack_symbol.png" id="6_nanxh"]
 [ext_resource type="PackedScene" uid="uid://bcbnho06e8427" path="res://story_mode/UI/dialogue_scene.tscn" id="6_s18n2"]
 [ext_resource type="PackedScene" uid="uid://ynoj8widbk65" path="res://story_mode/UI/ingame_menu.tscn" id="7_dfexk"]
+[ext_resource type="Texture2D" uid="uid://cwvnnemg8kfqx" path="res://textures/character_animations/portraits_and_symbols/use_item_symbol.png" id="7_y2r0b"]
+[ext_resource type="Texture2D" uid="uid://c27voy7p12w8v" path="res://textures/character_animations/portraits_and_symbols/meow_symbol.png" id="8_0hibs"]
 
-[node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display", "stroke_display", "stroke_label", "meow_action", "hiss_action", "item_action", "menu")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhiqd"]
+atlas = ExtResource("6_nanxh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmx82"]
+atlas = ExtResource("7_y2r0b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7fsi"]
+atlas = ExtResource("8_0hibs")
+region = Rect2(0, 0, 32, 32)
+
+[node name="StoryUI" type="Control" node_paths=PackedStringArray("player_input", "dialog_balloon", "quest_display", "stroke_display", "stroke_label", "meow_action", "hiss_action", "item_action", "action_bar", "menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,13 +32,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fdopu")
 player_input = NodePath("MarginContainer/VertScreenSplitter/PlayerInput")
-dialog_balloon = NodePath("MarginContainer/VertScreenSplitter/DialogueScene")
+dialog_balloon = NodePath("CanvasLayer/DialogueScene")
 quest_display = NodePath("MarginContainer/VertScreenSplitter/HScreenSpilt/QuestDisplay")
 stroke_display = NodePath("ExampleMarginCont")
 stroke_label = NodePath("ExampleMarginCont/StrokePanel/StrokeExample")
 meow_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/MeowAction")
 hiss_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/HissAction")
 item_action = NodePath("MarginContainer/VertScreenSplitter/ActionBar/ItemAction")
+action_bar = NodePath("MarginContainer/VertScreenSplitter/ActionBar")
 menu = NodePath("GameMenuContainer/InGameMenu")
 
 [node name="ExampleMarginCont" type="MarginContainer" parent="."]
@@ -89,18 +105,21 @@ alignment = 2
 
 [node name="HissAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
+action_texture = SubResource("AtlasTexture_lhiqd")
 
 [node name="ItemAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
+action_texture = SubResource("AtlasTexture_lmx82")
+animation_frames = Array[Vector2]([Vector2(0, 0), Vector2(32, 0), Vector2(64, 0), Vector2(96, 0), Vector2(128, 0)])
 action_type = 1
 
 [node name="MeowAction" parent="MarginContainer/VertScreenSplitter/ActionBar" instance=ExtResource("5_mec4o")]
 layout_mode = 2
-
-[node name="DialogueScene" parent="MarginContainer/VertScreenSplitter" instance=ExtResource("6_s18n2")]
-layout_mode = 2
+action_texture = SubResource("AtlasTexture_a7fsi")
+animation_frames = Array[Vector2]([Vector2(0, 0), Vector2(32, 0), Vector2(64, 0), Vector2(96, 0), Vector2(128, 0)])
 
 [node name="GameMenuContainer" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,3 +131,16 @@ mouse_filter = 2
 [node name="InGameMenu" parent="GameMenuContainer" instance=ExtResource("7_dfexk")]
 visible = false
 layout_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueScene" parent="CanvasLayer" instance=ExtResource("6_s18n2")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 16.0
+offset_top = 800.0
+offset_right = 1904.0
+offset_bottom = 1064.0

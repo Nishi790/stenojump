@@ -18,8 +18,10 @@ var hints_visible: bool = false
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("skip_dialogue"):
 		UI.skip_dialogue()
+		get_viewport().set_input_as_handled()
 	if event.is_action_pressed("confirm") and UI.dialog_balloon.visible == false:
 		set_hints_visible(!hints_visible)
+		get_viewport().set_input_as_handled()
 
 
 func _ready() -> void:

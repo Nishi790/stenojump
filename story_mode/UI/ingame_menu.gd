@@ -54,6 +54,12 @@ func _ready() -> void:
 	open(MenuState.MENU, 0)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		resume_game()
+		get_viewport().set_input_as_handled()
+
+
 func set_menu_state(new_state: MenuState) -> void:
 	for content: Control in content_controls:
 		content.hide()

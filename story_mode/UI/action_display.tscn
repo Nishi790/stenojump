@@ -1,35 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://btctdu2obcr7k"]
+[gd_scene load_steps=6 format=3 uid="uid://btctdu2obcr7k"]
 
 [ext_resource type="Script" path="res://story_mode/UI/action_display.gd" id="1_j1b8e"]
 [ext_resource type="Theme" uid="uid://nde1csberq1o" path="res://textures/target_theme.tres" id="2_ism1t"]
-[ext_resource type="Texture2D" uid="uid://mk0lmo28dtld" path="res://icon.svg" id="3_robel"]
+[ext_resource type="Texture2D" uid="uid://cwvnnemg8kfqx" path="res://textures/character_animations/portraits_and_symbols/use_item_symbol.png" id="3_teq57"]
 
-[node name="ActionDisplay" type="VBoxContainer" node_paths=PackedStringArray("target_label", "action_name")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_40ppu"]
+atlas = ExtResource("3_teq57")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qt8wk"]
+font_size = 26
+
+[node name="ActionDisplay" type="VBoxContainer" node_paths=PackedStringArray("target_label", "action_name", "texture_rect")]
+custom_minimum_size = Vector2(160, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -138.0
+offset_right = 98.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j1b8e")
-target_label = NodePath("PanelContainer/Target")
+target_label = NodePath("Target")
 action_name = NodePath("ActionIcon/ActionName")
+texture_rect = NodePath("ActionIcon")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Target" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(184, 30)
 layout_mode = 2
 theme = ExtResource("2_ism1t")
-
-[node name="Target" type="RichTextLabel" parent="PanelContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme = ExtResource("2_ism1t")
+theme_type_variation = &"TargetRichText"
 bbcode_enabled = true
-text = "Target Word"
+text = "[font=res://textures/UI/fonts/Stenodisplay-ClassicLarge.ttf][font_size=80]stuk[/font_size][/font]"
 fit_content = true
 
 [node name="ActionIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
-texture = ExtResource("3_robel")
-stretch_mode = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_40ppu")
+stretch_mode = 5
 
 [node name="ActionName" type="Label" parent="ActionIcon"]
 layout_mode = 1
@@ -44,3 +59,4 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Meow"
+label_settings = SubResource("LabelSettings_qt8wk")

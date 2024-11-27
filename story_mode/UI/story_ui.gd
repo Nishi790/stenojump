@@ -13,6 +13,7 @@ signal input_received(text: String)
 @export var meow_action: ActionDisplay
 @export var hiss_action: ActionDisplay
 @export var item_action: ActionDisplay
+@export var action_bar: HBoxContainer
 @export var menu: InGameMenu
 
 var all_actions: Array[ActionDisplay]
@@ -69,6 +70,7 @@ func finish_quest(quest_name: String) -> void:
 
 
 func start_dialogue(key: String, dialogue: DialogueResource, nodes: Array[Node]) -> void:
+	action_bar.hide()
 	nodes.append(self)
 	var dialogue_callable: Callable = call_dialogue.bind(key, dialogue, nodes)
 	if dialog_balloon.visible:
@@ -84,6 +86,7 @@ func call_dialogue(key: String, dialogue: DialogueResource, nodes: Array[Node]) 
 
 func end_dialogue(_resource: DialogueResource) -> void:
 	dialog_balloon.hide()
+	action_bar.show()
 	if dialogue_queue.size() > 0:
 		var dialogue_callable: Callable = dialogue_queue.pop_front()
 		dialogue_callable.call()
