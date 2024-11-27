@@ -37,6 +37,7 @@ func create_tabs_from_dir(path_root: String) -> void:
 
 func level_started(path: String) -> void:
 	level_data.target_speed = 200
+	level_data.speed_building_mode = true
 	var speed_settings: Array = tab_cont.get_current_tab_control().send_speed_settings()
 	level_data.current_speed = speed_settings[0]
 	level_data.starting_speed = speed_settings[0]
