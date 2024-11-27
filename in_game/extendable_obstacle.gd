@@ -45,17 +45,15 @@ func parse_targets(upcoming_word: Array[Dictionary]) -> void:
 		var separator: String = " "
 		var final_target: String = separator.join(target_words)
 		var final_hint: String = separator.join(hints)
+		var target_is_not_empty: bool = not final_target.is_empty()
 
 		var label_panel: PanelContainer
 
-		if index > 0:
+		if index > 0 and target_is_not_empty:
 			label_panel = target_container.duplicate()
 			label_panel.position.x = index * obstacle_space_per_word - 106
 			add_child(label_panel)
-		else: label_panel = target_container
 
-		label_panel.get_child(0).set_text(final_target)
-		if index > 0:
 			var stand_up_ray: RayCast2D = RayCast2D.new()
 			stand_up_rays.append(stand_up_ray)
 			add_child(stand_up_ray)
@@ -64,8 +62,12 @@ func parse_targets(upcoming_word: Array[Dictionary]) -> void:
 			stand_up_ray.target_position = Vector2(0, 200)
 			stand_up_ray.z_index = 5
 
-		var target_data: Dictionary = {"word": final_target, "hint": final_hint, "score": point_value}
-		target_data_array.push_back(target_data)
+		else: label_panel = target_container
+
+		if target_is_not_empty:
+			label_panel.get_child(0).set_text(final_target)
+			var target_data: Dictionary = {"word": final_target, "hint": final_hint, "score": point_value}
+			target_data_array.push_back(target_data)
 
 	update_targets()
 
