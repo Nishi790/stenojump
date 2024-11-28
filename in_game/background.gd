@@ -31,7 +31,7 @@ func run_parallax(multiplier: float = 1.0) -> void:
 		#Save current position (equivalent to offset), setting autoscroll resets position
 		var layer_position: Vector2 = layer.position
 		if index < 2 and multiplier == 0.0:
-			layer.set_autoscroll(base_autoscroll_speeds[index] * 0.4)
+			layer.set_autoscroll(base_autoscroll_speeds[index] * 0.2)
 		else:
 			layer.set_autoscroll(base_autoscroll_speeds[index] * speed_scale)
 		layer.scroll_offset = layer_position
