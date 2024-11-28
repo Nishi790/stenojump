@@ -79,9 +79,27 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 
+##Adjust the starting position of an obstacle based on how late it is relative to the expected start time
+func adjust_position(time_offset: float) -> void:
+	var distance_to_adjust: Vector2 = direction * speed * speed_modifier * time_offset
+	position = distance_to_adjust + position
+
+
 ##Set visibility of the target word
 func hide_target(target_hidden: bool) -> void:
 	target_container.visible = !target_hidden
+
+
+func get_total_score() -> int:
+	return score
+
+
+func get_total_number_of_targets() -> int:
+	return number_of_targets
+
+
+func get_current_number_of_targets() -> int:
+	return number_of_targets
 
 
 ##Speak word with TTS
