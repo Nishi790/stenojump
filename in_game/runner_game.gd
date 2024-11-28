@@ -25,7 +25,7 @@ var speed_updated: bool
 
 var input_box: LineEdit
 
-var word_queue: Array
+var word_queue: Array[Dictionary]
 var next_word_index: int = 0
 var new_word_interval: float = 3 #seconds until next word
 var current_text: String
@@ -60,13 +60,11 @@ func _ready() -> void:
 	LevelLoader.last_level.connect(final_level_started)
 
 	#Set up obstacle manager
-	obstacle_manager.new_word_needed.connect(send_new_word)
-	obstacle_manager.words_returned.connect(return_words_to_queue)
+	obstacle_manager.words_left_updated.connect(update_words_remaining)
 	obstacle_manager.score_changed.connect(adjust_score)
 	obstacle_manager.obstacle_queue_emptied.connect(on_obstacle_queue_empty)
 	obstacle_manager.new_target_word.connect(set_target_word)
 	target_speed_changed.connect(obstacle_manager.set_speed)
-	obstacle_manager.words_per_obstacle_changed.connect(set_words_per_obstacle)
 	obstacle_detector.body_entered.connect(obstacle_manager.show_target)
 
 
@@ -142,20 +140,6 @@ func change_move_speed(move_type: Player.State) -> void:
 	obstacle_manager.modify_speed(speed_modifier)
 
 
-##Sends target word(s)' information to the obstacle manager when requerted to generate new obstacles
-func send_new_word(number: int) -> void:
-	if word_queue.size() == next_word_index:
-		obstacle_manager.add_word([])
-	else:
-		var words_to_send: Array[Dictionary] = []
-		for index in number:
-			if word_queue.size() != next_word_index:
-				words_to_send.append(word_queue[next_word_index])
-				next_word_index += 1
-		obstacle_manager.add_word(words_to_send)
-		obstacles_remaining -= 1
-
-
 ##Called on failure of an obstacle to reset section
 ##adjust score, and trigger relevant UI
 func reset_word(collider: Object) -> void:
@@ -187,17 +171,13 @@ func resume_from_missed_word() -> void:
 		resume_game()
 
 
-##Used to reset an obstacle on failure
-##Returns a specified number of words and the corresponding number of obstacles to the queue
-##Completed by subtracting from indices
-func return_words_to_queue(number_of_words: int, number_of_obstacles: int) -> void:
-	next_word_index -= number_of_words
-	words_left = word_queue.size() - next_word_index
-	obstacles_remaining += number_of_obstacles
-
-
 func adjust_score(amount: int) -> void:
 	save_data.level_score += amount
+
+
+func update_words_remaining(words: int) -> void:
+	words_left = words
+	words_left_changed.emit(words_left)
 
 
 func update_speed_flag() -> void:
@@ -206,7 +186,7 @@ func update_speed_flag() -> void:
 
 ##Responds to Obstacle Manager signalling empty queue and prompts 'end level'
 func on_obstacle_queue_empty() -> void:
-	if word_queue.size() == next_word_index and not run_ended:
+	if not run_ended:
 		end_level()
 
 
@@ -378,9 +358,8 @@ func load_level_data(level_path: String = "") -> void:
 		await set_level_theme(LevelLoader.active_level.environment, true)
 
 	word_queue = word_queue.slice(0, level_size)
-	next_word_index = 0
-	words_left = word_queue.size()
-	obstacles_remaining = ceili(words_left/max_words_per_obstacle)
+	obstacle_manager.set_target_list(word_queue)
+
 
 
 ##Called whenever the player needs to start a level or resume from a pause
@@ -391,13 +370,6 @@ func resume_game() -> void:
 		speed_updated = false
 		obstacle_manager.set_speed(save_data.current_speed)
 	obstacle_manager.resume_obstacles()
-
-
-
-##Sets words per obstacle to determine number of targets to send obstacle manager when requested
-func set_words_per_obstacle(number: int) -> void:
-	max_words_per_obstacle = number
-	obstacles_remaining = ceili(float(word_queue.size())/max_words_per_obstacle)
 
 
 func transition_socks_off_screen() -> void:
