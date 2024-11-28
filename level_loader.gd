@@ -57,7 +57,7 @@ func get_checkpoint() -> bool:
 		return false
 
 
-func get_wordlist() -> Array:
+func get_wordlist() -> Array[Dictionary]:
 	if active_level:
 		return active_level.level_targets.duplicate()
 	else:
@@ -99,7 +99,7 @@ func create_level(filepath: String) -> String:
 		else: level_data.level_order = LevelOrder.ORDERED
 		level_data.default_level_size = data["size"]
 		level_data.next_level_path = data["next_level"]
-		level_data.level_targets = data["targets"]
+		level_data.level_targets.assign(data["targets"])
 		if data.has("description"):
 			level_data.level_description = data["description"]
 		if data.has("theme"):
