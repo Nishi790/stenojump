@@ -26,7 +26,7 @@ textures = Array[ExtResource("2_uat0b")]([ExtResource("3_sp1qi")])
 
 [node name="ObstacleCollision" type="CollisionShape2D" parent="."]
 z_index = 3
-position = Vector2(182, -64)
+position = Vector2(184, -64)
 shape = ExtResource("4_aao6a")
 
 [node name="CrawlArea" type="Area2D" parent="."]
@@ -41,13 +41,13 @@ shape = ExtResource("3_tme6c")
 
 [node name="ObstacleImage" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(180, -84)
+position = Vector2(186, -84)
 scale = Vector2(6, 6)
 texture = ExtResource("8_c8jn1")
 
 [node name="ObstacleFrontLayer" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(180, -84)
+position = Vector2(186, -84)
 scale = Vector2(6, 6)
 texture = ExtResource("5_h5re3")
 

@@ -4,6 +4,7 @@ extends CrawlObstacle
 var number_of_word_slots: int = 2
 var obstacle_width: int
 var obstacle_space_per_word: int
+var total_number_of_targets: int
 
 var target_data_array: Array[Dictionary] = []
 var stand_up_rays: Array[RayCast2D] = []
@@ -29,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 func parse_targets(upcoming_word: Array[Dictionary]) -> void:
 	var words_per_label: int = ceili(float(upcoming_word.size())/float(number_of_word_slots))
-	number_of_targets = upcoming_word.size()
+	total_number_of_targets = upcoming_word.size()
 
 	for index in number_of_word_slots:
 		var label_words: Array[Dictionary] = upcoming_word.slice(index * words_per_label, (index + 1) * words_per_label)
@@ -45,28 +46,31 @@ func parse_targets(upcoming_word: Array[Dictionary]) -> void:
 		var separator: String = " "
 		var final_target: String = separator.join(target_words)
 		var final_hint: String = separator.join(hints)
+		var number_of_targets_for_label: int = target_words.size()
 		var target_is_not_empty: bool = not final_target.is_empty()
 
 		var label_panel: PanelContainer
 
 		if index > 0 and target_is_not_empty:
 			label_panel = target_container.duplicate()
-			label_panel.position.x = index * obstacle_space_per_word - 106
 			add_child(label_panel)
 
 			var stand_up_ray: RayCast2D = RayCast2D.new()
 			stand_up_rays.append(stand_up_ray)
 			add_child(stand_up_ray)
-			stand_up_ray.global_position = label_panel.global_position + label_panel.size/2
+			stand_up_ray.position = Vector2(index * obstacle_space_per_word, label_panel.position.y)
 			stand_up_ray.collision_mask = 1
 			stand_up_ray.target_position = Vector2(0, 200)
 			stand_up_ray.z_index = 5
+
+			label_panel.position.x = stand_up_ray.position.x - (label_panel.size.x/2)
+
 
 		else: label_panel = target_container
 
 		if target_is_not_empty:
 			label_panel.get_child(0).set_text(final_target)
-			var target_data: Dictionary = {"word": final_target, "hint": final_hint, "score": point_value}
+			var target_data: Dictionary = {"word": final_target, "hint": final_hint, "score": point_value, "number_of_targets": number_of_targets_for_label}
 			target_data_array.push_back(target_data)
 
 	update_targets()
@@ -77,24 +81,25 @@ func update_targets() -> void:
 	target_word = target_data["word"]
 	score = target_data["score"]
 	hint = target_data["hint"]
+	number_of_targets = target_data["number_of_targets"]
 
 
 func check_fit(obstacle_word_interval: float) -> int:
 	if chosen_texture is LongObstacleSpriteData:
 		sprite_size_variants = chosen_texture.alternate_sizes
 
-	obstacle_space_per_word = obstacle_word_interval * speed * speed_modifier
+	obstacle_space_per_word = obstacle_word_interval * speed
 
 	var width_ratio: float = float(obstacle_width)/float(obstacle_space_per_word)
 	number_of_word_slots = ceili(width_ratio)
 	var space_consumed: int = number_of_word_slots * obstacle_space_per_word
 	var jump_space: int = space_consumed - obstacle_width
 	print("initial jump space is %d" % jump_space)
-	if jump_space < 100:
+	if jump_space < 150:
 		number_of_word_slots += 1
 
 		var min_pixels_to_add: int = jump_space + 10
-		var max_pixels_to_add: int = jump_space + obstacle_space_per_word - 100
+		var max_pixels_to_add: int = jump_space + obstacle_space_per_word - 150
 
 		var min_obstacle_width: int = obstacle_width + min_pixels_to_add
 		var max_obstacle_width: int = obstacle_width + max_pixels_to_add
@@ -108,6 +113,7 @@ func check_fit(obstacle_word_interval: float) -> int:
 			var width: int = alt_data.collider.get_rect().size.x
 			if width > min_obstacle_width and width < max_obstacle_width:
 				alt_sprite_index = index
+				print("New jump space is %d" % (space_consumed - width))
 				break
 		if alt_sprite_index == -1:
 			for index: int in sprite_size_variants.size():
@@ -119,7 +125,7 @@ func check_fit(obstacle_word_interval: float) -> int:
 				var test_space_consumed: int = test_number_of_word_slots * obstacle_space_per_word
 				var test_jump_space: int = test_space_consumed - width
 				print("Tried alternate slots: %d. Jump space was %d" % [test_number_of_word_slots, test_jump_space])
-				if test_jump_space > 100:
+				if test_jump_space > 150:
 					number_of_word_slots = test_number_of_word_slots
 					alt_sprite_index = index
 					print("chose new number of slots %d, using obstacle of width %s" % [number_of_word_slots, width])
@@ -135,3 +141,16 @@ func check_fit(obstacle_word_interval: float) -> int:
 		print("Default texture size of %s works" % obstacle_width)
 
 	return number_of_word_slots
+
+
+func get_total_score() -> int:
+
+	var total_score: int = score
+	for word_data: Dictionary in target_data_array:
+		total_score += word_data["score"]
+
+	return total_score
+
+
+func get_total_number_of_targets() -> int:
+	return total_number_of_targets
