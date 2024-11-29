@@ -2,16 +2,13 @@ class_name ObstacleManager
 extends Node2D
 
 signal words_left_updated(words_left: int)
-signal words_returned (words_returned: int, obstacles_reset: int)
 signal score_changed (score_change_amount: int)
 signal obstacle_queue_emptied
 signal new_target_word (target: String)
-signal words_per_obstacle_changed (number_of_words: int)
 
 @export var basic_obstacle: PackedScene
 @export var crawl_obstacle: PackedScene
 @export var extended_obstacle: PackedScene
-@export var debug_label: Label
 
 var current_theme: LevelTheme
 var obstacle_types: Array[PackedScene]
@@ -27,26 +24,21 @@ var next_obstacle: Obstacle:
 		return null
 
 var obstacle_start_location: Vector2
+var obstacle_spacing: float
 
-var next_obstacle_timer: float = 0
-var next_obstacle_interval: float = 2
 var obstacle_size: int = 1
 var speed_modifier: float = 1.0
 
-var reset_timer: bool = false
-var timer_paused: bool = false
+var stop_adding_words: bool = false
+
 var delaying_obstacle: bool = false
 var delayed_obstacle: Obstacle = null
-var delay_interval: float = 0
+var delay_distance: float
 
 var word_list: Array[Dictionary] #Receive from the game
 var word_list_index: int = 0
 
 
-var debug_delta_array: Array[float] = []
-var debug_offset_array: Array[float] = []
-var debug_timer_interval_array: Array[float] = []
-var debug_timer_value: Array[float]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,70 +47,35 @@ func _ready() -> void:
 	obstacle_start_location = Vector2(screen_limit.x + 150,  979)
 	obstacle_types = [basic_obstacle, crawl_obstacle, extended_obstacle]
 
-	debug_delta_array.resize(5)
-	debug_offset_array.resize(5)
-	debug_timer_interval_array.resize(5)
-	debug_timer_value.resize(5)
 
 
-func _physics_process(delta: float) -> void:
-
-	if timer_paused:
+func _physics_process(_delta: float) -> void:
+	if stop_adding_words:
 		return
-	if reset_timer:
-		next_obstacle_timer = 0
-		reset_timer = false
 
-	debug_delta_array.pop_front()
+	var distance_to_last_obstacle: float = obstacle_start_location.x - current_obstacle_queue[-1].position.x
 
-	debug_timer_interval_array.pop_front()
-	debug_timer_value.pop_front()
-
-	next_obstacle_timer += delta
-	var obstacle_time_interval: float = 0
 	if delaying_obstacle:
-		obstacle_time_interval = delay_interval * 1/speed_modifier
-	else:
-		obstacle_time_interval = next_obstacle_interval * 1/speed_modifier * obstacle_size
+		distance_to_last_obstacle = delay_distance
 
-	debug_label.text = "Next Obstacle: %f/%f" % [next_obstacle_timer, obstacle_time_interval]
-
-	debug_delta_array.push_back(delta)
-	debug_timer_interval_array.push_back(obstacle_time_interval)
-	debug_timer_value.push_back(next_obstacle_timer)
-
-	if next_obstacle_timer >= obstacle_time_interval:
-		debug_offset_array.pop_front()
-		var offset: float = next_obstacle_timer - obstacle_time_interval
-		debug_offset_array.push_back(offset)
-
+	if distance_to_last_obstacle >= obstacle_spacing * obstacle_size:
+		var offset: float = distance_to_last_obstacle - (obstacle_spacing * obstacle_size)
 		if delaying_obstacle:
-			release_obstacle(delayed_obstacle, offset)
+			release_obstacle(delayed_obstacle)
 			delayed_obstacle = null
-			delaying_obstacle = false
+			delay_distance = 0
 		else:
 			request_next_obstacle(offset)
-			if current_obstacle_queue.size() > 1:
-				var new_obst: Obstacle = current_obstacle_queue[-1]
-				var second_last_obst: Obstacle = current_obstacle_queue[-2]
-				var obst_distance: float = new_obst.position.x - second_last_obst.position.x
-				print("Adding %s" % new_obst.target_word)
-				print("offset is %f" % offset)
-				print("distance between %s and %s is: %f" % [new_obst.target_word, second_last_obst.target_word, obst_distance])
-
-		next_obstacle_timer = offset
 
 
-func request_next_obstacle(time_offset: float = 0) -> void:
+func request_next_obstacle(distance_offset: float = 0) -> void:
 	var queued_obstacle: Obstacle = select_obstacle_type()
-
 	add_child(queued_obstacle)
 
-	var targets_needed = 1
+	var targets_needed: int = 1
 	if queued_obstacle is ExtendableObstacle:
-		queued_obstacle.check_fit(next_obstacle_interval)
+		queued_obstacle.check_fit(obstacle_spacing)
 		targets_needed = queued_obstacle.number_of_word_slots
-		print_debug("Adding Extended Obstacle with size %d. Timer interval expected: %f" % [targets_needed, next_obstacle_interval * 1/speed_modifier * targets_needed])
 
 	var target_array: Array[Dictionary] = get_targets(targets_needed)
 	if target_array.size() == 0:
@@ -129,14 +86,12 @@ func request_next_obstacle(time_offset: float = 0) -> void:
 		queued_obstacle.parse_targets(target_array)
 
 		queued_obstacle.speed_modifier = speed_modifier
-		queued_obstacle.position = obstacle_start_location
-		queued_obstacle.adjust_position(time_offset)
-
+		queued_obstacle.position = obstacle_start_location - Vector2(distance_offset, 0)
 		queued_obstacle.add_to_group(obstacle_group_name)
-		current_obstacle_queue.push_back(queued_obstacle)
+
 
 	var total_strokes_for_targets: int = queued_obstacle.get_total_score()
-	var stroke_ratio = total_strokes_for_targets/target_array.size()
+	var stroke_ratio: float = float(total_strokes_for_targets)/target_array.size()
 
 	obstacle_size = targets_needed
 
@@ -152,11 +107,14 @@ func request_next_obstacle(time_offset: float = 0) -> void:
 func delay_obstacle_release(queued_obstacle: Obstacle) -> void:
 	delayed_obstacle = queued_obstacle
 	delaying_obstacle = true
-	delay_interval = queued_obstacle.score/queued_obstacle.get_current_number_of_targets() * next_obstacle_interval
+	delay_distance = float(queued_obstacle.score)/queued_obstacle.get_current_number_of_targets() * obstacle_spacing
 
 
-func release_obstacle(queued_obstacle: Obstacle, time_offset: float = 0) -> void:
+func release_obstacle(queued_obstacle: Obstacle, distance_offset: float = 0) -> void:
+	current_obstacle_queue.push_back(queued_obstacle)
+	queued_obstacle.adjust_position(distance_offset)
 	queued_obstacle.stopped = false
+
 	if PlayerConfig.target_visibility != PlayerConfig.TargetVisibility.ALL:
 		queued_obstacle.hide_target(true)
 
@@ -200,9 +158,7 @@ func get_targets(number_of_targets: int) -> Array[Dictionary]:
 
 
 func stop_adding_targets() -> void:
-	timer_paused = true
-	reset_timer = true
-
+	stop_adding_words = true
 
 
 func set_obstacle_theme(new_theme: LevelTheme) -> void:
@@ -242,12 +198,11 @@ func word_cleared() -> void:
 
 
 func reset_words(collider: Object) -> void:
-	timer_paused = true
-	reset_timer = true
+	stop_adding_words = true
 	var score_reduction: int = 0
 	var words_to_reset: int = 0
 	var colliding_obst_found : bool = false
-	var obst_returned: int = current_obstacle_queue.size()
+
 	for obst in current_obstacle_queue:
 		if obst is ExtendableObstacle:
 			for target: Dictionary in obst.target_data_array:
@@ -259,9 +214,9 @@ func reset_words(collider: Object) -> void:
 		for obst in get_tree().get_nodes_in_group(obstacle_group_name):
 			if obst == collider:
 				score_reduction -= obst.score
-				obst_returned += 1
-				words_to_reset += obst.number_of_targets
+				words_to_reset += obst.get_total_number_of_targets()
 				break
+
 	get_tree().call_group(obstacle_group_name, "queue_free")
 	current_obstacle_queue.clear()
 	score_changed.emit(score_reduction)
@@ -281,7 +236,7 @@ func modify_speed(multiplier: float) -> void:
 func pause_obstacles() -> void:
 	for obstacle in current_obstacle_queue:
 		obstacle.stopped = true
-	timer_paused = true
+	stop_adding_words = true
 
 
 #Restart obstacle movement and request a new word if required
@@ -290,18 +245,18 @@ func resume_obstacles() -> void:
 		obstacle.stopped = false
 	if current_obstacle_queue.size() == 0:
 		request_next_obstacle()
-	timer_paused = false
+	stop_adding_words = false
 
 
 #Stops timer and kills all obstacles
 func game_over() -> void:
+	stop_adding_words = true
 	get_tree().call_group(obstacle_group_name, "queue_free")
 	current_obstacle_queue.clear()
 
 
 func end_level() -> void:
-	timer_paused = true
-	reset_timer = true
+	stop_adding_words = true
 	obstacle_queue_emptied.emit()
 
 
@@ -311,8 +266,8 @@ func set_speed(strokes_per_min: int) -> void:
 	words_per_obstacle = ceili(spm_ratio)
 	@warning_ignore("integer_division")
 	var obstacles_per_min: float = strokes_per_min/words_per_obstacle
-	next_obstacle_interval = 60.0/obstacles_per_min
-	words_per_obstacle_changed.emit(words_per_obstacle)
+	var next_obstacle_interval: float = 60.0/obstacles_per_min
+	obstacle_spacing = next_obstacle_interval * 200.0
 
 
 func set_target_list(new_list: Array[Dictionary]) -> void:

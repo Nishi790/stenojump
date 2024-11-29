@@ -84,12 +84,11 @@ func update_targets() -> void:
 	number_of_targets = target_data["number_of_targets"]
 
 
-func check_fit(obstacle_word_interval: float) -> int:
+func check_fit(obstacle_space: float) -> int:
 	if chosen_texture is LongObstacleSpriteData:
 		sprite_size_variants = chosen_texture.alternate_sizes
 
-	obstacle_space_per_word = obstacle_word_interval * speed
-
+	obstacle_space_per_word = obstacle_space
 	var width_ratio: float = float(obstacle_width)/float(obstacle_space_per_word)
 	number_of_word_slots = ceili(width_ratio)
 	var space_consumed: int = number_of_word_slots * obstacle_space_per_word
@@ -113,7 +112,6 @@ func check_fit(obstacle_word_interval: float) -> int:
 			var width: int = alt_data.collider.get_rect().size.x
 			if width > min_obstacle_width and width < max_obstacle_width:
 				alt_sprite_index = index
-				print("New jump space is %d" % (space_consumed - width))
 				break
 		if alt_sprite_index == -1:
 			for index: int in sprite_size_variants.size():
@@ -124,21 +122,16 @@ func check_fit(obstacle_word_interval: float) -> int:
 				var test_number_of_word_slots: int = ceili(test_width_ratio)
 				var test_space_consumed: int = test_number_of_word_slots * obstacle_space_per_word
 				var test_jump_space: int = test_space_consumed - width
-				print("Tried alternate slots: %d. Jump space was %d" % [test_number_of_word_slots, test_jump_space])
 				if test_jump_space > 150:
 					number_of_word_slots = test_number_of_word_slots
 					alt_sprite_index = index
-					print("chose new number of slots %d, using obstacle of width %s" % [number_of_word_slots, width])
 
 		if alt_sprite_index == -1:
-			printerr("No valid texture available for word interval %f seconds." % obstacle_word_interval)
+			printerr("No valid texture available for word interval %f pixels." % obstacle_space_per_word)
 			return -1
 
 		chosen_texture = sprite_size_variants[alt_sprite_index]
 		set_textures()
-		print("Selected alt texture width is %d" % chosen_texture.collider.get_rect().size.x)
-	else:
-		print("Default texture size of %s works" % obstacle_width)
 
 	return number_of_word_slots
 

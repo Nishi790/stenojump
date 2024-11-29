@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2kw0v3c282km"]
+[gd_scene load_steps=15 format=3 uid="uid://b2kw0v3c282km"]
 
 [ext_resource type="Script" path="res://in_game/runner_game.gd" id="1_geaxw"]
 [ext_resource type="Resource" uid="uid://lffcfvdd05yx" path="res://in_game/runner_ theme_data/clean_house.tres" id="2_5jj4b"]
@@ -11,9 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://mqni14eorxw" path="res://in_game/extendable_obstacle.tscn" id="6_uxi2j"]
 [ext_resource type="Script" path="res://in_game/obstacle_detector.gd" id="7_cxqw2"]
 [ext_resource type="PackedScene" uid="uid://cs4j8lqe5svww" path="res://HUD/hud.tscn" id="8_qxthh"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_lj4tv"]
-font_size = 20
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uo43n"]
 
@@ -36,23 +33,13 @@ hud = NodePath("HUD")
 background = NodePath("Background")
 obstacle_detector = NodePath("ObstacleDetector")
 
-[node name="Label" type="Label" parent="."]
-z_index = 2
-offset_left = 44.0
-offset_top = 722.0
-offset_right = 244.0
-offset_bottom = 786.0
-text = "Timer: 3.2222/3.1111"
-label_settings = SubResource("LabelSettings_lj4tv")
-
 [node name="Background" parent="." instance=ExtResource("2_vdwwl")]
 
-[node name="ObstacleManager" type="Node2D" parent="." node_paths=PackedStringArray("debug_label")]
+[node name="ObstacleManager" type="Node2D" parent="."]
 script = ExtResource("3_bwybn")
 basic_obstacle = ExtResource("4_87jbf")
 crawl_obstacle = ExtResource("5_my4cf")
 extended_obstacle = ExtResource("6_uxi2j")
-debug_label = NodePath("../Label")
 
 [node name="Player" parent="." instance=ExtResource("6_75c83")]
 position = Vector2(97, 877)

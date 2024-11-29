@@ -80,9 +80,8 @@ func _physics_process(_delta: float) -> void:
 
 
 ##Adjust the starting position of an obstacle based on how late it is relative to the expected start time
-func adjust_position(time_offset: float) -> void:
-	var distance_to_adjust: Vector2 = direction * speed * speed_modifier * time_offset
-	position = distance_to_adjust + position
+func adjust_position(distance_offset: float) -> void:
+	position = Vector2(distance_offset, 0) + position
 
 
 ##Set visibility of the target word

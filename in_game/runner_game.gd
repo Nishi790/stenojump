@@ -22,14 +22,12 @@ var level_theme: RunnerThemes = 0
 var save_data: RunnerSave
 
 var speed_updated: bool
-
 var input_box: LineEdit
 
 var word_queue: Array[Dictionary]
-var next_word_index: int = 0
-var new_word_interval: float = 3 #seconds until next word
 var current_text: String
 var target_word: String
+
 var level_time: float = 0
 var characters_entered_correctly: int = 0
 var wpm: float = 0:
@@ -39,14 +37,8 @@ var wpm: float = 0:
 			wpm_updated.emit(wpm)
 var level_timer_active: bool = false
 
-var words_left: int:
-	set(number_of_words):
-		words_left = number_of_words
-		if words_left <= 0:
-			words_left = 0
-		words_left_changed.emit(words_left)
-var max_words_per_obstacle: int = 1
-var obstacles_remaining: int
+var words_left: int
+
 var level_complete: bool = false
 var game_paused: bool = false
 var run_ended: bool = false
@@ -98,8 +90,7 @@ func start_level(data: RunnerSave, mode: RunnerMode) -> void:
 	player.data = save_data
 	hud.data = save_data
 
-	await load_level_data(save_data.current_level_path)
-	await set_level_theme(level_theme, false)
+	await load_level_data(save_data.current_level_path, true)
 	resume_game()
 
 
@@ -112,7 +103,7 @@ func _process(delta: float) -> void:
 		wpm = normal_words/minutes
 
 
-func set_level_theme(new_theme: RunnerThemes, transition: bool = false)-> void:
+func set_level_theme(new_theme: RunnerThemes, transition: bool = false) -> void:
 	if transition:
 		await transition_socks_off_screen()
 
@@ -123,7 +114,6 @@ func set_level_theme(new_theme: RunnerThemes, transition: bool = false)-> void:
 
 	if transition:
 		await transition_socks_on_screen()
-
 
 
 ##Dynamically adjusts obstacle and scroll speed when player is walking instead of running (i.e. level start)
@@ -177,6 +167,8 @@ func adjust_score(amount: int) -> void:
 
 func update_words_remaining(words: int) -> void:
 	words_left = words
+	if words_left < 0:
+		words_left = 0
 	words_left_changed.emit(words_left)
 
 
@@ -266,8 +258,6 @@ func update_text(new_text: String) -> void:
 func clear_word() -> void:
 	obstacle_manager.word_cleared()
 	target_word = obstacle_manager.provide_target_word()
-	words_left -= max_words_per_obstacle
-
 
 
 ##Called when enter is pressed in player input box, used to move to next level/return to menu
@@ -322,7 +312,7 @@ func initiate_level() -> void:
 
 ##Requests level data from the LevelLoader singleton and uses the data to set up the level
 ##Needs error handling for invalid level paths/level files
-func load_level_data(level_path: String = "") -> void:
+func load_level_data(level_path: String = "", first_level: bool = false) -> void:
 	if level_path != "":
 		LevelLoader.load_level(level_path)
 
@@ -354,8 +344,10 @@ func load_level_data(level_path: String = "") -> void:
 			if LevelLoader.active_level.level_order == LevelLoader.LevelOrder.RANDOM:
 				word_queue.shuffle()
 
-	if not LevelLoader.active_level.environment == level_theme:
+	if not LevelLoader.active_level.environment == level_theme and not first_level:
 		await set_level_theme(LevelLoader.active_level.environment, true)
+	elif first_level:
+		await set_level_theme(LevelLoader.active_level.environment, false)
 
 	word_queue = word_queue.slice(0, level_size)
 	obstacle_manager.set_target_list(word_queue)
