@@ -93,7 +93,7 @@ func check_fit(obstacle_space: float) -> int:
 	number_of_word_slots = ceili(width_ratio)
 	var space_consumed: int = number_of_word_slots * obstacle_space_per_word
 	var jump_space: int = space_consumed - obstacle_width
-	print("initial jump space is %d" % jump_space)
+
 	if jump_space < 150:
 		number_of_word_slots += 1
 
@@ -102,8 +102,6 @@ func check_fit(obstacle_space: float) -> int:
 
 		var min_obstacle_width: int = obstacle_width + min_pixels_to_add
 		var max_obstacle_width: int = obstacle_width + max_pixels_to_add
-
-		print("Need obstacle width between %s and %s for %d word slots" % [min_obstacle_width, max_obstacle_width, number_of_word_slots])
 
 		var alt_sprite_index: int = -1
 
