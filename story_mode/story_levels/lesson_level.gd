@@ -8,6 +8,7 @@ signal dialogue_started(dialogue_key: String, dialogue: DialogueResource)
 signal level_complete
 
 @export var waypoints: Array [Waypoint]
+@export var exit_point: Vector2
 
 var waypoint_astar_grid: AStar2D
 var astar_nav_grid: AStar2D
@@ -211,6 +212,12 @@ func call_event(event_name: String, args: Array = []) -> void:
 		event_callable.call(args)
 
 
+func level_exit() -> void:
+	player.nav_to_coords(exit_point)
+	await player.navigation_finished
+
+
 func finish_level() -> void:
 	print("Level complete")
+	await level_exit()
 	level_complete.emit()

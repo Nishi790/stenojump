@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs4j8lqe5svww"]
+[gd_scene load_steps=10 format=3 uid="uid://cs4j8lqe5svww"]
 
 [ext_resource type="Theme" uid="uid://bauut0j20qrrw" path="res://textures/InGame.tres" id="1_c1y4c"]
 [ext_resource type="Script" path="res://HUD/hud.gd" id="2_t68vm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://in_game/score_label.gd" id="5_20ws2"]
 [ext_resource type="Script" path="res://in_game/words_per_minute.gd" id="6_njpiu"]
 [ext_resource type="Script" path="res://in_game/lives_counter.gd" id="7_2iiwr"]
+[ext_resource type="PackedScene" uid="uid://26h4pyr1owl6" path="res://HUD/tutorial_display.tscn" id="8_imfrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwth0"]
 bg_color = Color(0, 0, 0, 0.156863)
@@ -50,7 +51,10 @@ theme_type_variation = &"fullscreen_panel"
 layout_mode = 2
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "Game Over"
+text = "\"Oops, there's a lot of stuff between Socks and where he wants to go! Help Socks get out of here by jumping over all the obstacles in the way.
+	Just write the word above the obstacle and Socks will jump over or crawl under it. As Socks gets closer to the exit, the obstacles will get faster - be careful!
+	
+	[i] The required speed to leave the level is designed to help you reach fluency with the steno concepts introduced in the previous level and can be configured in the options menu.[/i]\""
 fit_content = true
 
 [node name="GUIOrganizer" type="VBoxContainer" parent="MarginContainer"]
@@ -118,6 +122,9 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
+
+[node name="TutorialDisplay" parent="MarginContainer" instance=ExtResource("8_imfrn")]
+layout_mode = 2
 
 [node name="FadeRect" type="ColorRect" parent="."]
 layout_mode = 1

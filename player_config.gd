@@ -4,6 +4,7 @@ signal lives_updated
 
 enum WordOrder {DEFAULT, RANDOM, ORDERED}
 enum TargetVisibility {ALL, NEXT, IN_RANGE, NONE}
+enum StoryDifficulty {EASY, MEDIUM, HARD}
 
 @export var lapwing_level_1: String = "lapwing_1.json"
 @export var learn_plover_level_1: String
@@ -26,6 +27,9 @@ var interact_font_color: String = Color.YELLOW.to_html()
 
 var arcade_sequence_save_dictionary: Dictionary
 var story_save_dictionary: Dictionary
+
+var first_story_runner_played: bool = false
+var story_runner_base_difficulty: StoryDifficulty = StoryDifficulty.MEDIUM
 
 
 ## Path:[speed, accuracy]
@@ -254,3 +258,7 @@ func set_high_score(data: RunnerSave, level_size: int) -> void:
 
 func set_interact_font_color(new_color: Color) -> void:
 	interact_font_color = new_color.to_html()
+
+
+func set_story_difficulty(difficulty: StoryDifficulty) -> void:
+	story_runner_base_difficulty = difficulty

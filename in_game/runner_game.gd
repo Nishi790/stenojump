@@ -91,6 +91,9 @@ func start_level(data: RunnerSave, mode: RunnerMode) -> void:
 	hud.data = save_data
 
 	await load_level_data(save_data.current_level_path, true)
+	if not PlayerConfig.first_story_runner_played:
+		hud.show_tutorial()
+		await hud.tutorial_complete
 	resume_game()
 
 

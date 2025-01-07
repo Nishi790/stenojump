@@ -50,6 +50,10 @@ func start_runner_level(level_name: String) -> void:
 	runner.next_level_requested.connect(start_next_level)
 	runner.main_menu_requested.connect(open_level_select_screen)
 	add_child(runner)
+	if story_level_manager.is_inside_tree():
+		remove_child(story_level_manager)
+	if story_level_select_screen.is_inside_tree():
+		remove_child(story_level_select_screen)
 
 
 func start_next_level() -> void:

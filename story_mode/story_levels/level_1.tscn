@@ -100,6 +100,7 @@ bed = NodePath("JBed")
 sink = NodePath("Sink")
 shoe_rack = NodePath("ShoeRack")
 waypoints = [NodePath("Shelf"), NodePath("BottomBedroom"), NodePath("MiddleBedroom"), NodePath("TopBedroom"), NodePath("LeftCurtain"), NodePath("BedroomDoor"), NodePath("AlarmClock"), NodePath("FoodBowl"), NodePath("ScratchingPost"), NodePath("Sink"), NodePath("JBed"), NodePath("Couch"), NodePath("CoatHooks"), NodePath("FrontDoor"), NodePath("ShoeRack"), NodePath("HallEntrance"), NodePath("KitchenEnd"), NodePath("LivingRoomEntry")]
+exit_point = Vector2(815, 1150)
 generic_dialog = ExtResource("2_p6h6h")
 tile_map_holder = NodePath("TileMap")
 level_word_list = ExtResource("2_eiump")

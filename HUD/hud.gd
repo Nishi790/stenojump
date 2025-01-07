@@ -4,6 +4,7 @@ extends Control
 signal resume_game_requested
 signal main_menu_requested
 signal game_options_requested
+signal tutorial_finished
 
 @export var ingame_message: RichTextLabel
 @export var lives_counter: Label
@@ -14,6 +15,7 @@ signal game_options_requested
 @export var input_box: LineEdit
 @export var pause_menu_scene: PackedScene
 @export var fade_rect: ColorRect
+@export var tutorial: StoryRunnerTutorial
 
 var data: RunnerSave:
 	set(save_data):
@@ -154,3 +156,16 @@ func fade_to_black() -> void:
 	tween.tween_property(fade_rect, "color:a", 1.0, 3).set_trans(Tween.TRANS_SINE).from(0.0)
 	await tween.finished
 	message_container.hide()
+
+
+func show_tutorial() -> void:
+	tutorial.show()
+	tutorial.initiate_focus()
+	tutorial.tutorial_closed.connect(finish_tutorial)
+
+
+func finish_tutorial() -> void:
+	tutorial.hide()
+	PlayerConfig.first_story_runner_played = true
+	input_box.grab_focus()
+	tutorial_finished.emit()

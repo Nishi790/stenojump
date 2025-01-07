@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://26h4pyr1owl6"]
+
+[ext_resource type="Script" path="res://HUD/tutorial_display.gd" id="1_r4pa2"]
+
+[node name="TutorialDisplay" type="PanelContainer" node_paths=PackedStringArray("easy_button", "medium_button", "hard_button", "difficulty_details")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"fullscreen_panel"
+script = ExtResource("1_r4pa2")
+easy_button = NodePath("VBoxContainer/DifficultySelect/Beginner")
+medium_button = NodePath("VBoxContainer/DifficultySelect/Normal")
+hard_button = NodePath("VBoxContainer/DifficultySelect/Experienced")
+difficulty_details = NodePath("VBoxContainer/DifficultyDetails/DifficultyDetailLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Intro" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+text = " There's a lot of stuff between Socks and the exit! Help him get out of here by avoiding all the obstacles as he runs."
+fit_content = true
+
+[node name="Picture" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Details" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Write the word over each obstacle when you want Socks to dodge. Be careful to time the words with your jumps.
+
+Select your difficulty to determine how fast Socks needs to run to reach the next level at the start of the game.  You can always change your speed target and starting speed in the options menu."
+fit_content = true
+
+[node name="DifficultySelect" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Beginner" type="Button" parent="VBoxContainer/DifficultySelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Beginner 
+"
+
+[node name="Normal" type="Button" parent="VBoxContainer/DifficultySelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Intermediate"
+
+[node name="Experienced" type="Button" parent="VBoxContainer/DifficultySelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Experienced
+"
+
+[node name="DifficultyDetails" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SecondLayerPanel"
+
+[node name="DifficultyDetailLabel" type="RichTextLabel" parent="VBoxContainer/DifficultyDetails"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Socks will start at 5 strokes per minute, increasing speed by 3 words per minute until you reach 10 strokes per minute[/center]"
+fit_content = true
